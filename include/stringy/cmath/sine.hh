@@ -3,8 +3,8 @@
 
 #pragma once
 
-#include <fung/util/chainer.hh>
-#include <fung/util/static_checks.hh>
+#include <funcy/util/chainer.hh>
+#include <funcy/util/static_checks.hh>
 #include <stringy/util/string.hh>
 
 namespace stringy
@@ -18,7 +18,7 @@ namespace stringy
       as building block for more complex functions requires directional derivatives. These occur
       during applications of the chain rule.
      */
-    struct Sin : FunG::Chainer< Sin >
+    struct Sin : funcy::Chainer< Sin >
     {
         //! @copydoc Cos::Cos()
         explicit Sin( std::string x = "x" )
@@ -61,7 +61,7 @@ namespace stringy
         std::string x;
     };
 
-    template < class Function, class = std::enable_if_t< FunG::Checks::isFunction< Function >() > >
+    template < class Function, class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
     auto sin( const Function& f )
     {
         return Sin()( f );

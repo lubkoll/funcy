@@ -1,9 +1,9 @@
 // Copyright (C) 2016 by Lars Lubkoll. All rights reserved.
 // Released under the terms of the GNU General Public License version 3 or later.
 
-#define FUNG_ENABLE_EXCEPTIONS
+#define FUNCY_ENABLE_EXCEPTIONS
 #include <gtest/gtest.h>
-#include <fung/cmath/arccos.hh>
+#include <funcy/cmath/arccos.hh>
 
 namespace
 {
@@ -19,15 +19,15 @@ namespace
 
   auto generateTestACos()
   {
-    return FunG::ACos( x0() );
+    return funcy::ACos( x0() );
   }
 }
 
 TEST(ArccosTest,Update)
 {
   auto fun = generateTestACos();
-  ASSERT_THROW( fun.update(-1.1) , FunG::OutOfDomainException );
-  ASSERT_THROW( fun.update(1.1) , FunG::OutOfDomainException );
+  ASSERT_THROW( fun.update(-1.1) , funcy::OutOfDomainException );
+  ASSERT_THROW( fun.update(1.1) , funcy::OutOfDomainException );
 }
 
 TEST(ArccosTest,D0)

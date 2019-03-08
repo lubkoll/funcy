@@ -3,13 +3,13 @@
 
 #pragma once
 
-#include <fung/util/chainer.hh>
-#include <fung/util/static_checks.hh>
+#include <funcy/util/chainer.hh>
+#include <funcy/util/static_checks.hh>
 #include <stringy/util/string.hh>
 
 namespace stringy
 {
-    struct LN : FunG::Chainer< LN >
+    struct LN : funcy::Chainer< LN >
     {
         //! @copydoc Cos::Cos()
         explicit LN( const std::string& x = "x" )
@@ -52,7 +52,7 @@ namespace stringy
         std::string x;
     };
 
-    struct Log10 : FunG::Chainer< Log10 >
+    struct Log10 : funcy::Chainer< Log10 >
     {
         //! @copydoc Cos::Cos()
         explicit Log10( const std::string& x = "x" )
@@ -107,7 +107,7 @@ namespace stringy
         std::string ln10{"ln(10)"};
     };
 
-    struct Log2 : FunG::Chainer< Log2 >
+    struct Log2 : funcy::Chainer< Log2 >
     {
         //! @copydoc Cos::Cos()
         explicit Log2( const std::string& x = "x" )
@@ -166,19 +166,19 @@ namespace stringy
         std::string ln2{"ln(2)"};
     };
 
-    template < class Function, class = std::enable_if_t< FunG::Checks::isFunction< Function >() > >
+    template < class Function, class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
     auto ln( const Function& f )
     {
         return LN()( f );
     }
 
-    template < class Function, class = std::enable_if_t< FunG::Checks::isFunction< Function >() > >
+    template < class Function, class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
     auto log10( const Function& f )
     {
         return Log10()( f );
     }
 
-    template < class Function, class = std::enable_if_t< FunG::Checks::isFunction< Function >() > >
+    template < class Function, class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
     auto log2( const Function& f )
     {
         return Log2()( f );

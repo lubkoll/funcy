@@ -5,7 +5,7 @@
 
 #include <texy/util/chainer.hh>
 #include <texy/util/string.hh>
-#include <fung/util/static_checks.hh>
+#include <funcy/util/static_checks.hh>
 
 /** @addtogroup TexifyCMathGroup
  *  @{ */
@@ -81,7 +81,7 @@ namespace texy
       @param f function mapping into a scalar space
       @return object of type MathematicalOperations::Chain<Tan,Function>
      */
-    template < class Function, class = std::enable_if_t< FunG::Checks::isFunction< Function >() > >
+    template < class Function, class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
     auto tan( const Function& f )
     {
         return Tan()( f );

@@ -3,8 +3,8 @@
 
 #pragma once
 
-#include <fung/concept_check.hh>
-#include <fung/util/chainer.hh>
+#include <funcy/concept_check.hh>
+#include <funcy/util/chainer.hh>
 #include <texy/util/string.hh>
 
 #include <type_traits>
@@ -16,7 +16,7 @@ namespace texy
         /** @addtogroup TexifyLinearAlgebraGroup
          *  @{ */
         /// Represents transposition matrices.
-        class Transpose : public FunG::Chainer< Transpose >
+        class Transpose : public funcy::Chainer< Transpose >
         {
         public:
             explicit Transpose( const std::string& A ) : A( A )
@@ -47,7 +47,7 @@ namespace texy
             return Transpose( A );
         }
 
-        template < class F, std::enable_if_t< FunG::Checks::isFunction< F >() >* = nullptr >
+        template < class F, std::enable_if_t< funcy::Checks::isFunction< F >() >* = nullptr >
         auto transpose( const F& f )
         {
             return Transpose( f() )( f );

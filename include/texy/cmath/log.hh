@@ -5,7 +5,7 @@
 
 #include <texy/util/chainer.hh>
 #include <texy/util/string.hh>
-#include <fung/util/static_checks.hh>
+#include <funcy/util/static_checks.hh>
 
 /** @addtogroup TexifyCMathGroup
  *  @{ */
@@ -200,7 +200,7 @@ namespace texy
       @param f function mapping into a scalar space
       @return object of type MathematicalOperations::Chain<Log,Function>
      */
-    template < class Function, class = std::enable_if_t< FunG::Checks::isFunction< Function >() > >
+    template < class Function, class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
     auto ln( const Function& f )
     {
         return LN()( f );
@@ -211,7 +211,7 @@ namespace texy
       @param f function mapping into a scalar space
       @return object of type MathematicalOperations::Chain<Log10,Function>
      */
-    template < class Function, class = std::enable_if_t< FunG::Checks::isFunction< Function >() > >
+    template < class Function, class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
     auto log10( const Function& f )
     {
         return Log10()( f );
@@ -222,7 +222,7 @@ namespace texy
       @param f function mapping into a scalar space
       @return object of type MathematicalOperations::Chain<Log2,Function>
      */
-    template < class Function, class = std::enable_if_t< FunG::Checks::isFunction< Function >() > >
+    template < class Function, class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
     auto log2( const Function& f )
     {
         return Log2()( f );

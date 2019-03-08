@@ -1,17 +1,17 @@
 #pragma once
 
-#include <fung/generate.hh>
-#include <fung/util/static_checks.hh>
+#include <funcy/generate.hh>
+#include <funcy/util/static_checks.hh>
 #include <type_traits>
 
 namespace texy
 {
-    using FunG::operator+;
-    using FunG::operator-;
-    using FunG::operator*;
-    using FunG::operator<<;
-    using FunG::dot;
-    using FunG::squared;
+    using funcy::operator+;
+    using funcy::operator-;
+    using funcy::operator*;
+    using funcy::operator<<;
+    using funcy::dot;
+    using funcy::squared;
     //    /**
     //     * \brief overload of "+"-operator for the generation of functions.
     //     *
@@ -20,12 +20,12 @@ namespace texy
     //     * wrap it into Finalize to generate missing derivatives.
     //     */
     //    template < class F, class G,
-    //               std::enable_if_t< FunG::FunG::Checks::isFunction< std::decay_t< F > >() ||
-    //                                 FunG::FunG::Checks::isFunction< std::decay_t< G > >() >* =
+    //               std::enable_if_t< funcy::funcy::Checks::isFunction< std::decay_t< F > >() ||
+    //                                 funcy::funcy::Checks::isFunction< std::decay_t< G > >() >* =
     //                                 nullptr >
     //    auto operator+( F&& f, G&& g )
     //    {
-    //        return FunG::operator+(std::forward<F>(f), std::forward<G>(g));
+    //        return funcy::operator+(std::forward<F>(f), std::forward<G>(g));
     //    }
 
     //    /**
@@ -36,12 +36,12 @@ namespace texy
     //     * wrap it into Finalize to generate missing derivatives.
     //     */
     //    template < class F, class G,
-    //               std::enable_if_t< FunG::FunG::Checks::isFunction< std::decay_t< F > >() ||
-    //                                 FunG::FunG::Checks::isFunction< std::decay_t< G > >() >* =
+    //               std::enable_if_t< funcy::funcy::Checks::isFunction< std::decay_t< F > >() ||
+    //                                 funcy::funcy::Checks::isFunction< std::decay_t< G > >() >* =
     //                                 nullptr >
     //    auto operator*( F&& f, G&& g )
     //    {
-    //        return FunG::operator*(std::forward<F>(f), std::forward<G>(g));
+    //        return funcy::operator*(std::forward<F>(f), std::forward<G>(g));
     //    }
 
     //    /**
@@ -52,12 +52,12 @@ namespace texy
     //     * wrap it into Finalize to generate missing derivatives.
     //     */
     //    template < class F, class G,
-    //               std::enable_if_t< FunG::FunG::Checks::isFunction< std::decay_t< F > >() ||
-    //                                 FunG::FunG::Checks::isFunction< std::decay_t< G > >() >* =
+    //               std::enable_if_t< funcy::funcy::Checks::isFunction< std::decay_t< F > >() ||
+    //                                 funcy::funcy::Checks::isFunction< std::decay_t< G > >() >* =
     //                                 nullptr >
     //    auto dot( F&& f, G&& g )
     //    {
-    //        return FunG::dot(std::forward<F>(f), std::forward<G>(g));    }
+    //        return funcy::dot(std::forward<F>(f), std::forward<G>(g));    }
 
     //    /**
     //     * \brief Generate squared function
@@ -66,11 +66,11 @@ namespace texy
     //     to
     //     * wrap it into Finalize to generate missing derivatives.
     //     */
-    //    template < class F, std::enable_if_t< FunG::FunG::Checks::isFunction< std::decay_t< F >
+    //    template < class F, std::enable_if_t< funcy::funcy::Checks::isFunction< std::decay_t< F >
     //    >() >* = nullptr >
     //    auto squared( F&& f )
     //    {
-    //        return FunG::squared(std::forward<F>(f), std::forward<G>(g));
+    //        return funcy::squared(std::forward<F>(f), std::forward<G>(g));
     //    }
 
     //    /**
@@ -84,12 +84,12 @@ namespace texy
     //     */
 
     //    template < class F, class G,
-    //               std::enable_if_t< FunG::FunG::Checks::isFunction< std::decay_t< F > >() &&
-    //                                 FunG::FunG::Checks::isFunction< std::decay_t< G > >() >* =
+    //               std::enable_if_t< funcy::funcy::Checks::isFunction< std::decay_t< F > >() &&
+    //                                 funcy::funcy::Checks::isFunction< std::decay_t< G > >() >* =
     //                                 nullptr >
     //    auto operator<<( F&& f, G&& g )
     //    {
-    //        return FunG::operator<<(std::forward<F>(f), std::forward<G>(g));
+    //        return funcy::operator<<(std::forward<F>(f), std::forward<G>(g));
     //    }
 
     //    /**
@@ -100,11 +100,11 @@ namespace texy
     //     * wrap it into Finalize to generate missing derivatives.
     //     */
     //    template < class F, class G,
-    //               std::enable_if_t< FunG::FunG::Checks::isFunction< std::decay_t< F > >() ||
-    //                                 FunG::FunG::Checks::isFunction< std::decay_t< G > >() >* =
+    //               std::enable_if_t< funcy::funcy::Checks::isFunction< std::decay_t< F > >() ||
+    //                                 funcy::funcy::Checks::isFunction< std::decay_t< G > >() >* =
     //                                 nullptr >
     //    auto operator-( F&& f, G&& g )
     //    {
-    //        return FunG::operator-(std::forward<F>(f), std::forward<G>(g));
+    //        return funcy::operator-(std::forward<F>(f), std::forward<G>(g));
     //    }
 }

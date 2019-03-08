@@ -4,19 +4,19 @@
 #include <utility>
 
 #include <texy/util/chainer.hh>
-#include <fung/concept_check.hh>
-#include <fung/mathematical_operations/dot.hh>
-#include <fung/util/compute_dot.hh>
-#include <fung/util/compute_sum.hh>
-#include <fung/util/derivative_wrappers.hh>
-#include <fung/util/evaluate_if_present.hh>
-#include <fung/util/indexed_type.hh>
+#include <funcy/concept_check.hh>
+#include <funcy/mathematical_operations/dot.hh>
+#include <funcy/util/compute_dot.hh>
+#include <funcy/util/compute_sum.hh>
+#include <funcy/util/derivative_wrappers.hh>
+#include <funcy/util/evaluate_if_present.hh>
+#include <funcy/util/indexed_type.hh>
 
 namespace texy
 {
     namespace MathematicalOperations
     {
-        using FunG::MathematicalOperations::Dot;
+        using funcy::MathematicalOperations::Dot;
         //        /**
         //         * @ingroup MathematicalOperationsGroup
         //         * @brief %Dot \f$f \cdot g\f$ of functions of type F and G (F and G must satisfy

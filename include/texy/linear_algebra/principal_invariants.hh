@@ -9,8 +9,8 @@
 #include "trace.hh"
 #include <texy/cmath/pow.hh>
 #include <texy/generate.hh>
-#include <fung/util/chainer.hh>
-#include <fung/util/type_traits.hh>
+#include <funcy/util/chainer.hh>
+#include <funcy/util/type_traits.hh>
 
 namespace texy
 {
@@ -20,7 +20,7 @@ namespace texy
          * @{ */
         /// Second principal invariant \f$ \iota_2(A)=\mathrm{tr}(\mathrm{cof}(A)) \f$ for
         /// \f$A\in\mathbb{R}^{n,n}\f$.
-        class SecondPrincipalInvariant : public FunG::Chainer< SecondPrincipalInvariant >
+        class SecondPrincipalInvariant : public funcy::Chainer< SecondPrincipalInvariant >
         {
         public:
             SecondPrincipalInvariant() = default;
@@ -110,7 +110,7 @@ namespace texy
          * \f$f:\cdot\mapsto\mathbb{R}^{n,n}\f$.
          * @return SecondPrincipalInvariant( f() )( f )
          */
-        template < class F, std::enable_if_t< FunG::Checks::isFunction< F >() >* = nullptr >
+        template < class F, std::enable_if_t< funcy::Checks::isFunction< F >() >* = nullptr >
         auto i2( const F& f )
         {
             return SecondPrincipalInvariant( f() )( f );

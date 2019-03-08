@@ -3,13 +3,13 @@
 
 #pragma once
 
-#include <fung/util/chainer.hh>
+#include <funcy/util/chainer.hh>
 
-namespace FunG
+namespace funcy
 {
     /// %Identity mapping \f$ f(x)=x \f$.
     template < class Arg, class = ArithmeticConceptCheck< Arg > >
-    struct Identity : FunG::Chainer< Identity< Arg, ArithmeticConceptCheck< Arg > > >
+    struct Identity : funcy::Chainer< Identity< Arg, ArithmeticConceptCheck< Arg > > >
     {
         /// Default constructor.
         Identity() = default;

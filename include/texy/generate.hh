@@ -2,7 +2,7 @@
 
 #include "operations.hh"
 
-#include <fung/util/static_checks.hh>
+#include <funcy/util/static_checks.hh>
 #include <texy/constant.hh>
 
 #include <iostream>
@@ -12,8 +12,8 @@ namespace texy {
 /// @cond
 namespace GenerateDetail {
 template <class F0, class G0,
-          bool = FunG::Checks::isFunction<std::decay_t<F0>>(),
-          bool = FunG::Checks::isFunction<std::decay_t<G0>>()>
+          bool = funcy::Checks::isFunction<std::decay_t<F0>>(),
+          bool = funcy::Checks::isFunction<std::decay_t<G0>>()>
 struct SumGenerator;
 
 template <class F0, class G0> struct SumGenerator<F0, G0, true, true> {
@@ -52,10 +52,10 @@ template <class F0, class G0> struct SumGenerator<F0, G0, false, true> {
 };
 
 template <class F0, class G0,
-          bool = FunG::Checks::isFunction<std::decay_t<F0>>(),
-          bool = FunG::Checks::isFunction<std::decay_t<G0>>(),
-          bool = FunG::is_arithmetic<std::decay_t<F0>>::value,
-          bool = FunG::is_arithmetic<std::decay_t<G0>>::value>
+          bool = funcy::Checks::isFunction<std::decay_t<F0>>(),
+          bool = funcy::Checks::isFunction<std::decay_t<G0>>(),
+          bool = funcy::is_arithmetic<std::decay_t<F0>>::value,
+          bool = funcy::is_arithmetic<std::decay_t<G0>>::value>
 struct ProductGenerator;
 
 template <class F0, class G0>
@@ -99,8 +99,8 @@ struct ProductGenerator<F0, G0, true, false, false, false> {
 };
 
 template <class F0, class G0,
-          bool = FunG::Checks::isFunction<std::decay_t<F0>>(),
-          bool = FunG::Checks::isFunction<std::decay_t<G0>>()>
+          bool = funcy::Checks::isFunction<std::decay_t<F0>>(),
+          bool = funcy::Checks::isFunction<std::decay_t<G0>>()>
 struct DotGenerator;
 
 template <class F0, class G0> struct DotGenerator<F0, G0, true, true> {
@@ -135,8 +135,8 @@ template <class F0, class G0> struct DotGenerator<F0, G0, true, false> {
  */
 template <
     class F, class G,
-    std::enable_if_t<FunG::Checks::isFunction<std::decay_t<F>>() ||
-                     FunG::Checks::isFunction<std::decay_t<G>>()> * = nullptr>
+    std::enable_if_t<funcy::Checks::isFunction<std::decay_t<F>>() ||
+                     funcy::Checks::isFunction<std::decay_t<G>>()> * = nullptr>
 auto operator+(F &&f, G &&g) {
   return GenerateDetail::SumGenerator<F, G>::apply(std::forward<F>(f),
                                                    std::forward<G>(g));
@@ -151,8 +151,8 @@ auto operator+(F &&f, G &&g) {
  */
 template <
     class F, class G,
-    std::enable_if_t<FunG::Checks::isFunction<std::decay_t<F>>() ||
-                     FunG::Checks::isFunction<std::decay_t<G>>()> * = nullptr>
+    std::enable_if_t<funcy::Checks::isFunction<std::decay_t<F>>() ||
+                     funcy::Checks::isFunction<std::decay_t<G>>()> * = nullptr>
 auto operator*(F &&f, G &&g) {
   return GenerateDetail::ProductGenerator<
       std::decay_t<F>, std::decay_t<G>>::apply(std::forward<F>(f),
@@ -168,8 +168,8 @@ auto operator*(F &&f, G &&g) {
  */
 template <
     class F, class G,
-    std::enable_if_t<FunG::Checks::isFunction<std::decay_t<F>>() ||
-                     FunG::Checks::isFunction<std::decay_t<G>>()> * = nullptr>
+    std::enable_if_t<funcy::Checks::isFunction<std::decay_t<F>>() ||
+                     funcy::Checks::isFunction<std::decay_t<G>>()> * = nullptr>
 auto dot(F &&f, G &&g) {
   return GenerateDetail::DotGenerator<F, G>::apply(std::forward<F>(f),
                                                    std::forward<G>(g));
@@ -182,7 +182,7 @@ auto dot(F &&f, G &&g) {
  * you need to
  * wrap it into Finalize to generate missing derivatives.
  */
-template <class F, std::enable_if_t<FunG::Checks::isFunction<std::decay_t<F>>()>
+template <class F, std::enable_if_t<funcy::Checks::isFunction<std::decay_t<F>>()>
                        * = nullptr>
 auto operator^(F &&f, int k) {
   if (k != 2) {
@@ -199,7 +199,7 @@ auto operator^(F &&f, int k) {
  * you need to
  * wrap it into Finalize to generate missing derivatives.
  */
-template <class F, std::enable_if_t<FunG::Checks::isFunction<std::decay_t<F>>()>
+template <class F, std::enable_if_t<funcy::Checks::isFunction<std::decay_t<F>>()>
                        * = nullptr>
 auto squared(F &&f) {
   return MathematicalOperations::Squared<std::decay_t<F>>(std::forward<F>(f));
@@ -218,9 +218,9 @@ auto squared(F &&f) {
 //     */
 
 //    template < class F, class G,
-//               std::enable_if_t< FunG::Checks::isFunction< std::decay_t< F >
+//               std::enable_if_t< funcy::Checks::isFunction< std::decay_t< F >
 //               >() &&
-//                                 FunG::Checks::isFunction< std::decay_t< G >
+//                                 funcy::Checks::isFunction< std::decay_t< G >
 //                                 >() >* = nullptr
 //                                 >
 //    auto operator<<( F&& f, G&& g )
@@ -243,9 +243,9 @@ auto squared(F &&f) {
 //     * wrap it into Finalize to generate missing derivatives.
 //     */
 //    template < class F, class G,
-//               std::enable_if_t< FunG::Checks::isFunction< std::decay_t< F >
+//               std::enable_if_t< funcy::Checks::isFunction< std::decay_t< F >
 //               >() ||
-//                                 FunG::Checks::isFunction< std::decay_t< G >
+//                                 funcy::Checks::isFunction< std::decay_t< G >
 //                                 >() >* = nullptr
 //                                 >
 //    auto operator-( F&& f, G&& g )
@@ -261,8 +261,8 @@ auto squared(F &&f) {
  * wrap it into Finalize to generate missing derivatives.
  */
 template <class F, class G,
-          std::enable_if_t<FunG::Checks::isFunction<std::decay_t<F>>() &&
-                           FunG::is_arithmetic<G>::value> * = nullptr>
+          std::enable_if_t<funcy::Checks::isFunction<std::decay_t<F>>() &&
+                           funcy::is_arithmetic<G>::value> * = nullptr>
 auto operator-(F &&f, G g) {
   return std::forward<F>(f) + constant(std::to_string(-1 * g));
 }
@@ -274,7 +274,7 @@ auto operator-(F &&f, G g) {
  * you need to
  * wrap it into Finalize to generate missing derivatives.
  */
-template <class F, std::enable_if_t<FunG::Checks::isFunction<std::decay_t<F>>()>
+template <class F, std::enable_if_t<funcy::Checks::isFunction<std::decay_t<F>>()>
                        * = nullptr>
 auto operator-(F &&f, const std::string &g) {
   return std::forward<F>(f) + (-1 * constant(g));

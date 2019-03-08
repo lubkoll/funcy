@@ -6,9 +6,9 @@
 #include <texy/mathematical_operations/chain.hh>
 #include <texy/util/chainer.hh>
 #include <texy/util/string.hh>
-#include <fung/concept_check.hh>
-#include <fung/util/chainer.hh>
-#include <fung/util/static_checks.hh>
+#include <funcy/concept_check.hh>
+#include <funcy/util/chainer.hh>
+#include <funcy/util/static_checks.hh>
 
 namespace texy
 {
@@ -86,7 +86,7 @@ namespace texy
 
         /// Generate Frobenius norm \f$ \|A\| = \sqrt{A\negthinspace : \negthinspace A }=
         /// \sqrt{\mathrm{tr}(A^TA)} = \sqrt{\sum_{i,j} A_{ij}^2}. \f$
-        template < class F, std::enable_if_t< FunG::Checks::isFunction< F >() >* = nullptr >
+        template < class F, std::enable_if_t< funcy::Checks::isFunction< F >() >* = nullptr >
         auto frobeniusNorm( const F& f )
         {
             return FrobeniusNorm( f.d0() )( f );

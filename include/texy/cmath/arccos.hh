@@ -2,8 +2,8 @@
 
 #include <texy/util/chainer.hh>
 #include <texy/util/string.hh>
-#include <fung/cmath/arccos.hh>
-#include <fung/util/static_checks.hh>
+#include <funcy/cmath/arccos.hh>
+#include <funcy/util/static_checks.hh>
 
 #include <string>
 #include <type_traits>
@@ -78,7 +78,7 @@ namespace texy
       @param f function mapping into a scalar space
       @return object of type MathematicalOperations::Chain<Printable<ACos>,Function>
      */
-    template < class Function, class = std::enable_if_t< FunG::Checks::isFunction< Function >() > >
+    template < class Function, class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
     auto acos( const Function& f )
     {
         return ACos()( f );

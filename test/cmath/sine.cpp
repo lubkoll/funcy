@@ -2,7 +2,7 @@
 // Released under the terms of the GNU General Public License version 3 or later.
 
 #include <gtest/gtest.h>
-#include <fung/cmath/sine.hh>
+#include <funcy/cmath/sine.hh>
 
 namespace
 {
@@ -18,7 +18,7 @@ namespace
 
   auto generateTestSin()
   {
-    return FunG::Sin( x0() );
+    return funcy::Sin( x0() );
   }
 }
 

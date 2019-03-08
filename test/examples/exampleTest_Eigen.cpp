@@ -6,19 +6,19 @@
 #include <Eigen/Dense>
 #include <gtest/gtest.h>
 
-#define FUNG_ENABLE_EXCEPTIONS
-#include <fung/examples/rubber/neo_hooke.hh>
-#include <fung/examples/rubber/mooney_rivlin.hh>
-#include <fung/examples/biomechanics/skin_tissue_hendriks.hh>
-#include <fung/examples/biomechanics/adipose_tissue_sommer_holzapfel.hh>
-#include <fung/examples/biomechanics/muscle_tissue_martins.hh>
+#define FUNCY_ENABLE_EXCEPTIONS
+#include <funcy/examples/rubber/neo_hooke.hh>
+#include <funcy/examples/rubber/mooney_rivlin.hh>
+#include <funcy/examples/biomechanics/skin_tissue_hendriks.hh>
+#include <funcy/examples/biomechanics/adipose_tissue_sommer_holzapfel.hh>
+#include <funcy/examples/biomechanics/muscle_tissue_martins.hh>
 
 namespace
 {
   template <class M, class Function>
   auto runTest(Function& f)
   {
-    M a = FunG::LinearAlgebra::unitMatrix<M>();
+    M a = funcy::LinearAlgebra::unitMatrix<M>();
     M da0 = 2*a, da1 = 3*a, da2 = 4*a;
 
     f.update(a);
@@ -26,8 +26,8 @@ namespace
     return std::make_tuple( f() , f.d1(da0) , f.d2(da0,da1) , f.d3(da0,da1,da2) );
   }
 
-  using FunG::LN;
-  using FunG::Pow;
+  using funcy::LN;
+  using funcy::Pow;
   constexpr int dim = 3;
   using M = Eigen::Matrix<double,dim,dim>;
   auto c0 = 1., c1 = 1., d0 = 1., d1 = 1.;
@@ -40,12 +40,12 @@ namespace
     return m;
   }
 
-  M fiberTensor = initFiberTensor(), I = FunG::LinearAlgebra::unitMatrix<M>();
+  M fiberTensor = initFiberTensor(), I = funcy::LinearAlgebra::unitMatrix<M>();
 }
 
 TEST(NeoHooke,Incompressible_Eigen)
 {
-  auto incompressibleNeoHooke = FunG::incompressibleNeoHooke(c0,I);
+  auto incompressibleNeoHooke = funcy::incompressibleNeoHooke(c0,I);
   auto f = runTest<M>(incompressibleNeoHooke);
   EXPECT_DOUBLE_EQ( std::get<0>(f) , 0 );
   EXPECT_DOUBLE_EQ( std::get<1>(f) , 12 );
@@ -55,7 +55,7 @@ TEST(NeoHooke,Incompressible_Eigen)
 
 TEST(NeoHooke,Compressible_Eigen)
 {
-  auto compressibleNeoHooke = FunG::compressibleNeoHooke<Pow<2>,LN>(c0,d0,d1,I);
+  auto compressibleNeoHooke = funcy::compressibleNeoHooke<Pow<2>,LN>(c0,d0,d1,I);
   auto f = runTest<M>(compressibleNeoHooke);
   EXPECT_DOUBLE_EQ( std::get<0>(f) , 0 );
   EXPECT_DOUBLE_EQ( std::get<1>(f) , 30 );
@@ -65,7 +65,7 @@ TEST(NeoHooke,Compressible_Eigen)
 
 TEST(NeoHooke,ModifiedIncompressible_Eigen)
 {
-  auto modifiedIncompressibleNeoHooke = FunG::modifiedIncompressibleNeoHooke(c0,I);
+  auto modifiedIncompressibleNeoHooke = funcy::modifiedIncompressibleNeoHooke(c0,I);
   auto f = runTest<M>(modifiedIncompressibleNeoHooke);
   EXPECT_DOUBLE_EQ( std::get<0>(f) , 0 );
   EXPECT_DOUBLE_EQ( std::get<1>(f) , 0 );
@@ -75,7 +75,7 @@ TEST(NeoHooke,ModifiedIncompressible_Eigen)
 
 TEST(NeoHooke,ModifiedCompressible_Eigen)
 {
-  auto modifiedCompressibleNeoHooke = FunG::modifiedCompressibleNeoHooke<Pow<2>,LN>(c0,d0,d1,I);
+  auto modifiedCompressibleNeoHooke = funcy::modifiedCompressibleNeoHooke<Pow<2>,LN>(c0,d0,d1,I);
   auto f = runTest<M>(modifiedCompressibleNeoHooke);
   EXPECT_DOUBLE_EQ( std::get<0>(f) , 0 );
   EXPECT_DOUBLE_EQ( std::get<1>(f) , 18 );
@@ -85,7 +85,7 @@ TEST(NeoHooke,ModifiedCompressible_Eigen)
 
 TEST(MooneyRivlin,Incompressible_Eigen)
 {
-  auto mooneyRivlin = FunG::incompressibleMooneyRivlin(c0,c1,I);
+  auto mooneyRivlin = funcy::incompressibleMooneyRivlin(c0,c1,I);
   auto f = runTest<M>(mooneyRivlin);
   EXPECT_DOUBLE_EQ( std::get<0>(f) , 0 );
   EXPECT_DOUBLE_EQ( std::get<1>(f) , 36 );
@@ -95,7 +95,7 @@ TEST(MooneyRivlin,Incompressible_Eigen)
 
 TEST(MooneyRivlin,Compressible_Eigen)
 {
-  auto mooneyRivlin = FunG::compressibleMooneyRivlin<Pow<2>,LN>(c0,c1,d0,d1,I);
+  auto mooneyRivlin = funcy::compressibleMooneyRivlin<Pow<2>,LN>(c0,c1,d0,d1,I);
   auto f = runTest<M>(mooneyRivlin);
   EXPECT_DOUBLE_EQ( std::get<0>(f) , 0 );
   EXPECT_DOUBLE_EQ( std::get<1>(f) , 54 );
@@ -105,7 +105,7 @@ TEST(MooneyRivlin,Compressible_Eigen)
 
 TEST(Skin_Hendriks,Incompressible_Eigen)
 {
-  auto skin = FunG::incompressibleSkin_Hendriks(c0,c1,I);
+  auto skin = funcy::incompressibleSkin_Hendriks(c0,c1,I);
   auto f = runTest<M>(skin);
   EXPECT_DOUBLE_EQ( std::get<0>(f) , 0 );
   EXPECT_DOUBLE_EQ( std::get<1>(f) , 12 );
@@ -115,7 +115,7 @@ TEST(Skin_Hendriks,Incompressible_Eigen)
 
 TEST(Skin_Hendriks,Compressible_Eigen)
 {
-  auto skin = FunG::compressibleSkin_Hendriks<Pow<2>,LN>(c0,c1,d0,d1,I);
+  auto skin = funcy::compressibleSkin_Hendriks<Pow<2>,LN>(c0,c1,d0,d1,I);
   auto f = runTest<M>(skin);
   EXPECT_DOUBLE_EQ( std::get<0>(f) , 0 );
   EXPECT_DOUBLE_EQ( std::get<1>(f) , 30 );
@@ -125,7 +125,7 @@ TEST(Skin_Hendriks,Compressible_Eigen)
 
 TEST(Adipose_SommerHolzapfel,Incompressible_Eigen)
 {
-  auto adipose = FunG::incompressibleAdiposeTissue_SommerHolzapfel(fiberTensor,I);
+  auto adipose = funcy::incompressibleAdiposeTissue_SommerHolzapfel(fiberTensor,I);
   auto f = runTest<M>(adipose);
   EXPECT_DOUBLE_EQ( std::get<0>(f) , 0 );
   EXPECT_NEAR( std::get<1>(f) , 1.8 , 1e-11 );
@@ -135,7 +135,7 @@ TEST(Adipose_SommerHolzapfel,Incompressible_Eigen)
 
 TEST(Adipose_SommerHolzapfel,Compressible_Eigen)
 {
-  auto adipose = FunG::compressibleAdiposeTissue_SommerHolzapfel<Pow<2>,LN>(d0,d1,fiberTensor,I);
+  auto adipose = funcy::compressibleAdiposeTissue_SommerHolzapfel<Pow<2>,LN>(d0,d1,fiberTensor,I);
   auto f = runTest<M>(adipose);
   EXPECT_DOUBLE_EQ( std::get<0>(f) , 0 );
   EXPECT_NEAR( std::get<1>(f) , 19.8 , 1e-11 );
@@ -145,7 +145,7 @@ TEST(Adipose_SommerHolzapfel,Compressible_Eigen)
 
 TEST(Muscle_Martins,Incompressible_Eigen)
 {
-  auto muscle = FunG::incompressibleMuscleTissue_Martins(fiberTensor,I);
+  auto muscle = funcy::incompressibleMuscleTissue_Martins(fiberTensor,I);
   auto f = runTest<M>(muscle);
   EXPECT_DOUBLE_EQ( std::get<0>(f) , 0 );
   EXPECT_NEAR( std::get<1>(f) , 0 , 1e-11 );
@@ -155,7 +155,7 @@ TEST(Muscle_Martins,Incompressible_Eigen)
 
 TEST(Muscle_Martins,Compressible_Eigen)
 {
-  auto muscle = FunG::compressibleMuscleTissue_Martins<Pow<2>,LN>(d0,d1,fiberTensor,I);
+  auto muscle = funcy::compressibleMuscleTissue_Martins<Pow<2>,LN>(d0,d1,fiberTensor,I);
   auto f = runTest<M>(muscle);
   EXPECT_DOUBLE_EQ( std::get<0>(f) , 0 );
   EXPECT_NEAR( std::get<1>(f) , 18 , 1e-11 );

@@ -53,7 +53,7 @@ IncludeCategories:
     Priority:        10
   - Regex:           '^<texy/'
     Priority:        10
-  - Regex:           '^<fung/'
+  - Regex:           '^<funcy/'
     Priority:        20
   - Regex:           '^((<|")(gtest|isl|json)/)'
     Priority:        30

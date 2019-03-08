@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-REPO_PATH=https://github.com/lubkoll/FunG
+REPO_PATH=https://github.com/lubkoll/funcy
 DOC_PATH=build/doc
 HTML_PATH=build/doc/html
 COMMIT_USER="Documentation Generator"

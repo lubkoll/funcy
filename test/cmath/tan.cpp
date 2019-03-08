@@ -2,7 +2,7 @@
 // Released under the terms of the GNU General Public License version 3 or later.
 
 #include <gtest/gtest.h>
-#include <fung/cmath/tan.hh>
+#include <funcy/cmath/tan.hh>
 
 namespace
 {
@@ -18,7 +18,7 @@ namespace
 
   auto generateTestTan()
   {
-    return FunG::Tan(x0());
+    return funcy::Tan(x0());
   }
 }
 TEST(TanTest,D0)

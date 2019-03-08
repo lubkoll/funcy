@@ -1,8 +1,8 @@
 #include <gtest/gtest.h>
 
-#include <fung/cmath/pow.hh>
-#include <fung/finalize.hh>
-#include <fung/generate.hh>
+#include <funcy/cmath/pow.hh>
+#include <funcy/finalize.hh>
+#include <funcy/generate.hh>
 
 inline auto functionInterfaceValue()
 {
@@ -61,7 +61,7 @@ inline double constantExampleFunction() { return functionInterfaceValue(); }
 
 TEST(FunctionInterface_Sum,ConstantExampleFunctor)
 {
-  using namespace FunG;
+  using namespace funcy;
   auto summand1 = ConstantExample{};
   auto summand2 = Pow<3>(1.);
   auto f = finalize( summand1 + summand2 );
@@ -74,7 +74,7 @@ TEST(FunctionInterface_Sum,ConstantExampleFunctor)
 
 TEST(FunctionInterface_Sum,ConstantExampleFunctionPointer)
 {
-  using namespace FunG;
+  using namespace funcy;
   auto summand2 = Pow<3>(1.);
   auto f = finalize( &constantExampleFunction + summand2 );
 
@@ -86,7 +86,7 @@ TEST(FunctionInterface_Sum,ConstantExampleFunctionPointer)
 
 TEST(FunctionInterface_Sum,ConstantExampleLambda)
 {
-  using namespace FunG;
+  using namespace funcy;
   auto summand2 = Pow<3>(1.);
   auto f = finalize( [](){ return functionInterfaceValue(); } + summand2 );
 
@@ -98,7 +98,7 @@ TEST(FunctionInterface_Sum,ConstantExampleLambda)
 
 TEST(FunctionInterface_Sum,LinearExampleFunctor)
 {
-  using namespace FunG;
+  using namespace funcy;
   auto summand1 = LinearExample{};
   auto summand2 = Pow<3>(1.);
   auto f = finalize( summand1 + summand2 );
@@ -111,7 +111,7 @@ TEST(FunctionInterface_Sum,LinearExampleFunctor)
 
 TEST(FunctionInterface_Sum,QuadraticExampleFunctor)
 {
-  using namespace FunG;
+  using namespace funcy;
   auto summand1 = QuadraticExample{};
   auto summand2 = Pow<3>(1.);
   auto f = finalize( summand1 + summand2 );
@@ -124,7 +124,7 @@ TEST(FunctionInterface_Sum,QuadraticExampleFunctor)
 
 TEST(FunctionInterface_Sum,CubicExampleFunctor)
 {
-  using namespace FunG;
+  using namespace funcy;
   auto summand1 = CubicExample{};
   auto summand2 = Pow<3>(1.);
   auto f = finalize( summand1 + summand2 );
@@ -137,7 +137,7 @@ TEST(FunctionInterface_Sum,CubicExampleFunctor)
 
 TEST(FunctionInterface_Chain,ConstantExampleFunctor)
 {
-  using namespace FunG;
+  using namespace funcy;
   auto f = finalize( pow<2>( ConstantExample{} ) );
 
   ASSERT_EQ( f() , pow(functionInterfaceValue(),2) );
@@ -148,7 +148,7 @@ TEST(FunctionInterface_Chain,ConstantExampleFunctor)
 
 TEST(FunctionInterface_Chain,ConstantExampleFunctionPointer)
 {
-  using namespace FunG;
+  using namespace funcy;
   auto f = finalize( pow<2>( &constantExampleFunction ) );
 
   ASSERT_EQ( f() , pow(functionInterfaceValue(),2) );
@@ -159,7 +159,7 @@ TEST(FunctionInterface_Chain,ConstantExampleFunctionPointer)
 
 TEST(FunctionInterface_Chain,ConstantExampleLambda)
 {
-  using namespace FunG;
+  using namespace funcy;
   auto f = finalize( pow<2>( [](){ return functionInterfaceValue(); } ) );
 
   ASSERT_EQ( f() , pow(functionInterfaceValue(),2) );
@@ -170,7 +170,7 @@ TEST(FunctionInterface_Chain,ConstantExampleLambda)
 
 TEST(FunctionInterface_Chain,LinearExampleFunctor)
 {
-  using namespace FunG;
+  using namespace funcy;
   auto f = finalize( pow<2>( LinearExample{} ) );
 
   ASSERT_EQ( f() , pow(functionInterfaceValue(),2) );
@@ -181,7 +181,7 @@ TEST(FunctionInterface_Chain,LinearExampleFunctor)
 
 TEST(FunctionInterface_Chain,QuadraticExampleFunctor)
 {
-  using namespace FunG;
+  using namespace funcy;
   auto f = finalize( pow<2>( QuadraticExample{} ) );
 
   ASSERT_EQ( f() , pow(functionInterfaceValue(),2) );

@@ -3,9 +3,9 @@
 
 #pragma once
 
-#include <fung/util/chainer.hh>
-#include <fung/util/mathop_traits.hh>
-#include <fung/util/static_checks.hh>
+#include <funcy/util/chainer.hh>
+#include <funcy/util/mathop_traits.hh>
+#include <funcy/util/static_checks.hh>
 #include <stringy/util/string.hh>
 
 #include <type_traits>
@@ -15,7 +15,7 @@ namespace stringy
     /** @addtogroup StringyCMathGroup
      *  @{ */
     template < int dividend, int divisor = 1 >
-    struct Pow : FunG::Chainer< Pow< dividend, divisor > >
+    struct Pow : funcy::Chainer< Pow< dividend, divisor > >
     {
         //! @copydoc Cos::Cos()
         explicit Pow( std::string x = "x" )
@@ -38,13 +38,13 @@ namespace stringy
         //! @copydoc Cos::d1()
         std::string d1( const std::string& dx = "" ) const
         {
-            return FunG::multiply_via_traits( k, xtp( k1 ).append( multiplyIfNotEmpty( dx ) ) );
+            return funcy::multiply_via_traits( k, xtp( k1 ).append( multiplyIfNotEmpty( dx ) ) );
         }
 
         //! @copydoc Cos::d2()
         std::string d2( const std::string& dx = "", const std::string& dy = "" ) const
         {
-            return FunG::multiply_via_traits( kk1,
+            return funcy::multiply_via_traits( kk1,
                                               xtp( k2 ).append( multiplyIfNotEmpty( dx, dy ) ) );
         }
 
@@ -52,7 +52,7 @@ namespace stringy
         std::string d3( const std::string& dx = "", const std::string& dy = "",
                         const std::string& dz = "" ) const
         {
-            return FunG::multiply_via_traits(
+            return funcy::multiply_via_traits(
                 kk1k2, xtp( k3 ).append( multiplyIfNotEmpty( dx, dy, dz ) ) );
         }
 
@@ -84,7 +84,7 @@ namespace stringy
 
     /// @cond
     template <>
-    struct Pow< 1, 1 > : FunG::Chainer< Pow< 1, 1 > >
+    struct Pow< 1, 1 > : funcy::Chainer< Pow< 1, 1 > >
     {
         //! @copydoc Cos::Cos()
         explicit Pow( std::string x = "x" )
@@ -116,7 +116,7 @@ namespace stringy
 
     /// @cond
     template <>
-    struct Pow< 2, 1 > : FunG::Chainer< Pow< 2, 1 > >
+    struct Pow< 2, 1 > : funcy::Chainer< Pow< 2, 1 > >
     {
         //! @copydoc Cos::Cos()
         explicit Pow( std::string x = "x" )
@@ -154,7 +154,7 @@ namespace stringy
 
     /// @cond
     template <>
-    struct Pow< 3, 1 > : FunG::Chainer< Pow< 3, 1 > >
+    struct Pow< 3, 1 > : funcy::Chainer< Pow< 3, 1 > >
     {
         //! @copydoc Cos::Cos()
         explicit Pow( const std::string& x = "x" )
@@ -198,7 +198,7 @@ namespace stringy
     };
 
     template < int dividend >
-    struct Pow< dividend, 1 > : FunG::Chainer< Pow< dividend, 1 > >
+    struct Pow< dividend, 1 > : funcy::Chainer< Pow< dividend, 1 > >
     {
         //! @copydoc Cos::Cos()
         explicit Pow( const std::string& x = "x" )
@@ -253,33 +253,33 @@ namespace stringy
         std::string x;
     };
 
-    template < class Function, class = std::enable_if_t< FunG::Checks::isFunction< Function >() > >
+    template < class Function, class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
     auto sqrt( const Function& f )
     {
         return Pow< 1, 2 >()( f );
     }
 
-    template < class Function, class = std::enable_if_t< FunG::Checks::isFunction< Function >() > >
+    template < class Function, class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
     auto cbrt( const Function& f )
     {
         return Pow< 1, 3 >()( f );
     }
 
-    template < class Function, class = std::enable_if_t< FunG::Checks::isFunction< Function >() > >
+    template < class Function, class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
     auto cbrt2( const Function& f )
     {
         return Pow< 2, 3 >()( f );
     }
 
     template < int k, int l, class Function,
-               class = std::enable_if_t< FunG::Checks::isFunction< Function >() > >
+               class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
     auto pow( const Function& f )
     {
         return Pow< k, l >()( f );
     }
 
     template < int k, class Function,
-               class = std::enable_if_t< FunG::Checks::isFunction< Function >() > >
+               class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
     auto pow( const Function& f )
     {
         return Pow< k >()( f );

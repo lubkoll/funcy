@@ -3,17 +3,17 @@
 #include <type_traits>
 #include <utility>
 
-#include <fung/concept_check.hh>
-#include <fung/util/chainer.hh>
-#include <fung/util/compute_product.hh>
-#include <fung/util/compute_sum.hh>
-#include <fung/util/derivative_wrappers.hh>
-#include <fung/util/evaluate_if_present.hh>
-#include <fung/util/indexed_type.hh>
-#include <fung/util/mathop_traits.hh>
-#include <fung/util/type_traits.hh>
+#include <funcy/concept_check.hh>
+#include <funcy/util/chainer.hh>
+#include <funcy/util/compute_product.hh>
+#include <funcy/util/compute_sum.hh>
+#include <funcy/util/derivative_wrappers.hh>
+#include <funcy/util/evaluate_if_present.hh>
+#include <funcy/util/indexed_type.hh>
+#include <funcy/util/mathop_traits.hh>
+#include <funcy/util/type_traits.hh>
 
-namespace FunG
+namespace funcy
 {
     namespace MathematicalOperations
     {

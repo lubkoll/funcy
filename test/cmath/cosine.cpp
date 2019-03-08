@@ -2,7 +2,7 @@
 // Released under the terms of the GNU General Public License version 3 or later.
 
 #include <gtest/gtest.h>
-#include <fung/cmath/cosine.hh>
+#include <funcy/cmath/cosine.hh>
 
 namespace
 {
@@ -18,7 +18,7 @@ namespace
 
   auto generateTestCos()
   {
-    return FunG::Cos( x0() );
+    return funcy::Cos( x0() );
   }
 }
 

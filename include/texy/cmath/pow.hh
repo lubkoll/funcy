@@ -5,7 +5,7 @@
 
 #include <texy/util/chainer.hh>
 #include <texy/util/string.hh>
-#include <fung/util/static_checks.hh>
+#include <funcy/util/static_checks.hh>
 
 #include <type_traits>
 
@@ -270,7 +270,7 @@ namespace texy
       @param f function mapping into a scalar space
       @return object of type MathematicalOperations::Chain<Sqrt,Function>
      */
-    template < class Function, class = std::enable_if_t< FunG::Checks::isFunction< Function >() > >
+    template < class Function, class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
     auto sqrt( const Function& f )
     {
         return Pow< 1, 2 >()( f );
@@ -281,7 +281,7 @@ namespace texy
       @param f function mapping into a scalar space
       @return object of type MathematicalOperations::Chain<Cbrt,Function>
      */
-    template < class Function, class = std::enable_if_t< FunG::Checks::isFunction< Function >() > >
+    template < class Function, class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
     auto cbrt( const Function& f )
     {
         return Pow< 1, 3 >()( f );
@@ -292,7 +292,7 @@ namespace texy
       @param f function mapping into a scalar space
       @return object of type MathematicalOperations::Chain<Cbrt2,Function>
      */
-    template < class Function, class = std::enable_if_t< FunG::Checks::isFunction< Function >() > >
+    template < class Function, class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
     auto cbrt2( const Function& f )
     {
         return Pow< 2, 3 >()( f );
@@ -306,7 +306,7 @@ namespace texy
       @return object of type MathematicalOperations::Chain< Pow<dividend,divisor> , Function >
      */
     template < int k, int l, class Function,
-               class = std::enable_if_t< FunG::Checks::isFunction< Function >() > >
+               class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
     auto pow( const Function& f )
     {
         return Pow< k, l >()( f );
@@ -319,7 +319,7 @@ namespace texy
       @return object of type MathematicalOperations::Chain< Pow<dividend,divisor> , Function >
      */
     template < int k, class Function,
-               class = std::enable_if_t< FunG::Checks::isFunction< Function >() > >
+               class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
     auto pow( const Function& f )
     {
         return Pow< k >()( f );

@@ -1,7 +1,7 @@
 #pragma once
 
-#include <fung/cmath/arccos.hh>
-#include <fung/util/static_checks.hh>
+#include <funcy/cmath/arccos.hh>
+#include <funcy/util/static_checks.hh>
 #include <stringy/util/string.hh>
 
 #include <type_traits>
@@ -10,7 +10,7 @@
 
 namespace stringy
 {
-    struct ACos : FunG::Chainer< ACos >
+    struct ACos : funcy::Chainer< ACos >
     {
         //! @copydoc Cos::Cos()
         explicit ACos( std::string x = "x" )
@@ -69,7 +69,7 @@ namespace stringy
         std::string x;
     };
 
-    template < class Function, class = std::enable_if_t< FunG::Checks::isFunction< Function >() > >
+    template < class Function, class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
     auto acos( const Function& f )
     {
         return ACos()( f );

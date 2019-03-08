@@ -16,8 +16,8 @@ SSH_REPO=${REPO/https:\/\/github.com\//git@github.com:}
 SHA=`git rev-parse --verify HEAD`
 
 # Clone repository and checkout 'gh-pages'
-git clone $REPO FunGDoc
-cd FunGDoc
+git clone $REPO funcyDoc
+cd funcyDoc
 git checkout $TARGET_BRANCH
 # Remove old documentation
 rm -rf doc/*

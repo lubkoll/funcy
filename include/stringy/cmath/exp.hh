@@ -3,8 +3,8 @@
 
 #pragma once
 
-#include <fung/util/chainer.hh>
-#include <fung/util/static_checks.hh>
+#include <funcy/util/chainer.hh>
+#include <funcy/util/static_checks.hh>
 #include <stringy/util/string.hh>
 
 namespace stringy
@@ -13,7 +13,7 @@ namespace stringy
      *  @{ */
     namespace stringify
     {
-        struct Exp : FunG::Chainer< Exp >
+        struct Exp : funcy::Chainer< Exp >
         {
             //! @copydoc Cos::d0()
             explicit Exp( const std::string& x = "x" )
@@ -56,7 +56,7 @@ namespace stringy
             std::string x;
         };
 
-        struct Exp2 : FunG::Chainer< Exp2 >
+        struct Exp2 : funcy::Chainer< Exp2 >
         {
             //! @copydoc Cos::Cos()
             explicit Exp2( const std::string& x = "x" )
@@ -110,14 +110,14 @@ namespace stringy
         };
 
         template < class Function,
-                   class = std::enable_if_t< FunG::Checks::isFunction< Function >() > >
+                   class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
         auto exp( const Function& f )
         {
             return Exp()( f );
         }
 
         template < class Function,
-                   class = std::enable_if_t< FunG::Checks::isFunction< Function >() > >
+                   class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
         auto exp2( const Function& f )
         {
             return Exp2()( f );

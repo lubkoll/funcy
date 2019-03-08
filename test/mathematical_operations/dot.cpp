@@ -2,8 +2,8 @@
 
 #include <Eigen/Dense>
 
-#include <fung/finalize.hh>
-#include <fung/generate.hh>
+#include <funcy/finalize.hh>
+#include <funcy/generate.hh>
 
 const constexpr int dim = 2;
 
@@ -17,7 +17,7 @@ auto get_ones() {
 }
 
 TEST(DotTest_DynamicEigen, ConstantVectors) {
-  using namespace FunG;
+  using namespace funcy;
   auto v = constant(get_ones());
   auto w = constant(get_ones());
 
@@ -28,7 +28,7 @@ TEST(DotTest_DynamicEigen, ConstantVectors) {
 }
 
 TEST(DotTest_DynamicEigen, FirstVariable_SecondConstant) {
-  using namespace FunG;
+  using namespace funcy;
   auto v = variable<0>(get_ones());
   auto w = constant(get_ones());
 
@@ -49,7 +49,7 @@ TEST(DotTest_DynamicEigen, FirstVariable_SecondConstant) {
 }
 
 TEST(DotTest_DynamicEigen, FirstConstant_SecondVariable) {
-  using namespace FunG;
+  using namespace funcy;
   auto v = variable<0>(get_ones());
   auto w = constant(get_ones());
 
@@ -70,7 +70,7 @@ TEST(DotTest_DynamicEigen, FirstConstant_SecondVariable) {
 }
 
 TEST(DotTest_DynamicEigen, FirstVariable_SecondVariable) {
-  using namespace FunG;
+  using namespace funcy;
   auto v = variable<0>(get_ones());
   auto w = variable<1>(get_ones());
 

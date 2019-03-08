@@ -4,12 +4,12 @@
 #include <utility>
 
 #include <texy/util/chainer.hh>
-#include <fung/concept_check.hh>
-#include <fung/util/compute_product.hh>
-#include <fung/util/compute_sum.hh>
-#include <fung/util/derivative_wrappers.hh>
-#include <fung/util/evaluate_if_present.hh>
-#include <fung/util/indexed_type.hh>
+#include <funcy/concept_check.hh>
+#include <funcy/util/compute_product.hh>
+#include <funcy/util/compute_sum.hh>
+#include <funcy/util/derivative_wrappers.hh>
+#include <funcy/util/evaluate_if_present.hh>
+#include <funcy/util/indexed_type.hh>
 
 namespace texy
 {
@@ -20,42 +20,42 @@ namespace texy
          * @brief %Product \f$fg\f$ of functions of type F and G (F and G must satisfy the
          * requirements of Concepts::FunctionConcept).
          */
-        template < class F, class G, class = FunG::Concepts::FunctionConceptCheck< F >,
-                   class = FunG::Concepts::FunctionConceptCheck< G > >
-        struct Product : Chainer< Product< F, G, FunG::Concepts::FunctionConceptCheck< F >,
-                                           FunG::Concepts::FunctionConceptCheck< G > > >
+        template < class F, class G, class = funcy::Concepts::FunctionConceptCheck< F >,
+                   class = funcy::Concepts::FunctionConceptCheck< G > >
+        struct Product : Chainer< Product< F, G, funcy::Concepts::FunctionConceptCheck< F >,
+                                           funcy::Concepts::FunctionConceptCheck< G > > >
         {
         private:
             template < class IndexedArg >
-            using D1Type = FunG::ComputeSum<
-                FunG::ComputeProduct< FunG::D1< F, IndexedArg >, FunG::D0< G > >,
-                FunG::ComputeProduct< FunG::D0< F >, FunG::D1< G, IndexedArg > > >;
+            using D1Type = funcy::ComputeSum<
+                funcy::ComputeProduct< funcy::D1< F, IndexedArg >, funcy::D0< G > >,
+                funcy::ComputeProduct< funcy::D0< F >, funcy::D1< G, IndexedArg > > >;
 
             template < class IndexedArgX, class IndexedArgY >
-            using D2Type = FunG::ComputeSum<
-                FunG::ComputeProduct< FunG::D2< F, IndexedArgX, IndexedArgY >, FunG::D0< G > >,
-                FunG::ComputeProduct< FunG::D1< F, IndexedArgX >, FunG::D1< G, IndexedArgY > >,
-                FunG::ComputeProduct< FunG::D1< F, IndexedArgY >, FunG::D1< G, IndexedArgX > >,
-                FunG::ComputeProduct< FunG::D0< F >, FunG::D2< G, IndexedArgX, IndexedArgY > > >;
+            using D2Type = funcy::ComputeSum<
+                funcy::ComputeProduct< funcy::D2< F, IndexedArgX, IndexedArgY >, funcy::D0< G > >,
+                funcy::ComputeProduct< funcy::D1< F, IndexedArgX >, funcy::D1< G, IndexedArgY > >,
+                funcy::ComputeProduct< funcy::D1< F, IndexedArgY >, funcy::D1< G, IndexedArgX > >,
+                funcy::ComputeProduct< funcy::D0< F >, funcy::D2< G, IndexedArgX, IndexedArgY > > >;
 
             template < class IndexedArgX, class IndexedArgY, class IndexedArgZ >
-            using D3Type = FunG::ComputeSum<
-                FunG::ComputeProduct< FunG::D3< F, IndexedArgX, IndexedArgY, IndexedArgZ >,
-                                      FunG::D0< G > >,
-                FunG::ComputeProduct< FunG::D2< F, IndexedArgX, IndexedArgY >,
-                                      FunG::D1< G, IndexedArgZ > >,
-                FunG::ComputeProduct< FunG::D2< F, IndexedArgX, IndexedArgZ >,
-                                      FunG::D1< G, IndexedArgY > >,
-                FunG::ComputeProduct< FunG::D1< F, IndexedArgX >,
-                                      FunG::D2< G, IndexedArgY, IndexedArgZ > >,
-                FunG::ComputeProduct< FunG::D2< F, IndexedArgY, IndexedArgZ >,
-                                      FunG::D1< G, IndexedArgX > >,
-                FunG::ComputeProduct< FunG::D1< F, IndexedArgY >,
-                                      FunG::D2< G, IndexedArgX, IndexedArgZ > >,
-                FunG::ComputeProduct< FunG::D1< F, IndexedArgZ >,
-                                      FunG::D2< G, IndexedArgX, IndexedArgY > >,
-                FunG::ComputeProduct< FunG::D0< F >,
-                                      FunG::D3< G, IndexedArgX, IndexedArgY, IndexedArgZ > > >;
+            using D3Type = funcy::ComputeSum<
+                funcy::ComputeProduct< funcy::D3< F, IndexedArgX, IndexedArgY, IndexedArgZ >,
+                                      funcy::D0< G > >,
+                funcy::ComputeProduct< funcy::D2< F, IndexedArgX, IndexedArgY >,
+                                      funcy::D1< G, IndexedArgZ > >,
+                funcy::ComputeProduct< funcy::D2< F, IndexedArgX, IndexedArgZ >,
+                                      funcy::D1< G, IndexedArgY > >,
+                funcy::ComputeProduct< funcy::D1< F, IndexedArgX >,
+                                      funcy::D2< G, IndexedArgY, IndexedArgZ > >,
+                funcy::ComputeProduct< funcy::D2< F, IndexedArgY, IndexedArgZ >,
+                                      funcy::D1< G, IndexedArgX > >,
+                funcy::ComputeProduct< funcy::D1< F, IndexedArgY >,
+                                      funcy::D2< G, IndexedArgX, IndexedArgZ > >,
+                funcy::ComputeProduct< funcy::D1< F, IndexedArgZ >,
+                                      funcy::D2< G, IndexedArgX, IndexedArgY > >,
+                funcy::ComputeProduct< funcy::D0< F >,
+                                      funcy::D3< G, IndexedArgX, IndexedArgY, IndexedArgZ > > >;
 
         public:
             /**
@@ -66,7 +66,7 @@ namespace texy
             template < class InitF, class InitG >
             constexpr Product( InitF&& f_, InitG&& g_ )
                 : f( std::forward< InitF >( f_ ) ), g( std::forward< InitG >( g_ ) ),
-                  value( FunG::multiply_via_traits( f(), g() ) )
+                  value( funcy::multiply_via_traits( f(), g() ) )
             {
             }
 
@@ -74,18 +74,18 @@ namespace texy
             template < class Arg >
             void update( Arg const& x )
             {
-                FunG::update_if_present( f, x );
-                FunG::update_if_present( g, x );
-                value = FunG::multiply_via_traits( f(), g() );
+                funcy::update_if_present( f, x );
+                funcy::update_if_present( g, x );
+                value = funcy::multiply_via_traits( f(), g() );
             }
 
             /// Update variable corresponding to index.
             template < int index, class Arg >
             void update( const Arg& x )
             {
-                FunG::update_if_present< index >( f, x );
-                FunG::update_if_present< index >( g, x );
-                value = FunG::multiply_via_traits( f(), g() );
+                funcy::update_if_present< index >( f, x );
+                funcy::update_if_present< index >( g, x );
+                value = funcy::multiply_via_traits( f(), g() );
             }
 
             /// Function value.
@@ -98,13 +98,13 @@ namespace texy
              * @brief First directional derivative.
              * @param dx direction for which the derivative is computed
              */
-            template < int id, class Arg, class IndexedArg = FunG::IndexedType< Arg, id >,
+            template < int id, class Arg, class IndexedArg = funcy::IndexedType< Arg, id >,
                        class = std::enable_if_t< D1Type< IndexedArg >::present > >
             auto d1( Arg const& dx ) const
             {
                 return sum(
-                    FunG::product( FunG::D1< F, IndexedArg >( f, dx ), FunG::D0< G >( g ) ),
-                    FunG::product( FunG::D0< F >( f ), FunG::D1< G, IndexedArg >( g, dx ) ) )();
+                    funcy::product( funcy::D1< F, IndexedArg >( f, dx ), funcy::D0< G >( g ) ),
+                    funcy::product( funcy::D0< F >( f ), funcy::D1< G, IndexedArg >( g, dx ) ) )();
             }
 
             /**
@@ -113,20 +113,20 @@ namespace texy
              * @param dy direction for which the derivative is computed
              */
             template < int idx, int idy, class ArgX, class ArgY,
-                       class IndexedArgX = FunG::IndexedType< ArgX, idx >,
-                       class IndexedArgY = FunG::IndexedType< ArgY, idy >,
+                       class IndexedArgX = funcy::IndexedType< ArgX, idx >,
+                       class IndexedArgY = funcy::IndexedType< ArgY, idy >,
                        class = std::enable_if_t< D2Type< IndexedArgX, IndexedArgY >::present > >
             auto d2( ArgX const& dx, ArgY const& dy ) const
             {
-                return FunG::sum(
-                    FunG::product( FunG::D2< F, IndexedArgX, IndexedArgY >( f, dx, dy ),
-                                   FunG::D0< G >( g ) ),
-                    FunG::product( FunG::D1< F, IndexedArgX >( f, dx ),
-                                   FunG::D1< G, IndexedArgY >( g, dy ) ),
-                    FunG::product( FunG::D1< F, IndexedArgY >( f, dy ),
-                                   FunG::D1< G, IndexedArgX >( g, dx ) ),
-                    FunG::product( FunG::D0< F >( f ),
-                                   FunG::D2< G, IndexedArgX, IndexedArgY >( g, dx, dy ) ) )();
+                return funcy::sum(
+                    funcy::product( funcy::D2< F, IndexedArgX, IndexedArgY >( f, dx, dy ),
+                                   funcy::D0< G >( g ) ),
+                    funcy::product( funcy::D1< F, IndexedArgX >( f, dx ),
+                                   funcy::D1< G, IndexedArgY >( g, dy ) ),
+                    funcy::product( funcy::D1< F, IndexedArgY >( f, dy ),
+                                   funcy::D1< G, IndexedArgX >( g, dx ) ),
+                    funcy::product( funcy::D0< F >( f ),
+                                   funcy::D2< G, IndexedArgX, IndexedArgY >( g, dx, dy ) ) )();
             }
 
             /**
@@ -136,39 +136,39 @@ namespace texy
              * @param dz direction for which the derivative is computed
              */
             template < int idx, int idy, int idz, class ArgX, class ArgY, class ArgZ,
-                       class IndexedArgX = FunG::IndexedType< ArgX, idx >,
-                       class IndexedArgY = FunG::IndexedType< ArgY, idy >,
-                       class IndexedArgZ = FunG::IndexedType< ArgZ, idz >,
+                       class IndexedArgX = funcy::IndexedType< ArgX, idx >,
+                       class IndexedArgY = funcy::IndexedType< ArgY, idy >,
+                       class IndexedArgZ = funcy::IndexedType< ArgZ, idz >,
                        class = std::enable_if_t<
                            D3Type< IndexedArgX, IndexedArgY, IndexedArgZ >::present > >
             auto d3( ArgX const& dx, ArgY const& dy, ArgZ const& dz ) const
             {
-                return FunG::sum(
-                    FunG::product(
-                        FunG::D3< F, IndexedArgX, IndexedArgY, IndexedArgZ >( f, dx, dy, dz ),
-                        FunG::D0< G >( g ) ),
-                    FunG::product( FunG::D2< F, IndexedArgX, IndexedArgY >( f, dx, dy ),
-                                   FunG::D1< G, IndexedArgZ >( g, dz ) ),
-                    FunG::product( FunG::D2< F, IndexedArgX, IndexedArgZ >( f, dx, dz ),
-                                   FunG::D1< G, IndexedArgY >( g, dy ) ),
-                    FunG::product( FunG::D1< F, IndexedArgX >( f, dx ),
-                                   FunG::D2< G, IndexedArgY, IndexedArgZ >( g, dy, dz ) ),
-                    FunG::product( FunG::D2< F, IndexedArgY, IndexedArgZ >( f, dy, dz ),
-                                   FunG::D1< G, IndexedArgX >( g, dx ) ),
-                    FunG::product( FunG::D1< F, IndexedArgY >( f, dy ),
-                                   FunG::D2< G, IndexedArgX, IndexedArgZ >( g, dx, dz ) ),
-                    FunG::product( FunG::D1< F, IndexedArgZ >( f, dz ),
-                                   FunG::D2< G, IndexedArgX, IndexedArgY >( g, dx, dy ) ),
-                    FunG::product(
-                        FunG::D0< F >( f ),
-                        FunG::D3< G, IndexedArgX, IndexedArgY, IndexedArgZ >( g, dx, dy, dz ) ) )();
+                return funcy::sum(
+                    funcy::product(
+                        funcy::D3< F, IndexedArgX, IndexedArgY, IndexedArgZ >( f, dx, dy, dz ),
+                        funcy::D0< G >( g ) ),
+                    funcy::product( funcy::D2< F, IndexedArgX, IndexedArgY >( f, dx, dy ),
+                                   funcy::D1< G, IndexedArgZ >( g, dz ) ),
+                    funcy::product( funcy::D2< F, IndexedArgX, IndexedArgZ >( f, dx, dz ),
+                                   funcy::D1< G, IndexedArgY >( g, dy ) ),
+                    funcy::product( funcy::D1< F, IndexedArgX >( f, dx ),
+                                   funcy::D2< G, IndexedArgY, IndexedArgZ >( g, dy, dz ) ),
+                    funcy::product( funcy::D2< F, IndexedArgY, IndexedArgZ >( f, dy, dz ),
+                                   funcy::D1< G, IndexedArgX >( g, dx ) ),
+                    funcy::product( funcy::D1< F, IndexedArgY >( f, dy ),
+                                   funcy::D2< G, IndexedArgX, IndexedArgZ >( g, dx, dz ) ),
+                    funcy::product( funcy::D1< F, IndexedArgZ >( f, dz ),
+                                   funcy::D2< G, IndexedArgX, IndexedArgY >( g, dx, dy ) ),
+                    funcy::product(
+                        funcy::D0< F >( f ),
+                        funcy::D3< G, IndexedArgX, IndexedArgY, IndexedArgZ >( g, dx, dy, dz ) ) )();
             }
 
         private:
             F f;
             G g;
-            FunG::decay_t< decltype(
-                FunG::multiply_via_traits( std::declval< F >()(), std::declval< G >()() ) ) >
+            funcy::decay_t< decltype(
+                funcy::multiply_via_traits( std::declval< F >()(), std::declval< G >()() ) ) >
                 value;
         };
     }

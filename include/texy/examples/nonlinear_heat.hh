@@ -3,7 +3,7 @@
 #include <texy/constant.hh>
 #include <texy/generate.hh>
 #include <texy/variable.hh>
-#include <fung/finalize.hh>
+#include <funcy/finalize.hh>
 
 #include <string>
 

@@ -1,4 +1,4 @@
-#include <fung/finalize.hh>
+#include <funcy/finalize.hh>
 #include <texy/linear_algebra/frobenius_norm.hh>
 
 #include <gtest/gtest.h>
@@ -15,7 +15,7 @@ TEST( TexifyFrobeniusNormTest, D0 )
 
 TEST( TexifyFrobeniusNormTest, D1 )
 {
-    const auto f = FunG::finalize( FrobeniusNorm( "C" ) );
+    const auto f = funcy::finalize( FrobeniusNorm( "C" ) );
     EXPECT_THAT( f.d1( "dA" ),
                  Eq( "1/2*(\\sum_{i,j}C_{ij}^2)^{-1/2}*2\\sum_{i,j}(C_{ij}*dA_{ij})" ) );
 }

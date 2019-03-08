@@ -3,13 +3,13 @@
 
 #pragma once
 
-#include <fung/util/chainer.hh>
-#include <fung/util/static_checks.hh>
+#include <funcy/util/chainer.hh>
+#include <funcy/util/static_checks.hh>
 #include <stringy/util/string.hh>
 
 namespace stringy
 {
-    struct ASin : FunG::Chainer< ASin >
+    struct ASin : funcy::Chainer< ASin >
     {
         //! @copydoc Cos::Cos()
         explicit ASin( const std::string& x = "x" )
@@ -69,7 +69,7 @@ namespace stringy
         std::string x;
     };
 
-    template < class Function, class = std::enable_if_t< FunG::Checks::isFunction< Function >() > >
+    template < class Function, class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
     auto asin( const Function& f )
     {
         return ASin()( f );

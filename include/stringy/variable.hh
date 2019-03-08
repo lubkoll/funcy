@@ -1,7 +1,7 @@
 #pragma once
 
-#include <fung/util/traverse.hh>
-#include <fung/variable.hh>
+#include <funcy/util/traverse.hh>
+#include <funcy/variable.hh>
 
 #include <limits>
 #include <string>
@@ -121,7 +121,7 @@ namespace stringy
         {
             /// Check if Type contains has variable.
             template < class F >
-            using Variable = FunG::Meta::AnyOf< F, IsVariable >;
+            using Variable = funcy::Meta::AnyOf< F, IsVariable >;
 
             template < class F, int id >
             struct VariableId
@@ -131,7 +131,7 @@ namespace stringy
                 {
                     static constexpr bool value = HasVariableWithId< G, id >::value;
                 };
-                static constexpr bool value = FunG::Meta::AnyOf< F, HasVariable >::value;
+                static constexpr bool value = funcy::Meta::AnyOf< F, HasVariable >::value;
             };
         }
 
@@ -187,10 +187,10 @@ namespace stringy
         }
 
         template < class F >
-        using MaxVariableId = FunG::Meta::Traverse< F, Detail::MaxVariableId, Max >;
+        using MaxVariableId = funcy::Meta::Traverse< F, Detail::MaxVariableId, Max >;
 
         template < class F >
-        using MinVariableId = FunG::Meta::Traverse< F, Detail::MinVariableId, Min >;
+        using MinVariableId = funcy::Meta::Traverse< F, Detail::MinVariableId, Min >;
     }
     /// @endcond
 
@@ -239,7 +239,7 @@ namespace stringy
         template < class F, class Type, int id >
         constexpr bool checkArgument()
         {
-            return FunG::ContainsType< Variable_t< F, id >, Type >::value;
+            return funcy::ContainsType< Variable_t< F, id >, Type >::value;
         }
 
         /** @} */

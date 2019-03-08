@@ -3,14 +3,14 @@
 #include <type_traits>
 #include <utility>
 
-#include <fung/concept_check.hh>
-#include <fung/util/compute_chain.hh>
-#include <fung/util/compute_sum.hh>
-#include <fung/util/derivative_wrappers.hh>
-#include <fung/util/evaluate_if_present.hh>
-#include <fung/util/indexed_type.hh>
+#include <funcy/concept_check.hh>
+#include <funcy/util/compute_chain.hh>
+#include <funcy/util/compute_sum.hh>
+#include <funcy/util/derivative_wrappers.hh>
+#include <funcy/util/evaluate_if_present.hh>
+#include <funcy/util/indexed_type.hh>
 
-namespace FunG
+namespace funcy
 {
     /// @cond
     template < class >

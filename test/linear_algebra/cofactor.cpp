@@ -6,16 +6,16 @@
 #include <Eigen/Dense>
 #include <gtest/gtest.h>
 
-#define FUNG_ENABLE_EXCEPTIONS
-#include <fung/linear_algebra.hh>
+#define FUNCY_ENABLE_EXCEPTIONS
+#include <funcy/linear_algebra.hh>
 
 namespace
 {
   constexpr int dim = 3;
 
   using M = Eigen::Matrix<double,dim,dim>;
-  using FunG::LinearAlgebra::computeCofactor;
-  using FunG::LinearAlgebra::computeCofactorDirectionalDerivative;
+  using funcy::LinearAlgebra::computeCofactor;
+  using funcy::LinearAlgebra::computeCofactorDirectionalDerivative;
 
   auto generateA()
   {

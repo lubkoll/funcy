@@ -10,8 +10,8 @@
 #include <texy/constant.hh>
 #include <texy/util/chainer.hh>
 #include <texy/util/string.hh>
-#include <fung/util/static_checks.hh>
-#include <fung/util/type_traits.hh>
+#include <funcy/util/static_checks.hh>
+#include <funcy/util/type_traits.hh>
 
 #include <type_traits>
 #include <utility>
@@ -86,7 +86,7 @@ namespace texy
          * @param f function mapping into a space of square matrices
          * @return Determinant< std::decay_t<decltype(f.d0())> >(f.d0())(f)
          */
-        template < class F, std::enable_if_t< FunG::Checks::isFunction< F >() >* = nullptr >
+        template < class F, std::enable_if_t< funcy::Checks::isFunction< F >() >* = nullptr >
         auto det( const F& f )
         {
             return Determinant( f.d0() )( f );

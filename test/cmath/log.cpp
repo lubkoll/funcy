@@ -2,8 +2,8 @@
 // Released under the terms of the GNU General Public License version 3 or later.
 
 #include <gtest/gtest.h>
-#define FUNG_ENABLE_EXCEPTIONS
-#include <fung/cmath/log.hh>
+#define FUNCY_ENABLE_EXCEPTIONS
+#include <funcy/cmath/log.hh>
 
 namespace
 {
@@ -19,17 +19,17 @@ namespace
 
   auto generateTestLN()
   {
-    return FunG::LN( x0() );
+    return funcy::LN( x0() );
   }
 
   auto generateTestLog2()
   {
-    return FunG::Log2( x0() );
+    return funcy::Log2( x0() );
   }
 
   auto generateTestLog10()
   {
-    return FunG::Log10( x0() );
+    return funcy::Log10( x0() );
   }
 }
 
@@ -37,7 +37,7 @@ namespace
 TEST(LNTest,Update)
 {
   auto fun = generateTestLN();
-  EXPECT_THROW(fun.update(0), FunG::OutOfDomainException);
+  EXPECT_THROW(fun.update(0), funcy::OutOfDomainException);
 }
 
 TEST(LNTest,D0)
@@ -84,7 +84,7 @@ TEST(LNTest,D3)
 TEST(Log2Test,Update)
 {
   auto fun = generateTestLog2();
-  EXPECT_THROW(fun.update(0), FunG::OutOfDomainException);
+  EXPECT_THROW(fun.update(0), funcy::OutOfDomainException);
 }
 
 TEST(Log2Test,D0)
@@ -134,7 +134,7 @@ TEST(Log2Test,D3)
 TEST(Log10Test,Update)
 {
   auto fun = generateTestLog10();
-  EXPECT_THROW(fun.update(0), FunG::OutOfDomainException);
+  EXPECT_THROW(fun.update(0), funcy::OutOfDomainException);
 }
 
 TEST(Log10Test,D0)

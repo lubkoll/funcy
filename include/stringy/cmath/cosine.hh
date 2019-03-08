@@ -3,8 +3,8 @@
 
 #pragma once
 
-#include <fung/util/chainer.hh>
-#include <fung/util/static_checks.hh>
+#include <funcy/util/chainer.hh>
+#include <funcy/util/static_checks.hh>
 #include <stringy/util/string.hh>
 
 #include <cmath>
@@ -14,7 +14,7 @@ namespace stringy
     /*!
       @ingroup StringyCMathGroup
      */
-    struct Cos : FunG::Chainer< Cos >
+    struct Cos : funcy::Chainer< Cos >
     {
         explicit Cos( std::string x = "x" )
         {
@@ -56,7 +56,7 @@ namespace stringy
         std::string x;
     };
 
-    template < class Function, class = std::enable_if_t< FunG::Checks::isFunction< Function >() > >
+    template < class Function, class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
     auto cos( const Function& f )
     {
         return Cos()( f );

@@ -3,12 +3,12 @@
 #include <type_traits>
 #include <utility>
 
-#include <fung/concept_check.hh>
-#include <fung/util/compute_chain.hh>
-#include <fung/util/compute_sum.hh>
-#include <fung/util/derivative_wrappers.hh>
-#include <fung/util/evaluate_if_present.hh>
-#include <fung/util/indexed_type.hh>
+#include <funcy/concept_check.hh>
+#include <funcy/util/compute_chain.hh>
+#include <funcy/util/compute_sum.hh>
+#include <funcy/util/derivative_wrappers.hh>
+#include <funcy/util/evaluate_if_present.hh>
+#include <funcy/util/indexed_type.hh>
 
 namespace texy
 {
@@ -25,35 +25,35 @@ namespace texy
          * @brief %Chain \f$ f\circ g \f$ of functions \f$f\f$ and \f$g\f$ of type F resp. G (F and
          * G must satisfy the requirements of Concepts::FunctionConcept).
          */
-        template < class F, class G, class = FunG::Concepts::FunctionConceptCheck< F >,
-                   class = FunG::Concepts::FunctionConceptCheck< G > >
-        struct Chain : Chainer< Chain< F, G, FunG::Concepts::FunctionConceptCheck< F >,
-                                       FunG::Concepts::FunctionConceptCheck< G > > >
+        template < class F, class G, class = funcy::Concepts::FunctionConceptCheck< F >,
+                   class = funcy::Concepts::FunctionConceptCheck< G > >
+        struct Chain : Chainer< Chain< F, G, funcy::Concepts::FunctionConceptCheck< F >,
+                                       funcy::Concepts::FunctionConceptCheck< G > > >
         {
         private:
             using FArg = decltype( std::declval< G >()() );
 
             template < class IndexedArgX, class IndexedArgY, class IndexedFArgX,
                        class IndexedFArgY >
-            using D2LazyType = FunG::ComputeSum<
-                FunG::ComputeChainD2< F, FunG::D1< G, IndexedArgX >, FunG::D1< G, IndexedArgY >,
+            using D2LazyType = funcy::ComputeSum<
+                funcy::ComputeChainD2< F, funcy::D1< G, IndexedArgX >, funcy::D1< G, IndexedArgY >,
                                       IndexedFArgX, IndexedFArgY >,
-                FunG::ComputeChainD1< F, FunG::D2< G, IndexedArgX, IndexedArgY >, IndexedFArgX > >;
+                funcy::ComputeChainD1< F, funcy::D2< G, IndexedArgX, IndexedArgY >, IndexedFArgX > >;
 
             template < class IndexedArgX, class IndexedArgY, class IndexedArgZ, class IndexedFArgX,
                        class IndexedFArgY, class IndexedFArgZ >
-            using D3LazyType = FunG::ComputeSum<
-                FunG::ComputeChainD3< F, FunG::D1< G, IndexedArgX >, FunG::D1< G, IndexedArgY >,
-                                      FunG::D1< G, IndexedArgZ >, IndexedFArgX, IndexedFArgY,
+            using D3LazyType = funcy::ComputeSum<
+                funcy::ComputeChainD3< F, funcy::D1< G, IndexedArgX >, funcy::D1< G, IndexedArgY >,
+                                      funcy::D1< G, IndexedArgZ >, IndexedFArgX, IndexedFArgY,
                                       IndexedFArgZ >,
-                FunG::ComputeChainD2< F, FunG::D2< G, IndexedArgX, IndexedArgZ >,
-                                      FunG::D1< G, IndexedArgY >, IndexedFArgX, IndexedFArgY >,
-                FunG::ComputeChainD2< F, FunG::D1< G, IndexedArgX >,
-                                      FunG::D2< G, IndexedArgY, IndexedArgZ >, IndexedFArgX,
+                funcy::ComputeChainD2< F, funcy::D2< G, IndexedArgX, IndexedArgZ >,
+                                      funcy::D1< G, IndexedArgY >, IndexedFArgX, IndexedFArgY >,
+                funcy::ComputeChainD2< F, funcy::D1< G, IndexedArgX >,
+                                      funcy::D2< G, IndexedArgY, IndexedArgZ >, IndexedFArgX,
                                       IndexedFArgY >,
-                FunG::ComputeChainD2< F, FunG::D2< G, IndexedArgX, IndexedArgY >,
-                                      FunG::D1< G, IndexedArgZ >, IndexedFArgX, IndexedFArgZ >,
-                FunG::ComputeChainD1< F, FunG::D3< G, IndexedArgX, IndexedArgY, IndexedArgZ >,
+                funcy::ComputeChainD2< F, funcy::D2< G, IndexedArgX, IndexedArgY >,
+                                      funcy::D1< G, IndexedArgZ >, IndexedFArgX, IndexedFArgZ >,
+                funcy::ComputeChainD1< F, funcy::D3< G, IndexedArgX, IndexedArgY, IndexedArgZ >,
                                       IndexedFArgX > >;
 
         public:
@@ -64,7 +64,7 @@ namespace texy
              */
             constexpr Chain( const F& f_, const G& g_ ) : g( g_ ), f( f_ )
             {
-                FunG::update_if_present( f, g() );
+                funcy::update_if_present( f, g() );
             }
 
             /**
@@ -74,23 +74,23 @@ namespace texy
              */
             constexpr Chain( F&& f_, G&& g_ ) : g( std::move( g_ ) ), f( std::move( f_ ) )
             {
-                FunG::update_if_present( f, g() );
+                funcy::update_if_present( f, g() );
             }
 
             /// Update point of evaluation.
             template < class Arg >
             void update( const Arg& x )
             {
-                FunG::update_if_present( g, x );
-                FunG::update_if_present( f, g() );
+                funcy::update_if_present( g, x );
+                funcy::update_if_present( f, g() );
             }
 
             /// Update variable corresponding to index.
             template < int index, class Arg >
             void update( const Arg& x )
             {
-                FunG::update_if_present< index >( g, x );
-                FunG::update_if_present( f, g() );
+                funcy::update_if_present< index >( g, x );
+                funcy::update_if_present( f, g() );
             }
 
             /// Function value.
@@ -103,13 +103,13 @@ namespace texy
              * @brief First directional derivative.
              * @param dx direction for which the derivative is computed
              */
-            template < int id, class Arg, class IndexedArg = FunG::IndexedType< Arg, id >,
-                       class IndexedFArg = FunG::IndexedType< FArg, id >,
-                       class = std::enable_if_t< FunG::ComputeChainD1< F, FunG::D1< G, IndexedArg >,
+            template < int id, class Arg, class IndexedArg = funcy::IndexedType< Arg, id >,
+                       class IndexedFArg = funcy::IndexedType< FArg, id >,
+                       class = std::enable_if_t< funcy::ComputeChainD1< F, funcy::D1< G, IndexedArg >,
                                                                        IndexedFArg >::present > >
             auto d1( Arg const& dx ) const
             {
-                return FunG::chain< IndexedFArg >( f, FunG::D1< G, IndexedArg >( g, dx ) )();
+                return funcy::chain< IndexedFArg >( f, funcy::D1< G, IndexedArg >( g, dx ) )();
             }
 
             /**
@@ -118,19 +118,19 @@ namespace texy
              * @param dy direction for which the derivative is computed
              */
             template < int idx, int idy, class ArgX, class ArgY,
-                       class IndexedArgX = FunG::IndexedType< ArgX, idx >,
-                       class IndexedArgY = FunG::IndexedType< ArgY, idy >,
-                       class IndexedFArgX = FunG::IndexedType< FArg, idx >,
-                       class IndexedFArgY = FunG::IndexedType< FArg, idy >,
+                       class IndexedArgX = funcy::IndexedType< ArgX, idx >,
+                       class IndexedArgY = funcy::IndexedType< ArgY, idy >,
+                       class IndexedFArgX = funcy::IndexedType< FArg, idx >,
+                       class IndexedFArgY = funcy::IndexedType< FArg, idy >,
                        class = std::enable_if_t< D2LazyType< IndexedArgX, IndexedArgY, IndexedFArgX,
                                                              IndexedFArgY >::present > >
             auto d2( ArgX const& dx, ArgY const& dy ) const
             {
-                return FunG::sum( FunG::chain< IndexedFArgX, IndexedFArgY >(
-                                      f, FunG::D1< G, IndexedArgX >( g, dx ),
-                                      FunG::D1< G, IndexedArgY >( g, dy ) ),
-                                  FunG::chain< IndexedFArgX >(
-                                      f, FunG::D2< G, IndexedArgX, IndexedArgY >( g, dx, dy ) ) )();
+                return funcy::sum( funcy::chain< IndexedFArgX, IndexedFArgY >(
+                                      f, funcy::D1< G, IndexedArgX >( g, dx ),
+                                      funcy::D1< G, IndexedArgY >( g, dy ) ),
+                                  funcy::chain< IndexedFArgX >(
+                                      f, funcy::D2< G, IndexedArgX, IndexedArgY >( g, dx, dy ) ) )();
             }
 
             /**
@@ -140,31 +140,31 @@ namespace texy
              * @param dz direction for which the derivative is computed
              */
             template < int idx, int idy, int idz, class ArgX, class ArgY, class ArgZ,
-                       class IndexedArgX = FunG::IndexedType< ArgX, idx >,
-                       class IndexedArgY = FunG::IndexedType< ArgY, idy >,
-                       class IndexedArgZ = FunG::IndexedType< ArgZ, idz >,
-                       class IndexedFArgX = FunG::IndexedType< FArg, idx >,
-                       class IndexedFArgY = FunG::IndexedType< FArg, idy >,
-                       class IndexedFArgZ = FunG::IndexedType< FArg, idz >,
+                       class IndexedArgX = funcy::IndexedType< ArgX, idx >,
+                       class IndexedArgY = funcy::IndexedType< ArgY, idy >,
+                       class IndexedArgZ = funcy::IndexedType< ArgZ, idz >,
+                       class IndexedFArgX = funcy::IndexedType< FArg, idx >,
+                       class IndexedFArgY = funcy::IndexedType< FArg, idy >,
+                       class IndexedFArgZ = funcy::IndexedType< FArg, idz >,
                        class = std::enable_if_t<
                            D3LazyType< IndexedArgX, IndexedArgY, IndexedArgZ, IndexedFArgX,
                                        IndexedFArgY, IndexedFArgZ >::present > >
             auto d3( ArgX const& dx, ArgY const& dy, ArgZ const& dz ) const
             {
-                FunG::D1< G, IndexedArgX > dGdx( g, dx );
-                FunG::D1< G, IndexedArgY > dGdy( g, dy );
-                FunG::D1< G, IndexedArgZ > dGdz( g, dz );
-                return FunG::sum(
-                    FunG::chain< IndexedFArgX, IndexedFArgY, IndexedFArgZ >( f, dGdx, dGdy, dGdz ),
-                    FunG::chain< IndexedFArgX, IndexedFArgY >(
-                        f, FunG::D2< G, IndexedArgX, IndexedArgZ >( g, dx, dz ), dGdy ),
-                    FunG::chain< IndexedFArgX, IndexedFArgY >(
-                        f, dGdx, FunG::D2< G, IndexedArgY, IndexedArgZ >( g, dy, dz ) ),
-                    FunG::chain< IndexedFArgX, IndexedFArgZ >(
-                        f, FunG::D2< G, IndexedArgX, IndexedArgY >( g, dx, dy ), dGdz ),
-                    FunG::chain< IndexedFArgX >(
+                funcy::D1< G, IndexedArgX > dGdx( g, dx );
+                funcy::D1< G, IndexedArgY > dGdy( g, dy );
+                funcy::D1< G, IndexedArgZ > dGdz( g, dz );
+                return funcy::sum(
+                    funcy::chain< IndexedFArgX, IndexedFArgY, IndexedFArgZ >( f, dGdx, dGdy, dGdz ),
+                    funcy::chain< IndexedFArgX, IndexedFArgY >(
+                        f, funcy::D2< G, IndexedArgX, IndexedArgZ >( g, dx, dz ), dGdy ),
+                    funcy::chain< IndexedFArgX, IndexedFArgY >(
+                        f, dGdx, funcy::D2< G, IndexedArgY, IndexedArgZ >( g, dy, dz ) ),
+                    funcy::chain< IndexedFArgX, IndexedFArgZ >(
+                        f, funcy::D2< G, IndexedArgX, IndexedArgY >( g, dx, dy ), dGdz ),
+                    funcy::chain< IndexedFArgX >(
                         f,
-                        FunG::D3< G, IndexedArgX, IndexedArgY, IndexedArgZ >( g, dx, dy, dz ) ) )();
+                        funcy::D3< G, IndexedArgX, IndexedArgY, IndexedArgZ >( g, dx, dy, dz ) ) )();
             }
 
         private:

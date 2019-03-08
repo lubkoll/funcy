@@ -1,6 +1,6 @@
 #pragma once
 
-#include <fung/util/mathop_traits.hh>
+#include <funcy/util/mathop_traits.hh>
 
 #include <string>
 #include <type_traits>
@@ -63,7 +63,7 @@ namespace texy
     }
 }
 
-namespace FunG
+namespace funcy
 {
     template <>
     struct MathOpTraits< std::string, void >

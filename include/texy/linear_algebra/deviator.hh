@@ -7,7 +7,7 @@
 #include <texy/constant.hh>
 #include <texy/generate.hh>
 #include <texy/identity.hh>
-#include <fung/util/static_checks.hh>
+#include <funcy/util/static_checks.hh>
 
 #include <type_traits>
 
@@ -35,7 +35,7 @@ namespace texy
         }
 
         /// Generate %deviator \f$ \mathrm{dev}\circ f\f$.
-        template < class F, std::enable_if_t< FunG::Checks::isFunction< F >() >* = nullptr >
+        template < class F, std::enable_if_t< funcy::Checks::isFunction< F >() >* = nullptr >
         auto deviator( const F& f )
         {
             return deviator( f() )( f );

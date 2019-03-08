@@ -2,7 +2,7 @@
 // Released under the terms of the GNU General Public License version 3 or later.
 
 #include <gtest/gtest.h>
-#include <fung/cmath/exp.hh>
+#include <funcy/cmath/exp.hh>
 
 namespace
 {
@@ -18,12 +18,12 @@ namespace
 
   auto generateTestExp()
   {
-    return FunG::Exp( x0() );
+    return funcy::Exp( x0() );
   }
 
   auto generateTestExp2()
   {
-    return FunG::Exp2( x0() );
+    return funcy::Exp2( x0() );
   }
 }
 

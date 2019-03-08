@@ -2,8 +2,8 @@
 
 #include <texy/util/chainer.hh>
 #include <texy/util/string.hh>
-#include <fung/concept_check.hh>
-#include <fung/util/type_traits.hh>
+#include <funcy/concept_check.hh>
+#include <funcy/util/type_traits.hh>
 
 #include <type_traits>
 #include <utility>
@@ -51,7 +51,7 @@ namespace texy
             return Trace( A );
         }
 
-        template < class F, std::enable_if_t< FunG::Checks::isFunction< F >() >* = nullptr >
+        template < class F, std::enable_if_t< funcy::Checks::isFunction< F >() >* = nullptr >
         auto trace( const F& f )
         {
             return Trace( f() )( f );

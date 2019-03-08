@@ -6,24 +6,24 @@
 #include <Eigen/Dense>
 #include <gtest/gtest.h>
 
-#define FUNG_ENABLE_EXCEPTIONS
-#include <fung/examples/rubber/neo_hooke.hh>
-#include <fung/examples/rubber/mooney_rivlin.hh>
-#include <fung/examples/biomechanics/skin_tissue_hendriks.hh>
-#include <fung/examples/biomechanics/adipose_tissue_sommer_holzapfel.hh>
-#include <fung/examples/biomechanics/muscle_tissue_martins.hh>
+#define FUNCY_ENABLE_EXCEPTIONS
+#include <funcy/examples/rubber/neo_hooke.hh>
+#include <funcy/examples/rubber/mooney_rivlin.hh>
+#include <funcy/examples/biomechanics/skin_tissue_hendriks.hh>
+#include <funcy/examples/biomechanics/adipose_tissue_sommer_holzapfel.hh>
+#include <funcy/examples/biomechanics/muscle_tissue_martins.hh>
 
 namespace
 {
-  using FunG::LN;
-  using FunG::Pow;
+  using funcy::LN;
+  using funcy::Pow;
   constexpr int dim = 3;
   using M = Eigen::MatrixXd;
 
   template <class Function>
   auto runTest(Function& f)
   {
-    M a = FunG::LinearAlgebra::unitMatrix<M>(dim);
+    M a = funcy::LinearAlgebra::unitMatrix<M>(dim);
     M da0 = 2*a, da1 = 3*a, da2 = 4*a;
 
     f.update(a);
@@ -41,12 +41,12 @@ namespace
     return m;
   }
 
-  M fiberTensor = initFiberTensor(), I = FunG::LinearAlgebra::unitMatrix<M>(dim);
+  M fiberTensor = initFiberTensor(), I = funcy::LinearAlgebra::unitMatrix<M>(dim);
 }
 
 TEST(NeoHooke,Incompressible_Dynamic_Eigen)
 {
-  auto incompressibleNeoHooke = FunG::incompressibleNeoHooke<M,dim>(c0,I);
+  auto incompressibleNeoHooke = funcy::incompressibleNeoHooke<M,dim>(c0,I);
   auto f = runTest(incompressibleNeoHooke);
   EXPECT_DOUBLE_EQ( std::get<0>(f) , 0 );
   EXPECT_DOUBLE_EQ( std::get<1>(f) , 12 );
@@ -56,7 +56,7 @@ TEST(NeoHooke,Incompressible_Dynamic_Eigen)
 
 TEST(NeoHooke,Compressible_Dynamic_Eigen)
 {
-  auto compressibleNeoHooke = FunG::compressibleNeoHooke<Pow<2>,LN,M,dim>(c0,d0,d1,I);
+  auto compressibleNeoHooke = funcy::compressibleNeoHooke<Pow<2>,LN,M,dim>(c0,d0,d1,I);
   auto f = runTest(compressibleNeoHooke);
   EXPECT_DOUBLE_EQ( std::get<0>(f) , 0 );
   EXPECT_DOUBLE_EQ( std::get<1>(f) , 30 );
@@ -66,7 +66,7 @@ TEST(NeoHooke,Compressible_Dynamic_Eigen)
 
 TEST(NeoHooke,ModifiedIncompressible_Dynamic_Eigen)
 {
-  auto modifiedIncompressibleNeoHooke = FunG::modifiedIncompressibleNeoHooke<M,dim>(c0,I);
+  auto modifiedIncompressibleNeoHooke = funcy::modifiedIncompressibleNeoHooke<M,dim>(c0,I);
   auto f = runTest(modifiedIncompressibleNeoHooke);
   EXPECT_DOUBLE_EQ( std::get<0>(f) , 0 );
   EXPECT_DOUBLE_EQ( std::get<1>(f) , 0 );
@@ -76,7 +76,7 @@ TEST(NeoHooke,ModifiedIncompressible_Dynamic_Eigen)
 
 TEST(NeoHooke,ModifiedCompressible_Dynamic_Eigen)
 {
-  auto modifiedCompressibleNeoHooke = FunG::modifiedCompressibleNeoHooke<Pow<2>,LN,M,dim>(c0,d0,d1,I);
+  auto modifiedCompressibleNeoHooke = funcy::modifiedCompressibleNeoHooke<Pow<2>,LN,M,dim>(c0,d0,d1,I);
   auto f = runTest(modifiedCompressibleNeoHooke);
   EXPECT_DOUBLE_EQ( std::get<0>(f) , 0 );
   EXPECT_DOUBLE_EQ( std::get<1>(f) , 18 );
@@ -86,7 +86,7 @@ TEST(NeoHooke,ModifiedCompressible_Dynamic_Eigen)
 
 TEST(MooneyRivlin,Incompressible_Dynamic_Eigen)
 {
-  auto mooneyRivlin = FunG::incompressibleMooneyRivlin<M,dim>(c0,c1,I);
+  auto mooneyRivlin = funcy::incompressibleMooneyRivlin<M,dim>(c0,c1,I);
   auto f = runTest(mooneyRivlin);
   EXPECT_DOUBLE_EQ( std::get<0>(f) , 0 );
   EXPECT_DOUBLE_EQ( std::get<1>(f) , 36 );
@@ -96,7 +96,7 @@ TEST(MooneyRivlin,Incompressible_Dynamic_Eigen)
 
 TEST(MooneyRivlin,Compressible_Dynamic_Eigen)
 {
-  auto mooneyRivlin = FunG::compressibleMooneyRivlin<Pow<2>,LN,M,dim>(c0,c1,d0,d1,I);
+  auto mooneyRivlin = funcy::compressibleMooneyRivlin<Pow<2>,LN,M,dim>(c0,c1,d0,d1,I);
   auto f = runTest(mooneyRivlin);
   EXPECT_DOUBLE_EQ( std::get<0>(f) , 0 );
   EXPECT_DOUBLE_EQ( std::get<1>(f) , 54 );
@@ -106,7 +106,7 @@ TEST(MooneyRivlin,Compressible_Dynamic_Eigen)
 
 TEST(Skin_Hendriks,Incompressible_Dynamic_Eigen)
 {
-  auto skin = FunG::incompressibleSkin_Hendriks<M,dim>(c0,c1,I);
+  auto skin = funcy::incompressibleSkin_Hendriks<M,dim>(c0,c1,I);
   auto f = runTest(skin);
   EXPECT_DOUBLE_EQ( std::get<0>(f) , 0 );
   EXPECT_DOUBLE_EQ( std::get<1>(f) , 12 );
@@ -116,7 +116,7 @@ TEST(Skin_Hendriks,Incompressible_Dynamic_Eigen)
 
 TEST(Skin_Hendriks,Compressible_Dynamic_Eigen)
 {
-  auto skin = FunG::compressibleSkin_Hendriks<Pow<2>,LN,M,dim>(c0,c1,d0,d1,I);
+  auto skin = funcy::compressibleSkin_Hendriks<Pow<2>,LN,M,dim>(c0,c1,d0,d1,I);
   auto f = runTest(skin);
   EXPECT_DOUBLE_EQ( std::get<0>(f) , 0 );
   EXPECT_DOUBLE_EQ( std::get<1>(f) , 30 );
@@ -126,7 +126,7 @@ TEST(Skin_Hendriks,Compressible_Dynamic_Eigen)
 
 TEST(Adipose_SommerHolzapfel,Incompressible_Dynamic_Eigen)
 {
-  auto adipose = FunG::incompressibleAdiposeTissue_SommerHolzapfel<M,dim>(fiberTensor,I);
+  auto adipose = funcy::incompressibleAdiposeTissue_SommerHolzapfel<M,dim>(fiberTensor,I);
   auto f = runTest(adipose);
   EXPECT_DOUBLE_EQ( std::get<0>(f) , 0 );
   EXPECT_NEAR( std::get<1>(f) , 1.8 , 1e-11 );
@@ -136,7 +136,7 @@ TEST(Adipose_SommerHolzapfel,Incompressible_Dynamic_Eigen)
 
 TEST(Adipose_SommerHolzapfel,Compressible_Dynamic_Eigen)
 {
-  auto adipose = FunG::compressibleAdiposeTissue_SommerHolzapfel<Pow<2>,LN,M,dim>(d0,d1,fiberTensor,I);
+  auto adipose = funcy::compressibleAdiposeTissue_SommerHolzapfel<Pow<2>,LN,M,dim>(d0,d1,fiberTensor,I);
   auto f = runTest(adipose);
   EXPECT_DOUBLE_EQ( std::get<0>(f) , 0 );
   EXPECT_NEAR( std::get<1>(f) , 19.8 , 1e-11 );
@@ -146,7 +146,7 @@ TEST(Adipose_SommerHolzapfel,Compressible_Dynamic_Eigen)
 
 TEST(Muscle_Martins,Incompressible_Dynamic_Eigen)
 {
-  auto muscle = FunG::incompressibleMuscleTissue_Martins<M,dim>(fiberTensor,I);
+  auto muscle = funcy::incompressibleMuscleTissue_Martins<M,dim>(fiberTensor,I);
   auto f = runTest(muscle);
   EXPECT_DOUBLE_EQ( std::get<0>(f) , 0 );
   EXPECT_NEAR( std::get<1>(f) , 0 , 1e-11 );
@@ -156,7 +156,7 @@ TEST(Muscle_Martins,Incompressible_Dynamic_Eigen)
 
 TEST(Muscle_Martins,Compressible_Dynamic_Eigen)
 {
-  auto muscle = FunG::compressibleMuscleTissue_Martins<Pow<2>,LN,M,dim>(d0,d1,fiberTensor,I);
+  auto muscle = funcy::compressibleMuscleTissue_Martins<Pow<2>,LN,M,dim>(d0,d1,fiberTensor,I);
   auto f = runTest(muscle);
   EXPECT_DOUBLE_EQ( std::get<0>(f) , 0 );
   EXPECT_NEAR( std::get<1>(f) , 18 , 1e-11 );

@@ -61,8 +61,8 @@
   // Namespaces
 
   /**
-   * \namespace FunG
-   * \brief Main namespace of the %FunG library.
+   * \namespace funcy
+   * \brief Main namespace of the %funcy library.
    * \see MathematicalOperationsGroup
    * \see CMathGroup
    * \see LinearAlgebraGroup
@@ -70,27 +70,27 @@
 
   /**
    * \ingroup MathematicalOperationsGroup
-   * \namespace FunG::MathematicalOperations
+   * \namespace funcy::MathematicalOperations
    * \brief Mathematical operations and corresponding differentation rules.
    * \see MathematicalOperationsGroup
    */
 
   /**
    * \ingroup LinearAlgebraGroup
-   * \namespace FunG::LinearAlgebra
+   * \namespace funcy::LinearAlgebra
    * \brief Functionality from linear algebra such as (modified) principal and mixed matrix invariants.
    * \see LinearAlgebraGroup
    */
 
   /**
    * \ingroup ConceptCheck
-   * \namespace FunG::Checks
+   * \namespace funcy::Checks
    * \brief Static checks for the presence of different operators and functions.
    */
    
   /**
    * \ingroup ConceptGroup
-   * \namespace FunG::Concepts
+   * \namespace funcy::Concepts
    * \brief Requirements on input types.
    * \see Concepts
    */

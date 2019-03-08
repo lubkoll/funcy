@@ -148,7 +148,7 @@ namespace texy
          * \param f function object mapping into a space of square matrices
          * \return RightCauchyGreenStrainTensor< decay_t<decltype(f())> >(f())( f )
          */
-        template < class F, std::enable_if_t< FunG::Checks::isFunction< F >() >* = nullptr >
+        template < class F, std::enable_if_t< funcy::Checks::isFunction< F >() >* = nullptr >
         RightCauchyGreenStrainTensor strainTensor( const F& f )
         {
             return RightCauchyGreenStrainTensor{f()}( f );
@@ -170,7 +170,7 @@ namespace texy
          * \param f function object mapping into a space of square matrices
          * \return LeftCauchyGreenStrainTensor< decay_t<decltype(f())> >(f())( f )
          */
-        template < class F, std::enable_if_t< FunG::Checks::isFunction< F >() >* = nullptr >
+        template < class F, std::enable_if_t< funcy::Checks::isFunction< F >() >* = nullptr >
         LeftCauchyGreenStrainTensor leftStrainTensor( const F& f )
         {
             return LeftCauchyGreenStrainTensor{f()}( f );

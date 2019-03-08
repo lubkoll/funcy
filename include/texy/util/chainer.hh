@@ -4,7 +4,7 @@
 #pragma once
 
 #include <texy/mathematical_operations/chain.hh>
-#include <fung/util/static_checks.hh>
+#include <funcy/util/static_checks.hh>
 
 #include <type_traits>
 
@@ -19,7 +19,7 @@ namespace texy
             return static_cast< const Function* >( this )->d0();
         }
 
-        template < class Arg, class = std::enable_if_t< !FunG::Checks::isFunction< Arg >() > >
+        template < class Arg, class = std::enable_if_t< !funcy::Checks::isFunction< Arg >() > >
         decltype( auto ) operator()( const Arg& x )
         {
             static_cast< Function* >( this )->update( x );
@@ -27,7 +27,7 @@ namespace texy
         }
 
         template < class OtherFunction,
-                   class = std::enable_if_t< FunG::Checks::isFunction< OtherFunction >() > >
+                   class = std::enable_if_t< funcy::Checks::isFunction< OtherFunction >() > >
         auto operator()( const OtherFunction& g )
         {
             return MathematicalOperations::Chain< Function, OtherFunction >(

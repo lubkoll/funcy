@@ -1,9 +1,9 @@
 // Copyright (C) 2016 by Lars Lubkoll. All rights reserved.
 // Released under the terms of the GNU General Public License version 3 or later.
 
-#define FUNG_ENABLE_EXCEPTIONS
+#define FUNCY_ENABLE_EXCEPTIONS
 #include <gtest/gtest.h>
-#include <fung/cmath/arcsine.hh>
+#include <funcy/cmath/arcsine.hh>
 
 namespace
 {
@@ -19,15 +19,15 @@ namespace
 
   auto generateTestASin()
   {
-    return FunG::ASin( x0() );
+    return funcy::ASin( x0() );
   }
 }
 
 TEST(ArcsineTest,Update)
 {
   auto fun = generateTestASin();
-  ASSERT_THROW( fun.update(-1.1) , FunG::OutOfDomainException );
-  ASSERT_THROW( fun.update(1.1) , FunG::OutOfDomainException );
+  ASSERT_THROW( fun.update(-1.1) , funcy::OutOfDomainException );
+  ASSERT_THROW( fun.update(1.1) , funcy::OutOfDomainException );
 }
 
 TEST(ArcsineTest,D0)

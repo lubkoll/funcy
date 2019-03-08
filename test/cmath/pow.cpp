@@ -1,9 +1,9 @@
 // Copyright (C) 2015 by Lars Lubkoll. All rights reserved.
 // Released under the terms of the GNU General Public License version 3 or later.
 
-#define FUNG_ENABLE_EXCEPTIONS
+#define FUNCY_ENABLE_EXCEPTIONS
 #include <gtest/gtest.h>
-#include <fung/cmath/pow.hh>
+#include <funcy/cmath/pow.hh>
 
 #include <limits>
 
@@ -31,42 +31,42 @@ namespace
 
   auto generateTestSquared()
   {
-    return FunG::Pow<2>( x0() );
+    return funcy::Pow<2>( x0() );
   }
 
   auto generateTestCubic()
   {
-    return FunG::Pow<3>( x0() );
+    return funcy::Pow<3>( x0() );
   }
 
   auto generateTestInverse()
   {
-    return FunG::Pow<-1>( x0() );
+    return funcy::Pow<-1>( x0() );
   }
 
   auto generateTestSqrt()
   {
-    return FunG::Sqrt( x1() );
+    return funcy::Sqrt( x1() );
   }
 
   auto generateTestCbrt()
   {
-    return FunG::Cbrt( x0() );
+    return funcy::Cbrt( x0() );
   }
 
   auto generateTestCbrt2()
   {
-    return FunG::Cbrt2( x0() );
+    return funcy::Cbrt2( x0() );
   }
 
   auto generateTestOverCbrt()
   {
-    return FunG::Pow<-1,3>( x1() );
+    return funcy::Pow<-1,3>( x1() );
   }
 
   auto generateTestOverCbrt2()
   {
-    return FunG::Pow<-2,3>( x1() );
+    return funcy::Pow<-2,3>( x1() );
   }
 }
 
@@ -147,7 +147,7 @@ TEST(PowCubicTest,D3)
 TEST(PowInverseTest,Update)
 {
   auto fun = generateTestInverse();
-  EXPECT_THROW(fun.update(0), FunG::OutOfDomainException);
+  EXPECT_THROW(fun.update(0), funcy::OutOfDomainException);
 }
 
 TEST(PowInverseTest,D0)
@@ -195,7 +195,7 @@ TEST(PowInverseTest,D3)
 TEST(PowSqrtTest,Update)
 {
   auto fun = generateTestSqrt();
-  EXPECT_THROW(fun.update(-1), FunG::OutOfDomainException);
+  EXPECT_THROW(fun.update(-1), funcy::OutOfDomainException);
 }
 
 TEST(PowSqrtTest,D0)
@@ -245,7 +245,7 @@ TEST(PowSqrtTest,D3)
 TEST(PowOverThirdRootTest,Update)
 {
   auto fun = generateTestOverCbrt();
-  EXPECT_THROW(fun.update(-0.1), FunG::OutOfDomainException);
+  EXPECT_THROW(fun.update(-0.1), funcy::OutOfDomainException);
 }
 
 TEST(PowOverThirdRootTest,D0)
@@ -295,7 +295,7 @@ TEST(PowOverThirdRootTest,D3)
 TEST(PowOverThirdRootSquaredTest,Update)
 {
   auto fun = generateTestOverCbrt2();
-  EXPECT_THROW(fun.update(-0.1), FunG::OutOfDomainException);
+  EXPECT_THROW(fun.update(-0.1), funcy::OutOfDomainException);
 }
 
 TEST(PowOverThirdRootSquaredTest,D0)
@@ -345,19 +345,19 @@ TEST(PowOverThirdRootSquaredTest,D3)
 ///
 TEST(PowDefaultTest,Update)
 {
-  FunG::Pow<3,2> fun( x0() );
-  EXPECT_THROW(fun.update(0), FunG::OutOfDomainException);
+  funcy::Pow<3,2> fun( x0() );
+  EXPECT_THROW(fun.update(0), funcy::OutOfDomainException);
 }
 
 TEST(PowDefaultTest,D0)
 {
-  const FunG::Pow<5,2> fun( x1() );
+  const funcy::Pow<5,2> fun( x1() );
   EXPECT_DOUBLE_EQ( fun.d0() , pow( x1(), 2.5 ) );
 }
 
 TEST(PowDefaultTest,D1)
 {
-  const FunG::Pow<5,2> fun( x1() );
+  const funcy::Pow<5,2> fun( x1() );
   double dx = 2.;
   EXPECT_DOUBLE_EQ( fun.d1()   , 2.5*pow( x1(), 1.5 )    );
   EXPECT_DOUBLE_EQ( fun.d1(dx) , 2.5*pow( x1(), 1.5 )*dx );
@@ -365,7 +365,7 @@ TEST(PowDefaultTest,D1)
 
 TEST(PowDefaultTest,D2)
 {
-  const FunG::Pow<5,2> fun( x1() );
+  const funcy::Pow<5,2> fun( x1() );
   double dx = 2., dy = 3.;
   EXPECT_DOUBLE_EQ( fun.d2()      , 1.5*2.5*pow( x1(), 0.5 )       );
   EXPECT_DOUBLE_EQ( fun.d2(dx,dy) , 1.5*2.5*pow( x1(), 0.5 )*dx*dy );
@@ -373,7 +373,7 @@ TEST(PowDefaultTest,D2)
 
 TEST(PowDefaultTest,D3)
 {
-  const FunG::Pow<5,2> fun( x1() );
+  const funcy::Pow<5,2> fun( x1() );
   double dx = 2., dy = 3., dz = 4.;
   EXPECT_DOUBLE_EQ( fun.d3()         ,  0.5*1.5*2.5*pow( x1(), -0.5 )          );
   EXPECT_DOUBLE_EQ( fun.d3(dx,dy,dz) ,  0.5*1.5*2.5*pow( x1(), -0.5 )*dx*dy*dz );

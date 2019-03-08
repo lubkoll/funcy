@@ -7,7 +7,7 @@
 #include <texy/constant.hh>
 #include <texy/generate.hh>
 #include <texy/identity.hh>
-#include <fung/util/static_checks.hh>
+#include <funcy/util/static_checks.hh>
 
 namespace texy
 {
@@ -35,7 +35,7 @@ namespace texy
          * \param f function returning a square matrix
          * \param M structural tensor describing principal (fiber) direction
          */
-        template < class F, std::enable_if_t< FunG::Checks::isFunction< F >() >* = nullptr >
+        template < class F, std::enable_if_t< funcy::Checks::isFunction< F >() >* = nullptr >
         auto i4( const F& f, const std::string& M )
         {
             return i1( f * constant( M ) );
@@ -59,7 +59,7 @@ namespace texy
          * \param f function returning a square matrix
          * \param M structural tensor describing principal (fiber) direction
          */
-        template < class F, std::enable_if_t< FunG::Checks::isFunction< F >() >* = nullptr >
+        template < class F, std::enable_if_t< funcy::Checks::isFunction< F >() >* = nullptr >
         auto i5( const F& f, const std::string& M )
         {
             return i1( ( f ^ 2 ) * constant( M ) );
@@ -83,7 +83,7 @@ namespace texy
          * \param f function returning a square matrix
          * \param M structural tensor describing principal (fiber) direction
          */
-        template < class F, std::enable_if_t< FunG::Checks::isFunction< F >() >* = nullptr >
+        template < class F, std::enable_if_t< funcy::Checks::isFunction< F >() >* = nullptr >
         auto i6( const F& f, const std::string& M )
         {
             return i1( ( constant( M ) ^ 2 ) * f );
