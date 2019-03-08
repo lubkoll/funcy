@@ -1,0 +1,97 @@
+#error Documentation only.
+
+/**
+ * \defgroup Examples Examples
+ *
+ * \brief Examples mainly from hyperelasticity.
+ *
+ * Contains models of the neoHookean-material model (Rubber/neoHooke.hh), the Mooney-Rivlin model (Rubber/mooneyRivlin.hh),
+ * an extended Mooney-Rivlin model for the description of skin tissue (Biomechanics/skinTissue_Hendriks.hh) and Fung-elastic
+ * models for the description of adipose (Biomechanics/adiposeTissue_SommerHolzapfel.hh) and muscle tissue (Biomechanics/muscleTissue_Martins.hh).
+ */
+
+    /**
+     * \defgroup Rubber Rubber
+     * \ingroup Examples
+     * \brief Isotropic models for the description of rubber materials (neo-Hookean and Mooney-Rivlin models).
+     */
+
+    /**
+     * \defgroup Biomechanics Biomechanics
+     * \ingroup Examples
+     * \brief Models for the description of different biologial soft tissues.
+     */
+
+
+
+/**
+ * \defgroup MathematicalOperationsGroup Mathematical Operations
+ * \brief Mathematical operations and corresponding differentation rules.
+ */
+
+
+
+/**
+ * \defgroup CMathGroup Common Mathematical Functions
+ * \brief Wrappers for functions from \<cmath\>.
+ */
+
+/**
+ * \defgroup LinearAlgebraGroup Linear Algebra
+ * \brief Functionality from linear algebra such as (modified) principal and mixed matrix invariants.
+ */
+
+    /**
+     * \defgroup InvariantGroup Invariants
+     * \ingroup LinearAlgebraGroup
+     * \brief Matrix Invariants (principal and mixed, modified (isochoric) invariants and deviatoric invariants).
+     */
+
+
+/**
+ * \defgroup ConceptGroup Concepts
+ * \brief Requirements on input types.
+ *
+ * For purpose of documentation free functions are declared as friends in concepts.hh.
+ * Thus to determine exactly the requirements on input types you may have inspect the module page of the elementary concepts.
+ * Or just compile your code and wait for the static assertions to tell you if some functionality is missing.
+ */
+
+
+  // Namespaces
+
+  /**
+   * \namespace FunG
+   * \brief Main namespace of the %FunG library.
+   * \see MathematicalOperationsGroup
+   * \see CMathGroup
+   * \see LinearAlgebraGroup
+   */
+
+  /**
+   * \ingroup MathematicalOperationsGroup
+   * \namespace FunG::MathematicalOperations
+   * \brief Mathematical operations and corresponding differentation rules.
+   * \see MathematicalOperationsGroup
+   */
+
+  /**
+   * \ingroup LinearAlgebraGroup
+   * \namespace FunG::LinearAlgebra
+   * \brief Functionality from linear algebra such as (modified) principal and mixed matrix invariants.
+   * \see LinearAlgebraGroup
+   */
+
+  /**
+   * \ingroup ConceptCheck
+   * \namespace FunG::Checks
+   * \brief Static checks for the presence of different operators and functions.
+   */
+   
+  /**
+   * \ingroup ConceptGroup
+   * \namespace FunG::Concepts
+   * \brief Requirements on input types.
+   * \see Concepts
+   */
+   
