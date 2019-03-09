@@ -18,6 +18,7 @@ addons:
     - libopenblas-dev
     - liblapack-dev
     - lcov
+    - texlive-font-utils
 
 env:
   # Workaround for https://github.com/travis-ci/travis-ci/issues/4681
