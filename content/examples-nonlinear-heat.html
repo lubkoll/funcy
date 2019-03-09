@@ -1,12 +1,12 @@
 <p>Eventually we consider the weak form of a model of nonlinear heat transfer, given through \[A(u,\nabla u)=(c+du^2)\nabla u.\] In this case $u$ and $ \nabla u$ are represented by 
 different types but are associated to the same variable.</p>
 
-<pre class="code-style boxshadow">#include "fung.hh"
+<pre class="code-style boxshadow">#include "funcy.hh"
 
 template &lt; class Vec,class Mat &gt;
 auto heatModel( double c, double d, const Vec&amp; u0, const Mat&amp; du0 )
 {
-  using namespace FunG;
+  using namespace funcy;
   auto u = variable&lt;0&gt;( u0 );
   auto du = variable&lt;0&gt;( du0 );
   auto f = ( c + d*squared(u) ) * du;

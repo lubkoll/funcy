@@ -1,18 +1,18 @@
 <p>We begin with the function \[f(x)=x^{3/2}+\sin(x^{1/2}).\]</p>
 
-<pre class="code-style boxshadow">#include "fung.hh"
+<pre class="code-style boxshadow">#include "funcy.hh"
 
 template &lt; class Variable &gt;
 auto generateFunction( const Variable&amp; x )
 {
-  using namespace FunG;
+  using namespace funcy;
   return pow&lt;3&gt;( sqrt(x) ) + sin( sqrt(x) ); 
 }
 </pre>
 
 <p>Usage is as follows:</p>
 
-<pre class="code-style boxshadow">auto f = generateFunction( FunG::variable&lt;0&gt;( 1. ) );
+<pre class="code-style boxshadow">auto f = generateFunction( funcy::variable&lt;0&gt;( 1. ) );
 
 f.template update&lt;0&gt;( 1. ); //  change function argument
 

@@ -1,12 +1,12 @@
 <p>Consider a function with two variables, a scalar variable x and a matrix valued variable F (which is assumed to be default constructible in this example): \[f(x,F)=\sqrt{x}\mathrm{tr}(F).\]</p>
 
-<pre class="code-style boxshadow">#include "fung.hh"
+<pre class="code-style boxshadow">#include "funcy.hh"
 
 template &lt; class Mat &gt;
 auto generateFunction()
 {
-  using namespace FunG;
-  using FunG::LinearAlgebra::trace;
+  using namespace funcy;
+  using funcy::LinearAlgebra::trace;
   
   auto x = variable&lt;0&gt;( 0. );
   auto F = Variable&lt;Mat,1&gt;();

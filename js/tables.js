@@ -20,8 +20,8 @@ function drawChart() {
         ['FADBAD++', 222, 'blue'],
         ['SACADO', 68, 'blue'],
         ['CoDiPack', 65, 'blue'],
-        ['FunG', 65, 'orange'],
-        ['FunG (opt)', 60, 'orange'],
+        ['funcy', 65, 'orange'],
+        ['funcy (opt)', 60, 'orange'],
         ['Manual', 60, 'gray']
     ]);
 
@@ -33,7 +33,7 @@ function drawChart() {
         ['FADBAD++', 13.9, 'blue'],
         ['SACADO', 4.0, 'blue'],
         ['CoDiPack', 1.7, 'blue'],
-        ['FunG', 1.7, 'orange'],
+        ['funcy', 1.7, 'orange'],
         ['Manual', 1.7, 'gray']
     ]);
 
@@ -45,14 +45,14 @@ function drawChart() {
         ['FADBAD++', 8.1, 'blue'],
         ['SACADO', 40, 'blue'],
         ['CoDiPack', 2.0, 'blue'],
-        ['FunG', 1.7, 'orange'],
+        ['funcy', 1.7, 'orange'],
         ['Manual', 1.7, 'gray']
     ]);
     
 //    var data2 = google.visualization.arrayToDataTable([
 //        ['Library', 'time/s', { role: 'style' }],
 //        ['FADBAD++', 1.412, 'blue'],
-//        ['FunG', 1.364, 'orange'],
+//        ['funcy', 1.364, 'orange'],
 //        ['Manual', 1.325, 'gray']
 //    ]);
 
@@ -60,7 +60,7 @@ function drawChart() {
 //        ['Library', 'time/s', { role: 'style' }],
 //        ['FADBAD++', 0.581, 'blue'],
 //        ['SACADO', 0.586, 'blue'],
-//        ['FunG', 0.499, 'orange'],
+//        ['funcy', 0.499, 'orange'],
 //        ['Manual', 0.475, 'gray']
 //    ]);
 
