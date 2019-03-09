@@ -17,6 +17,7 @@ addons:
     - clang-3.8
     - libopenblas-dev
     - liblapack-dev
+    - lcov
 
 env:
   # Workaround for https://github.com/travis-ci/travis-ci/issues/4681
@@ -78,8 +79,8 @@ install:
   ############################################################################
   - |
     if [[ "${TRAVIS_OS_NAME}" == "linux" && "${COMPUTE_COVERAGE}" == "true" ]]; then
-      travis_retry wget --no-check-certificate --quiet http://mirrors.us.kernel.org/ubuntu//pool/universe/l/lcov/lcov_1.12-3_all.deb
-      sudo dpkg -i lcov_1.12-3_all.deb
+#      travis_retry wget --no-check-certificate --quiet http://mirrors.us.kernel.org/ubuntu//pool/universe/l/lcov/lcov_1.12-3_all.deb
+#      sudo dpkg -i lcov_1.12-3_all.deb
       sudo apt-add-repository ppa:brightbox/ruby-ng -y
       sudo apt-get update -qq
       sudo apt-get install ruby2.2 -qq
