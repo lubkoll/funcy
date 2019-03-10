@@ -19,6 +19,8 @@ addons:
     - liblapack-dev
     - lcov
     - texlive-font-utils
+    - doxygen
+    - doxygen-latex
 
 env:
   # Workaround for https://github.com/travis-ci/travis-ci/issues/4681
