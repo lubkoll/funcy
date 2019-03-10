@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>FunG: include/fung/linear_algebra/cofactor.hh Source File</title>
+<title>funcy: include/funcy/linear_algebra/cofactor.hh Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,7 +28,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">FunG
+   <div id="projectname">funcy
    </div>
   </td>
  </tr>
@@ -88,7 +88,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_fa81a0b40bd9e8878bcb1c2d8e9b57c6.html">include</a></li><li class="navelem"><a class="el" href="dir_fd47c672f6d66b5c6e237ee1782a0895.html">fung</a></li><li class="navelem"><a class="el" href="dir_6b1536948a181d635b9c1a1ec8d95a6c.html">linear_algebra</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_2b05d8de44f473256ece09f3e5f2d153.html">include</a></li><li class="navelem"><a class="el" href="dir_a89158a207ff7179a34c837fd3516315.html">funcy</a></li><li class="navelem"><a class="el" href="dir_6149ab7c66788e7ecd6e4704ee202c03.html">linear_algebra</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -99,16 +99,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="cofactor_8hh.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// Copyright (C) 2015 by Lars Lubkoll. All rights reserved.</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Released under the terms of the GNU General Public License version 3 or later.</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#ifndef FUNG_LINEAR_ALGEBRA_COFACTOR_HH</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define FUNG_LINEAR_ALGEBRA_COFACTOR_HH</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#ifndef FUNCY_LINEAR_ALGEBRA_COFACTOR_HH</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define FUNCY_LINEAR_ALGEBRA_COFACTOR_HH</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;cassert&gt;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="dimension_8hh.html">dimension.hh</a>&quot;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="concept__check_8hh.html">fung/concept_check.hh</a>&quot;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="at_8hh.html">fung/util/at.hh</a>&quot;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="static__checks_8hh.html">fung/util/static_checks.hh</a>&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="concept__check_8hh.html">funcy/concept_check.hh</a>&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="at_8hh.html">funcy/util/at.hh</a>&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="static__checks_8hh.html">funcy/util/static_checks.hh</a>&quot;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">namespace </span>FunG</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">namespace </span>funcy</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  <span class="keyword">namespace </span>LinearAlgebra</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  {</div>
@@ -142,21 +142,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;      <span class="keyword">auto</span> computeCofactorImpl(Matrix <span class="keyword">const</span>&amp;, Matrix <span class="keyword">const</span>&amp; A, std::integral_constant&lt;int,2&gt;)</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;      {</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keyword">using</span> Id = Detail::CofactorIndices&lt;row,col&gt;;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">return</span> sign(row,col) * <a class="code" href="namespaceFunG.html#aae631e6149505bdfc0b1c6162b370c7f">at</a>(A,Id::firstRow,Id::firstCol);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">return</span> sign(row,col) * <a class="code" href="namespacefuncy.html#a1a543c0f61343fa69a250819fd87069a">at</a>(A,Id::firstRow,Id::firstCol);</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;      }</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;      <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> row, <span class="keywordtype">int</span> col, <span class="keyword">class</span> Matrix&gt;</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;      <span class="keyword">auto</span> computeCofactorImpl(Matrix <span class="keyword">const</span>&amp; A, Matrix <span class="keyword">const</span>&amp; B, std::integral_constant&lt;int,3&gt;)</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;      {</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keyword">using</span> Id = Detail::CofactorIndices&lt;row,col&gt;;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordflow">return</span> sign(row,col) * (<a class="code" href="namespaceFunG.html#aae631e6149505bdfc0b1c6162b370c7f">at</a>(A,Id::firstRow,Id::firstCol)*<a class="code" href="namespaceFunG.html#aae631e6149505bdfc0b1c6162b370c7f">at</a>(B,Id::lastRow,Id::lastCol) - <a class="code" href="namespaceFunG.html#aae631e6149505bdfc0b1c6162b370c7f">at</a>(A,Id::firstRow,Id::lastCol)*<a class="code" href="namespaceFunG.html#aae631e6149505bdfc0b1c6162b370c7f">at</a>(B,Id::lastRow,Id::firstCol));</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordflow">return</span> sign(row,col) * (<a class="code" href="namespacefuncy.html#a1a543c0f61343fa69a250819fd87069a">at</a>(A,Id::firstRow,Id::firstCol)*<a class="code" href="namespacefuncy.html#a1a543c0f61343fa69a250819fd87069a">at</a>(B,Id::lastRow,Id::lastCol) - <a class="code" href="namespacefuncy.html#a1a543c0f61343fa69a250819fd87069a">at</a>(A,Id::firstRow,Id::lastCol)*<a class="code" href="namespacefuncy.html#a1a543c0f61343fa69a250819fd87069a">at</a>(B,Id::lastRow,Id::firstCol));</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;      }</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keyword">template</span> &lt; <span class="keywordtype">int</span> row , <span class="keywordtype">int</span> col , <span class="keyword">class </span>Matrix ,</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;               std::enable_if_t&lt;Checks::isConstantSize&lt;Matrix&gt;()&gt;* = <span class="keyword">nullptr</span> ,</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;               <span class="keyword">class</span> = Concepts::MatrixConceptCheck&lt;Matrix&gt; &gt;</div>
-<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="group__LinearAlgebraGroup.html#gace32a0876d4a8333f3bfc564316085ed">   72</a></span>&#160;    <span class="keyword">auto</span> <a class="code" href="group__LinearAlgebraGroup.html#gace32a0876d4a8333f3bfc564316085ed">computeCofactor</a>(Matrix <span class="keyword">const</span>&amp; A)</div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="group__LinearAlgebraGroup.html#gab15cdaf462f65ca62d0b810e3413c515">   72</a></span>&#160;    <span class="keyword">auto</span> <a class="code" href="group__LinearAlgebraGroup.html#gab15cdaf462f65ca62d0b810e3413c515">computeCofactor</a>(Matrix <span class="keyword">const</span>&amp; A)</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    {</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      static_assert( dim&lt;Matrix&gt;() == 2 || dim&lt;Matrix&gt;() == 3 ,</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                     <span class="stringliteral">&quot;Cofactors are currently only implemented for 2x2 and 3x3 matrices. Efficient general implementations are non-trivial and may or may not be implemented in the future.&quot;</span> );</div>
@@ -165,18 +165,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keyword">template</span> &lt; <span class="keywordtype">int</span> row , <span class="keywordtype">int</span> col , <span class="keyword">class </span>Matrix ,</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;               std::enable_if_t&lt;!Checks::isConstantSize&lt;Matrix&gt;()&gt;* = <span class="keyword">nullptr</span> ,</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;               <span class="keyword">class</span> = <a class="code" href="structFunG_1_1Concepts_1_1MatrixConceptCheck.html">Concepts::MatrixConceptCheck&lt;Matrix&gt;</a> &gt;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keyword">auto</span> <a class="code" href="group__LinearAlgebraGroup.html#gace32a0876d4a8333f3bfc564316085ed">computeCofactor</a>(Matrix <span class="keyword">const</span>&amp; A)</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;               <span class="keyword">class</span> = <a class="code" href="structfuncy_1_1Concepts_1_1MatrixConceptCheck.html">Concepts::MatrixConceptCheck&lt;Matrix&gt;</a> &gt;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keyword">auto</span> <a class="code" href="group__LinearAlgebraGroup.html#gab15cdaf462f65ca62d0b810e3413c515">computeCofactor</a>(Matrix <span class="keyword">const</span>&amp; A)</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    {</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;      assert( ( <a class="code" href="namespaceFunG_1_1LinearAlgebra.html#abd3afa2fcd2194787342b2662cfa9f5a">rows</a>(A)==2 &amp;&amp; <a class="code" href="namespaceFunG_1_1LinearAlgebra.html#ae981b8bee32eea3ce87f41874835c9c1">cols</a>(A)==2 ) || ( <a class="code" href="namespaceFunG_1_1LinearAlgebra.html#abd3afa2fcd2194787342b2662cfa9f5a">rows</a>(A)==3 &amp;&amp; <a class="code" href="namespaceFunG_1_1LinearAlgebra.html#ae981b8bee32eea3ce87f41874835c9c1">cols</a>(A)==3) );</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;      <span class="keywordflow">if</span>( <a class="code" href="namespaceFunG_1_1LinearAlgebra.html#abd3afa2fcd2194787342b2662cfa9f5a">rows</a>(A) == 2 ) <span class="keywordflow">return</span> Detail::computeCofactorImpl&lt;row,col&gt;(A, A, std::integral_constant&lt;int,2&gt;());</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;      assert( ( <a class="code" href="namespacefuncy_1_1LinearAlgebra.html#aea4d8c30f47543a340dd7d1efda08b6d">rows</a>(A)==2 &amp;&amp; <a class="code" href="namespacefuncy_1_1LinearAlgebra.html#adee762dc2457194e15c0a5e678babcb2">cols</a>(A)==2 ) || ( <a class="code" href="namespacefuncy_1_1LinearAlgebra.html#aea4d8c30f47543a340dd7d1efda08b6d">rows</a>(A)==3 &amp;&amp; <a class="code" href="namespacefuncy_1_1LinearAlgebra.html#adee762dc2457194e15c0a5e678babcb2">cols</a>(A)==3) );</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;      <span class="keywordflow">if</span>( <a class="code" href="namespacefuncy_1_1LinearAlgebra.html#aea4d8c30f47543a340dd7d1efda08b6d">rows</a>(A) == 2 ) <span class="keywordflow">return</span> Detail::computeCofactorImpl&lt;row,col&gt;(A, A, std::integral_constant&lt;int,2&gt;());</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;      <span class="comment">/*if( rows(A) == 3 )*/</span> <span class="keywordflow">return</span> Detail::computeCofactorImpl&lt;row,col&gt;(A, A, std::integral_constant&lt;int,3&gt;());</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    }</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keyword">template</span> &lt; <span class="keywordtype">int</span> row , <span class="keywordtype">int</span> col , <span class="keyword">class </span>Matrix ,</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;               std::enable_if_t&lt;Checks::isConstantSize&lt;Matrix&gt;()&gt;* = <span class="keyword">nullptr</span> ,</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;               <span class="keyword">class</span> = Concepts::MatrixConceptCheck&lt;Matrix&gt; &gt;</div>
-<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="group__LinearAlgebraGroup.html#ga3970ee7fa4d47612427a59cecf56746c">  106</a></span>&#160;    <span class="keyword">auto</span> <a class="code" href="group__LinearAlgebraGroup.html#ga3970ee7fa4d47612427a59cecf56746c">computeCofactorDirectionalDerivative</a>(Matrix <span class="keyword">const</span>&amp; A, Matrix <span class="keyword">const</span>&amp; B)</div>
+<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="group__LinearAlgebraGroup.html#ga226879a7c479a138381887890964ecf8">  106</a></span>&#160;    <span class="keyword">auto</span> <a class="code" href="group__LinearAlgebraGroup.html#ga226879a7c479a138381887890964ecf8">computeCofactorDirectionalDerivative</a>(Matrix <span class="keyword">const</span>&amp; A, Matrix <span class="keyword">const</span>&amp; B)</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    {</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;      static_assert( dim&lt;Matrix&gt;() == 2 || dim&lt;Matrix&gt;() == 3 ,</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                     <span class="stringliteral">&quot;Cofactors are currently only implemented for 2x2 and 3x3 matrices. Efficient general implementations are non-trivial and may or may not be implemented in the future.&quot;</span> );</div>
@@ -185,32 +185,32 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keyword">template</span> &lt; <span class="keywordtype">int</span> row , <span class="keywordtype">int</span> col , <span class="keyword">class </span>Matrix ,</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;               std::enable_if_t&lt;!Checks::isConstantSize&lt;Matrix&gt;()&gt;* = <span class="keyword">nullptr</span> ,</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;               <span class="keyword">class</span> = <a class="code" href="structFunG_1_1Concepts_1_1MatrixConceptCheck.html">Concepts::MatrixConceptCheck&lt;Matrix&gt;</a> &gt;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keyword">auto</span> <a class="code" href="group__LinearAlgebraGroup.html#ga3970ee7fa4d47612427a59cecf56746c">computeCofactorDirectionalDerivative</a>(Matrix <span class="keyword">const</span>&amp; A, Matrix <span class="keyword">const</span>&amp; B)</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;               <span class="keyword">class</span> = <a class="code" href="structfuncy_1_1Concepts_1_1MatrixConceptCheck.html">Concepts::MatrixConceptCheck&lt;Matrix&gt;</a> &gt;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keyword">auto</span> <a class="code" href="group__LinearAlgebraGroup.html#ga226879a7c479a138381887890964ecf8">computeCofactorDirectionalDerivative</a>(Matrix <span class="keyword">const</span>&amp; A, Matrix <span class="keyword">const</span>&amp; B)</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    {</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;      assert( ( <a class="code" href="namespaceFunG_1_1LinearAlgebra.html#abd3afa2fcd2194787342b2662cfa9f5a">rows</a>(A)==2 &amp;&amp; <a class="code" href="namespaceFunG_1_1LinearAlgebra.html#ae981b8bee32eea3ce87f41874835c9c1">cols</a>(A)==2 ) || ( <a class="code" href="namespaceFunG_1_1LinearAlgebra.html#abd3afa2fcd2194787342b2662cfa9f5a">rows</a>(A)==3 &amp;&amp; <a class="code" href="namespaceFunG_1_1LinearAlgebra.html#ae981b8bee32eea3ce87f41874835c9c1">cols</a>(A)==3) );</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;      <span class="keywordflow">if</span> ( <a class="code" href="namespaceFunG_1_1LinearAlgebra.html#abd3afa2fcd2194787342b2662cfa9f5a">rows</a>(A)==2 ) <span class="keywordflow">return</span> Detail::computeCofactorImpl&lt;row,col&gt;(A, B, std::integral_constant&lt;int,2&gt;());</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;      assert( ( <a class="code" href="namespacefuncy_1_1LinearAlgebra.html#aea4d8c30f47543a340dd7d1efda08b6d">rows</a>(A)==2 &amp;&amp; <a class="code" href="namespacefuncy_1_1LinearAlgebra.html#adee762dc2457194e15c0a5e678babcb2">cols</a>(A)==2 ) || ( <a class="code" href="namespacefuncy_1_1LinearAlgebra.html#aea4d8c30f47543a340dd7d1efda08b6d">rows</a>(A)==3 &amp;&amp; <a class="code" href="namespacefuncy_1_1LinearAlgebra.html#adee762dc2457194e15c0a5e678babcb2">cols</a>(A)==3) );</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;      <span class="keywordflow">if</span> ( <a class="code" href="namespacefuncy_1_1LinearAlgebra.html#aea4d8c30f47543a340dd7d1efda08b6d">rows</a>(A)==2 ) <span class="keywordflow">return</span> Detail::computeCofactorImpl&lt;row,col&gt;(A, B, std::integral_constant&lt;int,2&gt;());</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;      <span class="comment">/*if ( rows(A)==3 )*/</span> <span class="keywordflow">return</span> Detail::computeCofactorImpl&lt;row,col&gt;(A, B, std::integral_constant&lt;int,3&gt;());</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    }</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  }</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;}</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="preprocessor">#endif // FUNG_LINEAR_ALGEBRA_COFACTOR_HH</span></div>
-<div class="ttc" id="namespaceFunG_1_1LinearAlgebra_html_abd3afa2fcd2194787342b2662cfa9f5a"><div class="ttname"><a href="namespaceFunG_1_1LinearAlgebra.html#abd3afa2fcd2194787342b2662cfa9f5a">FunG::LinearAlgebra::rows</a></div><div class="ttdeci">auto rows(const Matrix &amp;A)</div><div class="ttdoc">Number of rows of a dynamic size matrix. </div><div class="ttdef"><b>Definition:</b> rows_and_cols.hh:68</div></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="preprocessor">#endif // FUNCY_LINEAR_ALGEBRA_COFACTOR_HH</span></div>
+<div class="ttc" id="group__LinearAlgebraGroup_html_ga226879a7c479a138381887890964ecf8"><div class="ttname"><a href="group__LinearAlgebraGroup.html#ga226879a7c479a138381887890964ecf8">funcy::LinearAlgebra::computeCofactorDirectionalDerivative</a></div><div class="ttdeci">auto computeCofactorDirectionalDerivative(Matrix const &amp;A, Matrix const &amp;B)</div><div class="ttdoc">Compute the first directional derivative in direction  of the -cofactor of . Implemented for  with ...</div><div class="ttdef"><b>Definition:</b> cofactor.hh:106</div></div>
 <div class="ttc" id="dimension_8hh_html"><div class="ttname"><a href="dimension_8hh.html">dimension.hh</a></div></div>
-<div class="ttc" id="group__LinearAlgebraGroup_html_gace32a0876d4a8333f3bfc564316085ed"><div class="ttname"><a href="group__LinearAlgebraGroup.html#gace32a0876d4a8333f3bfc564316085ed">FunG::LinearAlgebra::computeCofactor</a></div><div class="ttdeci">auto computeCofactor(Matrix const &amp;A)</div><div class="ttdoc">Compute the -cofactor of . Implemented for  with . </div><div class="ttdef"><b>Definition:</b> cofactor.hh:72</div></div>
+<div class="ttc" id="group__LinearAlgebraGroup_html_gab15cdaf462f65ca62d0b810e3413c515"><div class="ttname"><a href="group__LinearAlgebraGroup.html#gab15cdaf462f65ca62d0b810e3413c515">funcy::LinearAlgebra::computeCofactor</a></div><div class="ttdeci">auto computeCofactor(Matrix const &amp;A)</div><div class="ttdoc">Compute the -cofactor of . Implemented for  with . </div><div class="ttdef"><b>Definition:</b> cofactor.hh:72</div></div>
+<div class="ttc" id="namespacefuncy_1_1LinearAlgebra_html_aea4d8c30f47543a340dd7d1efda08b6d"><div class="ttname"><a href="namespacefuncy_1_1LinearAlgebra.html#aea4d8c30f47543a340dd7d1efda08b6d">funcy::LinearAlgebra::rows</a></div><div class="ttdeci">auto rows(const Matrix &amp;A)</div><div class="ttdoc">Number of rows of a dynamic size matrix. </div><div class="ttdef"><b>Definition:</b> rows_and_cols.hh:68</div></div>
+<div class="ttc" id="namespacefuncy_1_1LinearAlgebra_html_adee762dc2457194e15c0a5e678babcb2"><div class="ttname"><a href="namespacefuncy_1_1LinearAlgebra.html#adee762dc2457194e15c0a5e678babcb2">funcy::LinearAlgebra::cols</a></div><div class="ttdeci">auto cols(const Matrix &amp;A)</div><div class="ttdoc">Number of columns of a dynamic size matrix. </div><div class="ttdef"><b>Definition:</b> rows_and_cols.hh:84</div></div>
 <div class="ttc" id="at_8hh_html"><div class="ttname"><a href="at_8hh.html">at.hh</a></div></div>
 <div class="ttc" id="static__checks_8hh_html"><div class="ttname"><a href="static__checks_8hh.html">static_checks.hh</a></div></div>
-<div class="ttc" id="group__LinearAlgebraGroup_html_ga3970ee7fa4d47612427a59cecf56746c"><div class="ttname"><a href="group__LinearAlgebraGroup.html#ga3970ee7fa4d47612427a59cecf56746c">FunG::LinearAlgebra::computeCofactorDirectionalDerivative</a></div><div class="ttdeci">auto computeCofactorDirectionalDerivative(Matrix const &amp;A, Matrix const &amp;B)</div><div class="ttdoc">Compute the first directional derivative in direction  of the -cofactor of . Implemented for  with ...</div><div class="ttdef"><b>Definition:</b> cofactor.hh:106</div></div>
-<div class="ttc" id="namespaceFunG_1_1LinearAlgebra_html_ae981b8bee32eea3ce87f41874835c9c1"><div class="ttname"><a href="namespaceFunG_1_1LinearAlgebra.html#ae981b8bee32eea3ce87f41874835c9c1">FunG::LinearAlgebra::cols</a></div><div class="ttdeci">auto cols(const Matrix &amp;A)</div><div class="ttdoc">Number of columns of a dynamic size matrix. </div><div class="ttdef"><b>Definition:</b> rows_and_cols.hh:84</div></div>
-<div class="ttc" id="namespaceFunG_html_aae631e6149505bdfc0b1c6162b370c7f"><div class="ttname"><a href="namespaceFunG.html#aae631e6149505bdfc0b1c6162b370c7f">FunG::at</a></div><div class="ttdeci">decltype(auto) FUNG_ALWAYS_INLINE at(Matrix &amp;&amp;A, Index i, Index j)</div><div class="ttdoc">Access matrix entry . </div><div class="ttdef"><b>Definition:</b> at.hh:73</div></div>
-<div class="ttc" id="structFunG_1_1Concepts_1_1MatrixConceptCheck_html"><div class="ttname"><a href="structFunG_1_1Concepts_1_1MatrixConceptCheck.html">FunG::Concepts::MatrixConceptCheck</a></div><div class="ttdoc">Static check if the requirements of MatrixConcept are satisfied. </div><div class="ttdef"><b>Definition:</b> concept_check.hh:69</div></div>
+<div class="ttc" id="namespacefuncy_html_a1a543c0f61343fa69a250819fd87069a"><div class="ttname"><a href="namespacefuncy.html#a1a543c0f61343fa69a250819fd87069a">funcy::at</a></div><div class="ttdeci">decltype(auto) FUNCY_ALWAYS_INLINE at(Matrix &amp;&amp;A, Index i, Index j)</div><div class="ttdoc">Access matrix entry . </div><div class="ttdef"><b>Definition:</b> at.hh:73</div></div>
 <div class="ttc" id="concept__check_8hh_html"><div class="ttname"><a href="concept__check_8hh.html">concept_check.hh</a></div></div>
+<div class="ttc" id="structfuncy_1_1Concepts_1_1MatrixConceptCheck_html"><div class="ttname"><a href="structfuncy_1_1Concepts_1_1MatrixConceptCheck.html">funcy::Concepts::MatrixConceptCheck</a></div><div class="ttdoc">Static check if the requirements of MatrixConcept are satisfied. </div><div class="ttdef"><b>Definition:</b> concept_check.hh:69</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Mar 7 2019 22:08:09 for FunG by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Mar 10 2019 08:25:09 for funcy by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

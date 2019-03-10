@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>FunG: include/fung/util/compute_dot.hh Source File</title>
+<title>funcy: include/funcy/util/compute_dot.hh Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,7 +28,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">FunG
+   <div id="projectname">funcy
    </div>
   </td>
  </tr>
@@ -88,7 +88,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_fa81a0b40bd9e8878bcb1c2d8e9b57c6.html">include</a></li><li class="navelem"><a class="el" href="dir_fd47c672f6d66b5c6e237ee1782a0895.html">fung</a></li><li class="navelem"><a class="el" href="dir_042fa42b4d834a66c1d15d8eb7556c50.html">util</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_2b05d8de44f473256ece09f3e5f2d153.html">include</a></li><li class="navelem"><a class="el" href="dir_a89158a207ff7179a34c837fd3516315.html">funcy</a></li><li class="navelem"><a class="el" href="dir_92073566fc3d85754fbf4df4c4f194c7.html">util</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -101,7 +101,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;utility&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="type__traits_8hh.html">type_traits.hh</a>&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">namespace </span>FunG</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">namespace </span>funcy</div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;{</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;  <span class="keyword">namespace </span>Detail</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;  {</div>
@@ -117,7 +117,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    {</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;      <span class="keyword">static</span> constexpr <span class="keywordtype">bool</span> present = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;      ComputeDotImpl(X <span class="keyword">const</span>&amp; x, Y <span class="keyword">const</span>&amp; y) : value( x().<a class="code" href="namespaceFunG.html#ac73eb907f3d29a9ea60513a43c658270">dot</a>(y()) )</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;      ComputeDotImpl(X <span class="keyword">const</span>&amp; x, Y <span class="keyword">const</span>&amp; y) : value( x().<a class="code" href="namespacefuncy.html#a3d455dfbb9efa1ed6bf765aeeffb6f50">dot</a>(y()) )</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;      {}</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;      decltype(<span class="keyword">auto</span>) operator()()<span class="keyword"> const</span></div>
@@ -143,12 +143,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">return</span> ComputeDot&lt;F,G&gt;(f,g);</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  }</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div>
-<div class="ttc" id="namespaceFunG_html_ac73eb907f3d29a9ea60513a43c658270"><div class="ttname"><a href="namespaceFunG.html#ac73eb907f3d29a9ea60513a43c658270">FunG::dot</a></div><div class="ttdeci">auto dot(F &amp;&amp;f, G &amp;&amp;g)</div><div class="ttdoc">overload of &quot;dot&quot;-function for the generation of functions. </div><div class="ttdef"><b>Definition:</b> generate.hh:200</div></div>
+<div class="ttc" id="namespacefuncy_html_a3d455dfbb9efa1ed6bf765aeeffb6f50"><div class="ttname"><a href="namespacefuncy.html#a3d455dfbb9efa1ed6bf765aeeffb6f50">funcy::dot</a></div><div class="ttdeci">auto dot(F &amp;&amp;f, G &amp;&amp;g)</div><div class="ttdoc">overload of &quot;dot&quot;-function for the generation of functions. </div><div class="ttdef"><b>Definition:</b> generate.hh:200</div></div>
 <div class="ttc" id="type__traits_8hh_html"><div class="ttname"><a href="type__traits_8hh.html">type_traits.hh</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Mar 7 2019 22:08:09 for FunG by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Mar 10 2019 08:25:09 for funcy by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

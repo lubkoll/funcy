@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['zero',['zero',['../namespaceFunG.html#a649b4470d6def401959bfea3a368c48c',1,'FunG::zero()'],['../namespaceFunG.html#ae633433339ba30207aa526e54e3924b4',1,'FunG::zero(int rows, int cols)']]]
+  ['zero',['zero',['../namespacefuncy.html#ac1f22224f100309c6d5c5b336ddb3915',1,'funcy::zero()'],['../namespacefuncy.html#a0f3ab3167272c9911b70265396fa049b',1,'funcy::zero(int rows, int cols)']]]
 ];

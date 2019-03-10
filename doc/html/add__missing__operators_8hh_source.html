@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>FunG: include/fung/util/add_missing_operators.hh Source File</title>
+<title>funcy: include/funcy/util/add_missing_operators.hh Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,7 +28,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">FunG
+   <div id="projectname">funcy
    </div>
   </td>
  </tr>
@@ -88,7 +88,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_fa81a0b40bd9e8878bcb1c2d8e9b57c6.html">include</a></li><li class="navelem"><a class="el" href="dir_fd47c672f6d66b5c6e237ee1782a0895.html">fung</a></li><li class="navelem"><a class="el" href="dir_042fa42b4d834a66c1d15d8eb7556c50.html">util</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_2b05d8de44f473256ece09f3e5f2d153.html">include</a></li><li class="navelem"><a class="el" href="dir_a89158a207ff7179a34c837fd3516315.html">funcy</a></li><li class="navelem"><a class="el" href="dir_92073566fc3d85754fbf4df4c4f194c7.html">util</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -99,8 +99,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="add__missing__operators_8hh.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// Copyright (C) 2015 by Lars Lubkoll. All rights reserved.</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Released under the terms of the GNU General Public License version 3 or later.</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#ifndef FUNG_UTIL_ADDMISSINGOPERATORS_HH</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define FUNG_UTIL_ADDMISSINGOPERATORS_HH</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#ifndef FUNCY_UTIL_ADDMISSINGOPERATORS_HH</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define FUNCY_UTIL_ADDMISSINGOPERATORS_HH</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;type_traits&gt;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="static__checks_8hh.html">static_checks.hh</a>&quot;</span></div>
@@ -112,11 +112,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  <span class="keyword">template</span> &lt;<span class="keyword">class</span>,<span class="keywordtype">int</span>,<span class="keywordtype">int</span>&gt; <span class="keyword">class </span>FieldMatrix;</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;}</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">namespace </span>FunG</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">namespace </span>funcy</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  <span class="keyword">template</span> &lt;<span class="keyword">class </span>Scalar, <span class="keyword">class </span>OtherScalar, <span class="keywordtype">int</span> n,</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            std::enable_if_t&lt; !Checks::Has::Free::multiplication&lt; Dune::FieldVector&lt;Scalar,n&gt; , Dune::FieldVector&lt;OtherScalar,n&gt; &gt;() &gt;* = <span class="keyword">nullptr</span>&gt;</div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="namespaceFunG.html#a5e258023361844926f485229c62a733b">   24</a></span>&#160;  <span class="keyword">auto</span> <span class="keyword">operator</span>*(<span class="keyword">const</span> Dune::FieldVector&lt;Scalar,n&gt;&amp; a, <span class="keyword">const</span> Dune::FieldVector&lt;OtherScalar,n&gt;&amp; b)</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="namespacefuncy.html#a8cc6f20ecf2e37a42cbf2f68f2c0b377">   24</a></span>&#160;  <span class="keyword">auto</span> <span class="keyword">operator</span>*(<span class="keyword">const</span> Dune::FieldVector&lt;Scalar,n&gt;&amp; a, <span class="keyword">const</span> Dune::FieldVector&lt;OtherScalar,n&gt;&amp; b)</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  {</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    Scalar result = a[0] * b[0];</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=1; i&lt;n; ++i)</div>
@@ -126,7 +126,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <span class="keyword">template</span> &lt;<span class="keyword">class </span>Scalar, <span class="keyword">class </span>OtherScalar, <span class="keywordtype">int</span> n, <span class="keywordtype">int</span> m,</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            std::enable_if_t&lt; !Checks::Has::Free::multiplication&lt; Dune::FieldMatrix&lt;Scalar,n,m&gt; , Dune::FieldVector&lt;OtherScalar,m&gt; &gt;() &gt;* = <span class="keyword">nullptr</span>&gt;</div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="namespaceFunG.html#abadb8da34a5abc3dde0107231ab91c6f">   35</a></span>&#160;  <span class="keyword">auto</span> <span class="keyword">operator</span>*(<span class="keyword">const</span> Dune::FieldMatrix&lt;Scalar,n,m&gt;&amp; A, <span class="keyword">const</span> Dune::FieldVector&lt;OtherScalar,m&gt;&amp; x)</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="namespacefuncy.html#a835d1e6ece8ca8b6690cf35afd9a834d">   35</a></span>&#160;  <span class="keyword">auto</span> <span class="keyword">operator</span>*(<span class="keyword">const</span> Dune::FieldMatrix&lt;Scalar,n,m&gt;&amp; A, <span class="keyword">const</span> Dune::FieldVector&lt;OtherScalar,m&gt;&amp; x)</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  {</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    Dune::FieldVector&lt;decltype(std::declval&lt;Scalar&gt;()*std::declval&lt;OtherScalar&gt;()),n&gt; y(0);</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    A.mv(x,y);</div>
@@ -135,7 +135,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="keyword">template</span> &lt;<span class="keyword">class </span>Scalar, <span class="keyword">class </span>OtherScalar, <span class="keywordtype">int</span> n, <span class="keywordtype">int</span> m,</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            std::enable_if_t&lt; !Checks::Has::Free::multiplication&lt; Dune::FieldVector&lt;OtherScalar,n&gt; , Dune::FieldMatrix&lt;Scalar,n,m&gt; &gt;() &gt;* = <span class="keyword">nullptr</span>&gt;</div>
-<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="namespaceFunG.html#a19a9d7b55b56f5101560034413a1dbfe">   45</a></span>&#160;  <span class="keyword">auto</span> <span class="keyword">operator</span>*(<span class="keyword">const</span> Dune::FieldVector&lt;OtherScalar,n&gt;&amp; x, <span class="keyword">const</span> Dune::FieldMatrix&lt;Scalar,n,m&gt;&amp; A)</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="namespacefuncy.html#ae1a9b8b810ca6084f9d5c4da9a4c504b">   45</a></span>&#160;  <span class="keyword">auto</span> <span class="keyword">operator</span>*(<span class="keyword">const</span> Dune::FieldVector&lt;OtherScalar,n&gt;&amp; x, <span class="keyword">const</span> Dune::FieldMatrix&lt;Scalar,n,m&gt;&amp; A)</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  {</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    Dune::FieldVector&lt;decltype(std::declval&lt;Scalar&gt;()*std::declval&lt;OtherScalar&gt;()),m&gt; y(0);</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    A.mtv(x,y);</div>
@@ -148,7 +148,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;             std::enable_if_t&lt; !Checks::isFunction&lt;Arg&gt;() &amp;&amp; !is_arithmetic&lt;Arg&gt;() &gt;* = <span class="keyword">nullptr</span>,</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;             std::enable_if_t&lt; !Checks::Has::Free::multiplication&lt;ScalarArg,Arg&gt;() &gt;* = <span class="keyword">nullptr</span>,</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;             std::enable_if_t&lt; Checks::Has::MemOp::inPlaceMultiplication&lt;Arg,ScalarArg&gt;() &gt;* = <span class="keyword">nullptr</span> &gt;</div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="namespaceFunG.html#ac71b238827eda3b6518c39e49447bdeb">   59</a></span>&#160;  <span class="keyword">auto</span> <a class="code" href="namespaceFunG.html#a267562e725c73ece1c1d057b5f29511f">operator*</a>( ScalarArg a , Arg x )</div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="namespacefuncy.html#aa27c0885f7cedb6260fadc492790dfbd">   59</a></span>&#160;  <span class="keyword">auto</span> <a class="code" href="namespacefuncy.html#a5cfa272b773c3d6d3a4faef4fdfea9e2">operator*</a>( ScalarArg a , Arg x )</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  {</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    x *= a;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">return</span> x;</div>
@@ -159,7 +159,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;             std::enable_if_t&lt; !Checks::isFunction&lt;Arg&gt;() &amp;&amp; !is_arithmetic&lt;Arg&gt;::value&gt;* = <span class="keyword">nullptr</span>,</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;             std::enable_if_t&lt; !Checks::Has::Free::multiplication&lt;ScalarArg,Arg&gt;() &gt;* = <span class="keyword">nullptr</span>,</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;             std::enable_if_t&lt; Checks::Has::MemOp::inPlaceMultiplication&lt;Arg,ScalarArg&gt;() &gt;* = <span class="keyword">nullptr</span> &gt;</div>
-<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="namespaceFunG.html#a49623beb215912a02388a11cc18f15fe">   71</a></span>&#160;  <span class="keyword">auto</span> <span class="keyword">operator</span>*( Arg x , ScalarArg a )</div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="namespacefuncy.html#acf4086c99f349c338243766e0d94513f">   71</a></span>&#160;  <span class="keyword">auto</span> <span class="keyword">operator</span>*( Arg x , ScalarArg a )</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  {</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    x *= a;</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordflow">return</span> x;</div>
@@ -170,7 +170,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;             std::enable_if_t&lt; !is_arithmetic&lt;Arg1&gt;() &amp;&amp; !is_arithmetic&lt;Arg2&gt;() &gt;* = <span class="keyword">nullptr</span>,</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;             std::enable_if_t&lt; !Checks::Has::Free::multiplication&lt;Arg1,Arg2&gt;() &amp;&amp;</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                                Checks::Has::MemOp::inPlaceMultiplication&lt;Arg1,Arg2&gt;() &gt;* = <span class="keyword">nullptr</span> &gt;</div>
-<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="namespaceFunG.html#ad023f2d2273af693f2b4ebceeb296dc8">   83</a></span>&#160;  <span class="keyword">auto</span> <a class="code" href="namespaceFunG.html#a267562e725c73ece1c1d057b5f29511f">operator*</a>( Arg1 x, <span class="keyword">const</span> Arg2&amp; y)</div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="namespacefuncy.html#a11c3c76ee2f0df2100eb8790edd07cd4">   83</a></span>&#160;  <span class="keyword">auto</span> <a class="code" href="namespacefuncy.html#a5cfa272b773c3d6d3a4faef4fdfea9e2">operator*</a>( Arg1 x, <span class="keyword">const</span> Arg2&amp; y)</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  {</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    x *= y;</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordflow">return</span> x;</div>
@@ -191,22 +191,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;             std::enable_if_t&lt; !Checks::isFunction&lt;Arg&gt;() &amp;&amp; !is_arithmetic&lt;Arg&gt;() &gt;* = <span class="keyword">nullptr</span>,</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;             std::enable_if_t&lt; !Checks::Has::Free::summation&lt;Arg&gt;() &amp;&amp;</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                                Checks::Has::MemOp::inPlaceSummation&lt;Arg&gt;() &gt;* = <span class="keyword">nullptr</span> &gt;</div>
-<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="namespaceFunG.html#a063d3e8c19dbea3ee1396736fecb64e1">  106</a></span>&#160;  <span class="keyword">auto</span> <a class="code" href="namespaceFunG.html#a24bb5d609b022030afda2d8589cf5509">operator+</a>(Arg x, <span class="keyword">const</span> Arg&amp; y)</div>
+<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="namespacefuncy.html#a809838c85db49f0793b5d78ebc246d1f">  106</a></span>&#160;  <span class="keyword">auto</span> <a class="code" href="namespacefuncy.html#af76531a9ab1782f6c5929bd10cedcb9d">operator+</a>(Arg x, <span class="keyword">const</span> Arg&amp; y)</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  {</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    x += y;</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keywordflow">return</span> x;</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  }</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;}</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="preprocessor">#endif // FUNG_UTIL_ADDMISSINGOPERATORS_HH</span></div>
-<div class="ttc" id="namespaceFunG_html_a267562e725c73ece1c1d057b5f29511f"><div class="ttname"><a href="namespaceFunG.html#a267562e725c73ece1c1d057b5f29511f">FunG::operator*</a></div><div class="ttdeci">auto operator*(F &amp;&amp;f, G &amp;&amp;g)</div><div class="ttdoc">overload of &quot;*&quot;-operator for the generation of functions. </div><div class="ttdef"><b>Definition:</b> generate.hh:185</div></div>
-<div class="ttc" id="namespaceFunG_html_a24bb5d609b022030afda2d8589cf5509"><div class="ttname"><a href="namespaceFunG.html#a24bb5d609b022030afda2d8589cf5509">FunG::operator+</a></div><div class="ttdeci">auto operator+(F &amp;&amp;f, G &amp;&amp;g)</div><div class="ttdoc">overload of &quot;+&quot;-operator for the generation of functions. </div><div class="ttdef"><b>Definition:</b> generate.hh:170</div></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="preprocessor">#endif // FUNCY_UTIL_ADDMISSINGOPERATORS_HH</span></div>
+<div class="ttc" id="namespacefuncy_html_a5cfa272b773c3d6d3a4faef4fdfea9e2"><div class="ttname"><a href="namespacefuncy.html#a5cfa272b773c3d6d3a4faef4fdfea9e2">funcy::operator*</a></div><div class="ttdeci">auto operator*(F &amp;&amp;f, G &amp;&amp;g)</div><div class="ttdoc">overload of &quot;*&quot;-operator for the generation of functions. </div><div class="ttdef"><b>Definition:</b> generate.hh:185</div></div>
+<div class="ttc" id="namespacefuncy_html_af76531a9ab1782f6c5929bd10cedcb9d"><div class="ttname"><a href="namespacefuncy.html#af76531a9ab1782f6c5929bd10cedcb9d">funcy::operator+</a></div><div class="ttdeci">auto operator+(F &amp;&amp;f, G &amp;&amp;g)</div><div class="ttdoc">overload of &quot;+&quot;-operator for the generation of functions. </div><div class="ttdef"><b>Definition:</b> generate.hh:170</div></div>
 <div class="ttc" id="static__checks_8hh_html"><div class="ttname"><a href="static__checks_8hh.html">static_checks.hh</a></div></div>
 <div class="ttc" id="type__traits_8hh_html"><div class="ttname"><a href="type__traits_8hh.html">type_traits.hh</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Mar 7 2019 22:08:09 for FunG by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Mar 10 2019 08:25:09 for funcy by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

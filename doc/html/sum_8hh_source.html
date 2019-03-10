@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>FunG: include/fung/mathematical_operations/sum.hh Source File</title>
+<title>funcy: include/funcy/mathematical_operations/sum.hh Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,7 +28,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">FunG
+   <div id="projectname">funcy
    </div>
   </td>
  </tr>
@@ -88,7 +88,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_fa81a0b40bd9e8878bcb1c2d8e9b57c6.html">include</a></li><li class="navelem"><a class="el" href="dir_fd47c672f6d66b5c6e237ee1782a0895.html">fung</a></li><li class="navelem"><a class="el" href="dir_9120ff90a8709d0406ef5146c247199b.html">mathematical_operations</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_2b05d8de44f473256ece09f3e5f2d153.html">include</a></li><li class="navelem"><a class="el" href="dir_a89158a207ff7179a34c837fd3516315.html">funcy</a></li><li class="navelem"><a class="el" href="dir_5b35b6583635f6114db11188de19a07c.html">mathematical_operations</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -98,46 +98,46 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 <a href="sum_8hh.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="concept__check_8hh.html">fung/concept_check.hh</a>&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="chainer_8hh.html">fung/util/chainer.hh</a>&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="compute__sum_8hh.html">fung/util/compute_sum.hh</a>&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="derivative__wrappers_8hh.html">fung/util/derivative_wrappers.hh</a>&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="evaluate__if__present_8hh.html">fung/util/evaluate_if_present.hh</a>&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="indexed__type_8hh.html">fung/util/indexed_type.hh</a>&gt;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="mathop__traits_8hh.html">fung/util/mathop_traits.hh</a>&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="concept__check_8hh.html">funcy/concept_check.hh</a>&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="chainer_8hh.html">funcy/util/chainer.hh</a>&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="compute__sum_8hh.html">funcy/util/compute_sum.hh</a>&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="derivative__wrappers_8hh.html">funcy/util/derivative_wrappers.hh</a>&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="evaluate__if__present_8hh.html">funcy/util/evaluate_if_present.hh</a>&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="indexed__type_8hh.html">funcy/util/indexed_type.hh</a>&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="mathop__traits_8hh.html">funcy/util/mathop_traits.hh</a>&gt;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;type_traits&gt;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;utility&gt;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">namespace </span>FunG</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">namespace </span>funcy</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keyword">namespace </span>MathematicalOperations</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    {</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keyword">template</span> &lt; <span class="keyword">class</span> F, <span class="keyword">class</span> G, <span class="keyword">class</span> CheckF = Concepts::FunctionConceptCheck&lt; F &gt;,</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                   <span class="keyword">class</span> CheckG = Concepts::FunctionConceptCheck&lt; G &gt; &gt;</div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="structFunG_1_1MathematicalOperations_1_1Sum.html">   25</a></span>&#160;        <span class="keyword">struct </span><a class="code" href="structFunG_1_1MathematicalOperations_1_1Sum.html">Sum</a> : Chainer&lt; Sum&lt; F, G, CheckF, CheckG &gt; &gt;</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="structfuncy_1_1MathematicalOperations_1_1Sum.html">   25</a></span>&#160;        <span class="keyword">struct </span><a class="code" href="structfuncy_1_1MathematicalOperations_1_1Sum.html">Sum</a> : Chainer&lt; Sum&lt; F, G, CheckF, CheckG &gt; &gt;</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        {</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            <span class="keyword">template</span> &lt; <span class="keyword">class</span> InitF, <span class="keyword">class</span> InitG &gt;</div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="structFunG_1_1MathematicalOperations_1_1Sum.html#a273a3996fc22e4a41d0fba9269a99c96">   33</a></span>&#160;            constexpr <a class="code" href="structFunG_1_1MathematicalOperations_1_1Sum.html#a273a3996fc22e4a41d0fba9269a99c96">Sum</a>( InitF&amp;&amp; f_, InitG&amp;&amp; g_ )</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="structfuncy_1_1MathematicalOperations_1_1Sum.html#a7c23d59f7a9ca7ef1584195b437c6c71">   33</a></span>&#160;            constexpr <a class="code" href="structfuncy_1_1MathematicalOperations_1_1Sum.html#a7c23d59f7a9ca7ef1584195b437c6c71">Sum</a>( InitF&amp;&amp; f_, InitG&amp;&amp; g_ )</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                : f( std::forward&lt; InitF &gt;( f_ ) ), g( std::forward&lt; InitG &gt;( g_ ) ),</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                  value( <a class="code" href="namespaceFunG.html#a1aa47c6870754d5d74100568cd3ef532">add_via_traits</a>( f(), g() ) )</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                  value( <a class="code" href="namespacefuncy.html#a2582aac1c2d3dee4cbd9995d9bf068fc">add_via_traits</a>( f(), g() ) )</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            {</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            }</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="keyword">template</span> &lt; <span class="keyword">class</span> Arg &gt;</div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="structFunG_1_1MathematicalOperations_1_1Sum.html#a15985be13a1838d868d2adce8e4f5402">   41</a></span>&#160;            <span class="keywordtype">void</span> <a class="code" href="structFunG_1_1MathematicalOperations_1_1Sum.html#a15985be13a1838d868d2adce8e4f5402">update</a>( Arg&amp;&amp; x )</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="structfuncy_1_1MathematicalOperations_1_1Sum.html#ab70dc2a344084335778658e5aa27c6b9">   41</a></span>&#160;            <span class="keywordtype">void</span> <a class="code" href="structfuncy_1_1MathematicalOperations_1_1Sum.html#ab70dc2a344084335778658e5aa27c6b9">update</a>( Arg&amp;&amp; x )</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                <a class="code" href="namespaceFunG.html#a3b9d2e5d07b30c2ee26703b33e9adb9e">update_if_present</a>( f, x );</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                <a class="code" href="namespaceFunG.html#a3b9d2e5d07b30c2ee26703b33e9adb9e">update_if_present</a>( g, std::forward&lt; Arg &gt;( x ) );</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                value = <a class="code" href="namespaceFunG.html#a1aa47c6870754d5d74100568cd3ef532">add_via_traits</a>( f(), g() );</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                <a class="code" href="namespacefuncy.html#a194c43494e614dfa1f924cf2893860ae">update_if_present</a>( f, x );</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                <a class="code" href="namespacefuncy.html#a194c43494e614dfa1f924cf2893860ae">update_if_present</a>( g, std::forward&lt; Arg &gt;( x ) );</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                value = <a class="code" href="namespacefuncy.html#a2582aac1c2d3dee4cbd9995d9bf068fc">add_via_traits</a>( f(), g() );</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            }</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            <span class="keyword">template</span> &lt; <span class="keywordtype">int</span> index, <span class="keyword">class</span> Arg &gt;</div>
-<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="structFunG_1_1MathematicalOperations_1_1Sum.html#a4e10622e11a29d739f0d4db364980f9a">   50</a></span>&#160;            <span class="keywordtype">void</span> <a class="code" href="structFunG_1_1MathematicalOperations_1_1Sum.html#a4e10622e11a29d739f0d4db364980f9a">update</a>( Arg&amp;&amp; x )</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="structfuncy_1_1MathematicalOperations_1_1Sum.html#a8d03c52542a8fc305d8c2de20ed95209">   50</a></span>&#160;            <span class="keywordtype">void</span> <a class="code" href="structfuncy_1_1MathematicalOperations_1_1Sum.html#a8d03c52542a8fc305d8c2de20ed95209">update</a>( Arg&amp;&amp; x )</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            {</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                update_if_present&lt; index &gt;( f, x );</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                update_if_present&lt; index &gt;( g, std::forward&lt; Arg &gt;( x ) );</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                value = <a class="code" href="namespaceFunG.html#a1aa47c6870754d5d74100568cd3ef532">add_via_traits</a>( f(), g() );</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                value = <a class="code" href="namespacefuncy.html#a2582aac1c2d3dee4cbd9995d9bf068fc">add_via_traits</a>( f(), g() );</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            }</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            constexpr decltype( <span class="keyword">auto</span> ) d0() const noexcept</div>
@@ -148,7 +148,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <span class="keyword">template</span> &lt; <span class="keywordtype">int</span> <span class="keywordtype">id</span>, <span class="keyword">class</span> Arg, <span class="keyword">class</span> IndexedArg = IndexedType&lt; std::decay_t&lt; Arg &gt;, <span class="keywordtype">id</span> &gt;,</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                       <span class="keyword">class</span> = std::enable_if_t&lt;</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                           ComputeSum&lt; D1&lt; F, IndexedArg &gt;, D1&lt; G, IndexedArg &gt; &gt;::present &gt; &gt;</div>
-<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="structFunG_1_1MathematicalOperations_1_1Sum.html#aee8c204769ab30f5ae68f9a8b0fa9bf8">   67</a></span>&#160;            <span class="keyword">auto</span> <a class="code" href="structFunG_1_1MathematicalOperations_1_1Sum.html#aee8c204769ab30f5ae68f9a8b0fa9bf8">d1</a>( Arg&amp;&amp; dx )<span class="keyword"> const</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="structfuncy_1_1MathematicalOperations_1_1Sum.html#a2b3adf33f0a36f8328efe7e332a1ad6d">   67</a></span>&#160;            <span class="keyword">auto</span> <a class="code" href="structfuncy_1_1MathematicalOperations_1_1Sum.html#a2b3adf33f0a36f8328efe7e332a1ad6d">d1</a>( Arg&amp;&amp; dx )<span class="keyword"> const</span></div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keyword">            </span>{</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                <span class="keywordflow">return</span> ComputeSum&lt; D1&lt; F, IndexedArg &gt;, D1&lt; G, IndexedArg &gt; &gt;(</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                    f, g, std::forward&lt; Arg &gt;( dx ) )();</div>
@@ -160,7 +160,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                       <span class="keyword">class </span>= std::enable_if_t&lt;</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                           ComputeSum&lt; D2&lt; F, IndexedArgX, IndexedArgY &gt;,</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                                       D2&lt; G, IndexedArgX, IndexedArgY &gt; &gt;::present &gt; &gt;</div>
-<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="structFunG_1_1MathematicalOperations_1_1Sum.html#a2852f378176e93564ad85fa39331e21d">   80</a></span>&#160;            auto <a class="code" href="structFunG_1_1MathematicalOperations_1_1Sum.html#a2852f378176e93564ad85fa39331e21d">d2</a>( ArgX&amp;&amp; dx, ArgY&amp;&amp; dy ) const</div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="structfuncy_1_1MathematicalOperations_1_1Sum.html#aacefe4f6840e2a8ec6da3e430901335e">   80</a></span>&#160;            auto <a class="code" href="structfuncy_1_1MathematicalOperations_1_1Sum.html#aacefe4f6840e2a8ec6da3e430901335e">d2</a>( ArgX&amp;&amp; dx, ArgY&amp;&amp; dy ) const</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            {</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                <span class="keywordflow">return</span> ComputeSum&lt; D2&lt; F, IndexedArgX, IndexedArgY &gt;,</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                                   D2&lt; G, IndexedArgX, IndexedArgY &gt; &gt;(</div>
@@ -174,7 +174,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                       <span class="keyword">class </span>= std::enable_if_t&lt;</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                           ComputeSum&lt; D3&lt; F, IndexedArgX, IndexedArgY, IndexedArgZ &gt;,</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                                       D3&lt; G, IndexedArgX, IndexedArgY, IndexedArgZ &gt; &gt;::present &gt; &gt;</div>
-<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="structFunG_1_1MathematicalOperations_1_1Sum.html#a03b4ee4cb48bf45992bef43322982635">   95</a></span>&#160;            auto <a class="code" href="structFunG_1_1MathematicalOperations_1_1Sum.html#a03b4ee4cb48bf45992bef43322982635">d3</a>( ArgX&amp;&amp; dx, ArgY&amp;&amp; dy, ArgZ&amp;&amp; dz ) const</div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="structfuncy_1_1MathematicalOperations_1_1Sum.html#aa19f58ea768dcbf17edfb6b1e3e78348">   95</a></span>&#160;            auto <a class="code" href="structfuncy_1_1MathematicalOperations_1_1Sum.html#aa19f58ea768dcbf17edfb6b1e3e78348">d3</a>( ArgX&amp;&amp; dx, ArgY&amp;&amp; dy, ArgZ&amp;&amp; dz ) const</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            {</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                <span class="keywordflow">return</span> ComputeSum&lt; D3&lt; F, IndexedArgX, IndexedArgY, IndexedArgZ &gt;,</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                                   D3&lt; G, IndexedArgX, IndexedArgY, IndexedArgZ &gt; &gt;(</div>
@@ -185,32 +185,32 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keyword">private</span>:</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            F f;</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            G g;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            <a class="code" href="namespaceFunG.html#a7ff91644f18a190ac3d4fc9e970ebe2e">decay_t&lt; decltype( add_via_traits( std::declval&lt; F &gt;</a>()(), std::declval&lt; G &gt;()() ) ) &gt;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            <a class="code" href="namespacefuncy.html#ab4930ccd94b2ac4d9ee9069453f30c84">decay_t&lt; decltype( add_via_traits( std::declval&lt; F &gt;</a>()(), std::declval&lt; G &gt;()() ) ) &gt;</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                value;</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        };</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    }</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;}</div>
 <div class="ttc" id="derivative__wrappers_8hh_html"><div class="ttname"><a href="derivative__wrappers_8hh.html">derivative_wrappers.hh</a></div></div>
-<div class="ttc" id="structFunG_1_1MathematicalOperations_1_1Sum_html_a15985be13a1838d868d2adce8e4f5402"><div class="ttname"><a href="structFunG_1_1MathematicalOperations_1_1Sum.html#a15985be13a1838d868d2adce8e4f5402">FunG::MathematicalOperations::Sum::update</a></div><div class="ttdeci">void update(Arg &amp;&amp;x)</div><div class="ttdoc">Update point of evaluation. </div><div class="ttdef"><b>Definition:</b> sum.hh:41</div></div>
+<div class="ttc" id="structfuncy_1_1MathematicalOperations_1_1Sum_html"><div class="ttname"><a href="structfuncy_1_1MathematicalOperations_1_1Sum.html">funcy::MathematicalOperations::Sum</a></div><div class="ttdoc">Sum of functions of type F and G (F and G must satisfy the requirements of Concepts::FunctionConcept)...</div><div class="ttdef"><b>Definition:</b> sum.hh:25</div></div>
+<div class="ttc" id="namespacefuncy_html_a194c43494e614dfa1f924cf2893860ae"><div class="ttname"><a href="namespacefuncy.html#a194c43494e614dfa1f924cf2893860ae">funcy::update_if_present</a></div><div class="ttdeci">void update_if_present(F &amp;&amp;, Arg &amp;&amp;)</div><div class="ttdef"><b>Definition:</b> evaluate_if_present.hh:41</div></div>
+<div class="ttc" id="structfuncy_1_1MathematicalOperations_1_1Sum_html_ab70dc2a344084335778658e5aa27c6b9"><div class="ttname"><a href="structfuncy_1_1MathematicalOperations_1_1Sum.html#ab70dc2a344084335778658e5aa27c6b9">funcy::MathematicalOperations::Sum::update</a></div><div class="ttdeci">void update(Arg &amp;&amp;x)</div><div class="ttdoc">Update point of evaluation. </div><div class="ttdef"><b>Definition:</b> sum.hh:41</div></div>
 <div class="ttc" id="mathop__traits_8hh_html"><div class="ttname"><a href="mathop__traits_8hh.html">mathop_traits.hh</a></div></div>
-<div class="ttc" id="structFunG_1_1MathematicalOperations_1_1Sum_html_a2852f378176e93564ad85fa39331e21d"><div class="ttname"><a href="structFunG_1_1MathematicalOperations_1_1Sum.html#a2852f378176e93564ad85fa39331e21d">FunG::MathematicalOperations::Sum::d2</a></div><div class="ttdeci">auto d2(ArgX &amp;&amp;dx, ArgY &amp;&amp;dy) const </div><div class="ttdoc">Second directional derivative. </div><div class="ttdef"><b>Definition:</b> sum.hh:80</div></div>
-<div class="ttc" id="namespaceFunG_html_a7ff91644f18a190ac3d4fc9e970ebe2e"><div class="ttname"><a href="namespaceFunG.html#a7ff91644f18a190ac3d4fc9e970ebe2e">FunG::decay_t</a></div><div class="ttdeci">typename Decay&lt; std::decay_t&lt; F &gt; &gt;::type decay_t</div><div class="ttdoc">Access underlying type (if it is hidden by expression templates). </div><div class="ttdef"><b>Definition:</b> type_traits.hh:46</div></div>
-<div class="ttc" id="structFunG_1_1MathematicalOperations_1_1Sum_html_aee8c204769ab30f5ae68f9a8b0fa9bf8"><div class="ttname"><a href="structFunG_1_1MathematicalOperations_1_1Sum.html#aee8c204769ab30f5ae68f9a8b0fa9bf8">FunG::MathematicalOperations::Sum::d1</a></div><div class="ttdeci">auto d1(Arg &amp;&amp;dx) const </div><div class="ttdoc">First directional derivative. </div><div class="ttdef"><b>Definition:</b> sum.hh:67</div></div>
-<div class="ttc" id="structFunG_1_1MathematicalOperations_1_1Sum_html_a4e10622e11a29d739f0d4db364980f9a"><div class="ttname"><a href="structFunG_1_1MathematicalOperations_1_1Sum.html#a4e10622e11a29d739f0d4db364980f9a">FunG::MathematicalOperations::Sum::update</a></div><div class="ttdeci">void update(Arg &amp;&amp;x)</div><div class="ttdoc">Update variable corresponding to index. </div><div class="ttdef"><b>Definition:</b> sum.hh:50</div></div>
-<div class="ttc" id="structFunG_1_1MathematicalOperations_1_1Sum_html_a03b4ee4cb48bf45992bef43322982635"><div class="ttname"><a href="structFunG_1_1MathematicalOperations_1_1Sum.html#a03b4ee4cb48bf45992bef43322982635">FunG::MathematicalOperations::Sum::d3</a></div><div class="ttdeci">auto d3(ArgX &amp;&amp;dx, ArgY &amp;&amp;dy, ArgZ &amp;&amp;dz) const </div><div class="ttdoc">Third directional derivative. </div><div class="ttdef"><b>Definition:</b> sum.hh:95</div></div>
-<div class="ttc" id="namespaceFunG_html_a3b9d2e5d07b30c2ee26703b33e9adb9e"><div class="ttname"><a href="namespaceFunG.html#a3b9d2e5d07b30c2ee26703b33e9adb9e">FunG::update_if_present</a></div><div class="ttdeci">void update_if_present(F &amp;&amp;, Arg &amp;&amp;)</div><div class="ttdef"><b>Definition:</b> evaluate_if_present.hh:41</div></div>
+<div class="ttc" id="namespacefuncy_html_a2582aac1c2d3dee4cbd9995d9bf068fc"><div class="ttname"><a href="namespacefuncy.html#a2582aac1c2d3dee4cbd9995d9bf068fc">funcy::add_via_traits</a></div><div class="ttdeci">auto add_via_traits(T &amp;&amp;lhs, S &amp;&amp;rhs)</div><div class="ttdef"><b>Definition:</b> mathop_traits.hh:85</div></div>
+<div class="ttc" id="structfuncy_1_1MathematicalOperations_1_1Sum_html_a8d03c52542a8fc305d8c2de20ed95209"><div class="ttname"><a href="structfuncy_1_1MathematicalOperations_1_1Sum.html#a8d03c52542a8fc305d8c2de20ed95209">funcy::MathematicalOperations::Sum::update</a></div><div class="ttdeci">void update(Arg &amp;&amp;x)</div><div class="ttdoc">Update variable corresponding to index. </div><div class="ttdef"><b>Definition:</b> sum.hh:50</div></div>
+<div class="ttc" id="structfuncy_1_1MathematicalOperations_1_1Sum_html_aa19f58ea768dcbf17edfb6b1e3e78348"><div class="ttname"><a href="structfuncy_1_1MathematicalOperations_1_1Sum.html#aa19f58ea768dcbf17edfb6b1e3e78348">funcy::MathematicalOperations::Sum::d3</a></div><div class="ttdeci">auto d3(ArgX &amp;&amp;dx, ArgY &amp;&amp;dy, ArgZ &amp;&amp;dz) const </div><div class="ttdoc">Third directional derivative. </div><div class="ttdef"><b>Definition:</b> sum.hh:95</div></div>
+<div class="ttc" id="namespacefuncy_html_ab4930ccd94b2ac4d9ee9069453f30c84"><div class="ttname"><a href="namespacefuncy.html#ab4930ccd94b2ac4d9ee9069453f30c84">funcy::decay_t</a></div><div class="ttdeci">typename Decay&lt; std::decay_t&lt; F &gt; &gt;::type decay_t</div><div class="ttdoc">Access underlying type (if it is hidden by expression templates). </div><div class="ttdef"><b>Definition:</b> type_traits.hh:46</div></div>
 <div class="ttc" id="indexed__type_8hh_html"><div class="ttname"><a href="indexed__type_8hh.html">indexed_type.hh</a></div></div>
 <div class="ttc" id="concept__check_8hh_html"><div class="ttname"><a href="concept__check_8hh.html">concept_check.hh</a></div></div>
 <div class="ttc" id="evaluate__if__present_8hh_html"><div class="ttname"><a href="evaluate__if__present_8hh.html">evaluate_if_present.hh</a></div></div>
+<div class="ttc" id="structfuncy_1_1MathematicalOperations_1_1Sum_html_a2b3adf33f0a36f8328efe7e332a1ad6d"><div class="ttname"><a href="structfuncy_1_1MathematicalOperations_1_1Sum.html#a2b3adf33f0a36f8328efe7e332a1ad6d">funcy::MathematicalOperations::Sum::d1</a></div><div class="ttdeci">auto d1(Arg &amp;&amp;dx) const </div><div class="ttdoc">First directional derivative. </div><div class="ttdef"><b>Definition:</b> sum.hh:67</div></div>
 <div class="ttc" id="compute__sum_8hh_html"><div class="ttname"><a href="compute__sum_8hh.html">compute_sum.hh</a></div></div>
-<div class="ttc" id="namespaceFunG_html_a1aa47c6870754d5d74100568cd3ef532"><div class="ttname"><a href="namespaceFunG.html#a1aa47c6870754d5d74100568cd3ef532">FunG::add_via_traits</a></div><div class="ttdeci">auto add_via_traits(T &amp;&amp;lhs, S &amp;&amp;rhs)</div><div class="ttdef"><b>Definition:</b> mathop_traits.hh:85</div></div>
-<div class="ttc" id="structFunG_1_1MathematicalOperations_1_1Sum_html_a273a3996fc22e4a41d0fba9269a99c96"><div class="ttname"><a href="structFunG_1_1MathematicalOperations_1_1Sum.html#a273a3996fc22e4a41d0fba9269a99c96">FunG::MathematicalOperations::Sum::Sum</a></div><div class="ttdeci">constexpr Sum(InitF &amp;&amp;f_, InitG &amp;&amp;g_)</div><div class="ttdoc">Constructor. </div><div class="ttdef"><b>Definition:</b> sum.hh:33</div></div>
-<div class="ttc" id="structFunG_1_1MathematicalOperations_1_1Sum_html"><div class="ttname"><a href="structFunG_1_1MathematicalOperations_1_1Sum.html">FunG::MathematicalOperations::Sum</a></div><div class="ttdoc">Sum of functions of type F and G (F and G must satisfy the requirements of Concepts::FunctionConcept)...</div><div class="ttdef"><b>Definition:</b> sum.hh:25</div></div>
+<div class="ttc" id="structfuncy_1_1MathematicalOperations_1_1Sum_html_a7c23d59f7a9ca7ef1584195b437c6c71"><div class="ttname"><a href="structfuncy_1_1MathematicalOperations_1_1Sum.html#a7c23d59f7a9ca7ef1584195b437c6c71">funcy::MathematicalOperations::Sum::Sum</a></div><div class="ttdeci">constexpr Sum(InitF &amp;&amp;f_, InitG &amp;&amp;g_)</div><div class="ttdoc">Constructor. </div><div class="ttdef"><b>Definition:</b> sum.hh:33</div></div>
+<div class="ttc" id="structfuncy_1_1MathematicalOperations_1_1Sum_html_aacefe4f6840e2a8ec6da3e430901335e"><div class="ttname"><a href="structfuncy_1_1MathematicalOperations_1_1Sum.html#aacefe4f6840e2a8ec6da3e430901335e">funcy::MathematicalOperations::Sum::d2</a></div><div class="ttdeci">auto d2(ArgX &amp;&amp;dx, ArgY &amp;&amp;dy) const </div><div class="ttdoc">Second directional derivative. </div><div class="ttdef"><b>Definition:</b> sum.hh:80</div></div>
 <div class="ttc" id="chainer_8hh_html"><div class="ttname"><a href="chainer_8hh.html">chainer.hh</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Mar 7 2019 22:08:09 for FunG by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Mar 10 2019 08:25:09 for funcy by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

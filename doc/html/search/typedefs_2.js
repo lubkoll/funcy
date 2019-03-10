@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['decay_5ft',['decay_t',['../namespaceFunG.html#a7ff91644f18a190ac3d4fc9e970ebe2e',1,'FunG']]]
+  ['decay_5ft',['decay_t',['../namespacefuncy.html#ab4930ccd94b2ac4d9ee9069453f30c84',1,'funcy']]]
 ];

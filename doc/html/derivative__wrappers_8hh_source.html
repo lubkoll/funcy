@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>FunG: include/fung/util/derivative_wrappers.hh Source File</title>
+<title>funcy: include/funcy/util/derivative_wrappers.hh Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,7 +28,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">FunG
+   <div id="projectname">funcy
    </div>
   </td>
  </tr>
@@ -88,7 +88,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_fa81a0b40bd9e8878bcb1c2d8e9b57c6.html">include</a></li><li class="navelem"><a class="el" href="dir_fd47c672f6d66b5c6e237ee1782a0895.html">fung</a></li><li class="navelem"><a class="el" href="dir_042fa42b4d834a66c1d15d8eb7556c50.html">util</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_2b05d8de44f473256ece09f3e5f2d153.html">include</a></li><li class="navelem"><a class="el" href="dir_a89158a207ff7179a34c837fd3516315.html">funcy</a></li><li class="navelem"><a class="el" href="dir_92073566fc3d85754fbf4df4c4f194c7.html">util</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -106,7 +106,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="static__checks_8hh.html">static_checks.hh</a>&quot;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span>FunG</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span>funcy</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">namespace </span>Detail</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    {</div>
@@ -140,7 +140,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            D1Impl&amp; operator=( <span class="keyword">const</span> D1Impl&amp; ) = <span class="keyword">delete</span>;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <a class="code" href="namespaceFunG.html#a7ff91644f18a190ac3d4fc9e970ebe2e">std::decay_t</a>&lt; decltype(</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <a class="code" href="namespacefuncy.html#ab4930ccd94b2ac4d9ee9069453f30c84">std::decay_t</a>&lt; decltype(</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                std::declval&lt; F &gt;().<span class="keyword">template</span> d1&lt; id &gt;( std::declval&lt; Arg &gt;() ) ) &gt;</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                value;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        };</div>
@@ -223,7 +223,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            D2Impl&amp; operator=( <span class="keyword">const</span> D2Impl&amp; ) = <span class="keyword">delete</span>;</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            <a class="code" href="namespaceFunG.html#a7ff91644f18a190ac3d4fc9e970ebe2e">std::decay_t</a>&lt; decltype(</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            <a class="code" href="namespacefuncy.html#ab4930ccd94b2ac4d9ee9069453f30c84">std::decay_t</a>&lt; decltype(</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                std::declval&lt; F &gt;().d2( std::declval&lt; ArgX &gt;(), std::declval&lt; ArgY &gt;() ) ) &gt;</div>
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                value;</div>
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        };</div>
@@ -459,12 +459,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;        }</div>
 <div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    };</div>
 <div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;}</div>
-<div class="ttc" id="namespaceFunG_html_a7ff91644f18a190ac3d4fc9e970ebe2e"><div class="ttname"><a href="namespaceFunG.html#a7ff91644f18a190ac3d4fc9e970ebe2e">FunG::decay_t</a></div><div class="ttdeci">typename Decay&lt; std::decay_t&lt; F &gt; &gt;::type decay_t</div><div class="ttdoc">Access underlying type (if it is hidden by expression templates). </div><div class="ttdef"><b>Definition:</b> type_traits.hh:46</div></div>
 <div class="ttc" id="static__checks_8hh_html"><div class="ttname"><a href="static__checks_8hh.html">static_checks.hh</a></div></div>
+<div class="ttc" id="namespacefuncy_html_ab4930ccd94b2ac4d9ee9069453f30c84"><div class="ttname"><a href="namespacefuncy.html#ab4930ccd94b2ac4d9ee9069453f30c84">funcy::decay_t</a></div><div class="ttdeci">typename Decay&lt; std::decay_t&lt; F &gt; &gt;::type decay_t</div><div class="ttdoc">Access underlying type (if it is hidden by expression templates). </div><div class="ttdef"><b>Definition:</b> type_traits.hh:46</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Mar 7 2019 22:08:09 for FunG by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Mar 10 2019 08:25:09 for funcy by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

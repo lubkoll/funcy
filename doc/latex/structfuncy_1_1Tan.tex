@@ -1,0 +1,123 @@
+\hypertarget{structfuncy_1_1Tan}{\section{funcy\-:\-:Tan Struct Reference}
+\label{structfuncy_1_1Tan}\index{funcy\-::\-Tan@{funcy\-::\-Tan}}
+}
+
+
+Tangent function including first three derivatives.  
+
+
+
+
+{\ttfamily \#include $<$tan.\-hh$>$}
+
+Inheritance diagram for funcy\-:\-:Tan\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{structfuncy_1_1Tan}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structfuncy_1_1Tan_a59c80760eee19c36e9d0a3526da9de48}{Tan} (double x=0.)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+void \hyperlink{structfuncy_1_1Tan_afc1b55dec67689ea518844ccae47a862}{update} (double x)
+\begin{DoxyCompactList}\small\item\em Set point of evaluation. \end{DoxyCompactList}\item 
+double \hyperlink{structfuncy_1_1Tan_a807f48721350e4a46c78b0cae6d47d08}{d0} () const noexcept
+\begin{DoxyCompactList}\small\item\em Function value. \end{DoxyCompactList}\item 
+double \hyperlink{structfuncy_1_1Tan_afb5539633ba5ea3cf35ec53d345d5817}{d1} (double dx=1.) const 
+\begin{DoxyCompactList}\small\item\em First (directional) derivative. \end{DoxyCompactList}\item 
+double \hyperlink{structfuncy_1_1Tan_ad23517a856df48d01371dec220455a50}{d2} (double dx=1., double dy=1.) const 
+\begin{DoxyCompactList}\small\item\em Second (directional) derivative. \end{DoxyCompactList}\item 
+double \hyperlink{structfuncy_1_1Tan_a0865054a767883d7d833b44d651591c2}{d3} (double dx=1., double dy=1., double dz=1.) const 
+\begin{DoxyCompactList}\small\item\em Third (directional) derivative. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Tangent function including first three derivatives. 
+
+For scalar functions directional derivatives are less interesting. Incorporating this function as building block for more complex functions requires directional derivatives. These occur during applications of the chain rule. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{structfuncy_1_1Tan_a59c80760eee19c36e9d0a3526da9de48}{\index{funcy\-::\-Tan@{funcy\-::\-Tan}!Tan@{Tan}}
+\index{Tan@{Tan}!funcy::Tan@{funcy\-::\-Tan}}
+\subsubsection[{Tan}]{\setlength{\rightskip}{0pt plus 5cm}funcy\-::\-Tan\-::\-Tan (
+\begin{DoxyParamCaption}
+\item[{double}]{x = {\ttfamily 0.}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}}\label{structfuncy_1_1Tan_a59c80760eee19c36e9d0a3526da9de48}
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & point of evaluation \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{structfuncy_1_1Tan_a807f48721350e4a46c78b0cae6d47d08}{\index{funcy\-::\-Tan@{funcy\-::\-Tan}!d0@{d0}}
+\index{d0@{d0}!funcy::Tan@{funcy\-::\-Tan}}
+\subsubsection[{d0}]{\setlength{\rightskip}{0pt plus 5cm}double funcy\-::\-Tan\-::d0 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}}\label{structfuncy_1_1Tan_a807f48721350e4a46c78b0cae6d47d08}
+
+
+Function value. 
+
+\hypertarget{structfuncy_1_1Tan_afb5539633ba5ea3cf35ec53d345d5817}{\index{funcy\-::\-Tan@{funcy\-::\-Tan}!d1@{d1}}
+\index{d1@{d1}!funcy::Tan@{funcy\-::\-Tan}}
+\subsubsection[{d1}]{\setlength{\rightskip}{0pt plus 5cm}double funcy\-::\-Tan\-::d1 (
+\begin{DoxyParamCaption}
+\item[{double}]{dx = {\ttfamily 1.}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{structfuncy_1_1Tan_afb5539633ba5ea3cf35ec53d345d5817}
+
+
+First (directional) derivative. 
+
+\hypertarget{structfuncy_1_1Tan_ad23517a856df48d01371dec220455a50}{\index{funcy\-::\-Tan@{funcy\-::\-Tan}!d2@{d2}}
+\index{d2@{d2}!funcy::Tan@{funcy\-::\-Tan}}
+\subsubsection[{d2}]{\setlength{\rightskip}{0pt plus 5cm}double funcy\-::\-Tan\-::d2 (
+\begin{DoxyParamCaption}
+\item[{double}]{dx = {\ttfamily 1.}, }
+\item[{double}]{dy = {\ttfamily 1.}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{structfuncy_1_1Tan_ad23517a856df48d01371dec220455a50}
+
+
+Second (directional) derivative. 
+
+\hypertarget{structfuncy_1_1Tan_a0865054a767883d7d833b44d651591c2}{\index{funcy\-::\-Tan@{funcy\-::\-Tan}!d3@{d3}}
+\index{d3@{d3}!funcy::Tan@{funcy\-::\-Tan}}
+\subsubsection[{d3}]{\setlength{\rightskip}{0pt plus 5cm}double funcy\-::\-Tan\-::d3 (
+\begin{DoxyParamCaption}
+\item[{double}]{dx = {\ttfamily 1.}, }
+\item[{double}]{dy = {\ttfamily 1.}, }
+\item[{double}]{dz = {\ttfamily 1.}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{structfuncy_1_1Tan_a0865054a767883d7d833b44d651591c2}
+
+
+Third (directional) derivative. 
+
+\hypertarget{structfuncy_1_1Tan_afc1b55dec67689ea518844ccae47a862}{\index{funcy\-::\-Tan@{funcy\-::\-Tan}!update@{update}}
+\index{update@{update}!funcy::Tan@{funcy\-::\-Tan}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void funcy\-::\-Tan\-::update (
+\begin{DoxyParamCaption}
+\item[{double}]{x}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{structfuncy_1_1Tan_afc1b55dec67689ea518844ccae47a862}
+
+
+Set point of evaluation. 
+
+
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+include/funcy/cmath/\hyperlink{tan_8hh}{tan.\-hh}\end{DoxyCompactItemize}

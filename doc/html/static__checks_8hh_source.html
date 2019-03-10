@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>FunG: include/fung/util/static_checks.hh Source File</title>
+<title>funcy: include/funcy/util/static_checks.hh Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,7 +28,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">FunG
+   <div id="projectname">funcy
    </div>
   </td>
  </tr>
@@ -88,7 +88,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_fa81a0b40bd9e8878bcb1c2d8e9b57c6.html">include</a></li><li class="navelem"><a class="el" href="dir_fd47c672f6d66b5c6e237ee1782a0895.html">fung</a></li><li class="navelem"><a class="el" href="dir_042fa42b4d834a66c1d15d8eb7556c50.html">util</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_2b05d8de44f473256ece09f3e5f2d153.html">include</a></li><li class="navelem"><a class="el" href="dir_a89158a207ff7179a34c837fd3516315.html">funcy</a></li><li class="navelem"><a class="el" href="dir_92073566fc3d85754fbf4df4c4f194c7.html">util</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -106,13 +106,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;type_traits&gt;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;utility&gt;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span>FunG</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span>funcy</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keyword">namespace </span>Checks</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    {</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keyword">template</span> &lt; <span class="keyword">class</span> F &gt;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        constexpr <span class="keywordtype">bool</span> <a class="code" href="group__ConceptGroup.html#gac6e6c5574a8497cc0749e5a613e4d57c">isFunction</a>();</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        constexpr <span class="keywordtype">bool</span> <a class="code" href="group__ConceptGroup.html#ga174e2d9fe934ee3184d9c656b219d754">isFunction</a>();</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keyword">namespace </span>Try</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        {</div>
@@ -184,8 +184,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                    std::declval&lt; ArgX &gt;(), std::declval&lt; ArgY &gt;(), std::declval&lt; ArgZ &gt;() ) );</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                <span class="keyword">template</span> &lt; <span class="keyword">class</span> Arg1, <span class="keyword">class</span> Arg2 &gt;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                <span class="keyword">using</span> <a class="code" href="namespaceFunG_1_1Checks_1_1Has_1_1MemFn.html#adeb3d401c6464514644930596c3a4ccc">rightmultiplyany</a> =</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                    decltype( std::declval&lt; Arg1 &gt;().<a class="code" href="namespaceFunG_1_1Checks_1_1Has_1_1MemFn.html#adeb3d401c6464514644930596c3a4ccc">rightmultiplyany</a>( std::declval&lt; Arg2 &gt;() ) );</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                <span class="keyword">using</span> <a class="code" href="namespacefuncy_1_1Checks_1_1Has_1_1MemFn.html#aa3a1a409eb2bb9d0bf4fd53251c0c849">rightmultiplyany</a> =</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                    decltype( std::declval&lt; Arg1 &gt;().<a class="code" href="namespacefuncy_1_1Checks_1_1Has_1_1MemFn.html#aa3a1a409eb2bb9d0bf4fd53251c0c849">rightmultiplyany</a>( std::declval&lt; Arg2 &gt;() ) );</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            } <span class="comment">// MemFn</span></div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
@@ -199,9 +199,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            } <span class="comment">// Free</span></div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        }     <span class="comment">// Try</span></div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="namespaceFunG_1_1Checks_1_1Has.html">  109</a></span>&#160;        <span class="keyword">namespace </span>Has</div>
+<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="namespacefuncy_1_1Checks_1_1Has.html">  109</a></span>&#160;        <span class="keyword">namespace </span>Has</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        {</div>
-<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="namespaceFunG_1_1Checks_1_1Has_1_1MemOp.html">  111</a></span>&#160;            <span class="keyword">namespace </span>MemOp</div>
+<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="namespacefuncy_1_1Checks_1_1Has_1_1MemOp.html">  111</a></span>&#160;            <span class="keyword">namespace </span>MemOp</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            {</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                <span class="keyword">template</span> &lt; <span class="keyword">class</span> F, <span class="keyword">class</span> = <span class="keywordtype">void</span> &gt;</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                <span class="keyword">struct </span>callable : std::false_type</div>
@@ -285,28 +285,28 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                };</div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;</div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                <span class="keyword">template</span> &lt; <span class="keyword">class</span> F &gt;</div>
-<div class="line"><a name="l00197"></a><span class="lineno"><a class="line" href="namespaceFunG_1_1Checks_1_1Has_1_1MemOp.html#a5810c07eff37faaf76b881548a6722bd">  197</a></span>&#160;                constexpr <span class="keywordtype">bool</span> <a class="code" href="namespaceFunG_1_1Checks_1_1Has_1_1MemOp.html#a5810c07eff37faaf76b881548a6722bd">is_callable</a>()</div>
+<div class="line"><a name="l00197"></a><span class="lineno"><a class="line" href="namespacefuncy_1_1Checks_1_1Has_1_1MemOp.html#ac5b464cedfc7447164cf70828d8c8d6d">  197</a></span>&#160;                constexpr <span class="keywordtype">bool</span> <a class="code" href="namespacefuncy_1_1Checks_1_1Has_1_1MemOp.html#ac5b464cedfc7447164cf70828d8c8d6d">is_callable</a>()</div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                {</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                    <span class="keywordflow">return</span> callable&lt; F &gt;::value;</div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                }</div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;</div>
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                <span class="keyword">template</span> &lt; <span class="keyword">class</span> Arg1, <span class="keyword">class</span> Arg2 &gt;</div>
-<div class="line"><a name="l00205"></a><span class="lineno"><a class="line" href="namespaceFunG_1_1Checks_1_1Has_1_1MemOp.html#ae8e502928ebc6342cab98ebbb62b8802">  205</a></span>&#160;                constexpr <span class="keywordtype">bool</span> <a class="code" href="namespaceFunG_1_1Checks_1_1Has_1_1MemOp.html#ae8e502928ebc6342cab98ebbb62b8802">inPlaceMultiplication</a>()</div>
+<div class="line"><a name="l00205"></a><span class="lineno"><a class="line" href="namespacefuncy_1_1Checks_1_1Has_1_1MemOp.html#af3b2d409a64b3c4d690ceb16ca8101fe">  205</a></span>&#160;                constexpr <span class="keywordtype">bool</span> <a class="code" href="namespacefuncy_1_1Checks_1_1Has_1_1MemOp.html#af3b2d409a64b3c4d690ceb16ca8101fe">inPlaceMultiplication</a>()</div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                {</div>
 <div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                    <span class="keywordflow">return</span> InPlaceMultiplication &lt; Arg1, Arg2,</div>
 <div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                           !isFunction&lt; Arg1 &gt;() &amp;&amp; !isFunction&lt; Arg2 &gt;() &amp;&amp;</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                               !<a class="code" href="structFunG_1_1is__arithmetic.html">is_arithmetic&lt; Arg1 &gt;</a>() &gt; ::value;</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                               !<a class="code" href="structfuncy_1_1is__arithmetic.html">is_arithmetic&lt; Arg1 &gt;</a>() &gt; ::value;</div>
 <div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                }</div>
 <div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;</div>
 <div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                <span class="keyword">template</span> &lt; <span class="keyword">class</span> Arg &gt;</div>
-<div class="line"><a name="l00214"></a><span class="lineno"><a class="line" href="namespaceFunG_1_1Checks_1_1Has_1_1MemOp.html#a23052f7d8da399943f6354a7d477c825">  214</a></span>&#160;                constexpr <span class="keywordtype">bool</span> <a class="code" href="namespaceFunG_1_1Checks_1_1Has_1_1MemOp.html#a23052f7d8da399943f6354a7d477c825">inPlaceSummation</a>()</div>
+<div class="line"><a name="l00214"></a><span class="lineno"><a class="line" href="namespacefuncy_1_1Checks_1_1Has_1_1MemOp.html#a4e938bc8fb7a4d6e3a2e77a80d9b2fb4">  214</a></span>&#160;                constexpr <span class="keywordtype">bool</span> <a class="code" href="namespacefuncy_1_1Checks_1_1Has_1_1MemOp.html#a4e938bc8fb7a4d6e3a2e77a80d9b2fb4">inPlaceSummation</a>()</div>
 <div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                {</div>
 <div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                    <span class="keywordflow">return</span> InPlaceSummation &lt; Arg,</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                           !isFunction&lt; Arg &gt;() &amp;&amp; !<a class="code" href="structFunG_1_1is__arithmetic.html">is_arithmetic&lt; Arg &gt;</a>() &gt; ::value;</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                           !isFunction&lt; Arg &gt;() &amp;&amp; !<a class="code" href="structfuncy_1_1is__arithmetic.html">is_arithmetic&lt; Arg &gt;</a>() &gt; ::value;</div>
 <div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                }</div>
 <div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;            }</div>
 <div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;</div>
-<div class="line"><a name="l00221"></a><span class="lineno"><a class="line" href="namespaceFunG_1_1Checks_1_1Has_1_1MemFn.html">  221</a></span>&#160;            <span class="keyword">namespace </span>MemFn</div>
+<div class="line"><a name="l00221"></a><span class="lineno"><a class="line" href="namespacefuncy_1_1Checks_1_1Has_1_1MemFn.html">  221</a></span>&#160;            <span class="keyword">namespace </span>MemFn</div>
 <div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            {</div>
 <div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                <span class="keyword">template</span> &lt; <span class="keyword">class</span> F, <span class="keyword">class</span> = <span class="keywordtype">void</span> &gt;</div>
 <div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;                <span class="keyword">struct </span>d0 : std::false_type</div>
@@ -418,24 +418,24 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;</div>
 <div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;                <span class="keyword">template</span> &lt; <span class="keyword">class</span> Arg1, <span class="keyword">class</span> Arg2 &gt;</div>
 <div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;                <span class="keyword">struct </span>Rightmultiplany&lt; Arg1, Arg2, true,</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;                                        void_t&lt; Try::<a class="code" href="namespaceFunG_1_1Checks_1_1Has_1_1MemFn.html#adeb3d401c6464514644930596c3a4ccc">MemFn::rightmultiplyany</a>&lt; Arg1, Arg2 &gt; &gt; &gt;</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;                                        void_t&lt; Try::<a class="code" href="namespacefuncy_1_1Checks_1_1Has_1_1MemFn.html#aa3a1a409eb2bb9d0bf4fd53251c0c849">MemFn::rightmultiplyany</a>&lt; Arg1, Arg2 &gt; &gt; &gt;</div>
 <div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                    : std::true_type</div>
 <div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;                {</div>
 <div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;                };</div>
 <div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;</div>
 <div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;                <span class="keyword">template</span> &lt; <span class="keyword">class</span> Arg1, <span class="keyword">class</span> Arg2 &gt;</div>
-<div class="line"><a name="l00343"></a><span class="lineno"><a class="line" href="namespaceFunG_1_1Checks_1_1Has_1_1MemFn.html#adeb3d401c6464514644930596c3a4ccc">  343</a></span>&#160;                constexpr <span class="keywordtype">bool</span> <a class="code" href="namespaceFunG_1_1Checks_1_1Has_1_1MemFn.html#adeb3d401c6464514644930596c3a4ccc">rightmultiplyany</a>()</div>
+<div class="line"><a name="l00343"></a><span class="lineno"><a class="line" href="namespacefuncy_1_1Checks_1_1Has_1_1MemFn.html#aa3a1a409eb2bb9d0bf4fd53251c0c849">  343</a></span>&#160;                constexpr <span class="keywordtype">bool</span> <a class="code" href="namespacefuncy_1_1Checks_1_1Has_1_1MemFn.html#aa3a1a409eb2bb9d0bf4fd53251c0c849">rightmultiplyany</a>()</div>
 <div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;                {</div>
 <div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;                    <span class="keywordflow">return</span> Rightmultiplany &lt; Arg1, Arg2,</div>
 <div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;                           !isFunction&lt; Arg1 &gt;() &amp;&amp; !isFunction&lt; Arg2 &gt;() &amp;&amp;</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;                               !<a class="code" href="structFunG_1_1is__arithmetic.html">is_arithmetic&lt; Arg1 &gt;</a>() &amp;&amp; !<a class="code" href="structFunG_1_1is__arithmetic.html">is_arithmetic&lt; Arg2 &gt;</a>() &gt; ::value;</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;                               !<a class="code" href="structfuncy_1_1is__arithmetic.html">is_arithmetic&lt; Arg1 &gt;</a>() &amp;&amp; !<a class="code" href="structfuncy_1_1is__arithmetic.html">is_arithmetic&lt; Arg2 &gt;</a>() &gt; ::value;</div>
 <div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;                }</div>
 <div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;            }</div>
 <div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;</div>
-<div class="line"><a name="l00351"></a><span class="lineno"><a class="line" href="namespaceFunG_1_1Checks_1_1Has_1_1Free.html">  351</a></span>&#160;            <span class="keyword">namespace </span>Free</div>
+<div class="line"><a name="l00351"></a><span class="lineno"><a class="line" href="namespacefuncy_1_1Checks_1_1Has_1_1Free.html">  351</a></span>&#160;            <span class="keyword">namespace </span>Free</div>
 <div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;            {</div>
 <div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;                template &lt; class Arg1, class Arg2, bool = !( is_arithmetic&lt; Arg1 &gt;::value &amp;&amp;</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;                                                             <a class="code" href="structFunG_1_1is__arithmetic.html">is_arithmetic&lt; Arg2 &gt;::value</a> ) &amp;&amp;</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;                                                             <a class="code" href="structfuncy_1_1is__arithmetic.html">is_arithmetic&lt; Arg2 &gt;::value</a> ) &amp;&amp;</div>
 <div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;                                                          !( MemOp::callable&lt; Arg1 &gt;::value ||</div>
 <div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;                                                             MemOp::callable&lt; Arg2 &gt;::value ),</div>
 <div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;                           <span class="keyword">class </span>= void &gt;</div>
@@ -467,20 +467,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;                };</div>
 <div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;</div>
 <div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;                <span class="keyword">template</span> &lt; <span class="keyword">class</span> Arg1, <span class="keyword">class</span> Arg2 &gt;</div>
-<div class="line"><a name="l00389"></a><span class="lineno"><a class="line" href="namespaceFunG_1_1Checks_1_1Has_1_1Free.html#a2454bd1f5873cc86ec31d09d822a67b1">  389</a></span>&#160;                constexpr <span class="keywordtype">bool</span> <a class="code" href="namespaceFunG_1_1Checks_1_1Has_1_1Free.html#a2454bd1f5873cc86ec31d09d822a67b1">multiplication</a>()</div>
+<div class="line"><a name="l00389"></a><span class="lineno"><a class="line" href="namespacefuncy_1_1Checks_1_1Has_1_1Free.html#a204e1beba06bc977e7b89013591353d6">  389</a></span>&#160;                constexpr <span class="keywordtype">bool</span> <a class="code" href="namespacefuncy_1_1Checks_1_1Has_1_1Free.html#a204e1beba06bc977e7b89013591353d6">multiplication</a>()</div>
 <div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;                {</div>
 <div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;                    <span class="keywordflow">return</span> Multiplication&lt; Arg1, Arg2 &gt;::value;</div>
 <div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;                }</div>
 <div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;</div>
 <div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;                <span class="keyword">template</span> &lt; <span class="keyword">class</span> Arg &gt;</div>
-<div class="line"><a name="l00396"></a><span class="lineno"><a class="line" href="namespaceFunG_1_1Checks_1_1Has_1_1Free.html#a1cf46f7335354d21dff506aaf812b4f5">  396</a></span>&#160;                constexpr <span class="keywordtype">bool</span> <a class="code" href="namespaceFunG_1_1Checks_1_1Has_1_1Free.html#a1cf46f7335354d21dff506aaf812b4f5">summation</a>()</div>
+<div class="line"><a name="l00396"></a><span class="lineno"><a class="line" href="namespacefuncy_1_1Checks_1_1Has_1_1Free.html#ae0cb37e1a67bf71600cae92400988738">  396</a></span>&#160;                constexpr <span class="keywordtype">bool</span> <a class="code" href="namespacefuncy_1_1Checks_1_1Has_1_1Free.html#ae0cb37e1a67bf71600cae92400988738">summation</a>()</div>
 <div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;                {</div>
 <div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;                    <span class="keywordflow">return</span> Summation &lt; Arg,</div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;                           !isFunction&lt; Arg &gt;() &amp;&amp; !<a class="code" href="structFunG_1_1is__arithmetic.html">is_arithmetic&lt; Arg &gt;</a>() &gt; ::value;</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;                           !isFunction&lt; Arg &gt;() &amp;&amp; !<a class="code" href="structfuncy_1_1is__arithmetic.html">is_arithmetic&lt; Arg &gt;</a>() &gt; ::value;</div>
 <div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;                }</div>
 <div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;            }</div>
 <div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;</div>
-<div class="line"><a name="l00403"></a><span class="lineno"><a class="line" href="namespaceFunG_1_1Checks_1_1Has_1_1NestedType.html">  403</a></span>&#160;            <span class="keyword">namespace </span>NestedType</div>
+<div class="line"><a name="l00403"></a><span class="lineno"><a class="line" href="namespacefuncy_1_1Checks_1_1Has_1_1NestedType.html">  403</a></span>&#160;            <span class="keyword">namespace </span>NestedType</div>
 <div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;            {</div>
 <div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;                <span class="keyword">template</span> &lt; <span class="keyword">class</span> EigenArg, <span class="keyword">class</span> = <span class="keywordtype">void</span> &gt;</div>
 <div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;                <span class="keyword">struct </span>PlainObject : std::false_type</div>
@@ -494,13 +494,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;            }</div>
 <div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;</div>
 <div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;            <span class="keyword">template</span> &lt; <span class="keyword">class</span> F &gt;</div>
-<div class="line"><a name="l00419"></a><span class="lineno"><a class="line" href="namespaceFunG_1_1Checks_1_1Has.html#a3c61b3f75ad634464322f21e8acb4e5d">  419</a></span>&#160;            constexpr <span class="keywordtype">bool</span> <a class="code" href="namespaceFunG_1_1Checks_1_1Has.html#a3c61b3f75ad634464322f21e8acb4e5d">consistentFirstDerivative</a>()</div>
+<div class="line"><a name="l00419"></a><span class="lineno"><a class="line" href="namespacefuncy_1_1Checks_1_1Has.html#a8bf7f5a59024cc8321ea379fed648ea7">  419</a></span>&#160;            constexpr <span class="keywordtype">bool</span> <a class="code" href="namespacefuncy_1_1Checks_1_1Has.html#a8bf7f5a59024cc8321ea379fed648ea7">consistentFirstDerivative</a>()</div>
 <div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;            {</div>
 <div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;                <span class="keywordflow">return</span> MemOp::callable&lt; F &gt;::value;</div>
 <div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;            }</div>
 <div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;</div>
 <div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;            <span class="keyword">template</span> &lt; <span class="keyword">class</span> F, <span class="keyword">class</span> IndexedArgX, <span class="keyword">class</span> IndexedArgY &gt;</div>
-<div class="line"><a name="l00425"></a><span class="lineno"><a class="line" href="namespaceFunG_1_1Checks_1_1Has.html#ab4a78fd7a1175707d748445785a0d37c">  425</a></span>&#160;            constexpr <span class="keywordtype">bool</span> <a class="code" href="namespaceFunG_1_1Checks_1_1Has.html#ab4a78fd7a1175707d748445785a0d37c">consistentSecondDerivative</a>()</div>
+<div class="line"><a name="l00425"></a><span class="lineno"><a class="line" href="namespacefuncy_1_1Checks_1_1Has.html#ae07f080937ba3cd627721ddd8244b831">  425</a></span>&#160;            constexpr <span class="keywordtype">bool</span> <a class="code" href="namespacefuncy_1_1Checks_1_1Has.html#ae07f080937ba3cd627721ddd8244b831">consistentSecondDerivative</a>()</div>
 <div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;            {</div>
 <div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;                <span class="keywordflow">return</span> consistentFirstDerivative&lt; F &gt;() &amp;&amp;</div>
 <div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;                       ( Has::MemFn::d2&lt; F, IndexedArgX, IndexedArgY &gt;::value</div>
@@ -509,7 +509,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;            }</div>
 <div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;</div>
 <div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;            <span class="keyword">template</span> &lt; <span class="keyword">class</span> F, <span class="keyword">class</span> IndexedArgX, <span class="keyword">class</span> IndexedArgY, <span class="keyword">class</span> IndexedArgZ &gt;</div>
-<div class="line"><a name="l00434"></a><span class="lineno"><a class="line" href="namespaceFunG_1_1Checks_1_1Has.html#abf6a73e1b599a4aac525bb20931aea4f">  434</a></span>&#160;            constexpr <span class="keywordtype">bool</span> <a class="code" href="namespaceFunG_1_1Checks_1_1Has.html#abf6a73e1b599a4aac525bb20931aea4f">consistentThirdDerivative</a>()</div>
+<div class="line"><a name="l00434"></a><span class="lineno"><a class="line" href="namespacefuncy_1_1Checks_1_1Has.html#ad741287e889ee6f44913d60789c3e8b0">  434</a></span>&#160;            constexpr <span class="keywordtype">bool</span> <a class="code" href="namespacefuncy_1_1Checks_1_1Has.html#ad741287e889ee6f44913d60789c3e8b0">consistentThirdDerivative</a>()</div>
 <div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;            {</div>
 <div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;                <span class="keywordflow">return</span> consistentSecondDerivative&lt; F, IndexedArgX, IndexedArgY &gt;() &amp;&amp;</div>
 <div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;                       ( Has::MemFn::d3&lt; F, IndexedArgX, IndexedArgY, IndexedArgZ &gt;::value</div>
@@ -519,38 +519,38 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;        }</div>
 <div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;</div>
 <div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;        <span class="keyword">template</span> &lt; <span class="keyword">class</span> F &gt;</div>
-<div class="line"><a name="l00444"></a><span class="lineno"><a class="line" href="group__ConceptGroup.html#gac6e6c5574a8497cc0749e5a613e4d57c">  444</a></span>&#160;        constexpr <span class="keywordtype">bool</span> <a class="code" href="group__ConceptGroup.html#gac6e6c5574a8497cc0749e5a613e4d57c">isFunction</a>()</div>
+<div class="line"><a name="l00444"></a><span class="lineno"><a class="line" href="group__ConceptGroup.html#ga174e2d9fe934ee3184d9c656b219d754">  444</a></span>&#160;        constexpr <span class="keywordtype">bool</span> <a class="code" href="group__ConceptGroup.html#ga174e2d9fe934ee3184d9c656b219d754">isFunction</a>()</div>
 <div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;        {</div>
 <div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;            <span class="keywordflow">return</span> Has::MemOp::callable&lt; F &gt;::value;</div>
 <div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;        }</div>
 <div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;</div>
 <div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;        <span class="keyword">template</span> &lt; <span class="keyword">class</span> Arg &gt;</div>
-<div class="line"><a name="l00455"></a><span class="lineno"><a class="line" href="group__ConceptGroup.html#gadcc3e179af2ed0384a3773ea086045b9">  455</a></span>&#160;        constexpr <span class="keywordtype">bool</span> <a class="code" href="group__ConceptGroup.html#gadcc3e179af2ed0384a3773ea086045b9">isConstantSize</a>()</div>
+<div class="line"><a name="l00455"></a><span class="lineno"><a class="line" href="group__ConceptGroup.html#ga84efea3afd51e9db8be11ee2a5335c98">  455</a></span>&#160;        constexpr <span class="keywordtype">bool</span> <a class="code" href="group__ConceptGroup.html#ga84efea3afd51e9db8be11ee2a5335c98">isConstantSize</a>()</div>
 <div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;        {</div>
-<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="structFunG_1_1LinearAlgebra_1_1NumberOfRows.html">LinearAlgebra::NumberOfRows&lt; Arg &gt;::value</a> &gt; 0;</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="structfuncy_1_1LinearAlgebra_1_1NumberOfRows.html">LinearAlgebra::NumberOfRows&lt; Arg &gt;::value</a> &gt; 0;</div>
 <div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;        }</div>
 <div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;    }</div>
 <div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;}</div>
-<div class="ttc" id="namespaceFunG_1_1Checks_1_1Has_1_1Free_html_a1cf46f7335354d21dff506aaf812b4f5"><div class="ttname"><a href="namespaceFunG_1_1Checks_1_1Has_1_1Free.html#a1cf46f7335354d21dff506aaf812b4f5">FunG::Checks::Has::Free::summation</a></div><div class="ttdeci">constexpr bool summation()</div><div class="ttdoc">Check if objects of type Arg support summation. </div><div class="ttdef"><b>Definition:</b> static_checks.hh:396</div></div>
-<div class="ttc" id="group__ConceptGroup_html_gadcc3e179af2ed0384a3773ea086045b9"><div class="ttname"><a href="group__ConceptGroup.html#gadcc3e179af2ed0384a3773ea086045b9">FunG::Checks::isConstantSize</a></div><div class="ttdeci">constexpr bool isConstantSize()</div><div class="ttdoc">Check if object is a static vector for some type satisfying Concepts::VectorConcept. </div><div class="ttdef"><b>Definition:</b> static_checks.hh:455</div></div>
-<div class="ttc" id="group__ConceptGroup_html_gac6e6c5574a8497cc0749e5a613e4d57c"><div class="ttname"><a href="group__ConceptGroup.html#gac6e6c5574a8497cc0749e5a613e4d57c">FunG::Checks::isFunction</a></div><div class="ttdeci">constexpr bool isFunction()</div><div class="ttdef"><b>Definition:</b> static_checks.hh:444</div></div>
+<div class="ttc" id="structfuncy_1_1is__arithmetic_html"><div class="ttname"><a href="structfuncy_1_1is__arithmetic.html">funcy::is_arithmetic</a></div><div class="ttdoc">Specialize this template class to register arithmetic types that are not built-in. </div><div class="ttdef"><b>Definition:</b> type_traits.hh:40</div></div>
+<div class="ttc" id="namespacefuncy_1_1Checks_1_1Has_1_1Free_html_ae0cb37e1a67bf71600cae92400988738"><div class="ttname"><a href="namespacefuncy_1_1Checks_1_1Has_1_1Free.html#ae0cb37e1a67bf71600cae92400988738">funcy::Checks::Has::Free::summation</a></div><div class="ttdeci">constexpr bool summation()</div><div class="ttdoc">Check if objects of type Arg support summation. </div><div class="ttdef"><b>Definition:</b> static_checks.hh:396</div></div>
+<div class="ttc" id="group__ConceptGroup_html_ga84efea3afd51e9db8be11ee2a5335c98"><div class="ttname"><a href="group__ConceptGroup.html#ga84efea3afd51e9db8be11ee2a5335c98">funcy::Checks::isConstantSize</a></div><div class="ttdeci">constexpr bool isConstantSize()</div><div class="ttdoc">Check if object is a static vector for some type satisfying Concepts::VectorConcept. </div><div class="ttdef"><b>Definition:</b> static_checks.hh:455</div></div>
 <div class="ttc" id="extract__rows__and__cols_8hh_html"><div class="ttname"><a href="extract__rows__and__cols_8hh.html">extract_rows_and_cols.hh</a></div></div>
-<div class="ttc" id="namespaceFunG_1_1Checks_1_1Has_1_1MemFn_html_adeb3d401c6464514644930596c3a4ccc"><div class="ttname"><a href="namespaceFunG_1_1Checks_1_1Has_1_1MemFn.html#adeb3d401c6464514644930596c3a4ccc">FunG::Checks::Has::MemFn::rightmultiplyany</a></div><div class="ttdeci">constexpr bool rightmultiplyany()</div><div class="ttdef"><b>Definition:</b> static_checks.hh:343</div></div>
-<div class="ttc" id="structFunG_1_1is__arithmetic_html"><div class="ttname"><a href="structFunG_1_1is__arithmetic.html">FunG::is_arithmetic</a></div><div class="ttdoc">Specialize this template class to register arithmetic types that are not built-in. </div><div class="ttdef"><b>Definition:</b> type_traits.hh:40</div></div>
-<div class="ttc" id="namespaceFunG_1_1Checks_1_1Has_html_a3c61b3f75ad634464322f21e8acb4e5d"><div class="ttname"><a href="namespaceFunG_1_1Checks_1_1Has.html#a3c61b3f75ad634464322f21e8acb4e5d">FunG::Checks::Has::consistentFirstDerivative</a></div><div class="ttdeci">constexpr bool consistentFirstDerivative()</div><div class="ttdef"><b>Definition:</b> static_checks.hh:419</div></div>
-<div class="ttc" id="namespaceFunG_1_1Checks_1_1Has_html_ab4a78fd7a1175707d748445785a0d37c"><div class="ttname"><a href="namespaceFunG_1_1Checks_1_1Has.html#ab4a78fd7a1175707d748445785a0d37c">FunG::Checks::Has::consistentSecondDerivative</a></div><div class="ttdeci">constexpr bool consistentSecondDerivative()</div><div class="ttdef"><b>Definition:</b> static_checks.hh:425</div></div>
-<div class="ttc" id="namespaceFunG_1_1Checks_1_1Has_html_abf6a73e1b599a4aac525bb20931aea4f"><div class="ttname"><a href="namespaceFunG_1_1Checks_1_1Has.html#abf6a73e1b599a4aac525bb20931aea4f">FunG::Checks::Has::consistentThirdDerivative</a></div><div class="ttdeci">constexpr bool consistentThirdDerivative()</div><div class="ttdef"><b>Definition:</b> static_checks.hh:434</div></div>
+<div class="ttc" id="namespacefuncy_1_1Checks_1_1Has_1_1MemOp_html_a4e938bc8fb7a4d6e3a2e77a80d9b2fb4"><div class="ttname"><a href="namespacefuncy_1_1Checks_1_1Has_1_1MemOp.html#a4e938bc8fb7a4d6e3a2e77a80d9b2fb4">funcy::Checks::Has::MemOp::inPlaceSummation</a></div><div class="ttdeci">constexpr bool inPlaceSummation()</div><div class="ttdoc">Check if objects of type Arg support in-place summation. </div><div class="ttdef"><b>Definition:</b> static_checks.hh:214</div></div>
+<div class="ttc" id="group__ConceptGroup_html_ga174e2d9fe934ee3184d9c656b219d754"><div class="ttname"><a href="group__ConceptGroup.html#ga174e2d9fe934ee3184d9c656b219d754">funcy::Checks::isFunction</a></div><div class="ttdeci">constexpr bool isFunction()</div><div class="ttdef"><b>Definition:</b> static_checks.hh:444</div></div>
+<div class="ttc" id="namespacefuncy_1_1Checks_1_1Has_1_1Free_html_a204e1beba06bc977e7b89013591353d6"><div class="ttname"><a href="namespacefuncy_1_1Checks_1_1Has_1_1Free.html#a204e1beba06bc977e7b89013591353d6">funcy::Checks::Has::Free::multiplication</a></div><div class="ttdeci">constexpr bool multiplication()</div><div class="ttdoc">Check if objects of typed Arg1 and Arg2 support multiplication (free operator*). </div><div class="ttdef"><b>Definition:</b> static_checks.hh:389</div></div>
+<div class="ttc" id="namespacefuncy_1_1Checks_1_1Has_1_1MemFn_html_aa3a1a409eb2bb9d0bf4fd53251c0c849"><div class="ttname"><a href="namespacefuncy_1_1Checks_1_1Has_1_1MemFn.html#aa3a1a409eb2bb9d0bf4fd53251c0c849">funcy::Checks::Has::MemFn::rightmultiplyany</a></div><div class="ttdeci">constexpr bool rightmultiplyany()</div><div class="ttdef"><b>Definition:</b> static_checks.hh:343</div></div>
+<div class="ttc" id="namespacefuncy_1_1Checks_1_1Has_1_1MemOp_html_ac5b464cedfc7447164cf70828d8c8d6d"><div class="ttname"><a href="namespacefuncy_1_1Checks_1_1Has_1_1MemOp.html#ac5b464cedfc7447164cf70828d8c8d6d">funcy::Checks::Has::MemOp::is_callable</a></div><div class="ttdeci">constexpr bool is_callable()</div><div class="ttdef"><b>Definition:</b> static_checks.hh:197</div></div>
 <div class="ttc" id="type__traits_8hh_html"><div class="ttname"><a href="type__traits_8hh.html">type_traits.hh</a></div></div>
+<div class="ttc" id="namespacefuncy_1_1Checks_1_1Has_html_a8bf7f5a59024cc8321ea379fed648ea7"><div class="ttname"><a href="namespacefuncy_1_1Checks_1_1Has.html#a8bf7f5a59024cc8321ea379fed648ea7">funcy::Checks::Has::consistentFirstDerivative</a></div><div class="ttdeci">constexpr bool consistentFirstDerivative()</div><div class="ttdef"><b>Definition:</b> static_checks.hh:419</div></div>
 <div class="ttc" id="voider_8hh_html"><div class="ttname"><a href="voider_8hh.html">voider.hh</a></div></div>
-<div class="ttc" id="namespaceFunG_1_1Checks_1_1Has_1_1Free_html_a2454bd1f5873cc86ec31d09d822a67b1"><div class="ttname"><a href="namespaceFunG_1_1Checks_1_1Has_1_1Free.html#a2454bd1f5873cc86ec31d09d822a67b1">FunG::Checks::Has::Free::multiplication</a></div><div class="ttdeci">constexpr bool multiplication()</div><div class="ttdoc">Check if objects of typed Arg1 and Arg2 support multiplication (free operator*). </div><div class="ttdef"><b>Definition:</b> static_checks.hh:389</div></div>
-<div class="ttc" id="namespaceFunG_1_1Checks_1_1Has_1_1MemOp_html_ae8e502928ebc6342cab98ebbb62b8802"><div class="ttname"><a href="namespaceFunG_1_1Checks_1_1Has_1_1MemOp.html#ae8e502928ebc6342cab98ebbb62b8802">FunG::Checks::Has::MemOp::inPlaceMultiplication</a></div><div class="ttdeci">constexpr bool inPlaceMultiplication()</div><div class="ttdef"><b>Definition:</b> static_checks.hh:205</div></div>
-<div class="ttc" id="namespaceFunG_1_1Checks_1_1Has_1_1MemOp_html_a23052f7d8da399943f6354a7d477c825"><div class="ttname"><a href="namespaceFunG_1_1Checks_1_1Has_1_1MemOp.html#a23052f7d8da399943f6354a7d477c825">FunG::Checks::Has::MemOp::inPlaceSummation</a></div><div class="ttdeci">constexpr bool inPlaceSummation()</div><div class="ttdoc">Check if objects of type Arg support in-place summation. </div><div class="ttdef"><b>Definition:</b> static_checks.hh:214</div></div>
-<div class="ttc" id="namespaceFunG_1_1Checks_1_1Has_1_1MemOp_html_a5810c07eff37faaf76b881548a6722bd"><div class="ttname"><a href="namespaceFunG_1_1Checks_1_1Has_1_1MemOp.html#a5810c07eff37faaf76b881548a6722bd">FunG::Checks::Has::MemOp::is_callable</a></div><div class="ttdeci">constexpr bool is_callable()</div><div class="ttdef"><b>Definition:</b> static_checks.hh:197</div></div>
-<div class="ttc" id="structFunG_1_1LinearAlgebra_1_1NumberOfRows_html"><div class="ttname"><a href="structFunG_1_1LinearAlgebra_1_1NumberOfRows.html">FunG::LinearAlgebra::NumberOfRows</a></div><div class="ttdoc">Specialize this for your matrix class. Number of rows must be provided by a static member variable ca...</div><div class="ttdef"><b>Definition:</b> extract_rows_and_cols.hh:14</div></div>
+<div class="ttc" id="namespacefuncy_1_1Checks_1_1Has_html_ad741287e889ee6f44913d60789c3e8b0"><div class="ttname"><a href="namespacefuncy_1_1Checks_1_1Has.html#ad741287e889ee6f44913d60789c3e8b0">funcy::Checks::Has::consistentThirdDerivative</a></div><div class="ttdeci">constexpr bool consistentThirdDerivative()</div><div class="ttdef"><b>Definition:</b> static_checks.hh:434</div></div>
+<div class="ttc" id="namespacefuncy_1_1Checks_1_1Has_1_1MemOp_html_af3b2d409a64b3c4d690ceb16ca8101fe"><div class="ttname"><a href="namespacefuncy_1_1Checks_1_1Has_1_1MemOp.html#af3b2d409a64b3c4d690ceb16ca8101fe">funcy::Checks::Has::MemOp::inPlaceMultiplication</a></div><div class="ttdeci">constexpr bool inPlaceMultiplication()</div><div class="ttdef"><b>Definition:</b> static_checks.hh:205</div></div>
+<div class="ttc" id="namespacefuncy_1_1Checks_1_1Has_html_ae07f080937ba3cd627721ddd8244b831"><div class="ttname"><a href="namespacefuncy_1_1Checks_1_1Has.html#ae07f080937ba3cd627721ddd8244b831">funcy::Checks::Has::consistentSecondDerivative</a></div><div class="ttdeci">constexpr bool consistentSecondDerivative()</div><div class="ttdef"><b>Definition:</b> static_checks.hh:425</div></div>
+<div class="ttc" id="structfuncy_1_1LinearAlgebra_1_1NumberOfRows_html"><div class="ttname"><a href="structfuncy_1_1LinearAlgebra_1_1NumberOfRows.html">funcy::LinearAlgebra::NumberOfRows</a></div><div class="ttdoc">Specialize this for your matrix class. Number of rows must be provided by a static member variable ca...</div><div class="ttdef"><b>Definition:</b> extract_rows_and_cols.hh:14</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Mar 7 2019 22:08:09 for FunG by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Mar 10 2019 08:25:09 for funcy by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

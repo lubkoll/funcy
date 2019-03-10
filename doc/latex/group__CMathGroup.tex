@@ -9,69 +9,69 @@ Wrappers for functions from $<$cmath$>$.
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-struct \hyperlink{structFunG_1_1ACos}{Fun\-G\-::\-A\-Cos}
+struct \hyperlink{structfuncy_1_1ACos}{funcy\-::\-A\-Cos}
 \begin{DoxyCompactList}\small\item\em Arc cosine function including first three derivatives (based on acos(double) in $<$cmath$>$). \end{DoxyCompactList}\item 
-struct \hyperlink{structFunG_1_1ASin}{Fun\-G\-::\-A\-Sin}
+struct \hyperlink{structfuncy_1_1ASin}{funcy\-::\-A\-Sin}
 \begin{DoxyCompactList}\small\item\em Arc sine function including first three derivatives (based on asin(double) in $<$cmath$>$). \end{DoxyCompactList}\item 
-struct \hyperlink{structFunG_1_1Cos}{Fun\-G\-::\-Cos}
+struct \hyperlink{structfuncy_1_1Cos}{funcy\-::\-Cos}
 \begin{DoxyCompactList}\small\item\em Cosine function including first three derivatives (based on cos(double) in $<$cmath$>$). \end{DoxyCompactList}\item 
-struct \hyperlink{structFunG_1_1Exp}{Fun\-G\-::\-Exp}
+struct \hyperlink{structfuncy_1_1Exp}{funcy\-::\-Exp}
 \begin{DoxyCompactList}\small\item\em Exponential function including first three derivatives. \end{DoxyCompactList}\item 
-struct \hyperlink{structFunG_1_1Exp2}{Fun\-G\-::\-Exp2}
+struct \hyperlink{structfuncy_1_1Exp2}{funcy\-::\-Exp2}
 \begin{DoxyCompactList}\small\item\em Function $2^x$ including first three derivatives. \end{DoxyCompactList}\item 
-struct \hyperlink{structFunG_1_1LN}{Fun\-G\-::\-L\-N}
+struct \hyperlink{structfuncy_1_1LN}{funcy\-::\-L\-N}
 \begin{DoxyCompactList}\small\item\em Natural logarithm including first three derivatives. \end{DoxyCompactList}\item 
-struct \hyperlink{structFunG_1_1Log10}{Fun\-G\-::\-Log10}
+struct \hyperlink{structfuncy_1_1Log10}{funcy\-::\-Log10}
 \begin{DoxyCompactList}\small\item\em Common (base 10) logarithm including first three derivatives. \end{DoxyCompactList}\item 
-struct \hyperlink{structFunG_1_1Log2}{Fun\-G\-::\-Log2}
+struct \hyperlink{structfuncy_1_1Log2}{funcy\-::\-Log2}
 \begin{DoxyCompactList}\small\item\em Base 2 logarithm including first three derivatives. \end{DoxyCompactList}\item 
-struct \hyperlink{structFunG_1_1Pow}{Fun\-G\-::\-Pow$<$ dividend, divisor $>$}
+struct \hyperlink{structfuncy_1_1Pow}{funcy\-::\-Pow$<$ dividend, divisor $>$}
 \begin{DoxyCompactList}\small\item\em Power function with rational exponent $ k = \frac{dividend}{divisor} $ including first three derivatives. \end{DoxyCompactList}\item 
-struct \hyperlink{structFunG_1_1Sin}{Fun\-G\-::\-Sin}
+struct \hyperlink{structfuncy_1_1Sin}{funcy\-::\-Sin}
 \begin{DoxyCompactList}\small\item\em Sine function including first three derivatives (based on sin(double) in $<$cmath$>$). \end{DoxyCompactList}\item 
-struct \hyperlink{structFunG_1_1Tan}{Fun\-G\-::\-Tan}
+struct \hyperlink{structfuncy_1_1Tan}{funcy\-::\-Tan}
 \begin{DoxyCompactList}\small\item\em Tangent function including first three derivatives. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-using \hyperlink{group__CMathGroup_ga70c69680e967f5ccb79c07e50d44739d}{Fun\-G\-::\-Sqrt} = Pow$<$ 1, 2 $>$
+using \hyperlink{group__CMathGroup_gaa9e33b480a11f18dc15d5da847d88ff5}{funcy\-::\-Sqrt} = Pow$<$ 1, 2 $>$
 \begin{DoxyCompactList}\small\item\em Square root including first three derivatives (based on sqrt(double) in $<$cmath$>$). \end{DoxyCompactList}\item 
-using \hyperlink{group__CMathGroup_gaff369d639f7a316b3f22982e806cb45f}{Fun\-G\-::\-Cbrt} = Pow$<$ 1, 3 $>$
+using \hyperlink{group__CMathGroup_ga73e089e38b8f293e9d7f6a1f617268e8}{funcy\-::\-Cbrt} = Pow$<$ 1, 3 $>$
 \begin{DoxyCompactList}\small\item\em Third root including first three derivatives (based on sqrt(double) in $<$cmath$>$). \end{DoxyCompactList}\item 
-using \hyperlink{group__CMathGroup_gab63795eecd1e9a55ea26b24125053f2d}{Fun\-G\-::\-Cbrt2} = Pow$<$ 2, 3 $>$
+using \hyperlink{group__CMathGroup_gae9ee48794104aa14e38c34cfa90a33ac}{funcy\-::\-Cbrt2} = Pow$<$ 2, 3 $>$
 \begin{DoxyCompactList}\small\item\em Third root squared including first three derivatives (based on sqrt(double) in $<$cmath$>$). \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-{\footnotesize template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$\-Checks\-::is\-Function$<$\-Function$>$()$>$$>$ }\\auto \hyperlink{group__CMathGroup_gae9b7d3a479bcd8d48cf25f1c29edefb9}{Fun\-G\-::acos} (const Function \&f)
+{\footnotesize template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$\-Checks\-::is\-Function$<$\-Function$>$()$>$$>$ }\\auto \hyperlink{group__CMathGroup_ga440738f86b6ddd1e240a21e8712ebc55}{funcy\-::acos} (const Function \&f)
 \begin{DoxyCompactList}\small\item\em Generate $ \arccos\circ f $. \end{DoxyCompactList}\item 
-{\footnotesize template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$ Checks\-::is\-Function$<$ Function $>$() $>$$>$ }\\auto \hyperlink{group__CMathGroup_gad26443b289325876cffdaadfca770d51}{Fun\-G\-::asin} (const Function \&f)
+{\footnotesize template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$ Checks\-::is\-Function$<$ Function $>$() $>$$>$ }\\auto \hyperlink{group__CMathGroup_ga9829bc8e5bcafdb397fb518f960545d8}{funcy\-::asin} (const Function \&f)
 \begin{DoxyCompactList}\small\item\em Generate $ \arcsin\circ f $. \end{DoxyCompactList}\item 
-{\footnotesize template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$ Checks\-::is\-Function$<$ Function $>$() $>$$>$ }\\auto \hyperlink{group__CMathGroup_ga7e9b2ac717cd2350663293cb66ba6cbd}{Fun\-G\-::cos} (const Function \&f)
+{\footnotesize template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$ Checks\-::is\-Function$<$ Function $>$() $>$$>$ }\\auto \hyperlink{group__CMathGroup_gaa9d6107852e7d6202c34f09bdbfaf8a2}{funcy\-::cos} (const Function \&f)
 \begin{DoxyCompactList}\small\item\em Generate $ \cos\circ f $. \end{DoxyCompactList}\item 
-{\footnotesize template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$\-Checks\-::is\-Function$<$\-Function$>$()$>$$>$ }\\auto \hyperlink{group__CMathGroup_ga00135c8521411f13813f9b972ea4e231}{Fun\-G\-::exp} (const Function \&f)
+{\footnotesize template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$\-Checks\-::is\-Function$<$\-Function$>$()$>$$>$ }\\auto \hyperlink{group__CMathGroup_gaadc968931c4efe760c812f6b871a97f5}{funcy\-::exp} (const Function \&f)
 \begin{DoxyCompactList}\small\item\em Generate $ \exp(f) $. \end{DoxyCompactList}\item 
-{\footnotesize template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$\-Checks\-::is\-Function$<$\-Function$>$()$>$$>$ }\\auto \hyperlink{group__CMathGroup_ga7724faf7db6e9583ac91df322c26ecf5}{Fun\-G\-::exp2} (const Function \&f)
+{\footnotesize template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$\-Checks\-::is\-Function$<$\-Function$>$()$>$$>$ }\\auto \hyperlink{group__CMathGroup_gac880c86664b1237622566adea8f808a0}{funcy\-::exp2} (const Function \&f)
 \begin{DoxyCompactList}\small\item\em Generate $2^f$. \end{DoxyCompactList}\item 
-{\footnotesize template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$\-Checks\-::is\-Function$<$\-Function$>$()$>$$>$ }\\auto \hyperlink{group__CMathGroup_ga31313571b08f65b853643e14fc8fc714}{Fun\-G\-::ln} (const Function \&f)
+{\footnotesize template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$\-Checks\-::is\-Function$<$\-Function$>$()$>$$>$ }\\auto \hyperlink{group__CMathGroup_gaa1ca40e2b0c36709978b91836435b0c5}{funcy\-::ln} (const Function \&f)
 \begin{DoxyCompactList}\small\item\em Generate $ \mathrm{ln}\circ f $. \end{DoxyCompactList}\item 
-{\footnotesize template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$\-Checks\-::is\-Function$<$\-Function$>$()$>$$>$ }\\auto \hyperlink{group__CMathGroup_gae9506f4e0e6fad4f756f636044697bfe}{Fun\-G\-::log10} (const Function \&f)
+{\footnotesize template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$\-Checks\-::is\-Function$<$\-Function$>$()$>$$>$ }\\auto \hyperlink{group__CMathGroup_ga29cb2c4b2fb13040a351e685fc3f8b03}{funcy\-::log10} (const Function \&f)
 \begin{DoxyCompactList}\small\item\em Generate $ \mathrm{log}_{10}\circ f $. \end{DoxyCompactList}\item 
-{\footnotesize template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$\-Checks\-::is\-Function$<$\-Function$>$()$>$$>$ }\\auto \hyperlink{group__CMathGroup_gacd6be7e9de7bbd54c852f0acf0c7d2c2}{Fun\-G\-::log2} (const Function \&f)
+{\footnotesize template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$\-Checks\-::is\-Function$<$\-Function$>$()$>$$>$ }\\auto \hyperlink{group__CMathGroup_gab619c71bd55d049c827d8f2af2a939d3}{funcy\-::log2} (const Function \&f)
 \begin{DoxyCompactList}\small\item\em Generate $ \mathrm{log}_{2}\circ f $. \end{DoxyCompactList}\item 
-{\footnotesize template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$ Checks\-::is\-Function$<$ Function $>$() $>$$>$ }\\auto \hyperlink{group__CMathGroup_ga136c890475e48f88469a737d95368d05}{Fun\-G\-::sqrt} (const Function \&f)
+{\footnotesize template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$ Checks\-::is\-Function$<$ Function $>$() $>$$>$ }\\auto \hyperlink{group__CMathGroup_ga1c180bd87b8817342b34d72dddd11266}{funcy\-::sqrt} (const Function \&f)
 \begin{DoxyCompactList}\small\item\em Generate $ \sqrt{f} $. \end{DoxyCompactList}\item 
-{\footnotesize template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$ Checks\-::is\-Function$<$ Function $>$() $>$$>$ }\\auto \hyperlink{group__CMathGroup_gaa7f2552adfb8ec41aeb685adddd8bf98}{Fun\-G\-::cbrt} (const Function \&f)
+{\footnotesize template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$ Checks\-::is\-Function$<$ Function $>$() $>$$>$ }\\auto \hyperlink{group__CMathGroup_gae8e97f84bd4000935069a87133173d4c}{funcy\-::cbrt} (const Function \&f)
 \begin{DoxyCompactList}\small\item\em Generate $ \sqrt[3]{f} $. \end{DoxyCompactList}\item 
-{\footnotesize template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$ Checks\-::is\-Function$<$ Function $>$() $>$$>$ }\\auto \hyperlink{group__CMathGroup_gafd27322fb64c6df3366f384c93819a06}{Fun\-G\-::cbrt2} (const Function \&f)
+{\footnotesize template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$ Checks\-::is\-Function$<$ Function $>$() $>$$>$ }\\auto \hyperlink{group__CMathGroup_ga3a4ba572754c0310c41949f2a4091046}{funcy\-::cbrt2} (const Function \&f)
 \begin{DoxyCompactList}\small\item\em Generate $ \sqrt[3]{f^2}$. \end{DoxyCompactList}\item 
-{\footnotesize template$<$int k, int l, class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$ Checks\-::is\-Function$<$ Function $>$() $>$$>$ }\\auto \hyperlink{group__CMathGroup_gaecae6fa60bbfc0eb1867581ee4577d4e}{Fun\-G\-::pow} (const Function \&f)
+{\footnotesize template$<$int k, int l, class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$ Checks\-::is\-Function$<$ Function $>$() $>$$>$ }\\auto \hyperlink{group__CMathGroup_gaa667967d67586d6d5fc733a978f9ab06}{funcy\-::pow} (const Function \&f)
 \begin{DoxyCompactList}\small\item\em Generate $ f^{k/l} $. \end{DoxyCompactList}\item 
-{\footnotesize template$<$int k, class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$ Checks\-::is\-Function$<$ Function $>$() $>$$>$ }\\auto \hyperlink{group__CMathGroup_gab52ffe2efd379aad7ea322de46103465}{Fun\-G\-::pow} (const Function \&f)
+{\footnotesize template$<$int k, class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$ Checks\-::is\-Function$<$ Function $>$() $>$$>$ }\\auto \hyperlink{group__CMathGroup_ga8e9aacbacd848ce8c87ceba957a666a7}{funcy\-::pow} (const Function \&f)
 \begin{DoxyCompactList}\small\item\em Generate $ f^k,\ k\in\mathbb{N}$. \end{DoxyCompactList}\item 
-{\footnotesize template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$ Checks\-::is\-Function$<$ Function $>$() $>$$>$ }\\auto \hyperlink{group__CMathGroup_ga663fdbe7a8977cba529c7c33981b7738}{Fun\-G\-::sin} (const Function \&f)
+{\footnotesize template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$ Checks\-::is\-Function$<$ Function $>$() $>$$>$ }\\auto \hyperlink{group__CMathGroup_gace9a6a15d1fd5071d13272e57d096b2c}{funcy\-::sin} (const Function \&f)
 \begin{DoxyCompactList}\small\item\em Generate $ \sin\circ f $. \end{DoxyCompactList}\item 
-{\footnotesize template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$ Checks\-::is\-Function$<$ Function $>$() $>$$>$ }\\auto \hyperlink{group__CMathGroup_gae03f57bd4efb4449ad1dc60cb74c742d}{Fun\-G\-::tan} (const Function \&f)
+{\footnotesize template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$ Checks\-::is\-Function$<$ Function $>$() $>$$>$ }\\auto \hyperlink{group__CMathGroup_ga12e1ac095ec148de81e84e58bcce5d21}{funcy\-::tan} (const Function \&f)
 \begin{DoxyCompactList}\small\item\em Generate $ \tan\circ f $. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -79,23 +79,23 @@ using \hyperlink{group__CMathGroup_gab63795eecd1e9a55ea26b24125053f2d}{Fun\-G\-:
 Wrappers for functions from $<$cmath$>$. 
 
 \subsection{Typedef Documentation}
-\hypertarget{group__CMathGroup_gaff369d639f7a316b3f22982e806cb45f}{\index{Common Mathematical Functions@{Common Mathematical Functions}!Cbrt@{Cbrt}}
+\hypertarget{group__CMathGroup_ga73e089e38b8f293e9d7f6a1f617268e8}{\index{Common Mathematical Functions@{Common Mathematical Functions}!Cbrt@{Cbrt}}
 \index{Cbrt@{Cbrt}!Common Mathematical Functions@{Common Mathematical Functions}}
-\subsubsection[{Cbrt}]{\setlength{\rightskip}{0pt plus 5cm}using {\bf Fun\-G\-::\-Cbrt} = typedef Pow$<$ 1, 3 $>$}}\label{group__CMathGroup_gaff369d639f7a316b3f22982e806cb45f}
+\subsubsection[{Cbrt}]{\setlength{\rightskip}{0pt plus 5cm}using {\bf funcy\-::\-Cbrt} = typedef Pow$<$ 1, 3 $>$}}\label{group__CMathGroup_ga73e089e38b8f293e9d7f6a1f617268e8}
 
 
 Third root including first three derivatives (based on sqrt(double) in $<$cmath$>$). 
 
-\hypertarget{group__CMathGroup_gab63795eecd1e9a55ea26b24125053f2d}{\index{Common Mathematical Functions@{Common Mathematical Functions}!Cbrt2@{Cbrt2}}
+\hypertarget{group__CMathGroup_gae9ee48794104aa14e38c34cfa90a33ac}{\index{Common Mathematical Functions@{Common Mathematical Functions}!Cbrt2@{Cbrt2}}
 \index{Cbrt2@{Cbrt2}!Common Mathematical Functions@{Common Mathematical Functions}}
-\subsubsection[{Cbrt2}]{\setlength{\rightskip}{0pt plus 5cm}using {\bf Fun\-G\-::\-Cbrt2} = typedef Pow$<$ 2, 3 $>$}}\label{group__CMathGroup_gab63795eecd1e9a55ea26b24125053f2d}
+\subsubsection[{Cbrt2}]{\setlength{\rightskip}{0pt plus 5cm}using {\bf funcy\-::\-Cbrt2} = typedef Pow$<$ 2, 3 $>$}}\label{group__CMathGroup_gae9ee48794104aa14e38c34cfa90a33ac}
 
 
 Third root squared including first three derivatives (based on sqrt(double) in $<$cmath$>$). 
 
-\hypertarget{group__CMathGroup_ga70c69680e967f5ccb79c07e50d44739d}{\index{Common Mathematical Functions@{Common Mathematical Functions}!Sqrt@{Sqrt}}
+\hypertarget{group__CMathGroup_gaa9e33b480a11f18dc15d5da847d88ff5}{\index{Common Mathematical Functions@{Common Mathematical Functions}!Sqrt@{Sqrt}}
 \index{Sqrt@{Sqrt}!Common Mathematical Functions@{Common Mathematical Functions}}
-\subsubsection[{Sqrt}]{\setlength{\rightskip}{0pt plus 5cm}using {\bf Fun\-G\-::\-Sqrt} = typedef Pow$<$ 1, 2 $>$}}\label{group__CMathGroup_ga70c69680e967f5ccb79c07e50d44739d}
+\subsubsection[{Sqrt}]{\setlength{\rightskip}{0pt plus 5cm}using {\bf funcy\-::\-Sqrt} = typedef Pow$<$ 1, 2 $>$}}\label{group__CMathGroup_gaa9e33b480a11f18dc15d5da847d88ff5}
 
 
 Square root including first three derivatives (based on sqrt(double) in $<$cmath$>$). 
@@ -103,13 +103,13 @@ Square root including first three derivatives (based on sqrt(double) in $<$cmath
 
 
 \subsection{Function Documentation}
-\hypertarget{group__CMathGroup_gae9b7d3a479bcd8d48cf25f1c29edefb9}{\index{Common Mathematical Functions@{Common Mathematical Functions}!acos@{acos}}
+\hypertarget{group__CMathGroup_ga440738f86b6ddd1e240a21e8712ebc55}{\index{Common Mathematical Functions@{Common Mathematical Functions}!acos@{acos}}
 \index{acos@{acos}!Common Mathematical Functions@{Common Mathematical Functions}}
-\subsubsection[{acos}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$\-Checks\-::is\-Function$<$\-Function$>$()$>$$>$ auto Fun\-G\-::acos (
+\subsubsection[{acos}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$\-Checks\-::is\-Function$<$\-Function$>$()$>$$>$ auto funcy\-::acos (
 \begin{DoxyParamCaption}
 \item[{const Function \&}]{f}
 \end{DoxyParamCaption}
-)}}\label{group__CMathGroup_gae9b7d3a479bcd8d48cf25f1c29edefb9}
+)}}\label{group__CMathGroup_ga440738f86b6ddd1e240a21e8712ebc55}
 
 
 Generate $ \arccos\circ f $. 
@@ -122,13 +122,13 @@ Generate $ \arccos\circ f $.
 \begin{DoxyReturn}{Returns}
 object of type Mathematical\-Operations\-::\-Chain$<$\-A\-Cos,\-Function$>$ 
 \end{DoxyReturn}
-\hypertarget{group__CMathGroup_gad26443b289325876cffdaadfca770d51}{\index{Common Mathematical Functions@{Common Mathematical Functions}!asin@{asin}}
+\hypertarget{group__CMathGroup_ga9829bc8e5bcafdb397fb518f960545d8}{\index{Common Mathematical Functions@{Common Mathematical Functions}!asin@{asin}}
 \index{asin@{asin}!Common Mathematical Functions@{Common Mathematical Functions}}
-\subsubsection[{asin}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$ Checks\-::is\-Function$<$ Function $>$() $>$$>$ auto Fun\-G\-::asin (
+\subsubsection[{asin}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$ Checks\-::is\-Function$<$ Function $>$() $>$$>$ auto funcy\-::asin (
 \begin{DoxyParamCaption}
 \item[{const Function \&}]{f}
 \end{DoxyParamCaption}
-)}}\label{group__CMathGroup_gad26443b289325876cffdaadfca770d51}
+)}}\label{group__CMathGroup_ga9829bc8e5bcafdb397fb518f960545d8}
 
 
 Generate $ \arcsin\circ f $. 
@@ -141,13 +141,13 @@ Generate $ \arcsin\circ f $.
 \begin{DoxyReturn}{Returns}
 object of type Mathematical\-Operations\-::\-Chain$<$\-A\-Sin,\-Function$>$ 
 \end{DoxyReturn}
-\hypertarget{group__CMathGroup_gaa7f2552adfb8ec41aeb685adddd8bf98}{\index{Common Mathematical Functions@{Common Mathematical Functions}!cbrt@{cbrt}}
+\hypertarget{group__CMathGroup_gae8e97f84bd4000935069a87133173d4c}{\index{Common Mathematical Functions@{Common Mathematical Functions}!cbrt@{cbrt}}
 \index{cbrt@{cbrt}!Common Mathematical Functions@{Common Mathematical Functions}}
-\subsubsection[{cbrt}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$ Checks\-::is\-Function$<$ Function $>$() $>$$>$ auto Fun\-G\-::cbrt (
+\subsubsection[{cbrt}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$ Checks\-::is\-Function$<$ Function $>$() $>$$>$ auto funcy\-::cbrt (
 \begin{DoxyParamCaption}
 \item[{const Function \&}]{f}
 \end{DoxyParamCaption}
-)}}\label{group__CMathGroup_gaa7f2552adfb8ec41aeb685adddd8bf98}
+)}}\label{group__CMathGroup_gae8e97f84bd4000935069a87133173d4c}
 
 
 Generate $ \sqrt[3]{f} $. 
@@ -160,13 +160,13 @@ Generate $ \sqrt[3]{f} $.
 \begin{DoxyReturn}{Returns}
 object of type Mathematical\-Operations\-::\-Chain$<$\-Cbrt,\-Function$>$ 
 \end{DoxyReturn}
-\hypertarget{group__CMathGroup_gafd27322fb64c6df3366f384c93819a06}{\index{Common Mathematical Functions@{Common Mathematical Functions}!cbrt2@{cbrt2}}
+\hypertarget{group__CMathGroup_ga3a4ba572754c0310c41949f2a4091046}{\index{Common Mathematical Functions@{Common Mathematical Functions}!cbrt2@{cbrt2}}
 \index{cbrt2@{cbrt2}!Common Mathematical Functions@{Common Mathematical Functions}}
-\subsubsection[{cbrt2}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$ Checks\-::is\-Function$<$ Function $>$() $>$$>$ auto Fun\-G\-::cbrt2 (
+\subsubsection[{cbrt2}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$ Checks\-::is\-Function$<$ Function $>$() $>$$>$ auto funcy\-::cbrt2 (
 \begin{DoxyParamCaption}
 \item[{const Function \&}]{f}
 \end{DoxyParamCaption}
-)}}\label{group__CMathGroup_gafd27322fb64c6df3366f384c93819a06}
+)}}\label{group__CMathGroup_ga3a4ba572754c0310c41949f2a4091046}
 
 
 Generate $ \sqrt[3]{f^2}$. 
@@ -179,13 +179,13 @@ Generate $ \sqrt[3]{f^2}$.
 \begin{DoxyReturn}{Returns}
 object of type Mathematical\-Operations\-::\-Chain$<$\-Cbrt2,\-Function$>$ 
 \end{DoxyReturn}
-\hypertarget{group__CMathGroup_ga7e9b2ac717cd2350663293cb66ba6cbd}{\index{Common Mathematical Functions@{Common Mathematical Functions}!cos@{cos}}
+\hypertarget{group__CMathGroup_gaa9d6107852e7d6202c34f09bdbfaf8a2}{\index{Common Mathematical Functions@{Common Mathematical Functions}!cos@{cos}}
 \index{cos@{cos}!Common Mathematical Functions@{Common Mathematical Functions}}
-\subsubsection[{cos}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$ Checks\-::is\-Function$<$ Function $>$() $>$$>$ auto Fun\-G\-::cos (
+\subsubsection[{cos}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$ Checks\-::is\-Function$<$ Function $>$() $>$$>$ auto funcy\-::cos (
 \begin{DoxyParamCaption}
 \item[{const Function \&}]{f}
 \end{DoxyParamCaption}
-)}}\label{group__CMathGroup_ga7e9b2ac717cd2350663293cb66ba6cbd}
+)}}\label{group__CMathGroup_gaa9d6107852e7d6202c34f09bdbfaf8a2}
 
 
 Generate $ \cos\circ f $. 
@@ -198,13 +198,13 @@ Generate $ \cos\circ f $.
 \begin{DoxyReturn}{Returns}
 object of type Mathematical\-Operations\-::\-Chain$<$\-Cos,\-Function$>$ 
 \end{DoxyReturn}
-\hypertarget{group__CMathGroup_ga00135c8521411f13813f9b972ea4e231}{\index{Common Mathematical Functions@{Common Mathematical Functions}!exp@{exp}}
+\hypertarget{group__CMathGroup_gaadc968931c4efe760c812f6b871a97f5}{\index{Common Mathematical Functions@{Common Mathematical Functions}!exp@{exp}}
 \index{exp@{exp}!Common Mathematical Functions@{Common Mathematical Functions}}
-\subsubsection[{exp}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$\-Checks\-::is\-Function$<$\-Function$>$()$>$$>$ auto Fun\-G\-::exp (
+\subsubsection[{exp}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$\-Checks\-::is\-Function$<$\-Function$>$()$>$$>$ auto funcy\-::exp (
 \begin{DoxyParamCaption}
 \item[{const Function \&}]{f}
 \end{DoxyParamCaption}
-)}}\label{group__CMathGroup_ga00135c8521411f13813f9b972ea4e231}
+)}}\label{group__CMathGroup_gaadc968931c4efe760c812f6b871a97f5}
 
 
 Generate $ \exp(f) $. 
@@ -217,13 +217,13 @@ Generate $ \exp(f) $.
 \begin{DoxyReturn}{Returns}
 object of type Mathematical\-Operations\-::\-Chain$<$\-Exp,\-Function$>$ 
 \end{DoxyReturn}
-\hypertarget{group__CMathGroup_ga7724faf7db6e9583ac91df322c26ecf5}{\index{Common Mathematical Functions@{Common Mathematical Functions}!exp2@{exp2}}
+\hypertarget{group__CMathGroup_gac880c86664b1237622566adea8f808a0}{\index{Common Mathematical Functions@{Common Mathematical Functions}!exp2@{exp2}}
 \index{exp2@{exp2}!Common Mathematical Functions@{Common Mathematical Functions}}
-\subsubsection[{exp2}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$\-Checks\-::is\-Function$<$\-Function$>$()$>$$>$ auto Fun\-G\-::exp2 (
+\subsubsection[{exp2}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$\-Checks\-::is\-Function$<$\-Function$>$()$>$$>$ auto funcy\-::exp2 (
 \begin{DoxyParamCaption}
 \item[{const Function \&}]{f}
 \end{DoxyParamCaption}
-)}}\label{group__CMathGroup_ga7724faf7db6e9583ac91df322c26ecf5}
+)}}\label{group__CMathGroup_gac880c86664b1237622566adea8f808a0}
 
 
 Generate $2^f$. 
@@ -236,13 +236,13 @@ Generate $2^f$.
 \begin{DoxyReturn}{Returns}
 object of type Mathematical\-Operations\-::\-Chain$<$\-Exp2,\-Function$>$ 
 \end{DoxyReturn}
-\hypertarget{group__CMathGroup_ga31313571b08f65b853643e14fc8fc714}{\index{Common Mathematical Functions@{Common Mathematical Functions}!ln@{ln}}
+\hypertarget{group__CMathGroup_gaa1ca40e2b0c36709978b91836435b0c5}{\index{Common Mathematical Functions@{Common Mathematical Functions}!ln@{ln}}
 \index{ln@{ln}!Common Mathematical Functions@{Common Mathematical Functions}}
-\subsubsection[{ln}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$\-Checks\-::is\-Function$<$\-Function$>$()$>$$>$ auto Fun\-G\-::ln (
+\subsubsection[{ln}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$\-Checks\-::is\-Function$<$\-Function$>$()$>$$>$ auto funcy\-::ln (
 \begin{DoxyParamCaption}
 \item[{const Function \&}]{f}
 \end{DoxyParamCaption}
-)}}\label{group__CMathGroup_ga31313571b08f65b853643e14fc8fc714}
+)}}\label{group__CMathGroup_gaa1ca40e2b0c36709978b91836435b0c5}
 
 
 Generate $ \mathrm{ln}\circ f $. 
@@ -255,13 +255,13 @@ Generate $ \mathrm{ln}\circ f $.
 \begin{DoxyReturn}{Returns}
 object of type Mathematical\-Operations\-::\-Chain$<$\-Log,\-Function$>$ 
 \end{DoxyReturn}
-\hypertarget{group__CMathGroup_gae9506f4e0e6fad4f756f636044697bfe}{\index{Common Mathematical Functions@{Common Mathematical Functions}!log10@{log10}}
+\hypertarget{group__CMathGroup_ga29cb2c4b2fb13040a351e685fc3f8b03}{\index{Common Mathematical Functions@{Common Mathematical Functions}!log10@{log10}}
 \index{log10@{log10}!Common Mathematical Functions@{Common Mathematical Functions}}
-\subsubsection[{log10}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$\-Checks\-::is\-Function$<$\-Function$>$()$>$$>$ auto Fun\-G\-::log10 (
+\subsubsection[{log10}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$\-Checks\-::is\-Function$<$\-Function$>$()$>$$>$ auto funcy\-::log10 (
 \begin{DoxyParamCaption}
 \item[{const Function \&}]{f}
 \end{DoxyParamCaption}
-)}}\label{group__CMathGroup_gae9506f4e0e6fad4f756f636044697bfe}
+)}}\label{group__CMathGroup_ga29cb2c4b2fb13040a351e685fc3f8b03}
 
 
 Generate $ \mathrm{log}_{10}\circ f $. 
@@ -274,13 +274,13 @@ Generate $ \mathrm{log}_{10}\circ f $.
 \begin{DoxyReturn}{Returns}
 object of type Mathematical\-Operations\-::\-Chain$<$\-Log10,\-Function$>$ 
 \end{DoxyReturn}
-\hypertarget{group__CMathGroup_gacd6be7e9de7bbd54c852f0acf0c7d2c2}{\index{Common Mathematical Functions@{Common Mathematical Functions}!log2@{log2}}
+\hypertarget{group__CMathGroup_gab619c71bd55d049c827d8f2af2a939d3}{\index{Common Mathematical Functions@{Common Mathematical Functions}!log2@{log2}}
 \index{log2@{log2}!Common Mathematical Functions@{Common Mathematical Functions}}
-\subsubsection[{log2}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$\-Checks\-::is\-Function$<$\-Function$>$()$>$$>$ auto Fun\-G\-::log2 (
+\subsubsection[{log2}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$\-Checks\-::is\-Function$<$\-Function$>$()$>$$>$ auto funcy\-::log2 (
 \begin{DoxyParamCaption}
 \item[{const Function \&}]{f}
 \end{DoxyParamCaption}
-)}}\label{group__CMathGroup_gacd6be7e9de7bbd54c852f0acf0c7d2c2}
+)}}\label{group__CMathGroup_gab619c71bd55d049c827d8f2af2a939d3}
 
 
 Generate $ \mathrm{log}_{2}\circ f $. 
@@ -293,13 +293,13 @@ Generate $ \mathrm{log}_{2}\circ f $.
 \begin{DoxyReturn}{Returns}
 object of type Mathematical\-Operations\-::\-Chain$<$\-Log2,\-Function$>$ 
 \end{DoxyReturn}
-\hypertarget{group__CMathGroup_gaecae6fa60bbfc0eb1867581ee4577d4e}{\index{Common Mathematical Functions@{Common Mathematical Functions}!pow@{pow}}
+\hypertarget{group__CMathGroup_gaa667967d67586d6d5fc733a978f9ab06}{\index{Common Mathematical Functions@{Common Mathematical Functions}!pow@{pow}}
 \index{pow@{pow}!Common Mathematical Functions@{Common Mathematical Functions}}
-\subsubsection[{pow}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int k, int l, class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$ Checks\-::is\-Function$<$ Function $>$() $>$$>$ auto Fun\-G\-::pow (
+\subsubsection[{pow}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int k, int l, class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$ Checks\-::is\-Function$<$ Function $>$() $>$$>$ auto funcy\-::pow (
 \begin{DoxyParamCaption}
 \item[{const Function \&}]{f}
 \end{DoxyParamCaption}
-)}}\label{group__CMathGroup_gaecae6fa60bbfc0eb1867581ee4577d4e}
+)}}\label{group__CMathGroup_gaa667967d67586d6d5fc733a978f9ab06}
 
 
 Generate $ f^{k/l} $. 
@@ -317,15 +317,15 @@ Generate $ f^{k/l} $.
 \hline
 \end{DoxyTemplParams}
 \begin{DoxyReturn}{Returns}
-object of type \hyperlink{structFunG_1_1MathematicalOperations_1_1Chain}{Mathematical\-Operations\-::\-Chain}$<$ Pow$<$dividend,divisor$>$ , Function $>$ 
+object of type \hyperlink{structfuncy_1_1MathematicalOperations_1_1Chain}{Mathematical\-Operations\-::\-Chain}$<$ Pow$<$dividend,divisor$>$ , Function $>$ 
 \end{DoxyReturn}
-\hypertarget{group__CMathGroup_gab52ffe2efd379aad7ea322de46103465}{\index{Common Mathematical Functions@{Common Mathematical Functions}!pow@{pow}}
+\hypertarget{group__CMathGroup_ga8e9aacbacd848ce8c87ceba957a666a7}{\index{Common Mathematical Functions@{Common Mathematical Functions}!pow@{pow}}
 \index{pow@{pow}!Common Mathematical Functions@{Common Mathematical Functions}}
-\subsubsection[{pow}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int k, class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$ Checks\-::is\-Function$<$ Function $>$() $>$$>$ auto Fun\-G\-::pow (
+\subsubsection[{pow}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int k, class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$ Checks\-::is\-Function$<$ Function $>$() $>$$>$ auto funcy\-::pow (
 \begin{DoxyParamCaption}
 \item[{const Function \&}]{f}
 \end{DoxyParamCaption}
-)}}\label{group__CMathGroup_gab52ffe2efd379aad7ea322de46103465}
+)}}\label{group__CMathGroup_ga8e9aacbacd848ce8c87ceba957a666a7}
 
 
 Generate $ f^k,\ k\in\mathbb{N}$. 
@@ -341,15 +341,15 @@ Generate $ f^k,\ k\in\mathbb{N}$.
 \hline
 \end{DoxyTemplParams}
 \begin{DoxyReturn}{Returns}
-object of type \hyperlink{structFunG_1_1MathematicalOperations_1_1Chain}{Mathematical\-Operations\-::\-Chain}$<$ Pow$<$dividend,divisor$>$ , Function $>$ 
+object of type \hyperlink{structfuncy_1_1MathematicalOperations_1_1Chain}{Mathematical\-Operations\-::\-Chain}$<$ Pow$<$dividend,divisor$>$ , Function $>$ 
 \end{DoxyReturn}
-\hypertarget{group__CMathGroup_ga663fdbe7a8977cba529c7c33981b7738}{\index{Common Mathematical Functions@{Common Mathematical Functions}!sin@{sin}}
+\hypertarget{group__CMathGroup_gace9a6a15d1fd5071d13272e57d096b2c}{\index{Common Mathematical Functions@{Common Mathematical Functions}!sin@{sin}}
 \index{sin@{sin}!Common Mathematical Functions@{Common Mathematical Functions}}
-\subsubsection[{sin}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$ Checks\-::is\-Function$<$ Function $>$() $>$$>$ auto Fun\-G\-::sin (
+\subsubsection[{sin}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$ Checks\-::is\-Function$<$ Function $>$() $>$$>$ auto funcy\-::sin (
 \begin{DoxyParamCaption}
 \item[{const Function \&}]{f}
 \end{DoxyParamCaption}
-)}}\label{group__CMathGroup_ga663fdbe7a8977cba529c7c33981b7738}
+)}}\label{group__CMathGroup_gace9a6a15d1fd5071d13272e57d096b2c}
 
 
 Generate $ \sin\circ f $. 
@@ -362,13 +362,13 @@ Generate $ \sin\circ f $.
 \begin{DoxyReturn}{Returns}
 object of type Mathematical\-Operations\-::\-Chain$<$\-Sin,\-Function$>$ 
 \end{DoxyReturn}
-\hypertarget{group__CMathGroup_ga136c890475e48f88469a737d95368d05}{\index{Common Mathematical Functions@{Common Mathematical Functions}!sqrt@{sqrt}}
+\hypertarget{group__CMathGroup_ga1c180bd87b8817342b34d72dddd11266}{\index{Common Mathematical Functions@{Common Mathematical Functions}!sqrt@{sqrt}}
 \index{sqrt@{sqrt}!Common Mathematical Functions@{Common Mathematical Functions}}
-\subsubsection[{sqrt}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$ Checks\-::is\-Function$<$ Function $>$() $>$$>$ auto Fun\-G\-::sqrt (
+\subsubsection[{sqrt}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$ Checks\-::is\-Function$<$ Function $>$() $>$$>$ auto funcy\-::sqrt (
 \begin{DoxyParamCaption}
 \item[{const Function \&}]{f}
 \end{DoxyParamCaption}
-)}}\label{group__CMathGroup_ga136c890475e48f88469a737d95368d05}
+)}}\label{group__CMathGroup_ga1c180bd87b8817342b34d72dddd11266}
 
 
 Generate $ \sqrt{f} $. 
@@ -381,13 +381,13 @@ Generate $ \sqrt{f} $.
 \begin{DoxyReturn}{Returns}
 object of type Mathematical\-Operations\-::\-Chain$<$\-Sqrt,\-Function$>$ 
 \end{DoxyReturn}
-\hypertarget{group__CMathGroup_gae03f57bd4efb4449ad1dc60cb74c742d}{\index{Common Mathematical Functions@{Common Mathematical Functions}!tan@{tan}}
+\hypertarget{group__CMathGroup_ga12e1ac095ec148de81e84e58bcce5d21}{\index{Common Mathematical Functions@{Common Mathematical Functions}!tan@{tan}}
 \index{tan@{tan}!Common Mathematical Functions@{Common Mathematical Functions}}
-\subsubsection[{tan}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$ Checks\-::is\-Function$<$ Function $>$() $>$$>$ auto Fun\-G\-::tan (
+\subsubsection[{tan}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Function , class  = std\-::enable\-\_\-if\-\_\-t$<$ Checks\-::is\-Function$<$ Function $>$() $>$$>$ auto funcy\-::tan (
 \begin{DoxyParamCaption}
 \item[{const Function \&}]{f}
 \end{DoxyParamCaption}
-)}}\label{group__CMathGroup_gae03f57bd4efb4449ad1dc60cb74c742d}
+)}}\label{group__CMathGroup_ga12e1ac095ec148de81e84e58bcce5d21}
 
 
 Generate $ \tan\circ f $. 

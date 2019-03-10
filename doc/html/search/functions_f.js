@@ -1,12 +1,12 @@
 var searchData=
 [
-  ['scale',['Scale',['../structFunG_1_1MathematicalOperations_1_1Scale.html#a0bb1b4813b18b40cca706d8bc501688d',1,'FunG::MathematicalOperations::Scale']]],
-  ['secondprincipalinvariant',['SecondPrincipalInvariant',['../classFunG_1_1LinearAlgebra_1_1SecondPrincipalInvariant.html#a959bed7e38dae7003556a582a978cdb1',1,'FunG::LinearAlgebra::SecondPrincipalInvariant::SecondPrincipalInvariant()=default'],['../classFunG_1_1LinearAlgebra_1_1SecondPrincipalInvariant.html#ab04cf850a3475333f64e5e4d572d0685',1,'FunG::LinearAlgebra::SecondPrincipalInvariant::SecondPrincipalInvariant(const Matrix &amp;A)']]],
-  ['sin',['Sin',['../structFunG_1_1Sin.html#aa956d10238ebb30a8e037e9f82488a8e',1,'FunG::Sin::Sin()'],['../group__CMathGroup.html#ga663fdbe7a8977cba529c7c33981b7738',1,'FunG::sin()']]],
-  ['sqrt',['sqrt',['../group__CMathGroup.html#ga136c890475e48f88469a737d95368d05',1,'FunG']]],
-  ['squared',['Squared',['../structFunG_1_1MathematicalOperations_1_1Squared.html#a025b768a43feca27fa1c2d23cba4281e',1,'FunG::MathematicalOperations::Squared::Squared()'],['../namespaceFunG.html#ac4ffc0754104af6ddf114e154251db78',1,'FunG::squared()']]],
-  ['squaredfrobeniusnorm',['SquaredFrobeniusNorm',['../structFunG_1_1LinearAlgebra_1_1SquaredFrobeniusNorm.html#ae9dfaea546dd55106ab886a10a255792',1,'FunG::LinearAlgebra::SquaredFrobeniusNorm::SquaredFrobeniusNorm()=default'],['../structFunG_1_1LinearAlgebra_1_1SquaredFrobeniusNorm.html#af33cdb4a7282ceb03b707ff7fa85ebe4',1,'FunG::LinearAlgebra::SquaredFrobeniusNorm::SquaredFrobeniusNorm(const Matrix &amp;A)']]],
-  ['straintensor',['strainTensor',['../namespaceFunG_1_1LinearAlgebra.html#a0e10030a723fad88f5f4f0b6612c393a',1,'FunG::LinearAlgebra::strainTensor(const Matrix &amp;A)'],['../namespaceFunG_1_1LinearAlgebra.html#ab4371788da401ca62a3a29a13cf8d4ce',1,'FunG::LinearAlgebra::strainTensor(const F &amp;f)']]],
-  ['sum',['Sum',['../structFunG_1_1MathematicalOperations_1_1Sum.html#a273a3996fc22e4a41d0fba9269a99c96',1,'FunG::MathematicalOperations::Sum']]],
-  ['summation',['summation',['../namespaceFunG_1_1Checks_1_1Has_1_1Free.html#a1cf46f7335354d21dff506aaf812b4f5',1,'FunG::Checks::Has::Free']]]
+  ['scale',['Scale',['../structfuncy_1_1MathematicalOperations_1_1Scale.html#ab55ee94b1b43977836f16c899bd95110',1,'funcy::MathematicalOperations::Scale']]],
+  ['secondprincipalinvariant',['SecondPrincipalInvariant',['../classfuncy_1_1LinearAlgebra_1_1SecondPrincipalInvariant.html#a31eb2a90fb3939bd36a084c1ad182295',1,'funcy::LinearAlgebra::SecondPrincipalInvariant::SecondPrincipalInvariant()=default'],['../classfuncy_1_1LinearAlgebra_1_1SecondPrincipalInvariant.html#ab0839951ff8e104c98a489508733f2eb',1,'funcy::LinearAlgebra::SecondPrincipalInvariant::SecondPrincipalInvariant(const Matrix &amp;A)']]],
+  ['sin',['Sin',['../structfuncy_1_1Sin.html#a158517db8475646590a6f0413075efce',1,'funcy::Sin::Sin()'],['../group__CMathGroup.html#gace9a6a15d1fd5071d13272e57d096b2c',1,'funcy::sin()']]],
+  ['sqrt',['sqrt',['../group__CMathGroup.html#ga1c180bd87b8817342b34d72dddd11266',1,'funcy']]],
+  ['squared',['Squared',['../structfuncy_1_1MathematicalOperations_1_1Squared.html#a4d4193cf28ed080af5b7cf1603bdb777',1,'funcy::MathematicalOperations::Squared::Squared()'],['../namespacefuncy.html#aa9945efc39406185d6f6c4422e972c57',1,'funcy::squared()']]],
+  ['squaredfrobeniusnorm',['SquaredFrobeniusNorm',['../structfuncy_1_1LinearAlgebra_1_1SquaredFrobeniusNorm.html#a943d1a15ed1b89f78a7fabc5759f0e64',1,'funcy::LinearAlgebra::SquaredFrobeniusNorm::SquaredFrobeniusNorm()=default'],['../structfuncy_1_1LinearAlgebra_1_1SquaredFrobeniusNorm.html#af70ae5da4995f8c42ab69557f588ea89',1,'funcy::LinearAlgebra::SquaredFrobeniusNorm::SquaredFrobeniusNorm(const Matrix &amp;A)']]],
+  ['straintensor',['strainTensor',['../namespacefuncy_1_1LinearAlgebra.html#a4d464ae754aaf51a2be4e59ae32ef1c4',1,'funcy::LinearAlgebra::strainTensor(const Matrix &amp;A)'],['../namespacefuncy_1_1LinearAlgebra.html#af5b125ebe7ad3358d32796a3305bb76b',1,'funcy::LinearAlgebra::strainTensor(const F &amp;f)']]],
+  ['sum',['Sum',['../structfuncy_1_1MathematicalOperations_1_1Sum.html#a7c23d59f7a9ca7ef1584195b437c6c71',1,'funcy::MathematicalOperations::Sum']]],
+  ['summation',['summation',['../namespacefuncy_1_1Checks_1_1Has_1_1Free.html#ae0cb37e1a67bf71600cae92400988738',1,'funcy::Checks::Has::Free']]]
 ];

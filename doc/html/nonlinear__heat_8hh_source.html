@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>FunG: include/fung/examples/nonlinear_heat.hh Source File</title>
+<title>funcy: include/funcy/examples/nonlinear_heat.hh Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,7 +28,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">FunG
+   <div id="projectname">funcy
    </div>
   </td>
  </tr>
@@ -88,7 +88,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_fa81a0b40bd9e8878bcb1c2d8e9b57c6.html">include</a></li><li class="navelem"><a class="el" href="dir_fd47c672f6d66b5c6e237ee1782a0895.html">fung</a></li><li class="navelem"><a class="el" href="dir_7be5f91d6c2272aa84a9b781dfcd6f83.html">examples</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_2b05d8de44f473256ece09f3e5f2d153.html">include</a></li><li class="navelem"><a class="el" href="dir_a89158a207ff7179a34c837fd3516315.html">funcy</a></li><li class="navelem"><a class="el" href="dir_2f4b4aad7e7965996f59922d1f925930.html">examples</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -98,29 +98,29 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 <a href="nonlinear__heat_8hh.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="finalize_8hh.html">fung/finalize.hh</a>&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="generate_8hh.html">fung/generate.hh</a>&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="variable_8hh.html">fung/variable.hh</a>&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="finalize_8hh.html">funcy/finalize.hh</a>&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="generate_8hh.html">funcy/generate.hh</a>&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="variable_8hh.html">funcy/variable.hh</a>&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span>FunG</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span>funcy</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;{</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <span class="keyword">template</span> &lt;<span class="keyword">class</span> Scalar, <span class="keyword">class</span> Vector&gt;</div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="namespaceFunG.html#aab17a1468e61f58564333b3fcd7900d6">   17</a></span>&#160;  <span class="keyword">auto</span> <a class="code" href="namespaceFunG.html#aab17a1468e61f58564333b3fcd7900d6">heatModel</a>(<span class="keywordtype">double</span> c, <span class="keywordtype">double</span> d, Scalar u, <span class="keyword">const</span> Vector&amp; du)</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="namespacefuncy.html#aa784fe45579db52a36805656559a7afe">   17</a></span>&#160;  <span class="keyword">auto</span> <a class="code" href="namespacefuncy.html#aa784fe45579db52a36805656559a7afe">heatModel</a>(<span class="keywordtype">double</span> c, <span class="keywordtype">double</span> d, Scalar u, <span class="keyword">const</span> Vector&amp; du)</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  {</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">auto</span> f = (c+d*<a class="code" href="namespaceFunG.html#ac4ffc0754104af6ddf114e154251db78">squared</a>(variable&lt;0&gt;(u)))*variable&lt;0&gt;(du);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespaceFunG.html#ac59f2ececc3cd451860776320a4a93d5">finalize</a>( f );</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">auto</span> f = (c+d*<a class="code" href="namespacefuncy.html#aa9945efc39406185d6f6c4422e972c57">squared</a>(variable&lt;0&gt;(u)))*variable&lt;0&gt;(du);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespacefuncy.html#a6e18ee3ccfed0acfdb6d17247a060bb3">finalize</a>( f );</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  }</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div>
 <div class="ttc" id="finalize_8hh_html"><div class="ttname"><a href="finalize_8hh.html">finalize.hh</a></div></div>
 <div class="ttc" id="generate_8hh_html"><div class="ttname"><a href="generate_8hh.html">generate.hh</a></div></div>
+<div class="ttc" id="namespacefuncy_html_aa784fe45579db52a36805656559a7afe"><div class="ttname"><a href="namespacefuncy.html#aa784fe45579db52a36805656559a7afe">funcy::heatModel</a></div><div class="ttdeci">auto heatModel(double c, double d, Scalar u, const Vector &amp;du)</div><div class="ttdoc">Weak model for nonlinear heat transfer . </div><div class="ttdef"><b>Definition:</b> nonlinear_heat.hh:17</div></div>
 <div class="ttc" id="variable_8hh_html"><div class="ttname"><a href="variable_8hh.html">variable.hh</a></div></div>
-<div class="ttc" id="namespaceFunG_html_ac4ffc0754104af6ddf114e154251db78"><div class="ttname"><a href="namespaceFunG.html#ac4ffc0754104af6ddf114e154251db78">FunG::squared</a></div><div class="ttdeci">auto squared(F &amp;&amp;f)</div><div class="ttdoc">Generate squared function. </div><div class="ttdef"><b>Definition:</b> generate.hh:230</div></div>
-<div class="ttc" id="namespaceFunG_html_aab17a1468e61f58564333b3fcd7900d6"><div class="ttname"><a href="namespaceFunG.html#aab17a1468e61f58564333b3fcd7900d6">FunG::heatModel</a></div><div class="ttdeci">auto heatModel(double c, double d, Scalar u, const Vector &amp;du)</div><div class="ttdoc">Weak model for nonlinear heat transfer . </div><div class="ttdef"><b>Definition:</b> nonlinear_heat.hh:17</div></div>
-<div class="ttc" id="namespaceFunG_html_ac59f2ececc3cd451860776320a4a93d5"><div class="ttname"><a href="namespaceFunG.html#ac59f2ececc3cd451860776320a4a93d5">FunG::finalize</a></div><div class="ttdeci">auto finalize(F &amp;&amp;f)</div><div class="ttdoc">Finish function definition. </div><div class="ttdef"><b>Definition:</b> finalize.hh:323</div></div>
+<div class="ttc" id="namespacefuncy_html_aa9945efc39406185d6f6c4422e972c57"><div class="ttname"><a href="namespacefuncy.html#aa9945efc39406185d6f6c4422e972c57">funcy::squared</a></div><div class="ttdeci">auto squared(F &amp;&amp;f)</div><div class="ttdoc">Generate squared function. </div><div class="ttdef"><b>Definition:</b> generate.hh:230</div></div>
+<div class="ttc" id="namespacefuncy_html_a6e18ee3ccfed0acfdb6d17247a060bb3"><div class="ttname"><a href="namespacefuncy.html#a6e18ee3ccfed0acfdb6d17247a060bb3">funcy::finalize</a></div><div class="ttdeci">auto finalize(F &amp;&amp;f)</div><div class="ttdoc">Finish function definition. </div><div class="ttdef"><b>Definition:</b> finalize.hh:323</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Mar 7 2019 22:08:09 for FunG by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Mar 10 2019 08:25:08 for funcy by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

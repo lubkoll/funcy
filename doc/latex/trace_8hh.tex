@@ -1,31 +1,31 @@
-\hypertarget{trace_8hh}{\section{include/fung/linear\-\_\-algebra/trace.hh File Reference}
-\label{trace_8hh}\index{include/fung/linear\-\_\-algebra/trace.\-hh@{include/fung/linear\-\_\-algebra/trace.\-hh}}
+\hypertarget{trace_8hh}{\section{include/funcy/linear\-\_\-algebra/trace.hh File Reference}
+\label{trace_8hh}\index{include/funcy/linear\-\_\-algebra/trace.\-hh@{include/funcy/linear\-\_\-algebra/trace.\-hh}}
 }
 {\ttfamily \#include $<$type\-\_\-traits$>$}\\*
 {\ttfamily \#include $<$utility$>$}\\*
-{\ttfamily \#include $<$fung/concept\-\_\-check.\-hh$>$}\\*
-{\ttfamily \#include $<$fung/util/at.\-hh$>$}\\*
-{\ttfamily \#include $<$fung/util/chainer.\-hh$>$}\\*
-{\ttfamily \#include $<$fung/util/exceptions.\-hh$>$}\\*
-{\ttfamily \#include $<$fung/util/type\-\_\-traits.\-hh$>$}\\*
+{\ttfamily \#include $<$funcy/concept\-\_\-check.\-hh$>$}\\*
+{\ttfamily \#include $<$funcy/util/at.\-hh$>$}\\*
+{\ttfamily \#include $<$funcy/util/chainer.\-hh$>$}\\*
+{\ttfamily \#include $<$funcy/util/exceptions.\-hh$>$}\\*
+{\ttfamily \#include $<$funcy/util/type\-\_\-traits.\-hh$>$}\\*
 {\ttfamily \#include \char`\"{}dimension.\-hh\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}rows\-\_\-and\-\_\-cols.\-hh\char`\"{}}\\*
 \subsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{namespaceFunG}{Fun\-G}
-\begin{DoxyCompactList}\small\item\em Main namespace of the Fun\-G library. \end{DoxyCompactList}\item 
-\hyperlink{namespaceFunG_1_1LinearAlgebra}{Fun\-G\-::\-Linear\-Algebra}
+\hyperlink{namespacefuncy}{funcy}
+\begin{DoxyCompactList}\small\item\em Main namespace of the funcy library. \end{DoxyCompactList}\item 
+\hyperlink{namespacefuncy_1_1LinearAlgebra}{funcy\-::\-Linear\-Algebra}
 \begin{DoxyCompactList}\small\item\em Functionality from linear algebra such as (modified) principal and mixed matrix invariants. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-{\footnotesize template$<$class Matrix $>$ }\\using \hyperlink{group__LinearAlgebraGroup_ga43e327309edc349c75ceecd29b7abde2}{Fun\-G\-::\-Linear\-Algebra\-::\-Trace} = std\-::conditional\-\_\-t$<$ Checks\-::is\-Constant\-Size$<$ Matrix $>$(), Constant\-Size\-Trace$<$ Matrix $>$, Dynamic\-Size\-Trace$<$ Matrix $>$ $>$
+{\footnotesize template$<$class Matrix $>$ }\\using \hyperlink{group__LinearAlgebraGroup_ga5771b42f6ae0c554253a3602f6151b00}{funcy\-::\-Linear\-Algebra\-::\-Trace} = std\-::conditional\-\_\-t$<$ Checks\-::is\-Constant\-Size$<$ Matrix $>$(), Constant\-Size\-Trace$<$ Matrix $>$, Dynamic\-Size\-Trace$<$ Matrix $>$ $>$
 \begin{DoxyCompactList}\small\item\em Trace of a matrix (sum of diagonal elements). \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-{\footnotesize template$<$class Matrix , std\-::enable\-\_\-if\-\_\-t$<$!\-Checks\-::is\-Function$<$ Matrix $>$()$>$ $\ast$  = nullptr$>$ }\\auto \hyperlink{group__LinearAlgebraGroup_ga4d73eb4d46dd9196a31e2d6d557d509e}{Fun\-G\-::\-Linear\-Algebra\-::trace} (const Matrix \&A)
+{\footnotesize template$<$class Matrix , std\-::enable\-\_\-if\-\_\-t$<$!\-Checks\-::is\-Function$<$ Matrix $>$()$>$ $\ast$  = nullptr$>$ }\\auto \hyperlink{group__LinearAlgebraGroup_gaeb83634a988175e17cda9206619dc87e}{funcy\-::\-Linear\-Algebra\-::trace} (const Matrix \&A)
 \begin{DoxyCompactList}\small\item\em Generate $\mathrm{tr}(A)\in\mathbb{R}^{n,n}$. \end{DoxyCompactList}\item 
-{\footnotesize template$<$class F , std\-::enable\-\_\-if\-\_\-t$<$ Checks\-::is\-Function$<$ F $>$() $>$ $\ast$  = nullptr$>$ }\\auto \hyperlink{group__LinearAlgebraGroup_ga950717870525c43be79245413717673c}{Fun\-G\-::\-Linear\-Algebra\-::trace} (const F \&f)
+{\footnotesize template$<$class F , std\-::enable\-\_\-if\-\_\-t$<$ Checks\-::is\-Function$<$ F $>$() $>$ $\ast$  = nullptr$>$ }\\auto \hyperlink{group__LinearAlgebraGroup_ga16931a1c71fa12799e8275c404387fba}{funcy\-::\-Linear\-Algebra\-::trace} (const F \&f)
 \begin{DoxyCompactList}\small\item\em Generate $\mathrm{tr}\circ f$, where $f:\cdot\mapsto\mathbb{R}^{n,n} $. \end{DoxyCompactList}\end{DoxyCompactItemize}

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>FunG: include/fung/examples/biomechanics/skin_tissue_hendriks.hh File Reference</title>
+<title>funcy: include/funcy/examples/biomechanics/skin_tissue_hendriks.hh File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,7 +28,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">FunG
+   <div id="projectname">funcy
    </div>
   </td>
  </tr>
@@ -88,7 +88,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_fa81a0b40bd9e8878bcb1c2d8e9b57c6.html">include</a></li><li class="navelem"><a class="el" href="dir_fd47c672f6d66b5c6e237ee1782a0895.html">fung</a></li><li class="navelem"><a class="el" href="dir_7be5f91d6c2272aa84a9b781dfcd6f83.html">examples</a></li><li class="navelem"><a class="el" href="dir_2e9db9e8c5551f136b1fba018b908bd0.html">biomechanics</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_2b05d8de44f473256ece09f3e5f2d153.html">include</a></li><li class="navelem"><a class="el" href="dir_a89158a207ff7179a34c837fd3516315.html">funcy</a></li><li class="navelem"><a class="el" href="dir_2f4b4aad7e7965996f59922d1f925930.html">examples</a></li><li class="navelem"><a class="el" href="dir_8a5511f40dd70f4878e039492beee4b0.html">biomechanics</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -100,47 +100,47 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>Versions of the skin model of <a class="el" href="citelist.html#CITEREF_Hendriks2005">Hendriks2005</a>.  
+<p>Versions of the skin model of <a class="el" href="citelist.html#CITEREF_Hendriks2005">[1]</a>.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;<a class="el" href="finalize_8hh_source.html">fung/finalize.hh</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="generate_8hh_source.html">fung/generate.hh</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="strain__tensor_8hh_source.html">fung/linear_algebra/strain_tensor.hh</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="unit__matrix_8hh_source.html">fung/linear_algebra/unit_matrix.hh</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="principal__invariants_8hh_source.html">fung/linear_algebra/principal_invariants.hh</a>&gt;</code><br/>
+<div class="textblock"><code>#include &lt;<a class="el" href="finalize_8hh_source.html">funcy/finalize.hh</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="generate_8hh_source.html">funcy/generate.hh</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="strain__tensor_8hh_source.html">funcy/linear_algebra/strain_tensor.hh</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="unit__matrix_8hh_source.html">funcy/linear_algebra/unit_matrix.hh</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="principal__invariants_8hh_source.html">funcy/linear_algebra/principal_invariants.hh</a>&gt;</code><br/>
 </div>
 <p><a href="skin__tissue__hendriks_8hh_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
-<tr class="memitem:namespaceFunG"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceFunG.html">FunG</a></td></tr>
-<tr class="memdesc:namespaceFunG"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main namespace of the FunG library. <br/></td></tr>
+<tr class="memitem:namespacefuncy"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefuncy.html">funcy</a></td></tr>
+<tr class="memdesc:namespacefuncy"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main namespace of the funcy library. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gaa20bf15ef6976d64d89490429035b2c4"><td class="memTemplParams" colspan="2">template&lt;class Matrix , int n = LinearAlgebra::dim&lt;Matrix&gt;()&gt; </td></tr>
-<tr class="memitem:gaa20bf15ef6976d64d89490429035b2c4"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__Biomechanics.html#gaa20bf15ef6976d64d89490429035b2c4">FunG::incompressibleSkin_Hendriks</a> (double c0, double c1, const Matrix &amp;F)</td></tr>
-<tr class="memdesc:gaa20bf15ef6976d64d89490429035b2c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Model for skin tissue of <a class="el" href="citelist.html#CITEREF_Hendriks2005">Hendriks2005</a>.  <a href="group__Biomechanics.html#gaa20bf15ef6976d64d89490429035b2c4">More...</a><br/></td></tr>
-<tr class="separator:gaa20bf15ef6976d64d89490429035b2c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad8653218bd2afb4e3cfd601a5142956c"><td class="memTemplParams" colspan="2">template&lt;class Matrix , int n = LinearAlgebra::dim&lt;Matrix&gt;()&gt; </td></tr>
-<tr class="memitem:gad8653218bd2afb4e3cfd601a5142956c"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__Biomechanics.html#gad8653218bd2afb4e3cfd601a5142956c">FunG::incompressibleSkin_Hendriks</a> (const Matrix &amp;F)</td></tr>
-<tr class="memdesc:gad8653218bd2afb4e3cfd601a5142956c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Model for skin tissue of <a class="el" href="citelist.html#CITEREF_Hendriks2005">Hendriks2005</a>.  <a href="group__Biomechanics.html#gad8653218bd2afb4e3cfd601a5142956c">More...</a><br/></td></tr>
-<tr class="separator:gad8653218bd2afb4e3cfd601a5142956c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga07b4c52c6ecf7e72f73ab5832fb262cd"><td class="memTemplParams" colspan="2">template&lt;class InflationPenalty , class CompressionPenalty , class Matrix , int n = LinearAlgebra::dim&lt;Matrix&gt;()&gt; </td></tr>
-<tr class="memitem:ga07b4c52c6ecf7e72f73ab5832fb262cd"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__Biomechanics.html#ga07b4c52c6ecf7e72f73ab5832fb262cd">FunG::compressibleSkin_Hendriks</a> (double c0, double c1, double d0, double d1, const Matrix &amp;F)</td></tr>
-<tr class="memdesc:ga07b4c52c6ecf7e72f73ab5832fb262cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compressible version of the model for skin tissue of <a class="el" href="citelist.html#CITEREF_Hendriks2005">Hendriks2005</a>.  <a href="group__Biomechanics.html#ga07b4c52c6ecf7e72f73ab5832fb262cd">More...</a><br/></td></tr>
-<tr class="separator:ga07b4c52c6ecf7e72f73ab5832fb262cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga42721e772b7eada1b0bca98247ad440f"><td class="memTemplParams" colspan="2">template&lt;class InflationPenalty , class CompressionPenalty , class Matrix , int n = LinearAlgebra::dim&lt;Matrix&gt;()&gt; </td></tr>
-<tr class="memitem:ga42721e772b7eada1b0bca98247ad440f"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__Biomechanics.html#ga42721e772b7eada1b0bca98247ad440f">FunG::compressibleSkin_Hendriks</a> (double d0, double d1, const Matrix &amp;F)</td></tr>
-<tr class="memdesc:ga42721e772b7eada1b0bca98247ad440f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compressible version of the model for skin tissue of <a class="el" href="citelist.html#CITEREF_Hendriks2005">Hendriks2005</a>.  <a href="group__Biomechanics.html#ga42721e772b7eada1b0bca98247ad440f">More...</a><br/></td></tr>
-<tr class="separator:ga42721e772b7eada1b0bca98247ad440f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4d27dc5aefb556c1fa7ef71e6549de96"><td class="memTemplParams" colspan="2">template&lt;class Matrix , int n = LinearAlgebra::dim&lt;Matrix&gt;()&gt; </td></tr>
+<tr class="memitem:ga4d27dc5aefb556c1fa7ef71e6549de96"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__Biomechanics.html#ga4d27dc5aefb556c1fa7ef71e6549de96">funcy::incompressibleSkin_Hendriks</a> (double c0, double c1, const Matrix &amp;F)</td></tr>
+<tr class="memdesc:ga4d27dc5aefb556c1fa7ef71e6549de96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Model for skin tissue of <a class="el" href="citelist.html#CITEREF_Hendriks2005">[1]</a>.  <a href="group__Biomechanics.html#ga4d27dc5aefb556c1fa7ef71e6549de96">More...</a><br/></td></tr>
+<tr class="separator:ga4d27dc5aefb556c1fa7ef71e6549de96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2e1b8683d6c9cb90d2b8425f1bb1247b"><td class="memTemplParams" colspan="2">template&lt;class Matrix , int n = LinearAlgebra::dim&lt;Matrix&gt;()&gt; </td></tr>
+<tr class="memitem:ga2e1b8683d6c9cb90d2b8425f1bb1247b"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__Biomechanics.html#ga2e1b8683d6c9cb90d2b8425f1bb1247b">funcy::incompressibleSkin_Hendriks</a> (const Matrix &amp;F)</td></tr>
+<tr class="memdesc:ga2e1b8683d6c9cb90d2b8425f1bb1247b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Model for skin tissue of <a class="el" href="citelist.html#CITEREF_Hendriks2005">[1]</a>.  <a href="group__Biomechanics.html#ga2e1b8683d6c9cb90d2b8425f1bb1247b">More...</a><br/></td></tr>
+<tr class="separator:ga2e1b8683d6c9cb90d2b8425f1bb1247b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac0b05f2d4c1323387e305d07163ba5de"><td class="memTemplParams" colspan="2">template&lt;class InflationPenalty , class CompressionPenalty , class Matrix , int n = LinearAlgebra::dim&lt;Matrix&gt;()&gt; </td></tr>
+<tr class="memitem:gac0b05f2d4c1323387e305d07163ba5de"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__Biomechanics.html#gac0b05f2d4c1323387e305d07163ba5de">funcy::compressibleSkin_Hendriks</a> (double c0, double c1, double d0, double d1, const Matrix &amp;F)</td></tr>
+<tr class="memdesc:gac0b05f2d4c1323387e305d07163ba5de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compressible version of the model for skin tissue of <a class="el" href="citelist.html#CITEREF_Hendriks2005">[1]</a>.  <a href="group__Biomechanics.html#gac0b05f2d4c1323387e305d07163ba5de">More...</a><br/></td></tr>
+<tr class="separator:gac0b05f2d4c1323387e305d07163ba5de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga03684718dd8b87b1370fdf4d6351a066"><td class="memTemplParams" colspan="2">template&lt;class InflationPenalty , class CompressionPenalty , class Matrix , int n = LinearAlgebra::dim&lt;Matrix&gt;()&gt; </td></tr>
+<tr class="memitem:ga03684718dd8b87b1370fdf4d6351a066"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__Biomechanics.html#ga03684718dd8b87b1370fdf4d6351a066">funcy::compressibleSkin_Hendriks</a> (double d0, double d1, const Matrix &amp;F)</td></tr>
+<tr class="memdesc:ga03684718dd8b87b1370fdf4d6351a066"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compressible version of the model for skin tissue of <a class="el" href="citelist.html#CITEREF_Hendriks2005">[1]</a>.  <a href="group__Biomechanics.html#ga03684718dd8b87b1370fdf4d6351a066">More...</a><br/></td></tr>
+<tr class="separator:ga03684718dd8b87b1370fdf4d6351a066"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Versions of the skin model of <a class="el" href="citelist.html#CITEREF_Hendriks2005">Hendriks2005</a>. </p>
+<div class="textblock"><p>Versions of the skin model of <a class="el" href="citelist.html#CITEREF_Hendriks2005">[1]</a>. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Mar 7 2019 22:08:09 for FunG by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Mar 10 2019 08:25:09 for funcy by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

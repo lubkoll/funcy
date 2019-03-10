@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['outofdomainexception',['OutOfDomainException',['../classFunG_1_1OutOfDomainException.html',1,'FunG']]]
+  ['outofdomainexception',['OutOfDomainException',['../classfuncy_1_1OutOfDomainException.html',1,'funcy']]]
 ];

@@ -1,32 +1,32 @@
-\hypertarget{strain__tensor_8hh}{\section{include/fung/linear\-\_\-algebra/strain\-\_\-tensor.hh File Reference}
-\label{strain__tensor_8hh}\index{include/fung/linear\-\_\-algebra/strain\-\_\-tensor.\-hh@{include/fung/linear\-\_\-algebra/strain\-\_\-tensor.\-hh}}
+\hypertarget{strain__tensor_8hh}{\section{include/funcy/linear\-\_\-algebra/strain\-\_\-tensor.hh File Reference}
+\label{strain__tensor_8hh}\index{include/funcy/linear\-\_\-algebra/strain\-\_\-tensor.\-hh@{include/funcy/linear\-\_\-algebra/strain\-\_\-tensor.\-hh}}
 }
 {\ttfamily \#include \char`\"{}transpose.\-hh\char`\"{}}\\*
-{\ttfamily \#include $<$fung/mathematical\-\_\-operations/sum.\-hh$>$}\\*
-{\ttfamily \#include $<$fung/util/chainer.\-hh$>$}\\*
-{\ttfamily \#include $<$fung/util/add\-\_\-transposed\-\_\-matrix.\-hh$>$}\\*
+{\ttfamily \#include $<$funcy/mathematical\-\_\-operations/sum.\-hh$>$}\\*
+{\ttfamily \#include $<$funcy/util/chainer.\-hh$>$}\\*
+{\ttfamily \#include $<$funcy/util/add\-\_\-transposed\-\_\-matrix.\-hh$>$}\\*
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-class \hyperlink{classFunG_1_1LinearAlgebra_1_1RightCauchyGreenStrainTensor}{Fun\-G\-::\-Linear\-Algebra\-::\-Right\-Cauchy\-Green\-Strain\-Tensor$<$ Matrix, class $>$}
+class \hyperlink{classfuncy_1_1LinearAlgebra_1_1RightCauchyGreenStrainTensor}{funcy\-::\-Linear\-Algebra\-::\-Right\-Cauchy\-Green\-Strain\-Tensor$<$ Matrix, class $>$}
 \begin{DoxyCompactList}\small\item\em Right Cauchy-\/\-Green strain tensor $ F^T F $ for a symmetric matrix $ F $. \end{DoxyCompactList}\item 
-class \hyperlink{classFunG_1_1LinearAlgebra_1_1LeftCauchyGreenStrainTensor}{Fun\-G\-::\-Linear\-Algebra\-::\-Left\-Cauchy\-Green\-Strain\-Tensor$<$ Matrix, class $>$}
+class \hyperlink{classfuncy_1_1LinearAlgebra_1_1LeftCauchyGreenStrainTensor}{funcy\-::\-Linear\-Algebra\-::\-Left\-Cauchy\-Green\-Strain\-Tensor$<$ Matrix, class $>$}
 \begin{DoxyCompactList}\small\item\em Left Cauchy-\/\-Green strain tensor $ F^T F $ for a symmetric matrix $ F $. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{namespaceFunG}{Fun\-G}
-\begin{DoxyCompactList}\small\item\em Main namespace of the Fun\-G library. \end{DoxyCompactList}\item 
-\hyperlink{namespaceFunG_1_1LinearAlgebra}{Fun\-G\-::\-Linear\-Algebra}
+\hyperlink{namespacefuncy}{funcy}
+\begin{DoxyCompactList}\small\item\em Main namespace of the funcy library. \end{DoxyCompactList}\item 
+\hyperlink{namespacefuncy_1_1LinearAlgebra}{funcy\-::\-Linear\-Algebra}
 \begin{DoxyCompactList}\small\item\em Functionality from linear algebra such as (modified) principal and mixed matrix invariants. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-{\footnotesize template$<$class Matrix , std\-::enable\-\_\-if\-\_\-t$<$!\-Checks\-::is\-Function$<$ Matrix $>$()$>$ $\ast$  = nullptr$>$ }\\auto \hyperlink{namespaceFunG_1_1LinearAlgebra_a0e10030a723fad88f5f4f0b6612c393a}{Fun\-G\-::\-Linear\-Algebra\-::strain\-Tensor} (const Matrix \&A)
+{\footnotesize template$<$class Matrix , std\-::enable\-\_\-if\-\_\-t$<$!\-Checks\-::is\-Function$<$ Matrix $>$()$>$ $\ast$  = nullptr$>$ }\\auto \hyperlink{namespacefuncy_1_1LinearAlgebra_a4d464ae754aaf51a2be4e59ae32ef1c4}{funcy\-::\-Linear\-Algebra\-::strain\-Tensor} (const Matrix \&A)
 \begin{DoxyCompactList}\small\item\em Generate the right Cauchy-\/\-Green strain tensor $A*A^T$. \end{DoxyCompactList}\item 
-{\footnotesize template$<$class F , std\-::enable\-\_\-if\-\_\-t$<$ Checks\-::is\-Function$<$ F $>$()$>$ $\ast$  = nullptr$>$ }\\auto \hyperlink{namespaceFunG_1_1LinearAlgebra_ab4371788da401ca62a3a29a13cf8d4ce}{Fun\-G\-::\-Linear\-Algebra\-::strain\-Tensor} (const F \&f)
+{\footnotesize template$<$class F , std\-::enable\-\_\-if\-\_\-t$<$ Checks\-::is\-Function$<$ F $>$()$>$ $\ast$  = nullptr$>$ }\\auto \hyperlink{namespacefuncy_1_1LinearAlgebra_af5b125ebe7ad3358d32796a3305bb76b}{funcy\-::\-Linear\-Algebra\-::strain\-Tensor} (const F \&f)
 \begin{DoxyCompactList}\small\item\em Generate the right Cauchy-\/\-Green strain tensor $f*f^T$, where $f:\cdot\mapsto\mathbb{R}^{n,n} $. \end{DoxyCompactList}\item 
-{\footnotesize template$<$class Matrix , std\-::enable\-\_\-if\-\_\-t$<$!\-Checks\-::is\-Function$<$ Matrix $>$()$>$ $\ast$  = nullptr$>$ }\\auto \hyperlink{namespaceFunG_1_1LinearAlgebra_a5876e082c6e15e8e9a985a855dc698d5}{Fun\-G\-::\-Linear\-Algebra\-::left\-Strain\-Tensor} (const Matrix \&A)
+{\footnotesize template$<$class Matrix , std\-::enable\-\_\-if\-\_\-t$<$!\-Checks\-::is\-Function$<$ Matrix $>$()$>$ $\ast$  = nullptr$>$ }\\auto \hyperlink{namespacefuncy_1_1LinearAlgebra_aab1b8d60b9d90f8225a743686a9229b8}{funcy\-::\-Linear\-Algebra\-::left\-Strain\-Tensor} (const Matrix \&A)
 \begin{DoxyCompactList}\small\item\em Generate the left Cauchy-\/\-Green strain tensor $A^T*A$. \end{DoxyCompactList}\item 
-{\footnotesize template$<$class F , std\-::enable\-\_\-if\-\_\-t$<$ Checks\-::is\-Function$<$ F $>$()$>$ $\ast$  = nullptr$>$ }\\auto \hyperlink{namespaceFunG_1_1LinearAlgebra_a4ed7509f976a86c83048609da5e8bac7}{Fun\-G\-::\-Linear\-Algebra\-::left\-Strain\-Tensor} (const F \&f)
+{\footnotesize template$<$class F , std\-::enable\-\_\-if\-\_\-t$<$ Checks\-::is\-Function$<$ F $>$()$>$ $\ast$  = nullptr$>$ }\\auto \hyperlink{namespacefuncy_1_1LinearAlgebra_a68eb9f89b75132e9ab77829e188cf8a7}{funcy\-::\-Linear\-Algebra\-::left\-Strain\-Tensor} (const F \&f)
 \begin{DoxyCompactList}\small\item\em Generate the left Cauchy-\/\-Green strain tensor $f^T*f$, where $f:\cdot\mapsto\mathbb{R}^{n,n} $. \end{DoxyCompactList}\end{DoxyCompactItemize}

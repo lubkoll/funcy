@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>FunG: include/fung/util/compute_sum.hh Source File</title>
+<title>funcy: include/funcy/util/compute_sum.hh Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,7 +28,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">FunG
+   <div id="projectname">funcy
    </div>
   </td>
  </tr>
@@ -88,7 +88,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_fa81a0b40bd9e8878bcb1c2d8e9b57c6.html">include</a></li><li class="navelem"><a class="el" href="dir_fd47c672f6d66b5c6e237ee1782a0895.html">fung</a></li><li class="navelem"><a class="el" href="dir_042fa42b4d834a66c1d15d8eb7556c50.html">util</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_2b05d8de44f473256ece09f3e5f2d153.html">include</a></li><li class="navelem"><a class="el" href="dir_a89158a207ff7179a34c837fd3516315.html">funcy</a></li><li class="navelem"><a class="el" href="dir_92073566fc3d85754fbf4df4c4f194c7.html">util</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -106,7 +106,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;utility&gt;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span>FunG</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span>funcy</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">namespace </span>Detail</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    {</div>
@@ -124,7 +124,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        {</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            <span class="keyword">static</span> constexpr <span class="keywordtype">bool</span> present = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            ComputeSumImpl( <span class="keyword">const</span> X&amp; x, <span class="keyword">const</span> Y&amp; y ) : value( <a class="code" href="namespaceFunG.html#a1aa47c6870754d5d74100568cd3ef532">add_via_traits</a>( x(), y() ) )</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            ComputeSumImpl( <span class="keyword">const</span> X&amp; x, <span class="keyword">const</span> Y&amp; y ) : value( <a class="code" href="namespacefuncy.html#a2582aac1c2d3dee4cbd9995d9bf068fc">add_via_traits</a>( x(), y() ) )</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            {</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            }</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
@@ -133,8 +133,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                <span class="keywordflow">return</span> value;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            }</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <a class="code" href="namespaceFunG.html#a40f6d0896c1e3837d442d39418a4f609">remove_reference_t</a>&lt; decltype(</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                <a class="code" href="namespaceFunG.html#a1aa47c6870754d5d74100568cd3ef532">add_via_traits</a>( std::declval&lt; X &gt;()(), std::declval&lt; Y &gt;()() ) ) &gt;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <a class="code" href="namespacefuncy.html#af445dd811bafa51449c6380536b005c0">remove_reference_t</a>&lt; decltype(</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                <a class="code" href="namespacefuncy.html#a2582aac1c2d3dee4cbd9995d9bf068fc">add_via_traits</a>( std::declval&lt; X &gt;()(), std::declval&lt; Y &gt;()() ) ) &gt;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                value;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        };</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
@@ -208,13 +208,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    }</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;}</div>
 <div class="ttc" id="mathop__traits_8hh_html"><div class="ttname"><a href="mathop__traits_8hh.html">mathop_traits.hh</a></div></div>
+<div class="ttc" id="namespacefuncy_html_a2582aac1c2d3dee4cbd9995d9bf068fc"><div class="ttname"><a href="namespacefuncy.html#a2582aac1c2d3dee4cbd9995d9bf068fc">funcy::add_via_traits</a></div><div class="ttdeci">auto add_via_traits(T &amp;&amp;lhs, S &amp;&amp;rhs)</div><div class="ttdef"><b>Definition:</b> mathop_traits.hh:85</div></div>
+<div class="ttc" id="namespacefuncy_html_af445dd811bafa51449c6380536b005c0"><div class="ttname"><a href="namespacefuncy.html#af445dd811bafa51449c6380536b005c0">funcy::remove_reference_t</a></div><div class="ttdeci">typename Decay&lt; std::remove_reference_t&lt; F &gt; &gt;::type remove_reference_t</div><div class="ttdoc">Access underlying type (if it is hidden by expression templates). </div><div class="ttdef"><b>Definition:</b> type_traits.hh:50</div></div>
 <div class="ttc" id="type__traits_8hh_html"><div class="ttname"><a href="type__traits_8hh.html">type_traits.hh</a></div></div>
-<div class="ttc" id="namespaceFunG_html_a40f6d0896c1e3837d442d39418a4f609"><div class="ttname"><a href="namespaceFunG.html#a40f6d0896c1e3837d442d39418a4f609">FunG::remove_reference_t</a></div><div class="ttdeci">typename Decay&lt; std::remove_reference_t&lt; F &gt; &gt;::type remove_reference_t</div><div class="ttdoc">Access underlying type (if it is hidden by expression templates). </div><div class="ttdef"><b>Definition:</b> type_traits.hh:50</div></div>
-<div class="ttc" id="namespaceFunG_html_a1aa47c6870754d5d74100568cd3ef532"><div class="ttname"><a href="namespaceFunG.html#a1aa47c6870754d5d74100568cd3ef532">FunG::add_via_traits</a></div><div class="ttdeci">auto add_via_traits(T &amp;&amp;lhs, S &amp;&amp;rhs)</div><div class="ttdef"><b>Definition:</b> mathop_traits.hh:85</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Mar 7 2019 22:08:09 for FunG by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Mar 10 2019 08:25:09 for funcy by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

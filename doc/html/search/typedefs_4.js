@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['or',['Or',['../namespaceFunG_1_1Meta.html#a54cebc5541fa7677e239a9b7a84aba7e',1,'FunG::Meta']]]
+  ['or',['Or',['../namespacefuncy_1_1Meta.html#a7a832030d5229986a69d3518833e1b8f',1,'funcy::Meta']]]
 ];

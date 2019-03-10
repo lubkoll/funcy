@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>FunG: include/fung/cmath/pow.hh File Reference</title>
+<title>funcy: include/funcy/cmath/pow.hh File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,7 +28,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">FunG
+   <div id="projectname">funcy
    </div>
   </td>
  </tr>
@@ -88,7 +88,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_fa81a0b40bd9e8878bcb1c2d8e9b57c6.html">include</a></li><li class="navelem"><a class="el" href="dir_fd47c672f6d66b5c6e237ee1782a0895.html">fung</a></li><li class="navelem"><a class="el" href="dir_af10f8c38cd07155941d581053c96900.html">cmath</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_2b05d8de44f473256ece09f3e5f2d153.html">include</a></li><li class="navelem"><a class="el" href="dir_a89158a207ff7179a34c837fd3516315.html">funcy</a></li><li class="navelem"><a class="el" href="dir_034722dd775f489fd7fe173cc94a01e5.html">cmath</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -101,64 +101,64 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">pow.hh File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="chainer_8hh_source.html">fung/util/chainer.hh</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="exceptions_8hh_source.html">fung/util/exceptions.hh</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="static__checks_8hh_source.html">fung/util/static_checks.hh</a>&gt;</code><br/>
+<div class="textblock"><code>#include &lt;<a class="el" href="chainer_8hh_source.html">funcy/util/chainer.hh</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="exceptions_8hh_source.html">funcy/util/exceptions.hh</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="static__checks_8hh_source.html">funcy/util/static_checks.hh</a>&gt;</code><br/>
 <code>#include &lt;cmath&gt;</code><br/>
 </div>
 <p><a href="pow_8hh_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structFunG_1_1Pow.html">FunG::Pow&lt; dividend, divisor &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Power function with rational exponent \( k = \frac{dividend}{divisor} \) including first three derivatives.  <a href="structFunG_1_1Pow.html#details">More...</a><br/></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfuncy_1_1Pow.html">funcy::Pow&lt; dividend, divisor &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Power function with rational exponent \( k = \frac{dividend}{divisor} \) including first three derivatives.  <a href="structfuncy_1_1Pow.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
-<tr class="memitem:namespaceFunG"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceFunG.html">FunG</a></td></tr>
-<tr class="memdesc:namespaceFunG"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main namespace of the FunG library. <br/></td></tr>
+<tr class="memitem:namespacefuncy"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefuncy.html">funcy</a></td></tr>
+<tr class="memdesc:namespacefuncy"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main namespace of the funcy library. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:ga70c69680e967f5ccb79c07e50d44739d"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CMathGroup.html#ga70c69680e967f5ccb79c07e50d44739d">FunG::Sqrt</a> = Pow&lt; 1, 2 &gt;</td></tr>
-<tr class="memdesc:ga70c69680e967f5ccb79c07e50d44739d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Square root including first three derivatives (based on sqrt(double) in &lt;cmath&gt;).  <a href="group__CMathGroup.html#ga70c69680e967f5ccb79c07e50d44739d">More...</a><br/></td></tr>
-<tr class="separator:ga70c69680e967f5ccb79c07e50d44739d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaff369d639f7a316b3f22982e806cb45f"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CMathGroup.html#gaff369d639f7a316b3f22982e806cb45f">FunG::Cbrt</a> = Pow&lt; 1, 3 &gt;</td></tr>
-<tr class="memdesc:gaff369d639f7a316b3f22982e806cb45f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Third root including first three derivatives (based on sqrt(double) in &lt;cmath&gt;).  <a href="group__CMathGroup.html#gaff369d639f7a316b3f22982e806cb45f">More...</a><br/></td></tr>
-<tr class="separator:gaff369d639f7a316b3f22982e806cb45f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab63795eecd1e9a55ea26b24125053f2d"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CMathGroup.html#gab63795eecd1e9a55ea26b24125053f2d">FunG::Cbrt2</a> = Pow&lt; 2, 3 &gt;</td></tr>
-<tr class="memdesc:gab63795eecd1e9a55ea26b24125053f2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Third root squared including first three derivatives (based on sqrt(double) in &lt;cmath&gt;).  <a href="group__CMathGroup.html#gab63795eecd1e9a55ea26b24125053f2d">More...</a><br/></td></tr>
-<tr class="separator:gab63795eecd1e9a55ea26b24125053f2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa9e33b480a11f18dc15d5da847d88ff5"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CMathGroup.html#gaa9e33b480a11f18dc15d5da847d88ff5">funcy::Sqrt</a> = Pow&lt; 1, 2 &gt;</td></tr>
+<tr class="memdesc:gaa9e33b480a11f18dc15d5da847d88ff5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Square root including first three derivatives (based on sqrt(double) in &lt;cmath&gt;).  <a href="group__CMathGroup.html#gaa9e33b480a11f18dc15d5da847d88ff5">More...</a><br/></td></tr>
+<tr class="separator:gaa9e33b480a11f18dc15d5da847d88ff5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga73e089e38b8f293e9d7f6a1f617268e8"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CMathGroup.html#ga73e089e38b8f293e9d7f6a1f617268e8">funcy::Cbrt</a> = Pow&lt; 1, 3 &gt;</td></tr>
+<tr class="memdesc:ga73e089e38b8f293e9d7f6a1f617268e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Third root including first three derivatives (based on sqrt(double) in &lt;cmath&gt;).  <a href="group__CMathGroup.html#ga73e089e38b8f293e9d7f6a1f617268e8">More...</a><br/></td></tr>
+<tr class="separator:ga73e089e38b8f293e9d7f6a1f617268e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae9ee48794104aa14e38c34cfa90a33ac"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CMathGroup.html#gae9ee48794104aa14e38c34cfa90a33ac">funcy::Cbrt2</a> = Pow&lt; 2, 3 &gt;</td></tr>
+<tr class="memdesc:gae9ee48794104aa14e38c34cfa90a33ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Third root squared including first three derivatives (based on sqrt(double) in &lt;cmath&gt;).  <a href="group__CMathGroup.html#gae9ee48794104aa14e38c34cfa90a33ac">More...</a><br/></td></tr>
+<tr class="separator:gae9ee48794104aa14e38c34cfa90a33ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga136c890475e48f88469a737d95368d05"><td class="memTemplParams" colspan="2">template&lt;class Function , class  = std::enable_if_t&lt; Checks::isFunction&lt; Function &gt;() &gt;&gt; </td></tr>
-<tr class="memitem:ga136c890475e48f88469a737d95368d05"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__CMathGroup.html#ga136c890475e48f88469a737d95368d05">FunG::sqrt</a> (const Function &amp;f)</td></tr>
-<tr class="memdesc:ga136c890475e48f88469a737d95368d05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate \( \sqrt{f} \).  <a href="group__CMathGroup.html#ga136c890475e48f88469a737d95368d05">More...</a><br/></td></tr>
-<tr class="separator:ga136c890475e48f88469a737d95368d05"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa7f2552adfb8ec41aeb685adddd8bf98"><td class="memTemplParams" colspan="2">template&lt;class Function , class  = std::enable_if_t&lt; Checks::isFunction&lt; Function &gt;() &gt;&gt; </td></tr>
-<tr class="memitem:gaa7f2552adfb8ec41aeb685adddd8bf98"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__CMathGroup.html#gaa7f2552adfb8ec41aeb685adddd8bf98">FunG::cbrt</a> (const Function &amp;f)</td></tr>
-<tr class="memdesc:gaa7f2552adfb8ec41aeb685adddd8bf98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate \( \sqrt[3]{f} \).  <a href="group__CMathGroup.html#gaa7f2552adfb8ec41aeb685adddd8bf98">More...</a><br/></td></tr>
-<tr class="separator:gaa7f2552adfb8ec41aeb685adddd8bf98"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gafd27322fb64c6df3366f384c93819a06"><td class="memTemplParams" colspan="2">template&lt;class Function , class  = std::enable_if_t&lt; Checks::isFunction&lt; Function &gt;() &gt;&gt; </td></tr>
-<tr class="memitem:gafd27322fb64c6df3366f384c93819a06"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__CMathGroup.html#gafd27322fb64c6df3366f384c93819a06">FunG::cbrt2</a> (const Function &amp;f)</td></tr>
-<tr class="memdesc:gafd27322fb64c6df3366f384c93819a06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate \( \sqrt[3]{f^2}\).  <a href="group__CMathGroup.html#gafd27322fb64c6df3366f384c93819a06">More...</a><br/></td></tr>
-<tr class="separator:gafd27322fb64c6df3366f384c93819a06"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaecae6fa60bbfc0eb1867581ee4577d4e"><td class="memTemplParams" colspan="2">template&lt;int k, int l, class Function , class  = std::enable_if_t&lt; Checks::isFunction&lt; Function &gt;() &gt;&gt; </td></tr>
-<tr class="memitem:gaecae6fa60bbfc0eb1867581ee4577d4e"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__CMathGroup.html#gaecae6fa60bbfc0eb1867581ee4577d4e">FunG::pow</a> (const Function &amp;f)</td></tr>
-<tr class="memdesc:gaecae6fa60bbfc0eb1867581ee4577d4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate \( f^{k/l} \).  <a href="group__CMathGroup.html#gaecae6fa60bbfc0eb1867581ee4577d4e">More...</a><br/></td></tr>
-<tr class="separator:gaecae6fa60bbfc0eb1867581ee4577d4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab52ffe2efd379aad7ea322de46103465"><td class="memTemplParams" colspan="2">template&lt;int k, class Function , class  = std::enable_if_t&lt; Checks::isFunction&lt; Function &gt;() &gt;&gt; </td></tr>
-<tr class="memitem:gab52ffe2efd379aad7ea322de46103465"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__CMathGroup.html#gab52ffe2efd379aad7ea322de46103465">FunG::pow</a> (const Function &amp;f)</td></tr>
-<tr class="memdesc:gab52ffe2efd379aad7ea322de46103465"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate \( f^k,\ k\in\mathbb{N}\).  <a href="group__CMathGroup.html#gab52ffe2efd379aad7ea322de46103465">More...</a><br/></td></tr>
-<tr class="separator:gab52ffe2efd379aad7ea322de46103465"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1c180bd87b8817342b34d72dddd11266"><td class="memTemplParams" colspan="2">template&lt;class Function , class  = std::enable_if_t&lt; Checks::isFunction&lt; Function &gt;() &gt;&gt; </td></tr>
+<tr class="memitem:ga1c180bd87b8817342b34d72dddd11266"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__CMathGroup.html#ga1c180bd87b8817342b34d72dddd11266">funcy::sqrt</a> (const Function &amp;f)</td></tr>
+<tr class="memdesc:ga1c180bd87b8817342b34d72dddd11266"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate \( \sqrt{f} \).  <a href="group__CMathGroup.html#ga1c180bd87b8817342b34d72dddd11266">More...</a><br/></td></tr>
+<tr class="separator:ga1c180bd87b8817342b34d72dddd11266"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae8e97f84bd4000935069a87133173d4c"><td class="memTemplParams" colspan="2">template&lt;class Function , class  = std::enable_if_t&lt; Checks::isFunction&lt; Function &gt;() &gt;&gt; </td></tr>
+<tr class="memitem:gae8e97f84bd4000935069a87133173d4c"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__CMathGroup.html#gae8e97f84bd4000935069a87133173d4c">funcy::cbrt</a> (const Function &amp;f)</td></tr>
+<tr class="memdesc:gae8e97f84bd4000935069a87133173d4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate \( \sqrt[3]{f} \).  <a href="group__CMathGroup.html#gae8e97f84bd4000935069a87133173d4c">More...</a><br/></td></tr>
+<tr class="separator:gae8e97f84bd4000935069a87133173d4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3a4ba572754c0310c41949f2a4091046"><td class="memTemplParams" colspan="2">template&lt;class Function , class  = std::enable_if_t&lt; Checks::isFunction&lt; Function &gt;() &gt;&gt; </td></tr>
+<tr class="memitem:ga3a4ba572754c0310c41949f2a4091046"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__CMathGroup.html#ga3a4ba572754c0310c41949f2a4091046">funcy::cbrt2</a> (const Function &amp;f)</td></tr>
+<tr class="memdesc:ga3a4ba572754c0310c41949f2a4091046"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate \( \sqrt[3]{f^2}\).  <a href="group__CMathGroup.html#ga3a4ba572754c0310c41949f2a4091046">More...</a><br/></td></tr>
+<tr class="separator:ga3a4ba572754c0310c41949f2a4091046"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa667967d67586d6d5fc733a978f9ab06"><td class="memTemplParams" colspan="2">template&lt;int k, int l, class Function , class  = std::enable_if_t&lt; Checks::isFunction&lt; Function &gt;() &gt;&gt; </td></tr>
+<tr class="memitem:gaa667967d67586d6d5fc733a978f9ab06"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__CMathGroup.html#gaa667967d67586d6d5fc733a978f9ab06">funcy::pow</a> (const Function &amp;f)</td></tr>
+<tr class="memdesc:gaa667967d67586d6d5fc733a978f9ab06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate \( f^{k/l} \).  <a href="group__CMathGroup.html#gaa667967d67586d6d5fc733a978f9ab06">More...</a><br/></td></tr>
+<tr class="separator:gaa667967d67586d6d5fc733a978f9ab06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8e9aacbacd848ce8c87ceba957a666a7"><td class="memTemplParams" colspan="2">template&lt;int k, class Function , class  = std::enable_if_t&lt; Checks::isFunction&lt; Function &gt;() &gt;&gt; </td></tr>
+<tr class="memitem:ga8e9aacbacd848ce8c87ceba957a666a7"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__CMathGroup.html#ga8e9aacbacd848ce8c87ceba957a666a7">funcy::pow</a> (const Function &amp;f)</td></tr>
+<tr class="memdesc:ga8e9aacbacd848ce8c87ceba957a666a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate \( f^k,\ k\in\mathbb{N}\).  <a href="group__CMathGroup.html#ga8e9aacbacd848ce8c87ceba957a666a7">More...</a><br/></td></tr>
+<tr class="separator:ga8e9aacbacd848ce8c87ceba957a666a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Mar 7 2019 22:08:09 for FunG by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Mar 10 2019 08:25:09 for funcy by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

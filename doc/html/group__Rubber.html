@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>FunG: Rubber</title>
+<title>funcy: Rubber</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,7 +28,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">FunG
+   <div id="projectname">funcy
    </div>
   </td>
  </tr>
@@ -104,42 +104,42 @@ Files</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gace19173e33490aadd36ae3a03fd1d85c"><td class="memTemplParams" colspan="2">template&lt;class Matrix , int n = LinearAlgebra::dim&lt;Matrix&gt;()&gt; </td></tr>
-<tr class="memitem:gace19173e33490aadd36ae3a03fd1d85c"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__Rubber.html#gace19173e33490aadd36ae3a03fd1d85c">FunG::incompressibleMooneyRivlin</a> (double c0, double c1, const Matrix &amp;F)</td></tr>
-<tr class="memdesc:gace19173e33490aadd36ae3a03fd1d85c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate an "incompressible" Mooney-Rivlin material law \( W(F)=c_0\iota_1(F^T F) + c_1\iota_2(F^T F) \), where \(\iota_1\) is the first and \(\iota_2\) the second principal matrix invariant.  <a href="#gace19173e33490aadd36ae3a03fd1d85c">More...</a><br/></td></tr>
-<tr class="separator:gace19173e33490aadd36ae3a03fd1d85c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9a1894daa10a0bdcc620c6c41ecb6f19"><td class="memTemplParams" colspan="2">template&lt;class InflationPenalty , class CompressionPenalty , class Matrix , int n = LinearAlgebra::dim&lt;Matrix&gt;()&gt; </td></tr>
-<tr class="memitem:ga9a1894daa10a0bdcc620c6c41ecb6f19"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__Rubber.html#ga9a1894daa10a0bdcc620c6c41ecb6f19">FunG::compressibleMooneyRivlin</a> (double c0, double c1, double d0, double d1, const Matrix &amp;F)</td></tr>
-<tr class="memdesc:ga9a1894daa10a0bdcc620c6c41ecb6f19"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a compressible Mooney-Rivlin material law \( W(F)=c_0\iota_1(F^T F) + c_1\iota_2(F^T F) + d_0\Gamma_\mathrm{In}(\det(F))+d_1\Gamma_\mathrm{Co}(\det(F)) \), where \(\iota_1\) is the first and \(\iota_2\) the second principal matrix invariant.  <a href="#ga9a1894daa10a0bdcc620c6c41ecb6f19">More...</a><br/></td></tr>
-<tr class="separator:ga9a1894daa10a0bdcc620c6c41ecb6f19"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5bb28aef7006413775791998936d6b81"><td class="memTemplParams" colspan="2">template&lt;class Matrix , int n = LinearAlgebra::dim&lt;Matrix&gt;()&gt; </td></tr>
-<tr class="memitem:ga5bb28aef7006413775791998936d6b81"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__Rubber.html#ga5bb28aef7006413775791998936d6b81">FunG::incompressibleNeoHooke</a> (double c, const Matrix &amp;F)</td></tr>
-<tr class="memdesc:ga5bb28aef7006413775791998936d6b81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate an "incompressible" neo-Hookean material law \( W(F)=c\iota_1(F^T F) \), where \(\iota_1\) is the first principal matrix invariant .  <a href="#ga5bb28aef7006413775791998936d6b81">More...</a><br/></td></tr>
-<tr class="separator:ga5bb28aef7006413775791998936d6b81"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf6f5ab6a379ef03d513acc5042731a01"><td class="memTemplParams" colspan="2">template&lt;class Matrix , int n = LinearAlgebra::dim&lt;Matrix&gt;()&gt; </td></tr>
-<tr class="memitem:gaf6f5ab6a379ef03d513acc5042731a01"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__Rubber.html#gaf6f5ab6a379ef03d513acc5042731a01">FunG::modifiedIncompressibleNeoHooke</a> (double c, const Matrix &amp;F)</td></tr>
-<tr class="memdesc:gaf6f5ab6a379ef03d513acc5042731a01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate an "incompressible" neo-Hookean material law \( W(F)=c\bar\iota_1(F^T F) \), where \(\bar\iota_1\) is the modified first principal matrix invariant.  <a href="#gaf6f5ab6a379ef03d513acc5042731a01">More...</a><br/></td></tr>
-<tr class="separator:gaf6f5ab6a379ef03d513acc5042731a01"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac5c39cd9de55f4f0220a806cf28a7b30"><td class="memTemplParams" colspan="2">template&lt;class InflationPenalty , class CompressionPenalty , class Matrix , int n = LinearAlgebra::dim&lt;Matrix&gt;()&gt; </td></tr>
-<tr class="memitem:gac5c39cd9de55f4f0220a806cf28a7b30"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__Rubber.html#gac5c39cd9de55f4f0220a806cf28a7b30">FunG::compressibleNeoHooke</a> (double c, double d0, double d1, const Matrix &amp;F)</td></tr>
-<tr class="memdesc:gac5c39cd9de55f4f0220a806cf28a7b30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a compressible neo-Hookean material law \( W(F)=c\iota_1(F^T F)+d_0\Gamma_\mathrm{In}(\det(F))+d_1\Gamma_\mathrm{Co}(\det(F)) \), where \(\iota_1\) is the first principal matrix invariant.  <a href="#gac5c39cd9de55f4f0220a806cf28a7b30">More...</a><br/></td></tr>
-<tr class="separator:gac5c39cd9de55f4f0220a806cf28a7b30"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac10942df03f037afdf0a81d330361a6b"><td class="memTemplParams" colspan="2">template&lt;class InflationPenalty , class CompressionPenalty , class Matrix , int n = LinearAlgebra::dim&lt;Matrix&gt;()&gt; </td></tr>
-<tr class="memitem:gac10942df03f037afdf0a81d330361a6b"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__Rubber.html#gac10942df03f037afdf0a81d330361a6b">FunG::modifiedCompressibleNeoHooke</a> (double c, double d0, double d1, const Matrix &amp;F)</td></tr>
-<tr class="memdesc:gac10942df03f037afdf0a81d330361a6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a compressible neo-Hookean material law \( W(F)=c\bar\iota_1(F^T F)+d_0\Gamma_\mathrm{In}(\det(F))+d_1\Gamma_\mathrm{Co}(\det(F)) \), where \(\bar\iota_1\) is the modified first principal matrix invariant.  <a href="#gac10942df03f037afdf0a81d330361a6b">More...</a><br/></td></tr>
-<tr class="separator:gac10942df03f037afdf0a81d330361a6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacbf67f93c8dc330013448669410822f3"><td class="memTemplParams" colspan="2">template&lt;class Matrix , int n = LinearAlgebra::dim&lt;Matrix&gt;()&gt; </td></tr>
+<tr class="memitem:gacbf67f93c8dc330013448669410822f3"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__Rubber.html#gacbf67f93c8dc330013448669410822f3">funcy::incompressibleMooneyRivlin</a> (double c0, double c1, const Matrix &amp;F)</td></tr>
+<tr class="memdesc:gacbf67f93c8dc330013448669410822f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate an "incompressible" Mooney-Rivlin material law \( W(F)=c_0\iota_1(F^T F) + c_1\iota_2(F^T F) \), where \(\iota_1\) is the first and \(\iota_2\) the second principal matrix invariant.  <a href="#gacbf67f93c8dc330013448669410822f3">More...</a><br/></td></tr>
+<tr class="separator:gacbf67f93c8dc330013448669410822f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga335b92acb5e3b72e760fe5a3d536e276"><td class="memTemplParams" colspan="2">template&lt;class InflationPenalty , class CompressionPenalty , class Matrix , int n = LinearAlgebra::dim&lt;Matrix&gt;()&gt; </td></tr>
+<tr class="memitem:ga335b92acb5e3b72e760fe5a3d536e276"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__Rubber.html#ga335b92acb5e3b72e760fe5a3d536e276">funcy::compressibleMooneyRivlin</a> (double c0, double c1, double d0, double d1, const Matrix &amp;F)</td></tr>
+<tr class="memdesc:ga335b92acb5e3b72e760fe5a3d536e276"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a compressible Mooney-Rivlin material law \( W(F)=c_0\iota_1(F^T F) + c_1\iota_2(F^T F) + d_0\Gamma_\mathrm{In}(\det(F))+d_1\Gamma_\mathrm{Co}(\det(F)) \), where \(\iota_1\) is the first and \(\iota_2\) the second principal matrix invariant.  <a href="#ga335b92acb5e3b72e760fe5a3d536e276">More...</a><br/></td></tr>
+<tr class="separator:ga335b92acb5e3b72e760fe5a3d536e276"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad0d93d6dfb3693483fcd37144959de24"><td class="memTemplParams" colspan="2">template&lt;class Matrix , int n = LinearAlgebra::dim&lt;Matrix&gt;()&gt; </td></tr>
+<tr class="memitem:gad0d93d6dfb3693483fcd37144959de24"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__Rubber.html#gad0d93d6dfb3693483fcd37144959de24">funcy::incompressibleNeoHooke</a> (double c, const Matrix &amp;F)</td></tr>
+<tr class="memdesc:gad0d93d6dfb3693483fcd37144959de24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate an "incompressible" neo-Hookean material law \( W(F)=c\iota_1(F^T F) \), where \(\iota_1\) is the first principal matrix invariant .  <a href="#gad0d93d6dfb3693483fcd37144959de24">More...</a><br/></td></tr>
+<tr class="separator:gad0d93d6dfb3693483fcd37144959de24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae9f87c6f1fd4edddd0894edefd9fb9a5"><td class="memTemplParams" colspan="2">template&lt;class Matrix , int n = LinearAlgebra::dim&lt;Matrix&gt;()&gt; </td></tr>
+<tr class="memitem:gae9f87c6f1fd4edddd0894edefd9fb9a5"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__Rubber.html#gae9f87c6f1fd4edddd0894edefd9fb9a5">funcy::modifiedIncompressibleNeoHooke</a> (double c, const Matrix &amp;F)</td></tr>
+<tr class="memdesc:gae9f87c6f1fd4edddd0894edefd9fb9a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate an "incompressible" neo-Hookean material law \( W(F)=c\bar\iota_1(F^T F) \), where \(\bar\iota_1\) is the modified first principal matrix invariant.  <a href="#gae9f87c6f1fd4edddd0894edefd9fb9a5">More...</a><br/></td></tr>
+<tr class="separator:gae9f87c6f1fd4edddd0894edefd9fb9a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga03b9323b57ee11b09ed0515d6ea5b01b"><td class="memTemplParams" colspan="2">template&lt;class InflationPenalty , class CompressionPenalty , class Matrix , int n = LinearAlgebra::dim&lt;Matrix&gt;()&gt; </td></tr>
+<tr class="memitem:ga03b9323b57ee11b09ed0515d6ea5b01b"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__Rubber.html#ga03b9323b57ee11b09ed0515d6ea5b01b">funcy::compressibleNeoHooke</a> (double c, double d0, double d1, const Matrix &amp;F)</td></tr>
+<tr class="memdesc:ga03b9323b57ee11b09ed0515d6ea5b01b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a compressible neo-Hookean material law \( W(F)=c\iota_1(F^T F)+d_0\Gamma_\mathrm{In}(\det(F))+d_1\Gamma_\mathrm{Co}(\det(F)) \), where \(\iota_1\) is the first principal matrix invariant.  <a href="#ga03b9323b57ee11b09ed0515d6ea5b01b">More...</a><br/></td></tr>
+<tr class="separator:ga03b9323b57ee11b09ed0515d6ea5b01b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga77093789a2488adcffd7d3f97b8a75e4"><td class="memTemplParams" colspan="2">template&lt;class InflationPenalty , class CompressionPenalty , class Matrix , int n = LinearAlgebra::dim&lt;Matrix&gt;()&gt; </td></tr>
+<tr class="memitem:ga77093789a2488adcffd7d3f97b8a75e4"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__Rubber.html#ga77093789a2488adcffd7d3f97b8a75e4">funcy::modifiedCompressibleNeoHooke</a> (double c, double d0, double d1, const Matrix &amp;F)</td></tr>
+<tr class="memdesc:ga77093789a2488adcffd7d3f97b8a75e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a compressible neo-Hookean material law \( W(F)=c\bar\iota_1(F^T F)+d_0\Gamma_\mathrm{In}(\det(F))+d_1\Gamma_\mathrm{Co}(\det(F)) \), where \(\bar\iota_1\) is the modified first principal matrix invariant.  <a href="#ga77093789a2488adcffd7d3f97b8a75e4">More...</a><br/></td></tr>
+<tr class="separator:ga77093789a2488adcffd7d3f97b8a75e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Isotropic models for the description of rubber materials (neo-Hookean and Mooney-Rivlin models). </p>
 <h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="ga9a1894daa10a0bdcc620c6c41ecb6f19"></a>
+<a class="anchor" id="ga335b92acb5e3b72e760fe5a3d536e276"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class InflationPenalty , class CompressionPenalty , class Matrix , int n = LinearAlgebra::dim&lt;Matrix&gt;()&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">auto FunG::compressibleMooneyRivlin </td>
+          <td class="memname">auto funcy::compressibleMooneyRivlin </td>
           <td>(</td>
           <td class="paramtype">double&#160;</td>
           <td class="paramname"><em>c0</em>, </td>
@@ -180,14 +180,14 @@ template&lt;class InflationPenalty , class CompressionPenalty , class Matrix , i
 
 </div>
 </div>
-<a class="anchor" id="gac5c39cd9de55f4f0220a806cf28a7b30"></a>
+<a class="anchor" id="ga03b9323b57ee11b09ed0515d6ea5b01b"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class InflationPenalty , class CompressionPenalty , class Matrix , int n = LinearAlgebra::dim&lt;Matrix&gt;()&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">auto FunG::compressibleNeoHooke </td>
+          <td class="memname">auto funcy::compressibleNeoHooke </td>
           <td>(</td>
           <td class="paramtype">double&#160;</td>
           <td class="paramname"><em>c</em>, </td>
@@ -222,14 +222,14 @@ template&lt;class InflationPenalty , class CompressionPenalty , class Matrix , i
 
 </div>
 </div>
-<a class="anchor" id="gace19173e33490aadd36ae3a03fd1d85c"></a>
+<a class="anchor" id="gacbf67f93c8dc330013448669410822f3"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class Matrix , int n = LinearAlgebra::dim&lt;Matrix&gt;()&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">auto FunG::incompressibleMooneyRivlin </td>
+          <td class="memname">auto funcy::incompressibleMooneyRivlin </td>
           <td>(</td>
           <td class="paramtype">double&#160;</td>
           <td class="paramname"><em>c0</em>, </td>
@@ -258,14 +258,14 @@ template&lt;class Matrix , int n = LinearAlgebra::dim&lt;Matrix&gt;()&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="ga5bb28aef7006413775791998936d6b81"></a>
+<a class="anchor" id="gad0d93d6dfb3693483fcd37144959de24"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class Matrix , int n = LinearAlgebra::dim&lt;Matrix&gt;()&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">auto FunG::incompressibleNeoHooke </td>
+          <td class="memname">auto funcy::incompressibleNeoHooke </td>
           <td>(</td>
           <td class="paramtype">double&#160;</td>
           <td class="paramname"><em>c</em>, </td>
@@ -288,14 +288,14 @@ template&lt;class Matrix , int n = LinearAlgebra::dim&lt;Matrix&gt;()&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="gac10942df03f037afdf0a81d330361a6b"></a>
+<a class="anchor" id="ga77093789a2488adcffd7d3f97b8a75e4"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class InflationPenalty , class CompressionPenalty , class Matrix , int n = LinearAlgebra::dim&lt;Matrix&gt;()&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">auto FunG::modifiedCompressibleNeoHooke </td>
+          <td class="memname">auto funcy::modifiedCompressibleNeoHooke </td>
           <td>(</td>
           <td class="paramtype">double&#160;</td>
           <td class="paramname"><em>c</em>, </td>
@@ -330,14 +330,14 @@ template&lt;class InflationPenalty , class CompressionPenalty , class Matrix , i
 
 </div>
 </div>
-<a class="anchor" id="gaf6f5ab6a379ef03d513acc5042731a01"></a>
+<a class="anchor" id="gae9f87c6f1fd4edddd0894edefd9fb9a5"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class Matrix , int n = LinearAlgebra::dim&lt;Matrix&gt;()&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">auto FunG::modifiedIncompressibleNeoHooke </td>
+          <td class="memname">auto funcy::modifiedIncompressibleNeoHooke </td>
           <td>(</td>
           <td class="paramtype">double&#160;</td>
           <td class="paramname"><em>c</em>, </td>
@@ -363,7 +363,7 @@ template&lt;class Matrix , int n = LinearAlgebra::dim&lt;Matrix&gt;()&gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Mar 7 2019 22:08:09 for FunG by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Mar 10 2019 08:25:09 for funcy by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

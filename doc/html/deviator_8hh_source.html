@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>FunG: include/fung/linear_algebra/deviator.hh Source File</title>
+<title>funcy: include/funcy/linear_algebra/deviator.hh Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,7 +28,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">FunG
+   <div id="projectname">funcy
    </div>
   </td>
  </tr>
@@ -88,7 +88,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_fa81a0b40bd9e8878bcb1c2d8e9b57c6.html">include</a></li><li class="navelem"><a class="el" href="dir_fd47c672f6d66b5c6e237ee1782a0895.html">fung</a></li><li class="navelem"><a class="el" href="dir_6b1536948a181d635b9c1a1ec8d95a6c.html">linear_algebra</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_2b05d8de44f473256ece09f3e5f2d153.html">include</a></li><li class="navelem"><a class="el" href="dir_a89158a207ff7179a34c837fd3516315.html">funcy</a></li><li class="navelem"><a class="el" href="dir_6149ab7c66788e7ecd6e4704ee202c03.html">linear_algebra</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -99,17 +99,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="deviator_8hh.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// Copyright (C) 2015 by Lars Lubkoll. All rights reserved.</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Released under the terms of the GNU General Public License version 3 or later.</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#ifndef FUNG_LINEAR_ALGEBRA_DEVIATOR_HH</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define FUNG_LINEAR_ALGEBRA_DEVIATOR_HH</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#ifndef FUNCY_LINEAR_ALGEBRA_DEVIATOR_HH</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define FUNCY_LINEAR_ALGEBRA_DEVIATOR_HH</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;type_traits&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="generate_8hh.html">fung/generate.hh</a>&quot;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="identity_8hh.html">fung/identity.hh</a>&quot;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="static__checks_8hh.html">fung/util/static_checks.hh</a>&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="generate_8hh.html">funcy/generate.hh</a>&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="identity_8hh.html">funcy/identity.hh</a>&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="static__checks_8hh.html">funcy/util/static_checks.hh</a>&quot;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="trace_8hh.html">trace.hh</a>&quot;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="unit__matrix_8hh.html">unit_matrix.hh</a>&quot;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">namespace </span>FunG</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">namespace </span>funcy</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <span class="keyword">namespace </span>Concepts { <span class="keyword">template</span> &lt;<span class="keyword">class</span>&gt; <span class="keyword">struct </span>SquareMatrixConceptChecks; }</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
@@ -119,47 +119,47 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;              <span class="keywordtype">int</span> n = dim&lt;Matrix&gt;(),</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;              std::enable_if_t&lt;Checks::isConstantSize&lt;Matrix&gt;() &amp;&amp; !Checks::isFunction&lt;Matrix&gt;()&gt;* = <span class="keyword">nullptr</span>,</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;              <span class="keyword">class</span> = Concepts::SquareMatrixConceptCheck&lt;Matrix&gt; &gt;</div>
-<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="group__LinearAlgebraGroup.html#ga7c0b1db93cfc5779a3b1e7eb1646c213">   30</a></span>&#160;    <span class="keyword">auto</span> <a class="code" href="group__LinearAlgebraGroup.html#ga7c0b1db93cfc5779a3b1e7eb1646c213">deviator</a>(<span class="keyword">const</span> Matrix&amp; A)</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="group__LinearAlgebraGroup.html#gad2d6691b7daf489bbb624be390d79a64">   30</a></span>&#160;    <span class="keyword">auto</span> <a class="code" href="group__LinearAlgebraGroup.html#gad2d6691b7daf489bbb624be390d79a64">deviator</a>(<span class="keyword">const</span> Matrix&amp; A)</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="namespaceFunG.html#a165e879e76d3a2a8906938f3658445ce">identity</a>(A) + (-1./n) * ( <a class="code" href="group__LinearAlgebraGroup.html#ga4d73eb4d46dd9196a31e2d6d557d509e">trace</a>(A) * <a class="code" href="namespaceFunG.html#a939d13d36c194b402715f12a28147cdc">constant</a>( unitMatrix&lt;Matrix&gt;() ) );</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="namespacefuncy.html#a04130b4d402d76481d257849ba0ce88d">identity</a>(A) + (-1./n) * ( <a class="code" href="group__LinearAlgebraGroup.html#gaeb83634a988175e17cda9206619dc87e">trace</a>(A) * <a class="code" href="namespacefuncy.html#a46d594fc5323b9427a530af323a9ca71">constant</a>( unitMatrix&lt;Matrix&gt;() ) );</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    }</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">class </span>Matrix,</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;              std::enable_if_t&lt;!Checks::isConstantSize&lt;Matrix&gt;() &amp;&amp; !Checks::isFunction&lt;Matrix&gt;()&gt;* = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;              <span class="keyword">class </span>= <a class="code" href="structFunG_1_1Concepts_1_1SquareMatrixConceptCheck.html">Concepts::SquareMatrixConceptCheck</a>&lt;Matrix&gt;&gt;</div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="group__LinearAlgebraGroup.html#gabc90de0d1754cd2e2d190ea8ba62245f">   39</a></span>&#160;    auto <a class="code" href="group__LinearAlgebraGroup.html#ga7c0b1db93cfc5779a3b1e7eb1646c213">deviator</a>(const Matrix&amp; A)</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;              <span class="keyword">class </span>= <a class="code" href="structfuncy_1_1Concepts_1_1SquareMatrixConceptCheck.html">Concepts::SquareMatrixConceptCheck</a>&lt;Matrix&gt;&gt;</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="group__LinearAlgebraGroup.html#ga25f215bc2f65c8681770fa40a6de5bf8">   39</a></span>&#160;    auto <a class="code" href="group__LinearAlgebraGroup.html#gad2d6691b7daf489bbb624be390d79a64">deviator</a>(const Matrix&amp; A)</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;      assert(<a class="code" href="namespaceFunG_1_1LinearAlgebra.html#abd3afa2fcd2194787342b2662cfa9f5a">rows</a>(A)==<a class="code" href="namespaceFunG_1_1LinearAlgebra.html#ae981b8bee32eea3ce87f41874835c9c1">cols</a>(A));</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="namespaceFunG.html#a165e879e76d3a2a8906938f3658445ce">identity</a>(A) + (-1./<a class="code" href="namespaceFunG_1_1LinearAlgebra.html#abd3afa2fcd2194787342b2662cfa9f5a">rows</a>(A)) * ( <a class="code" href="group__LinearAlgebraGroup.html#ga4d73eb4d46dd9196a31e2d6d557d509e">trace</a>(A) * <a class="code" href="namespaceFunG.html#a939d13d36c194b402715f12a28147cdc">constant</a>( unitMatrix&lt;Matrix&gt;() ) );</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;      assert(<a class="code" href="namespacefuncy_1_1LinearAlgebra.html#aea4d8c30f47543a340dd7d1efda08b6d">rows</a>(A)==<a class="code" href="namespacefuncy_1_1LinearAlgebra.html#adee762dc2457194e15c0a5e678babcb2">cols</a>(A));</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="namespacefuncy.html#a04130b4d402d76481d257849ba0ce88d">identity</a>(A) + (-1./<a class="code" href="namespacefuncy_1_1LinearAlgebra.html#aea4d8c30f47543a340dd7d1efda08b6d">rows</a>(A)) * ( <a class="code" href="group__LinearAlgebraGroup.html#gaeb83634a988175e17cda9206619dc87e">trace</a>(A) * <a class="code" href="namespacefuncy.html#a46d594fc5323b9427a530af323a9ca71">constant</a>( unitMatrix&lt;Matrix&gt;() ) );</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    }</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">class </span>F,</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;              std::enable_if_t&lt;Checks::isFunction&lt;F&gt;()&gt;* = <span class="keyword">nullptr</span>&gt;</div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="group__LinearAlgebraGroup.html#gad363f3add577abc046fc525ce83e22d3">   48</a></span>&#160;    <span class="keyword">auto</span> <a class="code" href="group__LinearAlgebraGroup.html#ga7c0b1db93cfc5779a3b1e7eb1646c213">deviator</a>(<span class="keyword">const</span> F&amp; f)</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="group__LinearAlgebraGroup.html#ga26e59dc471450a6eae901aed5f975261">   48</a></span>&#160;    <span class="keyword">auto</span> <a class="code" href="group__LinearAlgebraGroup.html#gad2d6691b7daf489bbb624be390d79a64">deviator</a>(<span class="keyword">const</span> F&amp; f)</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="group__LinearAlgebraGroup.html#ga7c0b1db93cfc5779a3b1e7eb1646c213">deviator</a>(f())( f );</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="group__LinearAlgebraGroup.html#gad2d6691b7daf489bbb624be390d79a64">deviator</a>(f())( f );</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    }</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  }</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#endif // FUNG_LINEAR_ALGEBRA_DEVIATOR_HH</span></div>
-<div class="ttc" id="namespaceFunG_1_1LinearAlgebra_html_abd3afa2fcd2194787342b2662cfa9f5a"><div class="ttname"><a href="namespaceFunG_1_1LinearAlgebra.html#abd3afa2fcd2194787342b2662cfa9f5a">FunG::LinearAlgebra::rows</a></div><div class="ttdeci">auto rows(const Matrix &amp;A)</div><div class="ttdoc">Number of rows of a dynamic size matrix. </div><div class="ttdef"><b>Definition:</b> rows_and_cols.hh:68</div></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#endif // FUNCY_LINEAR_ALGEBRA_DEVIATOR_HH</span></div>
 <div class="ttc" id="generate_8hh_html"><div class="ttname"><a href="generate_8hh.html">generate.hh</a></div></div>
-<div class="ttc" id="namespaceFunG_html_a165e879e76d3a2a8906938f3658445ce"><div class="ttname"><a href="namespaceFunG.html#a165e879e76d3a2a8906938f3658445ce">FunG::identity</a></div><div class="ttdeci">auto identity(const Arg &amp;x)</div><div class="ttdoc">Construct Identity&lt;Arg&gt;(x). </div><div class="ttdef"><b>Definition:</b> identity.hh:51</div></div>
-<div class="ttc" id="group__LinearAlgebraGroup_html_ga7c0b1db93cfc5779a3b1e7eb1646c213"><div class="ttname"><a href="group__LinearAlgebraGroup.html#ga7c0b1db93cfc5779a3b1e7eb1646c213">FunG::LinearAlgebra::deviator</a></div><div class="ttdeci">auto deviator(const Matrix &amp;A)</div><div class="ttdoc">Generate deviator  of a matrix . </div><div class="ttdef"><b>Definition:</b> deviator.hh:30</div></div>
-<div class="ttc" id="namespaceFunG_html_a939d13d36c194b402715f12a28147cdc"><div class="ttname"><a href="namespaceFunG.html#a939d13d36c194b402715f12a28147cdc">FunG::constant</a></div><div class="ttdeci">constexpr auto constant(Arg x)</div><div class="ttdoc">Wrap a constant. </div><div class="ttdef"><b>Definition:</b> constant.hh:49</div></div>
+<div class="ttc" id="namespacefuncy_html_a46d594fc5323b9427a530af323a9ca71"><div class="ttname"><a href="namespacefuncy.html#a46d594fc5323b9427a530af323a9ca71">funcy::constant</a></div><div class="ttdeci">constexpr auto constant(Arg x)</div><div class="ttdoc">Wrap a constant. </div><div class="ttdef"><b>Definition:</b> constant.hh:49</div></div>
+<div class="ttc" id="namespacefuncy_1_1LinearAlgebra_html_aea4d8c30f47543a340dd7d1efda08b6d"><div class="ttname"><a href="namespacefuncy_1_1LinearAlgebra.html#aea4d8c30f47543a340dd7d1efda08b6d">funcy::LinearAlgebra::rows</a></div><div class="ttdeci">auto rows(const Matrix &amp;A)</div><div class="ttdoc">Number of rows of a dynamic size matrix. </div><div class="ttdef"><b>Definition:</b> rows_and_cols.hh:68</div></div>
+<div class="ttc" id="namespacefuncy_1_1LinearAlgebra_html_adee762dc2457194e15c0a5e678babcb2"><div class="ttname"><a href="namespacefuncy_1_1LinearAlgebra.html#adee762dc2457194e15c0a5e678babcb2">funcy::LinearAlgebra::cols</a></div><div class="ttdeci">auto cols(const Matrix &amp;A)</div><div class="ttdoc">Number of columns of a dynamic size matrix. </div><div class="ttdef"><b>Definition:</b> rows_and_cols.hh:84</div></div>
+<div class="ttc" id="group__LinearAlgebraGroup_html_gad2d6691b7daf489bbb624be390d79a64"><div class="ttname"><a href="group__LinearAlgebraGroup.html#gad2d6691b7daf489bbb624be390d79a64">funcy::LinearAlgebra::deviator</a></div><div class="ttdeci">auto deviator(const Matrix &amp;A)</div><div class="ttdoc">Generate deviator  of a matrix . </div><div class="ttdef"><b>Definition:</b> deviator.hh:30</div></div>
 <div class="ttc" id="static__checks_8hh_html"><div class="ttname"><a href="static__checks_8hh.html">static_checks.hh</a></div></div>
-<div class="ttc" id="namespaceFunG_1_1LinearAlgebra_html_ae981b8bee32eea3ce87f41874835c9c1"><div class="ttname"><a href="namespaceFunG_1_1LinearAlgebra.html#ae981b8bee32eea3ce87f41874835c9c1">FunG::LinearAlgebra::cols</a></div><div class="ttdeci">auto cols(const Matrix &amp;A)</div><div class="ttdoc">Number of columns of a dynamic size matrix. </div><div class="ttdef"><b>Definition:</b> rows_and_cols.hh:84</div></div>
 <div class="ttc" id="trace_8hh_html"><div class="ttname"><a href="trace_8hh.html">trace.hh</a></div></div>
+<div class="ttc" id="group__LinearAlgebraGroup_html_gaeb83634a988175e17cda9206619dc87e"><div class="ttname"><a href="group__LinearAlgebraGroup.html#gaeb83634a988175e17cda9206619dc87e">funcy::LinearAlgebra::trace</a></div><div class="ttdeci">auto trace(const Matrix &amp;A)</div><div class="ttdoc">Generate . </div><div class="ttdef"><b>Definition:</b> trace.hh:151</div></div>
 <div class="ttc" id="unit__matrix_8hh_html"><div class="ttname"><a href="unit__matrix_8hh.html">unit_matrix.hh</a></div></div>
-<div class="ttc" id="group__LinearAlgebraGroup_html_ga4d73eb4d46dd9196a31e2d6d557d509e"><div class="ttname"><a href="group__LinearAlgebraGroup.html#ga4d73eb4d46dd9196a31e2d6d557d509e">FunG::LinearAlgebra::trace</a></div><div class="ttdeci">auto trace(const Matrix &amp;A)</div><div class="ttdoc">Generate . </div><div class="ttdef"><b>Definition:</b> trace.hh:151</div></div>
+<div class="ttc" id="namespacefuncy_html_a04130b4d402d76481d257849ba0ce88d"><div class="ttname"><a href="namespacefuncy.html#a04130b4d402d76481d257849ba0ce88d">funcy::identity</a></div><div class="ttdeci">auto identity(const Arg &amp;x)</div><div class="ttdoc">Construct Identity&lt;Arg&gt;(x). </div><div class="ttdef"><b>Definition:</b> identity.hh:51</div></div>
+<div class="ttc" id="structfuncy_1_1Concepts_1_1SquareMatrixConceptCheck_html"><div class="ttname"><a href="structfuncy_1_1Concepts_1_1SquareMatrixConceptCheck.html">funcy::Concepts::SquareMatrixConceptCheck</a></div><div class="ttdoc">Static check if the requirements of SquareMatrixConcept are satisfied. </div><div class="ttdef"><b>Definition:</b> concept_check.hh:88</div></div>
 <div class="ttc" id="identity_8hh_html"><div class="ttname"><a href="identity_8hh.html">identity.hh</a></div></div>
-<div class="ttc" id="structFunG_1_1Concepts_1_1SquareMatrixConceptCheck_html"><div class="ttname"><a href="structFunG_1_1Concepts_1_1SquareMatrixConceptCheck.html">FunG::Concepts::SquareMatrixConceptCheck</a></div><div class="ttdoc">Static check if the requirements of SquareMatrixConcept are satisfied. </div><div class="ttdef"><b>Definition:</b> concept_check.hh:88</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Mar 7 2019 22:08:09 for FunG by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Mar 10 2019 08:25:09 for funcy by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

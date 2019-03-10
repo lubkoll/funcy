@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['finalize',['finalize',['../namespaceFunG.html#ac59f2ececc3cd451860776320a4a93d5',1,'FunG']]],
-  ['frobeniusnorm',['frobeniusNorm',['../group__LinearAlgebraGroup.html#gaa893e7d667dde98d2b119ca004745186',1,'FunG::LinearAlgebra::frobeniusNorm(const Matrix &amp;A)'],['../group__LinearAlgebraGroup.html#gafa2f358f9310cecb787620ad8ec460a6',1,'FunG::LinearAlgebra::frobeniusNorm(const F &amp;f)']]]
+  ['finalize',['finalize',['../namespacefuncy.html#a6e18ee3ccfed0acfdb6d17247a060bb3',1,'funcy']]],
+  ['frobeniusnorm',['frobeniusNorm',['../group__LinearAlgebraGroup.html#gadd3d66efe1da1c662ef080bfe25fa2b6',1,'funcy::LinearAlgebra::frobeniusNorm(const Matrix &amp;A)'],['../group__LinearAlgebraGroup.html#ga65a04179c8ede922ff74470f7ad15a8d',1,'funcy::LinearAlgebra::frobeniusNorm(const F &amp;f)']]]
 ];

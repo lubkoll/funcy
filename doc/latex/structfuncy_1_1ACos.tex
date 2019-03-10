@@ -1,0 +1,123 @@
+\hypertarget{structfuncy_1_1ACos}{\section{funcy\-:\-:A\-Cos Struct Reference}
+\label{structfuncy_1_1ACos}\index{funcy\-::\-A\-Cos@{funcy\-::\-A\-Cos}}
+}
+
+
+Arc cosine function including first three derivatives (based on acos(double) in $<$cmath$>$).  
+
+
+
+
+{\ttfamily \#include $<$arccos.\-hh$>$}
+
+Inheritance diagram for funcy\-:\-:A\-Cos\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{structfuncy_1_1ACos}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structfuncy_1_1ACos_a0c7032799d6bb66ea966dfaecd8ff2c3}{A\-Cos} (double x=0.)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+void \hyperlink{structfuncy_1_1ACos_a07430755c8f68636ec5d077207d92ea5}{update} (double x)
+\begin{DoxyCompactList}\small\item\em Set point of evaluation. \end{DoxyCompactList}\item 
+double \hyperlink{structfuncy_1_1ACos_aef78b391128648ab4a50a3abc028f88d}{d0} () const noexcept
+\begin{DoxyCompactList}\small\item\em Function value. \end{DoxyCompactList}\item 
+double \hyperlink{structfuncy_1_1ACos_a68e26ec3dd47c5a38f873cdc285198de}{d1} (double dx=1) const 
+\begin{DoxyCompactList}\small\item\em First (directional) derivative. \end{DoxyCompactList}\item 
+double \hyperlink{structfuncy_1_1ACos_aa373f7fb4da1e31c632ced99c430cad1}{d2} (double dx=1, double dy=1) const 
+\begin{DoxyCompactList}\small\item\em Second (directional) derivative. \end{DoxyCompactList}\item 
+double \hyperlink{structfuncy_1_1ACos_af0dee9ddcb485fa91dbaaece62c5b16e}{d3} (double dx=1, double dy=1, double dz=1) const 
+\begin{DoxyCompactList}\small\item\em Third (directional) derivative. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Arc cosine function including first three derivatives (based on acos(double) in $<$cmath$>$). 
+
+For scalar functions directional derivatives are less interesting. Incorporating this function as building block for more complex functions requires directional derivatives. These occur during applications of the chain rule. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{structfuncy_1_1ACos_a0c7032799d6bb66ea966dfaecd8ff2c3}{\index{funcy\-::\-A\-Cos@{funcy\-::\-A\-Cos}!A\-Cos@{A\-Cos}}
+\index{A\-Cos@{A\-Cos}!funcy::ACos@{funcy\-::\-A\-Cos}}
+\subsubsection[{A\-Cos}]{\setlength{\rightskip}{0pt plus 5cm}funcy\-::\-A\-Cos\-::\-A\-Cos (
+\begin{DoxyParamCaption}
+\item[{double}]{x = {\ttfamily 0.}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}}\label{structfuncy_1_1ACos_a0c7032799d6bb66ea966dfaecd8ff2c3}
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & point of evaluation \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{structfuncy_1_1ACos_aef78b391128648ab4a50a3abc028f88d}{\index{funcy\-::\-A\-Cos@{funcy\-::\-A\-Cos}!d0@{d0}}
+\index{d0@{d0}!funcy::ACos@{funcy\-::\-A\-Cos}}
+\subsubsection[{d0}]{\setlength{\rightskip}{0pt plus 5cm}double funcy\-::\-A\-Cos\-::d0 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}}\label{structfuncy_1_1ACos_aef78b391128648ab4a50a3abc028f88d}
+
+
+Function value. 
+
+\hypertarget{structfuncy_1_1ACos_a68e26ec3dd47c5a38f873cdc285198de}{\index{funcy\-::\-A\-Cos@{funcy\-::\-A\-Cos}!d1@{d1}}
+\index{d1@{d1}!funcy::ACos@{funcy\-::\-A\-Cos}}
+\subsubsection[{d1}]{\setlength{\rightskip}{0pt plus 5cm}double funcy\-::\-A\-Cos\-::d1 (
+\begin{DoxyParamCaption}
+\item[{double}]{dx = {\ttfamily 1}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{structfuncy_1_1ACos_a68e26ec3dd47c5a38f873cdc285198de}
+
+
+First (directional) derivative. 
+
+\hypertarget{structfuncy_1_1ACos_aa373f7fb4da1e31c632ced99c430cad1}{\index{funcy\-::\-A\-Cos@{funcy\-::\-A\-Cos}!d2@{d2}}
+\index{d2@{d2}!funcy::ACos@{funcy\-::\-A\-Cos}}
+\subsubsection[{d2}]{\setlength{\rightskip}{0pt plus 5cm}double funcy\-::\-A\-Cos\-::d2 (
+\begin{DoxyParamCaption}
+\item[{double}]{dx = {\ttfamily 1}, }
+\item[{double}]{dy = {\ttfamily 1}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{structfuncy_1_1ACos_aa373f7fb4da1e31c632ced99c430cad1}
+
+
+Second (directional) derivative. 
+
+\hypertarget{structfuncy_1_1ACos_af0dee9ddcb485fa91dbaaece62c5b16e}{\index{funcy\-::\-A\-Cos@{funcy\-::\-A\-Cos}!d3@{d3}}
+\index{d3@{d3}!funcy::ACos@{funcy\-::\-A\-Cos}}
+\subsubsection[{d3}]{\setlength{\rightskip}{0pt plus 5cm}double funcy\-::\-A\-Cos\-::d3 (
+\begin{DoxyParamCaption}
+\item[{double}]{dx = {\ttfamily 1}, }
+\item[{double}]{dy = {\ttfamily 1}, }
+\item[{double}]{dz = {\ttfamily 1}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{structfuncy_1_1ACos_af0dee9ddcb485fa91dbaaece62c5b16e}
+
+
+Third (directional) derivative. 
+
+\hypertarget{structfuncy_1_1ACos_a07430755c8f68636ec5d077207d92ea5}{\index{funcy\-::\-A\-Cos@{funcy\-::\-A\-Cos}!update@{update}}
+\index{update@{update}!funcy::ACos@{funcy\-::\-A\-Cos}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void funcy\-::\-A\-Cos\-::update (
+\begin{DoxyParamCaption}
+\item[{double}]{x}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{structfuncy_1_1ACos_a07430755c8f68636ec5d077207d92ea5}
+
+
+Set point of evaluation. 
+
+
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+include/funcy/cmath/\hyperlink{arccos_8hh}{arccos.\-hh}\end{DoxyCompactItemize}

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['fung_5falways_5finline',['FUNG_ALWAYS_INLINE',['../macros_8hh.html#a03b9da186125795e5afa49d0ef1cc32f',1,'macros.hh']]]
+  ['funcy_5falways_5finline',['FUNCY_ALWAYS_INLINE',['../macros_8hh.html#aeb0da27a25e923327d595a79f556281d',1,'macros.hh']]]
 ];

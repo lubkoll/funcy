@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>FunG: include/fung/linear_algebra/deviator.hh File Reference</title>
+<title>funcy: include/funcy/linear_algebra/deviator.hh File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,7 +28,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">FunG
+   <div id="projectname">funcy
    </div>
   </td>
  </tr>
@@ -88,7 +88,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_fa81a0b40bd9e8878bcb1c2d8e9b57c6.html">include</a></li><li class="navelem"><a class="el" href="dir_fd47c672f6d66b5c6e237ee1782a0895.html">fung</a></li><li class="navelem"><a class="el" href="dir_6b1536948a181d635b9c1a1ec8d95a6c.html">linear_algebra</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_2b05d8de44f473256ece09f3e5f2d153.html">include</a></li><li class="navelem"><a class="el" href="dir_a89158a207ff7179a34c837fd3516315.html">funcy</a></li><li class="navelem"><a class="el" href="dir_6149ab7c66788e7ecd6e4704ee202c03.html">linear_algebra</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -100,9 +100,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;type_traits&gt;</code><br/>
-<code>#include &quot;<a class="el" href="generate_8hh_source.html">fung/generate.hh</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="identity_8hh_source.html">fung/identity.hh</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="static__checks_8hh_source.html">fung/util/static_checks.hh</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="generate_8hh_source.html">funcy/generate.hh</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="identity_8hh_source.html">funcy/identity.hh</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="static__checks_8hh_source.html">funcy/util/static_checks.hh</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="trace_8hh_source.html">trace.hh</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="unit__matrix_8hh_source.html">unit_matrix.hh</a>&quot;</code><br/>
 </div>
@@ -110,32 +110,32 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
-<tr class="memitem:namespaceFunG"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceFunG.html">FunG</a></td></tr>
-<tr class="memdesc:namespaceFunG"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main namespace of the FunG library. <br/></td></tr>
+<tr class="memitem:namespacefuncy"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefuncy.html">funcy</a></td></tr>
+<tr class="memdesc:namespacefuncy"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main namespace of the funcy library. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:namespaceFunG_1_1LinearAlgebra"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceFunG_1_1LinearAlgebra.html">FunG::LinearAlgebra</a></td></tr>
-<tr class="memdesc:namespaceFunG_1_1LinearAlgebra"><td class="mdescLeft">&#160;</td><td class="mdescRight">Functionality from linear algebra such as (modified) principal and mixed matrix invariants. <br/></td></tr>
+<tr class="memitem:namespacefuncy_1_1LinearAlgebra"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefuncy_1_1LinearAlgebra.html">funcy::LinearAlgebra</a></td></tr>
+<tr class="memdesc:namespacefuncy_1_1LinearAlgebra"><td class="mdescLeft">&#160;</td><td class="mdescRight">Functionality from linear algebra such as (modified) principal and mixed matrix invariants. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga7c0b1db93cfc5779a3b1e7eb1646c213"><td class="memTemplParams" colspan="2">template&lt;class Matrix , int n = dim&lt;Matrix&gt;(), std::enable_if_t&lt; Checks::isConstantSize&lt; Matrix &gt;()&amp;&amp;!Checks::isFunction&lt; Matrix &gt;()&gt; *  = nullptr, class  = Concepts::SquareMatrixConceptCheck&lt;Matrix&gt;&gt; </td></tr>
-<tr class="memitem:ga7c0b1db93cfc5779a3b1e7eb1646c213"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__LinearAlgebraGroup.html#ga7c0b1db93cfc5779a3b1e7eb1646c213">FunG::LinearAlgebra::deviator</a> (const Matrix &amp;A)</td></tr>
-<tr class="memdesc:ga7c0b1db93cfc5779a3b1e7eb1646c213"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate deviator \( \mathrm{dev}(A) = A - \frac{\mathrm{tr}(A)}{n}I \) of a matrix \( A\in\mathbb{R}^{n,n} \).  <a href="group__LinearAlgebraGroup.html#ga7c0b1db93cfc5779a3b1e7eb1646c213">More...</a><br/></td></tr>
-<tr class="separator:ga7c0b1db93cfc5779a3b1e7eb1646c213"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabc90de0d1754cd2e2d190ea8ba62245f"><td class="memTemplParams" colspan="2">template&lt;class Matrix , std::enable_if_t&lt;!Checks::isConstantSize&lt; Matrix &gt;()&amp;&amp;!Checks::isFunction&lt; Matrix &gt;()&gt; *  = nullptr, class  = Concepts::SquareMatrixConceptCheck&lt;Matrix&gt;&gt; </td></tr>
-<tr class="memitem:gabc90de0d1754cd2e2d190ea8ba62245f"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__LinearAlgebraGroup.html#gabc90de0d1754cd2e2d190ea8ba62245f">FunG::LinearAlgebra::deviator</a> (const Matrix &amp;A)</td></tr>
-<tr class="memdesc:gabc90de0d1754cd2e2d190ea8ba62245f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate deviator \( \mathrm{dev}(A) = A - \frac{\mathrm{tr}(A)}{n}I \) of a matrix \( A\in\mathbb{R}^{n,n} \).  <a href="group__LinearAlgebraGroup.html#gabc90de0d1754cd2e2d190ea8ba62245f">More...</a><br/></td></tr>
-<tr class="separator:gabc90de0d1754cd2e2d190ea8ba62245f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad363f3add577abc046fc525ce83e22d3"><td class="memTemplParams" colspan="2">template&lt;class F , std::enable_if_t&lt; Checks::isFunction&lt; F &gt;()&gt; *  = nullptr&gt; </td></tr>
-<tr class="memitem:gad363f3add577abc046fc525ce83e22d3"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__LinearAlgebraGroup.html#gad363f3add577abc046fc525ce83e22d3">FunG::LinearAlgebra::deviator</a> (const F &amp;f)</td></tr>
-<tr class="memdesc:gad363f3add577abc046fc525ce83e22d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate deviator \( \mathrm{dev}\circ f\).  <a href="group__LinearAlgebraGroup.html#gad363f3add577abc046fc525ce83e22d3">More...</a><br/></td></tr>
-<tr class="separator:gad363f3add577abc046fc525ce83e22d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad2d6691b7daf489bbb624be390d79a64"><td class="memTemplParams" colspan="2">template&lt;class Matrix , int n = dim&lt;Matrix&gt;(), std::enable_if_t&lt; Checks::isConstantSize&lt; Matrix &gt;()&amp;&amp;!Checks::isFunction&lt; Matrix &gt;()&gt; *  = nullptr, class  = Concepts::SquareMatrixConceptCheck&lt;Matrix&gt;&gt; </td></tr>
+<tr class="memitem:gad2d6691b7daf489bbb624be390d79a64"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__LinearAlgebraGroup.html#gad2d6691b7daf489bbb624be390d79a64">funcy::LinearAlgebra::deviator</a> (const Matrix &amp;A)</td></tr>
+<tr class="memdesc:gad2d6691b7daf489bbb624be390d79a64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate deviator \( \mathrm{dev}(A) = A - \frac{\mathrm{tr}(A)}{n}I \) of a matrix \( A\in\mathbb{R}^{n,n} \).  <a href="group__LinearAlgebraGroup.html#gad2d6691b7daf489bbb624be390d79a64">More...</a><br/></td></tr>
+<tr class="separator:gad2d6691b7daf489bbb624be390d79a64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga25f215bc2f65c8681770fa40a6de5bf8"><td class="memTemplParams" colspan="2">template&lt;class Matrix , std::enable_if_t&lt;!Checks::isConstantSize&lt; Matrix &gt;()&amp;&amp;!Checks::isFunction&lt; Matrix &gt;()&gt; *  = nullptr, class  = Concepts::SquareMatrixConceptCheck&lt;Matrix&gt;&gt; </td></tr>
+<tr class="memitem:ga25f215bc2f65c8681770fa40a6de5bf8"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__LinearAlgebraGroup.html#ga25f215bc2f65c8681770fa40a6de5bf8">funcy::LinearAlgebra::deviator</a> (const Matrix &amp;A)</td></tr>
+<tr class="memdesc:ga25f215bc2f65c8681770fa40a6de5bf8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate deviator \( \mathrm{dev}(A) = A - \frac{\mathrm{tr}(A)}{n}I \) of a matrix \( A\in\mathbb{R}^{n,n} \).  <a href="group__LinearAlgebraGroup.html#ga25f215bc2f65c8681770fa40a6de5bf8">More...</a><br/></td></tr>
+<tr class="separator:ga25f215bc2f65c8681770fa40a6de5bf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga26e59dc471450a6eae901aed5f975261"><td class="memTemplParams" colspan="2">template&lt;class F , std::enable_if_t&lt; Checks::isFunction&lt; F &gt;()&gt; *  = nullptr&gt; </td></tr>
+<tr class="memitem:ga26e59dc471450a6eae901aed5f975261"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__LinearAlgebraGroup.html#ga26e59dc471450a6eae901aed5f975261">funcy::LinearAlgebra::deviator</a> (const F &amp;f)</td></tr>
+<tr class="memdesc:ga26e59dc471450a6eae901aed5f975261"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate deviator \( \mathrm{dev}\circ f\).  <a href="group__LinearAlgebraGroup.html#ga26e59dc471450a6eae901aed5f975261">More...</a><br/></td></tr>
+<tr class="separator:ga26e59dc471450a6eae901aed5f975261"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Mar 7 2019 22:08:09 for FunG by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Mar 10 2019 08:25:09 for funcy by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

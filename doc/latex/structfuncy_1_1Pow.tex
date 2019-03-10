@@ -1,0 +1,125 @@
+\hypertarget{structfuncy_1_1Pow}{\section{funcy\-:\-:Pow$<$ dividend, divisor $>$ Struct Template Reference}
+\label{structfuncy_1_1Pow}\index{funcy\-::\-Pow$<$ dividend, divisor $>$@{funcy\-::\-Pow$<$ dividend, divisor $>$}}
+}
+
+
+Power function with rational exponent $ k = \frac{dividend}{divisor} $ including first three derivatives.  
+
+
+
+
+{\ttfamily \#include $<$pow.\-hh$>$}
+
+Inheritance diagram for funcy\-:\-:Pow$<$ dividend, divisor $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{structfuncy_1_1Pow}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structfuncy_1_1Pow_a698d5cb72a840c9ab9a1bd7eefe1bd56}{Pow} (double x=1)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+void \hyperlink{structfuncy_1_1Pow_a76e879bfd03f97375bf968f005207005}{update} (double x)
+\begin{DoxyCompactList}\small\item\em Set point of evaluation. \end{DoxyCompactList}\item 
+double \hyperlink{structfuncy_1_1Pow_a6d30aace3973be93efe9fc2796fd50c5}{d0} () const noexcept
+\begin{DoxyCompactList}\small\item\em Function value. \end{DoxyCompactList}\item 
+double \hyperlink{structfuncy_1_1Pow_ad101c8bead89df7f815d614818c3c92d}{d1} (double dx=1.) const 
+\begin{DoxyCompactList}\small\item\em First (directional) derivative. \end{DoxyCompactList}\item 
+double \hyperlink{structfuncy_1_1Pow_a17bb4ab76acaabfb83ea142f955dd146}{d2} (double dx=1., double dy=1.) const 
+\begin{DoxyCompactList}\small\item\em Second (directional) derivative. \end{DoxyCompactList}\item 
+double \hyperlink{structfuncy_1_1Pow_adf0eebc9e02b4c3769237266778719e1}{d3} (double dx=1., double dy=1., double dz=1.) const 
+\begin{DoxyCompactList}\small\item\em Third (directional) derivative. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$int dividend, int divisor = 1$>$struct funcy\-::\-Pow$<$ dividend, divisor $>$}
+
+Power function with rational exponent $ k = \frac{dividend}{divisor} $ including first three derivatives. 
+
+For scalar functions directional derivatives are less interesting. Incorporating this function as building block for more complex functions requires directional derivatives. These occur during applications of the chain rule. For the cases $k=-1$ and $k=2$ specializations are used that avoid the use of std\-::pow. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{structfuncy_1_1Pow_a698d5cb72a840c9ab9a1bd7eefe1bd56}{\index{funcy\-::\-Pow@{funcy\-::\-Pow}!Pow@{Pow}}
+\index{Pow@{Pow}!funcy::Pow@{funcy\-::\-Pow}}
+\subsubsection[{Pow}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int dividend, int divisor = 1$>$ {\bf funcy\-::\-Pow}$<$ dividend, divisor $>$\-::{\bf Pow} (
+\begin{DoxyParamCaption}
+\item[{double}]{x = {\ttfamily 1}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}}\label{structfuncy_1_1Pow_a698d5cb72a840c9ab9a1bd7eefe1bd56}
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & point of evaluation \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{structfuncy_1_1Pow_a6d30aace3973be93efe9fc2796fd50c5}{\index{funcy\-::\-Pow@{funcy\-::\-Pow}!d0@{d0}}
+\index{d0@{d0}!funcy::Pow@{funcy\-::\-Pow}}
+\subsubsection[{d0}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int dividend, int divisor = 1$>$ double {\bf funcy\-::\-Pow}$<$ dividend, divisor $>$\-::d0 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}}\label{structfuncy_1_1Pow_a6d30aace3973be93efe9fc2796fd50c5}
+
+
+Function value. 
+
+\hypertarget{structfuncy_1_1Pow_ad101c8bead89df7f815d614818c3c92d}{\index{funcy\-::\-Pow@{funcy\-::\-Pow}!d1@{d1}}
+\index{d1@{d1}!funcy::Pow@{funcy\-::\-Pow}}
+\subsubsection[{d1}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int dividend, int divisor = 1$>$ double {\bf funcy\-::\-Pow}$<$ dividend, divisor $>$\-::d1 (
+\begin{DoxyParamCaption}
+\item[{double}]{dx = {\ttfamily 1.}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{structfuncy_1_1Pow_ad101c8bead89df7f815d614818c3c92d}
+
+
+First (directional) derivative. 
+
+\hypertarget{structfuncy_1_1Pow_a17bb4ab76acaabfb83ea142f955dd146}{\index{funcy\-::\-Pow@{funcy\-::\-Pow}!d2@{d2}}
+\index{d2@{d2}!funcy::Pow@{funcy\-::\-Pow}}
+\subsubsection[{d2}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int dividend, int divisor = 1$>$ double {\bf funcy\-::\-Pow}$<$ dividend, divisor $>$\-::d2 (
+\begin{DoxyParamCaption}
+\item[{double}]{dx = {\ttfamily 1.}, }
+\item[{double}]{dy = {\ttfamily 1.}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{structfuncy_1_1Pow_a17bb4ab76acaabfb83ea142f955dd146}
+
+
+Second (directional) derivative. 
+
+\hypertarget{structfuncy_1_1Pow_adf0eebc9e02b4c3769237266778719e1}{\index{funcy\-::\-Pow@{funcy\-::\-Pow}!d3@{d3}}
+\index{d3@{d3}!funcy::Pow@{funcy\-::\-Pow}}
+\subsubsection[{d3}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int dividend, int divisor = 1$>$ double {\bf funcy\-::\-Pow}$<$ dividend, divisor $>$\-::d3 (
+\begin{DoxyParamCaption}
+\item[{double}]{dx = {\ttfamily 1.}, }
+\item[{double}]{dy = {\ttfamily 1.}, }
+\item[{double}]{dz = {\ttfamily 1.}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{structfuncy_1_1Pow_adf0eebc9e02b4c3769237266778719e1}
+
+
+Third (directional) derivative. 
+
+\hypertarget{structfuncy_1_1Pow_a76e879bfd03f97375bf968f005207005}{\index{funcy\-::\-Pow@{funcy\-::\-Pow}!update@{update}}
+\index{update@{update}!funcy::Pow@{funcy\-::\-Pow}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}template$<$int dividend, int divisor = 1$>$ void {\bf funcy\-::\-Pow}$<$ dividend, divisor $>$\-::update (
+\begin{DoxyParamCaption}
+\item[{double}]{x}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{structfuncy_1_1Pow_a76e879bfd03f97375bf968f005207005}
+
+
+Set point of evaluation. 
+
+
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+include/funcy/cmath/\hyperlink{pow_8hh}{pow.\-hh}\end{DoxyCompactItemize}

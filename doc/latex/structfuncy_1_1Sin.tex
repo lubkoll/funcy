@@ -1,0 +1,123 @@
+\hypertarget{structfuncy_1_1Sin}{\section{funcy\-:\-:Sin Struct Reference}
+\label{structfuncy_1_1Sin}\index{funcy\-::\-Sin@{funcy\-::\-Sin}}
+}
+
+
+Sine function including first three derivatives (based on sin(double) in $<$cmath$>$).  
+
+
+
+
+{\ttfamily \#include $<$sine.\-hh$>$}
+
+Inheritance diagram for funcy\-:\-:Sin\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{structfuncy_1_1Sin}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structfuncy_1_1Sin_a158517db8475646590a6f0413075efce}{Sin} (double x=0)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+void \hyperlink{structfuncy_1_1Sin_ad61c58fe64f6ae7c43ee8da18bb3105d}{update} (double x)
+\begin{DoxyCompactList}\small\item\em Set point of evaluation. \end{DoxyCompactList}\item 
+double \hyperlink{structfuncy_1_1Sin_a691da65591814d9d6d1696253bce453c}{d0} () const noexcept
+\begin{DoxyCompactList}\small\item\em Function value. \end{DoxyCompactList}\item 
+double \hyperlink{structfuncy_1_1Sin_a561a28253d315577e1823f04e47bb64a}{d1} (double dx=1.) const 
+\begin{DoxyCompactList}\small\item\em First (directional) derivative. \end{DoxyCompactList}\item 
+double \hyperlink{structfuncy_1_1Sin_a463e7aa393473cf7dedce6cc229bc527}{d2} (double dx=1., double dy=1.) const 
+\begin{DoxyCompactList}\small\item\em Second (directional) derivative. \end{DoxyCompactList}\item 
+double \hyperlink{structfuncy_1_1Sin_ab470ccf331aff2589f6f055a6fd5f043}{d3} (double dx=1., double dy=1., double dz=1.) const 
+\begin{DoxyCompactList}\small\item\em Third (directional) derivative. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Sine function including first three derivatives (based on sin(double) in $<$cmath$>$). 
+
+For scalar functions directional derivatives are less interesting. Incorporating this function as building block for more complex functions requires directional derivatives. These occur during applications of the chain rule. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{structfuncy_1_1Sin_a158517db8475646590a6f0413075efce}{\index{funcy\-::\-Sin@{funcy\-::\-Sin}!Sin@{Sin}}
+\index{Sin@{Sin}!funcy::Sin@{funcy\-::\-Sin}}
+\subsubsection[{Sin}]{\setlength{\rightskip}{0pt plus 5cm}funcy\-::\-Sin\-::\-Sin (
+\begin{DoxyParamCaption}
+\item[{double}]{x = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}}\label{structfuncy_1_1Sin_a158517db8475646590a6f0413075efce}
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & point of evaluation \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{structfuncy_1_1Sin_a691da65591814d9d6d1696253bce453c}{\index{funcy\-::\-Sin@{funcy\-::\-Sin}!d0@{d0}}
+\index{d0@{d0}!funcy::Sin@{funcy\-::\-Sin}}
+\subsubsection[{d0}]{\setlength{\rightskip}{0pt plus 5cm}double funcy\-::\-Sin\-::d0 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}}\label{structfuncy_1_1Sin_a691da65591814d9d6d1696253bce453c}
+
+
+Function value. 
+
+\hypertarget{structfuncy_1_1Sin_a561a28253d315577e1823f04e47bb64a}{\index{funcy\-::\-Sin@{funcy\-::\-Sin}!d1@{d1}}
+\index{d1@{d1}!funcy::Sin@{funcy\-::\-Sin}}
+\subsubsection[{d1}]{\setlength{\rightskip}{0pt plus 5cm}double funcy\-::\-Sin\-::d1 (
+\begin{DoxyParamCaption}
+\item[{double}]{dx = {\ttfamily 1.}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{structfuncy_1_1Sin_a561a28253d315577e1823f04e47bb64a}
+
+
+First (directional) derivative. 
+
+\hypertarget{structfuncy_1_1Sin_a463e7aa393473cf7dedce6cc229bc527}{\index{funcy\-::\-Sin@{funcy\-::\-Sin}!d2@{d2}}
+\index{d2@{d2}!funcy::Sin@{funcy\-::\-Sin}}
+\subsubsection[{d2}]{\setlength{\rightskip}{0pt plus 5cm}double funcy\-::\-Sin\-::d2 (
+\begin{DoxyParamCaption}
+\item[{double}]{dx = {\ttfamily 1.}, }
+\item[{double}]{dy = {\ttfamily 1.}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{structfuncy_1_1Sin_a463e7aa393473cf7dedce6cc229bc527}
+
+
+Second (directional) derivative. 
+
+\hypertarget{structfuncy_1_1Sin_ab470ccf331aff2589f6f055a6fd5f043}{\index{funcy\-::\-Sin@{funcy\-::\-Sin}!d3@{d3}}
+\index{d3@{d3}!funcy::Sin@{funcy\-::\-Sin}}
+\subsubsection[{d3}]{\setlength{\rightskip}{0pt plus 5cm}double funcy\-::\-Sin\-::d3 (
+\begin{DoxyParamCaption}
+\item[{double}]{dx = {\ttfamily 1.}, }
+\item[{double}]{dy = {\ttfamily 1.}, }
+\item[{double}]{dz = {\ttfamily 1.}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{structfuncy_1_1Sin_ab470ccf331aff2589f6f055a6fd5f043}
+
+
+Third (directional) derivative. 
+
+\hypertarget{structfuncy_1_1Sin_ad61c58fe64f6ae7c43ee8da18bb3105d}{\index{funcy\-::\-Sin@{funcy\-::\-Sin}!update@{update}}
+\index{update@{update}!funcy::Sin@{funcy\-::\-Sin}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void funcy\-::\-Sin\-::update (
+\begin{DoxyParamCaption}
+\item[{double}]{x}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{structfuncy_1_1Sin_ad61c58fe64f6ae7c43ee8da18bb3105d}
+
+
+Set point of evaluation. 
+
+
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+include/funcy/cmath/\hyperlink{sine_8hh}{sine.\-hh}\end{DoxyCompactItemize}

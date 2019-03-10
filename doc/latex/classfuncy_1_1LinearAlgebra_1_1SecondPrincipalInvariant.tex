@@ -1,0 +1,124 @@
+\hypertarget{classfuncy_1_1LinearAlgebra_1_1SecondPrincipalInvariant}{\section{funcy\-:\-:Linear\-Algebra\-:\-:Second\-Principal\-Invariant$<$ Matrix, class $>$ Class Template Reference}
+\label{classfuncy_1_1LinearAlgebra_1_1SecondPrincipalInvariant}\index{funcy\-::\-Linear\-Algebra\-::\-Second\-Principal\-Invariant$<$ Matrix, class $>$@{funcy\-::\-Linear\-Algebra\-::\-Second\-Principal\-Invariant$<$ Matrix, class $>$}}
+}
+
+
+{\ttfamily \#include $<$principal\-\_\-invariants.\-hh$>$}
+
+Inheritance diagram for funcy\-:\-:Linear\-Algebra\-:\-:Second\-Principal\-Invariant$<$ Matrix, class $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classfuncy_1_1LinearAlgebra_1_1SecondPrincipalInvariant}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classfuncy_1_1LinearAlgebra_1_1SecondPrincipalInvariant_a31eb2a90fb3939bd36a084c1ad182295}{Second\-Principal\-Invariant} ()=default
+\item 
+\hyperlink{classfuncy_1_1LinearAlgebra_1_1SecondPrincipalInvariant_ab0839951ff8e104c98a489508733f2eb}{Second\-Principal\-Invariant} (const Matrix \&A)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+void \hyperlink{classfuncy_1_1LinearAlgebra_1_1SecondPrincipalInvariant_a842d13e272775f9732c656670f7e02b1}{update} (const Matrix \&A)
+\begin{DoxyCompactList}\small\item\em Reset matrix to compute second principal invariant from. \end{DoxyCompactList}\item 
+auto \hyperlink{classfuncy_1_1LinearAlgebra_1_1SecondPrincipalInvariant_a0b39a1d93256b5678e681cf8d321652f}{d0} () const 
+\begin{DoxyCompactList}\small\item\em Value of the second principal invariant. \end{DoxyCompactList}\item 
+auto \hyperlink{classfuncy_1_1LinearAlgebra_1_1SecondPrincipalInvariant_a7c72fcd1a97d406dfc5980cfd0471a20}{d1} (const Matrix \&d\-A1) const 
+\begin{DoxyCompactList}\small\item\em First directional derivative. \end{DoxyCompactList}\item 
+auto \hyperlink{classfuncy_1_1LinearAlgebra_1_1SecondPrincipalInvariant_a3f57d89269c6c8159b2077079c1d8c67}{d2} (const Matrix \&d\-A1, const Matrix \&d\-A2) const 
+\begin{DoxyCompactList}\small\item\em Second directional derivative. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class Matrix, class = Concepts\-::\-Matrix\-Concept\-Check$<$ Matrix $>$$>$class funcy\-::\-Linear\-Algebra\-::\-Second\-Principal\-Invariant$<$ Matrix, class $>$}
+
+Second principal invariant $ \iota_2(A)=\mathrm{tr}(\mathrm{cof}(A)) $ for $A\in\mathbb{R}^{n,n}$. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classfuncy_1_1LinearAlgebra_1_1SecondPrincipalInvariant_a31eb2a90fb3939bd36a084c1ad182295}{\index{funcy\-::\-Linear\-Algebra\-::\-Second\-Principal\-Invariant@{funcy\-::\-Linear\-Algebra\-::\-Second\-Principal\-Invariant}!Second\-Principal\-Invariant@{Second\-Principal\-Invariant}}
+\index{Second\-Principal\-Invariant@{Second\-Principal\-Invariant}!funcy::LinearAlgebra::SecondPrincipalInvariant@{funcy\-::\-Linear\-Algebra\-::\-Second\-Principal\-Invariant}}
+\subsubsection[{Second\-Principal\-Invariant}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Matrix , class  = Concepts\-::\-Matrix\-Concept\-Check$<$ Matrix $>$$>$ {\bf funcy\-::\-Linear\-Algebra\-::\-Second\-Principal\-Invariant}$<$ Matrix, class $>$\-::{\bf Second\-Principal\-Invariant} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [default]}}}\label{classfuncy_1_1LinearAlgebra_1_1SecondPrincipalInvariant_a31eb2a90fb3939bd36a084c1ad182295}
+\hypertarget{classfuncy_1_1LinearAlgebra_1_1SecondPrincipalInvariant_ab0839951ff8e104c98a489508733f2eb}{\index{funcy\-::\-Linear\-Algebra\-::\-Second\-Principal\-Invariant@{funcy\-::\-Linear\-Algebra\-::\-Second\-Principal\-Invariant}!Second\-Principal\-Invariant@{Second\-Principal\-Invariant}}
+\index{Second\-Principal\-Invariant@{Second\-Principal\-Invariant}!funcy::LinearAlgebra::SecondPrincipalInvariant@{funcy\-::\-Linear\-Algebra\-::\-Second\-Principal\-Invariant}}
+\subsubsection[{Second\-Principal\-Invariant}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Matrix , class  = Concepts\-::\-Matrix\-Concept\-Check$<$ Matrix $>$$>$ {\bf funcy\-::\-Linear\-Algebra\-::\-Second\-Principal\-Invariant}$<$ Matrix, class $>$\-::{\bf Second\-Principal\-Invariant} (
+\begin{DoxyParamCaption}
+\item[{const Matrix \&}]{A}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classfuncy_1_1LinearAlgebra_1_1SecondPrincipalInvariant_ab0839951ff8e104c98a489508733f2eb}
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & matrix to compute second principal invariant from \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classfuncy_1_1LinearAlgebra_1_1SecondPrincipalInvariant_a0b39a1d93256b5678e681cf8d321652f}{\index{funcy\-::\-Linear\-Algebra\-::\-Second\-Principal\-Invariant@{funcy\-::\-Linear\-Algebra\-::\-Second\-Principal\-Invariant}!d0@{d0}}
+\index{d0@{d0}!funcy::LinearAlgebra::SecondPrincipalInvariant@{funcy\-::\-Linear\-Algebra\-::\-Second\-Principal\-Invariant}}
+\subsubsection[{d0}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Matrix , class  = Concepts\-::\-Matrix\-Concept\-Check$<$ Matrix $>$$>$ auto {\bf funcy\-::\-Linear\-Algebra\-::\-Second\-Principal\-Invariant}$<$ Matrix, class $>$\-::d0 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classfuncy_1_1LinearAlgebra_1_1SecondPrincipalInvariant_a0b39a1d93256b5678e681cf8d321652f}
+
+
+Value of the second principal invariant. 
+
+\hypertarget{classfuncy_1_1LinearAlgebra_1_1SecondPrincipalInvariant_a7c72fcd1a97d406dfc5980cfd0471a20}{\index{funcy\-::\-Linear\-Algebra\-::\-Second\-Principal\-Invariant@{funcy\-::\-Linear\-Algebra\-::\-Second\-Principal\-Invariant}!d1@{d1}}
+\index{d1@{d1}!funcy::LinearAlgebra::SecondPrincipalInvariant@{funcy\-::\-Linear\-Algebra\-::\-Second\-Principal\-Invariant}}
+\subsubsection[{d1}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Matrix , class  = Concepts\-::\-Matrix\-Concept\-Check$<$ Matrix $>$$>$ auto {\bf funcy\-::\-Linear\-Algebra\-::\-Second\-Principal\-Invariant}$<$ Matrix, class $>$\-::d1 (
+\begin{DoxyParamCaption}
+\item[{const Matrix \&}]{d\-A1}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classfuncy_1_1LinearAlgebra_1_1SecondPrincipalInvariant_a7c72fcd1a97d406dfc5980cfd0471a20}
+
+
+First directional derivative. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em d\-A1} & direction for which the derivative is computed \\
+\hline
+\end{DoxyParams}
+\hypertarget{classfuncy_1_1LinearAlgebra_1_1SecondPrincipalInvariant_a3f57d89269c6c8159b2077079c1d8c67}{\index{funcy\-::\-Linear\-Algebra\-::\-Second\-Principal\-Invariant@{funcy\-::\-Linear\-Algebra\-::\-Second\-Principal\-Invariant}!d2@{d2}}
+\index{d2@{d2}!funcy::LinearAlgebra::SecondPrincipalInvariant@{funcy\-::\-Linear\-Algebra\-::\-Second\-Principal\-Invariant}}
+\subsubsection[{d2}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Matrix , class  = Concepts\-::\-Matrix\-Concept\-Check$<$ Matrix $>$$>$ auto {\bf funcy\-::\-Linear\-Algebra\-::\-Second\-Principal\-Invariant}$<$ Matrix, class $>$\-::d2 (
+\begin{DoxyParamCaption}
+\item[{const Matrix \&}]{d\-A1, }
+\item[{const Matrix \&}]{d\-A2}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classfuncy_1_1LinearAlgebra_1_1SecondPrincipalInvariant_a3f57d89269c6c8159b2077079c1d8c67}
+
+
+Second directional derivative. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em d\-A1} & direction for which the derivative is computed \\
+\hline
+{\em d\-A2} & direction for which the derivative is computed \\
+\hline
+\end{DoxyParams}
+\hypertarget{classfuncy_1_1LinearAlgebra_1_1SecondPrincipalInvariant_a842d13e272775f9732c656670f7e02b1}{\index{funcy\-::\-Linear\-Algebra\-::\-Second\-Principal\-Invariant@{funcy\-::\-Linear\-Algebra\-::\-Second\-Principal\-Invariant}!update@{update}}
+\index{update@{update}!funcy::LinearAlgebra::SecondPrincipalInvariant@{funcy\-::\-Linear\-Algebra\-::\-Second\-Principal\-Invariant}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Matrix , class  = Concepts\-::\-Matrix\-Concept\-Check$<$ Matrix $>$$>$ void {\bf funcy\-::\-Linear\-Algebra\-::\-Second\-Principal\-Invariant}$<$ Matrix, class $>$\-::update (
+\begin{DoxyParamCaption}
+\item[{const Matrix \&}]{A}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classfuncy_1_1LinearAlgebra_1_1SecondPrincipalInvariant_a842d13e272775f9732c656670f7e02b1}
+
+
+Reset matrix to compute second principal invariant from. 
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+include/funcy/linear\-\_\-algebra/\hyperlink{principal__invariants_8hh}{principal\-\_\-invariants.\-hh}\end{DoxyCompactItemize}

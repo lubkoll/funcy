@@ -1,0 +1,168 @@
+\hypertarget{structfuncy_1_1MathematicalOperations_1_1Chain}{\section{funcy\-:\-:Mathematical\-Operations\-:\-:Chain$<$ F, G, class, class $>$ Struct Template Reference}
+\label{structfuncy_1_1MathematicalOperations_1_1Chain}\index{funcy\-::\-Mathematical\-Operations\-::\-Chain$<$ F, G, class, class $>$@{funcy\-::\-Mathematical\-Operations\-::\-Chain$<$ F, G, class, class $>$}}
+}
+
+
+Chain $ f\circ g $ of functions $f$ and $g$ of type F resp. G (F and G must satisfy the requirements of \hyperlink{structfuncy_1_1Concepts_1_1FunctionConcept}{Concepts\-::\-Function\-Concept}).  
+
+
+
+
+{\ttfamily \#include $<$chain.\-hh$>$}
+
+Inheritance diagram for funcy\-:\-:Mathematical\-Operations\-:\-:Chain$<$ F, G, class, class $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.758242cm]{structfuncy_1_1MathematicalOperations_1_1Chain}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+constexpr \hyperlink{structfuncy_1_1MathematicalOperations_1_1Chain_a239e2183912e8029d4cd521066cd1aac}{Chain} (const F \&f\-\_\-, const G \&g\-\_\-)
+\begin{DoxyCompactList}\small\item\em Constructor taking copies of the functions to be chained. \end{DoxyCompactList}\item 
+constexpr \hyperlink{structfuncy_1_1MathematicalOperations_1_1Chain_a77ff5f9f8d9f148f848aab5dd631eef6}{Chain} (F \&\&f\-\_\-, G \&\&g\-\_\-)
+\begin{DoxyCompactList}\small\item\em Constructor taking moving the functions to be chained. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Arg $>$ }\\void \hyperlink{structfuncy_1_1MathematicalOperations_1_1Chain_ab62968ffd731b7454def9a5b538259d9}{update} (const Arg \&x)
+\begin{DoxyCompactList}\small\item\em Update point of evaluation. \end{DoxyCompactList}\item 
+{\footnotesize template$<$int index, class Arg $>$ }\\void \hyperlink{structfuncy_1_1MathematicalOperations_1_1Chain_a262799d6eead518ecac8748a60f99696}{update} (const Arg \&x)
+\begin{DoxyCompactList}\small\item\em Update variable corresponding to index. \end{DoxyCompactList}\item 
+{\footnotesize template$<$int id, class Arg , class Indexed\-Arg  = Indexed\-Type$<$ Arg, id $>$, class Indexed\-F\-Arg  = Indexed\-Type$<$ F\-Arg, id $>$, class  = std\-::enable\-\_\-if\-\_\-t$<$                           Compute\-Chain\-D1$<$ F, D1$<$ G, Indexed\-Arg $>$, Indexed\-F\-Arg $>$\-::present $>$$>$ }\\auto \hyperlink{structfuncy_1_1MathematicalOperations_1_1Chain_aa4d5179b5d9776d7c10a9cef5aefe94d}{d1} (Arg const \&dx) const 
+\begin{DoxyCompactList}\small\item\em First directional derivative. \end{DoxyCompactList}\item 
+{\footnotesize template$<$int idx, int idy, class Arg\-X , class Arg\-Y , class Indexed\-Arg\-X  = Indexed\-Type$<$ Arg\-X, idx $>$, class Indexed\-Arg\-Y  = Indexed\-Type$<$ Arg\-Y, idy $>$, class Indexed\-F\-Arg\-X  = Indexed\-Type$<$ F\-Arg, idx $>$, class Indexed\-F\-Arg\-Y  = Indexed\-Type$<$ F\-Arg, idy $>$, class  = std\-::enable\-\_\-if\-\_\-t$<$ D2\-Lazy\-Type$<$ Indexed\-Arg\-X, Indexed\-Arg\-Y, Indexed\-F\-Arg\-X,                                                             Indexed\-F\-Arg\-Y $>$\-::present $>$$>$ }\\auto \hyperlink{structfuncy_1_1MathematicalOperations_1_1Chain_a2f9fc8501bc49d4047463cc52916502f}{d2} (Arg\-X const \&dx, Arg\-Y const \&dy) const 
+\begin{DoxyCompactList}\small\item\em Second directional derivative. \end{DoxyCompactList}\item 
+{\footnotesize template$<$int idx, int idy, int idz, class Arg\-X , class Arg\-Y , class Arg\-Z , class Indexed\-Arg\-X  = Indexed\-Type$<$ Arg\-X, idx $>$, class Indexed\-Arg\-Y  = Indexed\-Type$<$ Arg\-Y, idy $>$, class Indexed\-Arg\-Z  = Indexed\-Type$<$ Arg\-Z, idz $>$, class Indexed\-F\-Arg\-X  = Indexed\-Type$<$ F\-Arg, idx $>$, class Indexed\-F\-Arg\-Y  = Indexed\-Type$<$ F\-Arg, idy $>$, class Indexed\-F\-Arg\-Z  = Indexed\-Type$<$ F\-Arg, idz $>$, class  = std\-::enable\-\_\-if\-\_\-t$<$                           D3\-Lazy\-Type$<$ Indexed\-Arg\-X, Indexed\-Arg\-Y, Indexed\-Arg\-Z, Indexed\-F\-Arg\-X,                                       Indexed\-F\-Arg\-Y, Indexed\-F\-Arg\-Z $>$\-::present $>$$>$ }\\auto \hyperlink{structfuncy_1_1MathematicalOperations_1_1Chain_a6c57d7ff1683869b10b6d1e69f32601b}{d3} (Arg\-X const \&dx, Arg\-Y const \&dy, Arg\-Z const \&dz) const 
+\begin{DoxyCompactList}\small\item\em Third directional derivative. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class F, class G, class = Concepts\-::\-Function\-Concept\-Check$<$ F $>$, class = Concepts\-::\-Function\-Concept\-Check$<$ G $>$$>$struct funcy\-::\-Mathematical\-Operations\-::\-Chain$<$ F, G, class, class $>$}
+
+Chain $ f\circ g $ of functions $f$ and $g$ of type F resp. G (F and G must satisfy the requirements of \hyperlink{structfuncy_1_1Concepts_1_1FunctionConcept}{Concepts\-::\-Function\-Concept}). 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{structfuncy_1_1MathematicalOperations_1_1Chain_a239e2183912e8029d4cd521066cd1aac}{\index{funcy\-::\-Mathematical\-Operations\-::\-Chain@{funcy\-::\-Mathematical\-Operations\-::\-Chain}!Chain@{Chain}}
+\index{Chain@{Chain}!funcy::MathematicalOperations::Chain@{funcy\-::\-Mathematical\-Operations\-::\-Chain}}
+\subsubsection[{Chain}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class F , class G , class  = Concepts\-::\-Function\-Concept\-Check$<$ F $>$, class  = Concepts\-::\-Function\-Concept\-Check$<$ G $>$$>$ constexpr {\bf funcy\-::\-Mathematical\-Operations\-::\-Chain}$<$ F, G, class, class $>$\-::{\bf Chain} (
+\begin{DoxyParamCaption}
+\item[{const F \&}]{f\-\_\-, }
+\item[{const G \&}]{g\-\_\-}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{structfuncy_1_1MathematicalOperations_1_1Chain_a239e2183912e8029d4cd521066cd1aac}
+
+
+Constructor taking copies of the functions to be chained. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f\-\_\-} & outer function \\
+\hline
+{\em g\-\_\-} & inner function \\
+\hline
+\end{DoxyParams}
+\hypertarget{structfuncy_1_1MathematicalOperations_1_1Chain_a77ff5f9f8d9f148f848aab5dd631eef6}{\index{funcy\-::\-Mathematical\-Operations\-::\-Chain@{funcy\-::\-Mathematical\-Operations\-::\-Chain}!Chain@{Chain}}
+\index{Chain@{Chain}!funcy::MathematicalOperations::Chain@{funcy\-::\-Mathematical\-Operations\-::\-Chain}}
+\subsubsection[{Chain}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class F , class G , class  = Concepts\-::\-Function\-Concept\-Check$<$ F $>$, class  = Concepts\-::\-Function\-Concept\-Check$<$ G $>$$>$ constexpr {\bf funcy\-::\-Mathematical\-Operations\-::\-Chain}$<$ F, G, class, class $>$\-::{\bf Chain} (
+\begin{DoxyParamCaption}
+\item[{F \&\&}]{f\-\_\-, }
+\item[{G \&\&}]{g\-\_\-}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{structfuncy_1_1MathematicalOperations_1_1Chain_a77ff5f9f8d9f148f848aab5dd631eef6}
+
+
+Constructor taking moving the functions to be chained. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f\-\_\-} & outer function \\
+\hline
+{\em g\-\_\-} & inner function \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{structfuncy_1_1MathematicalOperations_1_1Chain_aa4d5179b5d9776d7c10a9cef5aefe94d}{\index{funcy\-::\-Mathematical\-Operations\-::\-Chain@{funcy\-::\-Mathematical\-Operations\-::\-Chain}!d1@{d1}}
+\index{d1@{d1}!funcy::MathematicalOperations::Chain@{funcy\-::\-Mathematical\-Operations\-::\-Chain}}
+\subsubsection[{d1}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class F , class G , class  = Concepts\-::\-Function\-Concept\-Check$<$ F $>$, class  = Concepts\-::\-Function\-Concept\-Check$<$ G $>$$>$ template$<$int id, class Arg , class Indexed\-Arg  = Indexed\-Type$<$ Arg, id $>$, class Indexed\-F\-Arg  = Indexed\-Type$<$ F\-Arg, id $>$, class  = std\-::enable\-\_\-if\-\_\-t$<$                           Compute\-Chain\-D1$<$ F, D1$<$ G, Indexed\-Arg $>$, Indexed\-F\-Arg $>$\-::present $>$$>$ auto {\bf funcy\-::\-Mathematical\-Operations\-::\-Chain}$<$ F, G, class, class $>$\-::d1 (
+\begin{DoxyParamCaption}
+\item[{Arg const \&}]{dx}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{structfuncy_1_1MathematicalOperations_1_1Chain_aa4d5179b5d9776d7c10a9cef5aefe94d}
+
+
+First directional derivative. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dx} & direction for which the derivative is computed \\
+\hline
+\end{DoxyParams}
+\hypertarget{structfuncy_1_1MathematicalOperations_1_1Chain_a2f9fc8501bc49d4047463cc52916502f}{\index{funcy\-::\-Mathematical\-Operations\-::\-Chain@{funcy\-::\-Mathematical\-Operations\-::\-Chain}!d2@{d2}}
+\index{d2@{d2}!funcy::MathematicalOperations::Chain@{funcy\-::\-Mathematical\-Operations\-::\-Chain}}
+\subsubsection[{d2}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class F , class G , class  = Concepts\-::\-Function\-Concept\-Check$<$ F $>$, class  = Concepts\-::\-Function\-Concept\-Check$<$ G $>$$>$ template$<$int idx, int idy, class Arg\-X , class Arg\-Y , class Indexed\-Arg\-X  = Indexed\-Type$<$ Arg\-X, idx $>$, class Indexed\-Arg\-Y  = Indexed\-Type$<$ Arg\-Y, idy $>$, class Indexed\-F\-Arg\-X  = Indexed\-Type$<$ F\-Arg, idx $>$, class Indexed\-F\-Arg\-Y  = Indexed\-Type$<$ F\-Arg, idy $>$, class  = std\-::enable\-\_\-if\-\_\-t$<$ D2\-Lazy\-Type$<$ Indexed\-Arg\-X, Indexed\-Arg\-Y, Indexed\-F\-Arg\-X,                                                             Indexed\-F\-Arg\-Y $>$\-::present $>$$>$ auto {\bf funcy\-::\-Mathematical\-Operations\-::\-Chain}$<$ F, G, class, class $>$\-::d2 (
+\begin{DoxyParamCaption}
+\item[{Arg\-X const \&}]{dx, }
+\item[{Arg\-Y const \&}]{dy}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{structfuncy_1_1MathematicalOperations_1_1Chain_a2f9fc8501bc49d4047463cc52916502f}
+
+
+Second directional derivative. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dx} & direction for which the derivative is computed \\
+\hline
+{\em dy} & direction for which the derivative is computed \\
+\hline
+\end{DoxyParams}
+\hypertarget{structfuncy_1_1MathematicalOperations_1_1Chain_a6c57d7ff1683869b10b6d1e69f32601b}{\index{funcy\-::\-Mathematical\-Operations\-::\-Chain@{funcy\-::\-Mathematical\-Operations\-::\-Chain}!d3@{d3}}
+\index{d3@{d3}!funcy::MathematicalOperations::Chain@{funcy\-::\-Mathematical\-Operations\-::\-Chain}}
+\subsubsection[{d3}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class F , class G , class  = Concepts\-::\-Function\-Concept\-Check$<$ F $>$, class  = Concepts\-::\-Function\-Concept\-Check$<$ G $>$$>$ template$<$int idx, int idy, int idz, class Arg\-X , class Arg\-Y , class Arg\-Z , class Indexed\-Arg\-X  = Indexed\-Type$<$ Arg\-X, idx $>$, class Indexed\-Arg\-Y  = Indexed\-Type$<$ Arg\-Y, idy $>$, class Indexed\-Arg\-Z  = Indexed\-Type$<$ Arg\-Z, idz $>$, class Indexed\-F\-Arg\-X  = Indexed\-Type$<$ F\-Arg, idx $>$, class Indexed\-F\-Arg\-Y  = Indexed\-Type$<$ F\-Arg, idy $>$, class Indexed\-F\-Arg\-Z  = Indexed\-Type$<$ F\-Arg, idz $>$, class  = std\-::enable\-\_\-if\-\_\-t$<$                           D3\-Lazy\-Type$<$ Indexed\-Arg\-X, Indexed\-Arg\-Y, Indexed\-Arg\-Z, Indexed\-F\-Arg\-X,                                       Indexed\-F\-Arg\-Y, Indexed\-F\-Arg\-Z $>$\-::present $>$$>$ auto {\bf funcy\-::\-Mathematical\-Operations\-::\-Chain}$<$ F, G, class, class $>$\-::d3 (
+\begin{DoxyParamCaption}
+\item[{Arg\-X const \&}]{dx, }
+\item[{Arg\-Y const \&}]{dy, }
+\item[{Arg\-Z const \&}]{dz}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{structfuncy_1_1MathematicalOperations_1_1Chain_a6c57d7ff1683869b10b6d1e69f32601b}
+
+
+Third directional derivative. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dx} & direction for which the derivative is computed \\
+\hline
+{\em dy} & direction for which the derivative is computed \\
+\hline
+{\em dz} & direction for which the derivative is computed \\
+\hline
+\end{DoxyParams}
+\hypertarget{structfuncy_1_1MathematicalOperations_1_1Chain_ab62968ffd731b7454def9a5b538259d9}{\index{funcy\-::\-Mathematical\-Operations\-::\-Chain@{funcy\-::\-Mathematical\-Operations\-::\-Chain}!update@{update}}
+\index{update@{update}!funcy::MathematicalOperations::Chain@{funcy\-::\-Mathematical\-Operations\-::\-Chain}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class F , class G , class  = Concepts\-::\-Function\-Concept\-Check$<$ F $>$, class  = Concepts\-::\-Function\-Concept\-Check$<$ G $>$$>$ template$<$class Arg $>$ void {\bf funcy\-::\-Mathematical\-Operations\-::\-Chain}$<$ F, G, class, class $>$\-::update (
+\begin{DoxyParamCaption}
+\item[{const Arg \&}]{x}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{structfuncy_1_1MathematicalOperations_1_1Chain_ab62968ffd731b7454def9a5b538259d9}
+
+
+Update point of evaluation. 
+
+\hypertarget{structfuncy_1_1MathematicalOperations_1_1Chain_a262799d6eead518ecac8748a60f99696}{\index{funcy\-::\-Mathematical\-Operations\-::\-Chain@{funcy\-::\-Mathematical\-Operations\-::\-Chain}!update@{update}}
+\index{update@{update}!funcy::MathematicalOperations::Chain@{funcy\-::\-Mathematical\-Operations\-::\-Chain}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class F , class G , class  = Concepts\-::\-Function\-Concept\-Check$<$ F $>$, class  = Concepts\-::\-Function\-Concept\-Check$<$ G $>$$>$ template$<$int index, class Arg $>$ void {\bf funcy\-::\-Mathematical\-Operations\-::\-Chain}$<$ F, G, class, class $>$\-::update (
+\begin{DoxyParamCaption}
+\item[{const Arg \&}]{x}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{structfuncy_1_1MathematicalOperations_1_1Chain_a262799d6eead518ecac8748a60f99696}
+
+
+Update variable corresponding to index. 
+
+
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+include/funcy/mathematical\-\_\-operations/\hyperlink{chain_8hh}{chain.\-hh}\end{DoxyCompactItemize}

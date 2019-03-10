@@ -1,0 +1,97 @@
+\hypertarget{structfuncy_1_1Variable}{\section{funcy\-:\-:Variable$<$ T, id $>$ Struct Template Reference}
+\label{structfuncy_1_1Variable}\index{funcy\-::\-Variable$<$ T, id $>$@{funcy\-::\-Variable$<$ T, id $>$}}
+}
+
+
+Independent variable. Can be uniquely identified by its id.  
+
+
+
+
+{\ttfamily \#include $<$variable.\-hh$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structfuncy_1_1Variable_ac9e485d56f2d4c1d7fab0f510b3e68cc}{Variable} ()=default
+\item 
+constexpr \hyperlink{structfuncy_1_1Variable_a4da712098106f770a5e471d827c0e623}{Variable} (const T \&t\-\_\-)
+\item 
+constexpr \hyperlink{structfuncy_1_1Variable_ab7297e8d43f91a39ff130756f91a7614}{Variable} (T \&\&t\-\_\-)
+\item 
+{\footnotesize template$<$int index, class Arg $>$ }\\void \hyperlink{structfuncy_1_1Variable_acdbfd95572cdd732f1845099cfa0fe55}{update} (const Arg \&t\-\_\-)
+\begin{DoxyCompactList}\small\item\em Update variable if index==id. \end{DoxyCompactList}\item 
+constexpr const T \& \hyperlink{structfuncy_1_1Variable_a32a7d931ee1b45062773697b3eb4cae3}{operator()} () const noexcept
+\begin{DoxyCompactList}\small\item\em Value of the variable. \end{DoxyCompactList}\item 
+{\footnotesize template$<$int index, class Arg , class  = std\-::enable\-\_\-if\-\_\-t$<$ id == index $>$$>$ }\\const T \& \hyperlink{structfuncy_1_1Variable_aad5117eb57c1acca2bf9691b48feff52}{d1} (const Arg \&dt) const noexcept
+\begin{DoxyCompactList}\small\item\em First directional derivative. Only available if id==index. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T, int id$>$struct funcy\-::\-Variable$<$ T, id $>$}
+
+Independent variable. Can be uniquely identified by its id. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{structfuncy_1_1Variable_ac9e485d56f2d4c1d7fab0f510b3e68cc}{\index{funcy\-::\-Variable@{funcy\-::\-Variable}!Variable@{Variable}}
+\index{Variable@{Variable}!funcy::Variable@{funcy\-::\-Variable}}
+\subsubsection[{Variable}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , int id$>$ {\bf funcy\-::\-Variable}$<$ T, id $>$\-::{\bf Variable} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [default]}}}\label{structfuncy_1_1Variable_ac9e485d56f2d4c1d7fab0f510b3e68cc}
+\hypertarget{structfuncy_1_1Variable_a4da712098106f770a5e471d827c0e623}{\index{funcy\-::\-Variable@{funcy\-::\-Variable}!Variable@{Variable}}
+\index{Variable@{Variable}!funcy::Variable@{funcy\-::\-Variable}}
+\subsubsection[{Variable}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , int id$>$ constexpr {\bf funcy\-::\-Variable}$<$ T, id $>$\-::{\bf Variable} (
+\begin{DoxyParamCaption}
+\item[{const T \&}]{t\-\_\-}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}}\label{structfuncy_1_1Variable_a4da712098106f770a5e471d827c0e623}
+\hypertarget{structfuncy_1_1Variable_ab7297e8d43f91a39ff130756f91a7614}{\index{funcy\-::\-Variable@{funcy\-::\-Variable}!Variable@{Variable}}
+\index{Variable@{Variable}!funcy::Variable@{funcy\-::\-Variable}}
+\subsubsection[{Variable}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , int id$>$ constexpr {\bf funcy\-::\-Variable}$<$ T, id $>$\-::{\bf Variable} (
+\begin{DoxyParamCaption}
+\item[{T \&\&}]{t\-\_\-}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}}\label{structfuncy_1_1Variable_ab7297e8d43f91a39ff130756f91a7614}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{structfuncy_1_1Variable_aad5117eb57c1acca2bf9691b48feff52}{\index{funcy\-::\-Variable@{funcy\-::\-Variable}!d1@{d1}}
+\index{d1@{d1}!funcy::Variable@{funcy\-::\-Variable}}
+\subsubsection[{d1}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , int id$>$ template$<$int index, class Arg , class  = std\-::enable\-\_\-if\-\_\-t$<$ id == index $>$$>$ const T\& {\bf funcy\-::\-Variable}$<$ T, id $>$\-::d1 (
+\begin{DoxyParamCaption}
+\item[{const Arg \&}]{dt}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}}\label{structfuncy_1_1Variable_aad5117eb57c1acca2bf9691b48feff52}
+
+
+First directional derivative. Only available if id==index. 
+
+\hypertarget{structfuncy_1_1Variable_a32a7d931ee1b45062773697b3eb4cae3}{\index{funcy\-::\-Variable@{funcy\-::\-Variable}!operator()@{operator()}}
+\index{operator()@{operator()}!funcy::Variable@{funcy\-::\-Variable}}
+\subsubsection[{operator()}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , int id$>$ constexpr const T\& {\bf funcy\-::\-Variable}$<$ T, id $>$\-::operator() (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}}\label{structfuncy_1_1Variable_a32a7d931ee1b45062773697b3eb4cae3}
+
+
+Value of the variable. 
+
+\hypertarget{structfuncy_1_1Variable_acdbfd95572cdd732f1845099cfa0fe55}{\index{funcy\-::\-Variable@{funcy\-::\-Variable}!update@{update}}
+\index{update@{update}!funcy::Variable@{funcy\-::\-Variable}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , int id$>$ template$<$int index, class Arg $>$ void {\bf funcy\-::\-Variable}$<$ T, id $>$\-::update (
+\begin{DoxyParamCaption}
+\item[{const Arg \&}]{t\-\_\-}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{structfuncy_1_1Variable_acdbfd95572cdd732f1845099cfa0fe55}
+
+
+Update variable if index==id. 
+
+
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+include/funcy/\hyperlink{variable_8hh}{variable.\-hh}\end{DoxyCompactItemize}

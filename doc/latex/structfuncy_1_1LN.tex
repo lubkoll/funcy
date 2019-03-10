@@ -1,0 +1,123 @@
+\hypertarget{structfuncy_1_1LN}{\section{funcy\-:\-:L\-N Struct Reference}
+\label{structfuncy_1_1LN}\index{funcy\-::\-L\-N@{funcy\-::\-L\-N}}
+}
+
+
+Natural logarithm including first three derivatives.  
+
+
+
+
+{\ttfamily \#include $<$log.\-hh$>$}
+
+Inheritance diagram for funcy\-:\-:L\-N\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{structfuncy_1_1LN}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structfuncy_1_1LN_a26e462e271f179c1e8166071fc4a6c4e}{L\-N} (double x=1.)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+void \hyperlink{structfuncy_1_1LN_acaa2933bb04386d3d261dc57a55b4ead}{update} (double x)
+\begin{DoxyCompactList}\small\item\em Set point of evaluation. \end{DoxyCompactList}\item 
+double \hyperlink{structfuncy_1_1LN_a21b9ad2a8f0a1327810df36c1584f659}{d0} () const noexcept
+\begin{DoxyCompactList}\small\item\em Function value. \end{DoxyCompactList}\item 
+double \hyperlink{structfuncy_1_1LN_a6f7bd8efa7fa9d73d91a80b097a88030}{d1} (double dx=1.) const 
+\begin{DoxyCompactList}\small\item\em First (directional) derivative. \end{DoxyCompactList}\item 
+double \hyperlink{structfuncy_1_1LN_ad532a79f2de8db3e847caaa26fad2c17}{d2} (double dx=1., double dy=1.) const 
+\begin{DoxyCompactList}\small\item\em Second (directional) derivative. \end{DoxyCompactList}\item 
+double \hyperlink{structfuncy_1_1LN_a73013194d1a196631f6665a5245052b5}{d3} (double dx=1., double dy=1., double dz=1.) const 
+\begin{DoxyCompactList}\small\item\em Third (directional) derivative. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Natural logarithm including first three derivatives. 
+
+For scalar functions directional derivatives are less interesting. Incorporating this function as building block for more complex functions requires directional derivatives. These occur during applications of the chain rule. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{structfuncy_1_1LN_a26e462e271f179c1e8166071fc4a6c4e}{\index{funcy\-::\-L\-N@{funcy\-::\-L\-N}!L\-N@{L\-N}}
+\index{L\-N@{L\-N}!funcy::LN@{funcy\-::\-L\-N}}
+\subsubsection[{L\-N}]{\setlength{\rightskip}{0pt plus 5cm}funcy\-::\-L\-N\-::\-L\-N (
+\begin{DoxyParamCaption}
+\item[{double}]{x = {\ttfamily 1.}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}}\label{structfuncy_1_1LN_a26e462e271f179c1e8166071fc4a6c4e}
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & point of evaluation \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{structfuncy_1_1LN_a21b9ad2a8f0a1327810df36c1584f659}{\index{funcy\-::\-L\-N@{funcy\-::\-L\-N}!d0@{d0}}
+\index{d0@{d0}!funcy::LN@{funcy\-::\-L\-N}}
+\subsubsection[{d0}]{\setlength{\rightskip}{0pt plus 5cm}double funcy\-::\-L\-N\-::d0 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}}\label{structfuncy_1_1LN_a21b9ad2a8f0a1327810df36c1584f659}
+
+
+Function value. 
+
+\hypertarget{structfuncy_1_1LN_a6f7bd8efa7fa9d73d91a80b097a88030}{\index{funcy\-::\-L\-N@{funcy\-::\-L\-N}!d1@{d1}}
+\index{d1@{d1}!funcy::LN@{funcy\-::\-L\-N}}
+\subsubsection[{d1}]{\setlength{\rightskip}{0pt plus 5cm}double funcy\-::\-L\-N\-::d1 (
+\begin{DoxyParamCaption}
+\item[{double}]{dx = {\ttfamily 1.}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{structfuncy_1_1LN_a6f7bd8efa7fa9d73d91a80b097a88030}
+
+
+First (directional) derivative. 
+
+\hypertarget{structfuncy_1_1LN_ad532a79f2de8db3e847caaa26fad2c17}{\index{funcy\-::\-L\-N@{funcy\-::\-L\-N}!d2@{d2}}
+\index{d2@{d2}!funcy::LN@{funcy\-::\-L\-N}}
+\subsubsection[{d2}]{\setlength{\rightskip}{0pt plus 5cm}double funcy\-::\-L\-N\-::d2 (
+\begin{DoxyParamCaption}
+\item[{double}]{dx = {\ttfamily 1.}, }
+\item[{double}]{dy = {\ttfamily 1.}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{structfuncy_1_1LN_ad532a79f2de8db3e847caaa26fad2c17}
+
+
+Second (directional) derivative. 
+
+\hypertarget{structfuncy_1_1LN_a73013194d1a196631f6665a5245052b5}{\index{funcy\-::\-L\-N@{funcy\-::\-L\-N}!d3@{d3}}
+\index{d3@{d3}!funcy::LN@{funcy\-::\-L\-N}}
+\subsubsection[{d3}]{\setlength{\rightskip}{0pt plus 5cm}double funcy\-::\-L\-N\-::d3 (
+\begin{DoxyParamCaption}
+\item[{double}]{dx = {\ttfamily 1.}, }
+\item[{double}]{dy = {\ttfamily 1.}, }
+\item[{double}]{dz = {\ttfamily 1.}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{structfuncy_1_1LN_a73013194d1a196631f6665a5245052b5}
+
+
+Third (directional) derivative. 
+
+\hypertarget{structfuncy_1_1LN_acaa2933bb04386d3d261dc57a55b4ead}{\index{funcy\-::\-L\-N@{funcy\-::\-L\-N}!update@{update}}
+\index{update@{update}!funcy::LN@{funcy\-::\-L\-N}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}void funcy\-::\-L\-N\-::update (
+\begin{DoxyParamCaption}
+\item[{double}]{x}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{structfuncy_1_1LN_acaa2933bb04386d3d261dc57a55b4ead}
+
+
+Set point of evaluation. 
+
+
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+include/funcy/cmath/\hyperlink{log_8hh}{log.\-hh}\end{DoxyCompactItemize}

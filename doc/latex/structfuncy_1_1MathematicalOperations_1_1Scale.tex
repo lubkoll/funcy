@@ -1,0 +1,126 @@
+\hypertarget{structfuncy_1_1MathematicalOperations_1_1Scale}{\section{funcy\-:\-:Mathematical\-Operations\-:\-:Scale$<$ Scalar, F, class $>$ Struct Template Reference}
+\label{structfuncy_1_1MathematicalOperations_1_1Scale}\index{funcy\-::\-Mathematical\-Operations\-::\-Scale$<$ Scalar, F, class $>$@{funcy\-::\-Mathematical\-Operations\-::\-Scale$<$ Scalar, F, class $>$}}
+}
+
+
+Scaling $ af $ of some function $ f $ with a double $ a $ (F must satisfy the requirements of \hyperlink{structfuncy_1_1Concepts_1_1FunctionConcept}{Concepts\-::\-Function\-Concept}).  
+
+
+
+
+{\ttfamily \#include $<$scale.\-hh$>$}
+
+Inheritance diagram for funcy\-:\-:Mathematical\-Operations\-:\-:Scale$<$ Scalar, F, class $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{structfuncy_1_1MathematicalOperations_1_1Scale}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class... Init\-F$>$ }\\constexpr \hyperlink{structfuncy_1_1MathematicalOperations_1_1Scale_ab55ee94b1b43977836f16c899bd95110}{Scale} (Scalar a\-\_\-, Init\-F \&\&...f\-\_\-)
+\begin{DoxyCompactList}\small\item\em Constructor passing arguments to function constructor. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Arg $>$ }\\void \hyperlink{structfuncy_1_1MathematicalOperations_1_1Scale_ab6245c6037eb85b408e15474985a16f6}{update} (const Arg \&x)
+\begin{DoxyCompactList}\small\item\em Update point of evaluation. \end{DoxyCompactList}\item 
+{\footnotesize template$<$int index, class Arg $>$ }\\void \hyperlink{structfuncy_1_1MathematicalOperations_1_1Scale_a0571c963adb501869b9b5ff751d5c3aa}{update} (const Arg \&x)
+\begin{DoxyCompactList}\small\item\em Update variable corresponding to index. \end{DoxyCompactList}\item 
+{\footnotesize template$<$int idx, class Arg , class Indexed\-Arg  = Indexed\-Type$<$ Arg, idx $>$, class  = std\-::enable\-\_\-if\-\_\-t$<$ D1$<$ F, Indexed\-Arg $>$\-::present $>$$>$ }\\auto \hyperlink{structfuncy_1_1MathematicalOperations_1_1Scale_a20015c2232ff21ee847417dc16cd262e}{d1} (const Arg \&dx) const 
+\begin{DoxyCompactList}\small\item\em First directional derivative. \end{DoxyCompactList}\item 
+{\footnotesize template$<$int idx, int idy, class Arg\-X , class Arg\-Y , class Indexed\-Arg\-X  = Indexed\-Type$<$ Arg\-X, idx $>$, class Indexed\-Arg\-Y  = Indexed\-Type$<$ Arg\-Y, idy $>$, class  = std\-::enable\-\_\-if\-\_\-t$<$ D2$<$ F, Indexed\-Arg\-X, Indexed\-Arg\-Y $>$\-::present $>$$>$ }\\auto \hyperlink{structfuncy_1_1MathematicalOperations_1_1Scale_a47353f03e9078ab114d082346a57768e}{d2} (const Arg\-X \&dx, const Arg\-Y \&dy) const 
+\begin{DoxyCompactList}\small\item\em Second directional derivative. \end{DoxyCompactList}\item 
+{\footnotesize template$<$int idx, int idy, int idz, class Arg\-X , class Arg\-Y , class Arg\-Z , class Indexed\-Arg\-X  = Indexed\-Type$<$ Arg\-X, idx $>$, class Indexed\-Arg\-Y  = Indexed\-Type$<$ Arg\-Y, idy $>$, class Indexed\-Arg\-Z  = Indexed\-Type$<$ Arg\-Z, idz $>$, class  = std\-::enable\-\_\-if\-\_\-t$<$                           D3$<$ F, Indexed\-Arg\-X, Indexed\-Arg\-Y, Indexed\-Arg\-Z $>$\-::present $>$$>$ }\\auto \hyperlink{structfuncy_1_1MathematicalOperations_1_1Scale_a2ddf7d04bf049c13bec514fcb7016626}{d3} (const Arg\-X \&dx, const Arg\-Y \&dy, const Arg\-Z \&dz) const 
+\begin{DoxyCompactList}\small\item\em Third directional derivative. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class Scalar, class F, class = Concepts\-::\-Function\-Concept\-Check$<$ F $>$$>$struct funcy\-::\-Mathematical\-Operations\-::\-Scale$<$ Scalar, F, class $>$}
+
+Scaling $ af $ of some function $ f $ with a double $ a $ (F must satisfy the requirements of \hyperlink{structfuncy_1_1Concepts_1_1FunctionConcept}{Concepts\-::\-Function\-Concept}). 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{structfuncy_1_1MathematicalOperations_1_1Scale_ab55ee94b1b43977836f16c899bd95110}{\index{funcy\-::\-Mathematical\-Operations\-::\-Scale@{funcy\-::\-Mathematical\-Operations\-::\-Scale}!Scale@{Scale}}
+\index{Scale@{Scale}!funcy::MathematicalOperations::Scale@{funcy\-::\-Mathematical\-Operations\-::\-Scale}}
+\subsubsection[{Scale}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Scalar , class F , class  = Concepts\-::\-Function\-Concept\-Check$<$ F $>$$>$ template$<$class... Init\-F$>$ constexpr {\bf funcy\-::\-Mathematical\-Operations\-::\-Scale}$<$ Scalar, F, class $>$\-::{\bf Scale} (
+\begin{DoxyParamCaption}
+\item[{Scalar}]{a\-\_\-, }
+\item[{Init\-F \&\&...}]{f\-\_\-}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{structfuncy_1_1MathematicalOperations_1_1Scale_ab55ee94b1b43977836f16c899bd95110}
+
+
+Constructor passing arguments to function constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a\-\_\-} & scaling \\
+\hline
+{\em f\-\_\-} & input for constructor of outer function \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{structfuncy_1_1MathematicalOperations_1_1Scale_a20015c2232ff21ee847417dc16cd262e}{\index{funcy\-::\-Mathematical\-Operations\-::\-Scale@{funcy\-::\-Mathematical\-Operations\-::\-Scale}!d1@{d1}}
+\index{d1@{d1}!funcy::MathematicalOperations::Scale@{funcy\-::\-Mathematical\-Operations\-::\-Scale}}
+\subsubsection[{d1}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Scalar , class F , class  = Concepts\-::\-Function\-Concept\-Check$<$ F $>$$>$ template$<$int idx, class Arg , class Indexed\-Arg  = Indexed\-Type$<$ Arg, idx $>$, class  = std\-::enable\-\_\-if\-\_\-t$<$ D1$<$ F, Indexed\-Arg $>$\-::present $>$$>$ auto {\bf funcy\-::\-Mathematical\-Operations\-::\-Scale}$<$ Scalar, F, class $>$\-::d1 (
+\begin{DoxyParamCaption}
+\item[{const Arg \&}]{dx}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{structfuncy_1_1MathematicalOperations_1_1Scale_a20015c2232ff21ee847417dc16cd262e}
+
+
+First directional derivative. 
+
+\hypertarget{structfuncy_1_1MathematicalOperations_1_1Scale_a47353f03e9078ab114d082346a57768e}{\index{funcy\-::\-Mathematical\-Operations\-::\-Scale@{funcy\-::\-Mathematical\-Operations\-::\-Scale}!d2@{d2}}
+\index{d2@{d2}!funcy::MathematicalOperations::Scale@{funcy\-::\-Mathematical\-Operations\-::\-Scale}}
+\subsubsection[{d2}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Scalar , class F , class  = Concepts\-::\-Function\-Concept\-Check$<$ F $>$$>$ template$<$int idx, int idy, class Arg\-X , class Arg\-Y , class Indexed\-Arg\-X  = Indexed\-Type$<$ Arg\-X, idx $>$, class Indexed\-Arg\-Y  = Indexed\-Type$<$ Arg\-Y, idy $>$, class  = std\-::enable\-\_\-if\-\_\-t$<$ D2$<$ F, Indexed\-Arg\-X, Indexed\-Arg\-Y $>$\-::present $>$$>$ auto {\bf funcy\-::\-Mathematical\-Operations\-::\-Scale}$<$ Scalar, F, class $>$\-::d2 (
+\begin{DoxyParamCaption}
+\item[{const Arg\-X \&}]{dx, }
+\item[{const Arg\-Y \&}]{dy}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{structfuncy_1_1MathematicalOperations_1_1Scale_a47353f03e9078ab114d082346a57768e}
+
+
+Second directional derivative. 
+
+\hypertarget{structfuncy_1_1MathematicalOperations_1_1Scale_a2ddf7d04bf049c13bec514fcb7016626}{\index{funcy\-::\-Mathematical\-Operations\-::\-Scale@{funcy\-::\-Mathematical\-Operations\-::\-Scale}!d3@{d3}}
+\index{d3@{d3}!funcy::MathematicalOperations::Scale@{funcy\-::\-Mathematical\-Operations\-::\-Scale}}
+\subsubsection[{d3}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Scalar , class F , class  = Concepts\-::\-Function\-Concept\-Check$<$ F $>$$>$ template$<$int idx, int idy, int idz, class Arg\-X , class Arg\-Y , class Arg\-Z , class Indexed\-Arg\-X  = Indexed\-Type$<$ Arg\-X, idx $>$, class Indexed\-Arg\-Y  = Indexed\-Type$<$ Arg\-Y, idy $>$, class Indexed\-Arg\-Z  = Indexed\-Type$<$ Arg\-Z, idz $>$, class  = std\-::enable\-\_\-if\-\_\-t$<$                           D3$<$ F, Indexed\-Arg\-X, Indexed\-Arg\-Y, Indexed\-Arg\-Z $>$\-::present $>$$>$ auto {\bf funcy\-::\-Mathematical\-Operations\-::\-Scale}$<$ Scalar, F, class $>$\-::d3 (
+\begin{DoxyParamCaption}
+\item[{const Arg\-X \&}]{dx, }
+\item[{const Arg\-Y \&}]{dy, }
+\item[{const Arg\-Z \&}]{dz}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{structfuncy_1_1MathematicalOperations_1_1Scale_a2ddf7d04bf049c13bec514fcb7016626}
+
+
+Third directional derivative. 
+
+\hypertarget{structfuncy_1_1MathematicalOperations_1_1Scale_ab6245c6037eb85b408e15474985a16f6}{\index{funcy\-::\-Mathematical\-Operations\-::\-Scale@{funcy\-::\-Mathematical\-Operations\-::\-Scale}!update@{update}}
+\index{update@{update}!funcy::MathematicalOperations::Scale@{funcy\-::\-Mathematical\-Operations\-::\-Scale}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Scalar , class F , class  = Concepts\-::\-Function\-Concept\-Check$<$ F $>$$>$ template$<$class Arg $>$ void {\bf funcy\-::\-Mathematical\-Operations\-::\-Scale}$<$ Scalar, F, class $>$\-::update (
+\begin{DoxyParamCaption}
+\item[{const Arg \&}]{x}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{structfuncy_1_1MathematicalOperations_1_1Scale_ab6245c6037eb85b408e15474985a16f6}
+
+
+Update point of evaluation. 
+
+\hypertarget{structfuncy_1_1MathematicalOperations_1_1Scale_a0571c963adb501869b9b5ff751d5c3aa}{\index{funcy\-::\-Mathematical\-Operations\-::\-Scale@{funcy\-::\-Mathematical\-Operations\-::\-Scale}!update@{update}}
+\index{update@{update}!funcy::MathematicalOperations::Scale@{funcy\-::\-Mathematical\-Operations\-::\-Scale}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Scalar , class F , class  = Concepts\-::\-Function\-Concept\-Check$<$ F $>$$>$ template$<$int index, class Arg $>$ void {\bf funcy\-::\-Mathematical\-Operations\-::\-Scale}$<$ Scalar, F, class $>$\-::update (
+\begin{DoxyParamCaption}
+\item[{const Arg \&}]{x}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{structfuncy_1_1MathematicalOperations_1_1Scale_a0571c963adb501869b9b5ff751d5c3aa}
+
+
+Update variable corresponding to index. 
+
+
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+include/funcy/mathematical\-\_\-operations/\hyperlink{scale_8hh}{scale.\-hh}\end{DoxyCompactItemize}

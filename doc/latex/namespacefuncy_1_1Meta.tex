@@ -1,0 +1,42 @@
+\hypertarget{namespacefuncy_1_1Meta}{\section{funcy\-:\-:Meta Namespace Reference}
+\label{namespacefuncy_1_1Meta}\index{funcy\-::\-Meta@{funcy\-::\-Meta}}
+}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structfuncy_1_1Meta_1_1Traverse}{Traverse}
+\item 
+struct \hyperlink{structfuncy_1_1Meta_1_1Traverse_3_01G_3_01F_00_01hasVariable_01_4_00_01Operation_00_01Combine_01_4}{Traverse$<$ G$<$ F, has\-Variable $>$, Operation, Combine $>$}
+\item 
+struct \hyperlink{structfuncy_1_1Meta_1_1Traverse_3_01G_3_01Scalar_00_01F_00_01Concepts_1_1FunctionConceptCheck_3_d9950d1c48a2813691c7a0d506636e4e}{Traverse$<$ G$<$ Scalar, F, Concepts\-::\-Function\-Concept\-Check$<$ F $>$ $>$, Operation, Combine $>$}
+\item 
+struct \hyperlink{structfuncy_1_1Meta_1_1Traverse_3_01G_3_01F_00_01Concepts_1_1FunctionConceptCheck_3_01F_01_4_01_44008b3cc655196582c54171c951cc7a}{Traverse$<$ G$<$ F, Concepts\-::\-Function\-Concept\-Check$<$ F $>$ $>$, Operation, Combine $>$}
+\item 
+struct \hyperlink{structfuncy_1_1Meta_1_1Traverse_3_01H_3_01F_00_01G_00_01Concepts_1_1FunctionConceptCheck_3_01F_084070fc36daa4be3c051d8e83d53a122}{Traverse$<$ H$<$ F, G, Concepts\-::\-Function\-Concept\-Check$<$ F $>$, Concepts\-::\-Function\-Concept\-Check$<$ G $>$ $>$, Operation, Combine $>$}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class F , class G $>$ }\\using \hyperlink{namespacefuncy_1_1Meta_a41cc898590e15dae8d6da038f55f3cd2}{And} = std\-::integral\-\_\-constant$<$ bool, F\-::value \&\&G\-::value $>$
+\item 
+{\footnotesize template$<$class F , class G $>$ }\\using \hyperlink{namespacefuncy_1_1Meta_a7a832030d5229986a69d3518833e1b8f}{Or} = std\-::integral\-\_\-constant$<$ bool, F\-::value$\vert$$\vert$G\-::value $>$
+\item 
+{\footnotesize template$<$class F , template$<$ class $>$ class Operation$>$ }\\using \hyperlink{namespacefuncy_1_1Meta_a7957593ba11cc9c461684ee7efbeb3c4}{All\-Of} = \hyperlink{structfuncy_1_1Meta_1_1Traverse}{Traverse}$<$ F, Operation, \hyperlink{namespacefuncy_1_1Meta_a41cc898590e15dae8d6da038f55f3cd2}{And} $>$
+\item 
+{\footnotesize template$<$class F , template$<$ class $>$ class Operation$>$ }\\using \hyperlink{namespacefuncy_1_1Meta_ad563ba73c1ea4946f6168ad527e02346}{Any\-Of} = \hyperlink{structfuncy_1_1Meta_1_1Traverse}{Traverse}$<$ F, Operation, \hyperlink{namespacefuncy_1_1Meta_a7a832030d5229986a69d3518833e1b8f}{Or} $>$
+\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\hypertarget{namespacefuncy_1_1Meta_a7957593ba11cc9c461684ee7efbeb3c4}{\index{funcy\-::\-Meta@{funcy\-::\-Meta}!All\-Of@{All\-Of}}
+\index{All\-Of@{All\-Of}!funcy::Meta@{funcy\-::\-Meta}}
+\subsubsection[{All\-Of}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class F , template$<$ class $>$ class Operation$>$ using {\bf funcy\-::\-Meta\-::\-All\-Of} = typedef {\bf Traverse}$<$ F, Operation, {\bf And} $>$}}\label{namespacefuncy_1_1Meta_a7957593ba11cc9c461684ee7efbeb3c4}
+\hypertarget{namespacefuncy_1_1Meta_a41cc898590e15dae8d6da038f55f3cd2}{\index{funcy\-::\-Meta@{funcy\-::\-Meta}!And@{And}}
+\index{And@{And}!funcy::Meta@{funcy\-::\-Meta}}
+\subsubsection[{And}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class F , class G $>$ using {\bf funcy\-::\-Meta\-::\-And} = typedef std\-::integral\-\_\-constant$<$ bool, F\-::value \&\& G\-::value $>$}}\label{namespacefuncy_1_1Meta_a41cc898590e15dae8d6da038f55f3cd2}
+\hypertarget{namespacefuncy_1_1Meta_ad563ba73c1ea4946f6168ad527e02346}{\index{funcy\-::\-Meta@{funcy\-::\-Meta}!Any\-Of@{Any\-Of}}
+\index{Any\-Of@{Any\-Of}!funcy::Meta@{funcy\-::\-Meta}}
+\subsubsection[{Any\-Of}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class F , template$<$ class $>$ class Operation$>$ using {\bf funcy\-::\-Meta\-::\-Any\-Of} = typedef {\bf Traverse}$<$ F, Operation, {\bf Or} $>$}}\label{namespacefuncy_1_1Meta_ad563ba73c1ea4946f6168ad527e02346}
+\hypertarget{namespacefuncy_1_1Meta_a7a832030d5229986a69d3518833e1b8f}{\index{funcy\-::\-Meta@{funcy\-::\-Meta}!Or@{Or}}
+\index{Or@{Or}!funcy::Meta@{funcy\-::\-Meta}}
+\subsubsection[{Or}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class F , class G $>$ using {\bf funcy\-::\-Meta\-::\-Or} = typedef std\-::integral\-\_\-constant$<$ bool, F\-::value $\vert$$\vert$ G\-::value $>$}}\label{namespacefuncy_1_1Meta_a7a832030d5229986a69d3518833e1b8f}

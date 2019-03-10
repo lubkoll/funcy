@@ -1,34 +1,34 @@
-\hypertarget{muscle__tissue__martins_8hh}{\section{include/fung/examples/biomechanics/muscle\-\_\-tissue\-\_\-martins.hh File Reference}
-\label{muscle__tissue__martins_8hh}\index{include/fung/examples/biomechanics/muscle\-\_\-tissue\-\_\-martins.\-hh@{include/fung/examples/biomechanics/muscle\-\_\-tissue\-\_\-martins.\-hh}}
+\hypertarget{muscle__tissue__martins_8hh}{\section{include/funcy/examples/biomechanics/muscle\-\_\-tissue\-\_\-martins.hh File Reference}
+\label{muscle__tissue__martins_8hh}\index{include/funcy/examples/biomechanics/muscle\-\_\-tissue\-\_\-martins.\-hh@{include/funcy/examples/biomechanics/muscle\-\_\-tissue\-\_\-martins.\-hh}}
 }
 
 
 Versions of the muscle model of \cite{Martins1998}.  
 
 
-{\ttfamily \#include $<$fung/finalize.\-hh$>$}\\*
-{\ttfamily \#include $<$fung/generate.\-hh$>$}\\*
-{\ttfamily \#include $<$fung/cmath/exp.\-hh$>$}\\*
-{\ttfamily \#include $<$fung/linear\-\_\-algebra/principal\-\_\-invariants.\-hh$>$}\\*
-{\ttfamily \#include $<$fung/linear\-\_\-algebra/mixed\-\_\-invariants.\-hh$>$}\\*
-{\ttfamily \#include $<$fung/linear\-\_\-algebra/strain\-\_\-tensor.\-hh$>$}\\*
-{\ttfamily \#include $<$fung/linear\-\_\-algebra/tensor\-\_\-product.\-hh$>$}\\*
-{\ttfamily \#include $<$fung/examples/volumetric\-\_\-penalty\-\_\-functions.\-hh$>$}\\*
+{\ttfamily \#include $<$funcy/finalize.\-hh$>$}\\*
+{\ttfamily \#include $<$funcy/generate.\-hh$>$}\\*
+{\ttfamily \#include $<$funcy/cmath/exp.\-hh$>$}\\*
+{\ttfamily \#include $<$funcy/linear\-\_\-algebra/principal\-\_\-invariants.\-hh$>$}\\*
+{\ttfamily \#include $<$funcy/linear\-\_\-algebra/mixed\-\_\-invariants.\-hh$>$}\\*
+{\ttfamily \#include $<$funcy/linear\-\_\-algebra/strain\-\_\-tensor.\-hh$>$}\\*
+{\ttfamily \#include $<$funcy/linear\-\_\-algebra/tensor\-\_\-product.\-hh$>$}\\*
+{\ttfamily \#include $<$funcy/examples/volumetric\-\_\-penalty\-\_\-functions.\-hh$>$}\\*
 \subsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{namespaceFunG}{Fun\-G}
-\begin{DoxyCompactList}\small\item\em Main namespace of the Fun\-G library. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\hyperlink{namespacefuncy}{funcy}
+\begin{DoxyCompactList}\small\item\em Main namespace of the funcy library. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-{\footnotesize template$<$class Matrix , int offset = Linear\-Algebra\-::dim$<$\-Matrix$>$()$>$ }\\auto \hyperlink{group__Biomechanics_gafcc36a1958899ca9246c4c1b3c9bfd85}{Fun\-G\-::incompressible\-Muscle\-Tissue\-\_\-\-Martins} (double c, double b, double A, double a, const Matrix \&M, const Matrix \&F)
+{\footnotesize template$<$class Matrix , int offset = Linear\-Algebra\-::dim$<$\-Matrix$>$()$>$ }\\auto \hyperlink{group__Biomechanics_gaeaaf9e9eccfecfa8503cdf4dbb393e21}{funcy\-::incompressible\-Muscle\-Tissue\-\_\-\-Martins} (double c, double b, double A, double a, const Matrix \&M, const Matrix \&F)
 \begin{DoxyCompactList}\small\item\em Incompressible version of the model for muscle tissue of \cite{Martins1998}. \end{DoxyCompactList}\item 
-{\footnotesize template$<$class Matrix , int offset = Linear\-Algebra\-::dim$<$\-Matrix$>$()$>$ }\\auto \hyperlink{group__Biomechanics_ga9e414585a90b1988e9fa88d17d875055}{Fun\-G\-::incompressible\-Muscle\-Tissue\-\_\-\-Martins} (const Matrix \&M, const Matrix \&F)
+{\footnotesize template$<$class Matrix , int offset = Linear\-Algebra\-::dim$<$\-Matrix$>$()$>$ }\\auto \hyperlink{group__Biomechanics_ga84c71caab50eced9ca7e6d3d323c57e1}{funcy\-::incompressible\-Muscle\-Tissue\-\_\-\-Martins} (const Matrix \&M, const Matrix \&F)
 \begin{DoxyCompactList}\small\item\em Incompressible version of the model for muscle tissue of \cite{Martins1998}. \end{DoxyCompactList}\item 
-{\footnotesize template$<$class Inflation , class Compression , class Matrix , int offset = Linear\-Algebra\-::dim$<$\-Matrix$>$()$>$ }\\auto \hyperlink{group__Biomechanics_gad831914c493a3da04ed40c3c0ce87a62}{Fun\-G\-::compressible\-Muscle\-Tissue\-\_\-\-Martins} (double c, double b, double A, double a, double d0, double d1, const Matrix \&M, const Matrix \&F)
+{\footnotesize template$<$class Inflation , class Compression , class Matrix , int offset = Linear\-Algebra\-::dim$<$\-Matrix$>$()$>$ }\\auto \hyperlink{group__Biomechanics_gabe40c595a6752c8cbd8680123f984734}{funcy\-::compressible\-Muscle\-Tissue\-\_\-\-Martins} (double c, double b, double A, double a, double d0, double d1, const Matrix \&M, const Matrix \&F)
 \begin{DoxyCompactList}\small\item\em Compressible version of the model for muscle tissue of \cite{Martins1998}. \end{DoxyCompactList}\item 
-{\footnotesize template$<$class Inflation , class Compression , class Matrix , int offset = Linear\-Algebra\-::dim$<$\-Matrix$>$()$>$ }\\auto \hyperlink{group__Biomechanics_ga46a70ccb2285e12addad87b6a8aaaae8}{Fun\-G\-::compressible\-Muscle\-Tissue\-\_\-\-Martins} (double d0, double d1, const Matrix \&M, const Matrix \&F)
+{\footnotesize template$<$class Inflation , class Compression , class Matrix , int offset = Linear\-Algebra\-::dim$<$\-Matrix$>$()$>$ }\\auto \hyperlink{group__Biomechanics_ga073cb35106dcb176a580bab290bc8422}{funcy\-::compressible\-Muscle\-Tissue\-\_\-\-Martins} (double d0, double d1, const Matrix \&M, const Matrix \&F)
 \begin{DoxyCompactList}\small\item\em Compressible version of the model for muscle tissue of \cite{Martins1998}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 

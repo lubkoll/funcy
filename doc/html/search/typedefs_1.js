@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['cbrt',['Cbrt',['../group__CMathGroup.html#gaff369d639f7a316b3f22982e806cb45f',1,'FunG']]],
-  ['cbrt2',['Cbrt2',['../group__CMathGroup.html#gab63795eecd1e9a55ea26b24125053f2d',1,'FunG']]]
+  ['cbrt',['Cbrt',['../group__CMathGroup.html#ga73e089e38b8f293e9d7f6a1f617268e8',1,'funcy']]],
+  ['cbrt2',['Cbrt2',['../group__CMathGroup.html#gae9ee48794104aa14e38c34cfa90a33ac',1,'funcy']]]
 ];

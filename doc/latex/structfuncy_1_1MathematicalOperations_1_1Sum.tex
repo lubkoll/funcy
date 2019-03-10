@@ -1,0 +1,126 @@
+\hypertarget{structfuncy_1_1MathematicalOperations_1_1Sum}{\section{funcy\-:\-:Mathematical\-Operations\-:\-:Sum$<$ F, G, Check\-F, Check\-G $>$ Struct Template Reference}
+\label{structfuncy_1_1MathematicalOperations_1_1Sum}\index{funcy\-::\-Mathematical\-Operations\-::\-Sum$<$ F, G, Check\-F, Check\-G $>$@{funcy\-::\-Mathematical\-Operations\-::\-Sum$<$ F, G, Check\-F, Check\-G $>$}}
+}
+
+
+Sum of functions of type F and G (F and G must satisfy the requirements of \hyperlink{structfuncy_1_1Concepts_1_1FunctionConcept}{Concepts\-::\-Function\-Concept}).  
+
+
+
+
+{\ttfamily \#include $<$sum.\-hh$>$}
+
+Inheritance diagram for funcy\-:\-:Mathematical\-Operations\-:\-:Sum$<$ F, G, Check\-F, Check\-G $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{structfuncy_1_1MathematicalOperations_1_1Sum}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class Init\-F , class Init\-G $>$ }\\constexpr \hyperlink{structfuncy_1_1MathematicalOperations_1_1Sum_a7c23d59f7a9ca7ef1584195b437c6c71}{Sum} (Init\-F \&\&f\-\_\-, Init\-G \&\&g\-\_\-)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Arg $>$ }\\void \hyperlink{structfuncy_1_1MathematicalOperations_1_1Sum_ab70dc2a344084335778658e5aa27c6b9}{update} (Arg \&\&x)
+\begin{DoxyCompactList}\small\item\em Update point of evaluation. \end{DoxyCompactList}\item 
+{\footnotesize template$<$int index, class Arg $>$ }\\void \hyperlink{structfuncy_1_1MathematicalOperations_1_1Sum_a8d03c52542a8fc305d8c2de20ed95209}{update} (Arg \&\&x)
+\begin{DoxyCompactList}\small\item\em Update variable corresponding to index. \end{DoxyCompactList}\item 
+{\footnotesize template$<$int id, class Arg , class Indexed\-Arg  = Indexed\-Type$<$ std\-::decay\-\_\-t$<$ Arg $>$, id $>$, class  = std\-::enable\-\_\-if\-\_\-t$<$                           Compute\-Sum$<$ D1$<$ F, Indexed\-Arg $>$, D1$<$ G, Indexed\-Arg $>$ $>$\-::present $>$$>$ }\\auto \hyperlink{structfuncy_1_1MathematicalOperations_1_1Sum_a2b3adf33f0a36f8328efe7e332a1ad6d}{d1} (Arg \&\&dx) const 
+\begin{DoxyCompactList}\small\item\em First directional derivative. \end{DoxyCompactList}\item 
+{\footnotesize template$<$int idx, int idy, class Arg\-X , class Arg\-Y , class Indexed\-Arg\-X  = Indexed\-Type$<$ std\-::decay\-\_\-t$<$ Arg\-X $>$, idx $>$, class Indexed\-Arg\-Y  = Indexed\-Type$<$ std\-::decay\-\_\-t$<$ Arg\-Y $>$, idy $>$, class  = std\-::enable\-\_\-if\-\_\-t$<$                           Compute\-Sum$<$ D2$<$ F, Indexed\-Arg\-X, Indexed\-Arg\-Y $>$,                                       D2$<$ G, Indexed\-Arg\-X, Indexed\-Arg\-Y $>$ $>$\-::present $>$$>$ }\\auto \hyperlink{structfuncy_1_1MathematicalOperations_1_1Sum_aacefe4f6840e2a8ec6da3e430901335e}{d2} (Arg\-X \&\&dx, Arg\-Y \&\&dy) const 
+\begin{DoxyCompactList}\small\item\em Second directional derivative. \end{DoxyCompactList}\item 
+{\footnotesize template$<$int idx, int idy, int idz, class Arg\-X , class Arg\-Y , class Arg\-Z , class Indexed\-Arg\-X  = Indexed\-Type$<$ std\-::decay\-\_\-t$<$ Arg\-X $>$, idx $>$, class Indexed\-Arg\-Y  = Indexed\-Type$<$ std\-::decay\-\_\-t$<$ Arg\-Y $>$, idy $>$, class Indexed\-Arg\-Z  = Indexed\-Type$<$ std\-::decay\-\_\-t$<$ Arg\-Z $>$, idz $>$, class  = std\-::enable\-\_\-if\-\_\-t$<$                           Compute\-Sum$<$ D3$<$ F, Indexed\-Arg\-X, Indexed\-Arg\-Y, Indexed\-Arg\-Z $>$,                                       D3$<$ G, Indexed\-Arg\-X, Indexed\-Arg\-Y, Indexed\-Arg\-Z $>$ $>$\-::present $>$$>$ }\\auto \hyperlink{structfuncy_1_1MathematicalOperations_1_1Sum_aa19f58ea768dcbf17edfb6b1e3e78348}{d3} (Arg\-X \&\&dx, Arg\-Y \&\&dy, Arg\-Z \&\&dz) const 
+\begin{DoxyCompactList}\small\item\em Third directional derivative. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class F, class G, class Check\-F = Concepts\-::\-Function\-Concept\-Check$<$ F $>$, class Check\-G = Concepts\-::\-Function\-Concept\-Check$<$ G $>$$>$struct funcy\-::\-Mathematical\-Operations\-::\-Sum$<$ F, G, Check\-F, Check\-G $>$}
+
+Sum of functions of type F and G (F and G must satisfy the requirements of \hyperlink{structfuncy_1_1Concepts_1_1FunctionConcept}{Concepts\-::\-Function\-Concept}). 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{structfuncy_1_1MathematicalOperations_1_1Sum_a7c23d59f7a9ca7ef1584195b437c6c71}{\index{funcy\-::\-Mathematical\-Operations\-::\-Sum@{funcy\-::\-Mathematical\-Operations\-::\-Sum}!Sum@{Sum}}
+\index{Sum@{Sum}!funcy::MathematicalOperations::Sum@{funcy\-::\-Mathematical\-Operations\-::\-Sum}}
+\subsubsection[{Sum}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class F , class G , class Check\-F  = Concepts\-::\-Function\-Concept\-Check$<$ F $>$, class Check\-G  = Concepts\-::\-Function\-Concept\-Check$<$ G $>$$>$ template$<$class Init\-F , class Init\-G $>$ constexpr {\bf funcy\-::\-Mathematical\-Operations\-::\-Sum}$<$ F, G, Check\-F, Check\-G $>$\-::{\bf Sum} (
+\begin{DoxyParamCaption}
+\item[{Init\-F \&\&}]{f\-\_\-, }
+\item[{Init\-G \&\&}]{g\-\_\-}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{structfuncy_1_1MathematicalOperations_1_1Sum_a7c23d59f7a9ca7ef1584195b437c6c71}
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f\-\_\-} & initializer for F \\
+\hline
+{\em g\-\_\-} & initializer for G \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{structfuncy_1_1MathematicalOperations_1_1Sum_a2b3adf33f0a36f8328efe7e332a1ad6d}{\index{funcy\-::\-Mathematical\-Operations\-::\-Sum@{funcy\-::\-Mathematical\-Operations\-::\-Sum}!d1@{d1}}
+\index{d1@{d1}!funcy::MathematicalOperations::Sum@{funcy\-::\-Mathematical\-Operations\-::\-Sum}}
+\subsubsection[{d1}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class F , class G , class Check\-F  = Concepts\-::\-Function\-Concept\-Check$<$ F $>$, class Check\-G  = Concepts\-::\-Function\-Concept\-Check$<$ G $>$$>$ template$<$int id, class Arg , class Indexed\-Arg  = Indexed\-Type$<$ std\-::decay\-\_\-t$<$ Arg $>$, id $>$, class  = std\-::enable\-\_\-if\-\_\-t$<$                           Compute\-Sum$<$ D1$<$ F, Indexed\-Arg $>$, D1$<$ G, Indexed\-Arg $>$ $>$\-::present $>$$>$ auto {\bf funcy\-::\-Mathematical\-Operations\-::\-Sum}$<$ F, G, Check\-F, Check\-G $>$\-::d1 (
+\begin{DoxyParamCaption}
+\item[{Arg \&\&}]{dx}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{structfuncy_1_1MathematicalOperations_1_1Sum_a2b3adf33f0a36f8328efe7e332a1ad6d}
+
+
+First directional derivative. 
+
+\hypertarget{structfuncy_1_1MathematicalOperations_1_1Sum_aacefe4f6840e2a8ec6da3e430901335e}{\index{funcy\-::\-Mathematical\-Operations\-::\-Sum@{funcy\-::\-Mathematical\-Operations\-::\-Sum}!d2@{d2}}
+\index{d2@{d2}!funcy::MathematicalOperations::Sum@{funcy\-::\-Mathematical\-Operations\-::\-Sum}}
+\subsubsection[{d2}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class F , class G , class Check\-F  = Concepts\-::\-Function\-Concept\-Check$<$ F $>$, class Check\-G  = Concepts\-::\-Function\-Concept\-Check$<$ G $>$$>$ template$<$int idx, int idy, class Arg\-X , class Arg\-Y , class Indexed\-Arg\-X  = Indexed\-Type$<$ std\-::decay\-\_\-t$<$ Arg\-X $>$, idx $>$, class Indexed\-Arg\-Y  = Indexed\-Type$<$ std\-::decay\-\_\-t$<$ Arg\-Y $>$, idy $>$, class  = std\-::enable\-\_\-if\-\_\-t$<$                           Compute\-Sum$<$ D2$<$ F, Indexed\-Arg\-X, Indexed\-Arg\-Y $>$,                                       D2$<$ G, Indexed\-Arg\-X, Indexed\-Arg\-Y $>$ $>$\-::present $>$$>$ auto {\bf funcy\-::\-Mathematical\-Operations\-::\-Sum}$<$ F, G, Check\-F, Check\-G $>$\-::d2 (
+\begin{DoxyParamCaption}
+\item[{Arg\-X \&\&}]{dx, }
+\item[{Arg\-Y \&\&}]{dy}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{structfuncy_1_1MathematicalOperations_1_1Sum_aacefe4f6840e2a8ec6da3e430901335e}
+
+
+Second directional derivative. 
+
+\hypertarget{structfuncy_1_1MathematicalOperations_1_1Sum_aa19f58ea768dcbf17edfb6b1e3e78348}{\index{funcy\-::\-Mathematical\-Operations\-::\-Sum@{funcy\-::\-Mathematical\-Operations\-::\-Sum}!d3@{d3}}
+\index{d3@{d3}!funcy::MathematicalOperations::Sum@{funcy\-::\-Mathematical\-Operations\-::\-Sum}}
+\subsubsection[{d3}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class F , class G , class Check\-F  = Concepts\-::\-Function\-Concept\-Check$<$ F $>$, class Check\-G  = Concepts\-::\-Function\-Concept\-Check$<$ G $>$$>$ template$<$int idx, int idy, int idz, class Arg\-X , class Arg\-Y , class Arg\-Z , class Indexed\-Arg\-X  = Indexed\-Type$<$ std\-::decay\-\_\-t$<$ Arg\-X $>$, idx $>$, class Indexed\-Arg\-Y  = Indexed\-Type$<$ std\-::decay\-\_\-t$<$ Arg\-Y $>$, idy $>$, class Indexed\-Arg\-Z  = Indexed\-Type$<$ std\-::decay\-\_\-t$<$ Arg\-Z $>$, idz $>$, class  = std\-::enable\-\_\-if\-\_\-t$<$                           Compute\-Sum$<$ D3$<$ F, Indexed\-Arg\-X, Indexed\-Arg\-Y, Indexed\-Arg\-Z $>$,                                       D3$<$ G, Indexed\-Arg\-X, Indexed\-Arg\-Y, Indexed\-Arg\-Z $>$ $>$\-::present $>$$>$ auto {\bf funcy\-::\-Mathematical\-Operations\-::\-Sum}$<$ F, G, Check\-F, Check\-G $>$\-::d3 (
+\begin{DoxyParamCaption}
+\item[{Arg\-X \&\&}]{dx, }
+\item[{Arg\-Y \&\&}]{dy, }
+\item[{Arg\-Z \&\&}]{dz}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{structfuncy_1_1MathematicalOperations_1_1Sum_aa19f58ea768dcbf17edfb6b1e3e78348}
+
+
+Third directional derivative. 
+
+\hypertarget{structfuncy_1_1MathematicalOperations_1_1Sum_ab70dc2a344084335778658e5aa27c6b9}{\index{funcy\-::\-Mathematical\-Operations\-::\-Sum@{funcy\-::\-Mathematical\-Operations\-::\-Sum}!update@{update}}
+\index{update@{update}!funcy::MathematicalOperations::Sum@{funcy\-::\-Mathematical\-Operations\-::\-Sum}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class F , class G , class Check\-F  = Concepts\-::\-Function\-Concept\-Check$<$ F $>$, class Check\-G  = Concepts\-::\-Function\-Concept\-Check$<$ G $>$$>$ template$<$class Arg $>$ void {\bf funcy\-::\-Mathematical\-Operations\-::\-Sum}$<$ F, G, Check\-F, Check\-G $>$\-::update (
+\begin{DoxyParamCaption}
+\item[{Arg \&\&}]{x}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{structfuncy_1_1MathematicalOperations_1_1Sum_ab70dc2a344084335778658e5aa27c6b9}
+
+
+Update point of evaluation. 
+
+\hypertarget{structfuncy_1_1MathematicalOperations_1_1Sum_a8d03c52542a8fc305d8c2de20ed95209}{\index{funcy\-::\-Mathematical\-Operations\-::\-Sum@{funcy\-::\-Mathematical\-Operations\-::\-Sum}!update@{update}}
+\index{update@{update}!funcy::MathematicalOperations::Sum@{funcy\-::\-Mathematical\-Operations\-::\-Sum}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class F , class G , class Check\-F  = Concepts\-::\-Function\-Concept\-Check$<$ F $>$, class Check\-G  = Concepts\-::\-Function\-Concept\-Check$<$ G $>$$>$ template$<$int index, class Arg $>$ void {\bf funcy\-::\-Mathematical\-Operations\-::\-Sum}$<$ F, G, Check\-F, Check\-G $>$\-::update (
+\begin{DoxyParamCaption}
+\item[{Arg \&\&}]{x}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{structfuncy_1_1MathematicalOperations_1_1Sum_a8d03c52542a8fc305d8c2de20ed95209}
+
+
+Update variable corresponding to index. 
+
+
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+include/funcy/mathematical\-\_\-operations/\hyperlink{sum_8hh}{sum.\-hh}\end{DoxyCompactItemize}

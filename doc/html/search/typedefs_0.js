@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['allof',['AllOf',['../namespaceFunG_1_1Meta.html#aa62ce805a20b342ffc1947c210be3501',1,'FunG::Meta']]],
-  ['and',['And',['../namespaceFunG_1_1Meta.html#a6f0fce21e31ab8fdc307eddead3b8d66',1,'FunG::Meta']]],
-  ['anyof',['AnyOf',['../namespaceFunG_1_1Meta.html#a54a94493bb1caa42606dd7e6744abf8c',1,'FunG::Meta']]]
+  ['allof',['AllOf',['../namespacefuncy_1_1Meta.html#a7957593ba11cc9c461684ee7efbeb3c4',1,'funcy::Meta']]],
+  ['and',['And',['../namespacefuncy_1_1Meta.html#a41cc898590e15dae8d6da038f55f3cd2',1,'funcy::Meta']]],
+  ['anyof',['AnyOf',['../namespacefuncy_1_1Meta.html#ad563ba73c1ea4946f6168ad527e02346',1,'funcy::Meta']]]
 ];

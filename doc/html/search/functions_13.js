@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['yieldsurface',['yieldSurface',['../namespaceFunG.html#a4784211358c877f05ad9426850303273',1,'FunG']]]
+  ['yieldsurface',['yieldSurface',['../namespacefuncy.html#a2868b162297651eb5666369ebc112d81',1,'funcy']]]
 ];
