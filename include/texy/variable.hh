@@ -200,7 +200,7 @@ namespace texy
     namespace Checks
     {
         /** @addtogroup ConceptCheck
-             *  @{ */
+         *  @{ */
 
         /// Check if T is of type Variable<Type,n>.
         template < class T >

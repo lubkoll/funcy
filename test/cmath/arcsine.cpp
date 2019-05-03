@@ -28,7 +28,7 @@ TEST(ArcsineTest,Update)
   auto fun = generateTestASin();
   ASSERT_THROW( fun.update(-1.1) , funcy::OutOfDomainException );
   ASSERT_THROW( fun.update(1.1) , funcy::OutOfDomainException );
-  ASSERT_NO_THROW( fun.update(0.0));
+  ASSERT_NO_THROW( fun.update(0.0) );
 }
 
 TEST(ArcsineTest,D0)
