@@ -70,7 +70,7 @@ namespace texy
       @ingroup TexifyCMathGroup
       @brief Generate \f$ \cos\circ f \f$.
       @param f function mapping into a scalar space
-      @return object of type MathematicalOperations::Chain<Cosc,Function>
+      @return object of type mathop::Chain<Cosc,Function>
      */
     template < class Function, class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
     auto cos( const Function& f )

@@ -65,7 +65,7 @@ namespace funcy
       @ingroup CMathGroup
       @brief Generate \f$ \sin\circ f \f$.
       @param f function mapping into a scalar space
-      @return object of type MathematicalOperations::Chain<Sin,Function>
+      @return object of type mathop::Chain<Sin,Function>
      */
     template < class Function, class = std::enable_if_t< Checks::isFunction< Function >() > >
     auto sin( const Function& f )

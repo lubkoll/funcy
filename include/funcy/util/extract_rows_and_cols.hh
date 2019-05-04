@@ -5,16 +5,16 @@
 namespace funcy
 {
   /// @cond
-  namespace Concepts { template <class> struct MatrixConceptCheck; }
+  namespace concepts { template <class> struct MatrixConceptCheck; }
   /// @endcond
 
-  namespace LinearAlgebra
+  namespace linalg
   {
     /// Specialize this for your matrix class. Number of rows must be provided by a static member variable called value.
-    template < class Matrix , class = Concepts::MatrixConceptCheck<Matrix> > struct NumberOfRows : std::integral_constant<int,-1> {};
+    template < class Matrix , class = concepts::MatrixConceptCheck<Matrix> > struct NumberOfRows : std::integral_constant<int,-1> {};
 
     /// Specialize this for your matrix class. Number of columns must be provided by a static member variable called value.
-    template < class Matrix , class = Concepts::MatrixConceptCheck<Matrix> > struct NumberOfColumns : std::integral_constant<int,-1> {};
+    template < class Matrix , class = concepts::MatrixConceptCheck<Matrix> > struct NumberOfColumns : std::integral_constant<int,-1> {};
 
     /// @cond
     /// Specialization for matrices.

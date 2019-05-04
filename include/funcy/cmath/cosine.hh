@@ -69,7 +69,7 @@ namespace funcy
       @ingroup CMathGroup
       @brief Generate \f$ \cos\circ f \f$.
       @param f function mapping into a scalar space
-      @return object of type MathematicalOperations::Chain<Cos,Function>
+      @return object of type mathop::Chain<Cos,Function>
      */
     template < class Function, class = std::enable_if_t< Checks::isFunction< Function >() > >
     auto cos( const Function& f )

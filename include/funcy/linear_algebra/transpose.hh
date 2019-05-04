@@ -16,7 +16,7 @@
 
 namespace funcy
 {
-  namespace LinearAlgebra
+  namespace linalg
   {
     /// @cond
     namespace Detail
@@ -73,13 +73,13 @@ namespace funcy
 
     /** @addtogroup LinearAlgebraGroup
      *  @{ */
-    template < class Matrix, class = Concepts::MatrixConceptCheck<Matrix> >
+    template < class Matrix, class = concepts::MatrixConceptCheck<Matrix> >
     class Transpose;
 
     /// Represents transposition of constant-size matrices.
     template <class Matrix>
-    class Transpose< Matrix, Concepts::MatrixConceptCheck<Matrix> >
-        : public Chainer< Transpose< Matrix, Concepts::MatrixConceptCheck<Matrix> > >
+    class Transpose< Matrix, concepts::MatrixConceptCheck<Matrix> >
+        : public Chainer< Transpose< Matrix, concepts::MatrixConceptCheck<Matrix> > >
     {
     public:
       explicit Transpose( const Matrix& A ) {

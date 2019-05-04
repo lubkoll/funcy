@@ -11,7 +11,7 @@
 
 namespace funcy
 {
-  namespace LinearAlgebra
+  namespace linalg
   {
     /**
      * @ingroup InvariantGroup

@@ -12,7 +12,7 @@
 
 namespace texy
 {
-    namespace LinearAlgebra
+    namespace linalg
     {
         /** @addtogroup TexifyLinearAlgebraGroup
          *   @{ */
@@ -65,12 +65,12 @@ namespace texy
             std::string A_;
         };
 
-        struct FrobeniusNorm : MathematicalOperations::Chain< Pow< 1, 2 >, FrobeniusNormSquared >
+        struct FrobeniusNorm : mathop::Chain< Pow< 1, 2 >, FrobeniusNormSquared >
         {
             FrobeniusNorm() = default;
 
             explicit FrobeniusNorm( const std::string& A = "A" )
-                : MathematicalOperations::Chain< Pow< 1, 2 >, FrobeniusNormSquared >(
+                : mathop::Chain< Pow< 1, 2 >, FrobeniusNormSquared >(
                       Pow< 1, 2 >( "" ), FrobeniusNormSquared( A ) )
             {
                 this->update( A );

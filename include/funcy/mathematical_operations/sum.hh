@@ -13,15 +13,15 @@
 
 namespace funcy
 {
-    namespace MathematicalOperations
+    namespace mathop
     {
         /**
          * \ingroup MathematicalOperationsGroup
          * \brief %Sum of functions of type F and G (F and G must satisfy the requirements of
-         * Concepts::FunctionConcept).
+         * concepts::FunctionConcept).
          */
-        template < class F, class G, class CheckF = Concepts::FunctionConceptCheck< F >,
-                   class CheckG = Concepts::FunctionConceptCheck< G > >
+        template < class F, class G, class CheckF = concepts::FunctionConceptCheck< F >,
+                   class CheckG = concepts::FunctionConceptCheck< G > >
         struct Sum : Chainer< Sum< F, G, CheckF, CheckG > >
         {
             /**

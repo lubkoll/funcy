@@ -447,14 +447,14 @@ namespace funcy
         }
 
         /**
-     * @brief Check if object is a static vector for some type satisfying Concepts::VectorConcept.
+     * @brief Check if object is a static vector for some type satisfying concepts::VectorConcept.
      *
      * Checks if number of rows is positive.
      */
         template < class Arg >
         constexpr bool isConstantSize()
         {
-            return LinearAlgebra::NumberOfRows< Arg >::value > 0;
+            return linalg::NumberOfRows< Arg >::value > 0;
         }
         /** @} */
     }

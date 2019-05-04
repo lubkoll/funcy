@@ -12,7 +12,7 @@
 
 namespace funcy
 {
-  namespace LinearAlgebra
+  namespace linalg
   {
     /** @addtogroup LinearAlgebraGroup
      *  @{ */

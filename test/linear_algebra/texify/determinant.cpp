@@ -7,7 +7,7 @@
 #include <gmock/gmock.h>
 
 using ::testing::Eq;
-using texy::LinearAlgebra::det;
+using texy::linalg::det;
 
 TEST( TexifyDeterminantTest, D0 )
 {

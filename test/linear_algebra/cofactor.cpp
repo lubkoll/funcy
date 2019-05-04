@@ -14,8 +14,8 @@ namespace
   constexpr int dim = 3;
 
   using M = Eigen::Matrix<double,dim,dim>;
-  using funcy::LinearAlgebra::computeCofactor;
-  using funcy::LinearAlgebra::computeCofactorDirectionalDerivative;
+  using funcy::linalg::computeCofactor;
+  using funcy::linalg::computeCofactorDirectionalDerivative;
 
   auto generateA()
   {

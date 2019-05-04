@@ -72,7 +72,7 @@ namespace funcy
     @ingroup CMathGroup
     @brief Generate \f$ \arccos\circ f \f$.
     @param f function mapping into a scalar space
-    @return object of type MathematicalOperations::Chain<ACos,Function>
+    @return object of type mathop::Chain<ACos,Function>
    */
   template <class Function,
             class = std::enable_if_t<Checks::isFunction<Function>()> >

@@ -14,7 +14,7 @@ namespace
   constexpr int dim = 3;
 
   using M = Eigen::Matrix<double,dim,dim>;
-  using funcy::LinearAlgebra::det;
+  using funcy::linalg::det;
 
   auto generateA()
   {
@@ -45,7 +45,7 @@ TEST(DeterminantTest,D0)
 
 TEST(DeterminantTest,D1)
 {
-  using funcy::LinearAlgebra::computeCofactor;
+  using funcy::linalg::computeCofactor;
   auto d = det(generateA());
   EXPECT_DOUBLE_EQ( d.d1(generateDA()) , -46. );
   auto c = computeCofactor<0,0>(generateA()) + computeCofactor<1,1>(generateA()) + computeCofactor<2,2>(generateA());

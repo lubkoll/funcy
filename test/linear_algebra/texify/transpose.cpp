@@ -4,7 +4,7 @@
 #include <gmock/gmock.h>
 
 using ::testing::Eq;
-using texy::LinearAlgebra::Transpose;
+using texy::linalg::Transpose;
 
 TEST( TexifyTransposeTest, D0 )
 {

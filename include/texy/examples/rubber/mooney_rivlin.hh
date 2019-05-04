@@ -25,7 +25,7 @@ namespace texy
     template < int n >
     auto incompressibleMooneyRivlin( double c0, double c1, const std::string& F )
     {
-        using namespace LinearAlgebra;
+        using namespace linalg;
         auto S = LeftCauchyGreenStrainTensor( F );
         auto f = ( c0 * ( i1( F ) - n ) + c1 * ( i2( F ) - n ) );
         return f( S );
@@ -41,7 +41,7 @@ namespace texy
     auto compressibleMooneyRivlin( double c0, double c1, double d0, double d1,
                                    const std::string& F )
     {
-        using namespace LinearAlgebra;
+        using namespace linalg;
         auto S = LeftCauchyGreenStrainTensor( F );
         auto f = ( c0 * ( i1( F ) - n ) + c1 * ( i2( F ) - n ) );
         return f( S ) + volumetricPenalty< InflationPenalty, CompressionPenalty >( d0, d1, F );
@@ -88,7 +88,7 @@ namespace texy
     //    }
 
     //    return
-    //    compressibleMooneyRivlin<InflationPenalty,CompressionPenalty>(alpha,beta,c,d,LinearAlgebra::unitMatrix<Matrix>());
+    //    compressibleMooneyRivlin<InflationPenalty,CompressionPenalty>(alpha,beta,c,d,linalg::unitMatrix<Matrix>());
     //  }
 
     //  /**

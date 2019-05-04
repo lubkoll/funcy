@@ -15,14 +15,14 @@
 
 namespace texy
 {
-    namespace MathematicalOperations
+    namespace mathop
     {
         /**
          * @ingroup TexifyMathematicalOperationsGroup
          * @brief %Squared function \f$f^2\f$.
          */
-        template < class F, class = funcy::Concepts::FunctionConceptCheck< F > >
-        struct Squared : Chainer< Squared< F, funcy::Concepts::FunctionConceptCheck< F > > >
+        template < class F, class = funcy::concepts::FunctionConceptCheck< F > >
+        struct Squared : Chainer< Squared< F, funcy::concepts::FunctionConceptCheck< F > > >
         {
         private:
             template < class IndexedArgX, class IndexedArgY >

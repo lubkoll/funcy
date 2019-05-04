@@ -16,14 +16,14 @@
 namespace funcy
 {
     /// @cond
-    namespace Concepts
+    namespace concepts
     {
         template < class >
         struct MatrixConceptCheck;
     }
     /// @endcond
 
-    namespace LinearAlgebra
+    namespace linalg
     {
         /// @cond
         namespace Detail
@@ -103,10 +103,10 @@ namespace funcy
          * @{ */
         /// Second principal invariant \f$ \iota_2(A)=\mathrm{tr}(\mathrm{cof}(A)) \f$ for
         /// \f$A\in\mathbb{R}^{n,n}\f$.
-        template < class Matrix, class = Concepts::MatrixConceptCheck< Matrix > >
+        template < class Matrix, class = concepts::MatrixConceptCheck< Matrix > >
         class SecondPrincipalInvariant
             : public Chainer<
-                  SecondPrincipalInvariant< Matrix, Concepts::MatrixConceptCheck< Matrix > > >
+                  SecondPrincipalInvariant< Matrix, concepts::MatrixConceptCheck< Matrix > > >
         {
         public:
             SecondPrincipalInvariant() = default;

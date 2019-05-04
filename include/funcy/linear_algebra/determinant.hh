@@ -19,10 +19,10 @@
 namespace funcy
 {
   /// @cond
-  namespace Concepts {  template <class> struct SquareMatrixConceptCheck; }
+  namespace concepts {  template <class> struct SquareMatrixConceptCheck; }
   /// @endcond
 
-  namespace LinearAlgebra
+  namespace linalg
   {
     /** @addtogroup LinearAlgebraGroup
      *  @{ */
@@ -52,12 +52,12 @@ namespace funcy
             at(dB,1,0) * ( at(dA,0,2) * at(dC,2,1) + at(dA,2,1) * at(dC,0,2) - at(dA,2,2) * at(dC,0,1) - at(dA,0,1) * at(dC,2,2) );
       }
 
-      template <class Matrix, int dim, class = Concepts::SquareMatrixConceptCheck<Matrix> >
+      template <class Matrix, int dim, class = concepts::SquareMatrixConceptCheck<Matrix> >
       class DeterminantImpl;
 
       template<class Matrix>
-      class DeterminantImpl< Matrix , 2 , Concepts::SquareMatrixConceptCheck<Matrix> >
-          : public Chainer< DeterminantImpl<Matrix,2,Concepts::SquareMatrixConceptCheck<Matrix> > >
+      class DeterminantImpl< Matrix , 2 , concepts::SquareMatrixConceptCheck<Matrix> >
+          : public Chainer< DeterminantImpl<Matrix,2,concepts::SquareMatrixConceptCheck<Matrix> > >
       {
       public:
         DeterminantImpl() = default;
@@ -91,8 +91,8 @@ namespace funcy
       };
 
       template <class Matrix>
-      class DeterminantImpl<Matrix,3,Concepts::SquareMatrixConceptCheck<Matrix> >
-          : public Chainer< DeterminantImpl<Matrix,3,Concepts::SquareMatrixConceptCheck<Matrix> > >
+      class DeterminantImpl<Matrix,3,concepts::SquareMatrixConceptCheck<Matrix> >
+          : public Chainer< DeterminantImpl<Matrix,3,concepts::SquareMatrixConceptCheck<Matrix> > >
       {
       public:
         DeterminantImpl() = default;

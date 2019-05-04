@@ -12,7 +12,7 @@
 
 namespace funcy
 {
-  namespace LinearAlgebra
+  namespace linalg
   {
     /** @addtogroup LinearAlgebraGroup
      *  @{ */
@@ -68,7 +68,7 @@ namespace funcy
      */
     template < int row , int col , class Matrix ,
                std::enable_if_t<Checks::isConstantSize<Matrix>()>* = nullptr ,
-               class = Concepts::MatrixConceptCheck<Matrix> >
+               class = concepts::MatrixConceptCheck<Matrix> >
     auto computeCofactor(Matrix const& A)
     {
       static_assert( dim<Matrix>() == 2 || dim<Matrix>() == 3 ,
@@ -84,7 +84,7 @@ namespace funcy
      */
     template < int row , int col , class Matrix ,
                std::enable_if_t<!Checks::isConstantSize<Matrix>()>* = nullptr ,
-               class = Concepts::MatrixConceptCheck<Matrix> >
+               class = concepts::MatrixConceptCheck<Matrix> >
     auto computeCofactor(Matrix const& A)
     {
       assert( ( rows(A)==2 && cols(A)==2 ) || ( rows(A)==3 && cols(A)==3) );
@@ -102,7 +102,7 @@ namespace funcy
      */
     template < int row , int col , class Matrix ,
                std::enable_if_t<Checks::isConstantSize<Matrix>()>* = nullptr ,
-               class = Concepts::MatrixConceptCheck<Matrix> >
+               class = concepts::MatrixConceptCheck<Matrix> >
     auto computeCofactorDirectionalDerivative(Matrix const& A, Matrix const& B)
     {
       static_assert( dim<Matrix>() == 2 || dim<Matrix>() == 3 ,
@@ -120,7 +120,7 @@ namespace funcy
      */
     template < int row , int col , class Matrix ,
                std::enable_if_t<!Checks::isConstantSize<Matrix>()>* = nullptr ,
-               class = Concepts::MatrixConceptCheck<Matrix> >
+               class = concepts::MatrixConceptCheck<Matrix> >
     auto computeCofactorDirectionalDerivative(Matrix const& A, Matrix const& B)
     {
       assert( ( rows(A)==2 && cols(A)==2 ) || ( rows(A)==3 && cols(A)==3) );

@@ -13,17 +13,17 @@
 
 namespace funcy
 {
-    namespace MathematicalOperations
+    namespace mathop
     {
         /**
          * @ingroup MathematicalOperationsGroup
          * @brief %Product \f$fg\f$ of functions of type F and G (F and G must satisfy the
-         * requirements of Concepts::FunctionConcept).
+         * requirements of concepts::FunctionConcept).
          */
-        template < class F, class G, class = Concepts::FunctionConceptCheck< F >,
-                   class = Concepts::FunctionConceptCheck< G > >
-        struct Product : Chainer< Product< F, G, Concepts::FunctionConceptCheck< F >,
-                                           Concepts::FunctionConceptCheck< G > > >
+        template < class F, class G, class = concepts::FunctionConceptCheck< F >,
+                   class = concepts::FunctionConceptCheck< G > >
+        struct Product : Chainer< Product< F, G, concepts::FunctionConceptCheck< F >,
+                                           concepts::FunctionConceptCheck< G > > >
         {
         private:
             template < class IndexedArg >

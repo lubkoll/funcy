@@ -10,7 +10,7 @@ namespace texy
     /** @addtogroup TexifyLinearAlgebraGroup
      * @{
      */
-    namespace LinearAlgebra
+    namespace linalg
     {
         /**
          * @brief Right Cauchy-Green strain tensor \f$ F^T F \f$ for a symmetric matrix \f$ F \f$.

@@ -6,7 +6,7 @@
 
 namespace funcy
 {
-  namespace Concepts
+  namespace concepts
   {
     /// @cond
     struct unspecified;

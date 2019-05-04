@@ -12,15 +12,15 @@
 
 namespace funcy
 {
-    namespace MathematicalOperations
+    namespace mathop
     {
         /**
          * @ingroup MathematicalOperationsGroup
          * @brief Scaling \f$ af \f$ of some function \f$ f \f$ with a double \f$ a \f$ (F must
-         * satisfy the requirements of Concepts::FunctionConcept).
+         * satisfy the requirements of concepts::FunctionConcept).
          */
-        template < class Scalar, class F, class = Concepts::FunctionConceptCheck< F > >
-        struct Scale : Chainer< Scale< Scalar, F, Concepts::FunctionConceptCheck< F > > >
+        template < class Scalar, class F, class = concepts::FunctionConceptCheck< F > >
+        struct Scale : Chainer< Scale< Scalar, F, concepts::FunctionConceptCheck< F > > >
         {
             /**
              * @brief Constructor passing arguments to function constructor.

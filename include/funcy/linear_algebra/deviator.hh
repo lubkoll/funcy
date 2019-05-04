@@ -14,10 +14,10 @@
 namespace funcy
 {
   /// @cond
-  namespace Concepts { template <class> struct SquareMatrixConceptChecks; }
+  namespace concepts { template <class> struct SquareMatrixConceptChecks; }
   /// @endcond
 
-  namespace LinearAlgebra
+  namespace linalg
   {
     /** @addtogroup LinearAlgebraGroup
      *  @{ */
@@ -26,7 +26,7 @@ namespace funcy
     template <class Matrix,
               int n = dim<Matrix>(),
               std::enable_if_t<Checks::isConstantSize<Matrix>() && !Checks::isFunction<Matrix>()>* = nullptr,
-              class = Concepts::SquareMatrixConceptCheck<Matrix> >
+              class = concepts::SquareMatrixConceptCheck<Matrix> >
     auto deviator(const Matrix& A)
     {
       return identity(A) + (-1./n) * ( trace(A) * constant( unitMatrix<Matrix>() ) );
@@ -35,7 +35,7 @@ namespace funcy
     /// Generate %deviator \f$ \mathrm{dev}(A) = A - \frac{\mathrm{tr}(A)}{n}I \f$ of a matrix \f$ A\in\mathbb{R}^{n,n} \f$.
     template <class Matrix,
               std::enable_if_t<!Checks::isConstantSize<Matrix>() && !Checks::isFunction<Matrix>()>* = nullptr,
-              class = Concepts::SquareMatrixConceptCheck<Matrix>>
+              class = concepts::SquareMatrixConceptCheck<Matrix>>
     auto deviator(const Matrix& A)
     {
       assert(rows(A)==cols(A));

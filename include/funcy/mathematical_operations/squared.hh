@@ -15,14 +15,14 @@
 
 namespace funcy
 {
-    namespace MathematicalOperations
+    namespace mathop
     {
         /**
          * @ingroup MathematicalOperationsGroup
          * @brief %Squared function \f$f^2\f$.
          */
-        template < class F, class = Concepts::FunctionConceptCheck< F > >
-        struct Squared : Chainer< Squared< F, Concepts::FunctionConceptCheck< F > > >
+        template < class F, class = concepts::FunctionConceptCheck< F > >
+        struct Squared : Chainer< Squared< F, concepts::FunctionConceptCheck< F > > >
         {
         private:
             template < class IndexedArgX, class IndexedArgY >

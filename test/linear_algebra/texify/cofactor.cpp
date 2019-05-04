@@ -7,7 +7,7 @@
 #include <gmock/gmock.h>
 
 using ::testing::Eq;
-using texy::LinearAlgebra::cof;
+using texy::linalg::cof;
 
 TEST( TexifyCofactorTest, D0 )
 {

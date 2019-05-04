@@ -79,7 +79,7 @@ namespace texy
     /*!
       @brief Generate \f$ \tan\circ f \f$.
       @param f function mapping into a scalar space
-      @return object of type MathematicalOperations::Chain<Tan,Function>
+      @return object of type mathop::Chain<Tan,Function>
      */
     template < class Function, class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
     auto tan( const Function& f )

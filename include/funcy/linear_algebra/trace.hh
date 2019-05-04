@@ -13,7 +13,7 @@
 
 namespace funcy
 {
-  namespace LinearAlgebra
+  namespace linalg
   {
     /** @addtogroup LinearAlgebraGroup
      *  @{ */
@@ -59,8 +59,8 @@ namespace funcy
 
 
     /// %Trace of a matrix, i.e. sum of diagonal elements.
-    template <class Matrix, class = Concepts::SquareMatrixConceptCheck<Matrix> >
-    struct ConstantSizeTrace : Chainer< ConstantSizeTrace< Matrix , Concepts::SquareMatrixConceptCheck<Matrix> > >
+    template <class Matrix, class = concepts::SquareMatrixConceptCheck<Matrix> >
+    struct ConstantSizeTrace : Chainer< ConstantSizeTrace< Matrix , concepts::SquareMatrixConceptCheck<Matrix> > >
     {
       ConstantSizeTrace() = default;
 

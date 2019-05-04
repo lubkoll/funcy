@@ -14,14 +14,14 @@
 namespace texy
 {
     /// @cond
-    namespace Concepts
+    namespace concepts
     {
         template < class >
         struct SquareMatrixConceptChecks;
     }
     /// @endcond
 
-    namespace LinearAlgebra
+    namespace linalg
     {
         /** @addtogroup TexifyLinearAlgebraGroup
          *  @{ */

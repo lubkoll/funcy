@@ -26,7 +26,7 @@ namespace texy
     template < int n >
     auto incompressibleNeoHooke( const std::string& c = "c", const std::string& F = "F" )
     {
-        using namespace LinearAlgebra;
+        using namespace linalg;
         return constant( c ) * ( i1( strainTensor( F ) ) - n );
     }
 
@@ -38,7 +38,7 @@ namespace texy
     template < int n >
     auto modifiedIncompressibleNeoHooke( const std::string& c = "c", const std::string& F = "F" )
     {
-        using namespace LinearAlgebra;
+        using namespace linalg;
         auto S = LeftCauchyGreenStrainTensor( F );
         return constant( c ) * ( mi1< n >( S ) - n );
     }
@@ -53,7 +53,7 @@ namespace texy
     auto compressibleNeoHooke( const std::string& c = "c", const std::string& d0 = "d_0",
                                const std::string& d1 = "d_1", const std::string& F = "F" )
     {
-        using namespace LinearAlgebra;
+        using namespace linalg;
         return c * ( i1( strainTensor( F ) ) - n ) +
                volumetricPenalty< InflationPenalty, CompressionPenalty >( d0, d1, F );
     }
@@ -68,7 +68,7 @@ namespace texy
     auto modifiedCompressibleNeoHooke( const std::string& c = "c", const std::string& d0 = "d_0",
                                        const std::string& d1 = "d_1", const std::string& F = "F" )
     {
-        using namespace LinearAlgebra;
+        using namespace linalg;
         auto S = LeftCauchyGreenStrainTensor( F );
         return c * ( mi1< decltype( S ), n >( S ) - n ) +
                volumetricPenalty< InflationPenalty, CompressionPenalty >( d0, d1, F );

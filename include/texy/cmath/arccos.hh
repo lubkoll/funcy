@@ -76,7 +76,7 @@ namespace texy
       @ingroup TexifyCMathGroup
       @brief Generate printable version of \f$ \arccos\circ f \f$.
       @param f function mapping into a scalar space
-      @return object of type MathematicalOperations::Chain<Printable<ACos>,Function>
+      @return object of type mathop::Chain<Printable<ACos>,Function>
      */
     template < class Function, class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
     auto acos( const Function& f )

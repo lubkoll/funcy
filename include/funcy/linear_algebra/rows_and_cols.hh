@@ -7,7 +7,7 @@
 
 namespace funcy
 {
-  namespace LinearAlgebra
+  namespace linalg
   {
     /// @cond
     template <class Matrix, class = void> struct DynamicNumberOfRows;

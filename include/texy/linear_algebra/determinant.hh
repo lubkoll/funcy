@@ -18,7 +18,7 @@
 
 namespace texy
 {
-    namespace LinearAlgebra
+    namespace linalg
     {
         /** @addtogroup TexifyLinearAlgebraGroup
          *  @{ */

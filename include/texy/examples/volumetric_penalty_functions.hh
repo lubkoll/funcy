@@ -17,7 +17,7 @@ namespace texy
     template < class Inflation, class Compression >
     auto volumetricPenalty( double d0, double d1, const std::string& A )
     {
-        using LinearAlgebra::det;
+        using linalg::det;
         auto f = ( d0 * Inflation() + d1 * Compression() )( det( A ) );
         return f - f.d0();
     }

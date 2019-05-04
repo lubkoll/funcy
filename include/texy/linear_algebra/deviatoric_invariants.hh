@@ -8,7 +8,7 @@
 
 namespace texy
 {
-    namespace LinearAlgebra
+    namespace linalg
     {
         /**
          * @ingroup InvariantGroup

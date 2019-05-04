@@ -25,10 +25,10 @@ namespace funcy
    * \brief Generate an "incompressible" Mooney-Rivlin material law \f$ W(F)=c_0\iota_1(F^T F) + c_1\iota_2(F^T F) \f$,
    * where \f$\iota_1\f$ is the first and \f$\iota_2\f$ the second principal matrix invariant.
    */
-  template < class Matrix , int n = LinearAlgebra::dim<Matrix>() >
+  template < class Matrix , int n = linalg::dim<Matrix>() >
   auto incompressibleMooneyRivlin(double c0, double c1, const Matrix& F)
   {
-    using namespace LinearAlgebra;
+    using namespace linalg;
     auto S = LeftCauchyGreenStrainTensor<Matrix>(F);
     auto f = ( c0 * ( i1(F) - n ) + c1 * ( i2(F) - n ) );
     return finalize( f(S) );
@@ -40,10 +40,10 @@ namespace funcy
    * \brief Generate a compressible Mooney-Rivlin material law \f$ W(F)=c_0\iota_1(F^T F) + c_1\iota_2(F^T F) + d_0\Gamma_\mathrm{In}(\det(F))+d_1\Gamma_\mathrm{Co}(\det(F))  \f$,
    * where \f$\iota_1\f$ is the first and \f$\iota_2\f$ the second principal matrix invariant.
    */
-  template <class InflationPenalty, class CompressionPenalty, class Matrix , int n = LinearAlgebra::dim<Matrix>() >
+  template <class InflationPenalty, class CompressionPenalty, class Matrix , int n = linalg::dim<Matrix>() >
   auto compressibleMooneyRivlin(double c0, double c1, double d0, double d1, const Matrix& F)
   {
-    using namespace LinearAlgebra;
+    using namespace linalg;
     auto S = LeftCauchyGreenStrainTensor<Matrix>(F);
     auto f = ( c0 * ( i1(F) - n ) + c1 * ( i2(F) - n ) );
     return finalize( f(S) + volumetricPenalty<InflationPenalty,CompressionPenalty>(d0,d1,F) );
@@ -85,7 +85,7 @@ namespace funcy
 //      exit(1);
 //    }
 
-//    return compressibleMooneyRivlin<InflationPenalty,CompressionPenalty>(alpha,beta,c,d,LinearAlgebra::unitMatrix<Matrix>());
+//    return compressibleMooneyRivlin<InflationPenalty,CompressionPenalty>(alpha,beta,c,d,linalg::unitMatrix<Matrix>());
 //  }
 
 

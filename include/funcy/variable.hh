@@ -11,7 +11,7 @@ namespace funcy
     /// @cond
     template < class, int >
     struct Variable;
-    namespace Concepts
+    namespace concepts
     {
         template < class >
         struct FunctionConceptCheck;
@@ -274,14 +274,14 @@ namespace funcy
         };
 
         template < template < class, class > class G, class F, int id >
-        struct VariableType< G< F, Concepts::FunctionConceptCheck< F > >, id >
+        struct VariableType< G< F, concepts::FunctionConceptCheck< F > >, id >
         {
             using type = typename VariableType< F, id >::type;
         };
 
         template < template < class, class, class, class > class H, class F, class G, int id >
         struct VariableType<
-            H< F, G, Concepts::FunctionConceptCheck< F >, Concepts::FunctionConceptCheck< G > >,
+            H< F, G, concepts::FunctionConceptCheck< F >, concepts::FunctionConceptCheck< G > >,
             id >
         {
             using type = std::conditional_t<

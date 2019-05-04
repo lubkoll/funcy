@@ -198,7 +198,7 @@ namespace texy
     /*!
       @brief Generate \f$ \mathrm{ln}\circ f \f$.
       @param f function mapping into a scalar space
-      @return object of type MathematicalOperations::Chain<Log,Function>
+      @return object of type mathop::Chain<Log,Function>
      */
     template < class Function, class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
     auto ln( const Function& f )
@@ -209,7 +209,7 @@ namespace texy
     /*!
       @brief Generate \f$ \mathrm{log}_{10}\circ f \f$.
       @param f function mapping into a scalar space
-      @return object of type MathematicalOperations::Chain<Log10,Function>
+      @return object of type mathop::Chain<Log10,Function>
      */
     template < class Function, class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
     auto log10( const Function& f )
@@ -220,7 +220,7 @@ namespace texy
     /*!
       @brief Generate \f$ \mathrm{log}_{2}\circ f \f$.
       @param f function mapping into a scalar space
-      @return object of type MathematicalOperations::Chain<Log2,Function>
+      @return object of type mathop::Chain<Log2,Function>
      */
     template < class Function, class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
     auto log2( const Function& f )

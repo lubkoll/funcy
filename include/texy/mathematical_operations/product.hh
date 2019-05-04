@@ -13,17 +13,17 @@
 
 namespace texy
 {
-    namespace MathematicalOperations
+    namespace mathop
     {
         /**
          * @ingroup TexifyMathematicalOperationsGroup
          * @brief %Product \f$fg\f$ of functions of type F and G (F and G must satisfy the
-         * requirements of Concepts::FunctionConcept).
+         * requirements of concepts::FunctionConcept).
          */
-        template < class F, class G, class = funcy::Concepts::FunctionConceptCheck< F >,
-                   class = funcy::Concepts::FunctionConceptCheck< G > >
-        struct Product : Chainer< Product< F, G, funcy::Concepts::FunctionConceptCheck< F >,
-                                           funcy::Concepts::FunctionConceptCheck< G > > >
+        template < class F, class G, class = funcy::concepts::FunctionConceptCheck< F >,
+                   class = funcy::concepts::FunctionConceptCheck< G > >
+        struct Product : Chainer< Product< F, G, funcy::concepts::FunctionConceptCheck< F >,
+                                           funcy::concepts::FunctionConceptCheck< G > > >
         {
         private:
             template < class IndexedArg >

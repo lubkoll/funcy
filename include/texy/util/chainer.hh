@@ -30,7 +30,7 @@ namespace texy
                    class = std::enable_if_t< funcy::Checks::isFunction< OtherFunction >() > >
         auto operator()( const OtherFunction& g )
         {
-            return MathematicalOperations::Chain< Function, OtherFunction >(
+            return mathop::Chain< Function, OtherFunction >(
                 *static_cast< const Function* >( this ), g );
         }
     };

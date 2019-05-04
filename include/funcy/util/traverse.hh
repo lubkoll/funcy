@@ -23,7 +23,7 @@ namespace funcy
         // for Scale
         template < template < class, class, class > class G, class Scalar, class F,
                    template < class > class Operation, template < class, class > class Combine >
-        struct Traverse< G< Scalar, F, Concepts::FunctionConceptCheck< F > >, Operation, Combine >
+        struct Traverse< G< Scalar, F, concepts::FunctionConceptCheck< F > >, Operation, Combine >
             : Traverse< F, Operation, Combine >
         {
         };
@@ -31,7 +31,7 @@ namespace funcy
         // for Squared
         template < template < class, class > class G, class F, template < class > class Operation,
                    template < class, class > class Combine >
-        struct Traverse< G< F, Concepts::FunctionConceptCheck< F > >, Operation, Combine >
+        struct Traverse< G< F, concepts::FunctionConceptCheck< F > >, Operation, Combine >
             : Traverse< F, Operation, Combine >
         {
         };
@@ -40,7 +40,7 @@ namespace funcy
         template < template < class, class, class, class > class H, class F, class G,
                    template < class > class Operation, template < class, class > class Combine >
         struct Traverse<
-            H< F, G, Concepts::FunctionConceptCheck< F >, Concepts::FunctionConceptCheck< G > >,
+            H< F, G, concepts::FunctionConceptCheck< F >, concepts::FunctionConceptCheck< G > >,
             Operation, Combine >
             : Combine< Traverse< F, Operation, Combine >, Traverse< G, Operation, Combine > >
         {

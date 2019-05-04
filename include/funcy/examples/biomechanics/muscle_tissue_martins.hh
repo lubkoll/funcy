@@ -20,10 +20,10 @@ namespace funcy
   /// @cond
   namespace MuscleTissueDetail
   {
-    template < class Matrix , int n = LinearAlgebra::dim<Matrix>() >
+    template < class Matrix , int n = linalg::dim<Matrix>() >
     auto generateIncompressibleMuscleTissue_Martins(double c, double b, double A, double a, const Matrix& M, const Matrix& F )
     {
-      using namespace LinearAlgebra;
+      using namespace linalg;
       auto S = strainTensor(F);
       auto si1 = mi1<Matrix,n>(S()) - n;
       auto si6 = mi6<Matrix,Matrix,n>(S(),M) - 1;
@@ -50,7 +50,7 @@ namespace funcy
    * @param F deformation gradient
    * @tparam offset number of rows/columns of F, this is only required to adjust the offset of the energy functional such that \f$W(F)=0\f$ for \f$F=I\f$.
    */
-  template < class Matrix , int offset = LinearAlgebra::dim<Matrix>()>
+  template < class Matrix , int offset = linalg::dim<Matrix>()>
   auto incompressibleMuscleTissue_Martins(double c, double b, double A, double a, const Matrix& M, const Matrix& F)
   {
     return finalize( MuscleTissueDetail::generateIncompressibleMuscleTissue_Martins<Matrix,offset>(c,b,A,a,M,F) );
@@ -70,7 +70,7 @@ namespace funcy
    * @param M structural (rank-one) tensor describing the initial orientation of muscle fibers for \f$F=I\f$, where \f$I\f$ is the unit matrix.
    * @param F deformation gradient
    */
-  template < class Matrix , int offset = LinearAlgebra::dim<Matrix>()>
+  template < class Matrix , int offset = linalg::dim<Matrix>()>
   auto incompressibleMuscleTissue_Martins(const Matrix& M, const Matrix& F)
   {
     return incompressibleMuscleTissue_Martins<Matrix,offset>(0.387, 23.46, 0.584, 12.43, M, F);
@@ -94,7 +94,7 @@ namespace funcy
    * @param M structural (rank-one) tensor describing the initial orientation of muscle fibers for \f$F=I\f$, where \f$I\f$ is the unit matrix.
    * @param F deformation gradient
    */
-  template < class Inflation , class Compression , class Matrix , int offset = LinearAlgebra::dim<Matrix>()>
+  template < class Inflation , class Compression , class Matrix , int offset = linalg::dim<Matrix>()>
   auto compressibleMuscleTissue_Martins(double c, double b, double A, double a, double d0, double d1, const Matrix& M, const Matrix& F)
   {
     return finalize( MuscleTissueDetail::generateIncompressibleMuscleTissue_Martins<Matrix,offset>(c,b,A,a,M,F) + volumetricPenalty<Inflation,Compression>(d0,d1,F) );
@@ -117,7 +117,7 @@ namespace funcy
    * @param M structural (rank-one) tensor describing the initial orientation of muscle fibers for \f$F=I\f$, where \f$I\f$ is the unit matrix.
    * @param F deformation gradient
    */
-  template < class Inflation , class Compression , class Matrix , int offset = LinearAlgebra::dim<Matrix>()>
+  template < class Inflation , class Compression , class Matrix , int offset = linalg::dim<Matrix>()>
   auto compressibleMuscleTissue_Martins(double d0, double d1, const Matrix& M, const Matrix& F)
   {
     return compressibleMuscleTissue_Martins<Inflation,Compression,Matrix,offset>(0.387, 23.46, 0.584, 12.43, d0, d1, M, F);

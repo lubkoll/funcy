@@ -13,15 +13,15 @@
 
 namespace texy
 {
-    namespace MathematicalOperations
+    namespace mathop
     {
         /**
          * \ingroup TexifyMathematicalOperationsGroup
          * \brief %Sum of functions of type F and G (F and G must satisfy the requirements of
-         * Concepts::FunctionConcept).
+         * concepts::FunctionConcept).
          */
-        template < class F, class G, class CheckF = funcy::Concepts::FunctionConceptCheck< F >,
-                   class CheckG = funcy::Concepts::FunctionConceptCheck< G > >
+        template < class F, class G, class CheckF = funcy::concepts::FunctionConceptCheck< F >,
+                   class CheckG = funcy::concepts::FunctionConceptCheck< G > >
         struct Sum : Chainer< Sum< F, G, CheckF, CheckG > >
         {
             /**

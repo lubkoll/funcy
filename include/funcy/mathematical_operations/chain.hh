@@ -17,18 +17,18 @@ namespace funcy
     struct Chainer;
     /// @endcond
 
-    namespace MathematicalOperations
+    namespace mathop
     {
         /**
          * @ingroup MathematicalOperationsGroup
          *
          * @brief %Chain \f$ f\circ g \f$ of functions \f$f\f$ and \f$g\f$ of type F resp. G (F and
-         * G must satisfy the requirements of Concepts::FunctionConcept).
+         * G must satisfy the requirements of concepts::FunctionConcept).
          */
-        template < class F, class G, class = Concepts::FunctionConceptCheck< F >,
-                   class = Concepts::FunctionConceptCheck< G > >
-        struct Chain : Chainer< Chain< F, G, Concepts::FunctionConceptCheck< F >,
-                                       Concepts::FunctionConceptCheck< G > > >
+        template < class F, class G, class = concepts::FunctionConceptCheck< F >,
+                   class = concepts::FunctionConceptCheck< G > >
+        struct Chain : Chainer< Chain< F, G, concepts::FunctionConceptCheck< F >,
+                                       concepts::FunctionConceptCheck< G > > >
         {
         private:
             using FArg = decltype( std::declval< G >()() );

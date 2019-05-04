@@ -8,22 +8,22 @@
 namespace funcy
 {
     /// @cond
-    namespace Concepts { template <class> struct SquareMatrixConceptCheck; }
+    namespace concepts { template <class> struct SquareMatrixConceptCheck; }
     ///@endcond
 
     /** @addtogroup LinearAlgebraGroup
      * @{
      */
-    namespace LinearAlgebra
+    namespace linalg
     {
         /**
          * @brief Right Cauchy-Green strain tensor \f$ F^T F \f$ for a symmetric matrix \f$ F \f$.
          *
          * Used in nonlinear material models based on the deformation gradient \f$\nabla\varphi\f$, which takes the role of \f$F\f$.
          */
-        template <class Matrix, class = Concepts::SquareMatrixConceptCheck<Matrix> >
+        template <class Matrix, class = concepts::SquareMatrixConceptCheck<Matrix> >
         class RightCauchyGreenStrainTensor :
-                public Chainer< RightCauchyGreenStrainTensor<Matrix , Concepts::SquareMatrixConceptCheck<Matrix> > >
+                public Chainer< RightCauchyGreenStrainTensor<Matrix , concepts::SquareMatrixConceptCheck<Matrix> > >
         {
         public:
             RightCauchyGreenStrainTensor() = default;
@@ -71,9 +71,9 @@ namespace funcy
          *
          * Used in nonlinear material models based on the deformation gradient \f$\nabla\varphi\f$, which takes the role of \f$F\f$.
          */
-        template <class Matrix, class = Concepts::SquareMatrixConceptCheck<Matrix> >
+        template <class Matrix, class = concepts::SquareMatrixConceptCheck<Matrix> >
         class LeftCauchyGreenStrainTensor :
-                public Chainer< LeftCauchyGreenStrainTensor<Matrix , Concepts::SquareMatrixConceptCheck<Matrix> > >
+                public Chainer< LeftCauchyGreenStrainTensor<Matrix , concepts::SquareMatrixConceptCheck<Matrix> > >
         {
         public:
             LeftCauchyGreenStrainTensor() = default;

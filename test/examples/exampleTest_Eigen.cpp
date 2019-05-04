@@ -18,7 +18,7 @@ namespace
   template <class M, class Function>
   auto runTest(Function& f)
   {
-    M a = funcy::LinearAlgebra::unitMatrix<M>();
+    M a = funcy::linalg::unitMatrix<M>();
     M da0 = 2*a, da1 = 3*a, da2 = 4*a;
 
     f.update(a);
@@ -40,7 +40,7 @@ namespace
     return m;
   }
 
-  M fiberTensor = initFiberTensor(), I = funcy::LinearAlgebra::unitMatrix<M>();
+  M fiberTensor = initFiberTensor(), I = funcy::linalg::unitMatrix<M>();
 }
 
 TEST(NeoHooke,Incompressible_Eigen)

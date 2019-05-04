@@ -17,10 +17,10 @@ namespace funcy
   /** @cond */
   namespace SkinDetail
   {
-    template < class Matrix , int n = LinearAlgebra::dim<Matrix>()>
+    template < class Matrix , int n = linalg::dim<Matrix>()>
     auto incompressibleSkin_HendriksImpl(double c0, double c1, const Matrix& F)
     {
-      using namespace LinearAlgebra;
+      using namespace linalg;
       auto S = strainTensor(F);
       auto si1 = i1(S()) - n;
       auto si2 = i2(S()) - n;
@@ -42,7 +42,7 @@ namespace funcy
    * @param c1 scaling of the product of shifted first and second principal invariant
    * @param F initial deformation gradient
    */
-  template < class Matrix , int n = LinearAlgebra::dim<Matrix>()>
+  template < class Matrix , int n = linalg::dim<Matrix>()>
   auto incompressibleSkin_Hendriks(double c0, double c1, const Matrix& F)
   {
     return finalize( SkinDetail::incompressibleSkin_HendriksImpl<Matrix,n>(c0,c1,F) );
@@ -61,7 +61,7 @@ namespace funcy
    *
    * @param F initial deformation gradient
    */
-  template <class Matrix , int n = LinearAlgebra::dim<Matrix>()>
+  template <class Matrix , int n = linalg::dim<Matrix>()>
   auto incompressibleSkin_Hendriks(const Matrix& F)
   {
     return incompressibleSkin_Hendriks<Matrix,n>(9.4,82.,F);
@@ -82,7 +82,7 @@ namespace funcy
    * @param d1 scaling of the penalty function for compression
    * @param F initial deformation gradient
    */
-  template <class InflationPenalty, class CompressionPenalty, class Matrix, int n = LinearAlgebra::dim<Matrix>()>
+  template <class InflationPenalty, class CompressionPenalty, class Matrix, int n = linalg::dim<Matrix>()>
   auto compressibleSkin_Hendriks(double c0, double c1, double d0, double d1, const Matrix& F)
   {
     return finalize( SkinDetail::incompressibleSkin_HendriksImpl<Matrix,n>(c0,c1,F) + volumetricPenalty<InflationPenalty,CompressionPenalty>(d0,d1,F) );
@@ -103,7 +103,7 @@ namespace funcy
    * @param d1 scaling of the penalty function for compression
    * @param F initial deformation gradient
    */
-  template < class InflationPenalty , class CompressionPenalty , class Matrix , int n = LinearAlgebra::dim<Matrix>() >
+  template < class InflationPenalty , class CompressionPenalty , class Matrix , int n = linalg::dim<Matrix>() >
   auto compressibleSkin_Hendriks(double d0, double d1, const Matrix& F)
   {
     return compressibleSkin_Hendriks<InflationPenalty,CompressionPenalty,Matrix,n>(9.4,82.,d0,d1,F);

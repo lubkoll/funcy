@@ -89,7 +89,7 @@ namespace texy
       @ingroup TexifyCMathGroup
       @brief Generate \f$ \arcsin\circ f \f$.
       @param f function mapping into a scalar space
-      @return object of type MathematicalOperations::Chain<ASin,Function>
+      @return object of type mathop::Chain<ASin,Function>
      */
     template < class Function, class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
     auto asin( const Function& f )

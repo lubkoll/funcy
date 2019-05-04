@@ -11,7 +11,7 @@
 
 namespace funcy
 {
-    namespace LinearAlgebra
+    namespace linalg
     {
         /** @addtogroup LinearAlgebraGroup
          *   @{ */
@@ -47,7 +47,7 @@ namespace funcy
 
         /// Compute squared Frobenius norm \f$ \|A\|^2 = A\negthinspace : \negthinspace A = \mathrm{tr}(A^TA) = \sum_{i,j} A_{ij}^2. \f$
         template <class Matrix,
-                  class = Concepts::MatrixConceptCheck<Matrix> >
+                  class = concepts::MatrixConceptCheck<Matrix> >
         struct SquaredFrobeniusNorm : Chainer< SquaredFrobeniusNorm<Matrix> >
         {
             SquaredFrobeniusNorm() = default;
@@ -87,7 +87,7 @@ namespace funcy
 
         /// Frobenius norm \f$ \|A\| = \sqrt{A\negthinspace : \negthinspace A }= \sqrt{\mathrm{tr}(A^TA)} = \sqrt{\sum_{i,j} A_{ij}^2}. \f$
         template <class Matrix>
-        using FrobeniusNorm = MathematicalOperations::Chain< Sqrt , SquaredFrobeniusNorm<Matrix> >;
+        using FrobeniusNorm = mathop::Chain< Sqrt , SquaredFrobeniusNorm<Matrix> >;
 
         /// Generate Frobenius norm \f$ \|A\| = \sqrt{A\negthinspace : \negthinspace A }= \sqrt{\mathrm{tr}(A^TA)} = \sqrt{\sum_{i,j} A_{ij}^2}. \f$
         template <class Matrix,

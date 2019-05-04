@@ -5,7 +5,7 @@
 #include <gmock/gmock.h>
 
 using ::testing::Eq;
-using texy::LinearAlgebra::FrobeniusNorm;
+using texy::linalg::FrobeniusNorm;
 
 TEST( TexifyFrobeniusNormTest, D0 )
 {

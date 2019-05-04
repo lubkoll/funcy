@@ -13,7 +13,7 @@ namespace stringy
     /// @cond
     template < int, int >
     struct Variable;
-    namespace Concepts
+    namespace concepts
     {
         template < class >
         struct FunctionConceptCheck;

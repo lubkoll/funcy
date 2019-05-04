@@ -25,7 +25,7 @@ namespace funcy
             template < class F, class G >
             static auto apply( F&& f, G&& g )
             {
-                return MathematicalOperations::Sum< std::decay_t< F >, std::decay_t< G > >(
+                return mathop::Sum< std::decay_t< F >, std::decay_t< G > >(
                     std::forward< F >( f ), std::forward< G >( g ) );
             }
         };
@@ -36,7 +36,7 @@ namespace funcy
             template < class F, class G >
             static auto apply( F&& f, G&& g )
             {
-                return MathematicalOperations::Sum< std::decay_t< F >,
+                return mathop::Sum< std::decay_t< F >,
                                                     Constant< std::decay_t< G > > >(
                     std::forward< F >( f ), constant( std::forward< G >( g ) ) );
             }
@@ -48,7 +48,7 @@ namespace funcy
             template < class F, class G >
             static auto apply( F&& f, G&& g )
             {
-                return MathematicalOperations::Sum< Constant< std::decay_t< F > >,
+                return mathop::Sum< Constant< std::decay_t< F > >,
                                                     std::decay_t< G > >(
                     constant( std::forward< F >( f ) ), std::forward< G >( g ) );
             }
@@ -66,7 +66,7 @@ namespace funcy
             template < class F, class G >
             static auto apply( F&& f, G&& g )
             {
-                return MathematicalOperations::Product< std::decay_t< F >, std::decay_t< G > >(
+                return mathop::Product< std::decay_t< F >, std::decay_t< G > >(
                     std::forward< F >( f ), std::forward< G >( g ) );
             }
         };
@@ -77,7 +77,7 @@ namespace funcy
             template < class F, class G >
             static auto apply( F f, G&& g )
             {
-                return MathematicalOperations::Scale< F, std::decay_t< G > >(
+                return mathop::Scale< F, std::decay_t< G > >(
                     f, std::forward< G >( g ) );
             }
         };
@@ -88,7 +88,7 @@ namespace funcy
             template < class F, class G >
             static auto apply( F&& f, G g )
             {
-                return MathematicalOperations::Scale< G, std::decay_t< F > >(
+                return mathop::Scale< G, std::decay_t< F > >(
                     g, std::forward< F >( f ) );
             }
         };
@@ -100,7 +100,7 @@ namespace funcy
             static auto apply( F&& f, G&& g )
             {
                 using Const = Constant< std::decay_t< F > >;
-                return MathematicalOperations::Product< Const, std::decay_t< G > >(
+                return mathop::Product< Const, std::decay_t< G > >(
                     Const( std::forward< F >( f ) ), std::forward< G >( g ) );
             }
         };
@@ -112,7 +112,7 @@ namespace funcy
             static auto apply( F&& f, G&& g )
             {
                 using Const = Constant< std::decay_t< G > >;
-                return MathematicalOperations::Product< std::decay_t< F >, Const >(
+                return mathop::Product< std::decay_t< F >, Const >(
                     std::forward< F >( f ), Const( std::forward< G >( g ) ) );
             }
         };
@@ -127,7 +127,7 @@ namespace funcy
             template < class F, class G >
             static auto apply( F&& f, G&& g )
             {
-                return MathematicalOperations::Dot< std::decay_t< F >, std::decay_t< G > >(
+                return mathop::Dot< std::decay_t< F >, std::decay_t< G > >(
                     std::forward< F >( f ), std::forward< G >( g ) );
             }
         };
@@ -139,7 +139,7 @@ namespace funcy
             static auto apply( F&& f, G&& g )
             {
                 using Const = Constant< std::decay_t< F > >;
-                return MathematicalOperations::Dot< Const, std::decay_t< G > >(
+                return mathop::Dot< Const, std::decay_t< G > >(
                     Const( std::forward< F >( f ) ), std::forward< G >( g ) );
             }
         };
@@ -151,7 +151,7 @@ namespace funcy
             static auto apply( F&& f, G&& g )
             {
                 using Const = Constant< std::decay_t< G > >;
-                return MathematicalOperations::Dot< std::decay_t< F >, Const >(
+                return mathop::Dot< std::decay_t< F >, Const >(
                     std::forward< F >( f ), Const( std::forward< G >( g ) ) );
             }
         };
@@ -217,7 +217,7 @@ namespace funcy
             std::cerr << "operator^ only defined for k=2. Terminating." << std::endl;
             exit( 1 );
         }
-        return MathematicalOperations::Squared< std::decay_t< F > >( std::forward< F >( f ) );
+        return mathop::Squared< std::decay_t< F > >( std::forward< F >( f ) );
     }
 
     /**
@@ -229,7 +229,7 @@ namespace funcy
     template < class F, std::enable_if_t< Checks::isFunction< std::decay_t< F > >() >* = nullptr >
     auto squared( F&& f )
     {
-        return MathematicalOperations::Squared< std::decay_t< F > >( std::forward< F >( f ) );
+        return mathop::Squared< std::decay_t< F > >( std::forward< F >( f ) );
     }
 
     /**
@@ -247,7 +247,7 @@ namespace funcy
     {
         static_assert( !Checks::Has::variable< std::decay_t< F > >(),
                        "Independent variables can not be on the left side of the chain operator." );
-        return MathematicalOperations::Chain< std::decay_t< F >, std::decay_t< G > >(
+        return mathop::Chain< std::decay_t< F >, std::decay_t< G > >(
             std::forward< F >( f ), std::forward< G >( g ) );
     }
 

@@ -4,7 +4,7 @@
 #include <gmock/gmock.h>
 
 using ::testing::Eq;
-using texy::LinearAlgebra::Trace;
+using texy::linalg::Trace;
 
 TEST( TexifyTraceTest, D0 )
 {

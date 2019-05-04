@@ -15,7 +15,7 @@ namespace funcy
   template <class Inflation, class Compression, class Matrix>
   auto volumetricPenalty(double d0, double d1, const Matrix& A)
   {
-    using LinearAlgebra::det;
+    using linalg::det;
     auto f = ( d0*Inflation() + d1*Compression() ) ( det(A) );
     return f - f.d0();
   }

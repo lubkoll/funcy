@@ -12,15 +12,15 @@
 
 namespace texy
 {
-    namespace MathematicalOperations
+    namespace mathop
     {
         /**
          * @ingroup TexifyMathematicalOperationsGroup
          * @brief Scaling \f$ af \f$ of some function \f$ f \f$ with a double \f$ a \f$ (F must
-         * satisfy the requirements of Concepts::FunctionConcept).
+         * satisfy the requirements of concepts::FunctionConcept).
          */
-        template < class Scalar, class F, class = funcy::Concepts::FunctionConceptCheck< F > >
-        struct Scale : Chainer< Scale< Scalar, F, funcy::Concepts::FunctionConceptCheck< F > > >
+        template < class Scalar, class F, class = funcy::concepts::FunctionConceptCheck< F > >
+        struct Scale : Chainer< Scale< Scalar, F, funcy::concepts::FunctionConceptCheck< F > > >
         {
             /**
              * @brief Constructor passing arguments to function constructor.

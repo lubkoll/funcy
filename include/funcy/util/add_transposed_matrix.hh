@@ -19,7 +19,7 @@ namespace funcy
             std::enable_if_t<Checks::isConstantSize<Matrix>()>* = nullptr >
   Matrix addTransposed(Matrix& A)
   {
-    using LinearAlgebra::dim;
+    using linalg::dim;
     using Index = decltype(dim<Matrix>());
     for(Index i=0; i<dim<Matrix>(); ++i)
       for(Index j=i+1; j<dim<Matrix>(); ++j)
@@ -36,8 +36,8 @@ namespace funcy
             std::enable_if_t<!Checks::isConstantSize<Matrix>()>* = nullptr >
   Matrix addTransposed(Matrix& A)
   {
-    using LinearAlgebra::rows;
-    using LinearAlgebra::cols;
+    using linalg::rows;
+    using linalg::cols;
     assert( rows(A) == cols(A) );
     using Index = decltype(rows(std::declval<Matrix>()));
     for(Index i=0; i<rows(A); ++i)

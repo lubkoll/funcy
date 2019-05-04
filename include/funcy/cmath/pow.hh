@@ -387,7 +387,7 @@ namespace funcy
     /*!
       @brief Generate \f$ \sqrt{f} \f$.
       @param f function mapping into a scalar space
-      @return object of type MathematicalOperations::Chain<Sqrt,Function>
+      @return object of type mathop::Chain<Sqrt,Function>
      */
     template < class Function, class = std::enable_if_t< Checks::isFunction< Function >() > >
     auto sqrt( const Function& f )
@@ -398,7 +398,7 @@ namespace funcy
     /*!
       @brief Generate \f$ \sqrt[3]{f} \f$.
       @param f function mapping into a scalar space
-      @return object of type MathematicalOperations::Chain<Cbrt,Function>
+      @return object of type mathop::Chain<Cbrt,Function>
      */
     template < class Function, class = std::enable_if_t< Checks::isFunction< Function >() > >
     auto cbrt( const Function& f )
@@ -409,7 +409,7 @@ namespace funcy
     /*!
       @brief Generate \f$ \sqrt[3]{f^2}\f$.
       @param f function mapping into a scalar space
-      @return object of type MathematicalOperations::Chain<Cbrt2,Function>
+      @return object of type mathop::Chain<Cbrt2,Function>
      */
     template < class Function, class = std::enable_if_t< Checks::isFunction< Function >() > >
     auto cbrt2( const Function& f )
@@ -422,7 +422,7 @@ namespace funcy
       @param f function mapping into a scalar space
       @tparam k dividend
       @tparam l divisor
-      @return object of type MathematicalOperations::Chain< Pow<dividend,divisor> , Function >
+      @return object of type mathop::Chain< Pow<dividend,divisor> , Function >
      */
     template < int k, int l, class Function,
                class = std::enable_if_t< Checks::isFunction< Function >() > >
@@ -435,7 +435,7 @@ namespace funcy
       @brief Generate \f$ f^k,\ k\in\mathbb{N}\f$.
       @param f function mapping into a scalar space
       @tparam k exponent
-      @return object of type MathematicalOperations::Chain< Pow<dividend,divisor> , Function >
+      @return object of type mathop::Chain< Pow<dividend,divisor> , Function >
      */
     template < int k, class Function, class = std::enable_if_t< Checks::isFunction< Function >() > >
     auto pow( const Function& f )

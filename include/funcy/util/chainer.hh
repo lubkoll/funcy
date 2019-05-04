@@ -31,7 +31,7 @@ namespace funcy
                class = std::enable_if_t< Checks::isFunction<OtherFunction>() > >
     auto operator()(const OtherFunction& g)
     {
-      return MathematicalOperations::Chain<Function,OtherFunction>(*static_cast<const Function*>(this),g);
+      return mathop::Chain<Function,OtherFunction>(*static_cast<const Function*>(this),g);
     }
   };
   /// @endcond

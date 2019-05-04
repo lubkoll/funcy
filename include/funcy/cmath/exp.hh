@@ -106,7 +106,7 @@ namespace funcy
   /*!
     @brief Generate \f$ \exp(f) \f$.
     @param f function mapping into a scalar space
-    @return object of type MathematicalOperations::Chain<Exp,Function>
+    @return object of type mathop::Chain<Exp,Function>
    */
   template <class Function, class = std::enable_if_t<Checks::isFunction<Function>()> >
   auto exp(const Function& f)
@@ -117,7 +117,7 @@ namespace funcy
   /*!
     @brief Generate \f$2^f\f$.
     @param f function mapping into a scalar space
-    @return object of type MathematicalOperations::Chain<Exp2,Function>
+    @return object of type mathop::Chain<Exp2,Function>
    */
   template <class Function, class = std::enable_if_t<Checks::isFunction<Function>()> >
   auto exp2(const Function& f)

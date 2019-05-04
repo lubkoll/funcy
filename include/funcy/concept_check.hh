@@ -9,7 +9,7 @@
 
 namespace funcy
 {
-  namespace Concepts
+  namespace concepts
   {
     /** @addtogroup ConceptCheck
      *  @{ */
@@ -88,7 +88,7 @@ namespace funcy
     struct SquareMatrixConceptCheck : MatrixConceptCheck<Matrix>, MultiplicationConceptCheck<Matrix,Matrix>
     {
       /// Require symmetric matrix
-      static_assert( LinearAlgebra::NumberOfRows<Matrix>::value == LinearAlgebra::NumberOfColumns<Matrix>::value,
+      static_assert( linalg::NumberOfRows<Matrix>::value == linalg::NumberOfColumns<Matrix>::value,
                      "SquareMatrixConcept: Input matrix must be symmetric.");
     };
 

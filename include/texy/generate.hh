@@ -18,7 +18,7 @@ struct SumGenerator;
 
 template <class F0, class G0> struct SumGenerator<F0, G0, true, true> {
   template <class F, class G> static auto apply(F &&f, G &&g) {
-    return MathematicalOperations::Sum<std::decay_t<F>, std::decay_t<G>>(
+    return mathop::Sum<std::decay_t<F>, std::decay_t<G>>(
         std::forward<F>(f), std::forward<G>(g));
   }
 };
@@ -27,12 +27,12 @@ template <class F0, class G0> struct SumGenerator<F0, G0, true, false> {
   template <class F, class G,
             std::enable_if_t<std::is_arithmetic<G>::value> * = nullptr>
   static auto apply(F &&f, G g) {
-    return MathematicalOperations::Sum<std::decay_t<F>, Constant>(
+    return mathop::Sum<std::decay_t<F>, Constant>(
         std::forward<F>(f), constant(std::to_string(g)));
   }
 
   template <class F> static auto apply(F &&f, const std::string &g) {
-    return MathematicalOperations::Sum<std::decay_t<F>, Constant>(
+    return mathop::Sum<std::decay_t<F>, Constant>(
         std::forward<F>(f), constant(g));
   }
 };
@@ -41,12 +41,12 @@ template <class F0, class G0> struct SumGenerator<F0, G0, false, true> {
   template <class F, class G,
             std::enable_if_t<std::is_arithmetic<F>::value> * = nullptr>
   static auto apply(F f, G &&g) {
-    return MathematicalOperations::Sum<Constant, std::decay_t<G>>(
+    return mathop::Sum<Constant, std::decay_t<G>>(
         constant(std::to_string(f)), std::forward<G>(g));
   }
 
   template <class G> static auto apply(const std::string &f, G &&g) {
-    return MathematicalOperations::Sum<Constant, std::decay_t<G>>(
+    return mathop::Sum<Constant, std::decay_t<G>>(
         constant(f), std::forward<G>(g));
   }
 };
@@ -61,7 +61,7 @@ struct ProductGenerator;
 template <class F0, class G0>
 struct ProductGenerator<F0, G0, true, true, false, false> {
   template <class F, class G> static auto apply(F &&f, G &&g) {
-    return MathematicalOperations::Product<std::decay_t<F>, std::decay_t<G>>(
+    return mathop::Product<std::decay_t<F>, std::decay_t<G>>(
         std::forward<F>(f), std::forward<G>(g));
   }
 };
@@ -69,7 +69,7 @@ struct ProductGenerator<F0, G0, true, true, false, false> {
 template <class F0, class G0>
 struct ProductGenerator<F0, G0, false, true, true, false> {
   template <class F, class G> static auto apply(F f, G &&g) {
-    return MathematicalOperations::Scale<F, std::decay_t<G>>(
+    return mathop::Scale<F, std::decay_t<G>>(
         f, std::forward<G>(g));
   }
 };
@@ -77,7 +77,7 @@ struct ProductGenerator<F0, G0, false, true, true, false> {
 template <class F0, class G0>
 struct ProductGenerator<F0, G0, true, false, false, true> {
   template <class F, class G> static auto apply(F &&f, G g) {
-    return MathematicalOperations::Scale<G, std::decay_t<F>>(
+    return mathop::Scale<G, std::decay_t<F>>(
         g, std::forward<F>(f));
   }
 };
@@ -85,7 +85,7 @@ struct ProductGenerator<F0, G0, true, false, false, true> {
 template <class F0, class G0>
 struct ProductGenerator<F0, G0, false, true, false, false> {
   template <class G> static auto apply(const std::string &f, G &&g) {
-    return MathematicalOperations::Product<Constant, std::decay_t<G>>(
+    return mathop::Product<Constant, std::decay_t<G>>(
         Constant(f), std::forward<G>(g));
   }
 };
@@ -93,7 +93,7 @@ struct ProductGenerator<F0, G0, false, true, false, false> {
 template <class F0, class G0>
 struct ProductGenerator<F0, G0, true, false, false, false> {
   template <class F> static auto apply(F &&f, const std::string &g) {
-    return MathematicalOperations::Product<std::decay_t<F>, Constant>(
+    return mathop::Product<std::decay_t<F>, Constant>(
         std::forward<F>(f), Constant(g));
   }
 };
@@ -105,21 +105,21 @@ struct DotGenerator;
 
 template <class F0, class G0> struct DotGenerator<F0, G0, true, true> {
   template <class F, class G> static auto apply(F &&f, G &&g) {
-    return MathematicalOperations::Dot<std::decay_t<F>, std::decay_t<G>>(
+    return mathop::Dot<std::decay_t<F>, std::decay_t<G>>(
         std::forward<F>(f), std::forward<G>(g));
   }
 };
 
 template <class F0, class G0> struct DotGenerator<F0, G0, false, true> {
   template <class G> static auto apply(const std::string &f, G &&g) {
-    return MathematicalOperations::Dot<Constant, std::decay_t<G>>(
+    return mathop::Dot<Constant, std::decay_t<G>>(
         Constant(f), std::forward<G>(g));
   }
 };
 
 template <class F0, class G0> struct DotGenerator<F0, G0, true, false> {
   template <class F> static auto apply(F &&f, const std::string &g) {
-    return MathematicalOperations::Dot<std::decay_t<F>, Constant>(
+    return mathop::Dot<std::decay_t<F>, Constant>(
         std::forward<F>(f), Constant(g));
   }
 };
@@ -189,7 +189,7 @@ auto operator^(F &&f, int k) {
     std::cerr << "operator^ only defined for k=2. Terminating." << std::endl;
     exit(1);
   }
-  return MathematicalOperations::Squared<std::decay_t<F>>(std::forward<F>(f));
+  return mathop::Squared<std::decay_t<F>>(std::forward<F>(f));
 }
 
 /**
@@ -202,7 +202,7 @@ auto operator^(F &&f, int k) {
 template <class F, std::enable_if_t<funcy::Checks::isFunction<std::decay_t<F>>()>
                        * = nullptr>
 auto squared(F &&f) {
-  return MathematicalOperations::Squared<std::decay_t<F>>(std::forward<F>(f));
+  return mathop::Squared<std::decay_t<F>>(std::forward<F>(f));
 }
 
 //    /**
@@ -229,7 +229,7 @@ auto squared(F &&f) {
 //                       "Independent variables can not be on the left side of
 //                       the chain
 //                       operator." );
-//        return MathematicalOperations::Chain< std::decay_t< F >, std::decay_t<
+//        return mathop::Chain< std::decay_t< F >, std::decay_t<
 //        G > >(
 //            std::forward< F >( f ), std::forward< G >( g ) );
 //    }

@@ -14,19 +14,19 @@
 
 namespace texy
 {
-    namespace MathematicalOperations
+    namespace mathop
     {
-        using funcy::MathematicalOperations::Dot;
+        using funcy::mathop::Dot;
         //        /**
         //         * @ingroup MathematicalOperationsGroup
         //         * @brief %Dot \f$f \cdot g\f$ of functions of type F and G (F and G must satisfy
         //         the
-        //         * requirements of Concepts::FunctionConcept).
+        //         * requirements of concepts::FunctionConcept).
         //         */
-        //        template < class F, class G, class = Concepts::FunctionConceptCheck< F >,
-        //                   class = Concepts::FunctionConceptCheck< G > >
-        //        struct Dot : Chainer< Dot< F, G, Concepts::FunctionConceptCheck< F >,
-        //                                   Concepts::FunctionConceptCheck< G > > >
+        //        template < class F, class G, class = concepts::FunctionConceptCheck< F >,
+        //                   class = concepts::FunctionConceptCheck< G > >
+        //        struct Dot : Chainer< Dot< F, G, concepts::FunctionConceptCheck< F >,
+        //                                   concepts::FunctionConceptCheck< G > > >
         //        {
         //        private:
         //            template < class IndexedArg >
