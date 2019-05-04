@@ -7,7 +7,7 @@
 
 ### Using funcy
 
-The function <img src="https://latex.codecogs.com/gif.latex?f(x)&space;=&space;x^{3/2}&plus;\sin(\sqrt{x})" title="f(x) = x^{3/2}+\sin(\sqrt{x})" /> with funcy:
+The function <img src="https://latex.codecogs.com/gif.latex?f(x)&space;=&space;x^{3/2}&plus;\sin(\sqrt{x})" title="f(x) = x^{3/2}+\sin(\sqrt{x})" /> with *funcy*:
 ```cpp
 #include <funcy/funcy.hh>
 
@@ -23,4 +23,9 @@ int main()
 }
 ```
 
-See <a href="http://lubkoll.github.io/funcy">http://lubkoll.github.io/funcy</a>.
+### Compatibility
+
+funcy can work with any type that satisfies basic arithmetic requirements as described in [requirements](REQUIREMENTS.md). Particular support has been implemented for scalars, vectors and matrices, enabling *funcy* to be used with all popular matrix libraries.
+
+
+[performance](PERFORMANCE.md)
