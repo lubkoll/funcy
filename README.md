@@ -96,5 +96,5 @@ For details, and performance comparisons with other AD-libraries, see [FunG - Au
 
 Preprints:
 
-* A. Schiela, M. Stöcklein: <a href="https://spp1962.wias-berlin.de/preprints/097.pdf">Optimal Control of Static Contact in Finite Strain Elasticity.</a> 2018
-* M. Schaller, A. Schiela, M. Stöcklein: <a href="https://spp1962.wias-berlin.de/preprints/098.pdf">A Composite Step Method with Inexact Step Comptations for PDE Constrained Optimization.</a> 2018
+* A. Schiela, M. Stöcklein: [Optimal Control of Static Contact in Finite Strain Elasticity.](https://spp1962.wias-berlin.de/preprints/097.pdf) 2018
+* M. Schaller, A. Schiela, M. Stöcklein: [A Composite Step Method with Inexact Step Comptations for PDE Constrained Optimization.](https://spp1962.wias-berlin.de/preprints/098.pdf) 2018
