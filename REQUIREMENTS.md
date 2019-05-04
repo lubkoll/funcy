@@ -1,6 +1,8 @@
 
-<h1 id="arithmetic-types">Arithmetic Types</h1>
-<p>Arithmetic types that can be used in FunG have to fulfil the following requirements:</p>
+## Arithmetic Types
+
+Arithmetic types that can be used in FunG have to fulfil the following requirements:
+
 <h3>Requirements</h3>
 <ol>
 <li><strong>Copyable:</strong><br> T must be <a href="http://en.cppreference.com/w/cpp/concept/CopyConstructible">CopyConstructible</a> and <a href="http://en.cppreference.com/w/cpp/concept/CopyAssignable">CopyAssignable</a>. </li>
@@ -84,4 +86,5 @@ must be provided. Suitable implementations exist for the cases that a zero matri
 </ul>
 </li>
 </ol>
-<p><a href=README.md>back</a></p>
+
+[back](README.md)
