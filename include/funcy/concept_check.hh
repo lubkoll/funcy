@@ -9,7 +9,7 @@
 
 namespace funcy
 {
-  namespace concepts
+  namespace concept
   {
     /** @addtogroup ConceptCheck
      *  @{ */
@@ -25,11 +25,11 @@ namespace funcy
     template < class Arg >
     struct MultiplyWithArithmeticFromLeftConceptCheck
     {
-      static_assert(Checks::Has::Free::multiplication< Arg , double > () ||
-                    Checks::Has::MemOp::inPlaceMultiplication< Arg , double >(),
+      static_assert(concept::Has::Free::multiplication< Arg , double > () ||
+                    concept::Has::MemOp::inPlaceMultiplication< Arg , double >(),
                     "MultiplyWithArithmeticFromLeftConcept: Input types must support multiplication with double from the left (operator*(double,const Arg&))");
-      static_assert(Checks::Has::Free::multiplication< Arg , int > () ||
-                    Checks::Has::MemOp::inPlaceMultiplication< Arg , int >(),
+      static_assert(concept::Has::Free::multiplication< Arg , int > () ||
+                    concept::Has::MemOp::inPlaceMultiplication< Arg , int >(),
                     "MultiplyWithArithmeticFromLeftConcept: Input types must support multiplication with int from the left (operator*(int,const Arg&))");
     };
 
@@ -38,8 +38,8 @@ namespace funcy
     template < class Arg >
     struct SummationConceptCheck
     {
-      static_assert(Checks::Has::Free::summation< Arg >() ||
-                    Checks::Has::MemOp::inPlaceSummation< Arg >(),
+      static_assert(concept::Has::Free::summation< Arg >() ||
+                    concept::Has::MemOp::inPlaceSummation< Arg >(),
                     "SummationConcept: Input types must support summation (operator+(const Arg&, const Arg&)");
     };
 
@@ -48,9 +48,9 @@ namespace funcy
     template < class Arg1 , class Arg2 >
     struct MultiplicationConceptCheck
     {
-      static_assert(Checks::Has::Free::multiplication< Arg1 , Arg2 >() ||
-                    Checks::Has::MemFn::rightmultiplyany< Arg1 , Arg2 >() ||
-                    Checks::Has::MemOp::inPlaceMultiplication< Arg1 , Arg2 >(),
+      static_assert(concept::Has::Free::multiplication< Arg1 , Arg2 >() ||
+                    concept::Has::MemFn::rightmultiplyany< Arg1 , Arg2 >() ||
+                    concept::Has::MemOp::inPlaceMultiplication< Arg1 , Arg2 >(),
                     "MultiplicationConcept: Input types must support multiplication (operator*(const Arg&, const Arg&");
     };
 
@@ -66,26 +66,26 @@ namespace funcy
 
     /// Static check if the requirements of MatrixConcept are satisfied.
     template < class Matrix >
-    struct MatrixConceptCheck : ArithmeticConceptCheck<Matrix>
+    struct IsMatrix : ArithmeticConceptCheck<Matrix>
     {
-      static_assert(Checks::Has::MemOp::SquareBracketAccessForMatrix<Matrix>::value ||
-                    Checks::Has::MemOp::RoundBracketAccessForMatrix<Matrix>::value,
+      static_assert(concept::Has::MemOp::SquareBracketAccessForMatrix<Matrix>::value ||
+                    concept::Has::MemOp::RoundBracketAccessForMatrix<Matrix>::value,
                     "MatrixConcept: Currently only matrices that allow access to their elements via A[i][j] or A(i,j) are supported.\nYou may contact the developer to ask for further access or provide your own patch.");
     };
 
 
     /// Static check if the requirements of VectorConcept are satisfied.
     template < class Vector >
-    struct VectorConceptCheck : ArithmeticConceptCheck<Vector>
+    struct IsVector : ArithmeticConceptCheck<Vector>
     {
-      static_assert(Checks::Has::MemOp::SquareBracketAccessForVector<Vector>::value ||
-                    Checks::Has::MemOp::RoundBracketAccessForVector<Vector>::value,
+      static_assert(concept::Has::MemOp::SquareBracketAccessForVector<Vector>::value ||
+                    concept::Has::MemOp::RoundBracketAccessForVector<Vector>::value,
                     "VectorConcept: Currently only vectors that allow access to their elements via v[i] or v(i) are supported.\nYou may contact the developer to ask for further access or provide your own patch.");
     };
 
     /// Static check if the requirements of SquareMatrixConcept are satisfied.
     template < class Matrix >
-    struct SquareMatrixConceptCheck : MatrixConceptCheck<Matrix>, MultiplicationConceptCheck<Matrix,Matrix>
+    struct SquareIsMatrix : IsMatrix<Matrix>, MultiplicationConceptCheck<Matrix,Matrix>
     {
       /// Require symmetric matrix
       static_assert( linalg::NumberOfRows<Matrix>::value == linalg::NumberOfColumns<Matrix>::value,
@@ -95,9 +95,9 @@ namespace funcy
 
     /// Static check if the requirements of FunctionConcept are satisfied.
     template <class F>
-    struct FunctionConceptCheck : CopyConceptCheck<F>
+    struct IsFunction : CopyConceptCheck<F>
     {
-      static_assert( Checks::isFunction<F>() ,
+      static_assert( concept::isFunction<F>() ,
                      "FunctionConcept: Functions must provide the function call operator to access its value." );
     };
     /** @} */

@@ -68,7 +68,7 @@ namespace funcy
       @param f function mapping into a scalar space
       @return object of type mathop::Chain<Tan,Function>
      */
-    template < class Function, class = std::enable_if_t< Checks::isFunction< Function >() > >
+    template < class Function, class = std::enable_if_t< concept::isFunction< Function >() > >
     auto tan( const Function& f )
     {
         return Tan()( f );

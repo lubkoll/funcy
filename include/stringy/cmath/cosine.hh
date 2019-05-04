@@ -56,7 +56,7 @@ namespace stringy
         std::string x;
     };
 
-    template < class Function, class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
+    template < class Function, class = std::enable_if_t< funcy::concept::isFunction< Function >() > >
     auto cos( const Function& f )
     {
         return Cos()( f );

@@ -77,7 +77,7 @@ namespace funcy
       @param f function mapping into a scalar space
       @return object of type mathop::Chain<ASin,Function>
      */
-    template < class Function, class = std::enable_if_t< Checks::isFunction< Function >() > >
+    template < class Function, class = std::enable_if_t< concept::isFunction< Function >() > >
     auto asin( const Function& f )
     {
         return ASin()( f );

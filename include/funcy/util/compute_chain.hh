@@ -150,12 +150,12 @@ namespace funcy
   template < class F, class X, class IndexedArg ,
              class IndexedX = IndexedType<X,IndexedArg::index> >
   struct ComputeChainD1 :
-          Detail::ComputeChainD1Impl<F,IndexedX,Checks::Has::MemFn::d1<F,IndexedArg>::value && X::present,
-            Checks::Has::MemFn::d1_with_index<F,IndexedArg>::value>
+          Detail::ComputeChainD1Impl<F,IndexedX,concept::Has::MemFn::d1<F,IndexedArg>::value && X::present,
+            concept::Has::MemFn::d1_with_index<F,IndexedArg>::value>
   {
     ComputeChainD1(F const& f, X const& x)
-      : Detail::ComputeChainD1Impl<F,IndexedX,Checks::Has::MemFn::d1<F,IndexedArg>::value && X::present,
-          Checks::Has::MemFn::d1_with_index<F,IndexedArg>::value>(f,x)
+      : Detail::ComputeChainD1Impl<F,IndexedX,concept::Has::MemFn::d1<F,IndexedArg>::value && X::present,
+          concept::Has::MemFn::d1_with_index<F,IndexedArg>::value>(f,x)
     {}
   };
 
@@ -170,15 +170,15 @@ namespace funcy
              class IndexedY = IndexedType<Y,IndexedArgY::index> >
   struct ComputeChainD2
       : Detail::ComputeChainD2Impl<F,IndexedX,IndexedY,
-          Checks::Has::MemFn::d2<F,IndexedArgX,IndexedArgY>::value &&
+          concept::Has::MemFn::d2<F,IndexedArgX,IndexedArgY>::value &&
           X::present && Y::present,
-          Checks::Has::MemFn::d2_with_index<F,IndexedArgX,IndexedArgY>::value>
+          concept::Has::MemFn::d2_with_index<F,IndexedArgX,IndexedArgY>::value>
   {
     ComputeChainD2(const F& f, const X& x, const Y& y)
       : Detail::ComputeChainD2Impl<F,IndexedX,IndexedY,
-          Checks::Has::MemFn::d2< F, IndexedArgX, IndexedArgY >::value &&
+          concept::Has::MemFn::d2< F, IndexedArgX, IndexedArgY >::value &&
           X::present && Y::present,
-          Checks::Has::MemFn::d2_with_index<F,IndexedArgX,IndexedArgY>::value >
+          concept::Has::MemFn::d2_with_index<F,IndexedArgX,IndexedArgY>::value >
         (f,x,y)
     {}
   };
@@ -196,15 +196,15 @@ namespace funcy
              class IndexedZ = IndexedType<Z,IndexedArgZ::index> >
   struct ComputeChainD3
       : Detail::ComputeChainD3Impl<F,IndexedX,IndexedY,IndexedZ,
-          Checks::Has::MemFn::d3<F,IndexedArgX,IndexedArgY,IndexedArgZ>::value &&
+          concept::Has::MemFn::d3<F,IndexedArgX,IndexedArgY,IndexedArgZ>::value &&
           X::present && Y::present && Z::present,
-          Checks::Has::MemFn::d3_with_index<F,IndexedArgX,IndexedArgY,IndexedArgZ>::value>
+          concept::Has::MemFn::d3_with_index<F,IndexedArgX,IndexedArgY,IndexedArgZ>::value>
   {
     ComputeChainD3(const F& f, const X& x, const Y& y, const Z& z)
       : Detail::ComputeChainD3Impl<F,IndexedX,IndexedY,IndexedZ,
-          Checks::Has::MemFn::d3<F,IndexedArgX,IndexedArgY,IndexedArgZ>::value &&
+          concept::Has::MemFn::d3<F,IndexedArgX,IndexedArgY,IndexedArgZ>::value &&
           X::present && Y::present && Z::present,
-          Checks::Has::MemFn::d3_with_index<F,IndexedArgX,IndexedArgY,IndexedArgZ>::value> (f,x,y,z)
+          concept::Has::MemFn::d3_with_index<F,IndexedArgX,IndexedArgY,IndexedArgZ>::value> (f,x,y,z)
     {}
   };
 

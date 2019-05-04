@@ -19,7 +19,7 @@ namespace texy
             return static_cast< const Function* >( this )->d0();
         }
 
-        template < class Arg, class = std::enable_if_t< !funcy::Checks::isFunction< Arg >() > >
+        template < class Arg, class = std::enable_if_t< !funcy::concept::isFunction< Arg >() > >
         decltype( auto ) operator()( const Arg& x )
         {
             static_cast< Function* >( this )->update( x );
@@ -27,7 +27,7 @@ namespace texy
         }
 
         template < class OtherFunction,
-                   class = std::enable_if_t< funcy::Checks::isFunction< OtherFunction >() > >
+                   class = std::enable_if_t< funcy::concept::isFunction< OtherFunction >() > >
         auto operator()( const OtherFunction& g )
         {
             return mathop::Chain< Function, OtherFunction >(

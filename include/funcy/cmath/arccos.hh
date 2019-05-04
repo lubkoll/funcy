@@ -75,7 +75,7 @@ namespace funcy
     @return object of type mathop::Chain<ACos,Function>
    */
   template <class Function,
-            class = std::enable_if_t<Checks::isFunction<Function>()> >
+            class = std::enable_if_t<concept::isFunction<Function>()> >
   auto acos(const Function& f)
   {
     return ACos()(f);

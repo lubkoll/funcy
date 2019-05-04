@@ -86,7 +86,7 @@ namespace texy
          * @param f function mapping into a space of square matrices
          * @return Determinant< std::decay_t<decltype(f.d0())> >(f.d0())(f)
          */
-        template < class F, std::enable_if_t< funcy::Checks::isFunction< F >() >* = nullptr >
+        template < class F, std::enable_if_t< funcy::concept::isFunction< F >() >* = nullptr >
         auto det( const F& f )
         {
             return Determinant( f.d0() )( f );

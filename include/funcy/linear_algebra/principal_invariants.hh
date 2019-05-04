@@ -16,10 +16,10 @@
 namespace funcy
 {
     /// @cond
-    namespace concepts
+    namespace concept
     {
         template < class >
-        struct MatrixConceptCheck;
+        struct IsMatrix;
     }
     /// @endcond
 
@@ -103,10 +103,10 @@ namespace funcy
          * @{ */
         /// Second principal invariant \f$ \iota_2(A)=\mathrm{tr}(\mathrm{cof}(A)) \f$ for
         /// \f$A\in\mathbb{R}^{n,n}\f$.
-        template < class Matrix, class = concepts::MatrixConceptCheck< Matrix > >
+        template < class Matrix, class = concept::IsMatrix< Matrix > >
         class SecondPrincipalInvariant
             : public Chainer<
-                  SecondPrincipalInvariant< Matrix, concepts::MatrixConceptCheck< Matrix > > >
+                  SecondPrincipalInvariant< Matrix, concept::IsMatrix< Matrix > > >
         {
         public:
             SecondPrincipalInvariant() = default;
@@ -187,7 +187,7 @@ namespace funcy
          * \iota_2(A)=\mathrm{tr}(\mathrm{cof}(A)) \f$ for \f$A\in\mathbb{R}^{n,n}\f$.
          * @return SecondPrincipalInvariant<Matrix>(A)
          */
-        template < class Matrix, std::enable_if_t< !Checks::isFunction< Matrix >() >* = nullptr >
+        template < class Matrix, std::enable_if_t< !concept::isFunction< Matrix >() >* = nullptr >
         auto i2( const Matrix& A )
         {
             return SecondPrincipalInvariant< Matrix >( A );
@@ -198,7 +198,7 @@ namespace funcy
          * \f$f:\cdot\mapsto\mathbb{R}^{n,n}\f$.
          * @return SecondPrincipalInvariant( f() )( f )
          */
-        template < class F, std::enable_if_t< Checks::isFunction< F >() >* = nullptr >
+        template < class F, std::enable_if_t< concept::isFunction< F >() >* = nullptr >
         auto i2( const F& f )
         {
             return SecondPrincipalInvariant< decay_t< decltype( f() ) > >( f() )( f );

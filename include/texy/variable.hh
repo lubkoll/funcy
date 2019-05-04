@@ -12,10 +12,10 @@ namespace texy
     /// @cond
     template < int, int >
     struct Variable;
-    namespace concepts
+    namespace concept
     {
         template < class >
-        struct FunctionConceptCheck;
+        struct IsFunction;
     }
 
     namespace VariableDetail
@@ -197,7 +197,7 @@ namespace texy
     template < class F, int id >
     using Variable_t = std::string;
 
-    namespace Checks
+    namespace concept
     {
         /** @addtogroup ConceptCheck
          *  @{ */

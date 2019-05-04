@@ -389,7 +389,7 @@ namespace funcy
       @param f function mapping into a scalar space
       @return object of type mathop::Chain<Sqrt,Function>
      */
-    template < class Function, class = std::enable_if_t< Checks::isFunction< Function >() > >
+    template < class Function, class = std::enable_if_t< concept::isFunction< Function >() > >
     auto sqrt( const Function& f )
     {
         return Sqrt()( f );
@@ -400,7 +400,7 @@ namespace funcy
       @param f function mapping into a scalar space
       @return object of type mathop::Chain<Cbrt,Function>
      */
-    template < class Function, class = std::enable_if_t< Checks::isFunction< Function >() > >
+    template < class Function, class = std::enable_if_t< concept::isFunction< Function >() > >
     auto cbrt( const Function& f )
     {
         return Cbrt()( f );
@@ -411,7 +411,7 @@ namespace funcy
       @param f function mapping into a scalar space
       @return object of type mathop::Chain<Cbrt2,Function>
      */
-    template < class Function, class = std::enable_if_t< Checks::isFunction< Function >() > >
+    template < class Function, class = std::enable_if_t< concept::isFunction< Function >() > >
     auto cbrt2( const Function& f )
     {
         return Cbrt2()( f );
@@ -425,7 +425,7 @@ namespace funcy
       @return object of type mathop::Chain< Pow<dividend,divisor> , Function >
      */
     template < int k, int l, class Function,
-               class = std::enable_if_t< Checks::isFunction< Function >() > >
+               class = std::enable_if_t< concept::isFunction< Function >() > >
     auto pow( const Function& f )
     {
         return Pow< k, l >()( f );
@@ -437,7 +437,7 @@ namespace funcy
       @tparam k exponent
       @return object of type mathop::Chain< Pow<dividend,divisor> , Function >
      */
-    template < int k, class Function, class = std::enable_if_t< Checks::isFunction< Function >() > >
+    template < int k, class Function, class = std::enable_if_t< concept::isFunction< Function >() > >
     auto pow( const Function& f )
     {
         return Pow< k >()( f );

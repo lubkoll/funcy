@@ -71,7 +71,7 @@ namespace funcy
       @param f function mapping into a scalar space
       @return object of type mathop::Chain<Cos,Function>
      */
-    template < class Function, class = std::enable_if_t< Checks::isFunction< Function >() > >
+    template < class Function, class = std::enable_if_t< concept::isFunction< Function >() > >
     auto cos( const Function& f )
     {
         return Cos()( f );

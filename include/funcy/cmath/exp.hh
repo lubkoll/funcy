@@ -108,7 +108,7 @@ namespace funcy
     @param f function mapping into a scalar space
     @return object of type mathop::Chain<Exp,Function>
    */
-  template <class Function, class = std::enable_if_t<Checks::isFunction<Function>()> >
+  template <class Function, class = std::enable_if_t<concept::isFunction<Function>()> >
   auto exp(const Function& f)
   {
     return Exp()(f);
@@ -119,7 +119,7 @@ namespace funcy
     @param f function mapping into a scalar space
     @return object of type mathop::Chain<Exp2,Function>
    */
-  template <class Function, class = std::enable_if_t<Checks::isFunction<Function>()> >
+  template <class Function, class = std::enable_if_t<concept::isFunction<Function>()> >
   auto exp2(const Function& f)
   {
     return Exp2()(f);

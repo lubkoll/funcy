@@ -270,7 +270,7 @@ namespace texy
       @param f function mapping into a scalar space
       @return object of type mathop::Chain<Sqrt,Function>
      */
-    template < class Function, class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
+    template < class Function, class = std::enable_if_t< funcy::concept::isFunction< Function >() > >
     auto sqrt( const Function& f )
     {
         return Pow< 1, 2 >()( f );
@@ -281,7 +281,7 @@ namespace texy
       @param f function mapping into a scalar space
       @return object of type mathop::Chain<Cbrt,Function>
      */
-    template < class Function, class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
+    template < class Function, class = std::enable_if_t< funcy::concept::isFunction< Function >() > >
     auto cbrt( const Function& f )
     {
         return Pow< 1, 3 >()( f );
@@ -292,7 +292,7 @@ namespace texy
       @param f function mapping into a scalar space
       @return object of type mathop::Chain<Cbrt2,Function>
      */
-    template < class Function, class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
+    template < class Function, class = std::enable_if_t< funcy::concept::isFunction< Function >() > >
     auto cbrt2( const Function& f )
     {
         return Pow< 2, 3 >()( f );
@@ -306,7 +306,7 @@ namespace texy
       @return object of type mathop::Chain< Pow<dividend,divisor> , Function >
      */
     template < int k, int l, class Function,
-               class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
+               class = std::enable_if_t< funcy::concept::isFunction< Function >() > >
     auto pow( const Function& f )
     {
         return Pow< k, l >()( f );
@@ -319,7 +319,7 @@ namespace texy
       @return object of type mathop::Chain< Pow<dividend,divisor> , Function >
      */
     template < int k, class Function,
-               class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
+               class = std::enable_if_t< funcy::concept::isFunction< Function >() > >
     auto pow( const Function& f )
     {
         return Pow< k >()( f );

@@ -15,8 +15,8 @@ namespace funcy
     /// @cond
     namespace GenerateDetail
     {
-        template < class F0, class G0, bool = Checks::isFunction< std::decay_t< F0 > >(),
-                   bool = Checks::isFunction< std::decay_t< G0 > >() >
+        template < class F0, class G0, bool = concept::isFunction< std::decay_t< F0 > >(),
+                   bool = concept::isFunction< std::decay_t< G0 > >() >
         struct SumGenerator;
 
         template < class F0, class G0 >
@@ -54,8 +54,8 @@ namespace funcy
             }
         };
 
-        template < class F0, class G0, bool = Checks::isFunction< std::decay_t< F0 > >(),
-                   bool = Checks::isFunction< std::decay_t< G0 > >(),
+        template < class F0, class G0, bool = concept::isFunction< std::decay_t< F0 > >(),
+                   bool = concept::isFunction< std::decay_t< G0 > >(),
                    bool = is_arithmetic< std::decay_t< F0 > >::value,
                    bool = is_arithmetic< std::decay_t< G0 > >::value >
         struct ProductGenerator;
@@ -117,8 +117,8 @@ namespace funcy
             }
         };
 
-        template < class F0, class G0, bool = Checks::isFunction< std::decay_t< F0 > >(),
-                   bool = Checks::isFunction< std::decay_t< G0 > >() >
+        template < class F0, class G0, bool = concept::isFunction< std::decay_t< F0 > >(),
+                   bool = concept::isFunction< std::decay_t< G0 > >() >
         struct DotGenerator;
 
         template < class F0, class G0 >
@@ -165,8 +165,8 @@ namespace funcy
      * wrap it into Finalize to generate missing derivatives.
      */
     template < class F, class G,
-               std::enable_if_t< Checks::isFunction< std::decay_t< F > >() ||
-                                 Checks::isFunction< std::decay_t< G > >() >* = nullptr >
+               std::enable_if_t< concept::isFunction< std::decay_t< F > >() ||
+                                 concept::isFunction< std::decay_t< G > >() >* = nullptr >
     auto operator+( F&& f, G&& g )
     {
         return GenerateDetail::SumGenerator< F, G >::apply( std::forward< F >( f ),
@@ -180,8 +180,8 @@ namespace funcy
      * wrap it into Finalize to generate missing derivatives.
      */
     template < class F, class G,
-               std::enable_if_t< Checks::isFunction< std::decay_t< F > >() ||
-                                 Checks::isFunction< std::decay_t< G > >() >* = nullptr >
+               std::enable_if_t< concept::isFunction< std::decay_t< F > >() ||
+                                 concept::isFunction< std::decay_t< G > >() >* = nullptr >
     auto operator*( F&& f, G&& g )
     {
         return GenerateDetail::ProductGenerator< std::decay_t< F >, std::decay_t< G > >::apply(
@@ -195,8 +195,8 @@ namespace funcy
      * wrap it into Finalize to generate missing derivatives.
      */
     template < class F, class G,
-               std::enable_if_t< Checks::isFunction< std::decay_t< F > >() ||
-                                 Checks::isFunction< std::decay_t< G > >() >* = nullptr >
+               std::enable_if_t< concept::isFunction< std::decay_t< F > >() ||
+                                 concept::isFunction< std::decay_t< G > >() >* = nullptr >
     auto dot( F&& f, G&& g )
     {
         return GenerateDetail::DotGenerator< F, G >::apply( std::forward< F >( f ),
@@ -209,7 +209,7 @@ namespace funcy
      * If the resulting type represents a polynomial of order smaller than two, than you need to
      * wrap it into Finalize to generate missing derivatives.
      */
-    template < class F, std::enable_if_t< Checks::isFunction< std::decay_t< F > >() >* = nullptr >
+    template < class F, std::enable_if_t< concept::isFunction< std::decay_t< F > >() >* = nullptr >
     auto operator^( F&& f, int k )
     {
         if ( k != 2 )
@@ -226,7 +226,7 @@ namespace funcy
      * If the resulting type represents a polynomial of order smaller than two, than you need to
      * wrap it into Finalize to generate missing derivatives.
      */
-    template < class F, std::enable_if_t< Checks::isFunction< std::decay_t< F > >() >* = nullptr >
+    template < class F, std::enable_if_t< concept::isFunction< std::decay_t< F > >() >* = nullptr >
     auto squared( F&& f )
     {
         return mathop::Squared< std::decay_t< F > >( std::forward< F >( f ) );
@@ -241,11 +241,11 @@ namespace funcy
      */
 
     template < class F, class G,
-               std::enable_if_t< Checks::isFunction< std::decay_t< F > >() &&
-                                 Checks::isFunction< std::decay_t< G > >() >* = nullptr >
+               std::enable_if_t< concept::isFunction< std::decay_t< F > >() &&
+                                 concept::isFunction< std::decay_t< G > >() >* = nullptr >
     auto operator<<( F&& f, G&& g )
     {
-        static_assert( !Checks::Has::variable< std::decay_t< F > >(),
+        static_assert( !concept::Has::variable< std::decay_t< F > >(),
                        "Independent variables can not be on the left side of the chain operator." );
         return mathop::Chain< std::decay_t< F >, std::decay_t< G > >(
             std::forward< F >( f ), std::forward< G >( g ) );
@@ -258,8 +258,8 @@ namespace funcy
      * wrap it into Finalize to generate missing derivatives.
      */
     template < class F, class G,
-               std::enable_if_t< Checks::isFunction< std::decay_t< F > >() ||
-                                 Checks::isFunction< std::decay_t< G > >() >* = nullptr >
+               std::enable_if_t< concept::isFunction< std::decay_t< F > >() ||
+                                 concept::isFunction< std::decay_t< G > >() >* = nullptr >
     auto operator-( F&& f, G&& g )
     {
         return std::forward< F >( f ) + ( -1 * std::forward< G >( g ) );

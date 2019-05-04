@@ -20,7 +20,7 @@ namespace funcy
     }
 
     template < class Arg ,
-               class = std::enable_if_t< !Checks::isFunction<Arg>() > >
+               class = std::enable_if_t< !concept::isFunction<Arg>() > >
     decltype(auto) operator()(const Arg& x)
     {
       static_cast<Function*>(this)->update(x);
@@ -28,7 +28,7 @@ namespace funcy
     }
 
     template < class OtherFunction ,
-               class = std::enable_if_t< Checks::isFunction<OtherFunction>() > >
+               class = std::enable_if_t< concept::isFunction<OtherFunction>() > >
     auto operator()(const OtherFunction& g)
     {
       return mathop::Chain<Function,OtherFunction>(*static_cast<const Function*>(this),g);

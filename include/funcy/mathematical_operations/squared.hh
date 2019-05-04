@@ -21,8 +21,8 @@ namespace funcy
          * @ingroup MathematicalOperationsGroup
          * @brief %Squared function \f$f^2\f$.
          */
-        template < class F, class = concepts::FunctionConceptCheck< F > >
-        struct Squared : Chainer< Squared< F, concepts::FunctionConceptCheck< F > > >
+        template < class F, class = concept::IsFunction< F > >
+        struct Squared : Chainer< Squared< F, concept::IsFunction< F > > >
         {
         private:
             template < class IndexedArgX, class IndexedArgY >

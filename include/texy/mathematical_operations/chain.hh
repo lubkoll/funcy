@@ -23,12 +23,12 @@ namespace texy
          * @ingroup TexifyMathematicalOperationsGroup
          *
          * @brief %Chain \f$ f\circ g \f$ of functions \f$f\f$ and \f$g\f$ of type F resp. G (F and
-         * G must satisfy the requirements of concepts::FunctionConcept).
+         * G must satisfy the requirements of concept::FunctionConcept).
          */
-        template < class F, class G, class = funcy::concepts::FunctionConceptCheck< F >,
-                   class = funcy::concepts::FunctionConceptCheck< G > >
-        struct Chain : Chainer< Chain< F, G, funcy::concepts::FunctionConceptCheck< F >,
-                                       funcy::concepts::FunctionConceptCheck< G > > >
+        template < class F, class G, class = funcy::concept::IsFunction< F >,
+                   class = funcy::concept::IsFunction< G > >
+        struct Chain : Chainer< Chain< F, G, funcy::concept::IsFunction< F >,
+                                       funcy::concept::IsFunction< G > > >
         {
         private:
             using FArg = decltype( std::declval< G >()() );

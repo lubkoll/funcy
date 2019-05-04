@@ -13,10 +13,10 @@ namespace stringy
     /// @cond
     template < int, int >
     struct Variable;
-    namespace concepts
+    namespace concept
     {
         template < class >
-        struct FunctionConceptCheck;
+        struct IsFunction;
     }
 
     namespace VariableDetail
@@ -198,7 +198,7 @@ namespace stringy
     template < class F, int id >
     using Variable_t = std::string;
 
-    namespace Checks
+    namespace concept
     {
         /** @addtogroup ConceptCheck
              *  @{ */

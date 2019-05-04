@@ -47,7 +47,7 @@ namespace texy
             return Transpose( A );
         }
 
-        template < class F, std::enable_if_t< funcy::Checks::isFunction< F >() >* = nullptr >
+        template < class F, std::enable_if_t< funcy::concept::isFunction< F >() >* = nullptr >
         auto transpose( const F& f )
         {
             return Transpose( f() )( f );

@@ -10,7 +10,7 @@
 
 namespace funcy
 {
-    namespace Checks
+    namespace concept
     {
         /** @addtogroup ConceptGroup
      *  @{ */
@@ -447,9 +447,9 @@ namespace funcy
         }
 
         /**
-     * @brief Check if object is a static vector for some type satisfying concepts::VectorConcept.
+     * @brief Check if object is a static vector for some type satisfying concept::VectorConcept.
      *
-     * Checks if number of rows is positive.
+     * concept if number of rows is positive.
      */
         template < class Arg >
         constexpr bool isConstantSize()

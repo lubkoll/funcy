@@ -27,7 +27,7 @@ namespace funcy
 
         /// Specialization for the case that matrix entries can be accessed via square brackets: A[i][j].
         template <class Matrix>
-        struct EntryOfMatrix< Matrix , void_t< Checks::Try::MemOp::SquareBracketAccessForMatrix< std::decay_t<Matrix> > > >
+        struct EntryOfMatrix< Matrix , void_t< concept::Try::MemOp::SquareBracketAccessForMatrix< std::decay_t<Matrix> > > >
         {
             template <class Index, class = std::enable_if_t< std::is_integral<Index>::value > >
             static decltype(auto) apply(Matrix& A, Index i, Index j)
@@ -49,7 +49,7 @@ namespace funcy
 
         /// Specialization for the case that vector entries can be accessed via square brackets: v[i].
         template <class Vector>
-        struct EntryOfVector< Vector , void_t< Checks::Try::MemOp::SquareBracketAccessForVector< std::decay_t<Vector> > > >
+        struct EntryOfVector< Vector , void_t< concept::Try::MemOp::SquareBracketAccessForVector< std::decay_t<Vector> > > >
         {
             template <class Index, class = std::enable_if_t< std::is_integral<Index>::value > >
             static decltype(auto) apply(Vector& v, Index i)

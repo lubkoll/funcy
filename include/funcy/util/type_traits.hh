@@ -7,7 +7,7 @@
 namespace funcy
 {
     /// @cond
-    namespace Checks
+    namespace concept
     {
         namespace Try
         {
@@ -30,7 +30,7 @@ namespace funcy
 
     /// Underlying type for expression templates of the Eigen library.
     template < class F >
-    struct Decay< F, void_t< Checks::Try::NestedType::PlainObject< F > > >
+    struct Decay< F, void_t< concept::Try::NestedType::PlainObject< F > > >
     {
         using type = typename F::PlainObject;
     };

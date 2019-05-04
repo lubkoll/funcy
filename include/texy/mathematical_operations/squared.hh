@@ -21,8 +21,8 @@ namespace texy
          * @ingroup TexifyMathematicalOperationsGroup
          * @brief %Squared function \f$f^2\f$.
          */
-        template < class F, class = funcy::concepts::FunctionConceptCheck< F > >
-        struct Squared : Chainer< Squared< F, funcy::concepts::FunctionConceptCheck< F > > >
+        template < class F, class = funcy::concept::IsFunction< F > >
+        struct Squared : Chainer< Squared< F, funcy::concept::IsFunction< F > > >
         {
         private:
             template < class IndexedArgX, class IndexedArgY >

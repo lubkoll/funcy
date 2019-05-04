@@ -110,14 +110,14 @@ namespace stringy
         };
 
         template < class Function,
-                   class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
+                   class = std::enable_if_t< funcy::concept::isFunction< Function >() > >
         auto exp( const Function& f )
         {
             return Exp()( f );
         }
 
         template < class Function,
-                   class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
+                   class = std::enable_if_t< funcy::concept::isFunction< Function >() > >
         auto exp2( const Function& f )
         {
             return Exp2()( f );

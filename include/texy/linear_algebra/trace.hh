@@ -51,7 +51,7 @@ namespace texy
             return Trace( A );
         }
 
-        template < class F, std::enable_if_t< funcy::Checks::isFunction< F >() >* = nullptr >
+        template < class F, std::enable_if_t< funcy::concept::isFunction< F >() >* = nullptr >
         auto trace( const F& f )
         {
             return Trace( f() )( f );

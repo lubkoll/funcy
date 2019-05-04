@@ -18,7 +18,7 @@ namespace funcy
 
     /// Compute tensor product \f$ M = v \otimes w \f$.
     template <class Matrix, class Vector1, class Vector2,
-              std::enable_if_t<Checks::isConstantSize<Matrix>()>* = nullptr>
+              std::enable_if_t<concept::isConstantSize<Matrix>()>* = nullptr>
     Matrix tensorProduct(const Vector1& v, const Vector2& w)
     {
       auto result = zero<Matrix>();

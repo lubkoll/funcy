@@ -22,7 +22,7 @@ namespace funcy
     namespace Detail
     {
       template <class Matrix, class TransposedMatrix = typename GetTransposed<Matrix>::type,
-                std::enable_if_t<std::is_same<Matrix,TransposedMatrix>::value && Checks::isConstantSize<Matrix>()>* = nullptr>
+                std::enable_if_t<std::is_same<Matrix,TransposedMatrix>::value && concept::isConstantSize<Matrix>()>* = nullptr>
       TransposedMatrix transpose(Matrix A)
       {
         auto a = at(A,0,0);
@@ -39,7 +39,7 @@ namespace funcy
 
       /// Compute transpose of non-square matrix.
       template <class Matrix, class TransposedMatrix = Transposed_t<Matrix>,
-                std::enable_if_t<!std::is_same<Matrix,TransposedMatrix>::value && Checks::isConstantSize<Matrix>()>* = nullptr >
+                std::enable_if_t<!std::is_same<Matrix,TransposedMatrix>::value && concept::isConstantSize<Matrix>()>* = nullptr >
       TransposedMatrix transpose(const Matrix& A)
       {
         TransposedMatrix B = zero<TransposedMatrix>();
@@ -52,7 +52,7 @@ namespace funcy
 
       /// Compute transpose of square matrix.
       template <class Matrix ,
-                std::enable_if_t<!Checks::isConstantSize<Matrix>()>* = nullptr >
+                std::enable_if_t<!concept::isConstantSize<Matrix>()>* = nullptr >
       Matrix transpose(Matrix A)
       {
         assert(rows(A) == cols(A));
@@ -73,13 +73,13 @@ namespace funcy
 
     /** @addtogroup LinearAlgebraGroup
      *  @{ */
-    template < class Matrix, class = concepts::MatrixConceptCheck<Matrix> >
+    template < class Matrix, class = concept::IsMatrix<Matrix> >
     class Transpose;
 
     /// Represents transposition of constant-size matrices.
     template <class Matrix>
-    class Transpose< Matrix, concepts::MatrixConceptCheck<Matrix> >
-        : public Chainer< Transpose< Matrix, concepts::MatrixConceptCheck<Matrix> > >
+    class Transpose< Matrix, concept::IsMatrix<Matrix> >
+        : public Chainer< Transpose< Matrix, concept::IsMatrix<Matrix> > >
     {
     public:
       explicit Transpose( const Matrix& A ) {
@@ -103,7 +103,7 @@ namespace funcy
         using type = Matrix;
       };
 
-      typename std::conditional< Checks::isConstantSize<Matrix>(), GetTransposed<Matrix>, WrappedMatrix >::type::type AT_;
+      typename std::conditional< concept::isConstantSize<Matrix>(), GetTransposed<Matrix>, WrappedMatrix >::type::type AT_;
     };
 
     /**
@@ -112,7 +112,7 @@ namespace funcy
      * \return Transpose<Matrix>(A)
      */
     template <class Matrix,
-              std::enable_if_t<!Checks::isFunction<Matrix>()>* = nullptr>
+              std::enable_if_t<!concept::isFunction<Matrix>()>* = nullptr>
     auto transpose(const Matrix& A)
     {
       return Transpose<Matrix>( A );
@@ -125,7 +125,7 @@ namespace funcy
      * \return Transpose< decay_t<decltype(f())> >(f())( f )
      */
     template <class F,
-              std::enable_if_t<Checks::isFunction<F>() >* = nullptr>
+              std::enable_if_t<concept::isFunction<F>() >* = nullptr>
     auto transpose(const F& f)
     {
       return Transpose< decay_t<decltype(f())> >( f() )( f );

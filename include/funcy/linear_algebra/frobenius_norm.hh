@@ -20,7 +20,7 @@ namespace funcy
         namespace FrobeniusDetail
         {
             template <class Matrix,
-                      std::enable_if_t<Checks::isConstantSize<Matrix>()>* = nullptr >
+                      std::enable_if_t<concept::isConstantSize<Matrix>()>* = nullptr >
             inline auto computeScalarProduct(const Matrix& A, const Matrix& B)
             {
                 using Index = decltype(rows<Matrix>());
@@ -32,7 +32,7 @@ namespace funcy
             }
 
             template <class Matrix,
-                      std::enable_if_t<!Checks::isConstantSize<Matrix>()>* = nullptr >
+                      std::enable_if_t<!concept::isConstantSize<Matrix>()>* = nullptr >
             inline auto computeScalarProduct(const Matrix& A, const Matrix& B)
             {
                 using Index = decltype(rows(A));
@@ -47,7 +47,7 @@ namespace funcy
 
         /// Compute squared Frobenius norm \f$ \|A\|^2 = A\negthinspace : \negthinspace A = \mathrm{tr}(A^TA) = \sum_{i,j} A_{ij}^2. \f$
         template <class Matrix,
-                  class = concepts::MatrixConceptCheck<Matrix> >
+                  class = concept::IsMatrix<Matrix> >
         struct SquaredFrobeniusNorm : Chainer< SquaredFrobeniusNorm<Matrix> >
         {
             SquaredFrobeniusNorm() = default;
@@ -91,7 +91,7 @@ namespace funcy
 
         /// Generate Frobenius norm \f$ \|A\| = \sqrt{A\negthinspace : \negthinspace A }= \sqrt{\mathrm{tr}(A^TA)} = \sqrt{\sum_{i,j} A_{ij}^2}. \f$
         template <class Matrix,
-                  std::enable_if_t<!Checks::isFunction<Matrix>()>* = nullptr>
+                  std::enable_if_t<!concept::isFunction<Matrix>()>* = nullptr>
         auto frobeniusNorm(const Matrix& A)
         {
             return FrobeniusNorm<Matrix>(A);
@@ -99,7 +99,7 @@ namespace funcy
 
         /// Generate Frobenius norm \f$ \|A\| = \sqrt{A\negthinspace : \negthinspace A }= \sqrt{\mathrm{tr}(A^TA)} = \sqrt{\sum_{i,j} A_{ij}^2}. \f$
         template <class F,
-                  std::enable_if_t<Checks::isFunction<F>()>* = nullptr>
+                  std::enable_if_t<concept::isFunction<F>()>* = nullptr>
         auto frobeniusNorm(const F& f)
         {
             return FrobeniusNorm< std::decay_t<decltype(f.d0())> >(f.d0())(f);

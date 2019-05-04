@@ -59,8 +59,8 @@ namespace funcy
 
 
     /// %Trace of a matrix, i.e. sum of diagonal elements.
-    template <class Matrix, class = concepts::SquareMatrixConceptCheck<Matrix> >
-    struct ConstantSizeTrace : Chainer< ConstantSizeTrace< Matrix , concepts::SquareMatrixConceptCheck<Matrix> > >
+    template <class Matrix, class = concept::SquareIsMatrix<Matrix> >
+    struct ConstantSizeTrace : Chainer< ConstantSizeTrace< Matrix , concept::SquareIsMatrix<Matrix> > >
     {
       ConstantSizeTrace() = default;
 
@@ -139,7 +139,7 @@ namespace funcy
 
     /// %Trace of a matrix (sum of diagonal elements).
     template< class Matrix >
-    using Trace = std::conditional_t< Checks::isConstantSize<Matrix>() , ConstantSizeTrace<Matrix> , DynamicSizeTrace<Matrix> >;
+    using Trace = std::conditional_t< concept::isConstantSize<Matrix>() , ConstantSizeTrace<Matrix> , DynamicSizeTrace<Matrix> >;
 
     /**
      * \brief Generate \f$\mathrm{tr}(A)\in\mathbb{R}^{n,n}\f$.
@@ -147,7 +147,7 @@ namespace funcy
      * \return Trace<Matrix>(A)
      */
     template <class Matrix,
-              std::enable_if_t<!Checks::isFunction<Matrix>()>* = nullptr>
+              std::enable_if_t<!concept::isFunction<Matrix>()>* = nullptr>
     auto trace(const Matrix& A)
     {
       return Trace<Matrix>(A);
@@ -160,7 +160,7 @@ namespace funcy
      * \return Trace< std::decay_t<decltype(f())> >(f())( f )
      */
     template <class F,
-              std::enable_if_t<Checks::isFunction<F>() >* = nullptr>
+              std::enable_if_t<concept::isFunction<F>() >* = nullptr>
     auto trace(const F& f)
     {
       return Trace< decay_t<decltype(f())> >( f() )( f );

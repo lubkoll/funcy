@@ -127,7 +127,7 @@ namespace texy
       @param f function mapping into a scalar space
       @return object of type mathop::Chain<Exp,Function>
      */
-    template < class Function, class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
+    template < class Function, class = std::enable_if_t< funcy::concept::isFunction< Function >() > >
     auto exp( const Function& f )
     {
         return Exp()( f );
@@ -138,7 +138,7 @@ namespace texy
       @param f function mapping into a scalar space
       @return object of type mathop::Chain<Exp2,Function>
      */
-    template < class Function, class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
+    template < class Function, class = std::enable_if_t< funcy::concept::isFunction< Function >() > >
     auto exp2( const Function& f )
     {
         return Exp2()( f );

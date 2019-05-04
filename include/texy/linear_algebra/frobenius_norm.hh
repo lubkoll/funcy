@@ -86,7 +86,7 @@ namespace texy
 
         /// Generate Frobenius norm \f$ \|A\| = \sqrt{A\negthinspace : \negthinspace A }=
         /// \sqrt{\mathrm{tr}(A^TA)} = \sqrt{\sum_{i,j} A_{ij}^2}. \f$
-        template < class F, std::enable_if_t< funcy::Checks::isFunction< F >() >* = nullptr >
+        template < class F, std::enable_if_t< funcy::concept::isFunction< F >() >* = nullptr >
         auto frobeniusNorm( const F& f )
         {
             return FrobeniusNorm( f.d0() )( f );

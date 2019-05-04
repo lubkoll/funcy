@@ -21,12 +21,12 @@ namespace texy
         //         * @ingroup MathematicalOperationsGroup
         //         * @brief %Dot \f$f \cdot g\f$ of functions of type F and G (F and G must satisfy
         //         the
-        //         * requirements of concepts::FunctionConcept).
+        //         * requirements of concept::FunctionConcept).
         //         */
-        //        template < class F, class G, class = concepts::FunctionConceptCheck< F >,
-        //                   class = concepts::FunctionConceptCheck< G > >
-        //        struct Dot : Chainer< Dot< F, G, concepts::FunctionConceptCheck< F >,
-        //                                   concepts::FunctionConceptCheck< G > > >
+        //        template < class F, class G, class = concept::IsFunction< F >,
+        //                   class = concept::IsFunction< G > >
+        //        struct Dot : Chainer< Dot< F, G, concept::IsFunction< F >,
+        //                                   concept::IsFunction< G > > >
         //        {
         //        private:
         //            template < class IndexedArg >

@@ -23,12 +23,12 @@ namespace funcy
          * @ingroup MathematicalOperationsGroup
          *
          * @brief %Chain \f$ f\circ g \f$ of functions \f$f\f$ and \f$g\f$ of type F resp. G (F and
-         * G must satisfy the requirements of concepts::FunctionConcept).
+         * G must satisfy the requirements of concept::FunctionConcept).
          */
-        template < class F, class G, class = concepts::FunctionConceptCheck< F >,
-                   class = concepts::FunctionConceptCheck< G > >
-        struct Chain : Chainer< Chain< F, G, concepts::FunctionConceptCheck< F >,
-                                       concepts::FunctionConceptCheck< G > > >
+        template < class F, class G, class = concept::IsFunction< F >,
+                   class = concept::IsFunction< G > >
+        struct Chain : Chainer< Chain< F, G, concept::IsFunction< F >,
+                                       concept::IsFunction< G > > >
         {
         private:
             using FArg = decltype( std::declval< G >()() );

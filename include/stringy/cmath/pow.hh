@@ -253,33 +253,33 @@ namespace stringy
         std::string x;
     };
 
-    template < class Function, class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
+    template < class Function, class = std::enable_if_t< funcy::concept::isFunction< Function >() > >
     auto sqrt( const Function& f )
     {
         return Pow< 1, 2 >()( f );
     }
 
-    template < class Function, class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
+    template < class Function, class = std::enable_if_t< funcy::concept::isFunction< Function >() > >
     auto cbrt( const Function& f )
     {
         return Pow< 1, 3 >()( f );
     }
 
-    template < class Function, class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
+    template < class Function, class = std::enable_if_t< funcy::concept::isFunction< Function >() > >
     auto cbrt2( const Function& f )
     {
         return Pow< 2, 3 >()( f );
     }
 
     template < int k, int l, class Function,
-               class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
+               class = std::enable_if_t< funcy::concept::isFunction< Function >() > >
     auto pow( const Function& f )
     {
         return Pow< k, l >()( f );
     }
 
     template < int k, class Function,
-               class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
+               class = std::enable_if_t< funcy::concept::isFunction< Function >() > >
     auto pow( const Function& f )
     {
         return Pow< k >()( f );

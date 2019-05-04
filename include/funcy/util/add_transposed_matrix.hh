@@ -16,7 +16,7 @@ namespace funcy
    * @return \f$A+A^T\f$
    */
   template <class Matrix ,
-            std::enable_if_t<Checks::isConstantSize<Matrix>()>* = nullptr >
+            std::enable_if_t<concept::isConstantSize<Matrix>()>* = nullptr >
   Matrix addTransposed(Matrix& A)
   {
     using linalg::dim;
@@ -33,7 +33,7 @@ namespace funcy
    * @return \f$A+A^T\f$
    */
   template <class Matrix ,
-            std::enable_if_t<!Checks::isConstantSize<Matrix>()>* = nullptr >
+            std::enable_if_t<!concept::isConstantSize<Matrix>()>* = nullptr >
   Matrix addTransposed(Matrix& A)
   {
     using linalg::rows;

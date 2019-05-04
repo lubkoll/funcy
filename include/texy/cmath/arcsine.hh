@@ -91,7 +91,7 @@ namespace texy
       @param f function mapping into a scalar space
       @return object of type mathop::Chain<ASin,Function>
      */
-    template < class Function, class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
+    template < class Function, class = std::enable_if_t< funcy::concept::isFunction< Function >() > >
     auto asin( const Function& f )
     {
         return ASin()( f );

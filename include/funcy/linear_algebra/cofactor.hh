@@ -67,8 +67,8 @@ namespace funcy
      * \f$ A^\#_ij \f$ is obtained from \f$ A \f$ by deleting the \f$i\f$-th row and \f$ j \f$-th column.
      */
     template < int row , int col , class Matrix ,
-               std::enable_if_t<Checks::isConstantSize<Matrix>()>* = nullptr ,
-               class = concepts::MatrixConceptCheck<Matrix> >
+               std::enable_if_t<concept::isConstantSize<Matrix>()>* = nullptr ,
+               class = concept::IsMatrix<Matrix> >
     auto computeCofactor(Matrix const& A)
     {
       static_assert( dim<Matrix>() == 2 || dim<Matrix>() == 3 ,
@@ -83,8 +83,8 @@ namespace funcy
      * \f$ A^\#_ij \f$ is obtained from \f$ A \f$ by deleting the \f$i\f$-th row and \f$ j \f$-th column.
      */
     template < int row , int col , class Matrix ,
-               std::enable_if_t<!Checks::isConstantSize<Matrix>()>* = nullptr ,
-               class = concepts::MatrixConceptCheck<Matrix> >
+               std::enable_if_t<!concept::isConstantSize<Matrix>()>* = nullptr ,
+               class = concept::IsMatrix<Matrix> >
     auto computeCofactor(Matrix const& A)
     {
       assert( ( rows(A)==2 && cols(A)==2 ) || ( rows(A)==3 && cols(A)==3) );
@@ -101,8 +101,8 @@ namespace funcy
      * In this case this function can also used to compute the second directional derivative in directions \f$ A \f$ and \f$ B \f$.
      */
     template < int row , int col , class Matrix ,
-               std::enable_if_t<Checks::isConstantSize<Matrix>()>* = nullptr ,
-               class = concepts::MatrixConceptCheck<Matrix> >
+               std::enable_if_t<concept::isConstantSize<Matrix>()>* = nullptr ,
+               class = concept::IsMatrix<Matrix> >
     auto computeCofactorDirectionalDerivative(Matrix const& A, Matrix const& B)
     {
       static_assert( dim<Matrix>() == 2 || dim<Matrix>() == 3 ,
@@ -119,8 +119,8 @@ namespace funcy
      * In this case this function can also used to compute the second directional derivative in directions \f$ A \f$ and \f$ B \f$.
      */
     template < int row , int col , class Matrix ,
-               std::enable_if_t<!Checks::isConstantSize<Matrix>()>* = nullptr ,
-               class = concepts::MatrixConceptCheck<Matrix> >
+               std::enable_if_t<!concept::isConstantSize<Matrix>()>* = nullptr ,
+               class = concept::IsMatrix<Matrix> >
     auto computeCofactorDirectionalDerivative(Matrix const& A, Matrix const& B)
     {
       assert( ( rows(A)==2 && cols(A)==2 ) || ( rows(A)==3 && cols(A)==3) );

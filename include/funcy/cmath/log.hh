@@ -167,7 +167,7 @@ namespace funcy
     @return object of type mathop::Chain<Log,Function>
    */
   template <class Function,
-            class = std::enable_if_t<Checks::isFunction<Function>()> >
+            class = std::enable_if_t<concept::isFunction<Function>()> >
   auto ln(const Function& f)
   {
     return LN()(f);
@@ -179,7 +179,7 @@ namespace funcy
     @return object of type mathop::Chain<Log10,Function>
    */
   template <class Function,
-            class = std::enable_if_t<Checks::isFunction<Function>()> >
+            class = std::enable_if_t<concept::isFunction<Function>()> >
   auto log10(const Function& f)
   {
     return Log10()(f);
@@ -191,7 +191,7 @@ namespace funcy
     @return object of type mathop::Chain<Log2,Function>
    */
   template <class Function,
-            class = std::enable_if_t<Checks::isFunction<Function>()> >
+            class = std::enable_if_t<concept::isFunction<Function>()> >
   auto log2(const Function& f)
   {
     return Log2()(f);

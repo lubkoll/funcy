@@ -18,12 +18,12 @@ namespace texy
         /**
          * @ingroup TexifyMathematicalOperationsGroup
          * @brief %Product \f$fg\f$ of functions of type F and G (F and G must satisfy the
-         * requirements of concepts::FunctionConcept).
+         * requirements of concept::FunctionConcept).
          */
-        template < class F, class G, class = funcy::concepts::FunctionConceptCheck< F >,
-                   class = funcy::concepts::FunctionConceptCheck< G > >
-        struct Product : Chainer< Product< F, G, funcy::concepts::FunctionConceptCheck< F >,
-                                           funcy::concepts::FunctionConceptCheck< G > > >
+        template < class F, class G, class = funcy::concept::IsFunction< F >,
+                   class = funcy::concept::IsFunction< G > >
+        struct Product : Chainer< Product< F, G, funcy::concept::IsFunction< F >,
+                                           funcy::concept::IsFunction< G > > >
         {
         private:
             template < class IndexedArg >

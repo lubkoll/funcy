@@ -12,7 +12,7 @@
 namespace funcy
 {
   /// @cond
-  namespace Checks
+  namespace concept
   {
     template <class Matrix>
     using TryCallToZeroes = decltype(std::declval<Matrix>().zeros());
@@ -35,7 +35,7 @@ namespace funcy
 
   /// Specialization for the case that a matrix can be set to zero by calling the member function fill(0).
   template <class Matrix>
-  struct Zero< Matrix , void_t<Checks::TryCallToFill<Matrix> > >
+  struct Zero< Matrix , void_t<concept::TryCallToFill<Matrix> > >
   {
     /// @return zero matrix
     static Matrix generate()
@@ -58,7 +58,7 @@ namespace funcy
    * @return constant size zero matrix
    */
   template <class Matrix,
-            class = std::enable_if_t<Checks::isConstantSize<Matrix>() || is_arithmetic<Matrix>::value> >
+            class = std::enable_if_t<concept::isConstantSize<Matrix>() || is_arithmetic<Matrix>::value> >
   Matrix zero()
   {
     return Zero<Matrix>::generate();
@@ -69,7 +69,7 @@ namespace funcy
    * @return dynamic size zero matrix
    */
   template <class Matrix,
-            class = std::enable_if_t<!Checks::isConstantSize<Matrix>() && !is_arithmetic<Matrix>::value> >
+            class = std::enable_if_t<!concept::isConstantSize<Matrix>() && !is_arithmetic<Matrix>::value> >
   constexpr Matrix zero(int rows, int cols)
   {
     Matrix m(rows,cols);

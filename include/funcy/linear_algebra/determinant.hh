@@ -19,7 +19,7 @@
 namespace funcy
 {
   /// @cond
-  namespace concepts {  template <class> struct SquareMatrixConceptCheck; }
+  namespace concept {  template <class> struct SquareIsMatrix; }
   /// @endcond
 
   namespace linalg
@@ -52,12 +52,12 @@ namespace funcy
             at(dB,1,0) * ( at(dA,0,2) * at(dC,2,1) + at(dA,2,1) * at(dC,0,2) - at(dA,2,2) * at(dC,0,1) - at(dA,0,1) * at(dC,2,2) );
       }
 
-      template <class Matrix, int dim, class = concepts::SquareMatrixConceptCheck<Matrix> >
+      template <class Matrix, int dim, class = concept::SquareIsMatrix<Matrix> >
       class DeterminantImpl;
 
       template<class Matrix>
-      class DeterminantImpl< Matrix , 2 , concepts::SquareMatrixConceptCheck<Matrix> >
-          : public Chainer< DeterminantImpl<Matrix,2,concepts::SquareMatrixConceptCheck<Matrix> > >
+      class DeterminantImpl< Matrix , 2 , concept::SquareIsMatrix<Matrix> >
+          : public Chainer< DeterminantImpl<Matrix,2,concept::SquareIsMatrix<Matrix> > >
       {
       public:
         DeterminantImpl() = default;
@@ -91,8 +91,8 @@ namespace funcy
       };
 
       template <class Matrix>
-      class DeterminantImpl<Matrix,3,concepts::SquareMatrixConceptCheck<Matrix> >
-          : public Chainer< DeterminantImpl<Matrix,3,concepts::SquareMatrixConceptCheck<Matrix> > >
+      class DeterminantImpl<Matrix,3,concept::SquareIsMatrix<Matrix> >
+          : public Chainer< DeterminantImpl<Matrix,3,concept::SquareIsMatrix<Matrix> > >
       {
       public:
         DeterminantImpl() = default;
@@ -186,7 +186,7 @@ namespace funcy
 
     /// Determinant with first three derivatives.
     template < class Matrix >
-    using Determinant = std::conditional_t< Checks::isConstantSize<Matrix>() , ConstantSizeDeterminant<Matrix> , DynamicSizeDeterminant<Matrix> >;
+    using Determinant = std::conditional_t< concept::isConstantSize<Matrix>() , ConstantSizeDeterminant<Matrix> , DynamicSizeDeterminant<Matrix> >;
     /// @endcond
 
 
@@ -196,7 +196,7 @@ namespace funcy
      * @return Determinant<Matrix>(A)
      */
     template<class Matrix,
-             std::enable_if_t<!Checks::isFunction<Matrix>()>* = nullptr>
+             std::enable_if_t<!concept::isFunction<Matrix>()>* = nullptr>
     auto det(Matrix const& A)
     {
       return Determinant<Matrix>(A);
@@ -208,7 +208,7 @@ namespace funcy
      * @return Determinant< std::decay_t<decltype(f.d0())> >(f.d0())(f)
      */
     template<class F,
-             std::enable_if_t<Checks::isFunction<F>() >* = nullptr>
+             std::enable_if_t<concept::isFunction<F>() >* = nullptr>
     auto det(F const& f)
     {
       return Determinant< decay_t<decltype(f.d0())> >(f.d0())(f);

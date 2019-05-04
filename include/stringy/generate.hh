@@ -20,8 +20,8 @@ namespace texy
     //     * wrap it into Finalize to generate missing derivatives.
     //     */
     //    template < class F, class G,
-    //               std::enable_if_t< funcy::funcy::Checks::isFunction< std::decay_t< F > >() ||
-    //                                 funcy::funcy::Checks::isFunction< std::decay_t< G > >() >* =
+    //               std::enable_if_t< funcy::funcy::concept::isFunction< std::decay_t< F > >() ||
+    //                                 funcy::funcy::concept::isFunction< std::decay_t< G > >() >* =
     //                                 nullptr >
     //    auto operator+( F&& f, G&& g )
     //    {
@@ -36,8 +36,8 @@ namespace texy
     //     * wrap it into Finalize to generate missing derivatives.
     //     */
     //    template < class F, class G,
-    //               std::enable_if_t< funcy::funcy::Checks::isFunction< std::decay_t< F > >() ||
-    //                                 funcy::funcy::Checks::isFunction< std::decay_t< G > >() >* =
+    //               std::enable_if_t< funcy::funcy::concept::isFunction< std::decay_t< F > >() ||
+    //                                 funcy::funcy::concept::isFunction< std::decay_t< G > >() >* =
     //                                 nullptr >
     //    auto operator*( F&& f, G&& g )
     //    {
@@ -52,8 +52,8 @@ namespace texy
     //     * wrap it into Finalize to generate missing derivatives.
     //     */
     //    template < class F, class G,
-    //               std::enable_if_t< funcy::funcy::Checks::isFunction< std::decay_t< F > >() ||
-    //                                 funcy::funcy::Checks::isFunction< std::decay_t< G > >() >* =
+    //               std::enable_if_t< funcy::funcy::concept::isFunction< std::decay_t< F > >() ||
+    //                                 funcy::funcy::concept::isFunction< std::decay_t< G > >() >* =
     //                                 nullptr >
     //    auto dot( F&& f, G&& g )
     //    {
@@ -66,7 +66,7 @@ namespace texy
     //     to
     //     * wrap it into Finalize to generate missing derivatives.
     //     */
-    //    template < class F, std::enable_if_t< funcy::funcy::Checks::isFunction< std::decay_t< F >
+    //    template < class F, std::enable_if_t< funcy::funcy::concept::isFunction< std::decay_t< F >
     //    >() >* = nullptr >
     //    auto squared( F&& f )
     //    {
@@ -84,8 +84,8 @@ namespace texy
     //     */
 
     //    template < class F, class G,
-    //               std::enable_if_t< funcy::funcy::Checks::isFunction< std::decay_t< F > >() &&
-    //                                 funcy::funcy::Checks::isFunction< std::decay_t< G > >() >* =
+    //               std::enable_if_t< funcy::funcy::concept::isFunction< std::decay_t< F > >() &&
+    //                                 funcy::funcy::concept::isFunction< std::decay_t< G > >() >* =
     //                                 nullptr >
     //    auto operator<<( F&& f, G&& g )
     //    {
@@ -100,8 +100,8 @@ namespace texy
     //     * wrap it into Finalize to generate missing derivatives.
     //     */
     //    template < class F, class G,
-    //               std::enable_if_t< funcy::funcy::Checks::isFunction< std::decay_t< F > >() ||
-    //                                 funcy::funcy::Checks::isFunction< std::decay_t< G > >() >* =
+    //               std::enable_if_t< funcy::funcy::concept::isFunction< std::decay_t< F > >() ||
+    //                                 funcy::funcy::concept::isFunction< std::decay_t< G > >() >* =
     //                                 nullptr >
     //    auto operator-( F&& f, G&& g )
     //    {

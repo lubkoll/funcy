@@ -14,10 +14,10 @@
 namespace texy
 {
     /// @cond
-    namespace concepts
+    namespace concept
     {
         template < class >
-        struct SquareMatrixConceptChecks;
+        struct SquareIsMatrixs;
     }
     /// @endcond
 
@@ -35,7 +35,7 @@ namespace texy
         }
 
         /// Generate %deviator \f$ \mathrm{dev}\circ f\f$.
-        template < class F, std::enable_if_t< funcy::Checks::isFunction< F >() >* = nullptr >
+        template < class F, std::enable_if_t< funcy::concept::isFunction< F >() >* = nullptr >
         auto deviator( const F& f )
         {
             return deviator( f() )( f );

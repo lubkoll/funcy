@@ -69,7 +69,7 @@ namespace texy
         {
             return Cofactor( A );
         }
-        template < class F, std::enable_if_t< funcy::Checks::isFunction< F >() >* = nullptr >
+        template < class F, std::enable_if_t< funcy::concept::isFunction< F >() >* = nullptr >
         auto cof( const F& f )
         {
             return Cofactor( f.d0() )( f );

@@ -19,7 +19,7 @@ namespace funcy
      * \f$\bar\sigma = \sigma - \frac{\mathrm{tr}(\sigma)}{n}I\f$ and \f$\sigma\in\mathbb{R}^{n,n}\f$.
      */
     template <class Matrix,
-              std::enable_if_t<!Checks::isFunction<Matrix>()>* = nullptr>
+              std::enable_if_t<!concept::isFunction<Matrix>()>* = nullptr>
     auto j2(const Matrix& A)
     {
       return frobeniusNorm(A)( deviator(A) );

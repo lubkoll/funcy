@@ -1,7 +1,7 @@
 
 ## Arithmetic Types
 
-Arithmetic types that can be used in FunG have to fulfil the following requirements:
+Arithmetic types that can be used in *funcy* have to fulfil the following requirements:
 
 <h3>Requirements</h3>
 <ol>

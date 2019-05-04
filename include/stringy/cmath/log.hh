@@ -166,19 +166,19 @@ namespace stringy
         std::string ln2{"ln(2)"};
     };
 
-    template < class Function, class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
+    template < class Function, class = std::enable_if_t< funcy::concept::isFunction< Function >() > >
     auto ln( const Function& f )
     {
         return LN()( f );
     }
 
-    template < class Function, class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
+    template < class Function, class = std::enable_if_t< funcy::concept::isFunction< Function >() > >
     auto log10( const Function& f )
     {
         return Log10()( f );
     }
 
-    template < class Function, class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
+    template < class Function, class = std::enable_if_t< funcy::concept::isFunction< Function >() > >
     auto log2( const Function& f )
     {
         return Log2()( f );

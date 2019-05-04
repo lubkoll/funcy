@@ -18,10 +18,10 @@ namespace texy
         /**
          * \ingroup TexifyMathematicalOperationsGroup
          * \brief %Sum of functions of type F and G (F and G must satisfy the requirements of
-         * concepts::FunctionConcept).
+         * concept::FunctionConcept).
          */
-        template < class F, class G, class CheckF = funcy::concepts::FunctionConceptCheck< F >,
-                   class CheckG = funcy::concepts::FunctionConceptCheck< G > >
+        template < class F, class G, class CheckF = funcy::concept::IsFunction< F >,
+                   class CheckG = funcy::concept::IsFunction< G > >
         struct Sum : Chainer< Sum< F, G, CheckF, CheckG > >
         {
             /**

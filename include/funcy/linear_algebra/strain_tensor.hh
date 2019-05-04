@@ -8,7 +8,7 @@
 namespace funcy
 {
     /// @cond
-    namespace concepts { template <class> struct SquareMatrixConceptCheck; }
+    namespace concept { template <class> struct SquareIsMatrix; }
     ///@endcond
 
     /** @addtogroup LinearAlgebraGroup
@@ -21,9 +21,9 @@ namespace funcy
          *
          * Used in nonlinear material models based on the deformation gradient \f$\nabla\varphi\f$, which takes the role of \f$F\f$.
          */
-        template <class Matrix, class = concepts::SquareMatrixConceptCheck<Matrix> >
+        template <class Matrix, class = concept::SquareIsMatrix<Matrix> >
         class RightCauchyGreenStrainTensor :
-                public Chainer< RightCauchyGreenStrainTensor<Matrix , concepts::SquareMatrixConceptCheck<Matrix> > >
+                public Chainer< RightCauchyGreenStrainTensor<Matrix , concept::SquareIsMatrix<Matrix> > >
         {
         public:
             RightCauchyGreenStrainTensor() = default;
@@ -71,9 +71,9 @@ namespace funcy
          *
          * Used in nonlinear material models based on the deformation gradient \f$\nabla\varphi\f$, which takes the role of \f$F\f$.
          */
-        template <class Matrix, class = concepts::SquareMatrixConceptCheck<Matrix> >
+        template <class Matrix, class = concept::SquareIsMatrix<Matrix> >
         class LeftCauchyGreenStrainTensor :
-                public Chainer< LeftCauchyGreenStrainTensor<Matrix , concepts::SquareMatrixConceptCheck<Matrix> > >
+                public Chainer< LeftCauchyGreenStrainTensor<Matrix , concept::SquareIsMatrix<Matrix> > >
         {
         public:
             LeftCauchyGreenStrainTensor() = default;
@@ -122,7 +122,7 @@ namespace funcy
          * \return RightCauchyGreenStrainTensor<Matrix>(A)
          */
         template <class Matrix,
-                  std::enable_if_t<!Checks::isFunction<Matrix>()>* = nullptr>
+                  std::enable_if_t<!concept::isFunction<Matrix>()>* = nullptr>
         auto strainTensor(const Matrix& A)
         {
             return RightCauchyGreenStrainTensor<Matrix>{A};
@@ -135,7 +135,7 @@ namespace funcy
          * \return RightCauchyGreenStrainTensor< decay_t<decltype(f())> >(f())( f )
          */
         template <class F,
-                  std::enable_if_t<Checks::isFunction<F>()>* = nullptr>
+                  std::enable_if_t<concept::isFunction<F>()>* = nullptr>
         auto strainTensor(const F& f)
         {
             return RightCauchyGreenStrainTensor< decay_t<decltype(f())> >{ f() }( f );
@@ -148,7 +148,7 @@ namespace funcy
          * \return LeftCauchyGreenStrainTensor<Matrix>(A)
          */
         template <class Matrix,
-                  std::enable_if_t<!Checks::isFunction<Matrix>()>* = nullptr>
+                  std::enable_if_t<!concept::isFunction<Matrix>()>* = nullptr>
         auto leftStrainTensor(const Matrix& A)
         {
             return LeftCauchyGreenStrainTensor<Matrix>{A};
@@ -161,7 +161,7 @@ namespace funcy
          * \return LeftCauchyGreenStrainTensor< decay_t<decltype(f())> >(f())( f )
          */
         template <class F,
-                  std::enable_if_t<Checks::isFunction<F>()>* = nullptr>
+                  std::enable_if_t<concept::isFunction<F>()>* = nullptr>
         auto leftStrainTensor(const F& f)
         {
             return LeftCauchyGreenStrainTensor< decay_t<decltype(f())> >{ f() }( f );

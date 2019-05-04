@@ -5,7 +5,7 @@
 
 namespace funcy
 {
-  namespace Checks
+  namespace concept
   {
     /// @cond
     template <class Matrix>

@@ -110,7 +110,7 @@ namespace texy
          * \f$f:\cdot\mapsto\mathbb{R}^{n,n}\f$.
          * @return SecondPrincipalInvariant( f() )( f )
          */
-        template < class F, std::enable_if_t< funcy::Checks::isFunction< F >() >* = nullptr >
+        template < class F, std::enable_if_t< funcy::concept::isFunction< F >() >* = nullptr >
         auto i2( const F& f )
         {
             return SecondPrincipalInvariant( f() )( f );

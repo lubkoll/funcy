@@ -18,7 +18,7 @@ namespace funcy
      *  @{ */
 
     /// Compute unit matrix for the specified constant size matrix type. This requires that a corresponding specialization of Zero is provided.
-    template <class Matrix, class = std::enable_if_t<Checks::isConstantSize<Matrix>()> >
+    template <class Matrix, class = std::enable_if_t<concept::isConstantSize<Matrix>()> >
     Matrix unitMatrix()
     {
       Matrix A = zero<Matrix>();
@@ -27,7 +27,7 @@ namespace funcy
     }
 
     /// Compute unit matrix for the specified dynamic size matrix type. This requires that a corresponding specialization of Zero is provided.
-    template <class Matrix, class = std::enable_if_t<!Checks::isConstantSize<Matrix>()> >
+    template <class Matrix, class = std::enable_if_t<!concept::isConstantSize<Matrix>()> >
     Matrix unitMatrix(int rows)
     {
       Matrix A = zero<Matrix>(rows,rows);

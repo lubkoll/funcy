@@ -67,7 +67,7 @@ namespace texy
       @param f function mapping into a scalar space
       @return object of type mathop::Chain<Sin,Function>
      */
-    template < class Function, class = std::enable_if_t< funcy::Checks::isFunction< Function >() > >
+    template < class Function, class = std::enable_if_t< funcy::concept::isFunction< Function >() > >
     auto sin( const Function& f )
     {
         return Sin()( f );

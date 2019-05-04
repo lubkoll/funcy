@@ -11,10 +11,10 @@ namespace funcy
     /// @cond
     template < class, int >
     struct Variable;
-    namespace concepts
+    namespace concept
     {
         template < class >
-        struct FunctionConceptCheck;
+        struct IsFunction;
     }
 
     template < class T, class Other >
@@ -274,14 +274,14 @@ namespace funcy
         };
 
         template < template < class, class > class G, class F, int id >
-        struct VariableType< G< F, concepts::FunctionConceptCheck< F > >, id >
+        struct VariableType< G< F, concept::IsFunction< F > >, id >
         {
             using type = typename VariableType< F, id >::type;
         };
 
         template < template < class, class, class, class > class H, class F, class G, int id >
         struct VariableType<
-            H< F, G, concepts::FunctionConceptCheck< F >, concepts::FunctionConceptCheck< G > >,
+            H< F, G, concept::IsFunction< F >, concept::IsFunction< G > >,
             id >
         {
             using type = std::conditional_t<
@@ -334,7 +334,7 @@ namespace funcy
     template < class F, int id >
     using Variable_t = typename VariableDetail::VariableType< std::decay_t< F >, id >::type;
 
-    namespace Checks
+    namespace concept
     {
         /** @addtogroup ConceptCheck
      *  @{ */
