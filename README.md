@@ -90,7 +90,11 @@ funcy can work with any type that satisfies basic arithmetic requirements as des
 
 For details, and performance comparisons with other AD-libraries, see [FunG - Automatic differentiation for invariant-based modeling.](https://journals.ub.uni-heidelberg.de/index.php/ans/article/download/27477/29446)
 
-### Publications using funcy/FunG:
+### Publications:
+
+Published:
+
+* L. Lubkoll: [FunG - Automatic differentiation for invariant-based modeling.](https://journals.ub.uni-heidelberg.de/index.php/ans/article/download/27477/29446) Archive of Numerical Software, vol. 5, no. 1, 2017, pp. 169-192, DOI: 10.11588/ans.2017.1.27477
 * L. Lubkoll, A. Schiela, M. Weiser: <span class="bold">An affine covariant composite step method for optimization with PDEs as equality constraints.</span><br> Opt. Meth. Softw., 32(5), pp. 1132-1161, 2016, <a href="https://opus4.kobv.de/opus4-zib/files/5395/ZR-15-09.pdf">(Preprint)
 * L. Lubkoll: <span class="bold">An Optimal Control Approach to Implant Shape Design: Modeling, Analysis and Numerics.</span><br> Dissertation, Universität Bayreuth, 2015
 
