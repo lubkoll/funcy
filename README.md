@@ -3,9 +3,24 @@
 [![Documentation](https://codedocs.xyz/lubkoll/funcy.svg)](https://codedocs.xyz/lubkoll/funcy/)
 # funcy - automatic differentiation for biomechanical modeling
 
-[install funcy](INSTALL.md)
+## Installation
+funcy is header-only and requires no installation. To make it available in the local cmake-registry you still may find it useful install funcy using cmake.
 
-### Using funcy
+
+#### Install funcy via cmake
+```
+mkdir build
+cd build
+cmake .. -DBuildTest=ON -DCMAKE_INSTALL_PREFIX=<install-prefix>
+cmake --build . --target install
+```
+#### To include funcy in your project add this to your CMakeLists.txt:
+```
+find_package(funcy REQUIRED)
+target_link_libraries(<target> PRIVATE funcy::funcy)
+```
+
+## Using funcy
 
 The function <img src=doc/Eq1.gif title="f(x) = x^{3/2}+\sin(\sqrt{x})" /> with *funcy*:
 ```cpp
@@ -24,7 +39,7 @@ int main()
     std::cout << "f'''(4) = " << f.d3() << std::endl;
 }
 ```
-The function `finalize` simplifies usage of `f`, taking advantage of the fact that it depends on only one variable and is defined on a one-dimensional space.
+The function `finalize` simplifies usage of `f`, taking advantage of the fact that it depends on only one variable and is defined on a one-dimensional space. The following examples illustrate usage without finalize and with vector and matrix-valued arguments.
 
 A model for **nonlinear heat transfer** <img src=doc/Eq2.gif title="A(u,\nabla u)=(c+du^2)\nabla u" />:
 ```cpp
@@ -78,19 +93,19 @@ int main()
 }
 ```
 
-### Citing
+## Citing
 L. Lubkoll: [FunG - Automatic differentiation for invariant-based modeling.](https://journals.ub.uni-heidelberg.de/index.php/ans/article/download/27477/29446) Archive of Numerical Software, vol. 5, no. 1, 2017, pp. 169-192, DOI: 10.11588/ans.2017.1.27477
 
-### Compatibility
+## Compatibility
 
 funcy can work with any type that satisfies basic arithmetic requirements as described in [requirements](REQUIREMENTS.md). Particular support has been implemented for scalars, vectors and matrices, enabling *funcy* to be used with all popular matrix libraries.
 
 
-### Optimization Strategies
+## Optimization Strategies
 
 For details, and performance comparisons with other AD-libraries, see [FunG - Automatic differentiation for invariant-based modeling.](https://journals.ub.uni-heidelberg.de/index.php/ans/article/download/27477/29446)
 
-### Publications:
+## Publications:
 
 Published:
 
