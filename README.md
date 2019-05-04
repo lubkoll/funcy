@@ -22,7 +22,7 @@ target_link_libraries(<target> PRIVATE funcy::funcy)
 
 ## Using funcy
 
-The function <img src=doc/Eq1.gif title="f(x) = x^{3/2}+\sin(\sqrt{x})" /> with *funcy*:
+The function ![alt text](doc/Eq1.gif) with *funcy*:
 ```cpp
 #include <funcy/funcy.hh>
 
@@ -41,7 +41,7 @@ int main()
 ```
 The function `finalize` simplifies usage of `f`, taking advantage of the fact that it depends on only one variable and is defined on a one-dimensional space. The following examples illustrate usage without finalize and with vector and matrix-valued arguments.
 
-A model for **nonlinear heat transfer** <img src=doc/Eq2.gif title="A(u,\nabla u)=(c+du^2)\nabla u" />:
+A model for **nonlinear heat transfer** ![alt text](doc/Eq2.gif):
 ```cpp
 #include <funcy/funcy.hh>
 
@@ -66,7 +66,7 @@ int main()
 }
 ```
 
-A **complex biomechanical model** for adipose tissue, based on isotropic and anisotropic matrix invariants <img src=doc/Eq3.gif/>:
+A **complex biomechanical model** for adipose tissue, based on isotropic and anisotropic matrix invariants ![alt text](doc/Eq3.gif):
 ```cpp
 #include <funcy/funcy.hh>
 
