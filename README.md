@@ -14,6 +14,7 @@ The function <img src=doc/Eq1.gif title="f(x) = x^{3/2}+\sin(\sqrt{x})" /> with 
 int main()
 {
     using namespace funcy;
+    // qualified function to sqrt to distinguish from the c-function sqrt in math.h, commonly included in the c++-header cmath.
     const auto y = funcy::sqrt(1.);
     auto f = finalize( pow<3>(y) + sin(y) );
 
@@ -77,10 +78,23 @@ int main()
 }
 ```
 
+### Citing
+L. Lubkoll: [FunG - Automatic differentiation for invariant-based modeling.](https://journals.ub.uni-heidelberg.de/index.php/ans/article/download/27477/29446) Archive of Numerical Software, vol. 5, no. 1, 2017, pp. 169-192, DOI: 10.11588/ans.2017.1.27477
 
 ### Compatibility
 
 funcy can work with any type that satisfies basic arithmetic requirements as described in [requirements](REQUIREMENTS.md). Particular support has been implemented for scalars, vectors and matrices, enabling *funcy* to be used with all popular matrix libraries.
 
 
-[performance](PERFORMANCE.md)
+### Optimization Strategies
+
+For details, and performance comparisons with other AD-libraries, see [FunG - Automatic differentiation for invariant-based modeling.](https://journals.ub.uni-heidelberg.de/index.php/ans/article/download/27477/29446)
+
+### Publications using funcy/FunG:
+* L. Lubkoll, A. Schiela, M. Weiser: <span class="bold">An affine covariant composite step method for optimization with PDEs as equality constraints.</span><br> Opt. Meth. Softw., 32(5), pp. 1132-1161, 2016, <a href="https://opus4.kobv.de/opus4-zib/files/5395/ZR-15-09.pdf">(Preprint)
+* L. Lubkoll: <span class="bold">An Optimal Control Approach to Implant Shape Design: Modeling, Analysis and Numerics.</span><br> Dissertation, Universität Bayreuth, 2015
+
+Preprints:
+
+* A. Schiela, M. Stöcklein: <a href="https://spp1962.wias-berlin.de/preprints/097.pdf">Optimal Control of Static Contact in Finite Strain Elasticity.</a> 2018
+* M. Schaller, A. Schiela, M. Stöcklein: <a href="https://spp1962.wias-berlin.de/preprints/098.pdf">A Composite Step Method with Inexact Step Comptations for PDE Constrained Optimization.</a> 2018
