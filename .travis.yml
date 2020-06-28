@@ -1,4 +1,6 @@
-language: c++
+os: linux
+language: python
+python: "3.7"
 
 addons:
   apt:
@@ -65,6 +67,7 @@ matrix:
       osx_image: xcode8
      
 install:
+  - pip install conan
   - DEPS_DIR="${TRAVIS_BUILD_DIR}/deps"
   - mkdir -p ${DEPS_DIR} && cd ${DEPS_DIR}
   
@@ -102,30 +105,27 @@ install:
   - git clone https://github.com/eigenteam/eigen-git-mirror.git
   - cd eigen-git-mirror && mkdir build && cd build && cmake .. && sudo make install
 
-  ############################################################################
-  # Install gtest
-  ############################################################################
-  - |
-    git clone https://github.com/google/googletest.git
-    cd googletest && mkdir build && cd build && cmake -DCMAKE_CXX_FLAGS="-std=c++11" -DCMAKE_SHARED_LINKER_FLAGS="${LDFLAGS}" .. && sudo make && sudo make install
-
 
 script:
   - cd $TRAVIS_BUILD_DIR
   - mkdir build && cd build
+  - conan install .. -s compiler.libcxx=libstdc++11
+  - cmake -DFuncy_BuildTest=ON -DCMAKE_TOOLCHAIN_FILE=conan_paths.cmake ..
   - |
     if [[ "${COMPILER}" == "clang++-3.6" ]]; then
-      cmake .. -DBuildTest=ON -DCMAKE_CXX_FLAGS="-ftemplate-depth=4096"
+      cmake .. -DFuncy_BuildTest=ON -DCMAKE_TOOLCHAIN_FILE=conan_paths.cmake -DCMAKE_CXX_FLAGS="-ftemplate-depth=4096"
     else
       if [[ "${COMPUTE_COVERAGE}" == "true" ]]; then
-        cmake .. -DBuildTest=ON -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_FLAGS="-coverage"
+        cmake .. -DFuncy_BuildTest=ON -DCMAKE_TOOLCHAIN_FILE=conan_paths.cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_FLAGS="-coverage"
       else
-        cmake .. -DBuildTest=ON
+        cmake .. -DFuncy_BuildTest=ON -DCMAKE_TOOLCHAIN_FILE=conan_paths.cmake
       fi
     fi
   - | 
   - cmake --build .
-  - cmake --build . --target check
+  - cd test && ctest
+
+
 after_success:
   ############################################################################
   # Upload coverage information to coveralls.io

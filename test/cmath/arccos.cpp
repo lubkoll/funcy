@@ -1,9 +1,6 @@
-// Copyright (C) 2016 by Lars Lubkoll. All rights reserved.
-// Released under the terms of the GNU General Public License version 3 or later.
-
 #define FUNCY_ENABLE_EXCEPTIONS
 #include <gtest/gtest.h>
-#include <funcy/cmath/arccos.hh>
+#include <funcy/cmath/arccos.h>
 
 namespace
 {

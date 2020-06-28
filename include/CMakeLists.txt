@@ -1,0 +1,10 @@
+if(Funcy_Funcy)
+    add_subdirectory(funcy)
+endif()
+if(Funcy_Texy)
+    add_subdirectory(texy)
+endif()
+if(Funcy_Stringy)
+    add_subdirectory(stringy)
+endif()
+

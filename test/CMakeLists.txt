@@ -1,43 +1,70 @@
 include(CTest)
 enable_testing()
+
 find_package(GTest REQUIRED)
 find_package(Threads REQUIRED)
 find_package(Eigen3)
+
 if(EIGEN3_FOUND)
     # On travis the examples do not compile due to a strange ambiguity with functionality of Eigen:
     #  aux_source_directory(examples SRC_LIST)
-    aux_source_directory(linear_algebra SRC_LIST)
+    set(LINALG_TEST_SRCS
+        linalg/cofactor.cpp
+        linalg/determinant.cpp
+    )
 endif()
 
-aux_source_directory(cmath SRC_LIST)
-aux_source_directory(funcy SRC_LIST)
-aux_source_directory(mathematical_operations SRC_LIST)
-list(APPEND SRC_LIST
-  cmath/texify/arccos.cpp
-  cmath/texify/arcsine.cpp
-  cmath/texify/cosine.cpp
-  cmath/texify/exp.cpp
-  cmath/texify/log.cpp
-  cmath/texify/pow.cpp
-  cmath/texify/sine.cpp
-  cmath/texify/tan.cpp
-  linear_algebra/texify/cofactor.cpp
-  linear_algebra/texify/determinant.cpp
-#  linear_algebra/texify/deviator.cpp
-#  linear_algebra/texify/deviatoric_invariants.cpp
-  linear_algebra/texify/frobenius_norm.cpp
-#  linear_algebra/texify/mixed_invariants.cpp
-#  linear_algebra/texify/principal_invariants.cpp
-#  linear_algebra/texify/strain_tensor.cpp
-  linear_algebra/texify/trace.cpp
-  linear_algebra/texify/transpose.cpp
+if(Funcy_Texy)
+    set(TEXY_TEST_SRCS
+        cmath/texify/arccos.cpp
+        cmath/texify/arcsine.cpp
+        cmath/texify/cosine.cpp
+        cmath/texify/exp.cpp
+        cmath/texify/log.cpp
+        cmath/texify/pow.cpp
+        cmath/texify/sine.cpp
+        cmath/texify/tan.cpp
+        linalg/texify/cofactor.cpp
+        linalg/texify/determinant.cpp
+        linalg/texify/frobenius_norm.cpp
+        linalg/texify/trace.cpp
+        linalg/texify/transpose.cpp
+    )
+endif()
+
+add_executable(tests
+    cmath/arccos.cpp
+    cmath/arcsine.cpp
+    cmath/cosine.cpp
+    cmath/exp.cpp
+    cmath/erf.cpp
+    cmath/log.cpp
+    cmath/pow.cpp
+    cmath/sine.cpp
+    cmath/tan.cpp
+    funcy/bulk_update.cpp
+    funcy/function_interface.cpp
+    funcy/variable.cpp
+    mathop/chain.cpp
+    mathop/dot.cpp
+    mathop/max.cpp
+    mathop/min.cpp
+    mathop/product.cpp
+    mathop/scale.cpp
+    mathop/squared.cpp
+    mathop/sum.cpp
+    ${LINALG_TEST_SRCS}
+    ${TEXY_TEST_SRCS}
 )
-
-add_executable(tests ${SRC_LIST})
-target_link_libraries(tests funcy::funcy GTest::GTest GTest::Main Threads::Threads)
-if(EIGEN3_FOUND)
-    target_include_directories(tests PRIVATE ${EIGEN3_INCLUDE_DIR})
+target_link_libraries(tests Funcy::Funcy GTest::GTest GTest::Main Threads::Threads)
+if(Funcy_Texy)
+    target_link_libraries(tests Funcy::Texy)
 endif()
-add_custom_target(check COMMAND tests)
-set_property(TARGET tests PROPERTY CXX_STANDARD 14)
+if(EIGEN3_FOUND)
+    target_link_libraries(tests Eigen3::Eigen)
+endif()
+target_compile_definitions(tests PRIVATE CATCH_CONFIG_ENABLE_ALL_STRINGMAKERS)
 
+add_test(NAME tests COMMAND tests WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
+add_test(NAME tests-random COMMAND tests --order rand WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
+add_test(NAME tests-lex COMMAND tests --order lex WORKING_DIRECTORY ${CMAKE_BINARY_DIR})

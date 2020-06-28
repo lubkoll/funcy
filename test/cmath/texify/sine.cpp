@@ -1,7 +1,4 @@
-// Copyright (C) 2015 by Lars Lubkoll. All rights reserved.
-// Released under the terms of the GNU General Public License version 3 or later.
-
-#include <texy/cmath/sine.hh>
+#include <texy/cmath/sine.h>
 
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
