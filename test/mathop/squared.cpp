@@ -5,13 +5,15 @@
 #include <funcy/finalize.h>
 #include <funcy/generate.h>
 #include <funcy/variable.h>
-
-#include <gtest/gtest.h>
 #include <gmock/gmock.h>
+#include <gtest/gtest.h>
 
 using ::testing::Eq;
 
-auto StrEq = []( const auto& str ) { return Eq( str ); };
+namespace
+{
+    auto StrEq = []( const auto& str ) { return Eq( str ); };
+}
 
 TEST( SquaredTest, Update )
 {
@@ -37,14 +39,14 @@ TEST( SquaredTest, D0 )
     EXPECT_DOUBLE_EQ( fun.d0(), 16. );
 }
 
-//TEST( StringifySquaredTest, D0 )
+// TEST( StringifySquaredTest, D0 )
 //{
 //    using stringy::Pow;
 //    auto f = squared( Pow< 2 >() );
 //    EXPECT_THAT( f.d0(), StrEq( "x^2*x^2" ) );
 //}
 
-//TEST( TexifySquaredTest, D0 )
+// TEST( TexifySquaredTest, D0 )
 //{
 //    using texy::Pow;
 //    auto f = squared( Pow< 2 >() );
@@ -58,14 +60,14 @@ TEST( SquaredTest, D1 )
     EXPECT_DOUBLE_EQ( fun.d1( 1 ), 32. );
 }
 
-//TEST( StringifySquaredTest, D1 )
+// TEST( StringifySquaredTest, D1 )
 //{
 //    using stringy::Pow;
 //    auto f = funcy::finalize( squared( Pow< 2 >() ) );
 //    EXPECT_THAT( f.d1( "" ), StrEq( "2*x^2*2x" ) );
 //}
 
-//TEST( TexifySquaredTest, D1 )
+// TEST( TexifySquaredTest, D1 )
 //{
 //    using texy::Pow;
 //    auto f = funcy::finalize( squared( Pow< 2 >() ) );
@@ -79,7 +81,7 @@ TEST( SquaredTest, D2 )
     EXPECT_DOUBLE_EQ( fun.d2( 1, 1 ), 48. );
 }
 
-//TEST( StringifySquaredTest, D2 )
+// TEST( StringifySquaredTest, D2 )
 //{
 //    using stringy::Pow;
 //    auto f = funcy::finalize( squared( Pow< 2 >() ) );
@@ -93,7 +95,7 @@ TEST( SquaredTest, D3 )
     EXPECT_DOUBLE_EQ( fun.d3( 1, 1, 1 ), 48. );
 }
 
-//TEST( StringifySquaredTest, D3 )
+// TEST( StringifySquaredTest, D3 )
 //{
 //    using stringy::Pow;
 //    auto f = funcy::finalize( squared( Pow< 2 >() ) );

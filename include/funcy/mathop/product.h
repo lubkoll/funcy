@@ -1,15 +1,14 @@
 #pragma once
 
-#include <type_traits>
-#include <utility>
-
-#include <funcy/concept_check.h>
+#include <funcy/concepts.h>
 #include <funcy/util/chainer.h>
 #include <funcy/util/compute_product.h>
 #include <funcy/util/compute_sum.h>
 #include <funcy/util/derivative_wrappers.h>
 #include <funcy/util/evaluate_if_present.h>
 #include <funcy/util/indexed_type.h>
+#include <type_traits>
+#include <utility>
 
 namespace funcy
 {
@@ -20,10 +19,8 @@ namespace funcy
          * @brief %Product \f$fg\f$ of functions of type F and G (F and G must satisfy the
          * requirements of Concepts::FunctionConcept).
          */
-        template < class F, class G, class = Concepts::IsFunction< F >,
-                   class = Concepts::IsFunction< G > >
-        struct Product : Chainer< Product< F, G, Concepts::IsFunction< F >,
-                                           Concepts::IsFunction< G > > >
+        template < Function F, Function G >
+        struct Product : Chainer< Product< F, G > >
         {
         private:
             template < class IndexedArg >
@@ -163,5 +160,5 @@ namespace funcy
                 multiply_via_traits( std::declval< F >()(), std::declval< G >()() ) ) >
                 value;
         };
-    } // namespace MathematicalOperations
-} // namespace FunG
+    } // namespace mathop
+} // namespace funcy

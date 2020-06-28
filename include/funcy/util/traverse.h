@@ -1,6 +1,6 @@
 #pragma once
 
-#include <funcy/concept_check.h>
+#include <funcy/concepts.h>
 
 namespace funcy
 {
@@ -21,27 +21,23 @@ namespace funcy
         };
 
         // for Scale
-        template < template < class, class, class > class G, class Scalar, class F,
+        template < template < class, Function > class G, class Scalar, Function F,
                    template < class > class Operation, template < class, class > class Combine >
-        struct Traverse< G< Scalar, F, Concepts::IsFunction< F > >, Operation, Combine >
-            : Traverse< F, Operation, Combine >
+        struct Traverse< G< Scalar, F >, Operation, Combine > : Traverse< F, Operation, Combine >
         {
         };
 
         // for Squared
-        template < template < class, class > class G, class F, template < class > class Operation,
+        template < template < Function > class G, Function F, template < class > class Operation,
                    template < class, class > class Combine >
-        struct Traverse< G< F, Concepts::IsFunction< F > >, Operation, Combine >
-            : Traverse< F, Operation, Combine >
+        struct Traverse< G< F >, Operation, Combine > : Traverse< F, Operation, Combine >
         {
         };
 
         // For Sum, Product, Chain
-        template < template < class, class, class, class > class H, class F, class G,
+        template < template < Function, Function > class H, Function F, Function G,
                    template < class > class Operation, template < class, class > class Combine >
-        struct Traverse<
-            H< F, G, Concepts::IsFunction< F >, Concepts::IsFunction< G > >,
-            Operation, Combine >
+        struct Traverse< H< F, G >, Operation, Combine >
             : Combine< Traverse< F, Operation, Combine >, Traverse< G, Operation, Combine > >
         {
         };
@@ -57,5 +53,5 @@ namespace funcy
 
         template < class F, template < class > class Operation >
         using AnyOf = Traverse< F, Operation, Or >;
-    }
-}
+    } // namespace Meta
+} // namespace funcy

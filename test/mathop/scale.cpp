@@ -4,13 +4,15 @@
 #include <funcy/finalize.h>
 #include <funcy/generate.h>
 #include <funcy/variable.h>
-
-#include <gtest/gtest.h>
 #include <gmock/gmock.h>
+#include <gtest/gtest.h>
 
 using ::testing::Eq;
 
-auto StrEq = []( const auto& str ) { return Eq( str ); };
+namespace
+{
+    auto StrEq = []( const auto& str ) { return Eq( str ); };
+}
 
 TEST( ScaleTest, Update )
 {
@@ -36,7 +38,7 @@ TEST( ScaleTest, D0 )
     EXPECT_DOUBLE_EQ( fun.d0(), 16. );
 }
 
-//TEST( StringifyScaleTest, D0 )
+// TEST( StringifyScaleTest, D0 )
 //{
 //    using stringy::Pow;
 //    const auto fun = 2 * Pow< 3, 1 >();
@@ -50,7 +52,7 @@ TEST( ScaleTest, D1 )
     EXPECT_DOUBLE_EQ( fun.d1( 1 ), 24. );
 }
 
-//TEST( StringifyScaleTest, D1 )
+// TEST( StringifyScaleTest, D1 )
 //{
 //    using stringy::Pow;
 //    const auto fun = funcy::finalize( 2 * Pow< 3, 1 >() );
@@ -64,7 +66,7 @@ TEST( ScaleTest, D2 )
     EXPECT_DOUBLE_EQ( fun.d2( 1, 1 ), 24. );
 }
 
-//TEST( StringifyScaleTest, D2 )
+// TEST( StringifyScaleTest, D2 )
 //{
 //    using stringy::Pow;
 //    const auto fun = funcy::finalize( 2 * Pow< 3, 1 >() );
@@ -78,7 +80,7 @@ TEST( ScaleTest, D3 )
     EXPECT_DOUBLE_EQ( fun.d3( 1, 1, 1 ), 12. );
 }
 
-//TEST( StringifyScaleTest, D3 )
+// TEST( StringifyScaleTest, D3 )
 //{
 //    using stringy::Pow;
 //    auto fun = funcy::finalize( 2 * Pow< 3, 1 >() );

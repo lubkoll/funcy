@@ -1,14 +1,13 @@
 #pragma once
 
-#include <type_traits>
-#include <utility>
-
-#include <funcy/concept_check.h>
+#include <funcy/concepts.h>
 #include <funcy/util/compute_chain.h>
 #include <funcy/util/compute_sum.h>
 #include <funcy/util/derivative_wrappers.h>
 #include <funcy/util/evaluate_if_present.h>
 #include <funcy/util/indexed_type.h>
+#include <type_traits>
+#include <utility>
 
 namespace funcy
 {
@@ -25,10 +24,8 @@ namespace funcy
          * @brief %Chain \f$ f\circ g \f$ of functions \f$f\f$ and \f$g\f$ of type F resp. G (F and
          * G must satisfy the requirements of Concepts::FunctionConcept).
          */
-        template < class F, class G, class = Concepts::IsFunction< F >,
-                   class = Concepts::IsFunction< G > >
-        struct Chain : Chainer< Chain< F, G, Concepts::IsFunction< F >,
-                                       Concepts::IsFunction< G > > >
+        template < Function F, Function G >
+        struct Chain : Chainer< Chain< F, G > >
         {
         private:
             using FArg = decltype( std::declval< G >()() );
@@ -173,5 +170,5 @@ namespace funcy
             G g;
             F f;
         };
-    } // namespace MathematicalOperations
-} // namespace FunG
+    } // namespace mathop
+} // namespace funcy

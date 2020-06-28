@@ -1,9 +1,6 @@
 #pragma once
 
-#include <type_traits>
-#include <utility>
-
-#include <funcy/concept_check.h>
+#include <funcy/concepts.h>
 #include <funcy/util/chainer.h>
 #include <funcy/util/compute_product.h>
 #include <funcy/util/compute_sum.h>
@@ -12,6 +9,8 @@
 #include <funcy/util/indexed_type.h>
 #include <funcy/util/mathop_traits.h>
 #include <funcy/util/type_traits.h>
+#include <type_traits>
+#include <utility>
 
 namespace funcy
 {
@@ -21,8 +20,8 @@ namespace funcy
          * @ingroup MathematicalOperationsGroup
          * @brief %Squared function \f$f^2\f$.
          */
-        template < class F, class = Concepts::IsFunction< F > >
-        struct Squared : Chainer< Squared< F, Concepts::IsFunction< F > > >
+        template < Function F >
+        struct Squared : Chainer< Squared< F > >
         {
         private:
             template < class IndexedArgX, class IndexedArgY >
@@ -146,5 +145,5 @@ namespace funcy
                 multiply_via_traits( std::declval< F >()(), std::declval< F >()() ) ) >
                 value;
         };
-    } // namespace MathematicalOperations
-} // namespace FunG
+    } // namespace mathop
+} // namespace funcy

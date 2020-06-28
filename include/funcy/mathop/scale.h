@@ -1,14 +1,13 @@
 #pragma once
 
-#include <type_traits>
-#include <utility>
-
-#include <funcy/concept_check.h>
+#include <funcy/concepts.h>
 #include <funcy/util/chainer.h>
 #include <funcy/util/derivative_wrappers.h>
 #include <funcy/util/evaluate_if_present.h>
 #include <funcy/util/indexed_type.h>
 #include <funcy/util/mathop_traits.h>
+#include <type_traits>
+#include <utility>
 
 namespace funcy
 {
@@ -19,8 +18,8 @@ namespace funcy
          * @brief Scaling \f$ af \f$ of some function \f$ f \f$ with a double \f$ a \f$ (F must
          * satisfy the requirements of Concepts::FunctionConcept).
          */
-        template < class Scalar, class F, class = Concepts::IsFunction< F > >
-        struct Scale : Chainer< Scale< Scalar, F, Concepts::IsFunction< F > > >
+        template < class Scalar, Function F >
+        struct Scale : Chainer< Scale< Scalar, F > >
         {
             /**
              * @brief Constructor passing arguments to function constructor.
@@ -100,5 +99,5 @@ namespace funcy
             F f;
             std::decay_t< decltype( std::declval< F >()() ) > value;
         };
-    } // namespace MathematicalOperations
-} // namespace FunG
+    } // namespace mathop
+} // namespace funcy

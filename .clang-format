@@ -20,17 +20,17 @@ AlwaysBreakBeforeMultilineStrings: false
 AlwaysBreakTemplateDeclarations: true
 BinPackArguments: true
 BinPackParameters: true
-BraceWrapping:   
+BraceWrapping:
   AfterClass:      true
-  AfterControlStatement: false
-  AfterEnum:       false
-  AfterFunction:   false
+  AfterControlStatement: true
+  AfterEnum:       true
+  AfterFunction:   true
   AfterNamespace:  true
   AfterObjCDeclaration: false
-  AfterStruct:     false
-  AfterUnion:      false
-  BeforeCatch:     false
-  BeforeElse:      false
+  AfterStruct:     true
+  AfterUnion:      true
+  BeforeCatch:     true
+  BeforeElse:      true
   IndentBraces:    false
 BreakBeforeBinaryOperators: None
 BreakBeforeBraces: Allman
@@ -46,21 +46,23 @@ DerivePointerAlignment: false
 DisableFormat:   false
 ExperimentalAutoDetectBinPacking: false
 ForEachMacros:   [ foreach, Q_FOREACH, BOOST_FOREACH ]
-IncludeCategories: 
+IncludeCategories:
   - Regex:           '^"'
-    Priority:        5
-  - Regex:           '^<stringy/'
+    Priority:        1
+  - Regex:           '^(<sequencer)'
     Priority:        10
-  - Regex:           '^<texy/'
-    Priority:        10
-  - Regex:           '^<funcy/'
-    Priority:        20
-  - Regex:           '^((<|")(gtest|isl|json)/)'
+  - Regex:           '^((<|")catch2)'
     Priority:        30
-  - Regex:           '^(<(array|algorithm|cassert|chrono|cmath|cstdlib|iostream|limits|list|map|memory|numeric|random|set|stdexcept|string|vector|type_traits|utility|unordered_map|unordered_set)>)'
-    Priority:        40
   - Regex:           '.*'
+    Priority:        40
+  - Regex:           '^((<|")RtMidi.h)'
     Priority:        50
+  - Regex:           '^((<|")portaudio.h)'
+    Priority:        60
+  - Regex:           '^(<Q*)'
+    Priority:        70
+  - Regex:           '^(<(algorithm|any|array|atomic|bitset|cassert|cerrno|cfloat|chrono|clocale|cmath|condition_variable|cstddef|cstdint|cinttypes|cstdlib|ctime|exception|filesystem|forward_list|functional|future|initializer_list|ios|iosfwd|iomanip|istream|iterator|locale|thread|optional|variant|ostream|queue|fstream|iostream|limits|list|map|memory|numeric|random|ratio|regex|set|shared_mutex|sstream|stack|stdexcept|system_error|string|vector|tuple|typeinfo|typeindex|type_traits|utility|unordered_map|unordered_set)>)'
+    Priority:        100
 IndentCaseLabels: false
 IndentWidth:     4
 IndentWrappedFunctionNames: false
@@ -81,6 +83,7 @@ PenaltyReturnTypeOnItsOwnLine: 60
 PointerAlignment: Left
 ReflowComments:  true
 SortIncludes:    true
+IncludeBlocks: Regroup
 SpaceAfterCStyleCast: false
 SpaceBeforeAssignmentOperators: true
 SpaceBeforeParens: ControlStatements
@@ -94,5 +97,6 @@ SpacesInSquareBrackets: true
 Standard:        Cpp11
 TabWidth:        4
 UseTab:          Never
+FixNamespaceComments: true
 ...
 

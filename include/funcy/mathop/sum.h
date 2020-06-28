@@ -1,13 +1,12 @@
 #pragma once
 
-#include <funcy/concept_check.h>
+#include <funcy/concepts.h>
 #include <funcy/util/chainer.h>
 #include <funcy/util/compute_sum.h>
 #include <funcy/util/derivative_wrappers.h>
 #include <funcy/util/evaluate_if_present.h>
 #include <funcy/util/indexed_type.h>
 #include <funcy/util/mathop_traits.h>
-
 #include <type_traits>
 #include <utility>
 
@@ -20,9 +19,8 @@ namespace funcy
          * \brief %Sum of functions of type F and G (F and G must satisfy the requirements of
          * Concepts::FunctionConcept).
          */
-        template < class F, class G, class CheckF = Concepts::IsFunction< F >,
-                   class CheckG = Concepts::IsFunction< G > >
-        struct Sum : Chainer< Sum< F, G, CheckF, CheckG > >
+        template < Function F, Function G >
+        struct Sum : Chainer< Sum< F, G > >
         {
             /**
              * @brief Constructor
@@ -114,5 +112,5 @@ namespace funcy
             decay_t< decltype( add_via_traits( std::declval< F >()(), std::declval< G >()() ) ) >
                 value;
         };
-    } // namespace MathematicalOperations
-} // namespace FunG
+    } // namespace mathop
+} // namespace funcy

@@ -1,12 +1,12 @@
 #pragma once
 
+#include <funcy/concepts.h>
 #include <funcy/constant.h>
 #include <funcy/operations.h>
 #include <funcy/util/add_missing_operators.h>
 #include <funcy/util/static_checks.h>
 #include <funcy/util/type_traits.h>
 #include <funcy/variable.h>
-
 #include <iostream>
 #include <type_traits>
 
@@ -36,8 +36,7 @@ namespace funcy
             template < class F, class G >
             static auto apply( F&& f, G&& g )
             {
-                return mathop::Sum< std::decay_t< F >,
-                                                    Constant< std::decay_t< G > > >(
+                return mathop::Sum< std::decay_t< F >, Constant< std::decay_t< G > > >(
                     std::forward< F >( f ), constant( std::forward< G >( g ) ) );
             }
         };
@@ -48,8 +47,7 @@ namespace funcy
             template < class F, class G >
             static auto apply( F&& f, G&& g )
             {
-                return mathop::Sum< Constant< std::decay_t< F > >,
-                                                    std::decay_t< G > >(
+                return mathop::Sum< Constant< std::decay_t< F > >, std::decay_t< G > >(
                     constant( std::forward< F >( f ) ), std::forward< G >( g ) );
             }
         };
@@ -77,8 +75,7 @@ namespace funcy
             template < class F, class G >
             static auto apply( F f, G&& g )
             {
-                return mathop::Scale< F, std::decay_t< G > >(
-                    f, std::forward< G >( g ) );
+                return mathop::Scale< F, std::decay_t< G > >( f, std::forward< G >( g ) );
             }
         };
 
@@ -88,8 +85,7 @@ namespace funcy
             template < class F, class G >
             static auto apply( F&& f, G g )
             {
-                return mathop::Scale< G, std::decay_t< F > >(
-                    g, std::forward< F >( f ) );
+                return mathop::Scale< G, std::decay_t< F > >( g, std::forward< F >( f ) );
             }
         };
 
@@ -100,8 +96,8 @@ namespace funcy
             static auto apply( F&& f, G&& g )
             {
                 using Const = Constant< std::decay_t< F > >;
-                return mathop::Product< Const, std::decay_t< G > >(
-                    Const( std::forward< F >( f ) ), std::forward< G >( g ) );
+                return mathop::Product< Const, std::decay_t< G > >( Const( std::forward< F >( f ) ),
+                                                                    std::forward< G >( g ) );
             }
         };
 
@@ -139,8 +135,8 @@ namespace funcy
             static auto apply( F&& f, G&& g )
             {
                 using Const = Constant< std::decay_t< F > >;
-                return mathop::Dot< Const, std::decay_t< G > >(
-                    Const( std::forward< F >( f ) ), std::forward< G >( g ) );
+                return mathop::Dot< Const, std::decay_t< G > >( Const( std::forward< F >( f ) ),
+                                                                std::forward< G >( g ) );
             }
         };
 
@@ -151,11 +147,11 @@ namespace funcy
             static auto apply( F&& f, G&& g )
             {
                 using Const = Constant< std::decay_t< G > >;
-                return mathop::Dot< std::decay_t< F >, Const >(
-                    std::forward< F >( f ), Const( std::forward< G >( g ) ) );
+                return mathop::Dot< std::decay_t< F >, Const >( std::forward< F >( f ),
+                                                                Const( std::forward< G >( g ) ) );
             }
         };
-    }
+    } // namespace GenerateDetail
     /// @endcond
 
     /**
@@ -209,7 +205,7 @@ namespace funcy
      * If the resulting type represents a polynomial of order smaller than two, than you need to
      * wrap it into Finalize to generate missing derivatives.
      */
-    template < class F, std::enable_if_t< Concepts::isFunction< std::decay_t< F > >() >* = nullptr >
+    template < Function F >
     auto operator^( F&& f, int k )
     {
         if ( k != 2 )
@@ -226,7 +222,7 @@ namespace funcy
      * If the resulting type represents a polynomial of order smaller than two, than you need to
      * wrap it into Finalize to generate missing derivatives.
      */
-    template < class F, std::enable_if_t< Concepts::isFunction< std::decay_t< F > >() >* = nullptr >
+    template < Function F >
     auto squared( F&& f )
     {
         return mathop::Squared< std::decay_t< F > >( std::forward< F >( f ) );
@@ -247,8 +243,8 @@ namespace funcy
     {
         static_assert( !Concepts::Has::variable< std::decay_t< F > >(),
                        "Independent variables can not be on the left side of the chain operator." );
-        return mathop::Chain< std::decay_t< F >, std::decay_t< G > >(
-            std::forward< F >( f ), std::forward< G >( g ) );
+        return mathop::Chain< std::decay_t< F >, std::decay_t< G > >( std::forward< F >( f ),
+                                                                      std::forward< G >( g ) );
     }
 
     /**
@@ -264,4 +260,4 @@ namespace funcy
     {
         return std::forward< F >( f ) + ( -1 * std::forward< G >( g ) );
     }
-}
+} // namespace funcy

@@ -1,12 +1,12 @@
 #pragma once
 
+#include <funcy/concepts.h>
 #include <funcy/constant.h>
 #include <funcy/util/compute_conditional.h>
 #include <funcy/util/derivative_wrappers.h>
 #include <funcy/util/evaluate_if_present.h>
 #include <funcy/util/static_checks.h>
 #include <funcy/util/type_traits.h>
-
 #include <type_traits>
 
 namespace funcy
@@ -21,7 +21,7 @@ namespace funcy
       as building block for more complex functions requires directional derivatives. These occur
       during applications of the chain rule.
      */
-    template < class F, class G >
+    template < Function F, Function G >
     struct Max
     {
         //! @copydoc Cos::Cos()
@@ -146,4 +146,4 @@ namespace funcy
             constant( std::forward< F >( f ) ), std::forward< G >( g ) );
     }
     /** @} */
-} // namespace FunG
+} // namespace funcy

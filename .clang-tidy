@@ -1,0 +1,25 @@
+Checks:          '-*,readability-*,cppcoreguidelines-*,bugprone-*,-readability-uppercase-literal-suffix,-readability-named-parameter,-cppcoreguidelines-owning-memory,-cppcoreguidelines-special-member-functions,-readability-braces-around-statements,-bugprone-suspicious-semicolon,-readability-misleading-indentation,-*-magic-numbers,-cppcoreguidelines-pro-bounds-array-to-pointer-decay,-bugprone-incorrect-roundings,-cppcoreguidelines-pro-type-member-init,-cppcoreguidelines-pro-bounds-constant-array-index,-cppcoreguidelines-macro-usage'
+WarningsAsErrors: '*'
+HeaderFilterRegex: ''
+AnalyzeTemporaryDtors: false
+User:            cequenser
+CheckOptions:
+  - key:             readability-identifier-naming.PrivateMemberSuffix
+    value:           '_'
+  - key:             readability-identifier-naming.ProtectedMemberSuffix
+    value:           '_'
+  - key:             readability-identifier-naming.ClassCase
+    value:           'lower_case'
+  - key:             readability-identifier-naming.EnumCase
+    value:           'lower_case'
+  - key:             readability-identifier-naming.TypeAliasCase
+    value:           'lower_case'
+  - key:             readability-identifier-naming.FunctionCase
+    value:           'lower_case'
+  - key:             readability-identifier-naming.VariableCase
+    value:           'lower_case'
+  - key:             readability-braces-around-statements.ShortStatementLines
+    value:           '1'
+  - key:             cppcoreguidelines-narrowing-conversions.PedanticMode
+    value:           '1'
+

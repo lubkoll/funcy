@@ -9,7 +9,7 @@ target_include_directories(funcy INTERFACE
     $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
 )
 
-target_compile_features(funcy INTERFACE cxx_std_17)
+target_compile_features(funcy INTERFACE cxx_std_20)
 set_target_properties(funcy PROPERTIES
     EXPORT_NAME Funcy
 )

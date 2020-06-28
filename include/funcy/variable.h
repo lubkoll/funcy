@@ -1,21 +1,16 @@
 #pragma once
 
+#include <funcy/concepts.h>
 #include <funcy/util/traverse.h>
-
 #include <limits>
-#include <type_traits>
 #include <tuple>
+#include <type_traits>
 
 namespace funcy
 {
     /// @cond
     template < class, int >
     struct Variable;
-    namespace concepts
-    {
-        template < class >
-        struct IsFunction;
-    }
 
     template < class T, class Other >
     struct ContainsType : std::false_type
@@ -117,7 +112,7 @@ namespace funcy
             {
             }
         };
-    }
+    } // namespace VariableDetail
     /// @endcond
 
     /// Independent variable. Can be uniquely identified by its id.
@@ -193,7 +188,7 @@ namespace funcy
         namespace Has
         {
             /// Check if Type contains has variable.
-            template < class F >
+            template < Function F >
             using Variable = Meta::AnyOf< F, IsVariable >;
 
             template < class F, int id >
@@ -206,7 +201,7 @@ namespace funcy
                 };
                 static constexpr bool value = Meta::AnyOf< F, HasVariable >::value;
             };
-        }
+        } // namespace Has
 
         constexpr bool greater( int a, int b )
         {
@@ -259,7 +254,7 @@ namespace funcy
                 : std::integral_constant< int, id >
             {
             };
-        }
+        } // namespace Detail
 
         template < class F >
         using MaxVariableId = Meta::Traverse< F, Detail::MaxVariableId, Max >;
@@ -273,16 +268,14 @@ namespace funcy
             using type = void;
         };
 
-        template < template < class, class > class G, class F, int id >
-        struct VariableType< G< F, Concepts::IsFunction< F > >, id >
+        template < template < Function > class G, Function F, int id >
+        struct VariableType< G< F >, id >
         {
             using type = typename VariableType< F, id >::type;
         };
 
-        template < template < class, class, class, class > class H, class F, class G, int id >
-        struct VariableType<
-            H< F, G, Concepts::IsFunction< F >, Concepts::IsFunction< G > >,
-            id >
+        template < template < Function, Function > class H, Function F, Function G, int id >
+        struct VariableType< H< F, G >, id >
         {
             using type = std::conditional_t<
                 std::is_same< void, typename VariableType< F, id >::type >::value,
@@ -327,7 +320,7 @@ namespace funcy
         {
             using type = typename ChooseTypeImpl< typename F::type, typename G::type >::type;
         };
-    }
+    } // namespace VariableDetail
     /// @endcond
 
     /// Get underlying type of variable with index id.
@@ -337,7 +330,7 @@ namespace funcy
     namespace Concepts
     {
         /** @addtogroup ConceptCheck
-     *  @{ */
+         *  @{ */
 
         /// Check if T is of type Variable<Type,n>.
         template < class T >
@@ -349,7 +342,7 @@ namespace funcy
         namespace Has
         {
             /// Check if T contains a type Variable<Type,n>.
-            template < class T >
+            template < Function T >
             constexpr bool variable()
             {
                 return VariableDetail::Has::Variable< std::decay_t< T > >::value;
@@ -369,7 +362,7 @@ namespace funcy
                 return VariableDetail::MinVariableId< std::decay_t< T > >::value <
                        VariableDetail::MaxVariableId< std::decay_t< T > >::value;
             }
-        }
+        } // namespace Has
 
         /// Check if variable with index id has type Type.
         template < class F, class Type, int id >
@@ -379,5 +372,5 @@ namespace funcy
         }
 
         /** @} */
-    }
-}
+    } // namespace Concepts
+} // namespace funcy

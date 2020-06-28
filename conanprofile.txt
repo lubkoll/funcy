@@ -1,0 +1,17 @@
+[env]
+CC=/usr/bin/gcc-10
+CXX=/usr/bin/g++-10
+
+[settings]
+# We are building in Ubuntu Linux
+os_build=Linux
+arch_build=x86_64
+
+# We are cross building to Windows
+os=Linux
+arch=x86_64
+compiler=gcc
+# Adjust to the gcc version of your MinGW package
+compiler.version=10.1
+compiler.libcxx=libstdc++11
+build_type=Release
