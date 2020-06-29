@@ -7,6 +7,7 @@
 #include <funcy/util/evaluate_if_present.h>
 #include <funcy/util/indexed_type.h>
 #include <funcy/util/mathop_traits.h>
+
 #include <type_traits>
 #include <utility>
 
@@ -16,8 +17,7 @@ namespace funcy
     {
         /**
          * \ingroup MathematicalOperationsGroup
-         * \brief %Sum of functions of type F and G (F and G must satisfy the requirements of
-         * Concepts::FunctionConcept).
+         * \brief %Sum of functions of type F and G.
          */
         template < Function F, Function G >
         struct Sum : Chainer< Sum< F, G > >
@@ -27,8 +27,50 @@ namespace funcy
              * @param f_ initializer for F
              * @param g_ initializer for G
              */
+            constexpr Sum( const F& f_, const G& g_ )
+                : f( f_ ), g( g_ ), value( add_via_traits( f(), g() ) )
+            {
+            }
+
+            /**
+             * @brief Constructor
+             * @param f_ initializer for F
+             * @param g_ initializer for G
+             */
+            constexpr Sum( F&& f_, const G& g_ )
+                : f( std::move( f_ ) ), g( g_ ), value( add_via_traits( f(), g() ) )
+            {
+            }
+
+            /**
+             * @brief Constructor
+             * @param f_ initializer for F
+             * @param g_ initializer for G
+             */
+            constexpr Sum( const F& f_, G&& g_ )
+                : f( f_ ), g( std::move( g_ ) ), value( add_via_traits( f(), g() ) )
+            {
+            }
+
+            /**
+             * @brief Constructor
+             * @param f_ initializer for F
+             * @param g_ initializer for G
+             */
+            constexpr Sum( F&& f_, G&& g_ )
+                : f( std::move( f_ ) ), g( std::move( g_ ) ), value( add_via_traits( f(), g() ) )
+            {
+            }
+
+            /**
+             * @brief Constructor
+             * @param f_ initializer for F
+             * @param g_ initializer for G
+             */
             template < class InitF, class InitG >
-            constexpr Sum( InitF&& f_, InitG&& g_ )
+            constexpr Sum( InitF&& f_, InitG&& g_ ) requires(
+                std::is_constructible_v< F, std::decay_t< InitF > >&&
+                    std::is_constructible_v< G, std::decay_t< InitG > > )
                 : f( std::forward< InitF >( f_ ) ), g( std::forward< InitG >( g_ ) ),
                   value( add_via_traits( f(), g() ) )
             {

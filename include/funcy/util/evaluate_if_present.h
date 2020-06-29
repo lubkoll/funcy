@@ -1,7 +1,5 @@
 #pragma once
 
-#include "voider.h"
-
 #include <type_traits>
 #include <utility>
 
@@ -23,7 +21,8 @@ namespace funcy
         };
 
         template < class F, class Arg >
-        struct HasUpdateWithoutIndex< F, Arg, void_t< TryCallOfUpdate< F, Arg > > > : std::true_type
+        struct HasUpdateWithoutIndex< F, Arg, std::void_t< TryCallOfUpdate< F, Arg > > >
+            : std::true_type
         {
         };
 
@@ -33,7 +32,8 @@ namespace funcy
         };
 
         template < class F, class Arg, int id >
-        struct HasUpdateWithIndex< F, Arg, id, void_t< TryCallOfUpdateWithIndex< F, Arg, id > > >
+        struct HasUpdateWithIndex< F, Arg, id,
+                                   std::void_t< TryCallOfUpdateWithIndex< F, Arg, id > > >
             : std::true_type
         {
         };

@@ -1,97 +1,63 @@
 #pragma once
 
-#include <utility>
+#include <funcy/concepts.h>
 #include <funcy/util/extract_rows_and_cols.h>
-#include <funcy/util/static_checks_nrows_ncols.h>
 #include <funcy/util/static_checks.h>
+#include <funcy/util/static_checks_nrows_ncols.h>
+
+#include <utility>
 
 namespace funcy
 {
-  namespace linalg
-  {
-    /// @cond
-    template <class Matrix, class = void> struct DynamicNumberOfRows;
-
-    template < class Matrix >
-    struct DynamicNumberOfRows< Matrix , void_t< Concepts::TryMemFn_rows<Matrix> > >
+    namespace linalg
     {
-      static auto apply(const Matrix& A)
-      {
-        return A.rows();
-      }
-    };
-
-    template < class Matrix  >
-    struct DynamicNumberOfRows< Matrix , void_t< Concepts::TryMem_n_rows<Matrix> > >
-    {
-      static const auto& apply(const Matrix& A) noexcept
-      {
-        return A.n_rows;
-      }
-    };
-
-    template <class Vector>
-    struct DynamicNumberOfRows< Vector, void_t<Concepts::TryMemFn_size<Vector> > >
-    {
-        static decltype(auto) apply(const Vector& v) noexcept
+        /// Number of rows of a dynamic size matrix.
+        template < class Matrix >
+        auto rows( const Matrix& A ) requires( Concepts::hasMemFn_rows< Matrix >() )
         {
-            return v.size();
+            return A.rows();
         }
-    };
 
+        /// Number of rows of a dynamic size matrix.
+        template < class Matrix >
+        auto rows( const Matrix& A ) requires( Concepts::hasMem_n_rows< Matrix >() )
+        {
+            return A.n_rows;
+        }
 
-    template <class Matrix, class = void> struct DynamicNumberOfColumns;
+        /// Number of rows of a dynamic size matrix.
+        template < class Matrix >
+        auto rows( const Matrix& A ) requires( Concepts::hasMemFn_size< Matrix >() )
+        {
+            return A.size();
+        }
 
-    template < class Matrix >
-    struct DynamicNumberOfColumns< Matrix , void_t< Concepts::TryMemFn_cols<Matrix> > >
-    {
-      static auto apply(const Matrix& A)
-      {
-        return A.cols();
-      }
-    };
+        /// Number of rows of a constant size matrix.
+        template < ConstantSize Matrix >
+        constexpr auto rows()
+        {
+            return NumberOfRows< Matrix >::value;
+        }
 
-    template < class Matrix  >
-    struct DynamicNumberOfColumns< Matrix , void_t< Concepts::TryMem_n_cols<Matrix> > >
-    {
-      static const auto& apply(const Matrix& A) noexcept
-      {
-        return A.n_cols;
-      }
-    };
-    /// @endcond
+        /// Number of columns of a dynamic size matrix.
+        template < class Matrix >
+        auto cols( const Matrix& A ) requires( Concepts::hasMemFn_cols< Matrix >() )
+        {
+            return A.cols();
+        }
 
+        /// Number of columns of a dynamic size matrix.
+        template < class Matrix >
+        auto cols( const Matrix& A ) requires( Concepts::hasMem_n_cols< Matrix >() )
+        {
+            return A.n_cols;
+        }
 
-    /// Number of rows of a dynamic size matrix.
-    template < class Matrix ,
-               std::enable_if_t<!Concepts::isConstantSize<Matrix>()>* = nullptr >
-    auto rows(const Matrix& A)
-    {
-      return DynamicNumberOfRows< Matrix >::apply( A );
-    }
-
-    /// Number of rows of a constant size matrix.
-    template < class Matrix ,
-               std::enable_if_t<Concepts::isConstantSize<Matrix>()>* = nullptr >
-    constexpr auto rows()
-    {
-      return NumberOfRows< Matrix >::value;
-    }
-
-    /// Number of columns of a dynamic size matrix.
-    template < class Matrix ,
-               std::enable_if_t<!Concepts::isConstantSize<Matrix>()>* = nullptr>
-    auto cols(const Matrix& A)
-    {
-      return DynamicNumberOfColumns< Matrix >::apply( A );
-    }
-
-    /// Number of columns of a constant size matrix.
-    template < class Matrix ,
-               std::enable_if_t<Concepts::isConstantSize<Matrix>()>* = nullptr >
-    constexpr auto cols()
-    {
-      return NumberOfColumns< Matrix >::value;
-    }
-  }
-}
+        /// Number of columns of a constant size matrix.
+        template < ConstantSize Matrix >
+        constexpr auto cols()
+        {
+            return NumberOfColumns< Matrix >::value;
+        }
+    } // namespace linalg
+} // namespace funcy

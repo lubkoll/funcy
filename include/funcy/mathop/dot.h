@@ -1,9 +1,6 @@
 #pragma once
 
-#include <type_traits>
-#include <utility>
-
-#include <funcy/concept_check.h>
+#include <funcy/concepts.h>
 #include <funcy/util/chainer.h>
 #include <funcy/util/compute_dot.h>
 #include <funcy/util/compute_sum.h>
@@ -11,19 +8,19 @@
 #include <funcy/util/evaluate_if_present.h>
 #include <funcy/util/indexed_type.h>
 
+#include <type_traits>
+#include <utility>
+
 namespace funcy
 {
     namespace mathop
     {
         /**
          * @ingroup MathematicalOperationsGroup
-         * @brief %Dot \f$f \cdot g\f$ of functions of type F and G (F and G must satisfy the
-         * requirements of Concepts::FunctionConcept).
+         * @brief %Dot \f$f \cdot g\f$ of functions of type F and G.
          */
-        template < class F, class G, class = Concepts::IsFunction< F >,
-                   class = Concepts::IsFunction< G > >
-        struct Dot : Chainer< Dot< F, G, Concepts::IsFunction< F >,
-                                   Concepts::IsFunction< G > > >
+        template < Function F, Function G >
+        struct Dot : Chainer< Dot< F, G > >
         {
         private:
             template < class IndexedArg >
@@ -56,8 +53,49 @@ namespace funcy
              * @param f_ input for constructor of left side of product
              * @param g_ input for constructor of right side of product
              */
+            constexpr Dot( F&& f_, G&& g_ )
+                : f( std::move( f_ ) ), g( std::move( g_ ) ), value( f().dot( g() ) )
+            {
+            }
+
+            /**
+             * @brief Constructor passing arguments to function constructors.
+             * @param f_ input for constructor of left side of product
+             * @param g_ input for constructor of right side of product
+             */
+            constexpr Dot( F&& f_, const G& g_ )
+                : f( std::move( f_ ) ), g( g_ ), value( f().dot( g() ) )
+            {
+            }
+
+            /**
+             * @brief Constructor passing arguments to function constructors.
+             * @param f_ input for constructor of left side of product
+             * @param g_ input for constructor of right side of product
+             */
+            constexpr Dot( const F& f_, G&& g_ )
+                : f( f_ ), g( std::move( g_ ) ), value( f().dot( g() ) )
+            {
+            }
+
+            /**
+             * @brief Constructor passing arguments to function constructors.
+             * @param f_ input for constructor of left side of product
+             * @param g_ input for constructor of right side of product
+             */
+            constexpr Dot( const F& f_, const G& g_ ) : f( f_ ), g( g_ ), value( f().dot( g() ) )
+            {
+            }
+
+            /**
+             * @brief Constructor passing arguments to function constructors.
+             * @param f_ input for constructor of left side of product
+             * @param g_ input for constructor of right side of product
+             */
             template < class InitF, class InitG >
-            constexpr Dot( InitF&& f_, InitG&& g_ )
+            constexpr Dot( InitF&& f_, InitG&& g_ ) requires(
+                std::is_constructible_v< F, std::decay_t< InitF > >&&
+                    std::is_constructible_v< G, std::decay_t< InitG > > )
                 : f( std::forward< InitF >( f_ ) ), g( std::forward< InitG >( g_ ) ),
                   value( f().dot( g() ) )
             {
@@ -155,5 +193,5 @@ namespace funcy
             G g;
             ReturnType value;
         };
-    }
-}
+    } // namespace mathop
+} // namespace funcy

@@ -7,6 +7,7 @@
 #include <funcy/util/evaluate_if_present.h>
 #include <funcy/util/static_checks.h>
 #include <funcy/util/type_traits.h>
+
 #include <type_traits>
 
 namespace funcy
@@ -119,28 +120,22 @@ namespace funcy
         bool f_smaller_than_g_;
     };
 
-    template < class F, class G,
-               std::enable_if_t< Concepts::isFunction< std::decay_t< F > >() &&
-                                 Concepts::isFunction< std::decay_t< G > >() >* = nullptr >
+    template < Function F, Function G >
     decltype( auto ) min( F&& f, G&& g )
     {
         return Min< std::decay_t< F >, std::decay_t< G > >( std::forward< F >( f ),
                                                             std::forward< G >( g ) );
     }
 
-    template < class F, class G,
-               std::enable_if_t< Concepts::isFunction< std::decay_t< F > >() &&
-                                 !Concepts::isFunction< std::decay_t< G > >() >* = nullptr >
-    decltype( auto ) min( F&& f, G&& g )
+    template < Function F, class G >
+    decltype( auto ) min( F&& f, G&& g ) requires( !Concepts::isFunction< std::decay_t< G > >() )
     {
         return Min< std::decay_t< F >, Constant< std::decay_t< G > > >(
             std::forward< F >( f ), constant( std::forward< G >( g ) ) );
     }
 
-    template < class F, class G,
-               std::enable_if_t< !Concepts::isFunction< std::decay_t< F > >() &&
-                                 Concepts::isFunction< std::decay_t< G > >() >* = nullptr >
-    decltype( auto ) min( F&& f, G&& g )
+    template < class F, Function G >
+    decltype( auto ) min( F&& f, G&& g ) requires( !Concepts::isFunction< std::decay_t< F > >() )
     {
         return Min< Constant< std::decay_t< F > >, std::decay_t< G > >(
             constant( std::forward< F >( f ) ), std::forward< G >( g ) );

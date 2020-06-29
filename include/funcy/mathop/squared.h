@@ -9,6 +9,7 @@
 #include <funcy/util/indexed_type.h>
 #include <funcy/util/mathop_traits.h>
 #include <funcy/util/type_traits.h>
+
 #include <type_traits>
 #include <utility>
 
@@ -41,10 +42,27 @@ namespace funcy
              * @brief Constructor
              * @param f_ initializer for F
              */
+            constexpr Squared( F&& f_ )
+                : f( std::move( f_ ) ), value( multiply_via_traits( f(), f() ) )
+            {
+            }
+            /**
+             * @brief Constructor
+             * @param f_ initializer for F
+             */
+            constexpr Squared( const F& f_ ) : f( f_ ), value( multiply_via_traits( f(), f() ) )
+            {
+            }
+
+            /**
+             * @brief Constructor
+             * @param f_ initializer for F
+             */
             template < class InitF,
                        std::enable_if_t< !std::is_same< std::decay_t< InitF >, Squared >::value >* =
                            nullptr >
-            constexpr Squared( InitF&& f_ )
+            constexpr Squared(
+                InitF&& f_ ) requires std::is_constructible_v< F, std::decay_t< InitF > >
                 : f( std::forward< InitF >( f_ ) ), value( multiply_via_traits( f(), f() ) )
             {
             }

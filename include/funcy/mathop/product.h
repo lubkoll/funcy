@@ -7,6 +7,7 @@
 #include <funcy/util/derivative_wrappers.h>
 #include <funcy/util/evaluate_if_present.h>
 #include <funcy/util/indexed_type.h>
+
 #include <type_traits>
 #include <utility>
 
@@ -16,8 +17,7 @@ namespace funcy
     {
         /**
          * @ingroup MathematicalOperationsGroup
-         * @brief %Product \f$fg\f$ of functions of type F and G (F and G must satisfy the
-         * requirements of Concepts::FunctionConcept).
+         * @brief %Product \f$fg\f$ of functions of type F and G.
          */
         template < Function F, Function G >
         struct Product : Chainer< Product< F, G > >
@@ -51,8 +51,51 @@ namespace funcy
              * @param f_ input for constructor of left side of product
              * @param g_ input for constructor of right side of product
              */
+            constexpr Product( const F& f_, const G& g_ )
+                : f( f_ ), g( g_ ), value( multiply_via_traits( f(), g() ) )
+            {
+            }
+
+            /**
+             * @brief Constructor passing arguments to function constructors.
+             * @param f_ input for constructor of left side of product
+             * @param g_ input for constructor of right side of product
+             */
+            constexpr Product( const F& f_, G&& g_ )
+                : f( f_ ), g( std::move( g_ ) ), value( multiply_via_traits( f(), g() ) )
+            {
+            }
+
+            /**
+             * @brief Constructor passing arguments to function constructors.
+             * @param f_ input for constructor of left side of product
+             * @param g_ input for constructor of right side of product
+             */
+            constexpr Product( F&& f_, const G& g_ )
+                : f( std::move( f_ ) ), g( g_ ), value( multiply_via_traits( f(), g() ) )
+            {
+            }
+
+            /**
+             * @brief Constructor passing arguments to function constructors.
+             * @param f_ input for constructor of left side of product
+             * @param g_ input for constructor of right side of product
+             */
+            constexpr Product( F&& f_, G&& g_ )
+                : f( std::move( f_ ) ), g( std::move( g_ ) ),
+                  value( multiply_via_traits( f(), g() ) )
+            {
+            }
+
+            /**
+             * @brief Constructor passing arguments to function constructors.
+             * @param f_ input for constructor of left side of product
+             * @param g_ input for constructor of right side of product
+             */
             template < class InitF, class InitG >
-            constexpr Product( InitF&& f_, InitG&& g_ )
+            constexpr Product( InitF&& f_, InitG&& g_ ) requires(
+                std::is_constructible_v< F, std::decay_t< InitF > >&&
+                    std::is_constructible_v< G, std::decay_t< InitG > > )
                 : f( std::forward< InitF >( f_ ) ), g( std::forward< InitG >( g_ ) ),
                   value( multiply_via_traits( f(), g() ) )
             {

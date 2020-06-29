@@ -1,85 +1,49 @@
 #pragma once
 
-#include <type_traits>
-#include <utility>
 #include "macros.h"
-#include "static_checks.h"
 
+#include <funcy/concepts.h>
 
 namespace funcy
 {
-    namespace Access
-    {
-        /// Traits class for accessing the entries of a matrix. Default: A(i,j).
-        template <class Matrix, class = void>
-        struct EntryOfMatrix
-        {
-            template <class Index, class = std::enable_if_t< std::is_integral<Index>::value > >
-            static decltype(auto) apply(Matrix& A, Index i, Index j)
-            {
-                return A(i,j);
-            }
-        };
-
-        /// Specialization for the case that matrix entries can be accessed via square brackets: A[i][j].
-        template <class Matrix>
-        struct EntryOfMatrix< Matrix , void_t< Concepts::Try::MemOp::SquareBracketAccessForMatrix< std::decay_t<Matrix> > > >
-        {
-            template <class Index, class = std::enable_if_t< std::is_integral<Index>::value > >
-            static decltype(auto) apply(Matrix& A, Index i, Index j)
-            {
-                return A[i][j];
-            }
-        };
-
-        /// Traits class for accessing the entries of a vector. Default: v(i).
-        template <class Vector, class = void>
-        struct EntryOfVector
-        {
-            template <class Index, class = std::enable_if_t< std::is_integral<Index>::value > >
-            static decltype(auto) apply(Vector& v, Index i)
-            {
-                return v(i);
-            }
-        };
-
-        /// Specialization for the case that vector entries can be accessed via square brackets: v[i].
-        template <class Vector>
-        struct EntryOfVector< Vector , void_t< Concepts::Try::MemOp::SquareBracketAccessForVector< std::decay_t<Vector> > > >
-        {
-            template <class Index, class = std::enable_if_t< std::is_integral<Index>::value > >
-            static decltype(auto) apply(Vector& v, Index i)
-            {
-                return v[i];
-            }
-        };
-    }
-
-
-    // suppress warnings coming from the __attribute__((always_inline))
-#if defined(__GNUC__) || defined(__GNUG__)
+// suppress warnings coming from the __attribute__((always_inline))
+#if defined( __GNUC__ ) || defined( __GNUG__ )
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wattributes"
 #endif
 
-
-    /// Access matrix entry \f$A_{ij}\f$.
-    template <class Matrix, class Index,
-              class = std::enable_if_t< std::is_integral<Index>::value > >
-    FUNCY_ALWAYS_INLINE decltype(auto) at( Matrix&& A, Index i, Index j )
+    /// Access matrix entry \f$A_{ij}\f via square brackets$.
+    template < class Matrix, class Index >
+    FUNCY_ALWAYS_INLINE decltype( auto )
+    at( Matrix&& A, Index i, Index j ) requires MatrixSupportSquareBracketAccess< Matrix >
     {
-        return Access::EntryOfMatrix<Matrix>::apply( A, i, j );
+        return A[ i ][ j ];
+    }
+
+    /// Access matrix entry \f$A_{ij}\f via square brackets$.
+    template < class Matrix, class Index >
+    FUNCY_ALWAYS_INLINE decltype( auto )
+    at( Matrix&& A, Index i, Index j ) requires MatrixSupportRoundBracketAccess< Matrix >
+    {
+        return A( i, j );
     }
 
     /// Access vector entry \f$\v_if$.
-    template <class Vector, class Index,
-              class = std::enable_if_t< std::is_integral<Index>::value > >
-    FUNCY_ALWAYS_INLINE decltype(auto) at( Vector&& v, Index i )
+    template < class Vector, class Index >
+    FUNCY_ALWAYS_INLINE decltype( auto )
+    at( Vector&& v, Index i ) requires VectorSupportSquareBracketAccess< Vector >
     {
-        return Access::EntryOfVector<Vector>::apply( v, i );
+        return v[ i ];
     }
-}
 
-#if defined(__GNUC__) || defined(__GNUG__)
+    /// Access vector entry \f$\v_if$.
+    template < class Vector, class Index >
+    FUNCY_ALWAYS_INLINE decltype( auto )
+    at( Vector&& v, Index i ) requires VectorSupportRoundBracketAccess< Vector >
+    {
+        return v( i );
+    }
+} // namespace funcy
+#if defined( __GNUC__ ) || defined( __GNUG__ )
 #pragma GCC diagnostic pop
 #endif

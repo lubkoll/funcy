@@ -7,6 +7,7 @@
 #include <funcy/util/evaluate_if_present.h>
 #include <funcy/util/static_checks.h>
 #include <funcy/util/type_traits.h>
+
 #include <type_traits>
 
 namespace funcy
@@ -79,8 +80,8 @@ namespace funcy
             int idx, int idy, class ArgX, class ArgY,
             class IndexedArgX = IndexedType< std::decay_t< ArgX >, idx >,
             class IndexedArgY = IndexedType< std::decay_t< ArgY >, idy >,
-            class = std::enable_if_t< ComputeSum< D2< F, IndexedArgX, IndexedArgY >,
-                                                  D2< G, IndexedArgX, IndexedArgY > >::present > >
+            class = std::enable_if_t< ComputeConditional<
+                D2< F, IndexedArgX, IndexedArgY >, D2< G, IndexedArgX, IndexedArgY > >::present > >
         auto d2( ArgX&& dx, ArgY&& dy ) const
         {
             using D2F = D2< F, IndexedArgX, IndexedArgY >;
@@ -94,9 +95,9 @@ namespace funcy
                    class IndexedArgX = IndexedType< std::decay_t< ArgX >, idx >,
                    class IndexedArgY = IndexedType< std::decay_t< ArgY >, idy >,
                    class IndexedArgZ = IndexedType< std::decay_t< ArgZ >, idz >,
-                   class = std::enable_if_t<
-                       ComputeSum< D3< F, IndexedArgX, IndexedArgY, IndexedArgZ >,
-                                   D3< G, IndexedArgX, IndexedArgY, IndexedArgZ > >::present > >
+                   class = std::enable_if_t< ComputeConditional<
+                       D3< F, IndexedArgX, IndexedArgY, IndexedArgZ >,
+                       D3< G, IndexedArgX, IndexedArgY, IndexedArgZ > >::present > >
         auto d3( ArgX&& dx, ArgY&& dy, ArgZ&& dz ) const
         {
             using D3F = D3< F, IndexedArgX, IndexedArgY, IndexedArgZ >;
@@ -119,28 +120,22 @@ namespace funcy
         bool f_bigger_than_g_;
     };
 
-    template < class F, class G,
-               std::enable_if_t< Concepts::isFunction< std::decay_t< F > >() &&
-                                 Concepts::isFunction< std::decay_t< G > >() >* = nullptr >
+    template < Function F, Function G >
     decltype( auto ) max( F&& f, G&& g )
     {
         return Max< std::decay_t< F >, std::decay_t< G > >( std::forward< F >( f ),
                                                             std::forward< G >( g ) );
     }
 
-    template < class F, class G,
-               std::enable_if_t< Concepts::isFunction< std::decay_t< F > >() &&
-                                 !Concepts::isFunction< std::decay_t< G > >() >* = nullptr >
-    decltype( auto ) max( F&& f, G&& g )
+    template < Function F, class G >
+    decltype( auto ) max( F&& f, G&& g ) requires( !Concepts::isFunction< std::decay_t< G > >() )
     {
         return Max< std::decay_t< F >, Constant< std::decay_t< G > > >(
             std::forward< F >( f ), constant( std::forward< G >( g ) ) );
     }
 
-    template < class F, class G,
-               std::enable_if_t< !Concepts::isFunction< std::decay_t< F > >() &&
-                                 Concepts::isFunction< std::decay_t< G > >() >* = nullptr >
-    decltype( auto ) max( F&& f, G&& g )
+    template < class F, Function G >
+    decltype( auto ) max( F&& f, G&& g ) requires( !Concepts::isFunction< std::decay_t< F > >() )
     {
         return Max< Constant< std::decay_t< F > >, std::decay_t< G > >(
             constant( std::forward< F >( f ) ), std::forward< G >( g ) );

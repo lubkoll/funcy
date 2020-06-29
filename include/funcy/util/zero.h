@@ -1,74 +1,53 @@
 #pragma once
 
-#include <utility>
+#include <funcy/concepts.h>
 
-#include "static_checks.h"
-#include "type_traits.h"
+#include <type_traits>
+#include <utility>
 
 namespace funcy
 {
-  /// @cond
-  namespace Concepts
-  {
-    template <class Matrix>
-    using TryCallToZeroes = decltype(std::declval<Matrix>().zeros());
-
-    template <class Matrix>
-    using TryCallToFill   = decltype(std::declval<Matrix>().fill(0));
-  }
-  /// @endcond
-
-  /// Specialize this struct for your matrix type if a zero matrix cannot be generated via Matrix(0.).
-  template <class Matrix, class = void>
-  struct Zero
-  {
-    /// @return zero matrix
-    static Matrix generate()
+    /**
+     * @brief Requires that a specialization of struct Zero exists for Matrix.
+     * @return constant size zero matrix
+     */
+    template < class Matrix >
+    constexpr Matrix zero()
     {
-      return Matrix(0.);
-    }
-  };
-
-  /// Specialization for the case that a matrix can be set to zero by calling the member function fill(0).
-  template <class Matrix>
-  struct Zero< Matrix , void_t<Concepts::TryCallToFill<Matrix> > >
-  {
-    /// @return zero matrix
-    static Matrix generate()
-    {
-      Matrix m;
-      m.fill(0);
-      return m;
+        return Matrix( 0 );
     }
 
-    /// Set all entries of m to 0.
-    static Matrix& generate(Matrix& m)
+    /**
+     * @brief Requires that a specialization of struct Zero exists for Matrix.
+     * @return constant size zero matrix
+     */
+    template < ConstantSize Matrix >
+    constexpr Matrix zero() requires(
+        std::is_default_constructible_v< Matrix >&& requires( Matrix m ) { m.fill( 0 ); } )
     {
-      m.fill(0);
-      return m;
+        Matrix m;
+        m.fill( 0 );
+        return m;
     }
-  };
 
-  /**
-   * @brief Requires that a specialization of struct Zero exists for Matrix.
-   * @return constant size zero matrix
-   */
-  template <class Matrix,
-            class = std::enable_if_t<Concepts::isConstantSize<Matrix>() || is_arithmetic<Matrix>::value> >
-  Matrix zero()
-  {
-    return Zero<Matrix>::generate();
-  }
+    /**
+     * @brief Requires that a specialization of struct Zero exists for Matrix.
+     * @return dynamic size zero matrix
+     */
+    template < class Matrix >
+    Matrix zero( int rows, int cols ) requires(
+        std::is_default_constructible_v< Matrix, int, int >&& requires( Matrix m ) {
+            m.fill( 0 );
+        } )
+    {
+        Matrix m( rows, cols );
+        m.fill( 0 );
+        return m;
+    }
 
-  /**
-   * @brief Requires that a specialization of struct Zero exists for Matrix.
-   * @return dynamic size zero matrix
-   */
-  template <class Matrix,
-            class = std::enable_if_t<!Concepts::isConstantSize<Matrix>() && !is_arithmetic<Matrix>::value> >
-  constexpr Matrix zero(int rows, int cols)
-  {
-    Matrix m(rows,cols);
-    return Zero<Matrix>::generate(m);
-  }
-}
+    template < class V >
+    constexpr V zero() requires std::is_arithmetic_v< V >
+    {
+        return V( 0 );
+    }
+} // namespace funcy

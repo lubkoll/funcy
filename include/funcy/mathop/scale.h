@@ -6,6 +6,7 @@
 #include <funcy/util/evaluate_if_present.h>
 #include <funcy/util/indexed_type.h>
 #include <funcy/util/mathop_traits.h>
+
 #include <type_traits>
 #include <utility>
 
@@ -15,8 +16,7 @@ namespace funcy
     {
         /**
          * @ingroup MathematicalOperationsGroup
-         * @brief Scaling \f$ af \f$ of some function \f$ f \f$ with a double \f$ a \f$ (F must
-         * satisfy the requirements of Concepts::FunctionConcept).
+         * @brief Scaling \f$ af \f$ of some function \f$ f \f$ with a double \f$ a \f$.
          */
         template < class Scalar, Function F >
         struct Scale : Chainer< Scale< Scalar, F > >
@@ -26,9 +26,32 @@ namespace funcy
              * @param a_ scaling
              * @param f_ input for constructor of outer function
              */
+            constexpr Scale( Scalar a_, F&& f_ )
+                : a( a_ ), f( std::move( f_ ) ), value( multiply_via_traits( a, f() ) )
+            {
+            }
+
+            /**
+             * @brief Constructor passing arguments to function constructor.
+             * @param a_ scaling
+             * @param f_ input for constructor of outer function
+             */
+            constexpr Scale( Scalar a_, const F& f_ )
+                : a( a_ ), f( f_ ), value( multiply_via_traits( a, f() ) )
+            {
+            }
+
+            /**
+             * @brief Constructor passing arguments to function constructor.
+             * @param a_ scaling
+             * @param f_ input for constructor of outer function
+             */
             template < class... InitF >
-            constexpr Scale( Scalar a_, InitF&&... f_ )
-                : a( a_ ), f( std::forward< InitF >( f_ )... ),
+            constexpr Scale(
+                Scalar a_,
+                InitF&&... f_ ) requires std::is_constructible_v< F, std::decay_t< InitF >... >
+                : a( a_ ),
+                  f( std::forward< InitF >( f_ )... ),
                   value( multiply_via_traits( a, f() ) )
             {
             }

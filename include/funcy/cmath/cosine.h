@@ -1,8 +1,9 @@
 #pragma once
 
-#include <cmath>
+#include <funcy/concepts.h>
 #include <funcy/util/chainer.h>
-#include <funcy/util/static_checks.h>
+
+#include <cmath>
 
 namespace funcy
 {
@@ -67,9 +68,9 @@ namespace funcy
       @param f function mapping into a scalar space
       @return object of type mathop::Chain<Cos,Function>
      */
-    template < class Function, class = std::enable_if_t< Concepts::isFunction< Function >() > >
-    auto cos( const Function& f )
+    template < Function F >
+    auto cos( const F& f )
     {
         return Cos()( f );
     }
-}
+} // namespace funcy

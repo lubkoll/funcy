@@ -2,8 +2,6 @@
 
 #include <type_traits>
 
-#include "voider.h"
-
 namespace funcy
 {
     /// @cond
@@ -16,9 +14,9 @@ namespace funcy
                 // access underlying type of the expression templates of the Eigen library
                 template < class EigenArg >
                 using PlainObject = typename EigenArg::PlainObject;
-            }
-        }
-    }
+            } // namespace NestedType
+        }     // namespace Try
+    }         // namespace Concepts
     /// @endcond
 
     /// %Identity, i.e. Decay<F>::type == F
@@ -30,7 +28,7 @@ namespace funcy
 
     /// Underlying type for expression templates of the Eigen library.
     template < class F >
-    struct Decay< F, void_t< Concepts::Try::NestedType::PlainObject< F > > >
+    struct Decay< F, std::void_t< Concepts::Try::NestedType::PlainObject< F > > >
     {
         using type = typename F::PlainObject;
     };
@@ -48,4 +46,4 @@ namespace funcy
     /// Access underlying type (if it is hidden by expression templates).
     template < class F >
     using remove_reference_t = typename Decay< std::remove_reference_t< F > >::type;
-}
+} // namespace funcy

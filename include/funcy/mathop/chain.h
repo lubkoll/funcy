@@ -6,6 +6,7 @@
 #include <funcy/util/derivative_wrappers.h>
 #include <funcy/util/evaluate_if_present.h>
 #include <funcy/util/indexed_type.h>
+
 #include <type_traits>
 #include <utility>
 
@@ -21,8 +22,7 @@ namespace funcy
         /**
          * @ingroup MathematicalOperationsGroup
          *
-         * @brief %Chain \f$ f\circ g \f$ of functions \f$f\f$ and \f$g\f$ of type F resp. G (F and
-         * G must satisfy the requirements of Concepts::FunctionConcept).
+         * @brief %Chain \f$ f\circ g \f$ of functions \f$f\f$ and \f$g\f$ of type F resp. G.
          */
         template < Function F, Function G >
         struct Chain : Chainer< Chain< F, G > >
@@ -57,6 +57,26 @@ namespace funcy
              * @param g_ inner function
              */
             constexpr Chain( const F& f_, const G& g_ ) : g( g_ ), f( f_ )
+            {
+                update_if_present( f, g() );
+            }
+
+            /**
+             * @brief Constructor taking moving the functions to be chained.
+             * @param f_ outer function
+             * @param g_ inner function
+             */
+            constexpr Chain( const F& f_, G&& g_ ) : g( std::move( g_ ) ), f( f_ )
+            {
+                update_if_present( f, g() );
+            }
+
+            /**
+             * @brief Constructor taking moving the functions to be chained.
+             * @param f_ outer function
+             * @param g_ inner function
+             */
+            constexpr Chain( F&& f_, const G& g_ ) : g( g_ ), f( std::move( f_ ) )
             {
                 update_if_present( f, g() );
             }

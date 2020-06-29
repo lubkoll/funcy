@@ -1,34 +1,35 @@
 #pragma once
 
-#include <type_traits>
 #include "static_checks.h"
+
+#include <funcy/concepts.h>
 #include <funcy/mathop/chain.h>
+
+#include <type_traits>
 
 namespace funcy
 {
-  /// @cond
-  template <class Function>
-  struct Chainer
-  {
-    decltype(auto) operator()() const noexcept
+    /// @cond
+    template < class F >
+    struct Chainer
     {
-      return static_cast<const Function*>(this)->d0();
-    }
+        decltype( auto ) operator()() const noexcept
+        {
+            return static_cast< const F* >( this )->d0();
+        }
 
-    template < class Arg ,
-               class = std::enable_if_t< !Concepts::isFunction<Arg>() > >
-    decltype(auto) operator()(const Arg& x)
-    {
-      static_cast<Function*>(this)->update(x);
-      return static_cast<const Function*>(this)->d0();
-    }
+        template < class Arg, class = std::enable_if_t< !Concepts::isFunction< Arg >() > >
+        decltype( auto ) operator()( const Arg& x )
+        {
+            static_cast< F* >( this )->update( x );
+            return static_cast< const F* >( this )->d0();
+        }
 
-    template < class OtherFunction ,
-               class = std::enable_if_t< Concepts::isFunction<OtherFunction>() > >
-    auto operator()(const OtherFunction& g)
-    {
-      return mathop::Chain<Function,OtherFunction>(*static_cast<const Function*>(this),g);
-    }
-  };
-  /// @endcond
-}
+        template < Function G >
+        auto operator()( const G& g )
+        {
+            return mathop::Chain< F, G >( *static_cast< const F* >( this ), g );
+        }
+    };
+    /// @endcond
+} // namespace funcy

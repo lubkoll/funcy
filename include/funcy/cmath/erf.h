@@ -1,7 +1,7 @@
 #pragma once
 
+#include <funcy/concepts.h>
 #include <funcy/util/chainer.h>
-#include <funcy/util/static_checks.h>
 
 #include <cmath>
 
@@ -30,7 +30,7 @@ namespace funcy
         {
             x_ = x;
             value = std::erf( x_ );
-            firstDerivative = scale * std::exp(-x_*x_);
+            firstDerivative = scale * std::exp( -x_ * x_ );
         }
 
         //! @copydoc Cos::d0()
@@ -48,17 +48,17 @@ namespace funcy
         //! @copydoc Cos::d2()
         double d2( double dx = 1., double dy = 1. ) const
         {
-            return -2*x_*d1(dx)*dy;
+            return -2 * x_ * d1( dx ) * dy;
         }
 
         //! @copydoc Cos::d3()
         double d3( double dx = 1., double dy = 1., double dz = 1. ) const
         {
-            return (4*x_*x_ - 2)*d1(dx)*dy*dz;
+            return ( 4 * x_ * x_ - 2 ) * d1( dx ) * dy * dz;
         }
 
     private:
-        double scale = 2/std::sqrt(M_PI);
+        double scale = 2 / std::sqrt( M_PI );
         double value = 0.;
         double firstDerivative = 1.;
         double x_ = 0;
@@ -69,10 +69,10 @@ namespace funcy
       @param f function mapping into a scalar space
       @return object of type MathematicalOperations::Chain<Erf,Function>
      */
-    template < class Function, class = std::enable_if_t< Concepts::isFunction< Function >() > >
-    auto erf( const Function& f )
+    template < Function F >
+    auto erf( const F& f )
     {
         return Erf()( f );
     }
     /** @} */
-}
+} // namespace funcy

@@ -1,6 +1,8 @@
 #pragma once
 
 #include "principal_invariants.h"
+
+#include <funcy/concepts.h>
 #include <funcy/constant.h>
 #include <funcy/generate.h>
 #include <funcy/identity.h>
@@ -31,7 +33,7 @@ namespace funcy
          * \param f function returning a square matrix
          * \param M structural tensor describing principal (fiber) direction
          */
-        template < class F, class Matrix, std::enable_if_t< Concepts::isFunction< F >() >* = nullptr >
+        template < Function F, class Matrix >
         auto i4( const F& f, const Matrix& M )
         {
             return i1( f * M );
@@ -56,7 +58,7 @@ namespace funcy
          * \param f function returning a square matrix
          * \param M structural tensor describing principal (fiber) direction
          */
-        template < class F, class Matrix, std::enable_if_t< Concepts::isFunction< F >() >* = nullptr >
+        template < Function F, class Matrix >
         auto i5( const F& f, const Matrix& M )
         {
             return i1( ( f ^ 2 ) * M );
@@ -81,7 +83,7 @@ namespace funcy
          * \param f function returning a square matrix
          * \param M structural tensor describing principal (fiber) direction
          */
-        template < class F, class Matrix, std::enable_if_t< Concepts::isFunction< F >() >* = nullptr >
+        template < Function F, class Matrix >
         auto i6( const F& f, const Matrix& M )
         {
             return i1( ( constant( M ) ^ 2 ) * f );
@@ -130,5 +132,5 @@ namespace funcy
             return i6( x, M ) * ( Pow< -1, n >()( det( x ) ) );
         }
         /** @} */
-    }
-}
+    } // namespace linalg
+} // namespace funcy

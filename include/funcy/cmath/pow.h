@@ -1,8 +1,8 @@
 #pragma once
 
+#include <funcy/concepts.h>
 #include <funcy/util/chainer.h>
 #include <funcy/util/exceptions.h>
-#include <funcy/util/static_checks.h>
 
 #include <cmath>
 
@@ -386,8 +386,8 @@ namespace funcy
       @param f function mapping into a scalar space
       @return object of type mathop::Chain<Sqrt,Function>
      */
-    template < class Function, class = std::enable_if_t< Concepts::isFunction< Function >() > >
-    auto sqrt( const Function& f )
+    template < Function F >
+    auto sqrt( const F& f )
     {
         return Sqrt()( f );
     }
@@ -397,8 +397,8 @@ namespace funcy
       @param f function mapping into a scalar space
       @return object of type mathop::Chain<Cbrt,Function>
      */
-    template < class Function, class = std::enable_if_t< Concepts::isFunction< Function >() > >
-    auto cbrt( const Function& f )
+    template < Function F >
+    auto cbrt( const F& f )
     {
         return Cbrt()( f );
     }
@@ -408,8 +408,8 @@ namespace funcy
       @param f function mapping into a scalar space
       @return object of type mathop::Chain<Cbrt2,Function>
      */
-    template < class Function, class = std::enable_if_t< Concepts::isFunction< Function >() > >
-    auto cbrt2( const Function& f )
+    template < Function F >
+    auto cbrt2( const F& f )
     {
         return Cbrt2()( f );
     }
@@ -421,9 +421,8 @@ namespace funcy
       @tparam l divisor
       @return object of type mathop::Chain< Pow<dividend,divisor> , Function >
      */
-    template < int k, int l, class Function,
-               class = std::enable_if_t< Concepts::isFunction< Function >() > >
-    auto pow( const Function& f )
+    template < int k, int l, Function F >
+    auto pow( const F& f )
     {
         return Pow< k, l >()( f );
     }
@@ -434,10 +433,10 @@ namespace funcy
       @tparam k exponent
       @return object of type mathop::Chain< Pow<dividend,divisor> , Function >
      */
-    template < int k, class Function, class = std::enable_if_t< Concepts::isFunction< Function >() > >
-    auto pow( const Function& f )
+    template < int k, Function F >
+    auto pow( const F& f )
     {
         return Pow< k >()( f );
     }
     /** @} */
-}
+} // namespace funcy
