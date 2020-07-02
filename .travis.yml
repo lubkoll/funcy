@@ -12,7 +12,6 @@ addons:
     packages:
     - g++-10
     - gcc-10
-    - clang-11
     - libopenblas-dev
     - liblapack-dev
     - lcov
@@ -31,11 +30,6 @@ matrix:
     - os: linux
       env: COMPILER=g++-10 COMPUTE_COVERAGE=true
       compiler: gcc
-      
-    # Clang 10
-    - os: linux
-      env: COMPILER=clang++-11 CCOMPILER=clang-11 COMPUTE_COVERAGE=false
-      compiler: clang
       
      
 install:
