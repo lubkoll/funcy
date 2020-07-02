@@ -19,13 +19,13 @@ namespace funcy
     struct Sin : Chainer< Sin >
     {
         //! @copydoc Cos::Cos()
-        explicit Sin( double x = 0 )
+        explicit Sin( double x = 0 ) noexcept
         {
             update( x );
         }
 
         //! @copydoc Cos::update()
-        void update( double x )
+        void update( double x ) noexcept
         {
             sinx = ::sin( x );
             cosx = ::cos( x );
@@ -38,19 +38,19 @@ namespace funcy
         }
 
         //! @copydoc Cos::d1()
-        double d1( double dx = 1. ) const
+        double d1( double dx = 1. ) const noexcept
         {
             return cosx * dx;
         }
 
         //! @copydoc Cos::d2()
-        double d2( double dx = 1., double dy = 1. ) const
+        double d2( double dx = 1., double dy = 1. ) const noexcept
         {
             return -sinx * dx * dy;
         }
 
         //! @copydoc Cos::d3()
-        double d3( double dx = 1., double dy = 1., double dz = 1. ) const
+        double d3( double dx = 1., double dy = 1., double dz = 1. ) const noexcept
         {
             return -cosx * dx * dy * dz;
         }

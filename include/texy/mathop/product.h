@@ -1,15 +1,14 @@
 #pragma once
 
-#include <type_traits>
-#include <utility>
-
-#include <texy/util/chainer.h>
-#include <funcy/concept_check.h>
 #include <funcy/util/compute_product.h>
 #include <funcy/util/compute_sum.h>
 #include <funcy/util/derivative_wrappers.h>
 #include <funcy/util/evaluate_if_present.h>
 #include <funcy/util/indexed_type.h>
+
+#include <texy/util/chainer.h>
+#include <type_traits>
+#include <utility>
 
 namespace texy
 {
@@ -18,12 +17,12 @@ namespace texy
         /**
          * @ingroup TexifyMathematicalOperationsGroup
          * @brief %Product \f$fg\f$ of functions of type F and G (F and G must satisfy the
-         * requirements of Concepts::FunctionConcept).
+         * requirements of static_check::FunctionConcept).
          */
-        template < class F, class G, class = funcy::Concepts::IsFunction< F >,
-                   class = funcy::Concepts::IsFunction< G > >
-        struct Product : Chainer< Product< F, G, funcy::Concepts::IsFunction< F >,
-                                           funcy::Concepts::IsFunction< G > > >
+        template < class F, class G, class = funcy::static_check::IsFunction< F >,
+                   class = funcy::static_check::IsFunction< G > >
+        struct Product : Chainer< Product< F, G, funcy::static_check::IsFunction< F >,
+                                           funcy::static_check::IsFunction< G > > >
         {
         private:
             template < class IndexedArg >
@@ -41,21 +40,21 @@ namespace texy
             template < class IndexedArgX, class IndexedArgY, class IndexedArgZ >
             using D3Type = funcy::ComputeSum<
                 funcy::ComputeProduct< funcy::D3< F, IndexedArgX, IndexedArgY, IndexedArgZ >,
-                                      funcy::D0< G > >,
+                                       funcy::D0< G > >,
                 funcy::ComputeProduct< funcy::D2< F, IndexedArgX, IndexedArgY >,
-                                      funcy::D1< G, IndexedArgZ > >,
+                                       funcy::D1< G, IndexedArgZ > >,
                 funcy::ComputeProduct< funcy::D2< F, IndexedArgX, IndexedArgZ >,
-                                      funcy::D1< G, IndexedArgY > >,
+                                       funcy::D1< G, IndexedArgY > >,
                 funcy::ComputeProduct< funcy::D1< F, IndexedArgX >,
-                                      funcy::D2< G, IndexedArgY, IndexedArgZ > >,
+                                       funcy::D2< G, IndexedArgY, IndexedArgZ > >,
                 funcy::ComputeProduct< funcy::D2< F, IndexedArgY, IndexedArgZ >,
-                                      funcy::D1< G, IndexedArgX > >,
+                                       funcy::D1< G, IndexedArgX > >,
                 funcy::ComputeProduct< funcy::D1< F, IndexedArgY >,
-                                      funcy::D2< G, IndexedArgX, IndexedArgZ > >,
+                                       funcy::D2< G, IndexedArgX, IndexedArgZ > >,
                 funcy::ComputeProduct< funcy::D1< F, IndexedArgZ >,
-                                      funcy::D2< G, IndexedArgX, IndexedArgY > >,
+                                       funcy::D2< G, IndexedArgX, IndexedArgY > >,
                 funcy::ComputeProduct< funcy::D0< F >,
-                                      funcy::D3< G, IndexedArgX, IndexedArgY, IndexedArgZ > > >;
+                                       funcy::D3< G, IndexedArgX, IndexedArgY, IndexedArgZ > > >;
 
         public:
             /**
@@ -120,13 +119,13 @@ namespace texy
             {
                 return funcy::sum(
                     funcy::product( funcy::D2< F, IndexedArgX, IndexedArgY >( f, dx, dy ),
-                                   funcy::D0< G >( g ) ),
+                                    funcy::D0< G >( g ) ),
                     funcy::product( funcy::D1< F, IndexedArgX >( f, dx ),
-                                   funcy::D1< G, IndexedArgY >( g, dy ) ),
+                                    funcy::D1< G, IndexedArgY >( g, dy ) ),
                     funcy::product( funcy::D1< F, IndexedArgY >( f, dy ),
-                                   funcy::D1< G, IndexedArgX >( g, dx ) ),
+                                    funcy::D1< G, IndexedArgX >( g, dx ) ),
                     funcy::product( funcy::D0< F >( f ),
-                                   funcy::D2< G, IndexedArgX, IndexedArgY >( g, dx, dy ) ) )();
+                                    funcy::D2< G, IndexedArgX, IndexedArgY >( g, dx, dy ) ) )();
             }
 
             /**
@@ -148,20 +147,20 @@ namespace texy
                         funcy::D3< F, IndexedArgX, IndexedArgY, IndexedArgZ >( f, dx, dy, dz ),
                         funcy::D0< G >( g ) ),
                     funcy::product( funcy::D2< F, IndexedArgX, IndexedArgY >( f, dx, dy ),
-                                   funcy::D1< G, IndexedArgZ >( g, dz ) ),
+                                    funcy::D1< G, IndexedArgZ >( g, dz ) ),
                     funcy::product( funcy::D2< F, IndexedArgX, IndexedArgZ >( f, dx, dz ),
-                                   funcy::D1< G, IndexedArgY >( g, dy ) ),
+                                    funcy::D1< G, IndexedArgY >( g, dy ) ),
                     funcy::product( funcy::D1< F, IndexedArgX >( f, dx ),
-                                   funcy::D2< G, IndexedArgY, IndexedArgZ >( g, dy, dz ) ),
+                                    funcy::D2< G, IndexedArgY, IndexedArgZ >( g, dy, dz ) ),
                     funcy::product( funcy::D2< F, IndexedArgY, IndexedArgZ >( f, dy, dz ),
-                                   funcy::D1< G, IndexedArgX >( g, dx ) ),
+                                    funcy::D1< G, IndexedArgX >( g, dx ) ),
                     funcy::product( funcy::D1< F, IndexedArgY >( f, dy ),
-                                   funcy::D2< G, IndexedArgX, IndexedArgZ >( g, dx, dz ) ),
+                                    funcy::D2< G, IndexedArgX, IndexedArgZ >( g, dx, dz ) ),
                     funcy::product( funcy::D1< F, IndexedArgZ >( f, dz ),
-                                   funcy::D2< G, IndexedArgX, IndexedArgY >( g, dx, dy ) ),
-                    funcy::product(
-                        funcy::D0< F >( f ),
-                        funcy::D3< G, IndexedArgX, IndexedArgY, IndexedArgZ >( g, dx, dy, dz ) ) )();
+                                    funcy::D2< G, IndexedArgX, IndexedArgY >( g, dx, dy ) ),
+                    funcy::product( funcy::D0< F >( f ),
+                                    funcy::D3< G, IndexedArgX, IndexedArgY, IndexedArgZ >(
+                                        g, dx, dy, dz ) ) )();
             }
 
         private:
@@ -171,5 +170,5 @@ namespace texy
                 funcy::multiply_via_traits( std::declval< F >()(), std::declval< G >()() ) ) >
                 value;
         };
-    }
-}
+    } // namespace mathop
+} // namespace texy

@@ -4,7 +4,10 @@
 #include "determinant.h"
 #include "dimension.h"
 #include "trace.h"
+
 #include <funcy/cmath/pow.h>
+#include <funcy/concepts.h>
+#include <funcy/linalg/concepts.h>
 #include <funcy/util/chainer.h>
 #include <funcy/util/type_traits.h>
 
@@ -12,22 +15,14 @@
 
 namespace funcy
 {
-    /// @cond
-    namespace Concepts
-    {
-        template < class >
-        struct IsMatrix;
-    }
-    /// @endcond
-
     namespace linalg
     {
         /// @cond
-        namespace Detail
+        namespace detail
         {
 
-            template < int row, class Matrix >
-            auto symmetricCofactorDerivative( const Matrix& A, const Matrix& dA )
+            template < int row, Matrix M >
+            auto symmetricCofactorDerivative( const M& A, const M& dA )
             {
                 return computeCofactorDirectionalDerivative< row, row >( A, dA ) +
                        computeCofactorDirectionalDerivative< row, row >( dA, A );
@@ -39,14 +34,14 @@ namespace funcy
             template <>
             struct Compute< 2 >
             {
-                template < class Matrix >
-                static auto sumOfDiagonalCofactors( const Matrix& A )
+                template < Matrix M >
+                static auto sumOfDiagonalCofactors( const M& A )
                 {
                     return computeCofactor< 0, 0 >( A ) + computeCofactor< 1, 1 >( A );
                 }
 
-                template < class Matrix >
-                static auto sumOfSymmetricCofactorDerivatives( const Matrix& A, const Matrix& B )
+                template < Matrix M >
+                static auto sumOfSymmetricCofactorDerivatives( const M& A, const M& B )
                 {
                     return symmetricCofactorDerivative< 0 >( A, B ) +
                            symmetricCofactorDerivative< 1 >( A, B );
@@ -56,15 +51,15 @@ namespace funcy
             template <>
             struct Compute< 3 >
             {
-                template < class Matrix >
-                static auto sumOfDiagonalCofactors( const Matrix& A )
+                template < Matrix M >
+                static auto sumOfDiagonalCofactors( const M& A )
                 {
                     return computeCofactor< 0, 0 >( A ) + computeCofactor< 1, 1 >( A ) +
                            computeCofactor< 2, 2 >( A );
                 }
 
-                template < class Matrix >
-                static auto sumOfSymmetricCofactorDerivatives( const Matrix& A, const Matrix& B )
+                template < Matrix M >
+                static auto sumOfSymmetricCofactorDerivatives( const M& A, const M& B )
                 {
                     return symmetricCofactorDerivative< 0 >( A, B ) +
                            symmetricCofactorDerivative< 1 >( A, B ) +
@@ -76,16 +71,16 @@ namespace funcy
             template <>
             struct Compute< -1 >
             {
-                template < class Matrix >
-                static auto sumOfDiagonalCofactors( const Matrix& A )
+                template < Matrix M >
+                static auto sumOfDiagonalCofactors( const M& A )
                 {
                     if ( rows( A ) == 2 )
                         return Compute< 2 >::sumOfDiagonalCofactors( A );
                     /*if(rows(A) == 3)*/ return Compute< 3 >::sumOfDiagonalCofactors( A );
                 }
 
-                template < class Matrix >
-                static auto sumOfSymmetricCofactorDerivatives( const Matrix& A, const Matrix& B )
+                template < Matrix M >
+                static auto sumOfSymmetricCofactorDerivatives( const M& A, const M& B )
                 {
                     if ( rows( A ) == 2 )
                         return Compute< 2 >::sumOfSymmetricCofactorDerivatives( A, B );
@@ -93,17 +88,15 @@ namespace funcy
                         A, B );
                 }
             };
-        }
+        } // namespace detail
         /// @endcond
 
         /** @addtogroup InvariantGroup, LinearAlgebraGroup
          * @{ */
         /// Second principal invariant \f$ \iota_2(A)=\mathrm{tr}(\mathrm{cof}(A)) \f$ for
         /// \f$A\in\mathbb{R}^{n,n}\f$.
-        template < class Matrix, class = Concepts::IsMatrix< Matrix > >
-        class SecondPrincipalInvariant
-            : public Chainer<
-                  SecondPrincipalInvariant< Matrix, Concepts::IsMatrix< Matrix > > >
+        template < Matrix M >
+        class SecondPrincipalInvariant : public Chainer< SecondPrincipalInvariant< M > >
         {
         public:
             SecondPrincipalInvariant() = default;
@@ -112,22 +105,22 @@ namespace funcy
              * @brief Constructor.
              * @param A matrix to compute second principal invariant from
              */
-            SecondPrincipalInvariant( const Matrix& A )
+            SecondPrincipalInvariant( const M& A )
             {
                 update( A );
             }
 
             /// Reset matrix to compute second principal invariant from.
-            void update( const Matrix& A )
+            void update( const M& A )
             {
                 if ( !initialized )
                 {
-                    new ( &A_ ) Matrix{A};
+                    new ( &A_ ) M{ A };
                     initialized = true;
                 }
                 else
                     A_ = A;
-                value = Detail::Compute< dim< Matrix >() >::sumOfDiagonalCofactors( A );
+                value = detail::Compute< dim< M >() >::sumOfDiagonalCofactors( A );
             }
 
             /// Value of the second principal invariant
@@ -140,10 +133,9 @@ namespace funcy
              * @brief First directional derivative
              * @param dA1 direction for which the derivative is computed
              */
-            auto d1( const Matrix& dA1 ) const
+            auto d1( const M& dA1 ) const
             {
-                return Detail::Compute< dim< Matrix >() >::sumOfSymmetricCofactorDerivatives( A_,
-                                                                                              dA1 );
+                return detail::Compute< dim< M >() >::sumOfSymmetricCofactorDerivatives( A_, dA1 );
             }
 
             /**
@@ -151,15 +143,14 @@ namespace funcy
              * @param dA1 direction for which the derivative is computed
              * @param dA2 direction for which the derivative is computed
              */
-            auto d2( const Matrix& dA1, const Matrix& dA2 ) const
+            auto d2( const M& dA1, const M& dA2 ) const
             {
-                return Detail::Compute< dim< Matrix >() >::sumOfSymmetricCofactorDerivatives( dA1,
-                                                                                              dA2 );
+                return detail::Compute< dim< M >() >::sumOfSymmetricCofactorDerivatives( dA1, dA2 );
             }
 
         private:
-            Matrix A_;
-            std::decay_t< decltype( at( std::declval< Matrix >(), 0, 0 ) ) > value = 0;
+            M A_;
+            std::decay_t< decltype( at( std::declval< M >(), 0, 0 ) ) > value = 0;
             bool initialized = false;
         };
 
@@ -174,9 +165,9 @@ namespace funcy
          * Trace< std::decay_t<decltype(x())> >( x() )( x );
          */
         template < class Arg >
-        auto i1( const Arg& x )
+        auto i1( Arg&& x )
         {
-            return trace( x );
+            return trace( std::forward< Arg >( x ) );
         }
 
         /**
@@ -184,10 +175,10 @@ namespace funcy
          * \iota_2(A)=\mathrm{tr}(\mathrm{cof}(A)) \f$ for \f$A\in\mathbb{R}^{n,n}\f$.
          * @return SecondPrincipalInvariant<Matrix>(A)
          */
-        template < class Matrix, std::enable_if_t< !Concepts::isFunction< Matrix >() >* = nullptr >
-        auto i2( const Matrix& A )
+        template < Matrix M >
+        auto i2( M&& A )
         {
-            return SecondPrincipalInvariant< Matrix >( A );
+            return SecondPrincipalInvariant( std::forward< M >( A ) );
         }
 
         /**
@@ -195,10 +186,10 @@ namespace funcy
          * \f$f:\cdot\mapsto\mathbb{R}^{n,n}\f$.
          * @return SecondPrincipalInvariant( f() )( f )
          */
-        template < class F, std::enable_if_t< Concepts::isFunction< F >() >* = nullptr >
+        template < Function F >
         auto i2( const F& f )
         {
-            return SecondPrincipalInvariant< decay_t< decltype( f() ) > >( f() )( f );
+            return SecondPrincipalInvariant( f() )( f );
         }
 
         /**
@@ -240,5 +231,5 @@ namespace funcy
             return i2( x ) * pow< -2, n >( det( x ) );
         }
         /** @} */
-    }
-}
+    } // namespace linalg
+} // namespace funcy

@@ -3,14 +3,15 @@
 
 #pragma once
 
-#include <type_traits>
-
 #include "determinant.h"
 #include "trace.h"
-#include <texy/cmath/pow.h>
-#include <texy/generate.h>
+
 #include <funcy/util/chainer.h>
 #include <funcy/util/type_traits.h>
+
+#include <texy/cmath/pow.h>
+#include <texy/generate.h>
+#include <type_traits>
 
 namespace texy
 {
@@ -110,7 +111,7 @@ namespace texy
          * \f$f:\cdot\mapsto\mathbb{R}^{n,n}\f$.
          * @return SecondPrincipalInvariant( f() )( f )
          */
-        template < class F, std::enable_if_t< funcy::Concepts::isFunction< F >() >* = nullptr >
+        template < class F, std::enable_if_t< funcy::static_check::isFunction< F >() >* = nullptr >
         auto i2( const F& f )
         {
             return SecondPrincipalInvariant( f() )( f );
@@ -155,5 +156,5 @@ namespace texy
             return i2( x ) * pow< -2, n >( det( x ) );
         }
         /** @} */
-    }
-}
+    } // namespace linalg
+} // namespace texy

@@ -4,7 +4,7 @@
 
 namespace funcy
 {
-    namespace Concepts
+    namespace static_check
     {
         /// @cond
         template < class Matrix >
@@ -108,5 +108,5 @@ namespace funcy
             return HasMemFn_cols< Vector >::value;
         }
         /** @} */
-    } // namespace Concepts
+    } // namespace static_check
 } // namespace funcy

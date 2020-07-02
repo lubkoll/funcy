@@ -6,7 +6,6 @@
 #include "math.hh"
 #include "variable.hh"
 
-#include <funcy/concept_check.hh>
 #include <funcy/finalize.hh>
 #include <funcy/operations.hh>
 #include <funcy/util/add_missing_operators.hh>

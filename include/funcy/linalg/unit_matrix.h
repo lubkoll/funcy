@@ -3,6 +3,7 @@
 #include "dimension.h"
 
 #include <funcy/concepts.h>
+#include <funcy/linalg/concepts.h>
 #include <funcy/util/at.h>
 #include <funcy/util/zero.h>
 

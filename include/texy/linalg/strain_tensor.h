@@ -1,9 +1,8 @@
 #pragma once
 
+#include <string>
 #include <texy/util/chainer.h>
 #include <texy/util/string.h>
-
-#include <string>
 
 namespace texy
 {
@@ -133,48 +132,48 @@ namespace texy
         };
 
         /**
-         * \brief Generate the right Cauchy-Green strain tensor \f$A*A^T\f$.
+         * @brief Generate the right Cauchy-Green strain tensor \f$A*A^T\f$.
          * \param A matrix
          * \return RightCauchyGreenStrainTensor<Matrix>(A)
          */
         RightCauchyGreenStrainTensor strainTensor( const std::string& A )
         {
-            return RightCauchyGreenStrainTensor{A};
+            return RightCauchyGreenStrainTensor{ A };
         }
 
         /**
-         * \brief Generate the right Cauchy-Green strain tensor \f$f*f^T\f$, where
+         * @brief Generate the right Cauchy-Green strain tensor \f$f*f^T\f$, where
          * \f$f:\cdot\mapsto\mathbb{R}^{n,n} \f$.
          * \param f function object mapping into a space of square matrices
          * \return RightCauchyGreenStrainTensor< decay_t<decltype(f())> >(f())( f )
          */
-        template < class F, std::enable_if_t< funcy::Concepts::isFunction< F >() >* = nullptr >
+        template < class F, std::enable_if_t< funcy::static_check::isFunction< F >() >* = nullptr >
         RightCauchyGreenStrainTensor strainTensor( const F& f )
         {
-            return RightCauchyGreenStrainTensor{f()}( f );
+            return RightCauchyGreenStrainTensor{ f() }( f );
         }
 
         /**
-         * \brief Generate the left Cauchy-Green strain tensor \f$A^T*A\f$.
+         * @brief Generate the left Cauchy-Green strain tensor \f$A^T*A\f$.
          * \param A matrix
          * \return LeftCauchyGreenStrainTensor<Matrix>(A)
          */
         LeftCauchyGreenStrainTensor leftStrainTensor( const std::string& A )
         {
-            return LeftCauchyGreenStrainTensor{A};
+            return LeftCauchyGreenStrainTensor{ A };
         }
 
         /**
-         * \brief Generate the left Cauchy-Green strain tensor \f$f^T*f\f$, where
+         * @brief Generate the left Cauchy-Green strain tensor \f$f^T*f\f$, where
          * \f$f:\cdot\mapsto\mathbb{R}^{n,n} \f$.
          * \param f function object mapping into a space of square matrices
          * \return LeftCauchyGreenStrainTensor< decay_t<decltype(f())> >(f())( f )
          */
-        template < class F, std::enable_if_t< funcy::Concepts::isFunction< F >() >* = nullptr >
+        template < class F, std::enable_if_t< funcy::static_check::isFunction< F >() >* = nullptr >
         LeftCauchyGreenStrainTensor leftStrainTensor( const F& f )
         {
-            return LeftCauchyGreenStrainTensor{f()}( f );
+            return LeftCauchyGreenStrainTensor{ f() }( f );
         }
-    }
+    } // namespace linalg
     /** @} */
-}
+} // namespace texy

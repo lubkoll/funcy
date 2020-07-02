@@ -1,6 +1,6 @@
 #pragma once
 
-#include <funcy/concepts.h>
+#include <funcy/linalg/concepts.h>
 
 #include <type_traits>
 #include <utility>

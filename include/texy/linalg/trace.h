@@ -1,10 +1,9 @@
 #pragma once
 
-#include <texy/util/chainer.h>
-#include <texy/util/string.h>
-#include <funcy/concept_check.h>
 #include <funcy/util/type_traits.h>
 
+#include <texy/util/chainer.h>
+#include <texy/util/string.h>
 #include <type_traits>
 #include <utility>
 
@@ -51,11 +50,11 @@ namespace texy
             return Trace( A );
         }
 
-        template < class F, std::enable_if_t< funcy::Concepts::isFunction< F >() >* = nullptr >
+        template < class F, std::enable_if_t< funcy::static_check::isFunction< F >() >* = nullptr >
         auto trace( const F& f )
         {
             return Trace( f() )( f );
         }
         /** @} */
-    }
-}
+    } // namespace linalg
+} // namespace texy

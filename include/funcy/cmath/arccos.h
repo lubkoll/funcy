@@ -3,6 +3,7 @@
 #include <funcy/concepts.h>
 #include <funcy/util/chainer.h>
 #include <funcy/util/exceptions.h>
+#include <funcy/util/macros.h>
 
 #include <cmath>
 
@@ -21,13 +22,13 @@ namespace funcy
     struct ACos : Chainer< ACos >
     {
         //! @copydoc Cos::Cos()
-        explicit ACos( double x = 0. )
+        explicit ACos( double x = 0. ) FUNCY_NOEXCEPT
         {
             update( x );
         }
 
         //! @copydoc Cos::update()
-        void update( double x )
+        void update( double x ) FUNCY_NOEXCEPT
         {
 #ifdef FUNCY_ENABLE_EXCEPTIONS
             if ( x < -1 || x > 1 )
@@ -46,19 +47,19 @@ namespace funcy
         }
 
         //! @copydoc Cos::d1()
-        double d1( double dx = 1 ) const
+        double d1( double dx = 1 ) const noexcept
         {
             return firstDerivative * dx;
         }
 
         //! @copydoc Cos::d2()
-        double d2( double dx = 1, double dy = 1 ) const
+        double d2( double dx = 1, double dy = 1 ) const noexcept
         {
             return x_ * firstDerivative3 * dx * dy;
         }
 
         //! @copydoc Cos::d3()
-        double d3( double dx = 1, double dy = 1, double dz = 1 ) const
+        double d3( double dx = 1, double dy = 1, double dz = 1 ) const noexcept
         {
             return firstDerivative3 *
                    ( 1 + ( 3 * x_ * x_ / ( firstDerivative * firstDerivative ) ) ) * dx * dy * dz;
@@ -72,9 +73,8 @@ namespace funcy
       @ingroup CMathGroup
       @brief Generate \f$ \arccos\circ f \f$.
       @param f function mapping into a scalar space
-      @return object of type mathop::Chain<ACos,Function>
+      @return object of type mathop::Chain<ACos,F>
      */
-
     template < Function F >
     auto acos( const F& f )
     {

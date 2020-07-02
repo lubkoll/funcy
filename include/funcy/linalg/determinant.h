@@ -4,6 +4,7 @@
 #include "rows_and_cols.h"
 
 #include <funcy/concepts.h>
+#include <funcy/linalg/concepts.h>
 #include <funcy/util/at.h>
 #include <funcy/util/chainer.h>
 #include <funcy/util/exceptions.h>
@@ -22,17 +23,17 @@ namespace funcy
          *  @{ */
 
         /// @cond
-        namespace Detail
+        namespace detail
         {
-            template < SquareMatrix Matrix >
-            inline auto composeResult( Matrix const& A, Matrix const& B )
+            template < class M >
+            inline auto composeResult( const M& A, const M& B )
             {
                 return at( A, 0, 0 ) * at( B, 1, 1 ) + at( A, 1, 1 ) * at( B, 0, 0 ) -
                        ( at( A, 0, 1 ) * at( B, 1, 0 ) + at( A, 1, 0 ) * at( B, 0, 1 ) );
             }
 
-            template < SquareMatrix Matrix >
-            inline auto composeResult( Matrix const& dA, Matrix const& dB, Matrix const& dC )
+            template < class M >
+            inline auto composeResult( const M& dA, const M& dB, const M& dC )
             {
                 return at( dB, 1, 1 ) *
                            ( at( dA, 0, 0 ) * at( dC, 2, 2 ) - at( dA, 2, 0 ) * at( dC, 0, 2 ) ) +
@@ -42,9 +43,8 @@ namespace funcy
                            ( at( dA, 0, 2 ) * at( dC, 2, 1 ) - at( dA, 2, 2 ) * at( dC, 0, 1 ) );
             }
 
-            template < SquareMatrix Matrix >
-            inline auto composeSemiSymmetricResult( Matrix const& dA, Matrix const& dB,
-                                                    Matrix const& dC )
+            template < class M >
+            inline auto composeSemiSymmetricResult( const M& dA, const M& dB, const M& dC )
             {
                 return at( dB, 1, 1 ) *
                            ( at( dA, 0, 0 ) * at( dC, 2, 2 ) + at( dA, 2, 2 ) * at( dC, 0, 0 ) -
@@ -57,21 +57,21 @@ namespace funcy
                              at( dA, 2, 2 ) * at( dC, 0, 1 ) - at( dA, 0, 1 ) * at( dC, 2, 2 ) );
             }
 
-            template < SquareMatrix Matrix, int dim >
+            template < class M, int dim = dim< M >() >
             class DeterminantImpl;
 
-            template < SquareMatrix Matrix >
-            class DeterminantImpl< Matrix, 2 > : public Chainer< DeterminantImpl< Matrix, 2 > >
+            template < class M >
+            class DeterminantImpl< M, 2 > : public Chainer< DeterminantImpl< M, 2 > >
             {
             public:
                 DeterminantImpl() = default;
 
-                explicit DeterminantImpl( Matrix const& A_ )
+                explicit DeterminantImpl( const M& A_ )
                 {
                     update( A_ );
                 }
 
-                void update( Matrix const& A_ )
+                void update( const M& A_ )
                 {
                     A = A_;
                     value = at( A, 0, 0 ) * at( A, 1, 1 ) - at( A, 0, 1 ) * at( A, 1, 0 );
@@ -82,33 +82,33 @@ namespace funcy
                     return value;
                 }
 
-                auto d1( Matrix const& dA1 ) const
+                auto d1( const M& dA1 ) const
                 {
                     return composeResult( A, dA1 );
                 }
 
-                auto d2( Matrix const& dA1, Matrix const& dA2 ) const
+                auto d2( const M& dA1, const M& dA2 ) const
                 {
                     return composeResult( dA2, dA1 );
                 }
 
             private:
-                Matrix A;
-                std::decay_t< decltype( at( std::declval< Matrix >(), 0, 0 ) ) > value = 0.;
+                M A;
+                std::decay_t< decltype( at( std::declval< M >(), 0, 0 ) ) > value = 0.;
             };
 
-            template < SquareMatrix Matrix >
-            class DeterminantImpl< Matrix, 3 > : public Chainer< DeterminantImpl< Matrix, 3 > >
+            template < class M >
+            class DeterminantImpl< M, 3 > : public Chainer< DeterminantImpl< M, 3 > >
             {
             public:
                 DeterminantImpl() = default;
 
-                DeterminantImpl( Matrix const& A_ )
+                DeterminantImpl( const M& A_ )
                 {
                     update( A_ );
                 }
 
-                void update( Matrix const& A_ )
+                void update( const M& A_ )
                 {
                     A = A_;
                     value = composeResult( A, A, A );
@@ -119,20 +119,20 @@ namespace funcy
                     return value;
                 }
 
-                auto d1( Matrix const& dA1 ) const
+                auto d1( const M& dA1 ) const
                 {
                     return composeResult( dA1, A, A ) + composeResult( A, dA1, A ) +
                            composeResult( A, A, dA1 );
                 }
 
-                auto d2( Matrix const& dA1, Matrix const& dA2 ) const
+                auto d2( const M& dA1, const M& dA2 ) const
                 {
                     return composeSemiSymmetricResult( A, dA2, dA1 ) +
                            composeSemiSymmetricResult( dA1, A, dA2 ) +
                            composeSemiSymmetricResult( A, dA1, dA2 );
                 }
 
-                auto d3( Matrix const& dA1, Matrix const& dA2, Matrix const& dA3 ) const
+                auto d3( const M& dA1, const M& dA2, const M& dA3 ) const
                 {
                     return composeSemiSymmetricResult( dA1, dA2, dA3 ) +
                            composeSemiSymmetricResult( dA1, dA3, dA2 ) +
@@ -140,30 +140,30 @@ namespace funcy
                 }
 
             private:
-                Matrix A;
-                std::decay_t< decltype( at( std::declval< Matrix >(), 0, 0 ) ) > value = 0.;
+                M A;
+                std::decay_t< decltype( at( std::declval< M >(), 0, 0 ) ) > value = 0.;
             };
-        } // namespace Detail
+        } // namespace detail
 
         /// Determinant of constant size matrix with first three derivatives.
-        template < SquareMatrix Matrix >
-        using ConstantSizeDeterminant = Detail::DeterminantImpl< Matrix, dim< Matrix >() >;
+        template < class M >
+        using ConstantSizeDeterminant = detail::DeterminantImpl< M >;
 
         /// Determinant of dynamic size matrix with first three derivatives.
-        template < class Matrix >
-        class DynamicSizeDeterminant : public Chainer< DynamicSizeDeterminant< Matrix > >
+        template < class M >
+        class DynamicSizeDeterminant : public Chainer< DynamicSizeDeterminant< M > >
         {
         public:
             DynamicSizeDeterminant() = default;
 
             /// Constructor.
-            DynamicSizeDeterminant( Matrix const& A ) : dim( rows( A ) )
+            DynamicSizeDeterminant( const M& A ) : dim( rows( A ) )
             {
                 update( A );
             }
 
             /// Reset point of evaluation.
-            void update( Matrix const& A )
+            void update( const M& A )
             {
 #ifdef FUNCY_ENABLE_EXCEPTIONS
                 if ( rows( A ) != cols( A ) )
@@ -180,31 +180,31 @@ namespace funcy
             /// Function value.
             auto d0() const
             {
-                return ( dim == 2 ) ? det2D.d0() : det3D.d0();
+                return ( dim == 2 ) ? det2D() : det3D();
             }
 
             /// First (directional) derivative.
-            auto d1( Matrix const& dA1 ) const
+            auto d1( const M& dA1 ) const
             {
                 return ( dim == 2 ) ? det2D.d1( dA1 ) : det3D.d1( dA1 );
             }
 
             /// Second (directional) derivative.
-            auto d2( Matrix const& dA1, Matrix const& dA2 ) const
+            auto d2( const M& dA1, const M& dA2 ) const
             {
                 return ( dim == 2 ) ? det2D.d2( dA1, dA2 ) : det3D.d2( dA1, dA2 );
             }
 
             /// Third (directional) derivative.
-            auto d3( Matrix const& dA1, Matrix const& dA2, Matrix const& dA3 ) const
+            auto d3( const M& dA1, const M& dA2, const M& dA3 ) const
             {
                 return ( dim == 2 ) ? 0 : det3D.d3( dA1, dA2, dA3 );
             }
 
         private:
             int dim = 0;
-            Detail::DeterminantImpl< Matrix, 2 > det2D;
-            Detail::DeterminantImpl< Matrix, 3 > det3D;
+            detail::DeterminantImpl< M, 2 > det2D;
+            detail::DeterminantImpl< M, 3 > det3D;
         };
         /// @endcond
 
@@ -213,10 +213,10 @@ namespace funcy
          * @param A square matrix
          * @return Determinant<Matrix>(A)
          */
-        template < class Matrix, std::enable_if_t< !Concepts::isFunction< Matrix >() >* = nullptr >
-        auto det( Matrix const& A )
+        template < class M >
+        auto det( const M& A ) requires( !Function< M > && !SquareMatrix< M > )
         {
-            return DynamicSizeDeterminant< Matrix >( A );
+            return DynamicSizeDeterminant( A );
         }
 
         /**
@@ -224,10 +224,10 @@ namespace funcy
          * @param A square matrix
          * @return Determinant<Matrix>(A)
          */
-        template < SquareMatrix Matrix >
-        auto det( const Matrix& A )
+        template < SquareMatrix M >
+        auto det( const M& A )
         {
-            return ConstantSizeDeterminant< Matrix >( A );
+            return ConstantSizeDeterminant< M >( A );
         }
 
         /**

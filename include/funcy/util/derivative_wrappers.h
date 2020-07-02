@@ -10,7 +10,7 @@
 namespace funcy
 {
     /// @cond
-    namespace Detail
+    namespace detail
     {
         /// Don't call f.d1(dx).
         template < Function F, class IndexedArg, bool IsPresent, bool hasIndex,
@@ -50,8 +50,8 @@ namespace funcy
         };
 
         /// Call f.d1(dx).
-        template < Function F, class IndexedArg, class Arg, int id >
-        struct D1Impl< F, IndexedArg, true, false, Arg, id >
+        template < Function F, class IndexedArg, class Arg >
+        struct D1Impl< F, IndexedArg, true, false, Arg, -1 >
         {
             static constexpr bool present = true;
 
@@ -112,9 +112,8 @@ namespace funcy
         };
 
         /// Call f.d2(dx,dy).
-        template < Function F, class IndexedArgX, class IndexedArgY, class ArgX, class ArgY,
-                   int idx, int idy >
-        struct D2Impl< F, IndexedArgX, IndexedArgY, true, false, ArgX, ArgY, idx, idy >
+        template < Function F, class IndexedArgX, class IndexedArgY, class ArgX, class ArgY >
+        struct D2Impl< F, IndexedArgX, IndexedArgY, true, false, ArgX, ArgY, -1, -1 >
         {
             static constexpr bool present = true;
 
@@ -181,9 +180,9 @@ namespace funcy
 
         /// Call f.d3(dx,dy,dz).
         template < Function F, class IndexedArgX, class IndexedArgY, class IndexedArgZ, class ArgX,
-                   class ArgY, class ArgZ, int idx, int idy, int idz >
-        struct D3Impl< F, IndexedArgX, IndexedArgY, IndexedArgZ, true, false, ArgX, ArgY, ArgZ, idx,
-                       idy, idz >
+                   class ArgY, class ArgZ >
+        struct D3Impl< F, IndexedArgX, IndexedArgY, IndexedArgZ, true, false, ArgX, ArgY, ArgZ, -1,
+                       -1, -1 >
         {
             static constexpr bool present = true;
 
@@ -205,13 +204,13 @@ namespace funcy
                 std::declval< ArgX >(), std::declval< ArgY >(), std::declval< ArgZ >() ) ) >
                 value;
         };
-    } // namespace Detail
+    } // namespace detail
 
     /// Evaluate f().
     template < Function F >
     struct D0
     {
-        static constexpr bool present = Concepts::isFunction< F >();
+        static constexpr bool present = true;
 
         D0( const F& f ) : value( f() )
         {
@@ -231,26 +230,27 @@ namespace funcy
 
     /// Evaluates f.d1(dx) if present.
     template < Function F, class IndexedArg >
-    using D1 = Detail::D1Impl< F, IndexedArg, Concepts::Has::MemFn::d1< F, IndexedArg >::value,
-                               Concepts::Has::MemFn::d1_with_index< F, IndexedArg >::value >;
+    using D1 = detail::D1Impl< F, IndexedArg, static_check::has::MemFn::d1< F, IndexedArg >::value,
+                               static_check::has::MemFn::d1_with_index< F, IndexedArg >::value >;
 
     /// Evaluates f.d2(dx,dy) if present.
     template < Function F, class IndexedArgX, class IndexedArgY >
-    using D2 =
-        Detail::D2Impl< F, IndexedArgX, IndexedArgY,
-                        Concepts::Has::MemFn::d2< F, IndexedArgX, IndexedArgY >::value,
-                        Concepts::Has::MemFn::d2_with_index< F, IndexedArgX, IndexedArgY >::value >;
+    using D2 = detail::D2Impl<
+        F, IndexedArgX, IndexedArgY,
+        static_check::has::MemFn::d2< F, IndexedArgX, IndexedArgY >::value,
+        static_check::has::MemFn::d2_with_index< F, IndexedArgX, IndexedArgY >::value >;
 
     /// Evaluates f.d3(dx,dy,dz) if present.
     template < Function F, class IndexedArgX, class IndexedArgY, class IndexedArgZ >
-    using D3 = Detail::D3Impl<
+    using D3 = detail::D3Impl<
         F, IndexedArgX, IndexedArgY, IndexedArgZ,
-        Concepts::Has::MemFn::d3< F, IndexedArgX, IndexedArgY, IndexedArgZ >::value,
-        Concepts::Has::MemFn::d3_with_index< F, IndexedArgX, IndexedArgY, IndexedArgZ >::value >;
+        static_check::has::MemFn::d3< F, IndexedArgX, IndexedArgY, IndexedArgZ >::value,
+        static_check::has::MemFn::d3_with_index< F, IndexedArgX, IndexedArgY,
+                                                 IndexedArgZ >::value >;
 
     template < Function F, class IndexedArg,
-               bool hasMemberFunction = Concepts::Has::MemFn::d1< F, IndexedArg >::value,
-               bool withIndex = Concepts::Has::MemFn::d1_with_index< F, IndexedArg >::value >
+               bool hasMemberFunction = static_check::has::MemFn::d1< F, IndexedArg >::value,
+               bool withIndex = static_check::has::MemFn::d1_with_index< F, IndexedArg >::value >
     struct D1_
     {
         static constexpr bool present = false;
@@ -282,10 +282,11 @@ namespace funcy
         }
     };
 
-    template <
-        Function F, class IndexedArgX, class IndexedArgY,
-        bool hasMemberFunction = Concepts::Has::MemFn::d2< F, IndexedArgX, IndexedArgY >::value,
-        bool withIndex = Concepts::Has::MemFn::d2_with_index< F, IndexedArgX, IndexedArgY >::value >
+    template < Function F, class IndexedArgX, class IndexedArgY,
+               bool hasMemberFunction =
+                   static_check::has::MemFn::d2< F, IndexedArgX, IndexedArgY >::value,
+               bool withIndex =
+                   static_check::has::MemFn::d2_with_index< F, IndexedArgX, IndexedArgY >::value >
     struct D2_
     {
         static constexpr bool present = false;
@@ -320,9 +321,9 @@ namespace funcy
 
     template < Function F, class IndexedArgX, class IndexedArgY, class IndexedArgZ,
                bool hasMemberFunction =
-                   Concepts::Has::MemFn::d3< F, IndexedArgX, IndexedArgY, IndexedArgZ >::value,
-               bool withIndex = Concepts::Has::MemFn::d3_with_index< F, IndexedArgX, IndexedArgY,
-                                                                     IndexedArgZ >::value >
+                   static_check::has::MemFn::d3< F, IndexedArgX, IndexedArgY, IndexedArgZ >::value,
+               bool withIndex = static_check::has::MemFn::d3_with_index<
+                   F, IndexedArgX, IndexedArgY, IndexedArgZ >::value >
     struct D3_
     {
         static constexpr bool present = false;

@@ -4,8 +4,10 @@
 #include <funcy/finalize.h>
 #include <funcy/generate.h>
 #include <funcy/variable.h>
-#include <gmock/gmock.h>
+
 #include <gtest/gtest.h>
+
+#include <gmock/gmock.h>
 
 using ::testing::Eq;
 
@@ -24,7 +26,7 @@ TEST( ScaleTest, Update )
 TEST( ScaleTest, UpdateVariable )
 {
     auto x = funcy::variable< 0 >( 2. );
-    auto fun = ( 2 * funcy::Pow< 3, 1 >() ) << x;
+    auto fun = ( 2 * funcy::Pow< 3, 1 >() )( x );
     EXPECT_DOUBLE_EQ( fun.d0(), 16. );
     EXPECT_NO_THROW( fun.update< 0 >( -1. ) );
     EXPECT_NO_THROW( fun.update( 0 ); );

@@ -1,14 +1,13 @@
 #pragma once
 
-#include <type_traits>
-#include <utility>
-
-#include <texy/util/chainer.h>
-#include <funcy/concept_check.h>
 #include <funcy/util/derivative_wrappers.h>
 #include <funcy/util/evaluate_if_present.h>
 #include <funcy/util/indexed_type.h>
 #include <funcy/util/mathop_traits.h>
+
+#include <texy/util/chainer.h>
+#include <type_traits>
+#include <utility>
 
 namespace texy
 {
@@ -17,10 +16,10 @@ namespace texy
         /**
          * @ingroup TexifyMathematicalOperationsGroup
          * @brief Scaling \f$ af \f$ of some function \f$ f \f$ with a double \f$ a \f$ (F must
-         * satisfy the requirements of Concepts::FunctionConcept).
+         * satisfy the requirements of static_check::FunctionConcept).
          */
-        template < class Scalar, class F, class = funcy::Concepts::IsFunction< F > >
-        struct Scale : Chainer< Scale< Scalar, F, funcy::Concepts::IsFunction< F > > >
+        template < class Scalar, class F, class = funcy::static_check::IsFunction< F > >
+        struct Scale : Chainer< Scale< Scalar, F, funcy::static_check::IsFunction< F > > >
         {
             /**
              * @brief Constructor passing arguments to function constructor.
@@ -86,8 +85,8 @@ namespace texy
             auto d3( const ArgX& dx, const ArgY& dy, const ArgZ& dz ) const
             {
                 return funcy::multiply_via_traits(
-                    a,
-                    funcy::D3_< F, IndexedArgX, IndexedArgY, IndexedArgZ >::apply( f, dx, dy, dz ) );
+                    a, funcy::D3_< F, IndexedArgX, IndexedArgY, IndexedArgZ >::apply( f, dx, dy,
+                                                                                      dz ) );
             }
 
         private:
@@ -95,5 +94,5 @@ namespace texy
             F f;
             std::decay_t< decltype( std::declval< F >()() ) > value;
         };
-    }
-}
+    } // namespace mathop
+} // namespace texy

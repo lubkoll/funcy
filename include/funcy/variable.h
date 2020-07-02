@@ -2,6 +2,7 @@
 
 #include <funcy/concepts.h>
 #include <funcy/util/traverse.h>
+
 #include <limits>
 #include <tuple>
 #include <type_traits>
@@ -32,7 +33,7 @@ namespace funcy
     {
     };
 
-    namespace VariableDetail
+    namespace detail
     {
         template < class Arg, class Extended >
         struct Assign;
@@ -112,7 +113,7 @@ namespace funcy
             {
             }
         };
-    } // namespace VariableDetail
+    } // namespace detail
     /// @endcond
 
     /// Independent variable. Can be uniquely identified by its id.
@@ -133,7 +134,7 @@ namespace funcy
         template < int index, class Arg >
         void update( const Arg& t_ )
         {
-            VariableDetail::Update< index == id >::apply( t, t_ );
+            detail::Update< index == id >::apply( t, t_ );
         }
 
         /// Value of the variable.
@@ -146,7 +147,7 @@ namespace funcy
         template < int index, class Arg, class = std::enable_if_t< id == index > >
         const T& d1( const Arg& dt ) const noexcept
         {
-            return VariableDetail::ExtractReturnValue< T, Arg >::apply( dt );
+            return detail::ExtractReturnValue< T, Arg >::apply( dt );
         }
 
     private:
@@ -161,7 +162,7 @@ namespace funcy
     }
 
     /// @cond
-    namespace VariableDetail
+    namespace detail
     {
         /// Check if Type is variable.
         template < class >
@@ -185,7 +186,7 @@ namespace funcy
         {
         };
 
-        namespace Has
+        namespace has
         {
             /// Check if Type contains has variable.
             template < Function F >
@@ -201,7 +202,7 @@ namespace funcy
                 };
                 static constexpr bool value = Meta::AnyOf< F, HasVariable >::value;
             };
-        } // namespace Has
+        } // namespace has
 
         constexpr bool greater( int a, int b )
         {
@@ -220,7 +221,7 @@ namespace funcy
         {
         };
 
-        namespace Detail
+        namespace detail
         {
             template < class Type >
             struct MaxVariableId
@@ -254,13 +255,13 @@ namespace funcy
                 : std::integral_constant< int, id >
             {
             };
-        } // namespace Detail
+        } // namespace detail
 
         template < class F >
-        using MaxVariableId = Meta::Traverse< F, Detail::MaxVariableId, Max >;
+        using MaxVariableId = Meta::Traverse< F, detail::MaxVariableId, Max >;
 
         template < class F >
-        using MinVariableId = Meta::Traverse< F, Detail::MinVariableId, Min >;
+        using MinVariableId = Meta::Traverse< F, detail::MinVariableId, Min >;
 
         template < class F, int id >
         struct VariableType
@@ -320,14 +321,14 @@ namespace funcy
         {
             using type = typename ChooseTypeImpl< typename F::type, typename G::type >::type;
         };
-    } // namespace VariableDetail
+    } // namespace detail
     /// @endcond
 
     /// Get underlying type of variable with index id.
     template < class F, int id >
-    using Variable_t = typename VariableDetail::VariableType< std::decay_t< F >, id >::type;
+    using Variable_t = typename detail::VariableType< std::decay_t< F >, id >::type;
 
-    namespace Concepts
+    namespace static_check
     {
         /** @addtogroup ConceptCheck
          *  @{ */
@@ -336,33 +337,33 @@ namespace funcy
         template < class T >
         constexpr bool isVariable()
         {
-            return VariableDetail::IsVariable< T >::value;
+            return detail::IsVariable< T >::value;
         }
 
-        namespace Has
+        namespace has
         {
             /// Check if T contains a type Variable<Type,n>.
             template < Function T >
             constexpr bool variable()
             {
-                return VariableDetail::Has::Variable< std::decay_t< T > >::value;
+                return detail::has::Variable< std::decay_t< T > >::value;
             }
 
             /// Check if T contains a type Variable<Type,id>.
             template < class T, int id >
             constexpr bool variableId()
             {
-                return VariableDetail::Has::VariableId< std::decay_t< T >, id >::value;
+                return detail::has::VariableId< std::decay_t< T >, id >::value;
             }
 
             /// Check if T contains at least two variables.
             template < class T >
             constexpr bool moreThanOneVariable()
             {
-                return VariableDetail::MinVariableId< std::decay_t< T > >::value <
-                       VariableDetail::MaxVariableId< std::decay_t< T > >::value;
+                return detail::MinVariableId< std::decay_t< T > >::value <
+                       detail::MaxVariableId< std::decay_t< T > >::value;
             }
-        } // namespace Has
+        } // namespace has
 
         /// Check if variable with index id has type Type.
         template < class F, class Type, int id >
@@ -372,5 +373,5 @@ namespace funcy
         }
 
         /** @} */
-    } // namespace Concepts
+    } // namespace static_check
 } // namespace funcy

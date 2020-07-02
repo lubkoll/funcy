@@ -1,8 +1,6 @@
 #pragma once
 
-#include <funcy/util/extract_rows_and_cols.h>
-
-#include <concepts>
+#include <funcy/util/type_traits.h>
 
 namespace funcy
 {
@@ -15,37 +13,10 @@ namespace funcy
         { t() };
     };
 
-    template < class V >
-    concept VectorSupportSquareBracketAccess = requires( V v )
-    {
-        { v[ 0 ] };
-    };
+    template < class T >
+    concept Scalar = ( !Function< T > && is_arithmetic< T >::value );
 
-    template < class V >
-    concept VectorSupportRoundBracketAccess = requires( V v )
-    {
-        { v( 0 ) };
-    };
-
-    template < class M >
-    concept MatrixSupportSquareBracketAccess = requires( M m )
-    {
-        { m[ 0 ][ 0 ] };
-    };
-
-    template < class M >
-    concept MatrixSupportRoundBracketAccess = requires( M m )
-    {
-        { m( 0, 0 ) };
-    };
-
-    template < class V >
-    concept ConstantSize = linalg::NumberOfRows< V >::value > 0;
-
-    template < class M >
-    concept SquareMatrix =
-        linalg::NumberOfRows< M >::value ==
-        linalg::NumberOfColumns< M >::value&& linalg::NumberOfRows< M >::value > 0;
-
+    template < class T >
+    concept Arithmetic = is_arithmetic< T >::value;
     /** @} */
 } // namespace funcy

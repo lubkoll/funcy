@@ -1,10 +1,5 @@
 #pragma once
 
-#include <type_traits>
-#include <utility>
-
-#include <texy/util/chainer.h>
-#include <funcy/concept_check.h>
 #include <funcy/util/compute_product.h>
 #include <funcy/util/compute_sum.h>
 #include <funcy/util/derivative_wrappers.h>
@@ -12,6 +7,10 @@
 #include <funcy/util/indexed_type.h>
 #include <funcy/util/mathop_traits.h>
 #include <funcy/util/type_traits.h>
+
+#include <texy/util/chainer.h>
+#include <type_traits>
+#include <utility>
 
 namespace texy
 {
@@ -21,8 +20,8 @@ namespace texy
          * @ingroup TexifyMathematicalOperationsGroup
          * @brief %Squared function \f$f^2\f$.
          */
-        template < class F, class = funcy::Concepts::IsFunction< F > >
-        struct Squared : Chainer< Squared< F, funcy::Concepts::IsFunction< F > > >
+        template < class F, class = funcy::static_check::IsFunction< F > >
+        struct Squared : Chainer< Squared< F, funcy::static_check::IsFunction< F > > >
         {
         private:
             template < class IndexedArgX, class IndexedArgY >
@@ -33,13 +32,13 @@ namespace texy
             template < class IndexedArgX, class IndexedArgY, class IndexedArgZ >
             using D3Sum = funcy::ComputeSum<
                 funcy::ComputeProduct< funcy::D0< F >,
-                                      funcy::D3< F, IndexedArgX, IndexedArgY, IndexedArgZ > >,
+                                       funcy::D3< F, IndexedArgX, IndexedArgY, IndexedArgZ > >,
                 funcy::ComputeProduct< funcy::D1< F, IndexedArgZ >,
-                                      funcy::D2< F, IndexedArgX, IndexedArgY > >,
+                                       funcy::D2< F, IndexedArgX, IndexedArgY > >,
                 funcy::ComputeProduct< funcy::D1< F, IndexedArgY >,
-                                      funcy::D2< F, IndexedArgX, IndexedArgZ > >,
+                                       funcy::D2< F, IndexedArgX, IndexedArgZ > >,
                 funcy::ComputeProduct< funcy::D2< F, IndexedArgY, IndexedArgZ >,
-                                      funcy::D1< F, IndexedArgX > > >;
+                                       funcy::D1< F, IndexedArgX > > >;
 
         public:
             /**
@@ -85,11 +84,11 @@ namespace texy
                            funcy::D0< F >, funcy::D1< F, IndexedArg > >::present > >
             auto d1( Arg const& dx ) const
                 -> funcy::decay_t< decltype( funcy::multiply_via_traits( std::declval< F >()(),
-                                                                       std::declval< F >()() ) ) >
+                                                                         std::declval< F >()() ) ) >
             {
                 return funcy::multiply_via_traits(
-                    2,
-                    funcy::multiply_via_traits( f(), funcy::D1_< F, IndexedArg >::apply( f, dx ) ) );
+                    2, funcy::multiply_via_traits( f(),
+                                                   funcy::D1_< F, IndexedArg >::apply( f, dx ) ) );
             }
 
             /**
@@ -103,7 +102,7 @@ namespace texy
                        class = std::enable_if_t< D2Sum< IndexedArgX, IndexedArgY >::present > >
             auto d2( ArgX const& dx, ArgY const& dy ) const
                 -> funcy::decay_t< decltype( funcy::multiply_via_traits( std::declval< F >()(),
-                                                                       std::declval< F >()() ) ) >
+                                                                         std::declval< F >()() ) ) >
             {
                 return multiply_via_traits(
                     2, sum( product( funcy::D0< F >( f ),
@@ -126,7 +125,7 @@ namespace texy
                            D3Sum< IndexedArgX, IndexedArgY, IndexedArgZ >::present > >
             auto d3( ArgX const& dx, ArgY const& dy, ArgZ const& dz ) const
                 -> funcy::decay_t< decltype( funcy::multiply_via_traits( std::declval< F >()(),
-                                                                       std::declval< F >()() ) ) >
+                                                                         std::declval< F >()() ) ) >
             {
                 return multiply_via_traits(
                     2, sum( product( funcy::D0< F >( f ),
@@ -146,5 +145,5 @@ namespace texy
                 funcy::multiply_via_traits( std::declval< F >()(), std::declval< F >()() ) ) >
                 value;
         };
-    }
-}
+    } // namespace mathop
+} // namespace texy

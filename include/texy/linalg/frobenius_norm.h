@@ -1,14 +1,13 @@
 #pragma once
 
-#include <type_traits>
+#include <funcy/util/chainer.h>
+#include <funcy/util/static_checks.h>
 
 #include <texy/cmath/pow.h>
 #include <texy/mathop/chain.h>
 #include <texy/util/chainer.h>
 #include <texy/util/string.h>
-#include <funcy/concept_check.h>
-#include <funcy/util/chainer.h>
-#include <funcy/util/static_checks.h>
+#include <type_traits>
 
 namespace texy
 {
@@ -70,8 +69,8 @@ namespace texy
             FrobeniusNorm() = default;
 
             explicit FrobeniusNorm( const std::string& A = "A" )
-                : mathop::Chain< Pow< 1, 2 >, FrobeniusNormSquared >(
-                      Pow< 1, 2 >( "" ), FrobeniusNormSquared( A ) )
+                : mathop::Chain< Pow< 1, 2 >, FrobeniusNormSquared >( Pow< 1, 2 >( "" ),
+                                                                      FrobeniusNormSquared( A ) )
             {
                 this->update( A );
             }
@@ -86,11 +85,11 @@ namespace texy
 
         /// Generate Frobenius norm \f$ \|A\| = \sqrt{A\negthinspace : \negthinspace A }=
         /// \sqrt{\mathrm{tr}(A^TA)} = \sqrt{\sum_{i,j} A_{ij}^2}. \f$
-        template < class F, std::enable_if_t< funcy::Concepts::isFunction< F >() >* = nullptr >
+        template < class F, std::enable_if_t< funcy::static_check::isFunction< F >() >* = nullptr >
         auto frobeniusNorm( const F& f )
         {
             return FrobeniusNorm( f.d0() )( f );
         }
         /** @} */
-    }
-}
+    } // namespace linalg
+} // namespace texy

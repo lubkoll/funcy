@@ -1,8 +1,9 @@
 #pragma once
 
+#include <funcy/util/static_checks.h>
+
 #include <texy/util/chainer.h>
 #include <texy/util/string.h>
-#include <funcy/util/static_checks.h>
 
 /** @addtogroup TexifyCMathGroup
  *  @{ */
@@ -121,7 +122,7 @@ namespace texy
 
     private:
         std::string x;
-        std::string ln10{"\\ln(10)"};
+        std::string ln10{ "\\ln(10)" };
     };
 
     /**
@@ -189,7 +190,7 @@ namespace texy
 
     private:
         std::string x;
-        std::string ln2{"\\ln(2)"};
+        std::string ln2{ "\\ln(2)" };
     };
 
     /*!
@@ -197,7 +198,8 @@ namespace texy
       @param f function mapping into a scalar space
       @return object of type mathop::Chain<Log,Function>
      */
-    template < class Function, class = std::enable_if_t< funcy::Concepts::isFunction< Function >() > >
+    template < class Function,
+               class = std::enable_if_t< funcy::static_check::isFunction< Function >() > >
     auto ln( const Function& f )
     {
         return LN()( f );
@@ -208,7 +210,8 @@ namespace texy
       @param f function mapping into a scalar space
       @return object of type mathop::Chain<Log10,Function>
      */
-    template < class Function, class = std::enable_if_t< funcy::Concepts::isFunction< Function >() > >
+    template < class Function,
+               class = std::enable_if_t< funcy::static_check::isFunction< Function >() > >
     auto log10( const Function& f )
     {
         return Log10()( f );
@@ -219,10 +222,11 @@ namespace texy
       @param f function mapping into a scalar space
       @return object of type mathop::Chain<Log2,Function>
      */
-    template < class Function, class = std::enable_if_t< funcy::Concepts::isFunction< Function >() > >
+    template < class Function,
+               class = std::enable_if_t< funcy::static_check::isFunction< Function >() > >
     auto log2( const Function& f )
     {
         return Log2()( f );
     }
-}
+} // namespace texy
 /** @} */

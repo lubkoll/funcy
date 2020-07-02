@@ -1,5 +1,6 @@
 #pragma once
 
+#include <funcy/concepts.h>
 #include <funcy/util/derivative_wrappers.h>
 #include <funcy/util/indexed_type.h>
 #include <funcy/util/macros.h>
@@ -8,67 +9,67 @@
 #include <funcy/util/zero.h>
 #include <funcy/variable.h>
 
-#include <string>
 #include <type_traits>
+#include <utility>
 
 namespace funcy
 {
     /// @cond
-    namespace Detail
+    namespace detail
     {
-        template < class ReturnType >
+        template < class ReturnT >
         struct FillDefault
         {
             template < class... Args >
-            FUNCY_ALWAYS_INLINE ReturnType operator()( const Args&... ) const
+            FUNCY_ALWAYS_INLINE ReturnT operator()( const Args&... ) const
             {
-                return zero< ReturnType >();
+                return zero< ReturnT >();
             }
         };
 
-        template < int id, class ReturnType, bool present >
-        struct FinalizeD1 : FillDefault< ReturnType >
+        template < int id, class ReturnT, bool present >
+        struct FinalizeD1 : FillDefault< ReturnT >
         {
         };
 
-        template < int id, class ReturnType >
-        struct FinalizeD1< id, ReturnType, true >
+        template < int id, class ReturnT >
+        struct FinalizeD1< id, ReturnT, true >
         {
             template < class F, class Arg >
-            FUNCY_ALWAYS_INLINE ReturnType operator()( const F& f, const Arg& dx ) const
+            FUNCY_ALWAYS_INLINE ReturnT operator()( const F& f, const Arg& dx ) const
             {
                 return D1_< F, IndexedType< Arg, id > >::apply( f, dx );
             }
         };
 
-        template < int idx, int idy, class ReturnType, bool present >
-        struct FinalizeD2 : FillDefault< ReturnType >
+        template < int idx, int idy, class ReturnT, bool present >
+        struct FinalizeD2 : FillDefault< ReturnT >
         {
         };
 
-        template < int idx, int idy, class ReturnType >
-        struct FinalizeD2< idx, idy, ReturnType, true >
+        template < int idx, int idy, class ReturnT >
+        struct FinalizeD2< idx, idy, ReturnT, true >
         {
             template < class F, class ArgX, class ArgY >
-            FUNCY_ALWAYS_INLINE ReturnType operator()( const F& f, const ArgX& dx,
-                                                      const ArgY& dy ) const
+            FUNCY_ALWAYS_INLINE ReturnT operator()( const F& f, const ArgX& dx,
+                                                    const ArgY& dy ) const
             {
                 return D2_< F, IndexedType< ArgX, idx >, IndexedType< ArgY, idy > >::apply( f, dx,
                                                                                             dy );
             }
         };
 
-        template < int idx, int idy, int idz, class ReturnType, bool present >
-        struct FinalizeD3 : FillDefault< ReturnType >
+        template < int idx, int idy, int idz, class ReturnT, bool present >
+        struct FinalizeD3 : FillDefault< ReturnT >
         {
         };
 
-        template < int idx, int idy, int idz, class ReturnType >
-        struct FinalizeD3< idx, idy, idz, ReturnType, true >
+        template < int idx, int idy, int idz, class ReturnT >
+        struct FinalizeD3< idx, idy, idz, ReturnT, true >
         {
             template < class F, class ArgX, class ArgY, class ArgZ >
-            FUNCY_ALWAYS_INLINE ReturnType operator()( const F& f, const ArgX& dx, const ArgY& dy,
-                                                      const ArgZ& dz ) const
+            FUNCY_ALWAYS_INLINE ReturnT operator()( const F& f, const ArgX& dx, const ArgY& dy,
+                                                    const ArgZ& dz ) const
             {
                 return D3_< F, IndexedType< ArgX, idx >, IndexedType< ArgY, idy >,
                             IndexedType< ArgZ, idz > >::apply( f, dx, dy, dz );
@@ -77,13 +78,16 @@ namespace funcy
 
         /// Finish function definition. The task of this class is to add undefined higher order
         /// derivatives if undefined.
-        template < class F, bool hasVariables >
-        struct FinalizeImpl : F
+        template < class F >
+        struct Finalize : F
         {
-            using ReturnType = std::decay_t< decltype( std::declval< F >()() ) >;
+            using ReturnT = std::decay_t< decltype( std::declval< F >()() ) >;
 
-            template < class... Args >
-            FinalizeImpl( Args&&... args ) : F( std::forward< Args >( args )... )
+            Finalize( F&& f ) : F( std::move( f ) )
+            {
+            }
+
+            Finalize( const F& f ) : F( f )
             {
             }
 
@@ -93,156 +97,115 @@ namespace funcy
             }
 
             template < int id, class Arg >
-            ReturnType d1( const Arg& dx ) const
+            ReturnT d1( const Arg& dx ) const
+                requires( static_check::has::variableId< F, id >() &&
+                          static_check::checkArgument< F, Arg, id >() &&
+                          static_check::has::consistentFirstDerivative< F >() )
             {
-                static_assert( Concepts::Has::variableId< F, id >(),
-                               "You are trying to compute the first derivative with respect to a "
-                               "variable that is not present" );
-                static_assert( Concepts::checkArgument< F, Arg, id >(),
-                               "Incompatible argument in computation of first derivative." );
-                static_assert( Concepts::Has::consistentFirstDerivative< F >(),
-                               "Inconsistent functional definition encountered." );
-
-                return FinalizeD1< id, ReturnType,
-                                   Concepts::Has::MemFn::d1< F, IndexedType< Arg, id > >::value >()(
+                return FinalizeD1<
+                    id, ReturnT,
+                    static_check::has::MemFn::d1< F, IndexedType< Arg, id > >::value >()(
                     static_cast< const F& >( *this ), dx );
             }
 
             template < int id >
-            ReturnType d1() const
+            ReturnT d1() const requires( static_check::has::variableId< F, id >() &&
+                                         is_arithmetic< Variable_t< F, id > >::value &&
+                                         static_check::has::consistentFirstDerivative< F >() )
             {
                 using Arg = Variable_t< F, id >;
-                static_assert( Concepts::Has::variableId< F, id >(),
-                               "You are trying to compute the first derivative with respect to a "
-                               "variable that is not present" );
-                static_assert( is_arithmetic< Arg >::value, "For non-scalar variables you have to "
-                                                            "provide a direction for which the "
-                                                            "derivative is computed (d1)." );
-                static_assert( Concepts::Has::consistentFirstDerivative< F >(),
-                               "Inconsistent functional definition encountered." );
-
-                return FinalizeD1< id, ReturnType,
-                                   Concepts::Has::MemFn::d1< F, IndexedType< Arg, id > >::value >()(
+                return FinalizeD1<
+                    id, ReturnT,
+                    static_check::has::MemFn::d1< F, IndexedType< Arg, id > >::value >()(
                     static_cast< const F& >( *this ), Arg( 1 ) );
             }
 
             template < int idx, int idy, class ArgX, class ArgY >
-            ReturnType d2( const ArgX& dx, const ArgY& dy ) const
+            ReturnT d2( const ArgX& dx, const ArgY& dy ) const
+                requires( static_check::has::variableId< F, idx >() &&
+                          static_check::has::variableId< F, idy >() &&
+                          static_check::checkArgument< F, ArgX, idx >() &&
+                          static_check::checkArgument< F, ArgY, idy >() &&
+                          static_check::has::consistentSecondDerivative<
+                              F, IndexedType< ArgX, idx >, IndexedType< ArgY, idy > >() )
             {
-                static_assert( Concepts::Has::variableId< F, idx >() &&
-                                   Concepts::Has::variableId< F, idy >(),
-                               "You are trying to compute the second derivative with respect to at "
-                               "least one variable that is not present" );
-                static_assert( Concepts::checkArgument< F, ArgX, idx >(),
-                               "Incompatible first argument in computation of second derivative." );
-                static_assert(
-                    Concepts::checkArgument< F, ArgY, idy >(),
-                    "Incompatible second argument in computation of second derivative." );
-                static_assert(
-                    Concepts::Has::consistentSecondDerivative< F, IndexedType< ArgX, idx >,
-                                                             IndexedType< ArgY, idy > >(),
-                    "Inconsistent functional definition encountered." );
-
-                return FinalizeD2< idx, idy, ReturnType,
-                                   Concepts::Has::MemFn::d2< F, IndexedType< ArgX, idx >,
-                                                           IndexedType< ArgY, idy > >::value >()(
+                return FinalizeD2<
+                    idx, idy, ReturnT,
+                    static_check::has::MemFn::d2< F, IndexedType< ArgX, idx >,
+                                                  IndexedType< ArgY, idy > >::value >()(
                     static_cast< const F& >( *this ), dx, dy );
             }
 
             template < int idx, int idy >
-            ReturnType d2() const
+            ReturnT d2() const requires( static_check::has::variableId< F, idx >() &&
+                                         static_check::has::variableId< F, idy >() &&
+                                         is_arithmetic< Variable_t< F, idx > >::value &&
+                                         is_arithmetic< Variable_t< F, idy > >::value &&
+                                         static_check::has::consistentSecondDerivative<
+                                             F, IndexedType< Variable_t< F, idx >, idx >,
+                                             IndexedType< Variable_t< F, idy >, idy > >() )
             {
                 using ArgX = Variable_t< F, idx >;
                 using ArgY = Variable_t< F, idy >;
-
-                static_assert( Concepts::Has::variableId< F, idx >() &&
-                                   Concepts::Has::variableId< F, idy >(),
-                               "You are trying to compute the second derivative with respect to at "
-                               "least one variable that is not present" );
-                static_assert( is_arithmetic< ArgX >::value,
-                               "For non-scalar variables you have to provide a direction for which "
-                               "the derivative is computed (d2, first argument)." );
-                static_assert( is_arithmetic< ArgY >::value,
-                               "For non-scalar variables you have to provide a direction for which "
-                               "the derivative is computed (d2, second argument)." );
-                static_assert(
-                    Concepts::Has::consistentSecondDerivative< F, IndexedType< ArgX, idx >,
-                                                             IndexedType< ArgY, idy > >(),
-                    "Inconsistent functional definition encountered." );
-
-                return FinalizeD2< idx, idy, ReturnType,
-                                   Concepts::Has::MemFn::d2< F, IndexedType< ArgX, idx >,
-                                                           IndexedType< ArgY, idy > >::value >()(
+                return FinalizeD2<
+                    idx, idy, ReturnT,
+                    static_check::has::MemFn::d2< F, IndexedType< ArgX, idx >,
+                                                  IndexedType< ArgY, idy > >::value >()(
                     static_cast< const F& >( *this ), ArgX( 1 ), ArgY( 1 ) );
             }
 
             template < int idx, int idy, int idz, class ArgX, class ArgY, class ArgZ >
-            ReturnType d3( const ArgX& dx, const ArgY& dy, const ArgZ& dz ) const
+            ReturnT d3( const ArgX& dx, const ArgY& dy, const ArgZ& dz ) const
+                requires( static_check::has::variableId< F, idx >() &&
+                          static_check::has::variableId< F, idy >() &&
+                          static_check::has::variableId< F, idz >() &&
+                          static_check::checkArgument< F, ArgX, idx >() &&
+                          static_check::checkArgument< F, ArgY, idy >() &&
+                          static_check::checkArgument< F, ArgZ, idz >() &&
+                          static_check::has::consistentThirdDerivative<
+                              F, IndexedType< ArgX, idx >, IndexedType< ArgY, idy >,
+                              IndexedType< ArgZ, idz > >() )
             {
-                static_assert( Concepts::Has::variableId< F, idx >() &&
-                                   Concepts::Has::variableId< F, idy >() &&
-                                   Concepts::Has::variableId< F, idz >(),
-                               "You are trying to compute the third derivative with respect to at "
-                               "least one variable that is not present" );
-                static_assert( Concepts::checkArgument< F, ArgX, idx >(),
-                               "Incompatible first argument in computation of third derivative." );
-                static_assert( Concepts::checkArgument< F, ArgY, idy >(),
-                               "Incompatible second argument in computation of third derivative." );
-                static_assert( Concepts::checkArgument< F, ArgZ, idz >(),
-                               "Incompatible third argument in computation of third derivative." );
-                static_assert( Concepts::Has::consistentThirdDerivative< F, IndexedType< ArgX, idx >,
-                                                                       IndexedType< ArgY, idy >,
-                                                                       IndexedType< ArgZ, idz > >(),
-                               "Inconsistent functional definition encountered." );
-
-                return FinalizeD3<
-                    idx, idy, idz, ReturnType,
-                    Concepts::Has::MemFn::d3< F, IndexedType< ArgX, idx >, IndexedType< ArgY, idy >,
-                                            IndexedType< ArgZ, idz > >::value >()(
+                return FinalizeD3< idx, idy, idz, ReturnT,
+                                   static_check::has::MemFn::d3<
+                                       F, IndexedType< ArgX, idx >, IndexedType< ArgY, idy >,
+                                       IndexedType< ArgZ, idz > >::value >()(
                     static_cast< const F& >( *this ), dx, dy, dz );
             }
 
             template < int idx, int idy, int idz >
-            ReturnType d3() const
+            ReturnT d3() const requires( static_check::has::variableId< F, idx >() &&
+                                         static_check::has::variableId< F, idy >() &&
+                                         static_check::has::variableId< F, idz >() &&
+                                         is_arithmetic< Variable_t< F, idx > >::value &&
+                                         is_arithmetic< Variable_t< F, idy > >::value &&
+                                         is_arithmetic< Variable_t< F, idz > >::value &&
+                                         static_check::has::consistentThirdDerivative<
+                                             F, IndexedType< Variable_t< F, idx >, idx >,
+                                             IndexedType< Variable_t< F, idy >, idy >,
+                                             IndexedType< Variable_t< F, idz >, idz > >() )
             {
                 using ArgX = Variable_t< F, idx >;
                 using ArgY = Variable_t< F, idy >;
                 using ArgZ = Variable_t< F, idz >;
-
-                static_assert( Concepts::Has::variableId< F, idx >() &&
-                                   Concepts::Has::variableId< F, idy >() &&
-                                   Concepts::Has::variableId< F, idz >(),
-                               "You are trying to compute the third derivative with respect to at "
-                               "least one variable that is not present" );
-                static_assert( is_arithmetic< ArgX >::value,
-                               "For non-scalar variables you have to provide a direction for which "
-                               "the derivative is computed (d3, first argument)." );
-                static_assert( is_arithmetic< ArgY >::value,
-                               "For non-scalar variables you have to provide a direction for which "
-                               "the derivative is computed (d3, second argument)." );
-                static_assert( is_arithmetic< ArgZ >::value,
-                               "For non-scalar variables you have to provide a direction for which "
-                               "the derivative is computed (d3, third argument)." );
-                static_assert( Concepts::Has::consistentThirdDerivative< F, IndexedType< ArgX, idx >,
-                                                                       IndexedType< ArgY, idy >,
-                                                                       IndexedType< ArgZ, idz > >(),
-                               "Inconsistent functional definition encountered." );
-
-                return FinalizeD3<
-                    idx, idy, idz, ReturnType,
-                    Concepts::Has::MemFn::d3< F, IndexedType< ArgX, idx >, IndexedType< ArgY, idy >,
-                                            IndexedType< ArgZ, idz > >::value >()(
+                return FinalizeD3< idx, idy, idz, ReturnT,
+                                   static_check::has::MemFn::d3<
+                                       F, IndexedType< ArgX, idx >, IndexedType< ArgY, idy >,
+                                       IndexedType< ArgZ, idz > >::value >()(
                     static_cast< const F& >( *this ), ArgX( 1 ), ArgY( 1 ), ArgZ( 1 ) );
             }
         };
 
         template < class F >
-        struct FinalizeImpl< F, false > : F
+        struct FinalizeSimple : F
         {
-            using ReturnType = std::decay_t< decltype( std::declval< F >()() ) >;
+            using ReturnT = std::decay_t< decltype( std::declval< F >()() ) >;
 
-            template < class... Args >
-            FinalizeImpl( Args&&... args ) : F( std::forward< Args >( args )... )
+            FinalizeSimple( F&& f ) : F( std::move( f ) )
+            {
+            }
+
+            FinalizeSimple( const F& f ) : F( f )
             {
             }
 
@@ -259,71 +222,66 @@ namespace funcy
             }
 
             template < class Arg >
-            ReturnType d1( const Arg& dx ) const
+            ReturnT d1( const Arg& dx ) const
+                requires( static_check::has::consistentFirstDerivative< F >() )
             {
-                static_assert( Concepts::Has::consistentFirstDerivative< F >(),
-                               "Inconsistent functional definition encountered." );
-                return FinalizeD1< 0, ReturnType,
-                                   Concepts::Has::MemFn::d1< F, IndexedType< Arg, 0 > >::value >()(
+                return FinalizeD1<
+                    -1, ReturnT,
+                    static_check::has::MemFn::d1< F, IndexedType< Arg, -1 > >::value >()(
                     static_cast< const F& >( *this ), dx );
             }
 
             template < class ArgX, class ArgY >
-            ReturnType d2( const ArgX& dx, const ArgY& dy ) const
+            ReturnT d2( const ArgX& dx, const ArgY& dy ) const
+                requires( static_check::has::consistentSecondDerivative<
+                          F, IndexedType< ArgX, -1 >, IndexedType< ArgY, -1 > >() )
             {
-                static_assert( Concepts::Has::consistentSecondDerivative< F, IndexedType< ArgX, 0 >,
-                                                                        IndexedType< ArgY, 0 > >(),
-                               "Inconsistent functional definition encountered." );
-                return FinalizeD2< 0, 0, ReturnType,
-                                   Concepts::Has::MemFn::d2< F, IndexedType< ArgX, 0 >,
-                                                           IndexedType< ArgY, 0 > >::value >()(
+                return FinalizeD2<
+                    -1, -1, ReturnT,
+                    static_check::has::MemFn::d2< F, IndexedType< ArgX, -1 >,
+                                                  IndexedType< ArgY, -1 > >::value >()(
                     static_cast< const F& >( *this ), dx, dy );
             }
 
             template < class ArgX, class ArgY, class ArgZ >
-            ReturnType d3( const ArgX& dx, const ArgY& dy, const ArgZ& dz ) const
+            ReturnT d3( const ArgX& dx, const ArgY& dy, const ArgZ& dz ) const
+                requires( static_check::has::consistentThirdDerivative<
+                          F, IndexedType< ArgX, -1 >, IndexedType< ArgY, -1 >,
+                          IndexedType< ArgZ, -1 > >() )
             {
-                static_assert( Concepts::Has::consistentThirdDerivative< F, IndexedType< ArgX, 0 >,
-                                                                       IndexedType< ArgY, 0 >,
-                                                                       IndexedType< ArgZ, 0 > >(),
-                               "Inconsistent functional definition encountered." );
-                return FinalizeD3<
-                    0, 0, 0, ReturnType,
-                    Concepts::Has::MemFn::d3< F, IndexedType< ArgX, 0 >, IndexedType< ArgY, 0 >,
-                                            IndexedType< ArgZ, 0 > >::value >()(
+                return FinalizeD3< -1, -1, -1, ReturnT,
+                                   static_check::has::MemFn::d3<
+                                       F, IndexedType< ArgX, -1 >, IndexedType< ArgY, -1 >,
+                                       IndexedType< ArgZ, -1 > >::value >()(
                     static_cast< const F& >( *this ), dx, dy, dz );
             }
-
-            std::string print_d0() const
-            {
-                return F::print_d0();
-            }
-
-            template < class Arg >
-            std::string print_d1( const std::string& dx ) const
-            {
-                static_assert( Concepts::Has::consistentFirstDerivative< F >(),
-                               "Inconsistent functional definition encountered." );
-                return FinalizeD1< 0, ReturnType,
-                                   Concepts::Has::MemFn::d1< F, IndexedType< Arg, 0 > >::value >()
-                    .template print< Arg >( static_cast< const F& >( *this ), dx );
-            }
         };
-    }
+    } // namespace detail
     /// @endcond
 
     /**
-     * \brief Finish function definition.
+     * @brief Finish function definition.
      *
      * Adds the definition of possibly undefined vanishing higher order derivatives.
      * If the template class Variable is not used, then no ids must be provided for the
      * update-function and derivatives.
      */
-    template < class F >
-    auto finalize( F&& f )
+    template < Function F >
+    auto finalize( F&& f ) requires( static_check::has::variable< std::decay_t< F > >() )
     {
-        return Detail::FinalizeImpl< std::decay_t< F >,
-                                     Concepts::Has::variable< std::decay_t< F > >() >(
-            std::forward< F >( f ) );
+        return detail::Finalize( std::forward< F >( f ) );
     }
-}
+
+    /**
+     * @brief Finish function definition.
+     *
+     * Adds the definition of possibly undefined vanishing higher order derivatives.
+     * If the template class Variable is not used, then no ids must be provided for the
+     * update-function and derivatives.
+     */
+    template < Function F >
+    auto finalize( F&& f ) requires( !static_check::has::variable< std::decay_t< F > >() )
+    {
+        return detail::FinalizeSimple( std::forward< F >( f ) );
+    }
+} // namespace funcy

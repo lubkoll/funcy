@@ -1,6 +1,7 @@
 #pragma once
 
 #include <funcy/concepts.h>
+#include <funcy/linalg/concepts.h>
 #include <funcy/util/extract_rows_and_cols.h>
 #include <funcy/util/static_checks.h>
 #include <funcy/util/static_checks_nrows_ncols.h>
@@ -13,21 +14,21 @@ namespace funcy
     {
         /// Number of rows of a dynamic size matrix.
         template < class Matrix >
-        auto rows( const Matrix& A ) requires( Concepts::hasMemFn_rows< Matrix >() )
+        auto rows( const Matrix& A ) requires( static_check::hasMemFn_rows< Matrix >() )
         {
             return A.rows();
         }
 
         /// Number of rows of a dynamic size matrix.
         template < class Matrix >
-        auto rows( const Matrix& A ) requires( Concepts::hasMem_n_rows< Matrix >() )
+        auto rows( const Matrix& A ) requires( static_check::hasMem_n_rows< Matrix >() )
         {
             return A.n_rows;
         }
 
         /// Number of rows of a dynamic size matrix.
         template < class Matrix >
-        auto rows( const Matrix& A ) requires( Concepts::hasMemFn_size< Matrix >() )
+        auto rows( const Matrix& A ) requires( static_check::hasMemFn_size< Matrix >() )
         {
             return A.size();
         }
@@ -41,14 +42,14 @@ namespace funcy
 
         /// Number of columns of a dynamic size matrix.
         template < class Matrix >
-        auto cols( const Matrix& A ) requires( Concepts::hasMemFn_cols< Matrix >() )
+        auto cols( const Matrix& A ) requires( static_check::hasMemFn_cols< Matrix >() )
         {
             return A.cols();
         }
 
         /// Number of columns of a dynamic size matrix.
         template < class Matrix >
-        auto cols( const Matrix& A ) requires( Concepts::hasMem_n_cols< Matrix >() )
+        auto cols( const Matrix& A ) requires( static_check::hasMem_n_cols< Matrix >() )
         {
             return A.n_cols;
         }

@@ -4,8 +4,10 @@
 #include <funcy/cmath/pow.h>
 #include <funcy/finalize.h>
 #include <funcy/generate.h>
-#include <gmock/gmock.h>
+
 #include <gtest/gtest.h>
+
+#include <gmock/gmock.h>
 
 using ::testing::Eq;
 
@@ -18,7 +20,7 @@ TEST( SumTest, UpdateVariable )
 {
     auto x = funcy::variable< 0 >( 1. );
     using funcy::Pow;
-    auto fun = ( Pow< 3, 1 >( 2. ) + Pow< 3, 2 >( 1. ) ) << x;
+    auto fun = ( Pow< 3, 1 >( 2. ) + Pow< 3, 2 >( 1. ) )( x );
     EXPECT_DOUBLE_EQ( fun.d0(), 2. );
     EXPECT_NO_THROW( fun.update< 0 >( 4. ) );
     EXPECT_NO_THROW( fun.update( 0 ); );

@@ -8,7 +8,7 @@
 namespace funcy
 {
     /// @cond
-    namespace Detail
+    namespace detail
     {
         template < class X, class Y, bool bothPresent >
         struct ComputeProductImpl
@@ -37,13 +37,13 @@ namespace funcy
                 multiply_via_traits( std::declval< X >()(), std::declval< Y >()() ) ) >
                 value;
         };
-    }
+    } // namespace detail
     template < class X, class Y >
-    struct ComputeProduct : public Detail::ComputeProductImpl< X, Y, X::present && Y::present >
+    struct ComputeProduct : public detail::ComputeProductImpl< X, Y, X::present && Y::present >
     {
         ComputeProduct( X const& x, Y const& y )
-            : Detail::ComputeProductImpl < X,
-            Y, X::present && Y::present > ( x, y )
+            : detail::ComputeProductImpl < X,
+        Y, X::present && Y::present > ( x, y )
         {
         }
     };
@@ -54,4 +54,4 @@ namespace funcy
         return ComputeProduct< F, G >( f, g );
     }
     /// @endcond
-}
+} // namespace funcy

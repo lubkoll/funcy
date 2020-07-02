@@ -1,23 +1,16 @@
 #pragma once
 
 #include "trace.h"
+
+#include <funcy/util/static_checks.h>
+
 #include <texy/constant.h>
 #include <texy/generate.h>
 #include <texy/identity.h>
-#include <funcy/util/static_checks.h>
-
 #include <type_traits>
 
 namespace texy
 {
-    /// @cond
-    namespace concept
-    {
-        template < class >
-        struct SquareIsMatrixs;
-    }
-    /// @endcond
-
     namespace linalg
     {
         /** @addtogroup TexifyLinearAlgebraGroup
@@ -32,12 +25,12 @@ namespace texy
         }
 
         /// Generate %deviator \f$ \mathrm{dev}\circ f\f$.
-        template < class F, std::enable_if_t< funcy::Concepts::isFunction< F >() >* = nullptr >
+        template < class F, std::enable_if_t< funcy::static_check::isFunction< F >() >* = nullptr >
         auto deviator( const F& f )
         {
             return deviator( f() )( f );
         }
 
         /** @} */
-    }
-}
+    } // namespace linalg
+} // namespace texy

@@ -1,15 +1,14 @@
 #pragma once
 
-#include "funcy/concept_check.h"
-#include "rows_and_cols.h"
-
 #include <funcy/concepts.h>
+#include <funcy/linalg/concepts.h>
+#include <funcy/linalg/rows_and_cols.h>
 #include <funcy/util/at.h>
 #include <funcy/util/chainer.h>
 #include <funcy/util/extract_rows_and_cols.h>
-#include <funcy/util/static_checks.h>
 #include <funcy/util/zero.h>
 
+#include <concepts>
 #include <type_traits>
 
 namespace funcy
@@ -17,7 +16,7 @@ namespace funcy
     namespace linalg
     {
         /// @cond
-        namespace Detail
+        namespace detail
         {
             template < class M >
             struct WrappedMatrix
@@ -31,15 +30,13 @@ namespace funcy
                 using type = typename GetTransposed< M >::type;
             };
 
-            template <
-                ConstantSize Matrix,
-                ConstantSize TransposedMatrix = typename GetTransposed< Matrix >::type,
-                std::enable_if_t< std::is_same< Matrix, TransposedMatrix >::value >* = nullptr >
-            TransposedMatrix transpose( Matrix A )
+            template < ConstantSize Mat >
+            Transposed_t< Mat >
+            transpose( Mat A ) requires( !std::same_as< Mat, Transposed_t< Mat > > )
             {
                 auto a = at( A, 0, 0 );
-                for ( int i = 0; i < rows< Matrix >(); ++i )
-                    for ( int j = i + 1; j < cols< Matrix >(); ++j )
+                for ( int i = 0; i < rows< Mat >(); ++i )
+                    for ( int j = i + 1; j < cols< Mat >(); ++j )
                     {
                         a = at( A, i, j );
                         at( A, i, j ) = at( A, j, i );
@@ -50,14 +47,13 @@ namespace funcy
             }
 
             /// Compute transpose of non-square matrix.
-            template <
-                ConstantSize Matrix, ConstantSize TransposedMatrix = Transposed_t< Matrix >,
-                std::enable_if_t< !std::is_same< Matrix, TransposedMatrix >::value >* = nullptr >
-            TransposedMatrix transpose( const Matrix& A )
+            template < ConstantSize Mat >
+            Transposed_t< Mat >
+            transpose( const Mat& A ) requires( !std::same_as< Mat, Transposed_t< Mat > > )
             {
-                TransposedMatrix B = zero< TransposedMatrix >();
-                for ( int i = 0; i < rows< Matrix >(); ++i )
-                    for ( int j = 0; j < cols< Matrix >(); ++j )
+                auto B = zero< Transposed_t< Mat > >();
+                for ( int i = 0; i < rows< Mat >(); ++i )
+                    for ( int j = 0; j < cols< Mat >(); ++j )
                         at( B, j, i ) = A( i, j );
                 return B;
             }
@@ -79,28 +75,23 @@ namespace funcy
 
                 return A;
             }
-        } // namespace Detail
+        } // namespace detail
         /// @endcond
 
         /** @addtogroup LinearAlgebraGroup
          *  @{ */
-        template < class Matrix, class = Concepts::IsMatrix< Matrix > >
-        class Transpose;
-
-        /// Represents transposition of constant-size matrices.
-        template < class Matrix >
-        class Transpose< Matrix, Concepts::IsMatrix< Matrix > >
-            : public Chainer< Transpose< Matrix, Concepts::IsMatrix< Matrix > > >
+        template < class Mat >
+        class Transpose : public Chainer< Transpose< Mat > >
         {
         public:
-            explicit Transpose( const Matrix& A )
+            explicit Transpose( const Mat& A )
             {
-                AT_ = Detail::transpose( A );
+                AT_ = detail::transpose( A );
             }
 
-            void update( const Matrix& A )
+            void update( const Mat& A )
             {
-                AT_ = Detail::transpose( A );
+                AT_ = detail::transpose( A );
             }
 
             const auto& d0() const noexcept
@@ -108,28 +99,28 @@ namespace funcy
                 return AT_;
             }
 
-            auto d1( const Matrix& dA ) const
+            auto d1( const Mat& dA ) const
             {
-                return Detail::transpose( dA );
+                return detail::transpose( dA );
             }
 
         private:
-            typename Detail::WrappedMatrix< Matrix >::type AT_;
+            typename detail::WrappedMatrix< Mat >::type AT_;
         };
 
         /**
-         * \brief Generate \f$A^T\in\mathbb{R}^{n,n}\f$.
+         * @brief Generate \f$A^T\in\mathbb{R}^{n,n}\f$.
          * \param A square matrix
          * \return Transpose<Matrix>(A)
          */
-        template < class Matrix >
-        auto transpose( const Matrix& A )
+        template < class Mat >
+        auto transpose( const Mat& A )
         {
-            return Transpose< Matrix >( A );
+            return Transpose< Mat >( A );
         }
 
         /**
-         * \brief Generate \f$f^T\f$, where \f$f:\cdot\mapsto\mathbb{R}^{n,n} \f$.
+         * @brief Generate \f$f^T\f$, where \f$f:\cdot\mapsto\mathbb{R}^{n,n} \f$.
          * \param f function object mapping into a space of square matrices
          * \return Transpose< decay_t<decltype(f())> >(f())( f )
          */

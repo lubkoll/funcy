@@ -8,14 +8,14 @@
 /**
  * \ingroup Rubber
  * \file mooney_rivlin.hh
- * \brief Models based on the Mooney-Rivlin material law. Input argument is the deformation
+ * @brief Models based on the Mooney-Rivlin material law. Input argument is the deformation
  * gradient.
  */
 namespace texy
 {
     /**
      * \ingroup Rubber
-     * \brief Generate an "incompressible" Mooney-Rivlin material law \f$ W(F)=c_0\iota_1(F^T F) +
+     * @brief Generate an "incompressible" Mooney-Rivlin material law \f$ W(F)=c_0\iota_1(F^T F) +
      * c_1\iota_2(F^T F) \f$,
      * where \f$\iota_1\f$ is the first and \f$\iota_2\f$ the second principal matrix invariant.
      */
@@ -30,7 +30,7 @@ namespace texy
 
     /**
      * \ingroup Rubber
-     * \brief Generate a compressible Mooney-Rivlin material law \f$ W(F)=c_0\iota_1(F^T F) +
+     * @brief Generate a compressible Mooney-Rivlin material law \f$ W(F)=c_0\iota_1(F^T F) +
      * c_1\iota_2(F^T F) + d_0\Gamma_\mathrm{In}(\det(F))+d_1\Gamma_\mathrm{Co}(\det(F))  \f$,
      * where \f$\iota_1\f$ is the first and \f$\iota_2\f$ the second principal matrix invariant.
      */
@@ -47,7 +47,7 @@ namespace texy
     //  /**
     //   * \ingroup Rubber
     //   *
-    //   * \brief Generate a compressible Mooney-Rivlin material law \f$ W(F)=c_0\iota_1(F^T F) +
+    //   * @brief Generate a compressible Mooney-Rivlin material law \f$ W(F)=c_0\iota_1(F^T F) +
     //   c_1\iota_2(F^T F) + d_0\Gamma_\mathrm{In}(\det(F))+d_1\Gamma_\mathrm{Co}(\det(F))  \f$,
     //   * where \f$\iota_1\f$ is the first and \f$\iota_2\f$ the second principal matrix invariant.
     //   * The parameters \f$c_0,c_1,d_0,d_1\f$ are chosen such that for \f$F\rightarrow I\f$ the
@@ -91,7 +91,7 @@ namespace texy
     //  /**
     //   * \ingroup Rubber
     //   *
-    //   * \brief Generate a compressible Mooney-Rivlin material law \f$ W(F)=c_0\iota_1(F^T F) +
+    //   * @brief Generate a compressible Mooney-Rivlin material law \f$ W(F)=c_0\iota_1(F^T F) +
     //   c_1\iota_2(F^T F) + d_0\Gamma_\mathrm{In}(\det(F))+d_1\Gamma_\mathrm{Co}(\det(F))  \f$,
     //   * where \f$\iota_1\f$ is the first and \f$\iota_2\f$ the second principal matrix invariant.
     //   * The parameters \f$c_0,c_1,d_0,d_1\f$ are chosen such that for \f$F\rightarrow I\f$ the
@@ -110,4 +110,4 @@ namespace texy
     //    return
     //    createMooneyRivlinFromLameConstants<Matrix,InflationPenalty,CompressionPenalty>(lambda,mu);
     //  }
-}
+} // namespace texy

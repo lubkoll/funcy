@@ -4,8 +4,8 @@
 
 #include <limits>
 #include <string>
-#include <type_traits>
 #include <tuple>
+#include <type_traits>
 
 namespace texy
 {
@@ -13,13 +13,13 @@ namespace texy
     template < int, int >
     struct Variable;
 
-    namespace Concepts
+    namespace static_check
     {
         template < class >
         struct IsFunction;
     }
 
-    namespace VariableDetail
+    namespace detail
     {
         template < class T, int k >
         struct ExtractReturnValue
@@ -38,7 +38,7 @@ namespace texy
                 return std::get< k >( x );
             }
         };
-    }
+    } // namespace detail
     /// @endcond
 
     /// Independent variable. Can be uniquely identified by its id.
@@ -75,7 +75,7 @@ namespace texy
         template < int index, class Arg, class = std::enable_if_t< id == index > >
         const std::string& d1( const Arg& dt ) const noexcept
         {
-            return VariableDetail::ExtractReturnValue< Arg, k >::apply( dt )
+            return Variabledetail::ExtractReturnValue< Arg, k >::apply( dt )
                 .append( "_{" )
                 .append( std::to_string( id ) )
                 .append( "}" );
@@ -93,7 +93,7 @@ namespace texy
     }
 
     /// @cond
-    namespace VariableDetail
+    namespace detail
     {
         /// Check if Type is variable.
         template < class >
@@ -117,7 +117,7 @@ namespace texy
         {
         };
 
-        namespace Has
+        namespace has
         {
             /// Check if Type contains has variable.
             template < class F >
@@ -133,7 +133,7 @@ namespace texy
                 };
                 static constexpr bool value = funcy::Meta::AnyOf< F, HasVariable >::value;
             };
-        }
+        } // namespace has
 
         constexpr bool greater( int a, int b )
         {
@@ -152,7 +152,7 @@ namespace texy
         {
         };
 
-        namespace Detail
+        namespace detail
         {
             template < class Type >
             struct MaxVariableId
@@ -184,14 +184,14 @@ namespace texy
             struct MinVariableId< const Variable< id, k > > : std::integral_constant< int, id >
             {
             };
-        }
+        } // namespace detail
 
         template < class F >
-        using MaxVariableId = funcy::Meta::Traverse< F, Detail::MaxVariableId, Max >;
+        using MaxVariableId = funcy::Meta::Traverse< F, detail::MaxVariableId, Max >;
 
         template < class F >
-        using MinVariableId = funcy::Meta::Traverse< F, Detail::MinVariableId, Min >;
-    }
+        using MinVariableId = funcy::Meta::Traverse< F, detail::MinVariableId, Min >;
+    } // namespace detail
     /// @endcond
 
     /// Get underlying type of variable with index id.
@@ -207,33 +207,33 @@ namespace texy
         template < class T >
         constexpr bool isVariable()
         {
-            return VariableDetail::IsVariable< T >::value;
+            return Variabledetail::IsVariable< T >::value;
         }
 
-        namespace Has
+        namespace has
         {
             /// Check if T contains a type Variable<Type,n>.
             template < class T >
             constexpr bool variable()
             {
-                return VariableDetail::Has::Variable< std::decay_t< T > >::value;
+                return Variabledetail::has::Variable< std::decay_t< T > >::value;
             }
 
             /// Check if T contains a type Variable<Type,id>.
             template < class T, int id >
             constexpr bool variableId()
             {
-                return VariableDetail::Has::VariableId< std::decay_t< T >, id >::value;
+                return Variabledetail::has::VariableId< std::decay_t< T >, id >::value;
             }
 
             /// Check if T contains at least two variables.
             template < class T >
             constexpr bool moreThanOneVariable()
             {
-                return VariableDetail::MinVariableId< std::decay_t< T > >::value <
-                       VariableDetail::MaxVariableId< std::decay_t< T > >::value;
+                return Variabledetail::MinVariableId< std::decay_t< T > >::value <
+                       Variabledetail::MaxVariableId< std::decay_t< T > >::value;
             }
-        }
+        } // namespace has
 
         /// Check if variable with index id has type Type.
         template < class F, class Type, int id >
@@ -243,5 +243,5 @@ namespace texy
         }
 
         /** @} */
-    }
-}
+    } // namespace concept
+} // namespace texy

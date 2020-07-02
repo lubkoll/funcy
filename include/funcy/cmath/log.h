@@ -3,6 +3,7 @@
 #include <funcy/concepts.h>
 #include <funcy/util/chainer.h>
 #include <funcy/util/exceptions.h>
+#include <funcy/util/macros.h>
 
 #include <cmath>
 
@@ -21,13 +22,13 @@ namespace funcy
     struct LN : Chainer< LN >
     {
         //! @copydoc Cos::Cos()
-        explicit LN( double x = 1. )
+        explicit LN( double x = 1. ) FUNCY_NOEXCEPT
         {
             update( x );
         }
 
         //! @copydoc Cos::update()
-        void update( double x )
+        void update( double x ) FUNCY_NOEXCEPT
         {
 #ifdef FUNCY_ENABLE_EXCEPTIONS
             if ( x <= 0 )
@@ -44,19 +45,19 @@ namespace funcy
         }
 
         //! @copydoc Cos::d1()
-        double d1( double dx = 1. ) const
+        double d1( double dx = 1. ) const noexcept
         {
             return x_inv * dx;
         }
 
         //! @copydoc Cos::d2()
-        double d2( double dx = 1., double dy = 1. ) const
+        double d2( double dx = 1., double dy = 1. ) const noexcept
         {
             return -x_inv * x_inv * dx * dy;
         }
 
         //! @copydoc Cos::d3()
-        double d3( double dx = 1., double dy = 1., double dz = 1. ) const
+        double d3( double dx = 1., double dy = 1., double dz = 1. ) const noexcept
         {
             return 2 * x_inv * x_inv * x_inv * dx * dy * dz;
         }
@@ -75,13 +76,13 @@ namespace funcy
     struct Log10 : Chainer< Log10 >
     {
         //! @copydoc Cos::Cos()
-        explicit Log10( double x = 1. )
+        explicit Log10( double x = 1. ) FUNCY_NOEXCEPT
         {
             update( x );
         }
 
         //! @copydoc Cos::update()
-        void update( double x )
+        void update( double x ) FUNCY_NOEXCEPT
         {
 #ifdef FUNCY_ENABLE_EXCEPTIONS
             if ( x <= 0 )
@@ -98,19 +99,19 @@ namespace funcy
         }
 
         //! @copydoc Cos::d1()
-        double d1( double dx = 1. ) const
+        double d1( double dx = 1. ) const noexcept
         {
             return ln10inv * x_inv * dx;
         }
 
         //! @copydoc Cos::d2()
-        double d2( double dx = 1., double dy = 1. ) const
+        double d2( double dx = 1., double dy = 1. ) const noexcept
         {
             return -ln10inv * x_inv * x_inv * dx * dy;
         }
 
         //! @copydoc Cos::d3()
-        double d3( double dx = 1., double dy = 1., double dz = 1. ) const
+        double d3( double dx = 1., double dy = 1., double dz = 1. ) const noexcept
         {
             return 2 * ln10inv * x_inv * x_inv * x_inv * dx * dy * dz;
         }
@@ -129,13 +130,13 @@ namespace funcy
     struct Log2 : Chainer< Log2 >
     {
         //! @copydoc Cos::Cos()
-        explicit Log2( double x = 1. )
+        explicit Log2( double x = 1. ) FUNCY_NOEXCEPT
         {
             update( x );
         }
 
         //! @copydoc Cos::update()
-        void update( double x )
+        void update( double x ) FUNCY_NOEXCEPT
         {
 #ifdef FUNCY_ENABLE_EXCEPTIONS
             if ( x <= 0 )
@@ -152,19 +153,19 @@ namespace funcy
         }
 
         //! @copydoc Cos::d1()
-        double d1( double dx = 1. ) const
+        double d1( double dx = 1. ) const noexcept
         {
             return ln2inv * x_inv * dx;
         }
 
         //! @copydoc Cos::d2()
-        double d2( double dx = 1., double dy = 1. ) const
+        double d2( double dx = 1., double dy = 1. ) const noexcept
         {
             return -ln2inv * x_inv * x_inv * dx * dy;
         }
 
         //! @copydoc Cos::d3()
-        double d3( double dx = 1., double dy = 1., double dz = 1. ) const
+        double d3( double dx = 1., double dy = 1., double dz = 1. ) const noexcept
         {
             return 2 * ln2inv * x_inv * x_inv * x_inv * dx * dy * dz;
         }

@@ -1,10 +1,10 @@
 #pragma once
 
-#include <texy/util/chainer.h>
-#include <texy/util/string.h>
 #include <funcy/util/static_checks.h>
 
 #include <cmath>
+#include <texy/util/chainer.h>
+#include <texy/util/string.h>
 
 /*!
   @ingroup TexifyCMathGroup
@@ -69,9 +69,10 @@ namespace texy
       @param f function mapping into a scalar space
       @return object of type mathop::Chain<Cosc,Function>
      */
-    template < class Function, class = std::enable_if_t< funcy::Concepts::isFunction< Function >() > >
+    template < class Function,
+               class = std::enable_if_t< funcy::static_check::isFunction< Function >() > >
     auto cos( const Function& f )
     {
         return Cos()( f );
     }
-}
+} // namespace texy

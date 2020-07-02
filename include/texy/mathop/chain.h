@@ -1,14 +1,13 @@
 #pragma once
 
-#include <type_traits>
-#include <utility>
-
-#include <funcy/concept_check.h>
 #include <funcy/util/compute_chain.h>
 #include <funcy/util/compute_sum.h>
 #include <funcy/util/derivative_wrappers.h>
 #include <funcy/util/evaluate_if_present.h>
 #include <funcy/util/indexed_type.h>
+
+#include <type_traits>
+#include <utility>
 
 namespace texy
 {
@@ -23,12 +22,12 @@ namespace texy
          * @ingroup TexifyMathematicalOperationsGroup
          *
          * @brief %Chain \f$ f\circ g \f$ of functions \f$f\f$ and \f$g\f$ of type F resp. G (F and
-         * G must satisfy the requirements of Concepts::FunctionConcept).
+         * G must satisfy the requirements of static_check::FunctionConcept).
          */
-        template < class F, class G, class = funcy::Concepts::IsFunction< F >,
-                   class = funcy::Concepts::IsFunction< G > >
-        struct Chain : Chainer< Chain< F, G, funcy::Concepts::IsFunction< F >,
-                                       funcy::Concepts::IsFunction< G > > >
+        template < class F, class G, class = funcy::static_check::IsFunction< F >,
+                   class = funcy::static_check::IsFunction< G > >
+        struct Chain : Chainer< Chain< F, G, funcy::static_check::IsFunction< F >,
+                                       funcy::static_check::IsFunction< G > > >
         {
         private:
             using FArg = decltype( std::declval< G >()() );
@@ -37,24 +36,25 @@ namespace texy
                        class IndexedFArgY >
             using D2LazyType = funcy::ComputeSum<
                 funcy::ComputeChainD2< F, funcy::D1< G, IndexedArgX >, funcy::D1< G, IndexedArgY >,
-                                      IndexedFArgX, IndexedFArgY >,
-                funcy::ComputeChainD1< F, funcy::D2< G, IndexedArgX, IndexedArgY >, IndexedFArgX > >;
+                                       IndexedFArgX, IndexedFArgY >,
+                funcy::ComputeChainD1< F, funcy::D2< G, IndexedArgX, IndexedArgY >,
+                                       IndexedFArgX > >;
 
             template < class IndexedArgX, class IndexedArgY, class IndexedArgZ, class IndexedFArgX,
                        class IndexedFArgY, class IndexedFArgZ >
             using D3LazyType = funcy::ComputeSum<
                 funcy::ComputeChainD3< F, funcy::D1< G, IndexedArgX >, funcy::D1< G, IndexedArgY >,
-                                      funcy::D1< G, IndexedArgZ >, IndexedFArgX, IndexedFArgY,
-                                      IndexedFArgZ >,
+                                       funcy::D1< G, IndexedArgZ >, IndexedFArgX, IndexedFArgY,
+                                       IndexedFArgZ >,
                 funcy::ComputeChainD2< F, funcy::D2< G, IndexedArgX, IndexedArgZ >,
-                                      funcy::D1< G, IndexedArgY >, IndexedFArgX, IndexedFArgY >,
+                                       funcy::D1< G, IndexedArgY >, IndexedFArgX, IndexedFArgY >,
                 funcy::ComputeChainD2< F, funcy::D1< G, IndexedArgX >,
-                                      funcy::D2< G, IndexedArgY, IndexedArgZ >, IndexedFArgX,
-                                      IndexedFArgY >,
+                                       funcy::D2< G, IndexedArgY, IndexedArgZ >, IndexedFArgX,
+                                       IndexedFArgY >,
                 funcy::ComputeChainD2< F, funcy::D2< G, IndexedArgX, IndexedArgY >,
-                                      funcy::D1< G, IndexedArgZ >, IndexedFArgX, IndexedFArgZ >,
+                                       funcy::D1< G, IndexedArgZ >, IndexedFArgX, IndexedFArgZ >,
                 funcy::ComputeChainD1< F, funcy::D3< G, IndexedArgX, IndexedArgY, IndexedArgZ >,
-                                      IndexedFArgX > >;
+                                       IndexedFArgX > >;
 
         public:
             /**
@@ -105,8 +105,8 @@ namespace texy
              */
             template < int id, class Arg, class IndexedArg = funcy::IndexedType< Arg, id >,
                        class IndexedFArg = funcy::IndexedType< FArg, id >,
-                       class = std::enable_if_t< funcy::ComputeChainD1< F, funcy::D1< G, IndexedArg >,
-                                                                       IndexedFArg >::present > >
+                       class = std::enable_if_t< funcy::ComputeChainD1<
+                           F, funcy::D1< G, IndexedArg >, IndexedFArg >::present > >
             auto d1( Arg const& dx ) const
             {
                 return funcy::chain< IndexedFArg >( f, funcy::D1< G, IndexedArg >( g, dx ) )();
@@ -126,11 +126,12 @@ namespace texy
                                                              IndexedFArgY >::present > >
             auto d2( ArgX const& dx, ArgY const& dy ) const
             {
-                return funcy::sum( funcy::chain< IndexedFArgX, IndexedFArgY >(
-                                      f, funcy::D1< G, IndexedArgX >( g, dx ),
-                                      funcy::D1< G, IndexedArgY >( g, dy ) ),
-                                  funcy::chain< IndexedFArgX >(
-                                      f, funcy::D2< G, IndexedArgX, IndexedArgY >( g, dx, dy ) ) )();
+                return funcy::sum(
+                    funcy::chain< IndexedFArgX, IndexedFArgY >(
+                        f, funcy::D1< G, IndexedArgX >( g, dx ),
+                        funcy::D1< G, IndexedArgY >( g, dy ) ),
+                    funcy::chain< IndexedFArgX >(
+                        f, funcy::D2< G, IndexedArgX, IndexedArgY >( g, dx, dy ) ) )();
             }
 
             /**
@@ -163,13 +164,13 @@ namespace texy
                     funcy::chain< IndexedFArgX, IndexedFArgZ >(
                         f, funcy::D2< G, IndexedArgX, IndexedArgY >( g, dx, dy ), dGdz ),
                     funcy::chain< IndexedFArgX >(
-                        f,
-                        funcy::D3< G, IndexedArgX, IndexedArgY, IndexedArgZ >( g, dx, dy, dz ) ) )();
+                        f, funcy::D3< G, IndexedArgX, IndexedArgY, IndexedArgZ >( g, dx, dy,
+                                                                                  dz ) ) )();
             }
 
         private:
             G g;
             F f;
         };
-    }
-}
+    } // namespace mathop
+} // namespace texy

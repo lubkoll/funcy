@@ -13,8 +13,9 @@ namespace funcy
             return lhs * rhs;
         }
 
-        template < class S, std::enable_if_t< !std::is_same< S, T >::value >* = nullptr >
-        static constexpr auto multiply( const S& lhs, const T& rhs )
+        template < class S >
+        static constexpr auto multiply( const S& lhs,
+                                        const T& rhs ) requires( !std::is_same< S, T >::value )
         {
             return lhs * rhs;
         }
@@ -39,59 +40,61 @@ namespace funcy
         }
     };
 
-    template < class T, class S,
-               std::enable_if_t< std::is_same< std::decay_t< T >, std::decay_t< S > >::value &&
-                                 !std::is_arithmetic< std::decay_t< T > >::value >* = nullptr >
-    auto multiply_via_traits( T&& lhs, S&& rhs )
+    template < class T, class S >
+    auto multiply_via_traits( T&& lhs, S&& rhs ) requires(
+        std::is_same< std::decay_t< T >, std::decay_t< S > >::value &&
+        !std::is_arithmetic< std::decay_t< T > >::value )
     {
         return MathOpTraits< std::decay_t< T > >::multiply( std::forward< T >( lhs ),
                                                             std::forward< S >( rhs ) );
     }
 
-    template < class T, class S,
-               std::enable_if_t< !std::is_same< std::decay_t< T >, std::decay_t< S > >::value &&
-                                 !std::is_arithmetic< std::decay_t< T > >::value &&
-                                 !std::is_arithmetic< std::decay_t< S > >::value >* = nullptr >
-    auto multiply_via_traits( T&& lhs, S&& rhs )
+    template < class T, class S >
+    auto multiply_via_traits( T&& lhs, S&& rhs ) requires(
+        !std::is_same< std::decay_t< T >, std::decay_t< S > >::value &&
+        !std::is_arithmetic< std::decay_t< T > >::value &&
+        !std::is_arithmetic< std::decay_t< S > >::value )
     {
         return MathOpTraits< std::decay_t< T > >::multiply( std::forward< T >( lhs ),
                                                             std::forward< S >( rhs ) );
     }
 
-    template < class T, class S, std::enable_if_t< std::is_arithmetic< T >::value &&
-                                                   std::is_arithmetic< S >::value >* = nullptr >
-    auto multiply_via_traits( T lhs, S rhs )
+    template < class T, class S >
+    auto multiply_via_traits( T lhs, S rhs ) requires(
+        std::is_arithmetic< T >::value&& std::is_arithmetic< S >::value )
     {
         return MathOpTraits< std::common_type_t< T, S > >::multiply( lhs, rhs );
     }
 
-    template < class T, class S, std::enable_if_t< std::is_arithmetic< T >::value >* = nullptr,
-               std::enable_if_t< !std::is_arithmetic< std::decay_t< S > >::value >* = nullptr >
-    auto multiply_via_traits( T lhs, S&& rhs )
+    template < class T, class S >
+    auto multiply_via_traits( T lhs,
+                              S&& rhs ) requires( std::is_arithmetic< T >::value &&
+                                                  !std::is_arithmetic< std::decay_t< S > >::value )
     {
         return MathOpTraits< std::decay_t< S > >::multiply( lhs, std::forward< S >( rhs ) );
     }
 
-    template < class T, class S, std::enable_if_t< std::is_arithmetic< S >::value >* = nullptr,
-               std::enable_if_t< !std::is_arithmetic< std::decay_t< T > >::value >* = nullptr >
-    auto multiply_via_traits( T&& lhs, S rhs )
+    template < class T, class S >
+    auto multiply_via_traits( T&& lhs,
+                              S rhs ) requires( std::is_arithmetic< S >::value &&
+                                                !std::is_arithmetic< std::decay_t< T > >::value )
     {
         return MathOpTraits< std::decay_t< T > >::multiply( std::forward< T >( lhs ), rhs );
     }
 
-    template < class T, class S,
-               std::enable_if_t< std::is_same< std::decay_t< T >, std::decay_t< S > >::value &&
-                                 !std::is_arithmetic< std::decay_t< T > >::value >* = nullptr >
-    auto add_via_traits( T&& lhs, S&& rhs )
+    template < class T, class S >
+    auto add_via_traits( T&& lhs, S&& rhs ) requires(
+        std::is_same< std::decay_t< T >, std::decay_t< S > >::value &&
+        !std::is_arithmetic< std::decay_t< T > >::value )
     {
         return MathOpTraits< std::decay_t< T > >::add( std::forward< T >( lhs ),
                                                        std::forward< S >( rhs ) );
     }
 
-    template < class T, class S, std::enable_if_t< std::is_arithmetic< T >::value &&
-                                                   std::is_arithmetic< S >::value >* = nullptr >
-    auto add_via_traits( T lhs, S rhs )
+    template < class T, class S >
+    auto add_via_traits( T lhs, S rhs ) requires(
+        std::is_arithmetic< T >::value&& std::is_arithmetic< S >::value )
     {
         return MathOpTraits< std::common_type_t< T, S > >::add( lhs, rhs );
     }
-}
+} // namespace funcy

@@ -4,14 +4,9 @@
 
 namespace funcy
 {
-    /// @cond
-    template < class >
-    struct ArithmeticConceptCheck;
-    /// @endcond
-
     /// Wrap a constant.
-    template < class Type, class = ArithmeticConceptCheck< Type > >
-    struct Constant : Chainer< Constant< Type, ArithmeticConceptCheck< Type > > >
+    template < class Type >
+    struct Constant : Chainer< Constant< Type > >
     {
         constexpr Constant() = default;
 
@@ -31,23 +26,23 @@ namespace funcy
     };
 
     /**
-     * \brief Generate a constant function that stores its argument as constant reference.
+     * @brief Generate a constant function that stores its argument as constant reference.
      *
      * This admits to use variable constant arguments, i.e. parameters that we want to study.
      */
     template < class Arg >
-    auto constRef( const Arg& x )
+    auto const_ref( const Arg& x )
     {
         return Constant< const Arg& >( x );
     }
 
     /**
-   * \brief Wrap a constant.
-   * \return Constant<Arg>(x)
-   */
+     * @brief Wrap a constant.
+     * \return Constant<Arg>(x)
+     */
     template < class Arg >
     constexpr auto constant( Arg x )
     {
-        return Constant< Arg >( x );
+        return Constant< Arg >( std::move( x ) );
     }
-}
+} // namespace funcy

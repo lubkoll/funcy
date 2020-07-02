@@ -3,12 +3,11 @@
 #include "dimension.h"
 #include "rows_and_cols.h"
 
-#include <funcy/concept_check.h>
 #include <funcy/concepts.h>
+#include <funcy/linalg/concepts.h>
 #include <funcy/util/at.h>
 #include <funcy/util/chainer.h>
 #include <funcy/util/exceptions.h>
-#include <funcy/util/type_traits.h>
 
 #include <type_traits>
 #include <utility>
@@ -21,7 +20,7 @@ namespace funcy
          *  @{ */
 
         /// @cond
-        namespace Detail
+        namespace detail
         {
             /// f Computes the trace of \f$A\f$, i.e. the sum of diagonal elements.
             template < int >
@@ -58,11 +57,11 @@ namespace funcy
                     return at( A, 0, 0 ) + at( A, 1, 1 ) + at( A, 2, 2 );
                 }
             };
-        } // namespace Detail
+        } // namespace detail
 
         /// %Trace of a matrix, i.e. sum of diagonal elements.
-        template < SquareMatrix Matrix >
-        struct ConstantSizeTrace : Chainer< ConstantSizeTrace< Matrix > >
+        template < SquareMatrix M >
+        struct ConstantSizeTrace : Chainer< ConstantSizeTrace< M > >
         {
             ConstantSizeTrace() = default;
 
@@ -70,15 +69,15 @@ namespace funcy
              * @brief Constructor.
              * @param A point of evaluation.
              */
-            explicit ConstantSizeTrace( const Matrix& A )
+            explicit ConstantSizeTrace( const M& A )
             {
                 update( A );
             }
 
             /// Reset point of evaluation.
-            void update( const Matrix& A )
+            void update( const M& A )
             {
-                trace = Detail::ComputeTrace< dim< Matrix >() >::apply( A );
+                trace = detail::ComputeTrace< dim< M >() >::apply( A );
             }
 
             /// Function value.
@@ -88,20 +87,20 @@ namespace funcy
             }
 
             /// First directional derivative.
-            auto d1( const Matrix& dA ) const
+            auto d1( const M& dA ) const
             {
-                return Detail::ComputeTrace< dim< Matrix >() >::apply( dA );
+                return detail::ComputeTrace< dim< M >() >::apply( dA );
             }
 
         private:
             std::decay_t< decltype(
-                Detail::ComputeTrace< dim< Matrix >() >::apply( std::declval< Matrix >() ) ) >
+                detail::ComputeTrace< dim< M >() >::apply( std::declval< M >() ) ) >
                 trace = 0;
         };
 
         /// %Trace of a matrix, i.e. sum of diagonal elements.
-        template < class Matrix >
-        struct DynamicSizeTrace : Chainer< DynamicSizeTrace< Matrix > >
+        template < class M >
+        struct DynamicSizeTrace : Chainer< DynamicSizeTrace< M > >
         {
             DynamicSizeTrace() = default;
 
@@ -109,13 +108,13 @@ namespace funcy
              * @brief Constructor.
              * @param A point of evaluation.
              */
-            explicit DynamicSizeTrace( const Matrix& A )
+            explicit DynamicSizeTrace( const M& A )
             {
                 update( A );
             }
 
             /// Reset point of evaluation.
-            void update( const Matrix& A )
+            void update( const M& A )
             {
 #ifdef FUNCY_ENABLE_EXCEPTIONS
                 if ( rows( A ) != cols( A ) )
@@ -123,7 +122,7 @@ namespace funcy
                                                        __FILE__, __LINE__ );
 #endif
 
-                using Index = decltype( rows( std::declval< Matrix >() ) );
+                using Index = decltype( rows( std::declval< M >() ) );
                 trace = 0.;
                 for ( Index i = 0; i < rows( A ); ++i )
                     trace += at( A, i, i );
@@ -136,9 +135,9 @@ namespace funcy
             }
 
             /// First directional derivative.
-            auto d1( const Matrix& dA ) const
+            auto d1( const M& dA ) const
             {
-                using Index = decltype( rows( std::declval< Matrix >() ) );
+                using Index = decltype( rows( std::declval< M >() ) );
                 auto result = decltype( at( dA, 0, 0 ) )( 0. );
                 for ( Index i = 0; i < rows( dA ); ++i )
                     result += at( dA, i, i );
@@ -146,35 +145,34 @@ namespace funcy
             }
 
         private:
-            std::decay_t< decltype( at( std::declval< Matrix >(), 0, 0 ) ) > trace = 0;
+            std::decay_t< decltype( at( std::declval< M >(), 0, 0 ) ) > trace = 0;
         };
         /// @endcond
 
         /**
-         * \brief Generate \f$\mathrm{tr}(A)\in\mathbb{R}^{n,n}\f$.
+         * @brief Generate \f$\mathrm{tr}(A)\in\mathbb{R}^{n,n}\f$.
          * \param A matrix
          * \return Trace<Matrix>(A)
          */
-        template < class Matrix, std::enable_if_t< !Concepts::isFunction< Matrix >() >* = nullptr >
-        auto trace( const Matrix& A )
+        template < Matrix M >
+        auto trace( M&& A )
         {
-            return DynamicSizeTrace< Matrix >( A );
+            return DynamicSizeTrace( std::forward< M >( A ) );
         }
 
         /**
-         * \brief Generate \f$\mathrm{tr}(A)\in\mathbb{R}^{n,n}\f$.
+         * @brief Generate \f$\mathrm{tr}(A)\in\mathbb{R}^{n,n}\f$.
          * \param A matrix
          * \return Trace<Matrix>(A)
          */
-        template < ConstantSize Matrix,
-                   std::enable_if_t< !Concepts::isFunction< Matrix >() >* = nullptr >
-        auto trace( const Matrix& A )
+        template < Matrix M >
+        auto trace( M&& A ) requires ConstantSize< M >
         {
-            return ConstantSizeTrace< Matrix >( A );
+            return ConstantSizeTrace( std::forward< M >( A ) );
         }
 
         /**
-         * \brief Generate \f$\mathrm{tr}\circ f\f$, where \f$f:\cdot\mapsto\mathbb{R}^{n,n} \f$.
+         * @brief Generate \f$\mathrm{tr}\circ f\f$, where \f$f:\cdot\mapsto\mathbb{R}^{n,n} \f$.
          * \param f function object mapping into a space of square matrices
          * \return Trace< std::decay_t<decltype(f())> >(f())( f )
          */

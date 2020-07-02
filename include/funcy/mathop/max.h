@@ -128,14 +128,14 @@ namespace funcy
     }
 
     template < Function F, class G >
-    decltype( auto ) max( F&& f, G&& g ) requires( !Concepts::isFunction< std::decay_t< G > >() )
+    decltype( auto ) max( F&& f, G&& g ) requires( !Function< G > )
     {
         return Max< std::decay_t< F >, Constant< std::decay_t< G > > >(
             std::forward< F >( f ), constant( std::forward< G >( g ) ) );
     }
 
     template < class F, Function G >
-    decltype( auto ) max( F&& f, G&& g ) requires( !Concepts::isFunction< std::decay_t< F > >() )
+    decltype( auto ) max( F&& f, G&& g ) requires( !Function< F > )
     {
         return Max< Constant< std::decay_t< F > >, std::decay_t< G > >(
             constant( std::forward< F >( f ) ), std::forward< G >( g ) );

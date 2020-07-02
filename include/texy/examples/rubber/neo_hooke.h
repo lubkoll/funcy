@@ -1,23 +1,22 @@
 #pragma once
 
+#include <string>
 #include <texy/constant.h>
 #include <texy/examples/volumetric_penalty_functions.h>
 #include <texy/generate.h>
 #include <texy/linalg/principal_invariants.h>
 #include <texy/linalg/strain_tensor.h>
 
-#include <string>
-
 /**
  * \ingroup Rubber
  * \file neo_hooke.hh
- * \brief Models based on the neo-Hookean material law. Input argument is the deformation gradient.
+ * @brief Models based on the neo-Hookean material law. Input argument is the deformation gradient.
  */
 namespace texy
 {
     /**
      * \ingroup Rubber
-     * \brief Generate an "incompressible" neo-Hookean material law \f$ W(F)=c\iota_1(F^T F) \f$,
+     * @brief Generate an "incompressible" neo-Hookean material law \f$ W(F)=c\iota_1(F^T F) \f$,
      * where \f$\iota_1\f$ is the first principal matrix invariant .
      */
     template < int n >
@@ -29,7 +28,7 @@ namespace texy
 
     /**
      * \ingroup Rubber
-     * \brief Generate an "incompressible" neo-Hookean material law \f$ W(F)=c\bar\iota_1(F^T F)
+     * @brief Generate an "incompressible" neo-Hookean material law \f$ W(F)=c\bar\iota_1(F^T F)
      * \f$, where \f$\bar\iota_1\f$ is the modified first principal matrix invariant.
      */
     template < int n >
@@ -42,7 +41,7 @@ namespace texy
 
     /**
      * \ingroup Rubber
-     * \brief Generate a compressible neo-Hookean material law \f$ W(F)=c\iota_1(F^T
+     * @brief Generate a compressible neo-Hookean material law \f$ W(F)=c\iota_1(F^T
      * F)+d_0\Gamma_\mathrm{In}(\det(F))+d_1\Gamma_\mathrm{Co}(\det(F)) \f$,
      * where \f$\iota_1\f$ is the first principal matrix invariant.
      */
@@ -57,7 +56,7 @@ namespace texy
 
     /**
      * \ingroup Rubber
-     * \brief Generate a compressible neo-Hookean material law \f$ W(F)=c\bar\iota_1(F^T
+     * @brief Generate a compressible neo-Hookean material law \f$ W(F)=c\bar\iota_1(F^T
      * F)+d_0\Gamma_\mathrm{In}(\det(F))+d_1\Gamma_\mathrm{Co}(\det(F)) \f$,
      * where \f$\bar\iota_1\f$ is the modified first principal matrix invariant.
      */
@@ -70,4 +69,4 @@ namespace texy
         return c * ( mi1< decltype( S ), n >( S ) - n ) +
                volumetricPenalty< InflationPenalty, CompressionPenalty >( d0, d1, F );
     }
-}
+} // namespace texy

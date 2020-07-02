@@ -22,13 +22,13 @@ namespace funcy
          * @brief Constructor.
          * @param x point of evaluation
          */
-        constexpr explicit Cos( double x = 0. )
+        explicit Cos( double x = 0. ) noexcept
         {
             update( x );
         }
 
         /// Set point of evaluation.
-        void update( const double& x )
+        void update( const double& x ) noexcept
         {
             sinx = ::sin( x );
             cosx = ::cos( x );
@@ -41,19 +41,19 @@ namespace funcy
         }
 
         /// First (directional) derivative.
-        double d1( double dx = 1. ) const
+        double d1( double dx = 1. ) const noexcept
         {
             return -sinx * dx;
         }
 
         /// Second (directional) derivative.
-        double d2( double dx = 1., double dy = 1. ) const
+        double d2( double dx = 1., double dy = 1. ) const noexcept
         {
             return -cosx * dx * dy;
         }
 
         /// Third (directional) derivative.
-        double d3( double dx = 1., double dy = 1., double dz = 1. ) const
+        double d3( double dx = 1., double dy = 1., double dz = 1. ) const noexcept
         {
             return sinx * dx * dy * dz;
         }

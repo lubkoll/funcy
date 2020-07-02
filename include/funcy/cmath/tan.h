@@ -20,13 +20,13 @@ namespace funcy
     struct Tan : Chainer< Tan >
     {
         //! @copydoc Cos::Cos()
-        explicit Tan( double x = 0. )
+        explicit Tan( double x = 0. ) noexcept
         {
             update( x );
         }
 
         //! @copydoc Cos::update()
-        void update( double x )
+        void update( double x ) noexcept
         {
             value = ::tan( x );
             firstDerivative = 1 + ( value * value );
@@ -39,19 +39,19 @@ namespace funcy
         }
 
         //! @copydoc Cos::d1()
-        double d1( double dx = 1. ) const
+        double d1( double dx = 1. ) const noexcept
         {
             return firstDerivative * dx;
         }
 
         //! @copydoc Cos::d2()
-        double d2( double dx = 1., double dy = 1. ) const
+        double d2( double dx = 1., double dy = 1. ) const noexcept
         {
             return ( 2 * value * firstDerivative ) * dx * dy;
         }
 
         //! @copydoc Cos::d3()
-        double d3( double dx = 1., double dy = 1., double dz = 1. ) const
+        double d3( double dx = 1., double dy = 1., double dz = 1. ) const noexcept
         {
             return 2 * firstDerivative * ( 1 + ( 3 * value * value ) ) * dx * dy * dz;
         }

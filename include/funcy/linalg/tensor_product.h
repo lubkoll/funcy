@@ -3,6 +3,7 @@
 #include "rows_and_cols.h"
 
 #include <funcy/concepts.h>
+#include <funcy/linalg/concepts.h>
 #include <funcy/util/at.h>
 #include <funcy/util/zero.h>
 
@@ -32,7 +33,6 @@ namespace funcy
         {
             return tensorProduct< Matrix >( v, v );
         }
-
         /** @} */
     } // namespace linalg
 } // namespace funcy

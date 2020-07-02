@@ -17,7 +17,7 @@ namespace funcy
     {
         /**
          * \ingroup MathematicalOperationsGroup
-         * \brief %Sum of functions of type F and G.
+         * @brief %Sum of functions of type F and G.
          */
         template < Function F, Function G >
         struct Sum : Chainer< Sum< F, G > >
@@ -70,7 +70,8 @@ namespace funcy
             template < class InitF, class InitG >
             constexpr Sum( InitF&& f_, InitG&& g_ ) requires(
                 std::is_constructible_v< F, std::decay_t< InitF > >&&
-                    std::is_constructible_v< G, std::decay_t< InitG > > )
+                    std::is_constructible_v< G, std::decay_t< InitG > > &&
+                !Function< InitF > && !Function< InitG > )
                 : f( std::forward< InitF >( f_ ) ), g( std::forward< InitG >( g_ ) ),
                   value( add_via_traits( f(), g() ) )
             {

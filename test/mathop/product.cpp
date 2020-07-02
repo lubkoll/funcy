@@ -1,14 +1,14 @@
-#include <gtest/gtest.h>
-
 #include <funcy/cmath/pow.h>
 #include <funcy/finalize.h>
 #include <funcy/generate.h>
+
+#include <gtest/gtest.h>
 
 TEST( ProductTest, UpdateVariable )
 {
     auto x = funcy::variable< 0 >( 2. );
     using funcy::Pow;
-    auto fun = ( Pow< 1, 2 >( 2. ) * Pow< 3, 2 >( 2. ) ) << x;
+    auto fun = ( Pow< 1, 2 >( 2. ) * Pow< 3, 2 >( 2. ) )( x );
     EXPECT_DOUBLE_EQ( fun.d0(), 4. );
     EXPECT_NO_THROW( fun.update< 0 >( 4. ) );
     EXPECT_NO_THROW( fun.update( 0 ); );

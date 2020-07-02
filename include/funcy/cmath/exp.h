@@ -20,13 +20,13 @@ namespace funcy
     struct Exp : Chainer< Exp >
     {
         //! @copydoc Cos::d0()
-        explicit Exp( double x = 0. )
+        explicit Exp( double x = 0. ) noexcept
         {
             update( x );
         }
 
         //! @copydoc Cos::update()
-        void update( double x )
+        void update( double x ) noexcept
         {
             e_x = ::exp( x );
         }
@@ -38,19 +38,19 @@ namespace funcy
         }
 
         //! @copydoc Cos::d0()
-        double d1( double dx = 1. ) const
+        double d1( double dx = 1. ) const noexcept
         {
             return e_x * dx;
         }
 
         //! @copydoc Cos::d0()
-        double d2( double dx = 1., double dy = 1. ) const
+        double d2( double dx = 1., double dy = 1. ) const noexcept
         {
             return e_x * dx * dy;
         }
 
         //! @copydoc Cos::d0()
-        double d3( double dx = 1., double dy = 1., double dz = 1. ) const
+        double d3( double dx = 1., double dy = 1., double dz = 1. ) const noexcept
         {
             return e_x * dx * dy * dz;
         }
@@ -69,13 +69,13 @@ namespace funcy
     struct Exp2 : Chainer< Exp2 >
     {
         //! @copydoc Cos::Cos()
-        explicit Exp2( double x = 0. )
+        explicit Exp2( double x = 0. ) noexcept
         {
             update( x );
         }
 
         //! @copydoc Cos::update()
-        void update( double x )
+        void update( double x ) noexcept
         {
             value = exp2( x );
         }
@@ -87,19 +87,19 @@ namespace funcy
         }
 
         //! @copydoc Cos::d1()
-        double d1( double dx = 1. ) const
+        double d1( double dx = 1. ) const noexcept
         {
             return value * ln2 * dx;
         }
 
         //! @copydoc Cos::d2()
-        double d2( double dx = 1., double dy = 1. ) const
+        double d2( double dx = 1., double dy = 1. ) const noexcept
         {
             return value * ln2 * ln2 * dx * dy;
         }
 
         //! @copydoc Cos::d3()
-        double d3( double dx = 1., double dy = 1., double dz = 1. ) const
+        double d3( double dx = 1., double dy = 1., double dz = 1. ) const noexcept
         {
             return value * ln2 * ln2 * ln2 * dx * dy * dz;
         }

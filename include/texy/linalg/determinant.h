@@ -4,12 +4,12 @@
 #include "trace.h"
 #include "transpose.h"
 
-#include <texy/constant.h>
-#include <texy/util/chainer.h>
-#include <texy/util/string.h>
 #include <funcy/util/static_checks.h>
 #include <funcy/util/type_traits.h>
 
+#include <texy/constant.h>
+#include <texy/util/chainer.h>
+#include <texy/util/string.h>
 #include <type_traits>
 #include <utility>
 
@@ -83,11 +83,11 @@ namespace texy
          * @param f function mapping into a space of square matrices
          * @return Determinant< std::decay_t<decltype(f.d0())> >(f.d0())(f)
          */
-        template < class F, std::enable_if_t< funcy::Concepts::isFunction< F >() >* = nullptr >
+        template < class F, std::enable_if_t< funcy::static_check::isFunction< F >() >* = nullptr >
         auto det( const F& f )
         {
             return Determinant( f.d0() )( f );
         }
         /** @} */
-    }
-}
+    } // namespace linalg
+} // namespace texy

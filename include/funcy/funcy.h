@@ -1,12 +1,10 @@
 #pragma once
 
-#include "concept_check.h"
-#include "constant.h"
-#include "finalize.h"
-#include "generate.h"
-#include "identity.h"
-#include "linalg.h"
-#include "math.h"
-#include "operations.h"
-#include "util/add_missing_operators.h"
-#include "variable.h"
+#include <funcy/constant.h>
+#include <funcy/finalize.h>
+#include <funcy/generate.h>
+#include <funcy/identity.h>
+#include <funcy/linalg.h>
+#include <funcy/math.h>
+#include <funcy/operations.h>
+#include <funcy/variable.h>

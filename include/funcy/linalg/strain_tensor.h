@@ -3,6 +3,7 @@
 #include "transpose.h"
 
 #include <funcy/concepts.h>
+#include <funcy/linalg/concepts.h>
 #include <funcy/util/add_transposed_matrix.h>
 #include <funcy/util/chainer.h>
 
@@ -37,7 +38,7 @@ namespace funcy
             /// Reset point of evaluation.
             void update( const Matrix& F )
             {
-                FT = Detail::transpose( F );
+                FT = detail::transpose( F );
                 FTF = FT * F;
             }
 
@@ -57,7 +58,7 @@ namespace funcy
             /// Second directional derivative \f$ dF_2^T dF_1 + dF_1^T dF_2 \f$.
             Matrix d2( const Matrix& dF1, const Matrix& dF2 ) const
             {
-                Matrix dF2TdF1 = Detail::transpose( dF2 ) * dF1;
+                Matrix dF2TdF1 = detail::transpose( dF2 ) * dF1;
                 return addTransposed( dF2TdF1 );
             }
 
@@ -88,7 +89,7 @@ namespace funcy
             /// Reset point of evaluation.
             void update( const Matrix& F )
             {
-                FT = Detail::transpose( F );
+                FT = detail::transpose( F );
                 FFT = F * FT;
             }
 
@@ -108,7 +109,7 @@ namespace funcy
             /// Second directional derivative \f$ dF_2^T dF_1 + dF_1^T dF_2 \f$.
             Matrix d2( const Matrix& dF1, const Matrix& dF2 ) const
             {
-                Matrix dF1dF2T = dF1 * Detail::transpose( dF2 );
+                Matrix dF1dF2T = dF1 * detail::transpose( dF2 );
                 return addTransposed( dF1dF2T );
             }
 
@@ -117,7 +118,7 @@ namespace funcy
         };
 
         /**
-         * \brief Generate the right Cauchy-Green strain tensor \f$A*A^T\f$.
+         * @brief Generate the right Cauchy-Green strain tensor \f$A*A^T\f$.
          * \param A matrix
          * \return RightCauchyGreenStrainTensor<Matrix>(A)
          */
@@ -128,7 +129,7 @@ namespace funcy
         }
 
         /**
-         * \brief Generate the right Cauchy-Green strain tensor \f$f*f^T\f$, where
+         * @brief Generate the right Cauchy-Green strain tensor \f$f*f^T\f$, where
          * \f$f:\cdot\mapsto\mathbb{R}^{n,n} \f$. \param f function object mapping into a space of
          * square matrices \return RightCauchyGreenStrainTensor< decay_t<decltype(f())> >(f())( f )
          */
@@ -139,7 +140,7 @@ namespace funcy
         }
 
         /**
-         * \brief Generate the left Cauchy-Green strain tensor \f$A^T*A\f$.
+         * @brief Generate the left Cauchy-Green strain tensor \f$A^T*A\f$.
          * \param A matrix
          * \return LeftCauchyGreenStrainTensor<Matrix>(A)
          */
@@ -150,7 +151,7 @@ namespace funcy
         }
 
         /**
-         * \brief Generate the left Cauchy-Green strain tensor \f$f^T*f\f$, where
+         * @brief Generate the left Cauchy-Green strain tensor \f$f^T*f\f$, where
          * \f$f:\cdot\mapsto\mathbb{R}^{n,n} \f$. \param f function object mapping into a space of
          * square matrices \return LeftCauchyGreenStrainTensor< decay_t<decltype(f())> >(f())( f )
          */

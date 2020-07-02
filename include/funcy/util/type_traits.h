@@ -5,7 +5,7 @@
 namespace funcy
 {
     /// @cond
-    namespace Concepts
+    namespace static_check
     {
         namespace Try
         {
@@ -16,7 +16,7 @@ namespace funcy
                 using PlainObject = typename EigenArg::PlainObject;
             } // namespace NestedType
         }     // namespace Try
-    }         // namespace Concepts
+    }         // namespace static_check
     /// @endcond
 
     /// %Identity, i.e. Decay<F>::type == F
@@ -28,7 +28,7 @@ namespace funcy
 
     /// Underlying type for expression templates of the Eigen library.
     template < class F >
-    struct Decay< F, std::void_t< Concepts::Try::NestedType::PlainObject< F > > >
+    struct Decay< F, std::void_t< static_check::Try::NestedType::PlainObject< F > > >
     {
         using type = typename F::PlainObject;
     };
@@ -38,6 +38,9 @@ namespace funcy
     struct is_arithmetic : std::is_arithmetic< F >
     {
     };
+
+    template < class F >
+    using is_arithmetic_v = is_arithmetic< F >::value;
 
     /// Access underlying type (if it is hidden by expression templates).
     template < class F >

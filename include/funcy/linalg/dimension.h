@@ -1,6 +1,6 @@
 #pragma once
 
-#include <funcy/concepts.h>
+#include <funcy/linalg/concepts.h>
 #include <funcy/util/extract_rows_and_cols.h>
 
 namespace funcy

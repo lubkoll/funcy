@@ -1,6 +1,7 @@
 #include <funcy/funcy.h>
 
 #include <gtest/gtest.h>
+
 #include <gmock/gmock.h>
 
 using ::testing::Eq;
@@ -16,38 +17,38 @@ TEST( HasVariableTest, Sum )
 {
     using namespace funcy;
     const auto f = finalize( variable< 0 >( 1. ) + 1 );
-    EXPECT_TRUE( Concepts::Has::variable< decltype( f ) >() );
+    EXPECT_TRUE( static_check::has::variable< decltype( f ) >() );
     const auto g = finalize( 1 + variable< 0 >( 1. ) );
-    EXPECT_TRUE( Concepts::Has::variable< decltype( g ) >() );
+    EXPECT_TRUE( static_check::has::variable< decltype( g ) >() );
     const auto h = finalize( variable< 0 >( 1. ) + variable< 1 >( 2 ) );
-    EXPECT_TRUE( Concepts::Has::variable< decltype( h ) >() );
+    EXPECT_TRUE( static_check::has::variable< decltype( h ) >() );
     const auto k = Pow< 2, 1 >() + variable< 1 >( 1 );
-    EXPECT_TRUE( Concepts::Has::variable< decltype( k ) >() );
+    EXPECT_TRUE( static_check::has::variable< decltype( k ) >() );
 }
 
 TEST( HasVariableTest, Scale )
 {
     using namespace funcy;
     const auto f = finalize( variable< 0 >( 1. ) * 2 );
-    EXPECT_TRUE( Concepts::Has::variable< decltype( f ) >() );
+    EXPECT_TRUE( static_check::has::variable< decltype( f ) >() );
     const auto g = finalize( 2 * variable< 0 >( 1. ) );
-    EXPECT_TRUE( Concepts::Has::variable< decltype( g ) >() );
+    EXPECT_TRUE( static_check::has::variable< decltype( g ) >() );
 }
 
 TEST( HasVariableTest, Multiply )
 {
     using namespace funcy;
     const auto f = finalize( variable< 0 >( 1. ) * variable< 1 >( 2. ) );
-    EXPECT_TRUE( Concepts::Has::variable< decltype( f ) >() );
+    EXPECT_TRUE( static_check::has::variable< decltype( f ) >() );
     const auto g = finalize( funcy::Sin( 1 ) * variable< 0 >( 1. ) );
-    EXPECT_TRUE( Concepts::Has::variable< decltype( g ) >() );
+    EXPECT_TRUE( static_check::has::variable< decltype( g ) >() );
 }
 
 TEST( HasVariableTest, Squared )
 {
     using namespace funcy;
     auto f = finalize( squared( variable< 0 >( 1. ) ) );
-    EXPECT_TRUE( Concepts::Has::variable< decltype( f ) >() );
+    EXPECT_TRUE( static_check::has::variable< decltype( f ) >() );
 }
 
 TEST( VariableTypeTest, IF_applied_to_variable_THEN_RETURNS_its_type )
@@ -68,24 +69,24 @@ TEST( HasVariableIdTest, Sum )
 {
     using namespace funcy;
     const auto f = finalize( variable< 0 >( 1. ) + 1 );
-    auto result = Concepts::Has::variableId< decltype( f ), 0 >();
+    auto result = static_check::has::variableId< decltype( f ), 0 >();
     EXPECT_TRUE( result );
-    result = Concepts::Has::variableId< decltype( f ), 1 >();
+    result = static_check::has::variableId< decltype( f ), 1 >();
     EXPECT_FALSE( result );
     const auto g = finalize( 1 + variable< 0 >( 1. ) );
-    result = Concepts::Has::variableId< decltype( g ), 0 >();
+    result = static_check::has::variableId< decltype( g ), 0 >();
     EXPECT_TRUE( result );
-    result = Concepts::Has::variableId< decltype( g ), 1 >();
+    result = static_check::has::variableId< decltype( g ), 1 >();
     EXPECT_FALSE( result );
     const auto h = finalize( variable< 0 >( 1. ) + variable< 1 >( 2 ) );
-    result = Concepts::Has::variableId< decltype( h ), 0 >();
+    result = static_check::has::variableId< decltype( h ), 0 >();
     EXPECT_TRUE( result );
-    result = Concepts::Has::variableId< decltype( h ), 1 >();
+    result = static_check::has::variableId< decltype( h ), 1 >();
     EXPECT_TRUE( result );
     const auto k = Pow< 2, 1 >() + variable< 1 >( 1 );
-    result = Concepts::Has::variableId< decltype( k ), 0 >();
+    result = static_check::has::variableId< decltype( k ), 0 >();
     EXPECT_FALSE( result );
-    result = Concepts::Has::variableId< decltype( k ), 1 >();
+    result = static_check::has::variableId< decltype( k ), 1 >();
     EXPECT_TRUE( result );
 }
 
@@ -93,14 +94,14 @@ TEST( HasVariableIdTest, Scale )
 {
     using namespace funcy;
     const auto f = finalize( variable< 0 >( 1. ) * 2 );
-    auto result = Concepts::Has::variableId< decltype( f ), 0 >();
+    auto result = static_check::has::variableId< decltype( f ), 0 >();
     EXPECT_TRUE( result );
-    result = Concepts::Has::variableId< decltype( f ), 1 >();
+    result = static_check::has::variableId< decltype( f ), 1 >();
     EXPECT_FALSE( result );
     const auto g = finalize( 2 * variable< 0 >( 1. ) );
-    result = Concepts::Has::variableId< decltype( g ), 0 >();
+    result = static_check::has::variableId< decltype( g ), 0 >();
     EXPECT_TRUE( result );
-    result = Concepts::Has::variableId< decltype( g ), 1 >();
+    result = static_check::has::variableId< decltype( g ), 1 >();
     EXPECT_FALSE( result );
 }
 
@@ -108,14 +109,14 @@ TEST( HasVariableIdTest, Multiply )
 {
     using namespace funcy;
     const auto f = finalize( variable< 0 >( 1. ) * variable< 1 >( 2. ) );
-    auto result = Concepts::Has::variableId< decltype( f ), 0 >();
+    auto result = static_check::has::variableId< decltype( f ), 0 >();
     EXPECT_TRUE( result );
-    result = Concepts::Has::variableId< decltype( f ), 1 >();
+    result = static_check::has::variableId< decltype( f ), 1 >();
     EXPECT_TRUE( result );
     const auto g = finalize( funcy::Sin( 1 ) * variable< 0 >( 1. ) );
-    result = Concepts::Has::variableId< decltype( g ), 0 >();
+    result = static_check::has::variableId< decltype( g ), 0 >();
     EXPECT_TRUE( result );
-    result = Concepts::Has::variableId< decltype( g ), 1 >();
+    result = static_check::has::variableId< decltype( g ), 1 >();
     EXPECT_FALSE( result );
 }
 
@@ -123,9 +124,9 @@ TEST( HasVariableIdTest, Squared )
 {
     using namespace funcy;
     const auto f = finalize( squared( variable< 0 >( 1. ) ) );
-    auto result = Concepts::Has::variableId< decltype( f ), 0 >();
+    auto result = static_check::has::variableId< decltype( f ), 0 >();
     EXPECT_TRUE( result );
-    result = Concepts::Has::variableId< decltype( f ), 1 >();
+    result = static_check::has::variableId< decltype( f ), 1 >();
     EXPECT_FALSE( result );
 }
 
@@ -170,35 +171,35 @@ TEST( MaxVariableIdTest, IF_applied_to_variable_THEN_RETURNS_its_id )
 {
     using namespace funcy;
     auto f = variable< 1 >( 1 );
-    EXPECT_THAT( VariableDetail::MaxVariableId< decltype( f ) >::value, Eq( 1 ) );
+    EXPECT_THAT( detail::MaxVariableId< decltype( f ) >::value, Eq( 1 ) );
 }
 
 TEST( MaxVariableIdTest, IF_applied_to_const_variable_THEN_RETURNS_its_id )
 {
     using namespace funcy;
     const auto f = variable< 1 >( 1 );
-    EXPECT_THAT( VariableDetail::MaxVariableId< decltype( f ) >::value, Eq( 1 ) );
+    EXPECT_THAT( detail::MaxVariableId< decltype( f ) >::value, Eq( 1 ) );
 }
 
 TEST( MinVariableIdTest, IF_applied_to_variable_THEN_RETURNS_its_id )
 {
     using namespace funcy;
     auto f = variable< 1 >( 1 );
-    EXPECT_THAT( VariableDetail::MinVariableId< decltype( f ) >::value, Eq( 1 ) );
+    EXPECT_THAT( detail::MinVariableId< decltype( f ) >::value, Eq( 1 ) );
 }
 
 TEST( MinVariableIdTest, IF_applied_to_const_variable_THEN_RETURNS_its_id )
 {
     using namespace funcy;
     const auto f = variable< 1 >( 1 );
-    EXPECT_THAT( VariableDetail::MinVariableId< decltype( f ) >::value, Eq( 1 ) );
+    EXPECT_THAT( detail::MinVariableId< decltype( f ) >::value, Eq( 1 ) );
 }
 
 TEST( MaxVariableIdTest, IF_noVariablesInSum_THEN_RETURNS_lowest_int )
 {
     using namespace funcy;
     auto f = finalize( Pow< 1, 2 >() + Pow< 2, 1 >() );
-    EXPECT_THAT( VariableDetail::MaxVariableId< decltype( f ) >::value,
+    EXPECT_THAT( detail::MaxVariableId< decltype( f ) >::value,
                  Eq( std::numeric_limits< int >::lowest() ) );
 }
 
@@ -206,7 +207,7 @@ TEST( MinVariableIdTest, IF_noVariablesInSum_THEN_RETURNS_max_int )
 {
     using namespace funcy;
     auto f = finalize( Pow< 1, 2 >() + Pow< 2, 1 >() );
-    EXPECT_THAT( VariableDetail::MinVariableId< decltype( f ) >::value,
+    EXPECT_THAT( detail::MinVariableId< decltype( f ) >::value,
                  Eq( std::numeric_limits< int >::max() ) );
 }
 
@@ -214,35 +215,35 @@ TEST( MaxVariableIdTest, IF_oneVariableInSum_THEN_RETURNS_its_id )
 {
     using namespace funcy;
     auto f = finalize( Pow< 2, 1 >() + variable< 1 >( 1 ) );
-    EXPECT_THAT( VariableDetail::MaxVariableId< decltype( f ) >::value, Eq( 1 ) );
+    EXPECT_THAT( detail::MaxVariableId< decltype( f ) >::value, Eq( 1 ) );
 }
 
 TEST( MinVariableIdTest, IF_oneVariableInSum_THEN_RETURNS_its_id )
 {
     using namespace funcy;
     auto f = Pow< 2, 1 >() + variable< 1 >( 1 );
-    EXPECT_THAT( VariableDetail::MinVariableId< decltype( f ) >::value, Eq( 1 ) );
+    EXPECT_THAT( detail::MinVariableId< decltype( f ) >::value, Eq( 1 ) );
 }
 
 TEST( MaxVariableIdTest, IF_twoVariablesInSum_THEN_RETURNS_the_bigger_id )
 {
     using namespace funcy;
     auto f = variable< -3 >( 1 ) + variable< 2 >( 1 );
-    EXPECT_THAT( VariableDetail::MaxVariableId< decltype( f ) >::value, Eq( 2 ) );
+    EXPECT_THAT( detail::MaxVariableId< decltype( f ) >::value, Eq( 2 ) );
 }
 
 TEST( MinVariableIdTest, IF_twoVariablesInSum_THEN_RETURNS_the_smaller_id )
 {
     using namespace funcy;
     auto f = variable< -3 >( 1 ) + variable< 2 >( 1 );
-    EXPECT_THAT( VariableDetail::MinVariableId< decltype( f ) >::value, Eq( -3 ) );
+    EXPECT_THAT( detail::MinVariableId< decltype( f ) >::value, Eq( -3 ) );
 }
 
 TEST( MaxVariableIdTest, IF_noVariablesInScale_THEN_RETURNS_lowest_int )
 {
     using namespace funcy;
     auto f = finalize( 2 * Pow< 2, 1 >() );
-    EXPECT_THAT( VariableDetail::MaxVariableId< decltype( f ) >::value,
+    EXPECT_THAT( detail::MaxVariableId< decltype( f ) >::value,
                  Eq( std::numeric_limits< int >::lowest() ) );
 }
 
@@ -250,7 +251,7 @@ TEST( MinVariableIdTest, IF_noVariablesInScale_THEN_RETURNS_max_int )
 {
     using namespace funcy;
     auto f = finalize( 2 * Pow< 2, 1 >() );
-    EXPECT_THAT( VariableDetail::MinVariableId< decltype( f ) >::value,
+    EXPECT_THAT( detail::MinVariableId< decltype( f ) >::value,
                  Eq( std::numeric_limits< int >::max() ) );
 }
 
@@ -258,14 +259,14 @@ TEST( MaxVariableIdTest, IF_oneVariableInScale_THEN_RETURNS_its_id )
 {
     using namespace funcy;
     auto f = 2 * variable< 1 >( 1 );
-    EXPECT_THAT( VariableDetail::MaxVariableId< decltype( f ) >::value, Eq( 1 ) );
+    EXPECT_THAT( detail::MaxVariableId< decltype( f ) >::value, Eq( 1 ) );
 }
 
 TEST( MinVariableIdTest, IF_oneVariableInScale_THEN_RETURNS_its_id )
 {
     using namespace funcy;
     auto f = 2 * variable< 1 >( 1 );
-    EXPECT_THAT( VariableDetail::MinVariableId< decltype( f ) >::value, Eq( 1 ) );
+    EXPECT_THAT( detail::MinVariableId< decltype( f ) >::value, Eq( 1 ) );
 }
 
 // TEST(VariableTest,D3)

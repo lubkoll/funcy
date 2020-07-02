@@ -1,13 +1,12 @@
 #pragma once
 
-#include <texy/util/chainer.h>
-#include <funcy/concept_check.h>
 #include <funcy/util/compute_sum.h>
 #include <funcy/util/derivative_wrappers.h>
 #include <funcy/util/evaluate_if_present.h>
 #include <funcy/util/indexed_type.h>
 #include <funcy/util/mathop_traits.h>
 
+#include <texy/util/chainer.h>
 #include <type_traits>
 #include <utility>
 
@@ -17,11 +16,11 @@ namespace texy
     {
         /**
          * \ingroup TexifyMathematicalOperationsGroup
-         * \brief %Sum of functions of type F and G (F and G must satisfy the requirements of
-         * Concepts::FunctionConcept).
+         * @brief %Sum of functions of type F and G (F and G must satisfy the requirements of
+         * static_check::FunctionConcept).
          */
-        template < class F, class G, class CheckF = funcy::Concepts::IsFunction< F >,
-                   class CheckG = funcy::Concepts::IsFunction< G > >
+        template < class F, class G, class CheckF = funcy::static_check::IsFunction< F >,
+                   class CheckG = funcy::static_check::IsFunction< G > >
         struct Sum : Chainer< Sum< F, G, CheckF, CheckG > >
         {
             /**
@@ -75,13 +74,13 @@ namespace texy
             template < int idx, int idy, class ArgX, class ArgY,
                        class IndexedArgX = funcy::IndexedType< std::decay_t< ArgX >, idx >,
                        class IndexedArgY = funcy::IndexedType< std::decay_t< ArgY >, idy >,
-                       class = std::enable_if_t<
-                           funcy::ComputeSum< funcy::D2< F, IndexedArgX, IndexedArgY >,
-                                             funcy::D2< G, IndexedArgX, IndexedArgY > >::present > >
+                       class = std::enable_if_t< funcy::ComputeSum<
+                           funcy::D2< F, IndexedArgX, IndexedArgY >,
+                           funcy::D2< G, IndexedArgX, IndexedArgY > >::present > >
             auto d2( ArgX&& dx, ArgY&& dy ) const
             {
                 return funcy::ComputeSum< funcy::D2< F, IndexedArgX, IndexedArgY >,
-                                         funcy::D2< G, IndexedArgX, IndexedArgY > >(
+                                          funcy::D2< G, IndexedArgX, IndexedArgY > >(
                     f, g, std::forward< ArgX >( dx ), std::forward< ArgY >( dy ) )();
             }
 
@@ -96,7 +95,7 @@ namespace texy
             auto d3( ArgX&& dx, ArgY&& dy, ArgZ&& dz ) const
             {
                 return funcy::ComputeSum< funcy::D3< F, IndexedArgX, IndexedArgY, IndexedArgZ >,
-                                         funcy::D3< G, IndexedArgX, IndexedArgY, IndexedArgZ > >(
+                                          funcy::D3< G, IndexedArgX, IndexedArgY, IndexedArgZ > >(
                     f, g, std::forward< ArgX >( dx ), std::forward< ArgY >( dy ),
                     std::forward< ArgZ >( dz ) )();
             }
@@ -108,5 +107,5 @@ namespace texy
                 funcy::add_via_traits( std::declval< F >()(), std::declval< G >()() ) ) >
                 value;
         };
-    }
-}
+    } // namespace mathop
+} // namespace texy

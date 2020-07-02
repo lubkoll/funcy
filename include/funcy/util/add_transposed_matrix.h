@@ -1,6 +1,7 @@
 #pragma once
 
 #include <funcy/concepts.h>
+#include <funcy/linalg/concepts.h>
 #include <funcy/linalg/dimension.h>
 #include <funcy/linalg/rows_and_cols.h>
 

@@ -8,7 +8,7 @@
 namespace funcy
 {
     /// @cond
-    namespace Detail
+    namespace detail
     {
         template < class X, class Y, bool = X::present, bool = Y::present >
         struct ComputeSumImpl
@@ -71,16 +71,16 @@ namespace funcy
 
             decltype( std::declval< Y >()() ) value;
         };
-    }
+    } // namespace detail
 
     template < class... >
     struct ComputeSum;
 
     template < class X, class Y >
-    struct ComputeSum< X, Y > : public Detail::ComputeSumImpl< X, Y >
+    struct ComputeSum< X, Y > : public detail::ComputeSumImpl< X, Y >
     {
         ComputeSum( const X& x, const Y& y )
-            : Detail::ComputeSumImpl< X, Y, X::present, Y::present >( x, y )
+            : detail::ComputeSumImpl< X, Y, X::present, Y::present >( x, y )
         {
         }
 
@@ -107,4 +107,4 @@ namespace funcy
                                                                       std::forward< G >( g )... );
     }
     /// @endcond
-}
+} // namespace funcy

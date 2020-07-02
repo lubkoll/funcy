@@ -1,12 +1,9 @@
 #pragma once
 
-#include "dimension.h"
-
-#include <funcy/concept_check.h>
+#include <funcy/concepts.h>
+#include <funcy/linalg/concepts.h>
+#include <funcy/linalg/dimension.h>
 #include <funcy/util/at.h>
-#include <funcy/util/static_checks.h>
-
-#include <cassert>
 
 namespace funcy
 {
@@ -16,7 +13,7 @@ namespace funcy
          *  @{ */
 
         /// @cond
-        namespace Detail
+        namespace detail
         {
             constexpr int getFirst( int row )
             {
@@ -42,24 +39,22 @@ namespace funcy
                 return ( ( ( row + col ) % 2 == 0 ) ? 1 : -1 );
             }
 
-            template < int row, int col, class Matrix >
-            auto computeCofactorImpl( Matrix const&, Matrix const& A,
-                                      std::integral_constant< int, 2 > )
+            template < int row, int col, int dim, SquareMatrix Matrix >
+            auto computeCofactorImpl( const Matrix&, Matrix const& A ) requires( dim == 2 )
             {
-                using Id = Detail::CofactorIndices< row, col >;
+                using Id = detail::CofactorIndices< row, col >;
                 return sign( row, col ) * at( A, Id::firstRow, Id::firstCol );
             }
 
-            template < int row, int col, class Matrix >
-            auto computeCofactorImpl( Matrix const& A, Matrix const& B,
-                                      std::integral_constant< int, 3 > )
+            template < int row, int col, int dim, SquareMatrix Matrix >
+            auto computeCofactorImpl( const Matrix& A, const Matrix& B ) requires( dim == 3 )
             {
-                using Id = Detail::CofactorIndices< row, col >;
+                using Id = detail::CofactorIndices< row, col >;
                 return sign( row, col ) *
                        ( at( A, Id::firstRow, Id::firstCol ) * at( B, Id::lastRow, Id::lastCol ) -
                          at( A, Id::firstRow, Id::lastCol ) * at( B, Id::lastRow, Id::firstCol ) );
             }
-        } // namespace Detail
+        } // namespace detail
         /// @endcond
 
         /**
@@ -70,15 +65,14 @@ namespace funcy
          * where \f$ A^\#_ij \f$ is obtained from \f$ A \f$ by deleting the \f$i\f$-th row and \f$ j
          * \f$-th column.
          */
-        template < int row, int col, ConstantSize Matrix, class = Concepts::IsMatrix< Matrix > >
+        template < int row, int col, ConstantSize Matrix >
         auto computeCofactor( Matrix const& A )
         {
             static_assert( dim< Matrix >() == 2 || dim< Matrix >() == 3,
                            "Cofactors are currently only implemented for 2x2 and 3x3 matrices. "
                            "Efficient general implementations are non-trivial and may or may not "
                            "be implemented in the future." );
-            return Detail::computeCofactorImpl< row, col >(
-                A, A, std::integral_constant< int, dim< Matrix >() >() );
+            return detail::computeCofactorImpl< row, col, dim< Matrix >() >( A, A );
         }
 
         /**
@@ -89,15 +83,14 @@ namespace funcy
          * where \f$ A^\#_ij \f$ is obtained from \f$ A \f$ by deleting the \f$i\f$-th row and \f$ j
          * \f$-th column.
          */
-        template < int row, int col, class Matrix, class = Concepts::IsMatrix< Matrix > >
+        template < int row, int col, class Matrix >
         auto computeCofactor( Matrix const& A )
         {
             assert( ( rows( A ) == 2 && cols( A ) == 2 ) || ( rows( A ) == 3 && cols( A ) == 3 ) );
             if ( rows( A ) == 2 )
-                return Detail::computeCofactorImpl< row, col >(
-                    A, A, std::integral_constant< int, 2 >() );
-            /*if( rows(A) == 3 )*/ return Detail::computeCofactorImpl< row, col >(
-                A, A, std::integral_constant< int, 3 >() );
+                return detail::computeCofactorImpl< row, col, 2 >( A, A );
+            /*if( rows(A) == 3 )*/
+            return detail::computeCofactorImpl< row, col, 3 >( A, A );
         }
 
         /**
@@ -111,15 +104,12 @@ namespace funcy
          * polynomials of the entries of \f$ A^\#_{ij} \f$. In this case this function can also used
          * to compute the second directional derivative in directions \f$ A \f$ and \f$ B \f$.
          */
-        template < int row, int col, ConstantSize Matrix, class = Concepts::IsMatrix< Matrix > >
-        auto computeCofactorDirectionalDerivative( Matrix const& A, Matrix const& B )
+        template < int row, int col, ConstantSize Mat >
+        auto computeCofactorDirectionalDerivative( const Mat& A,
+                                                   const Mat& B ) requires( dim< Mat >() == 2 ||
+                                                                            dim< Mat >() == 3 )
         {
-            static_assert( dim< Matrix >() == 2 || dim< Matrix >() == 3,
-                           "Cofactors are currently only implemented for 2x2 and 3x3 matrices. "
-                           "Efficient general implementations are non-trivial and may or may not "
-                           "be implemented in the future." );
-            return Detail::computeCofactorImpl< row, col >(
-                A, B, std::integral_constant< int, dim< Matrix >() >() );
+            return detail::computeCofactorImpl< row, col, dim< Mat >() >( A, B );
         }
 
         /**
@@ -133,15 +123,13 @@ namespace funcy
          * polynomials of the entries of \f$ A^\#_{ij} \f$. In this case this function can also used
          * to compute the second directional derivative in directions \f$ A \f$ and \f$ B \f$.
          */
-        template < int row, int col, class Matrix, class = Concepts::IsMatrix< Matrix > >
-        auto computeCofactorDirectionalDerivative( Matrix const& A, Matrix const& B )
+        template < int row, int col, class Mat >
+        auto computeCofactorDirectionalDerivative( const Mat& A, const Mat& B )
         {
-            assert( ( rows( A ) == 2 && cols( A ) == 2 ) || ( rows( A ) == 3 && cols( A ) == 3 ) );
             if ( rows( A ) == 2 )
-                return Detail::computeCofactorImpl< row, col >(
-                    A, B, std::integral_constant< int, 2 >() );
-            /*if ( rows(A)==3 )*/ return Detail::computeCofactorImpl< row, col >(
-                A, B, std::integral_constant< int, 3 >() );
+                return detail::computeCofactorImpl< row, col, 2 >( A, B );
+            /*if ( rows(A)==3 )*/
+            return detail::computeCofactorImpl< row, col, 3 >( A, B );
         }
 
         /** @} */
