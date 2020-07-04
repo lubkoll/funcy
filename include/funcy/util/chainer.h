@@ -22,9 +22,9 @@ namespace funcy
         }
 
         template < Function G >
-        auto operator()( const G& g )
+        auto operator()( G&& g )
         {
-            return mathop::Chain< F, G >( *static_cast< const F* >( this ), g );
+            return mathop::Chain( *static_cast< const F* >( this ), std::forward< G >( g ) );
         }
     };
     /// @endcond
