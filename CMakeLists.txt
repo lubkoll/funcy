@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.8)
 
-project(funcy VERSION 1.5.3 LANGUAGES CXX)
+project(funcy VERSION 1.6.0 LANGUAGES CXX)
 
 list(APPEND CMAKE_MODULE_PATH
     ${CMAKE_CURRENT_SOURCE_DIR}
