@@ -1,8 +1,7 @@
 #pragma once
 
-#include "macros.h"
-
 #include <funcy/linalg/concepts.h>
+#include <funcy/util/macros.h>
 
 namespace funcy
 {

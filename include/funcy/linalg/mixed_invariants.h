@@ -1,12 +1,11 @@
 #pragma once
 
-#include "principal_invariants.h"
-
 #include <funcy/concepts.h>
 #include <funcy/constant.h>
 #include <funcy/generate.h>
 #include <funcy/identity.h>
 #include <funcy/linalg/concepts.h>
+#include <funcy/linalg/principal_invariants.h>
 
 namespace funcy
 {

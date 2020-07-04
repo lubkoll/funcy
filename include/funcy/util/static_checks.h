@@ -1,9 +1,8 @@
 #pragma once
 
-#include "extract_rows_and_cols.h"
-#include "type_traits.h"
-
 #include <funcy/concepts.h>
+#include <funcy/util/extract_rows_and_cols.h>
+#include <funcy/util/type_traits.h>
 
 #include <string>
 #include <type_traits>

@@ -1,8 +1,7 @@
 #pragma once
 
-#include "static_checks.h"
-
 #include <funcy/concepts.h>
+#include <funcy/util/static_checks.h>
 
 #include <type_traits>
 #include <utility>

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "mathop_traits.h"
-#include "type_traits.h"
+#include <funcy/util/mathop_traits.h>
+#include <funcy/util/type_traits.h>
 
 #include <algorithm>
 #include <utility>

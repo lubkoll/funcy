@@ -1,9 +1,8 @@
 #pragma once
 
-#include "transpose.h"
-
 #include <funcy/concepts.h>
 #include <funcy/linalg/concepts.h>
+#include <funcy/linalg/transpose.h>
 #include <funcy/util/add_transposed_matrix.h>
 #include <funcy/util/chainer.h>
 

@@ -1,13 +1,12 @@
 #pragma once
 
-#include "cofactor.h"
-#include "determinant.h"
-#include "dimension.h"
-#include "trace.h"
-
 #include <funcy/cmath/pow.h>
 #include <funcy/concepts.h>
+#include <funcy/linalg/cofactor.h>
 #include <funcy/linalg/concepts.h>
+#include <funcy/linalg/determinant.h>
+#include <funcy/linalg/dimension.h>
+#include <funcy/linalg/trace.h>
 #include <funcy/util/chainer.h>
 #include <funcy/util/type_traits.h>
 

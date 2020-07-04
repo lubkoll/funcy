@@ -1,9 +1,8 @@
 #pragma once
 
-#include "dimension.h"
-
 #include <funcy/concepts.h>
 #include <funcy/linalg/concepts.h>
+#include <funcy/linalg/dimension.h>
 #include <funcy/linalg/type_traits.h>
 #include <funcy/util/at.h>
 

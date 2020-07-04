@@ -1,6 +1,6 @@
 #pragma once
 
-#include "type_traits.h"
+#include <funcy/util/type_traits.h>
 
 #include <utility>
 

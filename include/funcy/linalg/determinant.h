@@ -1,10 +1,9 @@
 #pragma once
 
-#include "dimension.h"
-#include "rows_and_cols.h"
-
 #include <funcy/concepts.h>
 #include <funcy/linalg/concepts.h>
+#include <funcy/linalg/dimension.h>
+#include <funcy/linalg/rows_and_cols.h>
 #include <funcy/linalg/type_traits.h>
 #include <funcy/util/at.h>
 #include <funcy/util/chainer.h>

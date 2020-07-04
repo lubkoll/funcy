@@ -1,10 +1,9 @@
 #pragma once
 
-#include "static_checks.h"
-#include "type_traits.h"
-
 #include <funcy/concepts.h>
 #include <funcy/linalg/concepts.h>
+#include <funcy/util/static_checks.h>
+#include <funcy/util/type_traits.h>
 
 #include <type_traits>
 
