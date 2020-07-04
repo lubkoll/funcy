@@ -115,7 +115,7 @@ namespace texy
         {
             /// Check if Type contains has variable.
             template < class F >
-            using Variable = funcy::Meta::AnyOf< F, IsVariable >;
+            using Variable = funcy::meta::AnyOf< F, IsVariable >;
 
             template < class F, int id >
             struct VariableId
@@ -125,7 +125,7 @@ namespace texy
                 {
                     static constexpr bool value = HasVariableWithId< G, id >::value;
                 };
-                static constexpr bool value = funcy::Meta::AnyOf< F, HasVariable >::value;
+                static constexpr bool value = funcy::meta::AnyOf< F, HasVariable >::value;
             };
         } // namespace has
 
@@ -181,10 +181,10 @@ namespace texy
         } // namespace detail
 
         template < class F >
-        using MaxVariableId = funcy::Meta::Traverse< F, detail::MaxVariableId, Max >;
+        using MaxVariableId = funcy::meta::Traverse< F, detail::MaxVariableId, Max >;
 
         template < class F >
-        using MinVariableId = funcy::Meta::Traverse< F, detail::MinVariableId, Min >;
+        using MinVariableId = funcy::meta::Traverse< F, detail::MinVariableId, Min >;
     } // namespace detail
     /// @endcond
 

@@ -2,20 +2,22 @@
 
 #include <funcy/concepts.h>
 
+#include <type_traits>
+
 namespace funcy
 {
-    namespace Meta
+    namespace meta
     {
         template < class F, template < class > class Operation,
-                   template < class, class > class Combine >
+                   template < class... > class Combine >
         struct Traverse : Operation< F >
         {
         };
 
         // for Finalize
-        template < template < class, bool > class G, class F, bool hasVariable,
+        template < template < class, bool > class G, class F, bool has_variable,
                    template < class > class Operation, template < class, class > class Combine >
-        struct Traverse< G< F, hasVariable >, Operation, Combine >
+        struct Traverse< G< F, has_variable >, Operation, Combine >
             : Traverse< F, Operation, Combine >
         {
         };
@@ -34,7 +36,7 @@ namespace funcy
         {
         };
 
-        // For Sum, Product, Chain
+        // For Sum, Product, Chain, Min, Max
         template < template < Function, Function > class H, Function F, Function G,
                    template < class > class Operation, template < class, class > class Combine >
         struct Traverse< H< F, G >, Operation, Combine >
@@ -42,16 +44,7 @@ namespace funcy
         {
         };
 
-        template < class F, class G >
-        using And = std::integral_constant< bool, F::value && G::value >;
-
-        template < class F, class G >
-        using Or = std::integral_constant< bool, F::value || G::value >;
-
         template < class F, template < class > class Operation >
-        using AllOf = Traverse< F, Operation, And >;
-
-        template < class F, template < class > class Operation >
-        using AnyOf = Traverse< F, Operation, Or >;
-    } // namespace Meta
+        using AnyOf = Traverse< F, Operation, std::disjunction >;
+    } // namespace meta
 } // namespace funcy

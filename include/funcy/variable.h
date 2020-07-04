@@ -190,7 +190,7 @@ namespace funcy
         {
             /// Check if Type contains has variable.
             template < Function F >
-            using Variable = Meta::AnyOf< F, IsVariable >;
+            using Variable = meta::AnyOf< F, IsVariable >;
 
             template < class F, int id >
             struct VariableId
@@ -200,7 +200,7 @@ namespace funcy
                 {
                     static constexpr bool value = HasVariableWithId< G, id >::value;
                 };
-                static constexpr bool value = Meta::AnyOf< F, HasVariable >::value;
+                static constexpr bool value = meta::AnyOf< F, HasVariable >::value;
             };
         } // namespace has
 
@@ -258,10 +258,10 @@ namespace funcy
         } // namespace detail
 
         template < class F >
-        using MaxVariableId = Meta::Traverse< F, detail::MaxVariableId, Max >;
+        using MaxVariableId = meta::Traverse< F, detail::MaxVariableId, Max >;
 
         template < class F >
-        using MinVariableId = Meta::Traverse< F, detail::MinVariableId, Min >;
+        using MinVariableId = meta::Traverse< F, detail::MinVariableId, Min >;
 
         template < class F, int id >
         struct VariableType
