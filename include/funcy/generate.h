@@ -3,7 +3,6 @@
 #include <funcy/concepts.h>
 #include <funcy/constant.h>
 #include <funcy/operations.h>
-#include <funcy/util/add_missing_operators.h>
 #include <funcy/variable.h>
 
 #include <type_traits>
