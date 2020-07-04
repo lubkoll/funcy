@@ -4,6 +4,7 @@ enable_testing()
 find_package(GTest REQUIRED)
 find_package(Threads REQUIRED)
 find_package(Eigen3)
+find_package(dune-common)
 
 if(EIGEN3_FOUND)
     # On travis the examples do not compile due to a strange ambiguity with functionality of Eigen:
@@ -12,6 +13,11 @@ if(EIGEN3_FOUND)
         linalg/determinant.cpp
         examples/exampleTest_Eigen.cpp
         examples/exampleTest_DynamicEigen.cpp
+    )
+endif()
+if(dune-common_FOUND)
+    set(DUNE_TEST_SRCS
+        examples/exampleTest_DUNE.cpp
     )
 endif()
 
@@ -56,6 +62,7 @@ add_executable(tests
     mathop/sum.cpp
     ${LINALG_TEST_SRCS}
     ${TEXY_TEST_SRCS}
+    ${DUNE_TEST_SRCS}
 )
 target_link_libraries(tests Funcy::Funcy GTest::GTest GTest::Main Threads::Threads)
 if(Funcy_Texy)
@@ -63,6 +70,10 @@ if(Funcy_Texy)
 endif()
 if(EIGEN3_FOUND)
     target_link_libraries(tests Eigen3::Eigen)
+endif()
+if(dune-common_FOUND)
+    target_include_directories(tests PRIVATE ${dune-common_INCLUDE_DIRS})
+    target_link_libraries(tests ${dune-common_LIBS})
 endif()
 target_compile_definitions(tests PRIVATE CATCH_CONFIG_ENABLE_ALL_STRINGMAKERS)
 
