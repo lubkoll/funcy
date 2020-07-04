@@ -20,7 +20,7 @@ namespace funcy
      * c_1\iota_2(F^T F) \f$, where \f$\iota_1\f$ is the first and \f$\iota_2\f$ the second
      * principal matrix invariant.
      */
-    template < Matrix Mat, int n = linalg::dim< Mat >() >
+    template < linalg::Matrix Mat, int n = linalg::dim< Mat >() >
     auto incompressible_mooney_rivlin( double c0, double c1, const Mat& F )
     {
         using namespace linalg;
@@ -35,7 +35,7 @@ namespace funcy
      * c_1\iota_2(F^T F) + d_0\Gamma_\mathrm{In}(\det(F))+d_1\Gamma_\mathrm{Co}(\det(F))  \f$, where
      * \f$\iota_1\f$ is the first and \f$\iota_2\f$ the second principal matrix invariant.
      */
-    template < class InflationPenalty, class CompressionPenalty, Matrix Mat,
+    template < class InflationPenalty, class CompressionPenalty, linalg::Matrix Mat,
                int n = linalg::dim< Mat >() >
     auto compressible_mooney_rivlin( double c0, double c1, double d0, double d1, const Mat& F )
     {
@@ -60,7 +60,7 @@ namespace funcy
      * \param lambda first Lame constant
      * \param mu second Lame constant
      */
-    template < Matrix Mat, class InflationPenalty, class CompressionPenalty >
+    template < linalg::Matrix Mat, class InflationPenalty, class CompressionPenalty >
     auto create_mooney_rivlin_from_lame_constants( double lambda, double mu )
     {
         auto I = 1.;
@@ -104,7 +104,7 @@ namespace funcy
      * \param E Young's modulus
      * \param nu Poisson ratio
      */
-    template < Matrix Mat, class InflationPenalty, class CompressionPenalty >
+    template < linalg::Matrix Mat, class InflationPenalty, class CompressionPenalty >
     auto create_mooney_rivlin_from_material_constants( double E, double nu )
     {
         double lambda = E * nu / ( ( 1 + nu ) * ( 1 - 2 * nu ) );

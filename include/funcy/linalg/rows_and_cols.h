@@ -4,6 +4,8 @@
 #include <funcy/linalg/concepts.h>
 #include <funcy/linalg/type_traits.h>
 
+#include <type_traits>
+
 namespace funcy
 {
     namespace linalg
@@ -28,7 +30,7 @@ namespace funcy
         template < ConstantSize Mat >
         constexpr auto rows()
         {
-            return NumberOfRows< Mat >::value;
+            return detail::NumberOfRows< Mat >::value;
         }
 
         /// Number of columns of a dynamic size matrix.
@@ -51,7 +53,7 @@ namespace funcy
         template < ConstantSize Mat >
         constexpr auto cols()
         {
-            return NumberOfColumns< Mat >::value;
+            return detail::NumberOfColumns< Mat >::value;
         }
     } // namespace linalg
 } // namespace funcy

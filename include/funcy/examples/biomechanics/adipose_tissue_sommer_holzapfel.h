@@ -14,7 +14,7 @@ namespace funcy
     /// @cond
     namespace detail
     {
-        template < Matrix Mat, int n = linalg::dim< Mat >() >
+        template < linalg::Matrix Mat, int n = linalg::dim< Mat >() >
         auto generate_incompressible_adipose_tissue_sommer_holzapfel( double cCells, double k1,
                                                                       double k2, double kappa,
                                                                       const Mat& A, const Mat& F )
@@ -51,7 +51,7 @@ namespace funcy
      * @tparam offset number of rows/columns of F, this is only required to adjust the offset of the
      * energy functional such that \f$W(F)=0\f$ for \f$F=I\f$.
      */
-    template < Matrix Mat, int offset = linalg::dim< Mat >() >
+    template < linalg::Matrix Mat, int offset = linalg::dim< Mat >() >
     auto incompressible_adipose_tissue_sommer_holzapfel( double cCells, double k1, double k2,
                                                          double kappa, const Mat& A, const Mat& F )
     {
@@ -76,7 +76,7 @@ namespace funcy
      * \f$M=v\otimesv\f$ for a fiber direction \f$v\f$
      * @param F initial deformation gradient
      */
-    template < Matrix Mat, int offset = linalg::dim< Mat >() >
+    template < linalg::Matrix Mat, int offset = linalg::dim< Mat >() >
     auto incompressible_adipose_tissue_sommer_holzapfel( const Mat& A, const Mat& F )
     {
         return incompressible_adipose_tissue_sommer_holzapfel< Mat, offset >( 0.15, 0.8, 47.3, 0.09,
@@ -103,7 +103,8 @@ namespace funcy
      * @param d1 scaling of the penalty function for compression
      * @param F initial deformation gradient
      */
-    template < class Inflation, class Compression, Matrix Mat, int offset = linalg::dim< Mat >() >
+    template < class Inflation, class Compression, linalg::Matrix Mat,
+               int offset = linalg::dim< Mat >() >
     auto compressible_adipose_tissue_sommer_holzapfel( double cCells, double k1, double k2,
                                                        double kappa, double d0, double d1,
                                                        const Mat& M, const Mat& F )
@@ -132,7 +133,8 @@ namespace funcy
      * \f$M=v\otimesv\f$ for a fiber direction \f$v\f$
      * @param F initial deformation gradient
      */
-    template < class Inflation, class Compression, Matrix Mat, int offset = linalg::dim< Mat >() >
+    template < class Inflation, class Compression, linalg::Matrix Mat,
+               int offset = linalg::dim< Mat >() >
     auto compressible_adipose_tissue_sommer_holzapfel( double d0, double d1, const Mat& M,
                                                        const Mat& F )
     {

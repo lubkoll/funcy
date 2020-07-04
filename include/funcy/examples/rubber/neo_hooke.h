@@ -16,7 +16,7 @@ namespace funcy
      * @brief Generate an "incompressible" neo-Hookean material law \f$ W(F)=c\iota_1(F^T F) \f$,
      * where \f$\iota_1\f$ is the first principal matrix invariant .
      */
-    template < Matrix M, int n = linalg::dim< M >() >
+    template < linalg::Matrix M, int n = linalg::dim< M >() >
     auto incompressible_neo_hooke( double c, const M& F )
     {
         using namespace linalg;
@@ -30,7 +30,7 @@ namespace funcy
      * @brief Generate an "incompressible" neo-Hookean material law \f$ W(F)=c\bar\iota_1(F^T F)
      * \f$, where \f$\bar\iota_1\f$ is the modified first principal matrix invariant.
      */
-    template < Matrix M, int n = linalg::dim< M >() >
+    template < linalg::Matrix M, int n = linalg::dim< M >() >
     auto modified_incompressible_neo_hooke( double c, const M& F )
     {
         using namespace linalg;
@@ -44,7 +44,7 @@ namespace funcy
      * F)+d_0\Gamma_\mathrm{In}(\det(F))+d_1\Gamma_\mathrm{Co}(\det(F)) \f$, where \f$\iota_1\f$ is
      * the first principal matrix invariant.
      */
-    template < class InflationPenalty, class CompressionPenalty, Matrix M,
+    template < class InflationPenalty, class CompressionPenalty, linalg::Matrix M,
                int n = linalg::dim< M >() >
     auto compressible_neo_hooke( double c, double d0, double d1, const M& F )
     {
@@ -59,7 +59,7 @@ namespace funcy
      * F)+d_0\Gamma_\mathrm{In}(\det(F))+d_1\Gamma_\mathrm{Co}(\det(F)) \f$, where \f$\bar\iota_1\f$
      * is the modified first principal matrix invariant.
      */
-    template < class InflationPenalty, class CompressionPenalty, Matrix M,
+    template < class InflationPenalty, class CompressionPenalty, linalg::Matrix M,
                int n = linalg::dim< M >() >
     auto modified_compressible_neo_hooke( double c, double d0, double d1, const M& F )
     {

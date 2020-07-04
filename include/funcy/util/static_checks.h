@@ -1,7 +1,6 @@
 #pragma once
 
 #include <funcy/concepts.h>
-#include <funcy/util/extract_rows_and_cols.h>
 #include <funcy/util/type_traits.h>
 
 #include <string>
@@ -18,16 +17,6 @@ namespace funcy
         /// @cond
         namespace test
         {
-            namespace mem_op
-            {
-                template < class Arg >
-                using InPlaceSummation = decltype( std::declval< Arg >() += std::declval< Arg >() );
-
-                template < class Arg1, class Arg2 >
-                using InPlaceMultiplication =
-                    decltype( std::declval< Arg1 >() *= std::declval< Arg2 >() );
-            } // namespace mem_op
-
             namespace mem_fn
             {
                 template < class F, class IndexedArg, class Arg = typename IndexedArg::type,
@@ -67,79 +56,12 @@ namespace funcy
                 using d3_without_index = decltype( std::declval< F >().d3(
                     std::declval< ArgX >(), std::declval< ArgY >(), std::declval< ArgZ >() ) );
 
-                template < class Arg1, class Arg2 >
-                using rightmultiplyany =
-                    decltype( std::declval< Arg1 >().rightmultiplyany( std::declval< Arg2 >() ) );
-
             } // namespace mem_fn
-
-            namespace fun
-            {
-                template < class Arg1, class Arg2 >
-                using Multiplication = decltype( std::declval< Arg1 >() * std::declval< Arg2 >() );
-            } // namespace fun
         }     // namespace test
         /// @endcond
 
         namespace has
         {
-            namespace mem_op
-            {
-                template < class Arg, class = void >
-                struct InPlaceSummation : std::false_type
-                {
-                };
-
-                template < class Arg >
-                struct InPlaceSummation< Arg, std::void_t< test::mem_op::InPlaceSummation< Arg > > >
-                    : std::true_type
-                {
-                };
-
-                template < class Arg1, class Arg2, class = void >
-                struct InPlaceMultiplication : std::false_type
-                {
-                };
-
-                template < class Arg1, class Arg2 >
-                struct InPlaceMultiplication<
-                    Arg1, Arg2, std::void_t< test::mem_op::InPlaceMultiplication< Arg1, Arg2 > > >
-                    : std::true_type
-                {
-                };
-                /// @endcond
-
-                /// Check if objects of type Arg1 support in-place multiplication with objects of
-                /// type Arg2.
-                template < class Arg1, class Arg2 >
-                constexpr bool in_place_product() requires( !Function< Arg1 > &&
-                                                            !Function< Arg2 > &&
-                                                            !Arithmetic< Arg1 > )
-                {
-                    return InPlaceMultiplication< Arg1, Arg2 >::value;
-                }
-
-                template < class Arg1, class Arg2 >
-                constexpr bool in_place_product()
-                {
-                    return false;
-                }
-
-                /// Check if objects of type Arg support in-place summation.
-                template < class Arg >
-                constexpr bool in_place_sum() requires( !Function< Arg > && !Arithmetic< Arg > )
-                {
-                    return InPlaceSummation< Arg >::value;
-                }
-
-                /// Check if objects of type Arg support in-place summation.
-                template < class Arg >
-                constexpr bool in_place_sum()
-                {
-                    return false;
-                }
-            } // namespace mem_op
-
             namespace mem_fn
             {
                 /// @cond
@@ -241,105 +163,8 @@ namespace funcy
                     : std::true_type
                 {
                 };
-
-                template < class Arg1, class Arg2, class = void >
-                struct Rightmultiplany : std::false_type
-                {
-                };
-
-                template < class Arg1, class Arg2 >
-                struct Rightmultiplany<
-                    Arg1, Arg2, std::void_t< test::mem_fn::rightmultiplyany< Arg1, Arg2 > > >
-                    : std::true_type
-                {
-                };
                 /// @endcond
-
-                /// Check if objects of type Arg1 support multiplication with objects of type Arg2
-                /// via call to rightmultiplyany(Arg2).
-                template < class Arg1, class Arg2 >
-                constexpr bool
-                rightmultiplyany() requires( !Function< Arg1 > && !Function< Arg2 > &&
-                                             !Arithmetic< Arg1 > && !Arithmetic< Arg2 > )
-                {
-                    return Rightmultiplany< Arg1, Arg2 >::value;
-                }
-
-                /// Check if objects of type Arg1 support multiplication with objects of type Arg2
-                /// via call to rightmultiplyany(Arg2).
-                template < class Arg1, class Arg2 >
-                constexpr bool rightmultiplyany()
-                {
-                    return false;
-                }
             } // namespace mem_fn
-
-            namespace fun
-            {
-                /// @cond
-                namespace detail
-                {
-                    template < class T, class S >
-                    constexpr bool product() requires requires( T t, S s )
-                    {
-                        { t * s };
-                    }
-                    {
-                        return true;
-                    }
-
-                    template < class T >
-                    constexpr bool product()
-                    {
-                        return false;
-                    }
-
-                    template < class T >
-                    constexpr bool sum() requires requires( T t )
-                    {
-                        { t + t };
-                    }
-                    {
-                        return true;
-                    }
-
-                    template < class T >
-                    constexpr bool sum()
-                    {
-                        return false;
-                    }
-                } // namespace detail
-                /// @endcond
-
-                /// Check if objects of typed Arg1 and Arg2 support multiplication (free operator*).
-                template < class T, class S >
-                constexpr bool multiplication() requires( !Function< T > && !Function< S > &&
-                                                          !Arithmetic< T > && !Arithmetic< S > )
-                {
-                    return detail::product< T, S >();
-                }
-
-                /// Check if objects of typed Arg1 and Arg2 support multiplication (free operator*).
-                template < class Arg1, class Arg2 >
-                constexpr bool multiplication()
-                {
-                    return false;
-                }
-
-                /// Check if objects of type Arg support summation.
-                template < class T >
-                constexpr bool summation() requires( !Function< T > && !Arithmetic< T > )
-                {
-                    return detail::sum< T >();
-                }
-
-                /// Check if objects of type Arg support summation.
-                template < class Arg >
-                constexpr bool summation()
-                {
-                    return false;
-                }
-            } // namespace fun
 
             namespace nested_type
             {

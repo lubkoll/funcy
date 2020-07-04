@@ -21,7 +21,7 @@ namespace funcy
             template < class... Args >
             FUNCY_ALWAYS_INLINE ReturnT operator()( const Args&... ) const
             {
-                return zero< ReturnT >();
+                return linalg::zero< ReturnT >();
             }
         };
 

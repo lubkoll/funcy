@@ -14,7 +14,7 @@ namespace funcy
     /// @cond
     namespace detail
     {
-        template < Matrix Mat, int n = linalg::dim< Mat >() >
+        template < linalg::Matrix Mat, int n = linalg::dim< Mat >() >
         auto generate_incompressible_muscle_tissue_martins( double c, double b, double d, double e,
                                                             const Mat& A, const Mat& F )
         {
@@ -48,7 +48,7 @@ namespace funcy
      * @tparam offset number of rows/columns of F, this is only required to adjust the offset of the
      * energy functional such that \f$W(F)=0\f$ for \f$F=I\f$.
      */
-    template < Matrix Mat, int offset = linalg::dim< Mat >() >
+    template < linalg::Matrix Mat, int offset = linalg::dim< Mat >() >
     auto incompressible_muscle_tissue_martins( double c, double b, double d, double e, const Mat& A,
                                                const Mat& F )
     {
@@ -73,7 +73,7 @@ namespace funcy
      * \f$F=I\f$, where \f$I\f$ is the unit matrix.
      * @param F deformation gradient
      */
-    template < Matrix Mat, int offset = linalg::dim< Mat >() >
+    template < linalg::Matrix Mat, int offset = linalg::dim< Mat >() >
     auto incompressible_muscle_tissue_martins( const Mat& A, const Mat& F )
     {
         return incompressible_muscle_tissue_martins< Mat, offset >( 0.387, 23.46, 0.584, 12.43, A,
@@ -100,7 +100,8 @@ namespace funcy
      * \f$F=I\f$, where \f$I\f$ is the unit matrix.
      * @param F deformation gradient
      */
-    template < class Inflation, class Compression, Matrix Mat, int offset = linalg::dim< Mat >() >
+    template < class Inflation, class Compression, linalg::Matrix Mat,
+               int offset = linalg::dim< Mat >() >
     auto compressible_muscle_tissue_martins( double c, double b, double A, double a, double d0,
                                              double d1, const Mat& M, const Mat& F )
     {
@@ -129,7 +130,8 @@ namespace funcy
      * \f$F=I\f$, where \f$I\f$ is the unit matrix.
      * @param F deformation gradient
      */
-    template < class Inflation, class Compression, Matrix Mat, int offset = linalg::dim< Mat >() >
+    template < class Inflation, class Compression, linalg::Matrix Mat,
+               int offset = linalg::dim< Mat >() >
     auto compressible_muscle_tissue_martins( double d0, double d1, const Mat& M, const Mat& F )
     {
         return compressible_muscle_tissue_martins< Inflation, Compression, Mat, offset >(

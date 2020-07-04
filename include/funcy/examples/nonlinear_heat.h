@@ -14,7 +14,7 @@ namespace funcy
       \param u heat
       \param du heat gradient
      */
-    template < class Scalar, Vector Vec, idx = 0 >
+    template < class Scalar, linalg::Vector Vec, idx = 0 >
     auto heat_model( double c, double d, Scalar u, const Vec& du )
     {
         auto f = ( c + d * squared( variable< idx >( u ) ) ) * variable< idx >( du );

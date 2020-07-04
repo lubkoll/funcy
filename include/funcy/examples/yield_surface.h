@@ -9,7 +9,7 @@ namespace funcy
 {
     /// Yield surface \f$ \frac{\beta}{3}\iota_1(\sigma) + J_2(\sigma)-offset \f$, where
     /// \f$\iota_1\f$ is the first principal and \f$J_2\f$ is the second deviatoric invariant.
-    template < Matrix M >
+    template < linalg::Matrix M >
     auto yield_surface( double beta, double offset, M sigma = linalg::unit_matrix< M >() )
     {
         auto i1 = linalg::FirstPrincipalInvariant< M >( sigma );

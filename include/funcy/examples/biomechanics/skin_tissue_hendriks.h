@@ -14,7 +14,7 @@ namespace funcy
     /** @cond */
     namespace detail
     {
-        template < Matrix Mat, int n = linalg::dim< Mat >() >
+        template < linalg::Matrix Mat, int n = linalg::dim< Mat >() >
         auto generate_incompressible_skin_hendriks( double c0, double c1, const Mat& F )
         {
             using namespace linalg;
@@ -39,7 +39,7 @@ namespace funcy
      * @param c1 scaling of the product of shifted first and second principal invariant
      * @param F initial deformation gradient
      */
-    template < Matrix Mat, int n = linalg::dim< Mat >() >
+    template < linalg::Matrix Mat, int n = linalg::dim< Mat >() >
     auto incompressible_skin_hendriks( double c0, double c1, const Mat& F )
     {
         return finalize( detail::generate_incompressible_skin_hendriks< Mat, n >( c0, c1, F ) );
@@ -58,7 +58,7 @@ namespace funcy
      *
      * @param F initial deformation gradient
      */
-    template < Matrix Mat, int n = linalg::dim< Mat >() >
+    template < linalg::Matrix Mat, int n = linalg::dim< Mat >() >
     auto incompressible_skin_hendriks( const Mat& F )
     {
         return incompressible_skin_hendriks< Mat, n >( 9.4, 82., F );
@@ -79,7 +79,7 @@ namespace funcy
      * @param d1 scaling of the penalty function for compression
      * @param F initial deformation gradient
      */
-    template < class InflationPenalty, class CompressionPenalty, Matrix Mat,
+    template < class InflationPenalty, class CompressionPenalty, linalg::Matrix Mat,
                int n = linalg::dim< Mat >() >
     auto compressible_skin_hendriks( double c0, double c1, double d0, double d1, const Mat& F )
     {
@@ -103,7 +103,7 @@ namespace funcy
      * @param d1 scaling of the penalty function for compression
      * @param F initial deformation gradient
      */
-    template < class InflationPenalty, class CompressionPenalty, Matrix M,
+    template < class InflationPenalty, class CompressionPenalty, linalg::Matrix M,
                int n = linalg::dim< M >() >
     auto compressible_skin_hendriks( double d0, double d1, const M& F )
     {
