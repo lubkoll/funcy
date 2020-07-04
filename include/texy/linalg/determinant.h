@@ -4,7 +4,6 @@
 #include "trace.h"
 #include "transpose.h"
 
-#include <funcy/util/static_checks.h>
 #include <funcy/util/type_traits.h>
 
 #include <texy/concepts.h>

@@ -4,7 +4,6 @@
 #include <funcy/linalg/concepts.h>
 #include <funcy/linalg/deviator.h>
 #include <funcy/linalg/frobenius_norm.h>
-#include <funcy/util/static_checks.h>
 
 namespace funcy
 {

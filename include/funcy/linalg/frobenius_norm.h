@@ -6,7 +6,6 @@
 #include <funcy/linalg/rows_and_cols.h>
 #include <funcy/util/at.h>
 #include <funcy/util/chainer.h>
-#include <funcy/util/static_checks.h>
 
 #include <type_traits>
 

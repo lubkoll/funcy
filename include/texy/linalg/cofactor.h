@@ -1,7 +1,5 @@
 #pragma once
 
-#include <funcy/util/static_checks.h>
-
 #include <texy/concepts.h>
 #include <texy/util/chainer.h>
 #include <texy/util/string.h>

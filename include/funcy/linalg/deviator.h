@@ -7,7 +7,6 @@
 #include <funcy/linalg/concepts.h>
 #include <funcy/linalg/trace.h>
 #include <funcy/linalg/unit_matrix.h>
-#include <funcy/util/static_checks.h>
 
 #include <type_traits>
 

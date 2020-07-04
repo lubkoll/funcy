@@ -8,7 +8,6 @@
 #include <funcy/util/at.h>
 #include <funcy/util/chainer.h>
 #include <funcy/util/exceptions.h>
-#include <funcy/util/static_checks.h>
 #include <funcy/util/type_traits.h>
 
 #include <type_traits>

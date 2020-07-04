@@ -2,7 +2,6 @@
 
 #include <funcy/mathop/chain.h>
 #include <funcy/util/chainer.h>
-#include <funcy/util/static_checks.h>
 
 #include <texy/cmath/pow.h>
 #include <texy/concepts.h>

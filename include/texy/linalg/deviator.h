@@ -2,11 +2,10 @@
 
 #include "trace.h"
 
-#include <funcy/util/static_checks.h>
+#include <funcy/generate.h>
 
 #include <texy/concepts.h>
 #include <texy/constant.h>
-#include <texy/generate.h>
 #include <texy/identity.h>
 #include <type_traits>
 

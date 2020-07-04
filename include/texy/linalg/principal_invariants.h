@@ -3,12 +3,12 @@
 #include "determinant.h"
 #include "trace.h"
 
+#include <funcy/generate.h>
 #include <funcy/util/chainer.h>
 #include <funcy/util/type_traits.h>
 
 #include <texy/cmath/pow.h>
 #include <texy/concepts.h>
-#include <texy/generate.h>
 #include <type_traits>
 
 namespace texy

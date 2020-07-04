@@ -1,7 +1,6 @@
 #pragma once
 
 #include <funcy/cmath/arccos.h>
-#include <funcy/util/static_checks.h>
 
 #include <string>
 #include <texy/concepts.h>
