@@ -3,8 +3,8 @@
 #include <funcy/concepts.h>
 #include <funcy/linalg/concepts.h>
 #include <funcy/linalg/rows_and_cols.h>
+#include <funcy/linalg/type_traits.h>
 #include <funcy/util/at.h>
-#include <funcy/util/zero.h>
 
 namespace funcy
 {
@@ -15,7 +15,7 @@ namespace funcy
 
         /// Compute tensor product \f$ M = v \otimes w \f$.
         template < ConstantSize Matrix, class Vector1, class Vector2 >
-        Matrix tensorProduct( const Vector1& v, const Vector2& w )
+        Matrix tensor_product( const Vector1& v, const Vector2& w )
         {
             auto result = zero< Matrix >();
 
@@ -28,9 +28,9 @@ namespace funcy
 
         /// Compute tensor product \f$ M = v \otimes v \f$.
         template < class Matrix, class Vector >
-        Matrix tensorProduct( const Vector& v )
+        Matrix tensor_product( const Vector& v )
         {
-            return tensorProduct< Matrix >( v, v );
+            return tensor_product< Matrix >( v, v );
         }
         /** @} */
     } // namespace linalg

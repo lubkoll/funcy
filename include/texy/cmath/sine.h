@@ -2,6 +2,7 @@
 
 #include <funcy/util/static_checks.h>
 
+#include <texy/concepts.h>
 #include <texy/util/chainer.h>
 #include <texy/util/string.h>
 
@@ -65,9 +66,8 @@ namespace texy
       @param f function mapping into a scalar space
       @return object of type mathop::Chain<Sin,Function>
      */
-    template < class Function,
-               class = std::enable_if_t< funcy::static_check::isFunction< Function >() > >
-    auto sin( const Function& f )
+    template < Function F >
+    auto sin( const F& f )
     {
         return Sin()( f );
     }

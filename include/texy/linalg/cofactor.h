@@ -2,6 +2,7 @@
 
 #include <funcy/util/static_checks.h>
 
+#include <texy/concepts.h>
 #include <texy/util/chainer.h>
 #include <texy/util/string.h>
 
@@ -67,7 +68,7 @@ namespace texy
         {
             return Cofactor( A );
         }
-        template < class F, std::enable_if_t< funcy::static_check::isFunction< F >() >* = nullptr >
+        template < Function F >
         auto cof( const F& f )
         {
             return Cofactor( f.d0() )( f );

@@ -1,10 +1,10 @@
 #pragma once
 
-#include "cmath/arccos.h"
-#include "cmath/arcsine.h"
-#include "cmath/cosine.h"
-#include "cmath/exp.h"
-#include "cmath/log.h"
-#include "cmath/pow.h"
-#include "cmath/sine.h"
-#include "cmath/tan.h"
+#include <texy/cmath/arccos.h>
+#include <texy/cmath/arcsine.h>
+#include <texy/cmath/cosine.h>
+#include <texy/cmath/exp.h>
+#include <texy/cmath/log.h>
+#include <texy/cmath/pow.h>
+#include <texy/cmath/sine.h>
+#include <texy/cmath/tan.h>

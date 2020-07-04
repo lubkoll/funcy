@@ -2,6 +2,7 @@
 
 #include <funcy/util/type_traits.h>
 
+#include <texy/concepts.h>
 #include <texy/util/chainer.h>
 #include <texy/util/string.h>
 #include <type_traits>
@@ -50,7 +51,7 @@ namespace texy
             return Trace( A );
         }
 
-        template < class F, std::enable_if_t< funcy::static_check::isFunction< F >() >* = nullptr >
+        template < Function F >
         auto trace( const F& f )
         {
             return Trace( f() )( f );

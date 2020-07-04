@@ -1,5 +1,6 @@
 #pragma once
 
+#include <funcy/examples/volumetric_penalty_functions.h>
 #include <funcy/funcy.h>
 
 /**
@@ -11,19 +12,19 @@
 namespace funcy
 {
     /** @cond */
-    namespace SkinDetail
+    namespace detail
     {
-        template < Matrix M, int n = linalg::dim< M >() >
-        auto incompressibleSkin_HendriksImpl( double c0, double c1, const M& F )
+        template < Matrix Mat, int n = linalg::dim< Mat >() >
+        auto generate_incompressible_skin_hendriks( double c0, double c1, const Mat& F )
         {
             using namespace linalg;
-            auto S = strainTensor( F );
+            auto S = strain_tensor( F );
             auto si1 = i1( S() ) - n;
             auto si2 = i2( S() ) - n;
             auto f = c0 * si1 + c1 * si1 * si2;
             return f( S );
         }
-    } // namespace SkinDetail
+    } // namespace detail
     /** @endcond */
 
     /**
@@ -38,10 +39,10 @@ namespace funcy
      * @param c1 scaling of the product of shifted first and second principal invariant
      * @param F initial deformation gradient
      */
-    template < Matrix M, int n = linalg::dim< M >() >
-    auto incompressibleSkin_Hendriks( double c0, double c1, const M& F )
+    template < Matrix Mat, int n = linalg::dim< Mat >() >
+    auto incompressible_skin_hendriks( double c0, double c1, const Mat& F )
     {
-        return finalize( Skindetail::incompressibleSkin_HendriksImpl< M, n >( c0, c1, F ) );
+        return finalize( detail::generate_incompressible_skin_hendriks< Mat, n >( c0, c1, F ) );
     }
 
     /**
@@ -57,10 +58,10 @@ namespace funcy
      *
      * @param F initial deformation gradient
      */
-    template < Matrix M, int n = linalg::dim< M >() >
-    auto incompressibleSkin_Hendriks( const M& F )
+    template < Matrix Mat, int n = linalg::dim< Mat >() >
+    auto incompressible_skin_hendriks( const Mat& F )
     {
-        return incompressibleSkin_Hendriks< M, n >( 9.4, 82., F );
+        return incompressible_skin_hendriks< Mat, n >( 9.4, 82., F );
     }
 
     /**
@@ -78,12 +79,12 @@ namespace funcy
      * @param d1 scaling of the penalty function for compression
      * @param F initial deformation gradient
      */
-    template < class InflationPenalty, class CompressionPenalty, Matrix M,
-               int n = linalg::dim< M >() >
-    auto compressibleSkin_Hendriks( double c0, double c1, double d0, double d1, const M& F )
+    template < class InflationPenalty, class CompressionPenalty, Matrix Mat,
+               int n = linalg::dim< Mat >() >
+    auto compressible_skin_hendriks( double c0, double c1, double d0, double d1, const Mat& F )
     {
-        return finalize( Skindetail::incompressibleSkin_HendriksImpl< M, n >( c0, c1, F ) +
-                         volumetricPenalty< InflationPenalty, CompressionPenalty >( d0, d1, F ) );
+        return finalize( detail::generate_incompressible_skin_hendriks< Mat, n >( c0, c1, F ) +
+                         volumetric_penalty< InflationPenalty, CompressionPenalty >( d0, d1, F ) );
     }
 
     /**
@@ -104,9 +105,9 @@ namespace funcy
      */
     template < class InflationPenalty, class CompressionPenalty, Matrix M,
                int n = linalg::dim< M >() >
-    auto compressibleSkin_Hendriks( double d0, double d1, const M& F )
+    auto compressible_skin_hendriks( double d0, double d1, const M& F )
     {
-        return compressibleSkin_Hendriks< InflationPenalty, CompressionPenalty, M, n >( 9.4, 82.,
-                                                                                        d0, d1, F );
+        return compressible_skin_hendriks< InflationPenalty, CompressionPenalty, M, n >(
+            9.4, 82., d0, d1, F );
     }
 } // namespace funcy

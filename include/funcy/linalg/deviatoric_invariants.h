@@ -19,7 +19,7 @@ namespace funcy
         template < Matrix M >
         auto j2( const M& A ) requires( !Function< M > )
         {
-            return frobeniusNorm( A )( deviator( A ) );
+            return frobenius_norm( A )( deviator( A ) );
         }
     } // namespace linalg
 } // namespace funcy

@@ -14,10 +14,10 @@ namespace funcy
       \param u heat
       \param du heat gradient
      */
-    template < class Scalar, Vector V >
-    auto heatModel( double c, double d, Scalar u, const V& du )
+    template < class Scalar, Vector Vec, idx = 0 >
+    auto heat_model( double c, double d, Scalar u, const Vec& du )
     {
-        auto f = ( c + d * squared( variable< 0 >( u ) ) ) * variable< 0 >( du );
+        auto f = ( c + d * squared( variable< idx >( u ) ) ) * variable< idx >( du );
         return finalize( f );
     }
 } // namespace funcy

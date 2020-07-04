@@ -20,9 +20,8 @@ namespace funcy
          * Used in nonlinear material models based on the deformation gradient \f$\nabla\varphi\f$,
          * which takes the role of \f$F\f$.
          */
-        template < SquareMatrix Matrix >
-        class RightCauchyGreenStrainTensor
-            : public Chainer< RightCauchyGreenStrainTensor< Matrix > >
+        template < class Mat >
+        class RightCauchyGreenStrainTensor : public Chainer< RightCauchyGreenStrainTensor< Mat > >
         {
         public:
             RightCauchyGreenStrainTensor() = default;
@@ -30,40 +29,40 @@ namespace funcy
              * @brief Constructor.
              * @param F point of evaluation.
              */
-            explicit RightCauchyGreenStrainTensor( const Matrix& F )
+            explicit RightCauchyGreenStrainTensor( const Mat& F )
             {
                 update( F );
             }
 
             /// Reset point of evaluation.
-            void update( const Matrix& F )
+            void update( const Mat& F )
             {
                 FT = detail::transpose( F );
                 FTF = FT * F;
             }
 
             /// Function value \f$ F^T * F \f$.
-            const Matrix& d0() const noexcept
+            const Mat& d0() const noexcept
             {
                 return FTF;
             }
 
             /// First directional derivative \f$ F^T dF_1 + dF_1^T F \f$.
-            Matrix d1( const Matrix& dF1 ) const
+            Mat d1( const Mat& dF1 ) const
             {
-                Matrix FTdF1 = FT * dF1;
-                return addTransposed( FTdF1 );
+                Mat FTdF1 = FT * dF1;
+                return add_transposed( FTdF1 );
             }
 
             /// Second directional derivative \f$ dF_2^T dF_1 + dF_1^T dF_2 \f$.
-            Matrix d2( const Matrix& dF1, const Matrix& dF2 ) const
+            Mat d2( const Mat& dF1, const Mat& dF2 ) const
             {
-                Matrix dF2TdF1 = detail::transpose( dF2 ) * dF1;
-                return addTransposed( dF2TdF1 );
+                Mat dF2TdF1 = detail::transpose( dF2 ) * dF1;
+                return add_transposed( dF2TdF1 );
             }
 
         private:
-            Matrix FT, FTF;
+            Mat FT, FTF;
         };
 
         /**
@@ -72,8 +71,8 @@ namespace funcy
          * Used in nonlinear material models based on the deformation gradient \f$\nabla\varphi\f$,
          * which takes the role of \f$F\f$.
          */
-        template < SquareMatrix Matrix >
-        class LeftCauchyGreenStrainTensor : public Chainer< LeftCauchyGreenStrainTensor< Matrix > >
+        template < class Mat >
+        class LeftCauchyGreenStrainTensor : public Chainer< LeftCauchyGreenStrainTensor< Mat > >
         {
         public:
             LeftCauchyGreenStrainTensor() = default;
@@ -81,40 +80,40 @@ namespace funcy
              * @brief Constructor.
              * @param F point of evaluation.
              */
-            explicit LeftCauchyGreenStrainTensor( const Matrix& F )
+            explicit LeftCauchyGreenStrainTensor( const Mat& F )
             {
                 update( F );
             }
 
             /// Reset point of evaluation.
-            void update( const Matrix& F )
+            void update( const Mat& F )
             {
                 FT = detail::transpose( F );
                 FFT = F * FT;
             }
 
             /// Function value \f$ F^T * F \f$.
-            const Matrix& d0() const noexcept
+            const Mat& d0() const noexcept
             {
                 return FFT;
             }
 
             /// First directional derivative \f$ F^T dF_1 + dF_1^T F \f$.
-            Matrix d1( const Matrix& dF1 ) const
+            Mat d1( const Mat& dF1 ) const
             {
-                Matrix FTdF1 = dF1 * FT;
-                return addTransposed( FTdF1 );
+                Mat FTdF1 = dF1 * FT;
+                return add_transposed( FTdF1 );
             }
 
             /// Second directional derivative \f$ dF_2^T dF_1 + dF_1^T dF_2 \f$.
-            Matrix d2( const Matrix& dF1, const Matrix& dF2 ) const
+            Mat d2( const Mat& dF1, const Mat& dF2 ) const
             {
-                Matrix dF1dF2T = dF1 * detail::transpose( dF2 );
-                return addTransposed( dF1dF2T );
+                Mat dF1dF2T = dF1 * detail::transpose( dF2 );
+                return add_transposed( dF1dF2T );
             }
 
         private:
-            Matrix FT, FFT;
+            Mat FT, FFT;
         };
 
         /**
@@ -122,10 +121,10 @@ namespace funcy
          * \param A matrix
          * \return RightCauchyGreenStrainTensor<Matrix>(A)
          */
-        template < class Matrix >
-        auto strainTensor( const Matrix& A )
+        template < class Mat >
+        auto strain_tensor( const Mat& A )
         {
-            return RightCauchyGreenStrainTensor< Matrix >{ A };
+            return RightCauchyGreenStrainTensor{ A };
         }
 
         /**
@@ -134,7 +133,7 @@ namespace funcy
          * square matrices \return RightCauchyGreenStrainTensor< decay_t<decltype(f())> >(f())( f )
          */
         template < Function F >
-        auto strainTensor( const F& f )
+        auto strain_tensor( const F& f )
         {
             return RightCauchyGreenStrainTensor< decay_t< decltype( f() ) > >{ f() }( f );
         }
@@ -144,10 +143,10 @@ namespace funcy
          * \param A matrix
          * \return LeftCauchyGreenStrainTensor<Matrix>(A)
          */
-        template < class Matrix >
-        auto leftStrainTensor( const Matrix& A )
+        template < class Mat >
+        auto leftStrainTensor( const Mat& A )
         {
-            return LeftCauchyGreenStrainTensor< Matrix >{ A };
+            return LeftCauchyGreenStrainTensor{ A };
         }
 
         /**

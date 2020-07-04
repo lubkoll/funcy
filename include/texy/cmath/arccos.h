@@ -4,6 +4,7 @@
 #include <funcy/util/static_checks.h>
 
 #include <string>
+#include <texy/concepts.h>
 #include <texy/util/chainer.h>
 #include <texy/util/string.h>
 #include <type_traits>
@@ -78,9 +79,8 @@ namespace texy
       @param f function mapping into a scalar space
       @return object of type mathop::Chain<Printable<ACos>,Function>
      */
-    template < class Function,
-               class = std::enable_if_t< funcy::static_check::isFunction< Function >() > >
-    auto acos( const Function& f )
+    template < Function F >
+    auto acos( const F& f )
     {
         return ACos()( f );
     }

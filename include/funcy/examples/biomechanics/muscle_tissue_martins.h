@@ -1,5 +1,6 @@
 #pragma once
 
+#include <funcy/examples/volumetric_penalty_functions.h>
 #include <funcy/funcy.h>
 
 /**
@@ -11,21 +12,21 @@
 namespace funcy
 {
     /// @cond
-    namespace MuscleTissueDetail
+    namespace detail
     {
-        template < Matrix M, int n = linalg::dim< M >() >
-        auto generateIncompressibleMuscleTissue_Martins( double c, double b, double d, double e,
-                                                         const M& A, const M& F )
+        template < Matrix Mat, int n = linalg::dim< Mat >() >
+        auto generate_incompressible_muscle_tissue_martins( double c, double b, double d, double e,
+                                                            const Mat& A, const Mat& F )
         {
             using namespace linalg;
-            auto S = strainTensor( F );
-            auto si1 = mi1< M, n >( S() ) - n;
-            auto si6 = mi6< M, Matrix, n >( S(), A ) - 1;
+            auto S = strain_tensor( F );
+            auto si1 = mi1< Mat, n >( S() ) - n;
+            auto si6 = mi6< Mat, Mat, n >( S(), A ) - 1;
 
-            auto f = c * ( exp( b * si1 ) - 1 ) + d * ( exp( e * si6 ^ 2 ) - 1 );
+            auto f = c * ( exp( b * si1 ) - 1 ) + d * ( exp( e * squared( si6 ) ) - 1 );
             return f( S );
         }
-    } // namespace MuscleTissueDetail
+    } // namespace detail
     /// @endcond
 
     /**
@@ -47,13 +48,12 @@ namespace funcy
      * @tparam offset number of rows/columns of F, this is only required to adjust the offset of the
      * energy functional such that \f$W(F)=0\f$ for \f$F=I\f$.
      */
-    template < Matrix M, int offset = linalg::dim< M >() >
-    auto incompressibleMuscleTissue_Martins( double c, double b, double d, double e, const M& A,
-                                             const M& F )
+    template < Matrix Mat, int offset = linalg::dim< Mat >() >
+    auto incompressible_muscle_tissue_martins( double c, double b, double d, double e, const Mat& A,
+                                               const Mat& F )
     {
-        return finalize(
-            MuscleTissuedetail::generateIncompressibleMuscleTissue_Martins< M, offset >( c, b, d, e,
-                                                                                         A, F ) );
+        return finalize( detail::generate_incompressible_muscle_tissue_martins< Mat, offset >(
+            c, b, d, e, A, F ) );
     }
 
     /**
@@ -73,10 +73,11 @@ namespace funcy
      * \f$F=I\f$, where \f$I\f$ is the unit matrix.
      * @param F deformation gradient
      */
-    template < Matrix M, int offset = linalg::dim< M >() >
-    auto incompressibleMuscleTissue_Martins( const M& A, const M& F )
+    template < Matrix Mat, int offset = linalg::dim< Mat >() >
+    auto incompressible_muscle_tissue_martins( const Mat& A, const Mat& F )
     {
-        return incompressibleMuscleTissue_Martins< M, offset >( 0.387, 23.46, 0.584, 12.43, A, F );
+        return incompressible_muscle_tissue_martins< Mat, offset >( 0.387, 23.46, 0.584, 12.43, A,
+                                                                    F );
     }
 
     /**
@@ -99,14 +100,13 @@ namespace funcy
      * \f$F=I\f$, where \f$I\f$ is the unit matrix.
      * @param F deformation gradient
      */
-    template < class Inflation, class Compression, Matrix M, int offset = linalg::dim< M >() >
-    auto compressibleMuscleTissue_Martins( double c, double b, double A, double a, double d0,
-                                           double d1, const M& A, const M& F )
+    template < class Inflation, class Compression, Matrix Mat, int offset = linalg::dim< Mat >() >
+    auto compressible_muscle_tissue_martins( double c, double b, double A, double a, double d0,
+                                             double d1, const Mat& M, const Mat& F )
     {
-        return finalize(
-            MuscleTissuedetail::generateIncompressibleMuscleTissue_Martins< M, offset >( c, b, A, a,
-                                                                                         A, F ) +
-            volumetricPenalty< Inflation, Compression >( d0, d1, F ) );
+        return finalize( detail::generate_incompressible_muscle_tissue_martins< Mat, offset >(
+                             c, b, A, a, M, F ) +
+                         volumetric_penalty< Inflation, Compression >( d0, d1, F ) );
     }
 
     /**
@@ -129,10 +129,10 @@ namespace funcy
      * \f$F=I\f$, where \f$I\f$ is the unit matrix.
      * @param F deformation gradient
      */
-    template < class Inflation, class Compression, Matrix M, int offset = linalg::dim< M >() >
-    auto compressibleMuscleTissue_Martins( double d0, double d1, const M& A, const M& F )
+    template < class Inflation, class Compression, Matrix Mat, int offset = linalg::dim< Mat >() >
+    auto compressible_muscle_tissue_martins( double d0, double d1, const Mat& M, const Mat& F )
     {
-        return compressibleMuscleTissue_Martins< Inflation, Compression, M, offset >(
-            0.387, 23.46, 0.584, 12.43, d0, d1, A, F );
+        return compressible_muscle_tissue_martins< Inflation, Compression, Mat, offset >(
+            0.387, 23.46, 0.584, 12.43, d0, d1, M, F );
     }
 } // namespace funcy

@@ -17,9 +17,9 @@ namespace funcy
          *  @{ */
 
         /// @cond
-        namespace Try
+        namespace test
         {
-            namespace MemOp
+            namespace mem_op
             {
                 template < class Arg >
                 using InPlaceSummation = decltype( std::declval< Arg >() += std::declval< Arg >() );
@@ -27,9 +27,9 @@ namespace funcy
                 template < class Arg1, class Arg2 >
                 using InPlaceMultiplication =
                     decltype( std::declval< Arg1 >() *= std::declval< Arg2 >() );
-            } // namespace MemOp
+            } // namespace mem_op
 
-            namespace MemFn
+            namespace mem_fn
             {
                 template < class F, class IndexedArg, class Arg = typename IndexedArg::type,
                            int id = IndexedArg::index >
@@ -72,19 +72,19 @@ namespace funcy
                 using rightmultiplyany =
                     decltype( std::declval< Arg1 >().rightmultiplyany( std::declval< Arg2 >() ) );
 
-            } // namespace MemFn
+            } // namespace mem_fn
 
-            namespace Free
+            namespace fun
             {
                 template < class Arg1, class Arg2 >
                 using Multiplication = decltype( std::declval< Arg1 >() * std::declval< Arg2 >() );
-            } // namespace Free
-        }     // namespace Try
+            } // namespace fun
+        }     // namespace test
         /// @endcond
 
         namespace has
         {
-            namespace MemOp
+            namespace mem_op
             {
                 template < class Arg, class = void >
                 struct InPlaceSummation : std::false_type
@@ -92,7 +92,7 @@ namespace funcy
                 };
 
                 template < class Arg >
-                struct InPlaceSummation< Arg, std::void_t< Try::MemOp::InPlaceSummation< Arg > > >
+                struct InPlaceSummation< Arg, std::void_t< test::mem_op::InPlaceSummation< Arg > > >
                     : std::true_type
                 {
                 };
@@ -104,7 +104,7 @@ namespace funcy
 
                 template < class Arg1, class Arg2 >
                 struct InPlaceMultiplication<
-                    Arg1, Arg2, std::void_t< Try::MemOp::InPlaceMultiplication< Arg1, Arg2 > > >
+                    Arg1, Arg2, std::void_t< test::mem_op::InPlaceMultiplication< Arg1, Arg2 > > >
                     : std::true_type
                 {
                 };
@@ -113,35 +113,35 @@ namespace funcy
                 /// Check if objects of type Arg1 support in-place multiplication with objects of
                 /// type Arg2.
                 template < class Arg1, class Arg2 >
-                constexpr bool inPlaceMultiplication() requires( !Function< Arg1 > &&
-                                                                 !Function< Arg2 > &&
-                                                                 !Arithmetic< Arg1 > )
+                constexpr bool in_place_product() requires( !Function< Arg1 > &&
+                                                            !Function< Arg2 > &&
+                                                            !Arithmetic< Arg1 > )
                 {
                     return InPlaceMultiplication< Arg1, Arg2 >::value;
                 }
 
                 template < class Arg1, class Arg2 >
-                constexpr bool inPlaceMultiplication()
+                constexpr bool in_place_product()
                 {
                     return false;
                 }
 
                 /// Check if objects of type Arg support in-place summation.
                 template < class Arg >
-                constexpr bool inPlaceSummation() requires( !Function< Arg > && !Arithmetic< Arg > )
+                constexpr bool in_place_sum() requires( !Function< Arg > && !Arithmetic< Arg > )
                 {
                     return InPlaceSummation< Arg >::value;
                 }
 
                 /// Check if objects of type Arg support in-place summation.
                 template < class Arg >
-                constexpr bool inPlaceSummation()
+                constexpr bool in_place_sum()
                 {
                     return false;
                 }
-            } // namespace MemOp
+            } // namespace mem_op
 
-            namespace MemFn
+            namespace mem_fn
             {
                 /// @cond
                 template < class F, class IndexedArg, class = void >
@@ -150,14 +150,14 @@ namespace funcy
                 };
 
                 template < class F, class IndexedArg >
-                struct d1< F, IndexedArg, std::void_t< Try::MemFn::d1< F, IndexedArg > > >
+                struct d1< F, IndexedArg, std::void_t< test::mem_fn::d1< F, IndexedArg > > >
                     : std::true_type
                 {
                 };
 
                 template < class F, class IndexedArg >
                 struct d1< F, IndexedArg,
-                           std::void_t< Try::MemFn::d1_without_index< F, IndexedArg > > >
+                           std::void_t< test::mem_fn::d1_without_index< F, IndexedArg > > >
                     : std::true_type
                 {
                 };
@@ -169,7 +169,7 @@ namespace funcy
 
                 template < class F, class IndexedArgX, class IndexedArgY >
                 struct d2< F, IndexedArgX, IndexedArgY,
-                           std::void_t< Try::MemFn::d2< F, IndexedArgX, IndexedArgY > > >
+                           std::void_t< test::mem_fn::d2< F, IndexedArgX, IndexedArgY > > >
                     : std::true_type
                 {
                 };
@@ -177,7 +177,7 @@ namespace funcy
                 template < class F, class IndexedArgX, class IndexedArgY >
                 struct d2<
                     F, IndexedArgX, IndexedArgY,
-                    std::void_t< Try::MemFn::d2_without_index< F, IndexedArgX, IndexedArgY > > >
+                    std::void_t< test::mem_fn::d2_without_index< F, IndexedArgX, IndexedArgY > > >
                     : std::true_type
                 {
                 };
@@ -191,15 +191,15 @@ namespace funcy
                 template < class F, class IndexedArgX, class IndexedArgY, class IndexedArgZ >
                 struct d3<
                     F, IndexedArgX, IndexedArgY, IndexedArgZ,
-                    std::void_t< Try::MemFn::d3< F, IndexedArgX, IndexedArgY, IndexedArgZ > > >
+                    std::void_t< test::mem_fn::d3< F, IndexedArgX, IndexedArgY, IndexedArgZ > > >
                     : std::true_type
                 {
                 };
 
                 template < class F, class IndexedArgX, class IndexedArgY, class IndexedArgZ >
                 struct d3< F, IndexedArgX, IndexedArgY, IndexedArgZ,
-                           std::void_t< Try::MemFn::d3_without_index< F, IndexedArgX, IndexedArgY,
-                                                                      IndexedArgZ > > >
+                           std::void_t< test::mem_fn::d3_without_index< F, IndexedArgX, IndexedArgY,
+                                                                        IndexedArgZ > > >
                     : std::true_type
                 {
                 };
@@ -211,7 +211,7 @@ namespace funcy
 
                 template < class F, class IndexedArg >
                 struct d1_with_index< F, IndexedArg,
-                                      std::void_t< Try::MemFn::d1< F, IndexedArg > > >
+                                      std::void_t< test::mem_fn::d1< F, IndexedArg > > >
                     : std::true_type
                 {
                 };
@@ -222,8 +222,9 @@ namespace funcy
                 };
 
                 template < class F, class IndexedArgX, class IndexedArgY >
-                struct d2_with_index< F, IndexedArgX, IndexedArgY,
-                                      std::void_t< Try::MemFn::d2< F, IndexedArgX, IndexedArgY > > >
+                struct d2_with_index<
+                    F, IndexedArgX, IndexedArgY,
+                    std::void_t< test::mem_fn::d2< F, IndexedArgX, IndexedArgY > > >
                     : std::true_type
                 {
                 };
@@ -237,7 +238,7 @@ namespace funcy
                 template < class F, class IndexedArgX, class IndexedArgY, class IndexedArgZ >
                 struct d3_with_index<
                     F, IndexedArgX, IndexedArgY, IndexedArgZ,
-                    std::void_t< Try::MemFn::d3< F, IndexedArgX, IndexedArgY, IndexedArgZ > > >
+                    std::void_t< test::mem_fn::d3< F, IndexedArgX, IndexedArgY, IndexedArgZ > > >
                     : std::true_type
                 {
                 };
@@ -248,8 +249,8 @@ namespace funcy
                 };
 
                 template < class Arg1, class Arg2 >
-                struct Rightmultiplany< Arg1, Arg2,
-                                        std::void_t< Try::MemFn::rightmultiplyany< Arg1, Arg2 > > >
+                struct Rightmultiplany<
+                    Arg1, Arg2, std::void_t< test::mem_fn::rightmultiplyany< Arg1, Arg2 > > >
                     : std::true_type
                 {
                 };
@@ -272,9 +273,9 @@ namespace funcy
                 {
                     return false;
                 }
-            } // namespace MemFn
+            } // namespace mem_fn
 
-            namespace Free
+            namespace fun
             {
                 /// @cond
                 namespace detail
@@ -339,9 +340,9 @@ namespace funcy
                 {
                     return false;
                 }
-            } // namespace Free
+            } // namespace fun
 
-            namespace NestedType
+            namespace nested_type
             {
                 /// @cond
                 template < class EigenArg, class = void >
@@ -350,37 +351,13 @@ namespace funcy
                 };
                 template < class EigenArg >
                 struct PlainObject< EigenArg,
-                                    std::void_t< Try::NestedType::PlainObject< EigenArg > > >
+                                    std::void_t< test::nested_type::PlainObject< EigenArg > > >
                     : std::true_type
                 {
                 };
                 /// @endcond
-            } // namespace NestedType
-
-            template < class F >
-            constexpr bool consistentFirstDerivative()
-            {
-                return std::is_invocable_v< F >;
-            }
-
-            template < class F, class IndexedArgX, class IndexedArgY >
-            constexpr bool consistentSecondDerivative()
-            {
-                return consistentFirstDerivative< F >() &&
-                       ( has::MemFn::d2< F, IndexedArgX, IndexedArgY >::value
-                             ? has::MemFn::d1< F, IndexedArgX >::value
-                             : true );
-            }
-
-            template < class F, class IndexedArgX, class IndexedArgY, class IndexedArgZ >
-            constexpr bool consistentThirdDerivative()
-            {
-                return consistentSecondDerivative< F, IndexedArgX, IndexedArgY >() &&
-                       ( has::MemFn::d3< F, IndexedArgX, IndexedArgY, IndexedArgZ >::value
-                             ? has::MemFn::d2< F, IndexedArgX, IndexedArgY >::value
-                             : true );
-            }
-        } // namespace has
+            } // namespace nested_type
+        }     // namespace has
         /** @} */
     } // namespace static_check
 } // namespace funcy

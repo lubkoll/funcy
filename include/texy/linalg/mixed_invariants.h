@@ -4,6 +4,7 @@
 
 #include <funcy/util/static_checks.h>
 
+#include <texy/concepts.h>
 #include <texy/constant.h>
 #include <texy/generate.h>
 #include <texy/identity.h>
@@ -34,7 +35,7 @@ namespace texy
          * \param f function returning a square matrix
          * \param M structural tensor describing principal (fiber) direction
          */
-        template < class F, std::enable_if_t< funcy::static_check::isFunction< F >() >* = nullptr >
+        template < Function F >
         auto i4( const F& f, const std::string& M )
         {
             return i1( f * constant( M ) );
@@ -58,7 +59,7 @@ namespace texy
          * \param f function returning a square matrix
          * \param M structural tensor describing principal (fiber) direction
          */
-        template < class F, std::enable_if_t< funcy::static_check::isFunction< F >() >* = nullptr >
+        template < Function F >
         auto i5( const F& f, const std::string& M )
         {
             return i1( ( f ^ 2 ) * constant( M ) );
@@ -82,7 +83,7 @@ namespace texy
          * \param f function returning a square matrix
          * \param M structural tensor describing principal (fiber) direction
          */
-        template < class F, std::enable_if_t< funcy::static_check::isFunction< F >() >* = nullptr >
+        template < Function F >
         auto i6( const F& f, const std::string& M )
         {
             return i1( ( constant( M ) ^ 2 ) * f );

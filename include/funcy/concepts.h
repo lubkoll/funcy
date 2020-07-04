@@ -14,9 +14,6 @@ namespace funcy
     };
 
     template < class T >
-    concept Scalar = ( !Function< T > && is_arithmetic< T >::value );
-
-    template < class T >
     concept Arithmetic = is_arithmetic< T >::value;
     /** @} */
 } // namespace funcy

@@ -2,6 +2,7 @@
 
 #include <funcy/util/chainer.h>
 
+#include <texy/concepts.h>
 #include <texy/util/string.h>
 #include <type_traits>
 
@@ -43,7 +44,7 @@ namespace texy
             return Transpose( A );
         }
 
-        template < class F, std::enable_if_t< funcy::static_check::isFunction< F >() >* = nullptr >
+        template < Function F >
         auto transpose( const F& f )
         {
             return Transpose( f() )( f );

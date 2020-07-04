@@ -14,15 +14,15 @@ namespace funcy
      * @brief Overwrites \f$A\f$ with \f$A+A^T\f$.
      * @return \f$A+A^T\f$
      */
-    template < ConstantSize Matrix >
-    Matrix addTransposed( Matrix& A )
+    template < ConstantSize Mat >
+    Mat add_transposed( Mat& A )
     {
         using linalg::dim;
-        using Index = decltype( dim< Matrix >() );
-        for ( Index i = 0; i < dim< Matrix >(); ++i )
-            for ( Index j = i + 1; j < dim< Matrix >(); ++j )
+        using Index = decltype( dim< Mat >() );
+        for ( Index i = 0; i < dim< Mat >(); ++i )
+            for ( Index j = i + 1; j < dim< Mat >(); ++j )
                 at( A, j, i ) = at( A, i, j ) = at( A, i, j ) + at( A, j, i );
-        for ( Index i = 0; i < dim< Matrix >(); ++i )
+        for ( Index i = 0; i < dim< Mat >(); ++i )
             at( A, i, i ) *= 2;
         return A;
     }
@@ -31,13 +31,13 @@ namespace funcy
      * @brief Overwrites \f$A\f$ with \f$A+A^T\f$.
      * @return \f$A+A^T\f$
      */
-    template < class Matrix >
-    Matrix addTransposed( Matrix& A )
+    template < class Mat >
+    Mat add_transposed( Mat& A )
     {
         using linalg::cols;
         using linalg::rows;
         assert( rows( A ) == cols( A ) );
-        using Index = decltype( rows( std::declval< Matrix >() ) );
+        using Index = decltype( rows( std::declval< Mat >() ) );
         for ( Index i = 0; i < rows( A ); ++i )
             for ( Index j = i + 1; j < cols( A ); ++j )
                 at( A, j, i ) = at( A, i, j ) = at( A, i, j ) + at( A, j, i );

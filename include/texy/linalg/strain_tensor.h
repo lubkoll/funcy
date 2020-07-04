@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <texy/concepts.h>
 #include <texy/util/chainer.h>
 #include <texy/util/string.h>
 
@@ -136,7 +137,7 @@ namespace texy
          * \param A matrix
          * \return RightCauchyGreenStrainTensor<Matrix>(A)
          */
-        RightCauchyGreenStrainTensor strainTensor( const std::string& A )
+        RightCauchyGreenStrainTensor strain_tensor( const std::string& A )
         {
             return RightCauchyGreenStrainTensor{ A };
         }
@@ -147,8 +148,8 @@ namespace texy
          * \param f function object mapping into a space of square matrices
          * \return RightCauchyGreenStrainTensor< decay_t<decltype(f())> >(f())( f )
          */
-        template < class F, std::enable_if_t< funcy::static_check::isFunction< F >() >* = nullptr >
-        RightCauchyGreenStrainTensor strainTensor( const F& f )
+        template < Function F >
+        RightCauchyGreenStrainTensor strain_tensor( const F& f )
         {
             return RightCauchyGreenStrainTensor{ f() }( f );
         }
@@ -169,7 +170,7 @@ namespace texy
          * \param f function object mapping into a space of square matrices
          * \return LeftCauchyGreenStrainTensor< decay_t<decltype(f())> >(f())( f )
          */
-        template < class F, std::enable_if_t< funcy::static_check::isFunction< F >() >* = nullptr >
+        template < Function F >
         LeftCauchyGreenStrainTensor leftStrainTensor( const F& f )
         {
             return LeftCauchyGreenStrainTensor{ f() }( f );

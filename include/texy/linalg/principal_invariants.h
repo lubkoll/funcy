@@ -1,6 +1,3 @@
-// Copyright (C) 2018 by Lars Lubkoll. All rights reserved.
-// Released under the terms of the GNU General Public License version 3 or later.
-
 #pragma once
 
 #include "determinant.h"
@@ -10,6 +7,7 @@
 #include <funcy/util/type_traits.h>
 
 #include <texy/cmath/pow.h>
+#include <texy/concepts.h>
 #include <texy/generate.h>
 #include <type_traits>
 
@@ -111,7 +109,7 @@ namespace texy
          * \f$f:\cdot\mapsto\mathbb{R}^{n,n}\f$.
          * @return SecondPrincipalInvariant( f() )( f )
          */
-        template < class F, std::enable_if_t< funcy::static_check::isFunction< F >() >* = nullptr >
+        template < Function F >
         auto i2( const F& f )
         {
             return SecondPrincipalInvariant( f() )( f );

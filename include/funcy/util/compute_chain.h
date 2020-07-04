@@ -161,13 +161,13 @@ namespace funcy
                class IndexedX = IndexedType< X, IndexedArg::index > >
     struct ComputeChainD1
         : detail::ComputeChainD1Impl<
-              F, IndexedX, static_check::has::MemFn::d1< F, IndexedArg >::value && X::present,
-              static_check::has::MemFn::d1_with_index< F, IndexedArg >::value >
+              F, IndexedX, static_check::has::mem_fn::d1< F, IndexedArg >::value && X::present,
+              static_check::has::mem_fn::d1_with_index< F, IndexedArg >::value >
     {
         ComputeChainD1( F const& f, X const& x )
             : detail::ComputeChainD1Impl < F,
-        IndexedX, static_check::has::MemFn::d1< F, IndexedArg >::value && X::present,
-        static_check::has::MemFn::d1_with_index< F, IndexedArg >::value > ( f, x )
+        IndexedX, static_check::has::mem_fn::d1< F, IndexedArg >::value && X::present,
+        static_check::has::mem_fn::d1_with_index< F, IndexedArg >::value > ( f, x )
         {
         }
     };
@@ -184,15 +184,15 @@ namespace funcy
     struct ComputeChainD2
         : detail::ComputeChainD2Impl<
               F, IndexedX, IndexedY,
-              static_check::has::MemFn::d2< F, IndexedArgX, IndexedArgY >::value && X::present &&
+              static_check::has::mem_fn::d2< F, IndexedArgX, IndexedArgY >::value && X::present &&
                   Y::present,
-              static_check::has::MemFn::d2_with_index< F, IndexedArgX, IndexedArgY >::value >
+              static_check::has::mem_fn::d2_with_index< F, IndexedArgX, IndexedArgY >::value >
     {
         ComputeChainD2( const F& f, const X& x, const Y& y )
             : detail::ComputeChainD2Impl < F,
-        IndexedX, IndexedY, static_check::has::MemFn::d2< F, IndexedArgX, IndexedArgY >::value
+        IndexedX, IndexedY, static_check::has::mem_fn::d2< F, IndexedArgX, IndexedArgY >::value
                                 && X::present && Y::present,
-        static_check::has::MemFn::d2_with_index< F, IndexedArgX, IndexedArgY >::value > ( f, x, y )
+        static_check::has::mem_fn::d2_with_index< F, IndexedArgX, IndexedArgY >::value > ( f, x, y )
         {
         }
     };
@@ -210,18 +210,18 @@ namespace funcy
     struct ComputeChainD3
         : detail::ComputeChainD3Impl<
               F, IndexedX, IndexedY, IndexedZ,
-              static_check::has::MemFn::d3< F, IndexedArgX, IndexedArgY, IndexedArgZ >::value &&
+              static_check::has::mem_fn::d3< F, IndexedArgX, IndexedArgY, IndexedArgZ >::value &&
                   X::present && Y::present && Z::present,
-              static_check::has::MemFn::d3_with_index< F, IndexedArgX, IndexedArgY,
-                                                       IndexedArgZ >::value >
+              static_check::has::mem_fn::d3_with_index< F, IndexedArgX, IndexedArgY,
+                                                        IndexedArgZ >::value >
     {
         ComputeChainD3( const F& f, const X& x, const Y& y, const Z& z )
             : detail::ComputeChainD3Impl < F,
         IndexedX, IndexedY, IndexedZ,
-        static_check::has::MemFn::d3< F, IndexedArgX, IndexedArgY, IndexedArgZ >::value
+        static_check::has::mem_fn::d3< F, IndexedArgX, IndexedArgY, IndexedArgZ >::value
             && X::present && Y::present && Z::present,
-        static_check::has::MemFn::d3_with_index< F, IndexedArgX, IndexedArgY, IndexedArgZ >::value >
-            ( f, x, y, z )
+        static_check::has::mem_fn::d3_with_index< F, IndexedArgX, IndexedArgY, IndexedArgZ >::value
+            > ( f, x, y, z )
         {
         }
     };

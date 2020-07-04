@@ -23,7 +23,7 @@ namespace funcy
         template < SquareMatrix M, int n = dim< M >() >
         auto deviator( const M& A )
         {
-            return identity( A ) + ( -1. / n ) * ( trace( A ) * constant( unitMatrix< M >() ) );
+            return identity( A ) + ( -1. / n ) * ( trace( A ) * constant( unit_matrix< M >() ) );
         }
 
         /// Generate %deviator \f$ \mathrm{dev}(A) = A - \frac{\mathrm{tr}(A)}{n}I \f$ of a matrix
@@ -33,7 +33,7 @@ namespace funcy
         {
             assert( rows( A ) == cols( A ) );
             return identity( A ) +
-                   ( -1. / rows( A ) ) * ( trace( A ) * constant( unitMatrix< Matrix >() ) );
+                   ( -1. / rows( A ) ) * ( trace( A ) * constant( unit_matrix< Matrix >() ) );
         }
 
         /// Generate %deviator \f$ \mathrm{dev}\circ f\f$.

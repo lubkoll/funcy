@@ -13,12 +13,6 @@ namespace texy
     template < int, int >
     struct Variable;
 
-    namespace static_check
-    {
-        template < class >
-        struct IsFunction;
-    }
-
     namespace detail
     {
         template < class T, int k >
@@ -75,7 +69,7 @@ namespace texy
         template < int index, class Arg, class = std::enable_if_t< id == index > >
         const std::string& d1( const Arg& dt ) const noexcept
         {
-            return Variabledetail::ExtractReturnValue< Arg, k >::apply( dt )
+            return detail::ExtractReturnValue< Arg, k >::apply( dt )
                 .append( "_{" )
                 .append( std::to_string( id ) )
                 .append( "}" );
@@ -207,7 +201,7 @@ namespace texy
         template < class T >
         constexpr bool isVariable()
         {
-            return Variabledetail::IsVariable< T >::value;
+            return detail::IsVariable< T >::value;
         }
 
         namespace has
@@ -216,22 +210,22 @@ namespace texy
             template < class T >
             constexpr bool variable()
             {
-                return Variabledetail::has::Variable< std::decay_t< T > >::value;
+                return detail::has::Variable< std::decay_t< T > >::value;
             }
 
             /// Check if T contains a type Variable<Type,id>.
             template < class T, int id >
             constexpr bool variableId()
             {
-                return Variabledetail::has::VariableId< std::decay_t< T >, id >::value;
+                return detail::has::VariableId< std::decay_t< T >, id >::value;
             }
 
             /// Check if T contains at least two variables.
             template < class T >
             constexpr bool moreThanOneVariable()
             {
-                return Variabledetail::MinVariableId< std::decay_t< T > >::value <
-                       Variabledetail::MaxVariableId< std::decay_t< T > >::value;
+                return detail::MinVariableId< std::decay_t< T > >::value <
+                       detail::MaxVariableId< std::decay_t< T > >::value;
             }
         } // namespace has
 

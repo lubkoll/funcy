@@ -77,7 +77,7 @@ namespace funcy
      * If the resulting type represents a polynomial of order smaller than two, than you need to
      * wrap it into Finalize to generate missing derivatives.
      */
-    template < Scalar F, Function G >
+    template < Arithmetic F, Function G >
     auto operator*( F&& f, G&& g )
     {
         return mathop::Scale( std::forward< F >( f ), std::forward< G >( g ) );
@@ -101,7 +101,7 @@ namespace funcy
      * If the resulting type represents a polynomial of order smaller than two, than you need to
      * wrap it into Finalize to generate missing derivatives.
      */
-    template < Function F, Scalar G >
+    template < Function F, Arithmetic G >
     auto operator*( F&& f, G&& g )
     {
         return mathop::Scale( std::forward< G >( g ), std::forward< F >( f ) );

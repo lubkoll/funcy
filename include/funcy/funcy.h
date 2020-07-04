@@ -1,5 +1,6 @@
 #pragma once
 
+#include <funcy/concepts.h>
 #include <funcy/constant.h>
 #include <funcy/finalize.h>
 #include <funcy/generate.h>

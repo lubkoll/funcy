@@ -7,15 +7,15 @@ namespace funcy
     /// @cond
     namespace static_check
     {
-        namespace Try
+        namespace test
         {
-            namespace NestedType
+            namespace nested_type
             {
                 // access underlying type of the expression templates of the Eigen library
                 template < class EigenArg >
                 using PlainObject = typename EigenArg::PlainObject;
-            } // namespace NestedType
-        }     // namespace Try
+            } // namespace nested_type
+        }     // namespace test
     }         // namespace static_check
     /// @endcond
 
@@ -28,7 +28,7 @@ namespace funcy
 
     /// Underlying type for expression templates of the Eigen library.
     template < class F >
-    struct Decay< F, std::void_t< static_check::Try::NestedType::PlainObject< F > > >
+    struct Decay< F, std::void_t< static_check::test::nested_type::PlainObject< F > > >
     {
         using type = typename F::PlainObject;
     };

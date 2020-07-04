@@ -10,12 +10,16 @@ namespace funcy
     /// @cond
     namespace detail
     {
-        template < Function F, class Arg >
-        using TryCallOfUpdate = decltype( std::declval< F >().update( std::declval< Arg >() ) );
+        namespace test
+        {
+            template < Function F, class Arg >
+            using update = decltype( std::declval< F >().update( std::declval< Arg >() ) );
 
-        template < Function F, class Arg, int id >
-        using TryCallOfUpdateWithIndex =
-            decltype( std::declval< F >().template update< id >( std::declval< Arg >() ) );
+            template < Function F, class Arg, int id >
+            using update_with_index =
+                decltype( std::declval< F >().template update< id >( std::declval< Arg >() ) );
+
+        } // namespace test
 
         template < Function F, class Arg, class = void >
         struct HasUpdateWithoutIndex : std::false_type
@@ -23,7 +27,7 @@ namespace funcy
         };
 
         template < Function F, class Arg >
-        struct HasUpdateWithoutIndex< F, Arg, std::void_t< TryCallOfUpdate< F, Arg > > >
+        struct HasUpdateWithoutIndex< F, Arg, std::void_t< test::update< F, Arg > > >
             : std::true_type
         {
         };
@@ -35,7 +39,7 @@ namespace funcy
 
         template < Function F, class Arg, int id >
         struct HasUpdateWithIndex< F, Arg, id,
-                                   std::void_t< TryCallOfUpdateWithIndex< F, Arg, id > > >
+                                   std::void_t< test::update_with_index< F, Arg, id > > >
             : std::true_type
         {
         };

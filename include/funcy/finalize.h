@@ -1,12 +1,12 @@
 #pragma once
 
 #include <funcy/concepts.h>
+#include <funcy/linalg/type_traits.h>
 #include <funcy/util/derivative_wrappers.h>
 #include <funcy/util/indexed_type.h>
 #include <funcy/util/macros.h>
 #include <funcy/util/static_checks.h>
 #include <funcy/util/type_traits.h>
-#include <funcy/util/zero.h>
 #include <funcy/variable.h>
 
 #include <type_traits>
@@ -99,24 +99,22 @@ namespace funcy
             template < int id, class Arg >
             ReturnT d1( const Arg& dx ) const
                 requires( static_check::has::variableId< F, id >() &&
-                          static_check::checkArgument< F, Arg, id >() &&
-                          static_check::has::consistentFirstDerivative< F >() )
+                          static_check::checkArgument< F, Arg, id >() )
             {
                 return FinalizeD1<
                     id, ReturnT,
-                    static_check::has::MemFn::d1< F, IndexedType< Arg, id > >::value >()(
+                    static_check::has::mem_fn::d1< F, IndexedType< Arg, id > >::value >()(
                     static_cast< const F& >( *this ), dx );
             }
 
             template < int id >
             ReturnT d1() const requires( static_check::has::variableId< F, id >() &&
-                                         is_arithmetic< Variable_t< F, id > >::value &&
-                                         static_check::has::consistentFirstDerivative< F >() )
+                                         is_arithmetic< Variable_t< F, id > >::value )
             {
                 using Arg = Variable_t< F, id >;
                 return FinalizeD1<
                     id, ReturnT,
-                    static_check::has::MemFn::d1< F, IndexedType< Arg, id > >::value >()(
+                    static_check::has::mem_fn::d1< F, IndexedType< Arg, id > >::value >()(
                     static_cast< const F& >( *this ), Arg( 1 ) );
             }
 
@@ -125,14 +123,12 @@ namespace funcy
                 requires( static_check::has::variableId< F, idx >() &&
                           static_check::has::variableId< F, idy >() &&
                           static_check::checkArgument< F, ArgX, idx >() &&
-                          static_check::checkArgument< F, ArgY, idy >() &&
-                          static_check::has::consistentSecondDerivative<
-                              F, IndexedType< ArgX, idx >, IndexedType< ArgY, idy > >() )
+                          static_check::checkArgument< F, ArgY, idy >() )
             {
                 return FinalizeD2<
                     idx, idy, ReturnT,
-                    static_check::has::MemFn::d2< F, IndexedType< ArgX, idx >,
-                                                  IndexedType< ArgY, idy > >::value >()(
+                    static_check::has::mem_fn::d2< F, IndexedType< ArgX, idx >,
+                                                   IndexedType< ArgY, idy > >::value >()(
                     static_cast< const F& >( *this ), dx, dy );
             }
 
@@ -140,17 +136,14 @@ namespace funcy
             ReturnT d2() const requires( static_check::has::variableId< F, idx >() &&
                                          static_check::has::variableId< F, idy >() &&
                                          is_arithmetic< Variable_t< F, idx > >::value &&
-                                         is_arithmetic< Variable_t< F, idy > >::value &&
-                                         static_check::has::consistentSecondDerivative<
-                                             F, IndexedType< Variable_t< F, idx >, idx >,
-                                             IndexedType< Variable_t< F, idy >, idy > >() )
+                                         is_arithmetic< Variable_t< F, idy > >::value )
             {
                 using ArgX = Variable_t< F, idx >;
                 using ArgY = Variable_t< F, idy >;
                 return FinalizeD2<
                     idx, idy, ReturnT,
-                    static_check::has::MemFn::d2< F, IndexedType< ArgX, idx >,
-                                                  IndexedType< ArgY, idy > >::value >()(
+                    static_check::has::mem_fn::d2< F, IndexedType< ArgX, idx >,
+                                                   IndexedType< ArgY, idy > >::value >()(
                     static_cast< const F& >( *this ), ArgX( 1 ), ArgY( 1 ) );
             }
 
@@ -161,13 +154,10 @@ namespace funcy
                           static_check::has::variableId< F, idz >() &&
                           static_check::checkArgument< F, ArgX, idx >() &&
                           static_check::checkArgument< F, ArgY, idy >() &&
-                          static_check::checkArgument< F, ArgZ, idz >() &&
-                          static_check::has::consistentThirdDerivative<
-                              F, IndexedType< ArgX, idx >, IndexedType< ArgY, idy >,
-                              IndexedType< ArgZ, idz > >() )
+                          static_check::checkArgument< F, ArgZ, idz >() )
             {
                 return FinalizeD3< idx, idy, idz, ReturnT,
-                                   static_check::has::MemFn::d3<
+                                   static_check::has::mem_fn::d3<
                                        F, IndexedType< ArgX, idx >, IndexedType< ArgY, idy >,
                                        IndexedType< ArgZ, idz > >::value >()(
                     static_cast< const F& >( *this ), dx, dy, dz );
@@ -179,17 +169,13 @@ namespace funcy
                                          static_check::has::variableId< F, idz >() &&
                                          is_arithmetic< Variable_t< F, idx > >::value &&
                                          is_arithmetic< Variable_t< F, idy > >::value &&
-                                         is_arithmetic< Variable_t< F, idz > >::value &&
-                                         static_check::has::consistentThirdDerivative<
-                                             F, IndexedType< Variable_t< F, idx >, idx >,
-                                             IndexedType< Variable_t< F, idy >, idy >,
-                                             IndexedType< Variable_t< F, idz >, idz > >() )
+                                         is_arithmetic< Variable_t< F, idz > >::value )
             {
                 using ArgX = Variable_t< F, idx >;
                 using ArgY = Variable_t< F, idy >;
                 using ArgZ = Variable_t< F, idz >;
                 return FinalizeD3< idx, idy, idz, ReturnT,
-                                   static_check::has::MemFn::d3<
+                                   static_check::has::mem_fn::d3<
                                        F, IndexedType< ArgX, idx >, IndexedType< ArgY, idy >,
                                        IndexedType< ArgZ, idz > >::value >()(
                     static_cast< const F& >( *this ), ArgX( 1 ), ArgY( 1 ), ArgZ( 1 ) );
@@ -223,34 +209,28 @@ namespace funcy
 
             template < class Arg >
             ReturnT d1( const Arg& dx ) const
-                requires( static_check::has::consistentFirstDerivative< F >() )
             {
                 return FinalizeD1<
                     -1, ReturnT,
-                    static_check::has::MemFn::d1< F, IndexedType< Arg, -1 > >::value >()(
+                    static_check::has::mem_fn::d1< F, IndexedType< Arg, -1 > >::value >()(
                     static_cast< const F& >( *this ), dx );
             }
 
             template < class ArgX, class ArgY >
             ReturnT d2( const ArgX& dx, const ArgY& dy ) const
-                requires( static_check::has::consistentSecondDerivative<
-                          F, IndexedType< ArgX, -1 >, IndexedType< ArgY, -1 > >() )
             {
                 return FinalizeD2<
                     -1, -1, ReturnT,
-                    static_check::has::MemFn::d2< F, IndexedType< ArgX, -1 >,
-                                                  IndexedType< ArgY, -1 > >::value >()(
+                    static_check::has::mem_fn::d2< F, IndexedType< ArgX, -1 >,
+                                                   IndexedType< ArgY, -1 > >::value >()(
                     static_cast< const F& >( *this ), dx, dy );
             }
 
             template < class ArgX, class ArgY, class ArgZ >
             ReturnT d3( const ArgX& dx, const ArgY& dy, const ArgZ& dz ) const
-                requires( static_check::has::consistentThirdDerivative<
-                          F, IndexedType< ArgX, -1 >, IndexedType< ArgY, -1 >,
-                          IndexedType< ArgZ, -1 > >() )
             {
                 return FinalizeD3< -1, -1, -1, ReturnT,
-                                   static_check::has::MemFn::d3<
+                                   static_check::has::mem_fn::d3<
                                        F, IndexedType< ArgX, -1 >, IndexedType< ArgY, -1 >,
                                        IndexedType< ArgZ, -1 > >::value >()(
                     static_cast< const F& >( *this ), dx, dy, dz );

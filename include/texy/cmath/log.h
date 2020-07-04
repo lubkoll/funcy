@@ -2,6 +2,7 @@
 
 #include <funcy/util/static_checks.h>
 
+#include <texy/concepts.h>
 #include <texy/util/chainer.h>
 #include <texy/util/string.h>
 
@@ -198,9 +199,8 @@ namespace texy
       @param f function mapping into a scalar space
       @return object of type mathop::Chain<Log,Function>
      */
-    template < class Function,
-               class = std::enable_if_t< funcy::static_check::isFunction< Function >() > >
-    auto ln( const Function& f )
+    template < Function F >
+    auto ln( const F& f )
     {
         return LN()( f );
     }
@@ -210,9 +210,8 @@ namespace texy
       @param f function mapping into a scalar space
       @return object of type mathop::Chain<Log10,Function>
      */
-    template < class Function,
-               class = std::enable_if_t< funcy::static_check::isFunction< Function >() > >
-    auto log10( const Function& f )
+    template < Function F >
+    auto log10( const F& f )
     {
         return Log10()( f );
     }
@@ -222,9 +221,8 @@ namespace texy
       @param f function mapping into a scalar space
       @return object of type mathop::Chain<Log2,Function>
      */
-    template < class Function,
-               class = std::enable_if_t< funcy::static_check::isFunction< Function >() > >
-    auto log2( const Function& f )
+    template < Function F >
+    auto log2( const F& f )
     {
         return Log2()( f );
     }

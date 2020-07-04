@@ -3,6 +3,7 @@
 #include <funcy/util/static_checks.h>
 
 #include <cmath>
+#include <texy/concepts.h>
 #include <texy/util/chainer.h>
 #include <texy/util/string.h>
 
@@ -69,9 +70,8 @@ namespace texy
       @param f function mapping into a scalar space
       @return object of type mathop::Chain<Cosc,Function>
      */
-    template < class Function,
-               class = std::enable_if_t< funcy::static_check::isFunction< Function >() > >
-    auto cos( const Function& f )
+    template < Function F >
+    auto cos( const F& f )
     {
         return Cos()( f );
     }

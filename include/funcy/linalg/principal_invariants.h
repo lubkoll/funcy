@@ -21,73 +21,61 @@ namespace funcy
         namespace detail
         {
 
-            template < int row, Matrix M >
-            auto symmetricCofactorDerivative( const M& A, const M& dA )
+            template < int row, Matrix Mat >
+            auto symmetric_cofactor_derivative( const Mat& A, const Mat& dA )
             {
-                return computeCofactorDirectionalDerivative< row, row >( A, dA ) +
-                       computeCofactorDirectionalDerivative< row, row >( dA, A );
+                return compute_cofactor_directional_derivative< row, row >( A, dA ) +
+                       compute_cofactor_directional_derivative< row, row >( dA, A );
             }
 
-            template < int >
-            struct Compute;
-
-            template <>
-            struct Compute< 2 >
+            template < int dim, Matrix Mat >
+            static auto sum_of_diagonal_cofactors( const Mat& A ) requires( dim == 2 )
             {
-                template < Matrix M >
-                static auto sumOfDiagonalCofactors( const M& A )
-                {
-                    return computeCofactor< 0, 0 >( A ) + computeCofactor< 1, 1 >( A );
-                }
+                return linalg::compute_cofactor< 0, 0 >( A ) +
+                       linalg::compute_cofactor< 1, 1 >( A );
+            }
 
-                template < Matrix M >
-                static auto sumOfSymmetricCofactorDerivatives( const M& A, const M& B )
-                {
-                    return symmetricCofactorDerivative< 0 >( A, B ) +
-                           symmetricCofactorDerivative< 1 >( A, B );
-                }
-            };
-
-            template <>
-            struct Compute< 3 >
+            template < int dim, Matrix Mat >
+            static auto sum_of_symmetric_cofactor_derivatives( const Mat& A,
+                                                               const Mat& B ) requires( dim == 2 )
             {
-                template < Matrix M >
-                static auto sumOfDiagonalCofactors( const M& A )
-                {
-                    return computeCofactor< 0, 0 >( A ) + computeCofactor< 1, 1 >( A ) +
-                           computeCofactor< 2, 2 >( A );
-                }
+                return symmetric_cofactor_derivative< 0 >( A, B ) +
+                       symmetric_cofactor_derivative< 1 >( A, B );
+            }
 
-                template < Matrix M >
-                static auto sumOfSymmetricCofactorDerivatives( const M& A, const M& B )
-                {
-                    return symmetricCofactorDerivative< 0 >( A, B ) +
-                           symmetricCofactorDerivative< 1 >( A, B ) +
-                           symmetricCofactorDerivative< 2 >( A, B );
-                }
-            };
-
-            /// Fallback implementation if matrix size can not be determined at compile time.
-            template <>
-            struct Compute< -1 >
+            template < int dim, Matrix Mat >
+            static auto sum_of_diagonal_cofactors( const Mat& A ) requires( dim == 3 )
             {
-                template < Matrix M >
-                static auto sumOfDiagonalCofactors( const M& A )
-                {
-                    if ( rows( A ) == 2 )
-                        return Compute< 2 >::sumOfDiagonalCofactors( A );
-                    /*if(rows(A) == 3)*/ return Compute< 3 >::sumOfDiagonalCofactors( A );
-                }
+                return linalg::compute_cofactor< 0, 0 >( A ) +
+                       linalg::compute_cofactor< 1, 1 >( A ) +
+                       linalg::compute_cofactor< 2, 2 >( A );
+            }
 
-                template < Matrix M >
-                static auto sumOfSymmetricCofactorDerivatives( const M& A, const M& B )
-                {
-                    if ( rows( A ) == 2 )
-                        return Compute< 2 >::sumOfSymmetricCofactorDerivatives( A, B );
-                    /*if(rows(A) == 3)*/ return Compute< 3 >::sumOfSymmetricCofactorDerivatives(
-                        A, B );
-                }
-            };
+            template < int dim, Matrix Mat >
+            static auto sum_of_symmetric_cofactor_derivatives( const Mat& A,
+                                                               const Mat& B ) requires( dim == 3 )
+            {
+                return symmetric_cofactor_derivative< 0 >( A, B ) +
+                       symmetric_cofactor_derivative< 1 >( A, B ) +
+                       symmetric_cofactor_derivative< 2 >( A, B );
+            }
+
+            template < int dim, Matrix Mat >
+            static auto sum_of_diagonal_cofactors( const Mat& A ) requires( dim == -1 )
+            {
+                if ( rows( A ) == 2 )
+                    return sum_of_diagonal_cofactors< 2 >( A );
+                /*if(rows(A) == 3)*/ return sum_of_diagonal_cofactors< 3 >( A );
+            }
+
+            template < int dim, Matrix Mat >
+            static auto sum_of_symmetric_cofactor_derivatives( const Mat& A,
+                                                               const Mat& B ) requires( dim == -1 )
+            {
+                if ( rows( A ) == 2 )
+                    return sum_of_symmetric_cofactor_derivatives< 2 >( A, B );
+                /*if(rows(A) == 3)*/ return sum_of_symmetric_cofactor_derivatives< 3 >( A, B );
+            }
         } // namespace detail
         /// @endcond
 
@@ -95,8 +83,8 @@ namespace funcy
          * @{ */
         /// Second principal invariant \f$ \iota_2(A)=\mathrm{tr}(\mathrm{cof}(A)) \f$ for
         /// \f$A\in\mathbb{R}^{n,n}\f$.
-        template < Matrix M >
-        class SecondPrincipalInvariant : public Chainer< SecondPrincipalInvariant< M > >
+        template < Matrix Mat >
+        class SecondPrincipalInvariant : public Chainer< SecondPrincipalInvariant< Mat > >
         {
         public:
             SecondPrincipalInvariant() = default;
@@ -105,22 +93,22 @@ namespace funcy
              * @brief Constructor.
              * @param A matrix to compute second principal invariant from
              */
-            SecondPrincipalInvariant( const M& A )
+            SecondPrincipalInvariant( const Mat& A )
             {
                 update( A );
             }
 
             /// Reset matrix to compute second principal invariant from.
-            void update( const M& A )
+            void update( const Mat& A )
             {
                 if ( !initialized )
                 {
-                    new ( &A_ ) M{ A };
+                    new ( &A_ ) Mat{ A };
                     initialized = true;
                 }
                 else
                     A_ = A;
-                value = detail::Compute< dim< M >() >::sumOfDiagonalCofactors( A );
+                value = detail::sum_of_diagonal_cofactors< dim< Mat >() >( A );
             }
 
             /// Value of the second principal invariant
@@ -133,9 +121,9 @@ namespace funcy
              * @brief First directional derivative
              * @param dA1 direction for which the derivative is computed
              */
-            auto d1( const M& dA1 ) const
+            auto d1( const Mat& dA1 ) const
             {
-                return detail::Compute< dim< M >() >::sumOfSymmetricCofactorDerivatives( A_, dA1 );
+                return detail::sum_of_symmetric_cofactor_derivatives< dim< Mat >() >( A_, dA1 );
             }
 
             /**
@@ -143,14 +131,14 @@ namespace funcy
              * @param dA1 direction for which the derivative is computed
              * @param dA2 direction for which the derivative is computed
              */
-            auto d2( const M& dA1, const M& dA2 ) const
+            auto d2( const Mat& dA1, const Mat& dA2 ) const
             {
-                return detail::Compute< dim< M >() >::sumOfSymmetricCofactorDerivatives( dA1, dA2 );
+                return detail::sum_of_symmetric_cofactor_derivatives< dim< Mat >() >( dA1, dA2 );
             }
 
         private:
-            M A_;
-            std::decay_t< decltype( at( std::declval< M >(), 0, 0 ) ) > value = 0;
+            Mat A_;
+            std::decay_t< decltype( at( std::declval< Mat >(), 0, 0 ) ) > value = 0;
             bool initialized = false;
         };
 

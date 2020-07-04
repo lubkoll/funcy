@@ -3,10 +3,10 @@
 #include <funcy/concepts.h>
 #include <funcy/linalg/concepts.h>
 #include <funcy/linalg/rows_and_cols.h>
+#include <funcy/linalg/type_traits.h>
 #include <funcy/util/at.h>
 #include <funcy/util/chainer.h>
 #include <funcy/util/extract_rows_and_cols.h>
-#include <funcy/util/zero.h>
 
 #include <concepts>
 #include <type_traits>
@@ -31,8 +31,7 @@ namespace funcy
             };
 
             template < ConstantSize Mat >
-            Transposed_t< Mat >
-            transpose( Mat A ) requires( !std::same_as< Mat, Transposed_t< Mat > > )
+            Transposed_t< Mat > transpose( Mat A ) requires std::same_as< Mat, Transposed_t< Mat > >
             {
                 auto a = at( A, 0, 0 );
                 for ( int i = 0; i < rows< Mat >(); ++i )
@@ -59,11 +58,11 @@ namespace funcy
             }
 
             /// Compute transpose of square matrix.
-            template < class Matrix >
-            Matrix transpose( Matrix A )
+            template < class Mat >
+            Mat transpose( Mat A ) requires( !ConstantSize< Mat > )
             {
                 assert( rows( A ) == cols( A ) );
-                using Index = decltype( rows( std::declval< Matrix >() ) );
+                using Index = decltype( rows( std::declval< Mat >() ) );
                 auto a = std::decay_t< decltype( at( A, 0, 0 ) ) >( 0. );
                 for ( Index i = 0; i < rows( A ); ++i )
                     for ( Index j = i + 1; j < cols( A ); ++j )

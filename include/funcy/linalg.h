@@ -1,5 +1,6 @@
 #pragma once
 
+#include <funcy/linalg/concepts.h>
 #include <funcy/linalg/determinant.h>
 #include <funcy/linalg/deviator.h>
 #include <funcy/linalg/deviatoric_invariants.h>

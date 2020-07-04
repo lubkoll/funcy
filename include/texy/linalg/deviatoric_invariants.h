@@ -17,7 +17,7 @@ namespace texy
         template < int n >
         auto j2( const std::string& A )
         {
-            return frobeniusNorm( A )( deviator< n >( A ) );
+            return frobenius_norm( A )( deviator< n >( A ) );
         }
-    }
-}
+    } // namespace linalg
+} // namespace texy

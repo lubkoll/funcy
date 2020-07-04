@@ -51,7 +51,7 @@ namespace funcy
         template < Matrix Mat >
         auto i5( const Mat& A, const Mat& M ) requires( !Function< Mat > )
         {
-            return i1( ( identity( A ) ^ 2 ) * M );
+            return i1( ( squared( identity( A ) ) ) * M );
         }
 
         /**
@@ -63,7 +63,7 @@ namespace funcy
         template < Function F, class Matrix >
         auto i5( const F& f, const Matrix& M )
         {
-            return i1( ( f ^ 2 ) * M );
+            return i1( ( squared( f ) ) * M );
         }
 
         /**
@@ -76,7 +76,7 @@ namespace funcy
         template < Matrix Mat >
         auto i6( const Mat& A, const Mat& M ) requires( !Function< Mat > )
         {
-            return i1( ( constant( M ) ^ 2 ) * identity( A ) );
+            return i1( ( squared( constant( M ) ) ) * identity( A ) );
         }
 
         /**
@@ -88,7 +88,7 @@ namespace funcy
         template < Function F, class Matrix >
         auto i6( const F& f, const Matrix& M )
         {
-            return i1( ( constant( M ) ^ 2 ) * f );
+            return i1( ( squared( constant( M ) ) ) * f );
         }
 
         /**

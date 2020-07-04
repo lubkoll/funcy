@@ -7,10 +7,11 @@ find_package(Eigen3)
 
 if(EIGEN3_FOUND)
     # On travis the examples do not compile due to a strange ambiguity with functionality of Eigen:
-    #  aux_source_directory(examples SRC_LIST)
     set(LINALG_TEST_SRCS
         linalg/cofactor.cpp
         linalg/determinant.cpp
+        examples/exampleTest_Eigen.cpp
+        examples/exampleTest_DynamicEigen.cpp
     )
 endif()
 

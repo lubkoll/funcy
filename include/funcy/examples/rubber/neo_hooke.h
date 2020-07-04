@@ -1,5 +1,6 @@
 #pragma once
 
+#include <funcy/examples/volumetric_penalty_functions.h>
 #include <funcy/funcy.h>
 
 /**
@@ -16,10 +17,12 @@ namespace funcy
      * where \f$\iota_1\f$ is the first principal matrix invariant .
      */
     template < Matrix M, int n = linalg::dim< M >() >
-    auto incompressibleNeoHooke( double c, const M& F )
+    auto incompressible_neo_hooke( double c, const M& F )
     {
         using namespace linalg;
-        return finalize( c * ( i1( strainTensor( F ) ) - n ) );
+        auto S = strain_tensor( F );
+        auto x = i1( S );
+        return finalize( c * ( x - n ) );
     }
 
     /**
@@ -28,7 +31,7 @@ namespace funcy
      * \f$, where \f$\bar\iota_1\f$ is the modified first principal matrix invariant.
      */
     template < Matrix M, int n = linalg::dim< M >() >
-    auto modifiedIncompressibleNeoHooke( double c, const M& F )
+    auto modified_incompressible_neo_hooke( double c, const M& F )
     {
         using namespace linalg;
         auto S = LeftCauchyGreenStrainTensor( F );
@@ -43,11 +46,11 @@ namespace funcy
      */
     template < class InflationPenalty, class CompressionPenalty, Matrix M,
                int n = linalg::dim< M >() >
-    auto compressibleNeoHooke( double c, double d0, double d1, const M& F )
+    auto compressible_neo_hooke( double c, double d0, double d1, const M& F )
     {
         using namespace linalg;
-        return finalize( c * ( i1( strainTensor( F ) ) - n ) +
-                         volumetricPenalty< InflationPenalty, CompressionPenalty >( d0, d1, F ) );
+        return finalize( c * ( i1( strain_tensor( F ) ) - n ) +
+                         volumetric_penalty< InflationPenalty, CompressionPenalty >( d0, d1, F ) );
     }
 
     /**
@@ -58,11 +61,11 @@ namespace funcy
      */
     template < class InflationPenalty, class CompressionPenalty, Matrix M,
                int n = linalg::dim< M >() >
-    auto modifiedCompressibleNeoHooke( double c, double d0, double d1, const M& F )
+    auto modified_compressible_neo_hooke( double c, double d0, double d1, const M& F )
     {
         using namespace linalg;
         auto S = LeftCauchyGreenStrainTensor< M >( F );
         return finalize( c * ( mi1< decltype( S ), n >( S ) - n ) +
-                         volumetricPenalty< InflationPenalty, CompressionPenalty >( d0, d1, F ) );
+                         volumetric_penalty< InflationPenalty, CompressionPenalty >( d0, d1, F ) );
     }
 } // namespace funcy

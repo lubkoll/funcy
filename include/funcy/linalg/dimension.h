@@ -1,6 +1,5 @@
 #pragma once
 
-#include <funcy/linalg/concepts.h>
 #include <funcy/util/extract_rows_and_cols.h>
 
 namespace funcy
@@ -9,16 +8,16 @@ namespace funcy
     {
         /// Specialize this for your matrix class. Dimension (number of rows/columns for square
         /// matrices) must be provided by a static member variable called value.
-        template < SquareMatrix Matrix >
-        struct ExtractDimension : NumberOfRows< Matrix >
+        template < class Mat >
+        struct ExtractDimension : NumberOfRows< Mat >
         {
         };
 
         /// Dimension \f$n\f$ of a fixed size matrix in \f$\mathbb{R}^{n,n}\f$.
-        template < SquareMatrix Matrix >
+        template < class Mat >
         constexpr int dim()
         {
-            return ExtractDimension< Matrix >::value;
+            return ExtractDimension< Mat >::value;
         }
     } // namespace linalg
 } // namespace funcy

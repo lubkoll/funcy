@@ -21,19 +21,19 @@ namespace funcy
         /// @cond
         namespace detail
         {
-            template < ConstantSize M >
-            inline auto computeScalarProduct( const M& A, const M& B )
+            template < ConstantSize Mat >
+            inline auto computeScalarProduct( const Mat& A, const Mat& B )
             {
-                using Index = decltype( rows< M >() );
+                using Index = decltype( rows< Mat >() );
                 auto result = decltype( at( A, 0, 0 ) ){ 0. };
-                for ( Index i = 0; i < rows< M >(); ++i )
-                    for ( Index j = 0; j < cols< M >(); ++j )
+                for ( Index i = 0; i < rows< Mat >(); ++i )
+                    for ( Index j = 0; j < cols< Mat >(); ++j )
                         result += at( A, i, j ) * at( B, i, j );
                 return result;
             }
 
-            template < class M >
-            inline auto computeScalarProduct( const M& A, const M& B )
+            template < class Mat >
+            inline auto computeScalarProduct( const Mat& A, const Mat& B )
             {
                 using Index = decltype( rows( A ) );
                 auto result = decltype( at( A, 0, 0 ) ){ 0. };
@@ -47,23 +47,23 @@ namespace funcy
 
         /// Compute squared Frobenius norm \f$ \|A\|^2 = A\negthinspace : \negthinspace A =
         /// \mathrm{tr}(A^TA) = \sum_{i,j} A_{ij}^2. \f$
-        template < class M >
-        struct SquaredFrobeniusNorm : Chainer< SquaredFrobeniusNorm< M > >
+        template < class Mat >
+        struct SquaredFrobeniusNorm : Chainer< SquaredFrobeniusNorm< Mat > >
         {
             SquaredFrobeniusNorm() = default;
 
-            explicit SquaredFrobeniusNorm( const M& A ) : A_( A )
+            explicit SquaredFrobeniusNorm( const Mat& A ) : A_( A )
             {
                 value = detail::computeScalarProduct( A_, A_ );
             }
 
-            explicit SquaredFrobeniusNorm( M&& A ) : A_( std::move( A ) )
+            explicit SquaredFrobeniusNorm( Mat&& A ) : A_( std::move( A ) )
             {
                 value = detail::computeScalarProduct( A_, A_ );
             }
 
             /// Reset matrix to compute squared norm from.
-            void update( const M& A )
+            void update( const Mat& A )
             {
                 A_ = A;
                 value = detail::computeScalarProduct( A_, A_ );
@@ -76,31 +76,31 @@ namespace funcy
             }
 
             /// First directional derivative.
-            auto d1( const M& dA ) const
+            auto d1( const Mat& dA ) const
             {
                 return 2 * detail::computeScalarProduct( A_, dA );
             }
 
             /// Second directional derivative.
-            auto d2( const M& dA1, const M& dA2 ) const
+            auto d2( const Mat& dA1, const Mat& dA2 ) const
             {
                 return 2 * detail::computeScalarProduct( dA1, dA2 );
             }
 
         private:
-            M A_;
-            std::decay_t< decltype( at( std::declval< M >(), 0, 0 ) ) > value;
+            Mat A_;
+            std::decay_t< decltype( at( std::declval< Mat >(), 0, 0 ) ) > value;
         };
 
         /// Frobenius norm \f$ \|A\| = \sqrt{A\negthinspace : \negthinspace A }=
         /// \sqrt{\mathrm{tr}(A^TA)} = \sqrt{\sum_{i,j} A_{ij}^2}. \f$
-        template < class M >
-        using FrobeniusNorm = mathop::Chain< Sqrt, SquaredFrobeniusNorm< M > >;
+        template < class Mat >
+        using FrobeniusNorm = mathop::Chain< Sqrt, SquaredFrobeniusNorm< Mat > >;
 
         /// Generate Frobenius norm \f$ \|A\| = \sqrt{A\negthinspace : \negthinspace A }=
         /// \sqrt{\mathrm{tr}(A^TA)} = \sqrt{\sum_{i,j} A_{ij}^2}. \f$
-        template < class M >
-        auto frobeniusNorm( const M& A )
+        template < class Mat >
+        auto frobenius_norm( const Mat& A )
         {
             return FrobeniusNorm( A );
         }
@@ -108,7 +108,7 @@ namespace funcy
         /// Generate Frobenius norm \f$ \|A\| = \sqrt{A\negthinspace : \negthinspace A }=
         /// \sqrt{\mathrm{tr}(A^TA)} = \sqrt{\sum_{i,j} A_{ij}^2}. \f$
         template < Function F >
-        auto frobeniusNorm( const F& f )
+        auto frobenius_norm( const F& f )
         {
             return FrobeniusNorm( f() )( f );
         }
