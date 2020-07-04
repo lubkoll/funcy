@@ -6,7 +6,6 @@
 #include <funcy/linalg/type_traits.h>
 #include <funcy/util/at.h>
 #include <funcy/util/chainer.h>
-#include <funcy/util/extract_rows_and_cols.h>
 
 #include <concepts>
 #include <type_traits>
@@ -74,6 +73,42 @@ namespace funcy
 
                 return A;
             }
+
+            /**
+             * @brief Overwrites \f$A\f$ with \f$A+A^T\f$.
+             * @return \f$A+A^T\f$
+             */
+            template < ConstantSize Mat >
+            Mat& add_transposed( Mat& A )
+            {
+                using linalg::dim;
+                using Index = decltype( dim< Mat >() );
+                for ( Index i = 0; i < dim< Mat >(); ++i )
+                    for ( Index j = i + 1; j < dim< Mat >(); ++j )
+                        at( A, j, i ) = at( A, i, j ) = at( A, i, j ) + at( A, j, i );
+                for ( Index i = 0; i < dim< Mat >(); ++i )
+                    at( A, i, i ) *= 2;
+                return A;
+            }
+
+            /**
+             * @brief Overwrites \f$A\f$ with \f$A+A^T\f$.
+             * @return \f$A+A^T\f$
+             */
+            template < class Mat >
+            Mat& add_transposed( Mat& A )
+            {
+                using linalg::cols;
+                using linalg::rows;
+                assert( rows( A ) == cols( A ) );
+                using Index = decltype( rows( std::declval< Mat >() ) );
+                for ( Index i = 0; i < rows( A ); ++i )
+                    for ( Index j = i + 1; j < cols( A ); ++j )
+                        at( A, j, i ) = at( A, i, j ) = at( A, i, j ) + at( A, j, i );
+                for ( Index i = 0; i < rows( A ); ++i )
+                    at( A, i, i ) *= 2;
+                return A;
+            }
         } // namespace detail
         /// @endcond
 
@@ -115,7 +150,7 @@ namespace funcy
         template < class Mat >
         auto transpose( const Mat& A )
         {
-            return Transpose< Mat >( A );
+            return Transpose( A );
         }
 
         /**

@@ -3,7 +3,6 @@
 #include <funcy/concepts.h>
 #include <funcy/linalg/concepts.h>
 #include <funcy/linalg/transpose.h>
-#include <funcy/util/add_transposed_matrix.h>
 #include <funcy/util/chainer.h>
 
 namespace funcy
@@ -50,14 +49,14 @@ namespace funcy
             Mat d1( const Mat& dF1 ) const
             {
                 Mat FTdF1 = FT * dF1;
-                return add_transposed( FTdF1 );
+                return detail::add_transposed( FTdF1 );
             }
 
             /// Second directional derivative \f$ dF_2^T dF_1 + dF_1^T dF_2 \f$.
             Mat d2( const Mat& dF1, const Mat& dF2 ) const
             {
                 Mat dF2TdF1 = detail::transpose( dF2 ) * dF1;
-                return add_transposed( dF2TdF1 );
+                return detail::add_transposed( dF2TdF1 );
             }
 
         private:
@@ -101,14 +100,14 @@ namespace funcy
             Mat d1( const Mat& dF1 ) const
             {
                 Mat FTdF1 = dF1 * FT;
-                return add_transposed( FTdF1 );
+                return detail::add_transposed( FTdF1 );
             }
 
             /// Second directional derivative \f$ dF_2^T dF_1 + dF_1^T dF_2 \f$.
             Mat d2( const Mat& dF1, const Mat& dF2 ) const
             {
                 Mat dF1dF2T = dF1 * detail::transpose( dF2 );
-                return add_transposed( dF1dF2T );
+                return detail::add_transposed( dF1dF2T );
             }
 
         private:
