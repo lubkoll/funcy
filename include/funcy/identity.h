@@ -2,6 +2,9 @@
 
 #include <funcy/util/chainer.h>
 
+#include <type_traits>
+#include <utility>
+
 namespace funcy
 {
     /// %Identity mapping \f$ f(x)=x \f$.
@@ -15,9 +18,16 @@ namespace funcy
          * @brief Constructor.
          * @param x point of evaluation.
          */
-        Identity( const Arg& x )
+        Identity( const Arg& x ) noexcept( std::is_copy_constructible_v< Arg > ) : x_( x )
         {
-            update( x );
+        }
+
+        /**
+         * @brief Constructor.
+         * @param x point of evaluation.
+         */
+        Identity( Arg&& x ) noexcept( std::is_move_constructible_v< Arg > ) : x_( std::move( x ) )
+        {
         }
 
         /// Reset point of evaluation
@@ -45,8 +55,8 @@ namespace funcy
 
     /// Construct Identity<Arg>(x).
     template < class Arg >
-    auto identity( const Arg& x )
+    auto identity( Arg&& x )
     {
-        return Identity< Arg >( x );
+        return Identity( std::forward< Arg >( x ) );
     }
 } // namespace funcy
