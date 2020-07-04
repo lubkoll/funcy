@@ -248,8 +248,8 @@ namespace funcy
                                                   IndexedArgZ >::value >;
 
     template < Function F, class IndexedArg,
-               bool hasMemberFunction = static_check::has::mem_fn::d1< F, IndexedArg >::value,
-               bool withIndex = static_check::has::mem_fn::d1_with_index< F, IndexedArg >::value >
+               bool has_member_function = static_check::has::mem_fn::d1< F, IndexedArg >::value,
+               bool with_index = static_check::has::mem_fn::d1_with_index< F, IndexedArg >::value >
     struct D1_
     {
         static constexpr bool present = false;
