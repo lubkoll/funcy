@@ -8,44 +8,31 @@
 namespace funcy
 {
     /// @cond
-    namespace detail
+    template < class X, class Y, bool both_present = X::present&& Y::present >
+    struct ComputeProduct
     {
-        template < class X, class Y, bool bothPresent >
-        struct ComputeProductImpl
-        {
-            static constexpr bool present = false;
-            ComputeProductImpl( X const&, Y const& )
-            {
-            }
-        };
-
-        template < class X, class Y >
-        struct ComputeProductImpl< X, Y, true >
-        {
-            static constexpr bool present = true;
-
-            ComputeProductImpl( X const& x, Y const& y ) : value( multiply_via_traits( x(), y() ) )
-            {
-            }
-
-            decltype( auto ) operator()() const
-            {
-                return value;
-            }
-
-            decay_t< decltype(
-                multiply_via_traits( std::declval< X >()(), std::declval< Y >()() ) ) >
-                value;
-        };
-    } // namespace detail
-    template < class X, class Y >
-    struct ComputeProduct : public detail::ComputeProductImpl< X, Y, X::present && Y::present >
-    {
-        ComputeProduct( X const& x, Y const& y )
-            : detail::ComputeProductImpl < X,
-        Y, X::present && Y::present > ( x, y )
+        static constexpr bool present = false;
+        ComputeProduct( X const&, Y const& )
         {
         }
+    };
+
+    template < class X, class Y >
+    struct ComputeProduct< X, Y, true >
+    {
+        static constexpr bool present = true;
+
+        ComputeProduct( X const& x, Y const& y ) : value( multiply_via_traits( x(), y() ) )
+        {
+        }
+
+        decltype( auto ) operator()() const
+        {
+            return value;
+        }
+
+        decay_t< decltype( multiply_via_traits( std::declval< X >()(), std::declval< Y >()() ) ) >
+            value;
     };
 
     template < class F, class G >
