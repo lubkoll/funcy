@@ -1,20 +1,30 @@
 #pragma once
 
-#define HAVE_BOOST
-
-#ifdef HAVE_BOOST
+#ifdef FUNCY_BOOST_FOUND
 #include <boost/math/constants/constants.hpp>
 #endif
 
 /// @cond
 namespace funcy
 {
-#ifdef HAVE_BOOST
-  constexpr double third() noexcept { return boost::math::constants::third<double>(); }
-  constexpr double twothirds() noexcept { return boost::math::constants::twothirds<double>(); }
+#ifdef FUNCY_BOOST_FOUND
+    constexpr double third() noexcept
+    {
+        return boost::math::constants::third< double >();
+    }
+    constexpr double twothirds() noexcept
+    {
+        return boost::math::constants::twothirds< double >();
+    }
 #else
-  constexpr double third() noexcept { return 1./3.; }
-  constexpr double twothirds() noexcept { return 2*third(); }
+    constexpr double third() noexcept
+    {
+        return 1. / 3.;
+    }
+    constexpr double twothirds() noexcept
+    {
+        return 2 * third();
+    }
 #endif
-}
+} // namespace funcy
 /// @endcond
