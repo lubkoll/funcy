@@ -69,24 +69,24 @@ TEST( HasVariableIdTest, Sum )
 {
     using namespace funcy;
     const auto f = finalize( variable< 0 >( 1. ) + 1 );
-    auto result = static_check::has::variableId< decltype( f ), 0 >();
+    auto result = static_check::has::variable_id< decltype( f ), 0 >();
     EXPECT_TRUE( result );
-    result = static_check::has::variableId< decltype( f ), 1 >();
+    result = static_check::has::variable_id< decltype( f ), 1 >();
     EXPECT_FALSE( result );
     const auto g = finalize( 1 + variable< 0 >( 1. ) );
-    result = static_check::has::variableId< decltype( g ), 0 >();
+    result = static_check::has::variable_id< decltype( g ), 0 >();
     EXPECT_TRUE( result );
-    result = static_check::has::variableId< decltype( g ), 1 >();
+    result = static_check::has::variable_id< decltype( g ), 1 >();
     EXPECT_FALSE( result );
     const auto h = finalize( variable< 0 >( 1. ) + variable< 1 >( 2 ) );
-    result = static_check::has::variableId< decltype( h ), 0 >();
+    result = static_check::has::variable_id< decltype( h ), 0 >();
     EXPECT_TRUE( result );
-    result = static_check::has::variableId< decltype( h ), 1 >();
+    result = static_check::has::variable_id< decltype( h ), 1 >();
     EXPECT_TRUE( result );
     const auto k = Pow< 2, 1 >() + variable< 1 >( 1 );
-    result = static_check::has::variableId< decltype( k ), 0 >();
+    result = static_check::has::variable_id< decltype( k ), 0 >();
     EXPECT_FALSE( result );
-    result = static_check::has::variableId< decltype( k ), 1 >();
+    result = static_check::has::variable_id< decltype( k ), 1 >();
     EXPECT_TRUE( result );
 }
 
@@ -94,14 +94,14 @@ TEST( HasVariableIdTest, Scale )
 {
     using namespace funcy;
     const auto f = finalize( variable< 0 >( 1. ) * 2 );
-    auto result = static_check::has::variableId< decltype( f ), 0 >();
+    auto result = static_check::has::variable_id< decltype( f ), 0 >();
     EXPECT_TRUE( result );
-    result = static_check::has::variableId< decltype( f ), 1 >();
+    result = static_check::has::variable_id< decltype( f ), 1 >();
     EXPECT_FALSE( result );
     const auto g = finalize( 2 * variable< 0 >( 1. ) );
-    result = static_check::has::variableId< decltype( g ), 0 >();
+    result = static_check::has::variable_id< decltype( g ), 0 >();
     EXPECT_TRUE( result );
-    result = static_check::has::variableId< decltype( g ), 1 >();
+    result = static_check::has::variable_id< decltype( g ), 1 >();
     EXPECT_FALSE( result );
 }
 
@@ -109,14 +109,14 @@ TEST( HasVariableIdTest, Multiply )
 {
     using namespace funcy;
     const auto f = finalize( variable< 0 >( 1. ) * variable< 1 >( 2. ) );
-    auto result = static_check::has::variableId< decltype( f ), 0 >();
+    auto result = static_check::has::variable_id< decltype( f ), 0 >();
     EXPECT_TRUE( result );
-    result = static_check::has::variableId< decltype( f ), 1 >();
+    result = static_check::has::variable_id< decltype( f ), 1 >();
     EXPECT_TRUE( result );
     const auto g = finalize( funcy::Sin( 1 ) * variable< 0 >( 1. ) );
-    result = static_check::has::variableId< decltype( g ), 0 >();
+    result = static_check::has::variable_id< decltype( g ), 0 >();
     EXPECT_TRUE( result );
-    result = static_check::has::variableId< decltype( g ), 1 >();
+    result = static_check::has::variable_id< decltype( g ), 1 >();
     EXPECT_FALSE( result );
 }
 
@@ -124,9 +124,9 @@ TEST( HasVariableIdTest, Squared )
 {
     using namespace funcy;
     const auto f = finalize( squared( variable< 0 >( 1. ) ) );
-    auto result = static_check::has::variableId< decltype( f ), 0 >();
+    auto result = static_check::has::variable_id< decltype( f ), 0 >();
     EXPECT_TRUE( result );
-    result = static_check::has::variableId< decltype( f ), 1 >();
+    result = static_check::has::variable_id< decltype( f ), 1 >();
     EXPECT_FALSE( result );
 }
 

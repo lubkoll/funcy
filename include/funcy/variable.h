@@ -332,14 +332,6 @@ namespace funcy
     {
         /** @addtogroup ConceptCheck
          *  @{ */
-
-        /// Check if T is of type Variable<Type,n>.
-        template < class T >
-        constexpr bool isVariable()
-        {
-            return detail::IsVariable< T >::value;
-        }
-
         namespace has
         {
             /// Check if T contains a type Variable<Type,n>.
@@ -351,23 +343,15 @@ namespace funcy
 
             /// Check if T contains a type Variable<Type,id>.
             template < class T, int id >
-            constexpr bool variableId()
+            constexpr bool variable_id()
             {
                 return detail::has::VariableId< std::decay_t< T >, id >::value;
-            }
-
-            /// Check if T contains at least two variables.
-            template < class T >
-            constexpr bool moreThanOneVariable()
-            {
-                return detail::MinVariableId< std::decay_t< T > >::value <
-                       detail::MaxVariableId< std::decay_t< T > >::value;
             }
         } // namespace has
 
         /// Check if variable with index id has type Type.
         template < class F, class Type, int id >
-        constexpr bool checkArgument()
+        constexpr bool check_argument()
         {
             return ContainsType< Variable_t< F, id >, Type >::value;
         }

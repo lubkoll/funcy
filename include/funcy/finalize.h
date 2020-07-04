@@ -98,8 +98,8 @@ namespace funcy
 
             template < int id, class Arg >
             ReturnT d1( const Arg& dx ) const
-                requires( static_check::has::variableId< F, id >() &&
-                          static_check::checkArgument< F, Arg, id >() )
+                requires( static_check::has::variable_id< F, id >() &&
+                          static_check::check_argument< F, Arg, id >() )
             {
                 return FinalizeD1<
                     id, ReturnT,
@@ -108,7 +108,7 @@ namespace funcy
             }
 
             template < int id >
-            ReturnT d1() const requires( static_check::has::variableId< F, id >() &&
+            ReturnT d1() const requires( static_check::has::variable_id< F, id >() &&
                                          is_arithmetic< Variable_t< F, id > >::value )
             {
                 using Arg = Variable_t< F, id >;
@@ -120,10 +120,10 @@ namespace funcy
 
             template < int idx, int idy, class ArgX, class ArgY >
             ReturnT d2( const ArgX& dx, const ArgY& dy ) const
-                requires( static_check::has::variableId< F, idx >() &&
-                          static_check::has::variableId< F, idy >() &&
-                          static_check::checkArgument< F, ArgX, idx >() &&
-                          static_check::checkArgument< F, ArgY, idy >() )
+                requires( static_check::has::variable_id< F, idx >() &&
+                          static_check::has::variable_id< F, idy >() &&
+                          static_check::check_argument< F, ArgX, idx >() &&
+                          static_check::check_argument< F, ArgY, idy >() )
             {
                 return FinalizeD2<
                     idx, idy, ReturnT,
@@ -133,8 +133,8 @@ namespace funcy
             }
 
             template < int idx, int idy >
-            ReturnT d2() const requires( static_check::has::variableId< F, idx >() &&
-                                         static_check::has::variableId< F, idy >() &&
+            ReturnT d2() const requires( static_check::has::variable_id< F, idx >() &&
+                                         static_check::has::variable_id< F, idy >() &&
                                          is_arithmetic< Variable_t< F, idx > >::value &&
                                          is_arithmetic< Variable_t< F, idy > >::value )
             {
@@ -149,12 +149,12 @@ namespace funcy
 
             template < int idx, int idy, int idz, class ArgX, class ArgY, class ArgZ >
             ReturnT d3( const ArgX& dx, const ArgY& dy, const ArgZ& dz ) const
-                requires( static_check::has::variableId< F, idx >() &&
-                          static_check::has::variableId< F, idy >() &&
-                          static_check::has::variableId< F, idz >() &&
-                          static_check::checkArgument< F, ArgX, idx >() &&
-                          static_check::checkArgument< F, ArgY, idy >() &&
-                          static_check::checkArgument< F, ArgZ, idz >() )
+                requires( static_check::has::variable_id< F, idx >() &&
+                          static_check::has::variable_id< F, idy >() &&
+                          static_check::has::variable_id< F, idz >() &&
+                          static_check::check_argument< F, ArgX, idx >() &&
+                          static_check::check_argument< F, ArgY, idy >() &&
+                          static_check::check_argument< F, ArgZ, idz >() )
             {
                 return FinalizeD3< idx, idy, idz, ReturnT,
                                    static_check::has::mem_fn::d3<
@@ -164,9 +164,9 @@ namespace funcy
             }
 
             template < int idx, int idy, int idz >
-            ReturnT d3() const requires( static_check::has::variableId< F, idx >() &&
-                                         static_check::has::variableId< F, idy >() &&
-                                         static_check::has::variableId< F, idz >() &&
+            ReturnT d3() const requires( static_check::has::variable_id< F, idx >() &&
+                                         static_check::has::variable_id< F, idy >() &&
+                                         static_check::has::variable_id< F, idz >() &&
                                          is_arithmetic< Variable_t< F, idx > >::value &&
                                          is_arithmetic< Variable_t< F, idy > >::value &&
                                          is_arithmetic< Variable_t< F, idz > >::value )
