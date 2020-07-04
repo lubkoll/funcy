@@ -5,7 +5,6 @@
 #include <funcy/util/compute_conditional.h>
 #include <funcy/util/derivative_wrappers.h>
 #include <funcy/util/evaluate_if_present.h>
-#include <funcy/util/static_checks.h>
 #include <funcy/util/type_traits.h>
 
 #include <type_traits>
@@ -64,10 +63,9 @@ namespace funcy
         }
 
         /// First directional derivative.
-        template < int id, class Arg, class IndexedArg = IndexedType< std::decay_t< Arg >, id >,
-                   class = std::enable_if_t<
-                       ComputeConditional< D1< F, IndexedArg >, D1< G, IndexedArg > >::present > >
+        template < int id, class Arg, class IndexedArg = IndexedType< std::decay_t< Arg >, id > >
         auto d1( Arg&& dx ) const
+            requires( ComputeConditional< D1< F, IndexedArg >, D1< G, IndexedArg > >::present )
         {
             using D1F = D1< F, IndexedArg >;
             using D1G = D1< G, IndexedArg >;
@@ -76,13 +74,12 @@ namespace funcy
         }
 
         /// Second directional derivative.
-        template <
-            int idx, int idy, class ArgX, class ArgY,
-            class IndexedArgX = IndexedType< std::decay_t< ArgX >, idx >,
-            class IndexedArgY = IndexedType< std::decay_t< ArgY >, idy >,
-            class = std::enable_if_t< ComputeConditional<
-                D2< F, IndexedArgX, IndexedArgY >, D2< G, IndexedArgX, IndexedArgY > >::present > >
+        template < int idx, int idy, class ArgX, class ArgY,
+                   class IndexedArgX = IndexedType< std::decay_t< ArgX >, idx >,
+                   class IndexedArgY = IndexedType< std::decay_t< ArgY >, idy > >
         auto d2( ArgX&& dx, ArgY&& dy ) const
+            requires( ComputeConditional< D2< F, IndexedArgX, IndexedArgY >,
+                                          D2< G, IndexedArgX, IndexedArgY > >::present )
         {
             using D2F = D2< F, IndexedArgX, IndexedArgY >;
             using D2G = D2< G, IndexedArgX, IndexedArgY >;
@@ -94,11 +91,10 @@ namespace funcy
         template < int idx, int idy, int idz, class ArgX, class ArgY, class ArgZ,
                    class IndexedArgX = IndexedType< std::decay_t< ArgX >, idx >,
                    class IndexedArgY = IndexedType< std::decay_t< ArgY >, idy >,
-                   class IndexedArgZ = IndexedType< std::decay_t< ArgZ >, idz >,
-                   class = std::enable_if_t< ComputeConditional<
-                       D3< F, IndexedArgX, IndexedArgY, IndexedArgZ >,
-                       D3< G, IndexedArgX, IndexedArgY, IndexedArgZ > >::present > >
-        auto d3( ArgX&& dx, ArgY&& dy, ArgZ&& dz ) const
+                   class IndexedArgZ = IndexedType< std::decay_t< ArgZ >, idz > >
+        auto d3( ArgX&& dx, ArgY&& dy, ArgZ&& dz ) const requires(
+            ComputeConditional< D3< F, IndexedArgX, IndexedArgY, IndexedArgZ >,
+                                D3< G, IndexedArgX, IndexedArgY, IndexedArgZ > >::present )
         {
             using D3F = D3< F, IndexedArgX, IndexedArgY, IndexedArgZ >;
             using D3G = D3< G, IndexedArgX, IndexedArgY, IndexedArgZ >;

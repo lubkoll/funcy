@@ -5,10 +5,9 @@
 #include <funcy/util/compute_sum.h>
 #include <funcy/util/derivative_wrappers.h>
 #include <funcy/util/evaluate_if_present.h>
-#include <funcy/util/indexed_type.h>
 #include <funcy/util/mathop_traits.h>
+#include <funcy/util/type_traits.h>
 
-#include <type_traits>
 #include <utility>
 
 namespace funcy
@@ -110,10 +109,10 @@ namespace funcy
             }
 
             /// First directional derivative.
-            template < int id, class Arg, class IndexedArg = IndexedType< std::decay_t< Arg >, id >,
-                       class = std::enable_if_t<
-                           ComputeSum< D1< F, IndexedArg >, D1< G, IndexedArg > >::present > >
+            template < int id, class Arg,
+                       class IndexedArg = IndexedType< std::decay_t< Arg >, id > >
             auto d1( Arg&& dx ) const
+                requires( ComputeSum< D1< F, IndexedArg >, D1< G, IndexedArg > >::present )
             {
                 return ComputeSum< D1< F, IndexedArg >, D1< G, IndexedArg > >(
                     f, g, std::forward< Arg >( dx ) )();
@@ -122,11 +121,10 @@ namespace funcy
             /// Second directional derivative.
             template < int idx, int idy, class ArgX, class ArgY,
                        class IndexedArgX = IndexedType< std::decay_t< ArgX >, idx >,
-                       class IndexedArgY = IndexedType< std::decay_t< ArgY >, idy >,
-                       class = std::enable_if_t<
-                           ComputeSum< D2< F, IndexedArgX, IndexedArgY >,
-                                       D2< G, IndexedArgX, IndexedArgY > >::present > >
+                       class IndexedArgY = IndexedType< std::decay_t< ArgY >, idy > >
             auto d2( ArgX&& dx, ArgY&& dy ) const
+                requires( ComputeSum< D2< F, IndexedArgX, IndexedArgY >,
+                                      D2< G, IndexedArgX, IndexedArgY > >::present )
             {
                 return ComputeSum< D2< F, IndexedArgX, IndexedArgY >,
                                    D2< G, IndexedArgX, IndexedArgY > >(
@@ -137,11 +135,10 @@ namespace funcy
             template < int idx, int idy, int idz, class ArgX, class ArgY, class ArgZ,
                        class IndexedArgX = IndexedType< std::decay_t< ArgX >, idx >,
                        class IndexedArgY = IndexedType< std::decay_t< ArgY >, idy >,
-                       class IndexedArgZ = IndexedType< std::decay_t< ArgZ >, idz >,
-                       class = std::enable_if_t<
-                           ComputeSum< D3< F, IndexedArgX, IndexedArgY, IndexedArgZ >,
-                                       D3< G, IndexedArgX, IndexedArgY, IndexedArgZ > >::present > >
+                       class IndexedArgZ = IndexedType< std::decay_t< ArgZ >, idz > >
             auto d3( ArgX&& dx, ArgY&& dy, ArgZ&& dz ) const
+                requires( ComputeSum< D3< F, IndexedArgX, IndexedArgY, IndexedArgZ >,
+                                      D3< G, IndexedArgX, IndexedArgY, IndexedArgZ > >::present )
             {
                 return ComputeSum< D3< F, IndexedArgX, IndexedArgY, IndexedArgZ >,
                                    D3< G, IndexedArgX, IndexedArgY, IndexedArgZ > >(

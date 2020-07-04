@@ -3,9 +3,7 @@
 #include <funcy/concepts.h>
 #include <funcy/linalg/type_traits.h>
 #include <funcy/util/derivative_wrappers.h>
-#include <funcy/util/indexed_type.h>
 #include <funcy/util/macros.h>
-#include <funcy/util/static_checks.h>
 #include <funcy/util/type_traits.h>
 #include <funcy/variable.h>
 
@@ -23,7 +21,7 @@ namespace funcy
             template < class... Args >
             FUNCY_ALWAYS_INLINE ReturnT operator()( const Args&... ) const
             {
-                return zero< ReturnT >();
+                return linalg::zero< ReturnT >();
             }
         };
 

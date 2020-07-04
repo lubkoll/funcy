@@ -1,7 +1,7 @@
 #pragma once
 
-#include <funcy/util/indexed_type.h>
 #include <funcy/util/static_checks.h>
+#include <funcy/util/type_traits.h>
 
 #include <utility>
 

@@ -49,4 +49,13 @@ namespace funcy
     /// Access underlying type (if it is hidden by expression templates).
     template < class F >
     using remove_reference_t = typename Decay< std::remove_reference_t< F > >::type;
+
+    template < class Type, int id >
+    struct IndexedType
+    {
+        using type = Type;
+        static constexpr int index = id;
+
+        Type value;
+    };
 } // namespace funcy

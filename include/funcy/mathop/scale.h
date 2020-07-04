@@ -4,8 +4,8 @@
 #include <funcy/util/chainer.h>
 #include <funcy/util/derivative_wrappers.h>
 #include <funcy/util/evaluate_if_present.h>
-#include <funcy/util/indexed_type.h>
 #include <funcy/util/mathop_traits.h>
+#include <funcy/util/type_traits.h>
 
 #include <type_traits>
 #include <utility>
@@ -86,9 +86,8 @@ namespace funcy
             }
 
             /// First directional derivative.
-            template < int idx, class Arg, class IndexedArg = IndexedType< Arg, idx >,
-                       class = std::enable_if_t< D1< F, IndexedArg >::present > >
-            auto d1( const Arg& dx ) const
+            template < int idx, class Arg, class IndexedArg = IndexedType< Arg, idx > >
+            auto d1( const Arg& dx ) const requires( D1< F, IndexedArg >::present )
             {
                 return multiply_via_traits( a, D1_< F, IndexedArg >::apply( f, dx ) );
             }
@@ -96,9 +95,9 @@ namespace funcy
             /// Second directional derivative.
             template < int idx, int idy, class ArgX, class ArgY,
                        class IndexedArgX = IndexedType< ArgX, idx >,
-                       class IndexedArgY = IndexedType< ArgY, idy >,
-                       class = std::enable_if_t< D2< F, IndexedArgX, IndexedArgY >::present > >
+                       class IndexedArgY = IndexedType< ArgY, idy > >
             auto d2( const ArgX& dx, const ArgY& dy ) const
+                requires( D2< F, IndexedArgX, IndexedArgY >::present )
             {
                 return multiply_via_traits(
                     a, D2_< F, IndexedArgX, IndexedArgY >::apply( f, dx, dy ) );
@@ -108,10 +107,9 @@ namespace funcy
             template < int idx, int idy, int idz, class ArgX, class ArgY, class ArgZ,
                        class IndexedArgX = IndexedType< ArgX, idx >,
                        class IndexedArgY = IndexedType< ArgY, idy >,
-                       class IndexedArgZ = IndexedType< ArgZ, idz >,
-                       class = std::enable_if_t<
-                           D3< F, IndexedArgX, IndexedArgY, IndexedArgZ >::present > >
+                       class IndexedArgZ = IndexedType< ArgZ, idz > >
             auto d3( const ArgX& dx, const ArgY& dy, const ArgZ& dz ) const
+                requires( D3< F, IndexedArgX, IndexedArgY, IndexedArgZ >::present )
             {
                 return multiply_via_traits(
                     a, D3_< F, IndexedArgX, IndexedArgY, IndexedArgZ >::apply( f, dx, dy, dz ) );

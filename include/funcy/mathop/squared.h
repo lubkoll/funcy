@@ -6,7 +6,6 @@
 #include <funcy/util/compute_sum.h>
 #include <funcy/util/derivative_wrappers.h>
 #include <funcy/util/evaluate_if_present.h>
-#include <funcy/util/indexed_type.h>
 #include <funcy/util/mathop_traits.h>
 #include <funcy/util/type_traits.h>
 
@@ -100,12 +99,9 @@ namespace funcy
              * @brief First directional derivative.
              * @param dx direction for which the derivative is computed
              */
-            template < int id, class Arg, class IndexedArg = IndexedType< Arg, id >,
-                       class = std::enable_if_t<
-                           ComputeProduct< D0< F >, D1< F, IndexedArg > >::present > >
+            template < int id, class Arg, class IndexedArg = IndexedType< Arg, id > >
             auto d1( Arg const& dx ) const
-                -> decay_t< decltype( multiply_via_traits( std::declval< F >()(),
-                                                           std::declval< F >()() ) ) >
+                requires( ComputeProduct< D0< F >, D1< F, IndexedArg > >::present )
             {
                 return multiply_via_traits(
                     2, multiply_via_traits( f(), D1_< F, IndexedArg >::apply( f, dx ) ) );
@@ -118,11 +114,9 @@ namespace funcy
              */
             template < int idx, int idy, class ArgX, class ArgY,
                        class IndexedArgX = IndexedType< ArgX, idx >,
-                       class IndexedArgY = IndexedType< ArgY, idy >,
-                       class = std::enable_if_t< D2Sum< IndexedArgX, IndexedArgY >::present > >
+                       class IndexedArgY = IndexedType< ArgY, idy > >
             auto d2( ArgX const& dx, ArgY const& dy ) const
-                -> decay_t< decltype( multiply_via_traits( std::declval< F >()(),
-                                                           std::declval< F >()() ) ) >
+                requires( D2Sum< IndexedArgX, IndexedArgY >::present )
             {
                 return multiply_via_traits(
                     2, sum( product( D0< F >( f ), D2< F, IndexedArgX, IndexedArgY >( f, dx, dy ) ),
@@ -139,12 +133,9 @@ namespace funcy
             template < int idx, int idy, int idz, class ArgX, class ArgY, class ArgZ,
                        class IndexedArgX = IndexedType< ArgX, idx >,
                        class IndexedArgY = IndexedType< ArgY, idy >,
-                       class IndexedArgZ = IndexedType< ArgZ, idz >,
-                       class = std::enable_if_t<
-                           D3Sum< IndexedArgX, IndexedArgY, IndexedArgZ >::present > >
+                       class IndexedArgZ = IndexedType< ArgZ, idz > >
             auto d3( ArgX const& dx, ArgY const& dy, ArgZ const& dz ) const
-                -> decay_t< decltype( multiply_via_traits( std::declval< F >()(),
-                                                           std::declval< F >()() ) ) >
+                requires( D3Sum< IndexedArgX, IndexedArgY, IndexedArgZ >::present )
             {
                 return multiply_via_traits(
                     2, sum( product( D0< F >( f ), D3< F, IndexedArgX, IndexedArgY, IndexedArgZ >(

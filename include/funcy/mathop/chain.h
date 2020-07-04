@@ -5,9 +5,8 @@
 #include <funcy/util/compute_sum.h>
 #include <funcy/util/derivative_wrappers.h>
 #include <funcy/util/evaluate_if_present.h>
-#include <funcy/util/indexed_type.h>
+#include <funcy/util/type_traits.h>
 
-#include <type_traits>
 #include <utility>
 
 namespace funcy
@@ -125,10 +124,9 @@ namespace funcy
              * @param dx direction for which the derivative is computed
              */
             template < int id, class Arg, class IndexedArg = IndexedType< Arg, id >,
-                       class IndexedFArg = IndexedType< FArg, id >,
-                       class = std::enable_if_t<
-                           ComputeChainD1< F, D1< G, IndexedArg >, IndexedFArg >::present > >
+                       class IndexedFArg = IndexedType< FArg, id > >
             auto d1( Arg const& dx ) const
+                requires( ComputeChainD1< F, D1< G, IndexedArg >, IndexedFArg >::present )
             {
                 return chain< IndexedFArg >( f, D1< G, IndexedArg >( g, dx ) )();
             }
@@ -142,10 +140,9 @@ namespace funcy
                        class IndexedArgX = IndexedType< ArgX, idx >,
                        class IndexedArgY = IndexedType< ArgY, idy >,
                        class IndexedFArgX = IndexedType< FArg, idx >,
-                       class IndexedFArgY = IndexedType< FArg, idy >,
-                       class = std::enable_if_t< D2LazyType< IndexedArgX, IndexedArgY, IndexedFArgX,
-                                                             IndexedFArgY >::present > >
-            auto d2( ArgX const& dx, ArgY const& dy ) const
+                       class IndexedFArgY = IndexedType< FArg, idy > >
+            auto d2( ArgX const& dx, ArgY const& dy ) const requires(
+                D2LazyType< IndexedArgX, IndexedArgY, IndexedFArgX, IndexedFArgY >::present )
             {
                 return sum(
                     chain< IndexedFArgX, IndexedFArgY >( f, D1< G, IndexedArgX >( g, dx ),
@@ -165,11 +162,10 @@ namespace funcy
                        class IndexedArgZ = IndexedType< ArgZ, idz >,
                        class IndexedFArgX = IndexedType< FArg, idx >,
                        class IndexedFArgY = IndexedType< FArg, idy >,
-                       class IndexedFArgZ = IndexedType< FArg, idz >,
-                       class = std::enable_if_t<
-                           D3LazyType< IndexedArgX, IndexedArgY, IndexedArgZ, IndexedFArgX,
-                                       IndexedFArgY, IndexedFArgZ >::present > >
+                       class IndexedFArgZ = IndexedType< FArg, idz > >
             auto d3( ArgX const& dx, ArgY const& dy, ArgZ const& dz ) const
+                requires( D3LazyType< IndexedArgX, IndexedArgY, IndexedArgZ, IndexedFArgX,
+                                      IndexedFArgY, IndexedFArgZ >::present )
             {
                 D1< G, IndexedArgX > dGdx( g, dx );
                 D1< G, IndexedArgY > dGdy( g, dy );

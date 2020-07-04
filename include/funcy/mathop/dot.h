@@ -6,7 +6,7 @@
 #include <funcy/util/compute_sum.h>
 #include <funcy/util/derivative_wrappers.h>
 #include <funcy/util/evaluate_if_present.h>
-#include <funcy/util/indexed_type.h>
+#include <funcy/util/type_traits.h>
 
 #include <type_traits>
 #include <utility>
@@ -129,9 +129,8 @@ namespace funcy
              * @brief First directional derivative.
              * @param dx direction for which the derivative is computed
              */
-            template < int id, class Arg, class IndexedArg = IndexedType< Arg, id >,
-                       class = std::enable_if_t< D1Type< IndexedArg >::present > >
-            ReturnType d1( Arg const& dx ) const
+            template < int id, class Arg, class IndexedArg = IndexedType< Arg, id > >
+            ReturnType d1( Arg const& dx ) const requires( D1Type< IndexedArg >::present )
             {
                 return sum( dot_impl( D1< F, IndexedArg >( f, dx ), D0< G >( g ) ),
                             dot_impl( D0< F >( f ), D1< G, IndexedArg >( g, dx ) ) )();
@@ -144,9 +143,9 @@ namespace funcy
              */
             template < int idx, int idy, class ArgX, class ArgY,
                        class IndexedArgX = IndexedType< ArgX, idx >,
-                       class IndexedArgY = IndexedType< ArgY, idy >,
-                       class = std::enable_if_t< D2Type< IndexedArgX, IndexedArgY >::present > >
+                       class IndexedArgY = IndexedType< ArgY, idy > >
             ReturnType d2( ArgX const& dx, ArgY const& dy ) const
+                requires( D2Type< IndexedArgX, IndexedArgY >::present )
             {
                 return sum(
                     dot_impl( D2< F, IndexedArgX, IndexedArgY >( f, dx, dy ), D0< G >( g ) ),
@@ -164,10 +163,9 @@ namespace funcy
             template < int idx, int idy, int idz, class ArgX, class ArgY, class ArgZ,
                        class IndexedArgX = IndexedType< ArgX, idx >,
                        class IndexedArgY = IndexedType< ArgY, idy >,
-                       class IndexedArgZ = IndexedType< ArgZ, idz >,
-                       class = std::enable_if_t<
-                           D3Type< IndexedArgX, IndexedArgY, IndexedArgZ >::present > >
+                       class IndexedArgZ = IndexedType< ArgZ, idz > >
             ReturnType d3( ArgX const& dx, ArgY const& dy, ArgZ const& dz ) const
+                requires( D3Type< IndexedArgX, IndexedArgY, IndexedArgZ >::present )
             {
                 return sum(
                     dot_impl( D3< F, IndexedArgX, IndexedArgY, IndexedArgZ >( f, dx, dy, dz ),
