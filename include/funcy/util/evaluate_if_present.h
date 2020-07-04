@@ -15,7 +15,7 @@ namespace funcy
     template < Function F, class Arg >
     void update_if_present( F&& f, Arg&& x ) requires requires
     {
-        { f.update( x ) };
+        { f.update( std::forward< Arg >( x ) ) };
     }
     {
         f.update( std::forward< Arg >( x ) );
@@ -29,7 +29,7 @@ namespace funcy
     template < int id, Function F, class Arg >
     void update_if_present( F&& f, Arg&& x ) requires requires
     {
-        { f.template update< id >( x ) };
+        { f.template update< id >( std::forward< Arg >( x ) ) };
     }
     {
         f.template update< id >( std::forward< Arg >( x ) );
@@ -43,9 +43,9 @@ namespace funcy
     template < Function F, class IndexedArg, class... IndexedArgs >
     void bulk_update_if_present( F&& f, IndexedArg&& x0, IndexedArgs&&... x )
     {
-        update_if_present< std::decay_t< IndexedArg >::index >(
-            std::forward< F >( f ),
-            std::forward< typename std::decay_t< IndexedArg >::type >( x0.value ) );
+        using IArg = std::decay_t< IndexedArg >;
+        update_if_present< IArg::index >( std::forward< F >( f ),
+                                          std::forward< typename IArg::type >( x0.value ) );
         if constexpr ( sizeof...( x ) > 0 )
         {
             bulk_update_if_present( f, std::forward< IndexedArgs >( x )... );
