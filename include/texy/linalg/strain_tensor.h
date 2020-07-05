@@ -1,8 +1,9 @@
 #pragma once
 
+#include <funcy/util/chainer.h>
+
 #include <string>
 #include <texy/concepts.h>
-#include <texy/util/chainer.h>
 #include <texy/util/string.h>
 
 namespace texy
@@ -18,7 +19,7 @@ namespace texy
          * Used in nonlinear material models based on the deformation gradient \f$\nabla\varphi\f$,
          * which takes the role of \f$F\f$.
          */
-        class RightCauchyGreenStrainTensor : public Chainer< RightCauchyGreenStrainTensor >
+        class RightCauchyGreenStrainTensor : public funcy::Chainer< RightCauchyGreenStrainTensor >
         {
         public:
             RightCauchyGreenStrainTensor() = default;
@@ -77,7 +78,7 @@ namespace texy
          * Used in nonlinear material models based on the deformation gradient \f$\nabla\varphi\f$,
          * which takes the role of \f$F\f$.
          */
-        class LeftCauchyGreenStrainTensor : public Chainer< LeftCauchyGreenStrainTensor >
+        class LeftCauchyGreenStrainTensor : public funcy::Chainer< LeftCauchyGreenStrainTensor >
         {
         public:
             LeftCauchyGreenStrainTensor() = default;

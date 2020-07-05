@@ -1,7 +1,8 @@
 #pragma once
 
+#include <funcy/util/chainer.h>
+
 #include <texy/concepts.h>
-#include <texy/util/chainer.h>
 #include <texy/util/string.h>
 #include <type_traits>
 
@@ -21,7 +22,7 @@ namespace texy
       std::pow.
      */
     template < int dividend, int divisor = 1 >
-    struct Pow : Chainer< Pow< dividend, divisor > >
+    struct Pow : funcy::Chainer< Pow< dividend, divisor > >
     {
         //! @copydoc Cos::Cos()
         explicit Pow( std::string x = "x" )
@@ -91,7 +92,7 @@ namespace texy
 
     /// @cond
     template <>
-    struct Pow< 1, 1 > : Chainer< Pow< 1, 1 > >
+    struct Pow< 1, 1 > : funcy::Chainer< Pow< 1, 1 > >
     {
         //! @copydoc Cos::Cos()
         explicit Pow( std::string x = "x" )
@@ -123,7 +124,7 @@ namespace texy
 
     /// @cond
     template <>
-    struct Pow< 2, 1 > : Chainer< Pow< 2, 1 > >
+    struct Pow< 2, 1 > : funcy::Chainer< Pow< 2, 1 > >
     {
         //! @copydoc Cos::Cos()
         explicit Pow( std::string x = "x" )
@@ -161,7 +162,7 @@ namespace texy
 
     /// @cond
     template <>
-    struct Pow< 3, 1 > : Chainer< Pow< 3, 1 > >
+    struct Pow< 3, 1 > : funcy::Chainer< Pow< 3, 1 > >
     {
         //! @copydoc Cos::Cos()
         explicit Pow( const std::string& x = "x" )
@@ -205,7 +206,7 @@ namespace texy
     };
 
     template < int dividend >
-    struct Pow< dividend, 1 > : Chainer< Pow< dividend, 1 > >
+    struct Pow< dividend, 1 > : funcy::Chainer< Pow< dividend, 1 > >
     {
         //! @copydoc Cos::Cos()
         explicit Pow( const std::string& x = "x" )

@@ -1,7 +1,8 @@
 #pragma once
 
+#include <funcy/util/chainer.h>
+
 #include <texy/concepts.h>
-#include <texy/util/chainer.h>
 #include <texy/util/string.h>
 
 /** @addtogroup TexifyCMathGroup
@@ -16,7 +17,7 @@
 */
 namespace texy
 {
-    struct Tan : Chainer< Tan >
+    struct Tan : funcy::Chainer< Tan >
     {
         //! @copydoc Cos::Cos()
         explicit Tan( const std::string& x = "x" )

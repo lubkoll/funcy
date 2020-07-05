@@ -1,7 +1,8 @@
 #pragma once
 
+#include <funcy/util/chainer.h>
+
 #include <texy/concepts.h>
-#include <texy/util/chainer.h>
 #include <texy/util/string.h>
 
 /** @addtogroup TexifyCMathGroup
@@ -17,7 +18,7 @@
  */
 namespace texy
 {
-    struct LN : Chainer< LN >
+    struct LN : funcy::Chainer< LN >
     {
         //! @copydoc Cos::Cos()
         explicit LN( const std::string& x = "x" )
@@ -69,7 +70,7 @@ namespace texy
      * occur
      * during applications of the chain rule.
      */
-    struct Log10 : Chainer< Log10 >
+    struct Log10 : funcy::Chainer< Log10 >
     {
         //! @copydoc Cos::Cos()
         explicit Log10( const std::string& x = "x" )
@@ -133,7 +134,7 @@ namespace texy
      * occur
      * during applications of the chain rule.
      */
-    struct Log2 : Chainer< Log2 >
+    struct Log2 : funcy::Chainer< Log2 >
     {
         //! @copydoc Cos::Cos()
         explicit Log2( const std::string& x = "x" )

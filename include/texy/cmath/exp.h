@@ -1,7 +1,8 @@
 #pragma once
 
+#include <funcy/util/chainer.h>
+
 #include <texy/concepts.h>
-#include <texy/util/chainer.h>
 #include <texy/util/string.h>
 
 /** @addtogroup TexifyCMathGroup
@@ -16,7 +17,7 @@
  */
 namespace texy
 {
-    struct Exp : Chainer< Exp >
+    struct Exp : funcy::Chainer< Exp >
     {
         //! @copydoc Cos::d0()
         explicit Exp( const std::string& x = "x" )
@@ -66,7 +67,7 @@ namespace texy
       as building block for more complex functions requires directional derivatives. These occur
       during applications of the chain rule.
      */
-    struct Exp2 : Chainer< Exp2 >
+    struct Exp2 : funcy::Chainer< Exp2 >
     {
         //! @copydoc Cos::Cos()
         explicit Exp2( const std::string& x = "x" )

@@ -1,13 +1,13 @@
 #pragma once
 
-#include <texy/util/chainer.h>
+#include <funcy/util/chainer.h>
 
 #include <string>
 
 namespace texy
 {
     /// Wrap a constant.
-    struct Constant : Chainer< Constant >
+    struct Constant : funcy::Chainer< Constant >
     {
         Constant() = default;
 
@@ -40,4 +40,4 @@ namespace texy
     {
         return Constant( x );
     }
-}
+} // namespace texy

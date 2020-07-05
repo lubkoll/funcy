@@ -4,11 +4,11 @@
 #include "trace.h"
 #include "transpose.h"
 
+#include <funcy/util/chainer.h>
 #include <funcy/util/type_traits.h>
 
 #include <texy/concepts.h>
 #include <texy/constant.h>
-#include <texy/util/chainer.h>
 #include <texy/util/string.h>
 #include <type_traits>
 #include <utility>
@@ -19,7 +19,7 @@ namespace texy
     {
         /** @addtogroup TexifyLinearAlgebraGroup
          *  @{ */
-        class Determinant : public Chainer< Determinant >
+        class Determinant : public funcy::Chainer< Determinant >
         {
         public:
             Determinant() = default;

@@ -1,7 +1,8 @@
 #pragma once
 
+#include <funcy/util/chainer.h>
+
 #include <texy/concepts.h>
-#include <texy/util/chainer.h>
 #include <texy/util/string.h>
 
 /*!
@@ -16,7 +17,7 @@
  */
 namespace texy
 {
-    struct ASin : Chainer< ASin >
+    struct ASin : funcy::Chainer< ASin >
     {
         //! @copydoc Cos::Cos()
         explicit ASin( const std::string& x = "x" )

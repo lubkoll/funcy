@@ -1,6 +1,7 @@
 #pragma once
 
 #include <funcy/util/traverse.h>
+#include <funcy/variable.h>
 
 #include <limits>
 #include <string>

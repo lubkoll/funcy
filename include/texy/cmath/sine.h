@@ -1,7 +1,8 @@
 #pragma once
 
+#include <funcy/util/chainer.h>
+
 #include <texy/concepts.h>
-#include <texy/util/chainer.h>
 #include <texy/util/string.h>
 
 /*!
@@ -15,7 +16,7 @@
  */
 namespace texy
 {
-    struct Sin : Chainer< Sin >
+    struct Sin : funcy::Chainer< Sin >
     {
         //! @copydoc Cos::Cos()
         explicit Sin( std::string x = "x" )

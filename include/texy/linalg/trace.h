@@ -1,9 +1,9 @@
 #pragma once
 
+#include <funcy/util/chainer.h>
 #include <funcy/util/type_traits.h>
 
 #include <texy/concepts.h>
-#include <texy/util/chainer.h>
 #include <texy/util/string.h>
 #include <type_traits>
 #include <utility>
@@ -15,7 +15,7 @@ namespace texy
         /** @addtogroup TexifyLinearAlgebraGroup
          *  @{ */
         /// %Trace of a matrix (sum of diagonal elements).
-        struct Trace : Chainer< Trace >
+        struct Trace : funcy::Chainer< Trace >
         {
             Trace() = default;
 

@@ -1,13 +1,13 @@
 #pragma once
 
-#include <texy/util/chainer.h>
+#include <funcy/util/chainer.h>
 
 #include <string>
 
 namespace texy
 {
     /// %Identity mapping \f$ f(x)=x \f$.
-    struct Identity : Chainer< Identity >
+    struct Identity : funcy::Chainer< Identity >
     {
         /// Default constructor.
         Identity() = default;
@@ -49,4 +49,4 @@ namespace texy
     {
         return Identity( x );
     }
-}
+} // namespace texy

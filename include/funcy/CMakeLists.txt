@@ -16,6 +16,7 @@ set_target_properties(funcy PROPERTIES
 target_sources(funcy INTERFACE ${HEADER_FILES})
 add_library(Funcy::Funcy ALIAS funcy)
 
+##############################################
 include(GNUInstallDirs)
 set(INSTALL_CONFIGDIR ${CMAKE_INSTALL_LIBDIR}/cmake/funcy)
 

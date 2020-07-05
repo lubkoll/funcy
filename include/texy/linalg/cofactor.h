@@ -1,7 +1,8 @@
 #pragma once
 
+#include <funcy/util/chainer.h>
+
 #include <texy/concepts.h>
-#include <texy/util/chainer.h>
 #include <texy/util/string.h>
 
 namespace texy
@@ -10,7 +11,7 @@ namespace texy
     {
         /** @addtogroup TexifyLinearAlgebraGroup
          *  @{ */
-        class Cofactor : public Chainer< Cofactor >
+        class Cofactor : public funcy::Chainer< Cofactor >
         {
         public:
             Cofactor() = default;

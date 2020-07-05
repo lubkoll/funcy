@@ -17,7 +17,7 @@ namespace texy
 
         /// Compute squared Frobenius norm \f$ \|A\|^2 = A\negthinspace : \negthinspace A =
         /// \mathrm{tr}(A^TA) = \sum_{i,j} A_{ij}^2. \f$
-        struct FrobeniusNormSquared : Chainer< FrobeniusNormSquared >
+        struct FrobeniusNormSquared : funcy::Chainer< FrobeniusNormSquared >
         {
             FrobeniusNormSquared() = default;
 

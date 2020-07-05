@@ -10,7 +10,6 @@ list(APPEND CMAKE_MODULE_PATH
 option(Funcy_BuildTest "build test" OFF)
 option(Funcy_Funcy "enable funcy" ON)
 option(Funcy_Texy "enable texy" OFF)
-#option(Funcy_Stringy "enable stringy" OFF)
 
 add_subdirectory(include)
 

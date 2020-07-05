@@ -1,8 +1,9 @@
 #pragma once
 
+#include <funcy/util/chainer.h>
+
 #include <cmath>
 #include <texy/concepts.h>
-#include <texy/util/chainer.h>
 #include <texy/util/string.h>
 
 /*!
@@ -16,7 +17,7 @@
  */
 namespace texy
 {
-    struct Cos : Chainer< Cos >
+    struct Cos : funcy::Chainer< Cos >
     {
         /**
          * @brief Constructor.
