@@ -15,7 +15,7 @@ namespace funcy
      *  @{ */
 
     /*!
-      @brief min function \f$ \min(x,y) \f$ including first three derivatives.
+      @brief min function \f$ \min(x,y) \f$.
 
       For scalar functions directional derivatives are less interesting. Incorporating this function
       as building block for more complex functions requires directional derivatives. These occur

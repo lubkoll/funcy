@@ -162,7 +162,7 @@ namespace funcy
     };
 
     /**
-     * @brief Power function with integral exponent including first three derivatives.
+     * @brief Power function with integral exponent.
      * Specialization for k=-1, avoiding the use of std::pow.
      * For scalar functions directional derivatives are less interesting. Incorporating this
      * function as building block for more complex functions requires directional derivatives. These
@@ -386,13 +386,13 @@ namespace funcy
     };
     /// @endcond
 
-    /// Square root including first three derivatives (based on sqrt(double) in \<cmath\>).
+    /// Square root (based on sqrt(double) in \<cmath\>).
     using Sqrt = Pow< 1, 2 >;
 
-    /// Third root including first three derivatives (based on sqrt(double) in \<cmath\>).
+    /// Third root (based on sqrt(double) in \<cmath\>).
     using Cbrt = Pow< 1, 3 >;
 
-    /// Third root squared including first three derivatives (based on sqrt(double) in \<cmath\>).
+    /// Third root squared (based on sqrt(double) in \<cmath\>).
     using Cbrt2 = Pow< 2, 3 >;
 
     /*!

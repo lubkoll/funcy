@@ -8,7 +8,7 @@
 /*!
   @ingroup TexifyCMathGroup
 
-  @brief Arc sine function including first three derivatives (based on asin(std::string) in
+  @brief Arc sine function (based on asin(std::string) in
   \<cmath\>).
 
   For scalar functions directional derivatives are less interesting. Incorporating this function

@@ -9,7 +9,7 @@
  *  @{ */
 
 /**
- * @brief Natural logarithm including first three derivatives.
+ * @brief Natural logarithm.
  *
  * For scalar functions directional derivatives are less interesting. Incorporating this
  * function
@@ -62,7 +62,7 @@ namespace texy
     };
 
     /**
-     * @brief Common (base 10) logarithm including first three derivatives.
+     * @brief Common (base 10) logarithm.
      *
      * For scalar functions directional derivatives are less interesting. Incorporating this
      * function
@@ -126,7 +126,7 @@ namespace texy
     };
 
     /**
-     * @brief %Base 2 logarithm including first three derivatives.
+     * @brief %Base 2 logarithm.
      *
      * For scalar functions directional derivatives are less interesting. Incorporating this
      * function

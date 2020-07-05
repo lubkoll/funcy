@@ -9,7 +9,7 @@
  *  @{ */
 
 /*!
-  @brief Exponential function including first three derivatives.
+  @brief Exponential function.
 
   For scalar functions directional derivatives are less interesting. Incorporating this function
   as building block for more complex functions requires directional derivatives. These occur
@@ -61,7 +61,7 @@ namespace texy
     };
 
     /*!
-      @brief Function \f$2^x\f$ including first three derivatives.
+      @brief Function \f$2^x\f$.
 
       For scalar functions directional derivatives are less interesting. Incorporating this function
       as building block for more complex functions requires directional derivatives. These occur

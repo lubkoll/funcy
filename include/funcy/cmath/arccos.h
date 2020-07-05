@@ -12,7 +12,7 @@ namespace funcy
     /*!
       @ingroup CMathGroup
 
-      @brief Arc cosine function including first three derivatives (based on acos(double) in
+      @brief Arc cosine function (based on acos(double) in
       \<cmath\>).
 
       For scalar functions directional derivatives are less interesting. Incorporating this function

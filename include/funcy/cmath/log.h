@@ -13,7 +13,7 @@ namespace funcy
      *  @{ */
 
     /**
-     * @brief Natural logarithm including first three derivatives.
+     * @brief Natural logarithm.
      *
      * For scalar functions directional derivatives are less interesting. Incorporating this
      * function as building block for more complex functions requires directional derivatives. These
@@ -67,7 +67,7 @@ namespace funcy
     };
 
     /**
-     * @brief Common (base 10) logarithm including first three derivatives.
+     * @brief Common (base 10) logarithm.
      *
      * For scalar functions directional derivatives are less interesting. Incorporating this
      * function as building block for more complex functions requires directional derivatives. These
@@ -121,7 +121,7 @@ namespace funcy
     };
 
     /**
-     * @brief %Base 2 logarithm including first three derivatives.
+     * @brief %Base 2 logarithm.
      *
      * For scalar functions directional derivatives are less interesting. Incorporating this
      * function as building block for more complex functions requires directional derivatives. These

@@ -12,7 +12,7 @@ namespace funcy
     /*!
       @ingroup CMathGroup
 
-      @brief Arc sine function including first three derivatives (based on asin(double) in
+      @brief Arc sine function (based on asin(double) in
       \<cmath\>).
 
       For scalar functions directional derivatives are less interesting. Incorporating this function

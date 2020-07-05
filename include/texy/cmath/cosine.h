@@ -9,7 +9,7 @@
 /*!
   @ingroup TexifyCMathGroup
 
-  @brief Cosine function including first three derivatives (based on cos(double) in \<cmath\>).
+  @brief Cosine function (based on cos(double) in \<cmath\>).
 
   For scalar functions directional derivatives are less interesting. Incorporating this function
   as building block for more complex functions requires directional derivatives. These occur

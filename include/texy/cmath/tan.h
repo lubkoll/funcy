@@ -9,7 +9,7 @@
  *  @{ */
 
 /*!
-  @brief Tangent function including first three derivatives.
+  @brief Tangent function.
 
   For scalar functions directional derivatives are less interesting. Incorporating this function
   as building block for more complex functions requires directional derivatives. These occur

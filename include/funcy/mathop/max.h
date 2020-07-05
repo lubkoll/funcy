@@ -15,7 +15,7 @@ namespace funcy
      *  @{ */
 
     /*!
-      @brief max function \f$ \max(x,y) \f$ including first three derivatives.
+      @brief max function \f$ \max(x,y) \f$.
 
       For scalar functions directional derivatives are less interesting. Incorporating this function
       as building block for more complex functions requires directional derivatives. These occur

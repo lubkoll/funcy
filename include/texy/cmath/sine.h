@@ -8,7 +8,7 @@
 /*!
   @ingroup TexifyCMathGroup
 
-  @brief Sine function including first three derivatives (based on sin(double) in \<cmath\>).
+  @brief Sine function (based on sin(double) in \<cmath\>).
 
   For scalar functions directional derivatives are less interesting. Incorporating this function
   as building block for more complex functions requires directional derivatives. These occur
