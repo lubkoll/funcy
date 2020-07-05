@@ -34,3 +34,5 @@
 *.user
 
 build*
+html/*
+latex/*
