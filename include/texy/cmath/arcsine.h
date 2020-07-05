@@ -43,7 +43,7 @@ namespace texy
             return std::string( "\\frac{1}{\\sqrt{1-" )
                 .append( addScope( x ) )
                 .append( "^2}}" )
-                .append( multiplyIfNotEmpty( dx ) );
+                .append( multiply_if_not_empty( dx ) );
         }
 
         //! @copydoc Cos::d2()
@@ -54,8 +54,8 @@ namespace texy
                 .append( "-" )
                 .append( addScope( x ) )
                 .append( "^2)^{-3/2}" )
-                .append( multiplyIfNotEmpty( dx ) )
-                .append( multiplyIfNotEmpty( dy ) );
+                .append( multiply_if_not_empty( dx ) )
+                .append( multiply_if_not_empty( dy ) );
         }
 
         //! @copydoc Cos::d3()
@@ -69,9 +69,9 @@ namespace texy
                                     .append( "^2" )
                                     .append( "}{1-x^2})" );
             return first.append( second )
-                .append( multiplyIfNotEmpty( dx ) )
-                .append( multiplyIfNotEmpty( dy ) )
-                .append( multiplyIfNotEmpty( dz ) );
+                .append( multiply_if_not_empty( dx ) )
+                .append( multiply_if_not_empty( dy ) )
+                .append( multiply_if_not_empty( dz ) );
         }
 
     private:

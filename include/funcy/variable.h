@@ -330,8 +330,6 @@ namespace funcy
 
     namespace static_check
     {
-        /** @addtogroup ConceptCheck
-         *  @{ */
         namespace has
         {
             /// Check if T contains a type Variable<Type,n>.
@@ -355,7 +353,5 @@ namespace funcy
         {
             return ContainsType< Variable_t< F, id >, Type >::value;
         }
-
-        /** @} */
     } // namespace static_check
 } // namespace funcy

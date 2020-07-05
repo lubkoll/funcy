@@ -40,20 +40,20 @@ namespace texy
         //! @copydoc Cos::d0()
         std::string d1( const std::string& dx = "" ) const
         {
-            return d0().append( multiplyIfNotEmpty( dx ) );
+            return d0().append( multiply_if_not_empty( dx ) );
         }
 
         //! @copydoc Cos::d0()
         std::string d2( const std::string& dx = "", const std::string& dy = "" ) const
         {
-            return d0().append( multiplyIfNotEmpty( dx, dy ) );
+            return d0().append( multiply_if_not_empty( dx, dy ) );
         }
 
         //! @copydoc Cos::d0()
         std::string d3( const std::string& dx = "", const std::string& dy = "",
                         const std::string& dz = "" ) const
         {
-            return d0().append( multiplyIfNotEmpty( dx, dy, dz ) );
+            return d0().append( multiply_if_not_empty( dx, dy, dz ) );
         }
 
     private:
@@ -93,7 +93,7 @@ namespace texy
             return addScope( std::string( "ln(2)*(2^" )
                                  .append( x )
                                  .append( ")" )
-                                 .append( multiplyIfNotEmpty( dx ) ) );
+                                 .append( multiply_if_not_empty( dx ) ) );
         }
 
         //! @copydoc Cos::d2()
@@ -102,7 +102,7 @@ namespace texy
             return addScope( std::string( "(ln(2)^2)*(2^" )
                                  .append( x )
                                  .append( ")" )
-                                 .append( multiplyIfNotEmpty( dx, dy ) ) );
+                                 .append( multiply_if_not_empty( dx, dy ) ) );
         }
 
         //! @copydoc Cos::d3()
@@ -112,7 +112,7 @@ namespace texy
             return addScope( std::string( "(ln(2)^3)*(2^" )
                                  .append( x )
                                  .append( ")" )
-                                 .append( multiplyIfNotEmpty( dx, dy, dz ) ) );
+                                 .append( multiply_if_not_empty( dx, dy, dz ) ) );
         }
 
     private:

@@ -40,7 +40,7 @@ namespace funcy
     };
 
     template < class F >
-    using is_arithmetic_v = is_arithmetic< F >::value;
+    inline constexpr bool is_arithmetic_v = is_arithmetic< F >::value;
 
     /// Access underlying type (if it is hidden by expression templates).
     template < class F >

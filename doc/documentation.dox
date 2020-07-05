@@ -5,9 +5,9 @@
  *
  * \brief Examples mainly from hyperelasticity.
  *
- * Contains models of the neoHookean-material model (Rubber/neoHooke.hh), the Mooney-Rivlin model (Rubber/mooneyRivlin.hh),
- * an extended Mooney-Rivlin model for the description of skin tissue (Biomechanics/skinTissue_Hendriks.hh) and Fung-elastic
- * models for the description of adipose (Biomechanics/adiposeTissue_SommerHolzapfel.hh) and muscle tissue (Biomechanics/muscleTissue_Martins.hh).
+ * Contains models of the neoHookean-material model (rubber/neo_hooke.h), the Mooney-Rivlin model (rubber/mooney_rivlin.h),
+ * an extended Mooney-Rivlin model for the description of skin tissue (biomechanics/skin_tissue_hendriks.h) and Fung-elastic
+ * models for the description of adipose (biomechanics/adipose_tissue_sommer_holzapfel.h) and muscle tissue (biomechanics/muscle_tissue_martins.h).
  */
 
     /**
@@ -22,14 +22,10 @@
      * \brief Models for the description of different biologial soft tissues.
      */
 
-
-
 /**
  * \defgroup MathematicalOperationsGroup Mathematical Operations
  * \brief Mathematical operations and corresponding differentation rules.
  */
-
-
 
 /**
  * \defgroup CMathGroup Common Mathematical Functions
@@ -37,25 +33,20 @@
  */
 
 /**
+ * \defgroup ConceptGroup Concepts
+ * \brief Concepts used in funcy.
+ */
+
+/**
  * \defgroup LinearAlgebraGroup Linear Algebra
  * \brief Functionality from linear algebra such as (modified) principal and mixed matrix invariants.
  */
 
-    /**
-     * \defgroup InvariantGroup Invariants
-     * \ingroup LinearAlgebraGroup
-     * \brief Matrix Invariants (principal and mixed, modified (isochoric) invariants and deviatoric invariants).
-     */
-
-
 /**
- * \defgroup ConceptGroup Concepts
- * \brief Requirements on input types.
- *
- * For purpose of documentation free functions are declared as friends in concepts.hh.
- * Thus to determine exactly the requirements on input types you may have inspect the module page of the elementary concepts.
- * Or just compile your code and wait for the static assertions to tell you if some functionality is missing.
- */
+* \defgroup InvariantGroup Invariants
+* \ingroup LinearAlgebraGroup
+* \brief Matrix Invariants (principal and mixed, modified (isochoric) invariants and deviatoric invariants).
+*/
 
 
   // Namespaces
@@ -70,28 +61,15 @@
 
   /**
    * \ingroup MathematicalOperationsGroup
-   * \namespace funcy::MathematicalOperations
+   * \namespace funcy::mathop
    * \brief Mathematical operations and corresponding differentation rules.
    * \see MathematicalOperationsGroup
    */
 
   /**
    * \ingroup LinearAlgebraGroup
-   * \namespace funcy::LinearAlgebra
+   * \namespace funcy::linalg
    * \brief Functionality from linear algebra such as (modified) principal and mixed matrix invariants.
    * \see LinearAlgebraGroup
    */
-
-  /**
-   * \ingroup ConceptCheck
-   * \namespace funcy::Checks
-   * \brief Static checks for the presence of different operators and functions.
-   */
-   
-  /**
-   * \ingroup ConceptGroup
-   * \namespace funcy::Concepts
-   * \brief Requirements on input types.
-   * \see Concepts
-   */
-   
+      

@@ -2,15 +2,15 @@
  * 
  * %funcy is structured as follows.
  *
- * - In the module \ref CMathGroup you find functions that are contained in <code>&lt;cmath&gt;</code> together with their derivatives. All header files contained in \ref CMathGroup can be included either with 
- * <pre><code>#include <funcy/math.hh></code> or <code>#include <funcy/funcy.hh></code> (the latter including all(!) header files of the library).</pre>
+ * - In the module \ref CMathGroup you find functions that are contained in <code>&lt;cmath&gt;</code> together with their derivatives. All header files contained in \ref CMathGroup can be included via 
+ * <pre><code>#include <funcy/math.h></code>.</pre>
  *
- * - In the namespace \ref LinearAlgebraGroup you find operations on matrices. In particular efficient implementations of the elementary building blocks of physical models, the matrix invariants, are provided. This includes (isotropic) principal as well as (anisotropic) mixed invariants, (isochoric) modified principal and mixed invariants and deviatoric invariants (\ref InvariantGroup). All header files contained in \ref LinearAlgebraGroup can be included either with 
- * <pre><code>#include <funcy/linear_algebra.hh></code> or <code>#include <funcy/funcy.hh></code>.</pre>
+ * - In the module \ref LinearAlgebraGroup you find operations on matrices. In particular efficient implementations of the elementary building blocks of physical models, the matrix invariants, are provided. This includes (isotropic) principal as well as (anisotropic) mixed invariants, (isochoric) modified principal and mixed invariants and deviatoric invariants (\ref InvariantGroup). All header files contained in \ref LinearAlgebraGroup can be included via
+ * <pre><code>#include <funcy/linalg.h></code>.</pre>
  *
  * - Several models are already implemented in \ref Examples. In particular this includes variations of classical models from \ref Rubber elasticity, i.e. the neo-Hookean and the Mooney-Rivlin model. In \ref Biomechanics more complex models for the description of skin tissue and anisotropic descriptions of adipose and muscle tissue are provided.
  *
- * - Implementations of product, sum and chain rules are provided in the namespace \ref MathematicalOperationsGroup. You do not need to directly use these classes, but rather generate them via operator overloading 
- * (see generate.hh).
+ * - Implementations of product, sum and chain rules are provided in the modules \ref MathematicalOperationsGroup. You do not need to directly use these classes, but rather generate them via operator overloading 
+ * (see generate.h).
  */
  

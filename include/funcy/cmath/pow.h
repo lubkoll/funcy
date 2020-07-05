@@ -69,7 +69,10 @@ namespace funcy
 
     private:
         const double k = static_cast< double >( dividend ) / divisor;
-        double xk = 0, xk1 = 0, xk2 = 0, xk3 = 0;
+        double xk = 0;
+        double xk1 = 0;
+        double xk2 = 0;
+        double xk3 = 0;
     };
 
     /// @cond
@@ -153,7 +156,9 @@ namespace funcy
         }
 
     private:
-        double x = 0., x2 = 0., x3 = 0.;
+        double x = 0;
+        double x2 = 0;
+        double x3 = 0.;
     };
 
     /**
@@ -210,7 +215,8 @@ namespace funcy
         }
 
     private:
-        double x_inv = 1., x_inv2 = 1.;
+        double x_inv = 1;
+        double x_inv2 = 1;
     };
 
     template <>
@@ -258,7 +264,8 @@ namespace funcy
         }
 
     private:
-        double x_ = 0., sqrt_x = 1.;
+        double x_ = 0;
+        double sqrt_x = 1;
     };
 
     /// The function \f$ t\mapsto t^{-1/3} \f$ with first three derivatives.
@@ -313,7 +320,10 @@ namespace funcy
         }
 
     private:
-        double d0val = 0, d1val = 0, d2val = 0, d3val = 0;
+        double d0val = 0;
+        double d1val = 0;
+        double d2val = 0;
+        double d3val = 0;
     };
 
     /// The function \f$ t\mapsto t^{2/3} \f$ with first three derivatives.
@@ -369,7 +379,10 @@ namespace funcy
         }
 
     private:
-        double d0val = 0, d1val = 0, d2val = 0, d3val = 0;
+        double d0val = 0;
+        double d1val = 0;
+        double d2val = 0;
+        double d3val = 0;
     };
     /// @endcond
 
@@ -416,7 +429,7 @@ namespace funcy
     }
 
     /*!
-      @brief Generate \f$ f^{k/l} \f$.
+      @brief Generate \f$ f^{k/l}\f$.
       @param f function mapping into a scalar space
       @tparam k dividend
       @tparam l divisor
@@ -429,7 +442,7 @@ namespace funcy
     }
 
     /*!
-      @brief Generate \f$ f^k,\ k\in\mathbb{N}\f$.
+      @brief Generate \f$ f^k,\ k \in \mathbb{N}\f$.
       @param f function mapping into a scalar space
       @tparam k exponent
       @return object of type mathop::Chain< Pow<dividend,divisor> , Function >

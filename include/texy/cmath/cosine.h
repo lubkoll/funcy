@@ -43,20 +43,20 @@ namespace texy
         /// First (directional) derivative.
         std::string d1( const std::string& dx = "" ) const
         {
-            return std::string( "-\\sin" ).append( x ).append( multiplyIfNotEmpty( dx ) );
+            return std::string( "-\\sin" ).append( x ).append( multiply_if_not_empty( dx ) );
         }
 
         /// Second (directional) derivative.
         std::string d2( const std::string& dx = "", const std::string& dy = "" ) const
         {
-            return std::string( "-\\cos" ).append( x ).append( multiplyIfNotEmpty( dx, dy ) );
+            return std::string( "-\\cos" ).append( x ).append( multiply_if_not_empty( dx, dy ) );
         }
 
         /// Third (directional) derivative.
         std::string d3( const std::string& dx = "", const std::string& dy = "",
                         const std::string& dz = "" ) const
         {
-            return std::string( "\\sin" ).append( x ).append( multiplyIfNotEmpty( dx, dy, dz ) );
+            return std::string( "\\sin" ).append( x ).append( multiply_if_not_empty( dx, dy, dz ) );
         }
 
     private:

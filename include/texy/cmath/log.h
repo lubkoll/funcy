@@ -41,20 +41,20 @@ namespace texy
         //! @copydoc Cos::d1()
         std::string d1( const std::string& dx = "" ) const
         {
-            return std::string( "x^{-1}" ).append( multiplyIfNotEmpty( dx ) );
+            return std::string( "x^{-1}" ).append( multiply_if_not_empty( dx ) );
         }
 
         //! @copydoc Cos::d2()
         std::string d2( const std::string& dx = "", const std::string& dy = "" ) const
         {
-            return std::string( "-(x^{-2})" ).append( multiplyIfNotEmpty( dx, dy ) );
+            return std::string( "-(x^{-2})" ).append( multiply_if_not_empty( dx, dy ) );
         }
 
         //! @copydoc Cos::d3()
         std::string d3( const std::string& dx = "", const std::string& dy = "",
                         const std::string& dz = "" ) const
         {
-            return std::string( "2(x^{-3})" ).append( multiplyIfNotEmpty( dx, dy, dz ) );
+            return std::string( "2(x^{-3})" ).append( multiply_if_not_empty( dx, dy, dz ) );
         }
 
     private:
@@ -94,7 +94,7 @@ namespace texy
         std::string d1( const std::string& dx = "" ) const
         {
             return std::string( "(" ).append( ln10 ).append( "*x)" ).append( "^{-1}" ).append(
-                multiplyIfNotEmpty( dx ) );
+                multiply_if_not_empty( dx ) );
         }
 
         //! @copydoc Cos::d2()
@@ -105,7 +105,7 @@ namespace texy
                 .append( "^{-1}" )
                 .append( x )
                 .append( "^{-2}" )
-                .append( multiplyIfNotEmpty( dx, dy ) );
+                .append( multiply_if_not_empty( dx, dy ) );
         }
 
         //! @copydoc Cos::d3()
@@ -117,7 +117,7 @@ namespace texy
                 .append( "^{-1}" )
                 .append( x )
                 .append( "^{-3}" )
-                .append( multiplyIfNotEmpty( dx, dy, dz ) );
+                .append( multiply_if_not_empty( dx, dy, dz ) );
         }
 
     private:
@@ -162,7 +162,7 @@ namespace texy
                 .append( "*" )
                 .append( x )
                 .append( ")^{-1}" )
-                .append( multiplyIfNotEmpty( dx ) );
+                .append( multiply_if_not_empty( dx ) );
         }
 
         //! @copydoc Cos::d2()
@@ -173,7 +173,7 @@ namespace texy
                 .append( "^{-1}" )
                 .append( x )
                 .append( "^{-2}" )
-                .append( multiplyIfNotEmpty( dx, dy ) );
+                .append( multiply_if_not_empty( dx, dy ) );
         }
 
         //! @copydoc Cos::d3()
@@ -185,7 +185,7 @@ namespace texy
                 .append( "^{-1}" )
                 .append( x )
                 .append( "^{-3}" )
-                .append( multiplyIfNotEmpty( dx, dy, dz ) );
+                .append( multiply_if_not_empty( dx, dy, dz ) );
         }
 
     private:

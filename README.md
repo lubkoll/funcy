@@ -11,20 +11,20 @@ funcy is header-only and requires no installation. To make it available in the l
 ```
 mkdir build
 cd build
-cmake .. -DBuildTest=ON -DCMAKE_INSTALL_PREFIX=<install-prefix>
+cmake .. -DFuncy_BuildTest=ON -DCMAKE_INSTALL_PREFIX=<install-prefix>
 cmake --build . --target install
 ```
 #### To include funcy in your project add this to your CMakeLists.txt:
 ```
-find_package(funcy REQUIRED)
-target_link_libraries(<target> PRIVATE funcy::funcy)
+find_package(Funcy REQUIRED)
+target_link_libraries(<target> PRIVATE Funcy::Funcy)
 ```
 
 ## Using funcy
 
 The function ![alt text](doc/Eq1.gif) with *funcy*:
 ```cpp
-#include <funcy/funcy.hh>
+#include <funcy/funcy.h>
 
 int main()
 {
@@ -43,7 +43,7 @@ The function `finalize` simplifies usage of `f`, taking advantage of the fact th
 
 A model for **nonlinear heat transfer** ![alt text](doc/Eq2.gif):
 ```cpp
-#include <funcy/funcy.hh>
+#include <funcy/funcy.h>
 
 template <class Vector>
 auto heatModel(double c, double d, double u0, const Vector& du0)
@@ -68,7 +68,7 @@ int main()
 
 A **complex biomechanical model** for adipose tissue, based on isotropic and anisotropic matrix invariants ![alt text](doc/Eq3.gif):
 ```cpp
-#include <funcy/funcy.hh>
+#include <funcy/funcy.h>
 
 template <class Matrix>
 auto adiposeTissue(double cCells, double k1, double k2, double kappa,

@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <utility>
 
+/// @cond
 namespace funcy
 {
     template < class X, class Y, bool = X::present, bool = Y::present >
@@ -68,3 +69,4 @@ namespace funcy
         decltype( std::declval< Y >()() ) value;
     };
 } // namespace funcy
+/// @endcond

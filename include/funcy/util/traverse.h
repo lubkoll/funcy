@@ -8,6 +8,7 @@ namespace funcy
 {
     namespace meta
     {
+        /// @cond
         template < class F, template < class > class Operation,
                    template < class... > class Combine >
         struct Traverse : Operation< F >
@@ -43,6 +44,7 @@ namespace funcy
             : Combine< Traverse< F, Operation, Combine >, Traverse< G, Operation, Combine > >
         {
         };
+        /// @endcond
 
         template < class F, template < class > class Operation >
         using AnyOf = Traverse< F, Operation, std::disjunction >;

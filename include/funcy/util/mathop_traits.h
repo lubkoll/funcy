@@ -4,6 +4,7 @@
 
 namespace funcy
 {
+    /// @cond
     template < class T, class = void >
     struct MathOpTraits
     {
@@ -89,4 +90,5 @@ namespace funcy
     {
         return MathOpTraits< std::common_type_t< T, S > >::add( lhs, rhs );
     }
+    /// @endcond
 } // namespace funcy

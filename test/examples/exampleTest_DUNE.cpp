@@ -13,37 +13,44 @@
 
 namespace
 {
-    template < class M, class Function >
-    auto runTest( Function& f )
-    {
-        M a = funcy::linalg::unit_matrix< M >();
-        M da0 = 2 * a, da1 = 3 * a, da2 = 4 * a;
-
-        f.update( a );
-
-        return std::make_tuple( f(), f.d1( da0 ), f.d2( da0, da1 ), f.d3( da0, da1, da2 ) );
-    }
 
     using funcy::LN;
     using funcy::Pow;
     constexpr int dim = 3;
     using M = Dune::FieldMatrix< double, dim, dim >;
-    auto c0 = 1., c1 = 1., d0 = 1., d1 = 1.;
 
-    auto initFiberTensor()
+    template < class M, class Function >
+    auto run_test( Function& f )
+    {
+        const auto a = funcy::linalg::unit_matrix< M >();
+        const auto da0 = 2 * a;
+        const auto da1 = 3 * a;
+        const auto da2 = 4 * a;
+
+        f.update( a );
+
+        return std::make_tuple( f(), f.d1( da0 ), f.d2( da0, da1 ), f.d3( da0, da1, da2 ) );
+    }
+    const auto c0 = 1.0;
+    const auto c1 = 1.0;
+    const auto d0 = 1.0;
+    const auto d1 = 1.0;
+
+    auto initfiber_tensor()
     {
         M m( 0 );
         m[ 0 ][ 0 ] = 1;
         return m;
     }
 
-    M fiberTensor = initFiberTensor(), I = funcy::linalg::unit_matrix< M >();
+    M fiber_tensor = initfiber_tensor();
+    M I = funcy::linalg::unit_matrix< M >();
 } // namespace
 
 TEST( NeoHooke, Incompressible_DUNE )
 {
     auto incompressible_neo_hooke = funcy::incompressible_neo_hooke( c0, I );
-    auto f = runTest< M >( incompressible_neo_hooke );
+    auto f = run_test< M >( incompressible_neo_hooke );
     EXPECT_DOUBLE_EQ( std::get< 0 >( f ), 0 );
     EXPECT_DOUBLE_EQ( std::get< 1 >( f ), 12 );
     EXPECT_DOUBLE_EQ( std::get< 2 >( f ), 36 );
@@ -53,7 +60,7 @@ TEST( NeoHooke, Incompressible_DUNE )
 TEST( NeoHooke, Compressible_DUNE )
 {
     auto compressible_neo_hooke = funcy::compressible_neo_hooke< Pow< 2 >, LN >( c0, d0, d1, I );
-    auto f = runTest< M >( compressible_neo_hooke );
+    auto f = run_test< M >( compressible_neo_hooke );
     EXPECT_DOUBLE_EQ( std::get< 0 >( f ), 0 );
     EXPECT_DOUBLE_EQ( std::get< 1 >( f ), 30 );
     EXPECT_DOUBLE_EQ( std::get< 2 >( f ), 198 );
@@ -62,8 +69,8 @@ TEST( NeoHooke, Compressible_DUNE )
 
 TEST( NeoHooke, ModifiedIncompressible_DUNE )
 {
-    auto modifiedIncompressible_neo_hooke = funcy::modified_incompressible_neo_hooke( c0, I );
-    auto f = runTest< M >( modifiedIncompressible_neo_hooke );
+    auto modified_incompressible_neo_hooke = funcy::modified_incompressible_neo_hooke( c0, I );
+    auto f = run_test< M >( modified_incompressible_neo_hooke );
     EXPECT_DOUBLE_EQ( std::get< 0 >( f ), 0 );
     EXPECT_DOUBLE_EQ( std::get< 1 >( f ), 0 );
     EXPECT_DOUBLE_EQ( std::get< 2 >( f ), 0 );
@@ -74,7 +81,7 @@ TEST( NeoHooke, ModifiedCompressible_DUNE )
 {
     auto modifiedcompressible_neo_hooke =
         funcy::modified_compressible_neo_hooke< Pow< 2 >, LN >( c0, d0, d1, I );
-    auto f = runTest< M >( modifiedcompressible_neo_hooke );
+    auto f = run_test< M >( modifiedcompressible_neo_hooke );
     EXPECT_DOUBLE_EQ( std::get< 0 >( f ), 0 );
     EXPECT_DOUBLE_EQ( std::get< 1 >( f ), 18 );
     EXPECT_DOUBLE_EQ( std::get< 2 >( f ), 162 );
@@ -83,8 +90,8 @@ TEST( NeoHooke, ModifiedCompressible_DUNE )
 
 TEST( MooneyRivlin, Incompressible_DUNE )
 {
-    auto mooneyRivlin = funcy::incompressible_mooney_rivlin( c0, c1, I );
-    auto f = runTest< M >( mooneyRivlin );
+    auto mooney_rivlin = funcy::incompressible_mooney_rivlin( c0, c1, I );
+    auto f = run_test< M >( mooney_rivlin );
     EXPECT_DOUBLE_EQ( std::get< 0 >( f ), 0 );
     EXPECT_DOUBLE_EQ( std::get< 1 >( f ), 36 );
     EXPECT_DOUBLE_EQ( std::get< 2 >( f ), 252 );
@@ -93,8 +100,8 @@ TEST( MooneyRivlin, Incompressible_DUNE )
 
 TEST( MooneyRivlin, Compressible_DUNE )
 {
-    auto mooneyRivlin = funcy::compressible_mooney_rivlin< Pow< 2 >, LN >( c0, c1, d0, d1, I );
-    auto f = runTest< M >( mooneyRivlin );
+    auto mooney_rivlin = funcy::compressible_mooney_rivlin< Pow< 2 >, LN >( c0, c1, d0, d1, I );
+    auto f = run_test< M >( mooney_rivlin );
     EXPECT_DOUBLE_EQ( std::get< 0 >( f ), 0 );
     EXPECT_DOUBLE_EQ( std::get< 1 >( f ), 54 );
     EXPECT_DOUBLE_EQ( std::get< 2 >( f ), 414 );
@@ -104,7 +111,7 @@ TEST( MooneyRivlin, Compressible_DUNE )
 TEST( Skin_Hendriks, Incompressible_DUNE )
 {
     auto skin = funcy::incompressible_skin_hendriks( c0, c1, I );
-    auto f = runTest< M >( skin );
+    auto f = run_test< M >( skin );
     EXPECT_DOUBLE_EQ( std::get< 0 >( f ), 0 );
     EXPECT_DOUBLE_EQ( std::get< 1 >( f ), 12 );
     EXPECT_DOUBLE_EQ( std::get< 2 >( f ), 900 );
@@ -114,7 +121,7 @@ TEST( Skin_Hendriks, Incompressible_DUNE )
 TEST( Skin_Hendriks, Compressible_DUNE )
 {
     auto skin = funcy::compressible_skin_hendriks< Pow< 2 >, LN >( c0, c1, d0, d1, I );
-    auto f = runTest< M >( skin );
+    auto f = run_test< M >( skin );
     EXPECT_DOUBLE_EQ( std::get< 0 >( f ), 0 );
     EXPECT_DOUBLE_EQ( std::get< 1 >( f ), 30 );
     EXPECT_DOUBLE_EQ( std::get< 2 >( f ), 1062 );
@@ -123,8 +130,8 @@ TEST( Skin_Hendriks, Compressible_DUNE )
 
 TEST( Adipose_SommerHolzapfel, Incompressible_DUNE )
 {
-    auto adipose = funcy::incompressible_adipose_tissue_sommer_holzapfel( fiberTensor, I );
-    auto f = runTest< M >( adipose );
+    auto adipose = funcy::incompressible_adipose_tissue_sommer_holzapfel( fiber_tensor, I );
+    auto f = run_test< M >( adipose );
     EXPECT_DOUBLE_EQ( std::get< 0 >( f ), 0 );
     EXPECT_NEAR( std::get< 1 >( f ), 1.8, 1e-11 );
     EXPECT_NEAR( std::get< 2 >( f ), 43.8, 1e-11 );
@@ -134,8 +141,8 @@ TEST( Adipose_SommerHolzapfel, Incompressible_DUNE )
 TEST( Adipose_SommerHolzapfel, Compressible_DUNE )
 {
     auto adipose = funcy::compressible_adipose_tissue_sommer_holzapfel< Pow< 2 >, LN >(
-        d0, d1, fiberTensor, I );
-    auto f = runTest< M >( adipose );
+        d0, d1, fiber_tensor, I );
+    auto f = run_test< M >( adipose );
     EXPECT_DOUBLE_EQ( std::get< 0 >( f ), 0 );
     EXPECT_NEAR( std::get< 1 >( f ), 19.8, 1e-11 );
     EXPECT_NEAR( std::get< 2 >( f ), 205.8, 1e-11 );
@@ -144,8 +151,8 @@ TEST( Adipose_SommerHolzapfel, Compressible_DUNE )
 
 TEST( Muscle_Martins, Incompressible_DUNE )
 {
-    auto muscle = funcy::incompressible_muscle_tissue_martins( fiberTensor, I );
-    auto f = runTest< M >( muscle );
+    auto muscle = funcy::incompressible_muscle_tissue_martins( fiber_tensor, I );
+    auto f = run_test< M >( muscle );
     EXPECT_DOUBLE_EQ( std::get< 0 >( f ), 0 );
     EXPECT_NEAR( std::get< 1 >( f ), 0, 1e-11 );
     EXPECT_NEAR( std::get< 2 >( f ), 0, 1e-11 );
@@ -155,8 +162,8 @@ TEST( Muscle_Martins, Incompressible_DUNE )
 TEST( Muscle_Martins, Compressible_DUNE )
 {
     auto muscle =
-        funcy::compressible_muscle_tissue_martins< Pow< 2 >, LN >( d0, d1, fiberTensor, I );
-    auto f = runTest< M >( muscle );
+        funcy::compressible_muscle_tissue_martins< Pow< 2 >, LN >( d0, d1, fiber_tensor, I );
+    auto f = run_test< M >( muscle );
     EXPECT_DOUBLE_EQ( std::get< 0 >( f ), 0 );
     EXPECT_NEAR( std::get< 1 >( f ), 18, 1e-11 );
     EXPECT_NEAR( std::get< 2 >( f ), 162, 1e-11 );

@@ -46,7 +46,7 @@ namespace funcy
      * @param k2 dimensionless parameter of the model for the interlobular septa
      * @param kappa fiber dispersion parameter \f$(0\le\kappa\le\frac{1}{3})\f$.
      * @param M structural tensor describing the fiber direction of the interlobular septa, i.e.
-     * \f$M=v\otimesv\f$ for a fiber direction \f$v\f$
+     * \f$M=v\otimes v\f$ for a fiber direction \f$v\f$
      * @param F initial deformation gradient
      * @tparam offset number of rows/columns of F, this is only required to adjust the offset of the
      * energy functional such that \f$W(F)=0\f$ for \f$F=I\f$.
@@ -73,7 +73,7 @@ namespace funcy
      * and \f$\kappa=0.09\f$.
      *
      * @param M structural tensor describing the fiber direction of the interlobular septa, i.e.
-     * \f$M=v\otimesv\f$ for a fiber direction \f$v\f$
+     * \f$M=v\otimes v\f$ for a fiber direction \f$v\f$
      * @param F initial deformation gradient
      */
     template < linalg::Matrix Mat, int offset = linalg::dim< Mat >() >
@@ -98,7 +98,7 @@ namespace funcy
      * @param k2 dimensionless parameter of the model for the interlobular septa
      * @param kappa fiber dispersion parameter \f$(0\le\kappa\le\frac{1}{3})\f$.
      * @param M structural tensor describing the fiber direction of the interlobular septa, i.e.
-     * \f$M=v\otimesv\f$ for a fiber direction \f$v\f$
+     * \f$M=v\otimes v\f$ for a fiber direction \f$v\f$
      * @param d0 scaling of the penalty function for inflation
      * @param d1 scaling of the penalty function for compression
      * @param F initial deformation gradient
@@ -130,7 +130,7 @@ namespace funcy
      * @param d0 scaling of the penalty function for inflation
      * @param d1 scaling of the penalty function for compression
      * @param M structural tensor describing the fiber direction of the interlobular septa, i.e.
-     * \f$M=v\otimesv\f$ for a fiber direction \f$v\f$
+     * \f$M=v\otimes v\f$ for a fiber direction \f$v\f$
      * @param F initial deformation gradient
      */
     template < class Inflation, class Compression, linalg::Matrix Mat,

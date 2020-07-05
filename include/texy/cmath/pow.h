@@ -46,14 +46,14 @@ namespace texy
         std::string d1( const std::string& dx = "" ) const
         {
             return std::string( k ).append( "*" ).append(
-                xtp( k1 ).append( multiplyIfNotEmpty( dx ) ) );
+                xtp( k1 ).append( multiply_if_not_empty( dx ) ) );
         }
 
         //! @copydoc Cos::d2()
         std::string d2( const std::string& dx = "", const std::string& dy = "" ) const
         {
             return std::string( kk1 ).append( "*" ).append(
-                xtp( k2 ).append( multiplyIfNotEmpty( dx, dy ) ) );
+                xtp( k2 ).append( multiply_if_not_empty( dx, dy ) ) );
         }
 
         //! @copydoc Cos::d3()
@@ -61,7 +61,7 @@ namespace texy
                         const std::string& dz = "" ) const
         {
             return std::string( kk1k2 ).append( "*" ).append(
-                xtp( k3 ).append( multiplyIfNotEmpty( dx, dy, dz ) ) );
+                xtp( k3 ).append( multiply_if_not_empty( dx, dy, dz ) ) );
         }
 
     private:
@@ -115,7 +115,7 @@ namespace texy
         //! @copydoc Cos::d1()
         std::string d1( std::string dx = "" ) const
         {
-            return std::string( "1" ).append( multiplyIfNotEmpty( dx ) );
+            return std::string( "1" ).append( multiply_if_not_empty( dx ) );
         }
 
     private:
@@ -147,13 +147,13 @@ namespace texy
         //! @copydoc Cos::d1()
         std::string d1( const std::string& dx = "" ) const
         {
-            return std::string( "2" ).append( x ).append( multiplyIfNotEmpty( dx ) );
+            return std::string( "2" ).append( x ).append( multiply_if_not_empty( dx ) );
         }
 
         //! @copydoc Cos::d2()
         std::string d2( const std::string& dx = "", const std::string& dy = "" ) const
         {
-            return std::string( "2" ).append( multiplyIfNotEmpty( dx, dy ) );
+            return std::string( "2" ).append( multiply_if_not_empty( dx, dy ) );
         }
 
     private:
@@ -185,20 +185,21 @@ namespace texy
         //! @copydoc Cos::d1()
         std::string d1( const std::string& dx = "" ) const
         {
-            return std::string( "3" ).append( x ).append( "^2" ).append( multiplyIfNotEmpty( dx ) );
+            return std::string( "3" ).append( x ).append( "^2" ).append(
+                multiply_if_not_empty( dx ) );
         }
 
         //! @copydoc Cos::d2()
         std::string d2( const std::string& dx = "", const std::string& dy = "" ) const
         {
-            return std::string( "6" ).append( x ).append( multiplyIfNotEmpty( dx, dy ) );
+            return std::string( "6" ).append( x ).append( multiply_if_not_empty( dx, dy ) );
         }
 
         //! @copydoc Cos::d3()
         std::string d3( const std::string& dx = "", const std::string& dy = "",
                         const std::string& dz = "" ) const
         {
-            return std::string( "6" ).append( multiplyIfNotEmpty( dx, dy, dz ) );
+            return std::string( "6" ).append( multiply_if_not_empty( dx, dy, dz ) );
         }
 
     private:
@@ -233,7 +234,7 @@ namespace texy
                 .append( x )
                 .append( "^" )
                 .append( std::to_string( dividend - 1 ) )
-                .append( multiplyIfNotEmpty( dx ) );
+                .append( multiply_if_not_empty( dx ) );
         }
 
         //! @copydoc Cos::d2()
@@ -243,7 +244,7 @@ namespace texy
                 .append( x )
                 .append( "^" )
                 .append( std::to_string( dividend - 2 ) )
-                .append( multiplyIfNotEmpty( dx, dy ) );
+                .append( multiply_if_not_empty( dx, dy ) );
         }
 
         //! @copydoc Cos::d3()
@@ -255,7 +256,7 @@ namespace texy
                 .append( ( dividend - 3 == 1 )
                              ? std::string( "" )
                              : std::string( "^" ).append( std::to_string( dividend - 3 ) ) )
-                .append( multiplyIfNotEmpty( dx, dy, dz ) );
+                .append( multiply_if_not_empty( dx, dy, dz ) );
         }
 
     private:

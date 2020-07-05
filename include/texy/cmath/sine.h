@@ -39,20 +39,22 @@ namespace texy
         //! @copydoc Cos::d1()
         std::string d1( const std::string& dx = "" ) const
         {
-            return std::string( R"(\cos)" ).append( x ).append( multiplyIfNotEmpty( dx ) );
+            return std::string( R"(\cos)" ).append( x ).append( multiply_if_not_empty( dx ) );
         }
 
         //! @copydoc Cos::d2()
         std::string d2( const std::string& dx = "", const std::string& dy = "" ) const
         {
-            return std::string( R"(-\sin)" ).append( x ).append( multiplyIfNotEmpty( dx, dy ) );
+            return std::string( R"(-\sin)" ).append( x ).append( multiply_if_not_empty( dx, dy ) );
         }
 
         //! @copydoc Cos::d3()
         std::string d3( const std::string& dx = "", const std::string& dy = "",
                         const std::string& dz = "" ) const
         {
-            return std::string( R"(-\cos)" ).append( x ).append( multiplyIfNotEmpty( dx, dy, dz ) );
+            return std::string( R"(-\cos)" )
+                .append( x )
+                .append( multiply_if_not_empty( dx, dy, dz ) );
         }
 
     private:

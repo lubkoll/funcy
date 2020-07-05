@@ -65,7 +65,7 @@ namespace funcy
     };
 
     /*!
-      @brief Generate \f$ \erf\circ f \f$.
+      @brief Generate \f$ \mathrm{erf}\circ f \f$.
       @param f function mapping into a scalar space
       @return object of type MathematicalOperations::Chain<Erf,Function>
      */

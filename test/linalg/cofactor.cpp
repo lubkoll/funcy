@@ -14,7 +14,7 @@ namespace
     using funcy::linalg::compute_cofactor;
     using funcy::linalg::compute_cofactor_directional_derivative;
 
-    auto generateA()
+    auto get_first_matrix()
     {
         M m;
         m.fill( 0 );
@@ -30,7 +30,7 @@ namespace
         return m;
     }
 
-    auto generateDA()
+    auto get_second_matrix()
     {
         M m;
         m.fill( 0 );
@@ -41,7 +41,7 @@ namespace
     }
 
     template < int i, int j >
-    auto symmetricDerivative( const M& A, const M& B )
+    auto symmetric_derivative( const M& A, const M& B )
     {
         return compute_cofactor_directional_derivative< i, j >( A, B ) +
                compute_cofactor_directional_derivative< i, j >( B, A );
@@ -51,7 +51,7 @@ namespace
 
 TEST( CofactorTest, D0 )
 {
-    auto A = generateA();
+    auto A = get_first_matrix();
 
     auto value = compute_cofactor< 0, 0 >( A );
     EXPECT_DOUBLE_EQ( value, A( 1, 1 ) * A( 2, 2 ) - A( 1, 2 ) * A( 2, 1 ) );
@@ -83,32 +83,32 @@ TEST( CofactorTest, D0 )
 
 TEST( CofactorTest, D1 )
 {
-    auto A = generateA();
-    auto dA = generateDA();
-    auto value = symmetricDerivative< 0, 0 >( A, dA );
+    auto A = get_first_matrix();
+    auto dA = get_second_matrix();
+    auto value = symmetric_derivative< 0, 0 >( A, dA );
     EXPECT_DOUBLE_EQ( value, A( 1, 1 ) + A( 2, 2 ) );
 
-    value = symmetricDerivative< 0, 1 >( A, dA );
+    value = symmetric_derivative< 0, 1 >( A, dA );
     EXPECT_DOUBLE_EQ( value, -A( 1, 0 ) );
 
-    value = symmetricDerivative< 0, 2 >( A, dA );
+    value = symmetric_derivative< 0, 2 >( A, dA );
     EXPECT_DOUBLE_EQ( value, -A( 2, 0 ) );
 
-    value = symmetricDerivative< 1, 0 >( A, dA );
+    value = symmetric_derivative< 1, 0 >( A, dA );
     EXPECT_DOUBLE_EQ( value, -A( 0, 1 ) );
 
-    value = symmetricDerivative< 1, 1 >( A, dA );
+    value = symmetric_derivative< 1, 1 >( A, dA );
     EXPECT_DOUBLE_EQ( value, A( 0, 0 ) + A( 2, 2 ) );
 
-    value = symmetricDerivative< 1, 2 >( A, dA );
+    value = symmetric_derivative< 1, 2 >( A, dA );
     EXPECT_DOUBLE_EQ( value, -A( 2, 1 ) );
 
-    value = symmetricDerivative< 2, 0 >( A, dA );
+    value = symmetric_derivative< 2, 0 >( A, dA );
     EXPECT_DOUBLE_EQ( value, -A( 0, 2 ) );
 
-    value = symmetricDerivative< 2, 1 >( A, dA );
+    value = symmetric_derivative< 2, 1 >( A, dA );
     EXPECT_DOUBLE_EQ( value, -A( 1, 2 ) );
 
-    value = symmetricDerivative< 2, 2 >( A, dA );
+    value = symmetric_derivative< 2, 2 >( A, dA );
     EXPECT_DOUBLE_EQ( value, A( 0, 0 ) + A( 1, 1 ) );
 }

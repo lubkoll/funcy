@@ -44,7 +44,7 @@ namespace texy
                 .append( "\\tan^2" )
                 .append( x )
                 .append( ")" )
-                .append( multiplyIfNotEmpty( dx ) );
+                .append( multiply_if_not_empty( dx ) );
         }
 
         //! @copydoc Cos::d2()
@@ -54,7 +54,7 @@ namespace texy
                 .append( d0() )
                 .append( "*" )
                 .append( d1( dx ) )
-                .append( multiplyIfNotEmpty( dy ) );
+                .append( multiply_if_not_empty( dy ) );
         }
 
         //! @copydoc Cos::d3()
@@ -67,7 +67,7 @@ namespace texy
                 .append( "(1 + 3*\\tan^2" )
                 .append( x )
                 .append( ")" )
-                .append( multiplyIfNotEmpty( dx, dy, dz ) );
+                .append( multiply_if_not_empty( dx, dy, dz ) );
         }
 
     private:

@@ -13,7 +13,7 @@ namespace
     using M = Eigen::Matrix< double, dim, dim >;
     using funcy::linalg::det;
 
-    auto generateA()
+    auto get_first_matrix()
     {
         M m;
         m.fill( 0 );
@@ -29,7 +29,7 @@ namespace
         return m;
     }
 
-    auto generateDA()
+    auto get_second_matrix()
     {
         M m;
         m.fill( 0 );
@@ -42,28 +42,29 @@ namespace
 
 TEST( DeterminantTest, D0 )
 {
-    auto d = det( generateA() );
+    auto d = det( get_first_matrix() );
     EXPECT_DOUBLE_EQ( d.d0(), 21. );
 }
 
 TEST( DeterminantTest, D1 )
 {
     using funcy::linalg::compute_cofactor;
-    auto d = det( generateA() );
-    EXPECT_DOUBLE_EQ( d.d1( generateDA() ), -46. );
-    auto c = compute_cofactor< 0, 0 >( generateA() ) + compute_cofactor< 1, 1 >( generateA() ) +
-             compute_cofactor< 2, 2 >( generateA() );
-    EXPECT_DOUBLE_EQ( d.d1( generateDA() ), c );
+    auto d = det( get_first_matrix() );
+    EXPECT_DOUBLE_EQ( d.d1( get_second_matrix() ), -46. );
+    auto c = compute_cofactor< 0, 0 >( get_first_matrix() ) +
+             compute_cofactor< 1, 1 >( get_first_matrix() ) +
+             compute_cofactor< 2, 2 >( get_first_matrix() );
+    EXPECT_DOUBLE_EQ( d.d1( get_second_matrix() ), c );
 }
 
 TEST( DeterminantTest, D2 )
 {
-    auto d = det( generateA() );
-    EXPECT_DOUBLE_EQ( d.d2( generateDA(), generateDA() ), 10. );
+    auto d = det( get_first_matrix() );
+    EXPECT_DOUBLE_EQ( d.d2( get_second_matrix(), get_second_matrix() ), 10. );
 }
 
 TEST( DeterminantTest, D3 )
 {
-    auto d = det( generateA() );
-    EXPECT_DOUBLE_EQ( d.d3( generateDA(), generateDA(), generateDA() ), 6. );
+    auto d = det( get_first_matrix() );
+    EXPECT_DOUBLE_EQ( d.d3( get_second_matrix(), get_second_matrix(), get_second_matrix() ), 6. );
 }

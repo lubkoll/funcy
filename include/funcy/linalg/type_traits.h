@@ -170,8 +170,6 @@ namespace funcy
           ///
         namespace static_check
         {
-            /** @addtogroup ConceptCheck
-             *  @{ */
             /// Check if object of type Matrix has a member function rows().
             template < class Mat >
             constexpr bool hasmem_fn_rows()
@@ -256,7 +254,6 @@ namespace funcy
             {
                 return true;
             }
-            /** @} */
         } // namespace static_check
 
         /**

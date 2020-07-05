@@ -20,7 +20,7 @@ namespace funcy
         namespace detail
         {
             template < ConstantSize Mat >
-            inline auto computeScalarProduct( const Mat& A, const Mat& B )
+            inline auto compute_scalar_product( const Mat& A, const Mat& B )
             {
                 using Index = decltype( rows< Mat >() );
                 auto result = decltype( at( A, 0, 0 ) ){ 0. };
@@ -31,7 +31,7 @@ namespace funcy
             }
 
             template < class Mat >
-            inline auto computeScalarProduct( const Mat& A, const Mat& B )
+            inline auto compute_scalar_product( const Mat& A, const Mat& B )
             {
                 using Index = decltype( rows( A ) );
                 auto result = decltype( at( A, 0, 0 ) ){ 0. };
@@ -52,19 +52,19 @@ namespace funcy
 
             explicit SquaredFrobeniusNorm( const Mat& A ) : A_( A )
             {
-                value = detail::computeScalarProduct( A_, A_ );
+                value = detail::compute_scalar_product( A_, A_ );
             }
 
             explicit SquaredFrobeniusNorm( Mat&& A ) : A_( std::move( A ) )
             {
-                value = detail::computeScalarProduct( A_, A_ );
+                value = detail::compute_scalar_product( A_, A_ );
             }
 
             /// Reset matrix to compute squared norm from.
             void update( const Mat& A )
             {
                 A_ = A;
-                value = detail::computeScalarProduct( A_, A_ );
+                value = detail::compute_scalar_product( A_, A_ );
             }
 
             /// Squared matrix norm.
@@ -76,13 +76,13 @@ namespace funcy
             /// First directional derivative.
             auto d1( const Mat& dA ) const
             {
-                return 2 * detail::computeScalarProduct( A_, dA );
+                return 2 * detail::compute_scalar_product( A_, dA );
             }
 
             /// Second directional derivative.
             auto d2( const Mat& dA1, const Mat& dA2 ) const
             {
-                return 2 * detail::computeScalarProduct( dA1, dA2 );
+                return 2 * detail::compute_scalar_product( dA1, dA2 );
             }
 
         private:

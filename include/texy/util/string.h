@@ -2,11 +2,11 @@
 
 #include <funcy/util/mathop_traits.h>
 
+#include <ostream>
+#include <regex>
 #include <string>
 #include <type_traits>
 #include <utility>
-#include <ostream>
-#include <regex>
 
 namespace texy
 {
@@ -17,8 +17,8 @@ namespace texy
 
     inline std::string addScope( std::string str )
     {
-        static std::regex notSimple{".*[a-zA-Z0-9]+\\s*[+|-].*"};
-        static std::regex isSimplePower{"[a-zA-Z0-9]+\\^"};
+        static std::regex notSimple{ ".*[a-zA-Z0-9]+\\s*[+|-].*" };
+        static std::regex isSimplePower{ "[a-zA-Z0-9]+\\^" };
         if ( std::regex_match( str, notSimple ) && !std::regex_match( str, isSimplePower ) )
         {
             return forceAddScope( str );
@@ -28,7 +28,7 @@ namespace texy
 
     inline std::string addStrictScope( const std::string& str )
     {
-        static std::regex notSimple{".+[+|-|\\*|/|\\(|\\^].*"};
+        static std::regex notSimple{ ".+[+|-|\\*|/|\\(|\\^].*" };
         if ( std::regex_match( str, notSimple ) )
         {
             return forceAddScope( str );
@@ -46,22 +46,22 @@ namespace texy
         return addTexScope( addScope( std::move( str ) ) );
     }
 
-    inline std::string multiplyIfNotEmpty( const std::string& dx )
+    inline std::string multiply_if_not_empty( const std::string& dx )
     {
         return dx.empty() ? dx : std::string( "*" ).append( dx );
     }
 
-    inline std::string multiplyIfNotEmpty( const std::string& dx, const std::string& dy )
+    inline std::string multiply_if_not_empty( const std::string& dx, const std::string& dy )
     {
-        return multiplyIfNotEmpty( dx ).append( multiplyIfNotEmpty( dy ) );
+        return multiply_if_not_empty( dx ).append( multiply_if_not_empty( dy ) );
     }
 
-    inline std::string multiplyIfNotEmpty( const std::string& dx, const std::string& dy,
-                                           const std::string& dz )
+    inline std::string multiply_if_not_empty( const std::string& dx, const std::string& dy,
+                                              const std::string& dz )
     {
-        return multiplyIfNotEmpty( dx, dy ).append( multiplyIfNotEmpty( dz ) );
+        return multiply_if_not_empty( dx, dy ).append( multiply_if_not_empty( dz ) );
     }
-}
+} // namespace texy
 
 namespace funcy
 {
@@ -93,7 +93,7 @@ namespace funcy
 
         static auto add( const std::string& lhs, const std::string& rhs )
         {
-            return std::string{lhs + " + " + rhs};
+            return std::string{ lhs + " + " + rhs };
         }
     };
-}
+} // namespace funcy
