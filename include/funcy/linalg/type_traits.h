@@ -9,131 +9,69 @@ namespace funcy
 {
     namespace linalg
     {
-
         namespace detail
         {
-
             /// @cond
-            /// Specialization for matrices.
-            template < template < class, int, int... > class Matrix, class T, int n, int... m >
-            struct NumberOfRows< Matrix< T, n, m... > > : std::integral_constant< int, n >
+            template < template < class, auto, auto > class Matrix, class T, auto n, auto m >
+            struct NumberOfRows< Matrix< T, n, m > > : std::integral_constant< int, n >
             {
             };
 
-            /// Specialization for matrices.
-            template < template < class, unsigned, unsigned > class Matrix, class T, unsigned n,
-                       unsigned m >
-            struct NumberOfRows< Matrix< T, n, m > > : std::integral_constant< unsigned, n >
+            template < template < class, auto, auto, auto, auto, auto > class Matrix, class T,
+                       auto n, auto m, auto o, auto p, auto q >
+            struct NumberOfRows< Matrix< T, n, m, o, p, q > > : std::integral_constant< int, n >
             {
             };
 
-            /// Specialization for matrices.
-            template < template < int, int, class > class Matrix, class T, int n, int m >
-            struct NumberOfRows< Matrix< n, m, T > > : std::integral_constant< unsigned, n >
+            template < template < auto, auto, class > class Matrix, class T, auto n, auto m >
+            struct NumberOfRows< Matrix< n, m, T > > : std::integral_constant< int, n >
             {
             };
 
-            /// Specialization for matrices.
-            template < template < unsigned, unsigned, class > class Matrix, class T, unsigned n,
-                       unsigned m >
-            struct NumberOfRows< Matrix< n, m, T > > : std::integral_constant< unsigned, n >
-            {
-            };
-
-            /// Specialization for matrices.
-            template < template < int, int > class Matrix, int n, int m >
+            template < template < auto, auto > class Matrix, auto n, auto m >
             struct NumberOfRows< Matrix< n, m > > : std::integral_constant< int, n >
             {
             };
 
-            /// Specialization for matrices.
-            template < template < unsigned, unsigned > class Matrix, unsigned n, unsigned m >
-            struct NumberOfRows< Matrix< n, m > > : std::integral_constant< unsigned, n >
-            {
-            };
-
-            /// Specialization for vectors.
-            template < template < class, int > class Vector, class T, int n >
+            template < template < class, auto > class Vector, class T, auto n >
             struct NumberOfRows< Vector< T, n > > : std::integral_constant< int, n >
             {
             };
 
-            /// Specialization for vectors.
-            template < template < class, unsigned > class Vector, class T, unsigned n >
-            struct NumberOfRows< Vector< T, n > > : std::integral_constant< unsigned, n >
-            {
-            };
-
-            /// Specialization for vectors.
-            template < template < int > class Vector, int n >
+            template < template < auto > class Vector, auto n >
             struct NumberOfRows< Vector< n > > : std::integral_constant< int, n >
             {
             };
 
-            /// Specialization for vectors.
-            template < template < unsigned > class Vector, unsigned n >
-            struct NumberOfRows< Vector< n > > : std::integral_constant< unsigned, n >
+            template < template < class, auto, auto, auto, auto, auto > class Matrix, class T,
+                       auto n, auto m, auto o, auto p, auto q >
+            struct NumberOfColumns< Matrix< T, n, m, o, p, q > > : std::integral_constant< int, m >
             {
             };
 
-            /// Specialization for matrices.
-            template < template < class, int, int, int... > class Matrix, class T, int n, int m,
-                       int... other >
-            struct NumberOfColumns< Matrix< T, n, m, other... > > : std::integral_constant< int, m >
-            {
-            };
-
-            /// Specialization for matrices.
-            template < template < class, int, int > class Matrix, class T, int n, int m >
+            template < template < class, auto, auto > class Matrix, class T, auto n, auto m >
             struct NumberOfColumns< Matrix< T, n, m > > : std::integral_constant< int, m >
             {
             };
 
-            /// Specialization for matrices.
-            template < template < class, unsigned, unsigned > class Matrix, class T, unsigned n,
-                       unsigned m >
-            struct NumberOfColumns< Matrix< T, n, m > > : std::integral_constant< unsigned, m >
-            {
-            };
-
-            /// Specialization for matrices.
-            template < template < int, int, class > class Matrix, class T, int n, int m >
+            template < template < auto, auto, class > class Matrix, class T, auto n, auto m >
             struct NumberOfColumns< Matrix< n, m, T > > : std::integral_constant< int, m >
             {
             };
 
-            /// Specialization for matrices.
-            template < template < unsigned, unsigned, class > class Matrix, class T, unsigned n,
-                       unsigned m >
-            struct NumberOfColumns< Matrix< n, m, T > > : std::integral_constant< unsigned, m >
-            {
-            };
-
-            /// Specialization for matrices.
-            template < template < int, int > class Matrix, int n, int m >
+            template < template < auto, auto > class Matrix, auto n, auto m >
             struct NumberOfColumns< Matrix< n, m > > : std::integral_constant< int, m >
             {
             };
 
-            /// Specialization for matrices.
-            template < template < unsigned, unsigned > class Matrix, unsigned n, unsigned m >
-            struct NumberOfColumns< Matrix< n, m > > : std::integral_constant< unsigned, m >
-            {
-            };
-
-            template < template < int, int > class Matrix, int n, int m >
+            template < template < auto, auto > class Matrix, auto n, auto m >
             struct GetTransposed< Matrix< n, m > >
             {
                 using type = Matrix< m, n >;
             };
 
-            template < template < unsigned, unsigned > class Matrix, unsigned n, unsigned m >
-            struct GetTransposed< Matrix< n, m > >
-            {
-                using type = Matrix< m, n >;
-            };
-
-            template < template < class, int, int > class Matrix, class Scalar, int n, int m >
+            /// For DUNE.
+            template < template < class, auto, auto > class Matrix, class Scalar, auto n, auto m >
             struct GetTransposed< Matrix< Scalar, n, m > >
             {
                 using type = Matrix< Scalar, m, n >;
@@ -147,17 +85,8 @@ namespace funcy
                 using type = Matrix< Scalar, m, n, option, maxCols, maxRows >;
             };
 
-            /// For DUNE.
-            template < template < class, unsigned, unsigned > class Matrix, class Scalar,
-                       unsigned n, unsigned m >
-            struct GetTransposed< Matrix< Scalar, n, m > >
-            {
-                using type = Matrix< Scalar, m, n >;
-            };
-
             /// For deal.II.
-            template < template < unsigned, unsigned, class > class Matrix, class Scalar,
-                       unsigned n, unsigned m >
+            template < template < auto, auto, class > class Matrix, class Scalar, auto n, auto m >
             struct GetTransposed< Matrix< n, m, Scalar > >
             {
                 using type = Matrix< m, n, Scalar >;
@@ -172,14 +101,14 @@ namespace funcy
         {
             /// Check if object of type Matrix has a member function rows().
             template < class Mat >
-            constexpr bool hasmem_fn_rows()
+            constexpr bool has_mem_fn_rows()
             {
                 return false;
             }
 
             /// Check if object of type Matrix has a member function rows().
             template < class Mat >
-            constexpr bool hasmem_fn_rows() requires requires( Mat m )
+            constexpr bool has_mem_fn_rows() requires requires( Mat m )
             {
                 { m.rows() };
             }
@@ -189,14 +118,14 @@ namespace funcy
 
             /// Check if object of type Matrix has a member n_rows.
             template < class Mat >
-            constexpr bool hasMem_n_rows()
+            constexpr bool has_mem_n_rows()
             {
                 return false;
             }
 
             /// Check if object of type Matrix has a member n_rows.
             template < class Mat >
-            constexpr bool hasMem_n_rows() requires requires( Mat m )
+            constexpr bool has_mem_n_rows() requires requires( Mat m )
             {
                 { m.n_rows };
             }
@@ -206,14 +135,14 @@ namespace funcy
 
             /// Check if object of type Matrix has a member function cols().
             template < class Mat >
-            constexpr bool hasmem_fn_cols()
+            constexpr bool has_mem_fn_cols()
             {
                 return false;
             }
 
             /// Check if object of type Matrix has a member function cols().
             template < class Mat >
-            constexpr bool hasmem_fn_cols() requires requires( Mat m )
+            constexpr bool has_mem_fn_cols() requires requires( Mat m )
             {
                 { m.cols() };
             }
@@ -223,14 +152,14 @@ namespace funcy
 
             /// Check if object of type Matrix has a member n_cols.
             template < class Mat >
-            constexpr bool hasMem_n_cols()
+            constexpr bool has_mem_n_cols()
             {
                 return false;
             }
 
             /// Check if object of type Matrix has a member n_cols.
             template < class Mat >
-            constexpr bool hasMem_n_cols() requires requires( Mat m )
+            constexpr bool has_mem_n_cols() requires requires( Mat m )
             {
                 { m.n_cols };
             }
@@ -240,14 +169,14 @@ namespace funcy
 
             /// Check if object of type Vector has a member function size().
             template < class Vec >
-            constexpr bool hasmem_fn_size()
+            constexpr bool has_mem_fn_size()
             {
                 return false;
             }
 
             /// Check if object of type Vector has a member function size().
             template < class Vec >
-            constexpr bool hasmem_fn_size() requires requires( Vec v )
+            constexpr bool has_mem_fn_size() requires requires( Vec v )
             {
                 { v.size() };
             }

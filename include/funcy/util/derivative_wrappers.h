@@ -282,7 +282,7 @@ namespace funcy
     };
 
     template < Function F, class IndexedArgX, class IndexedArgY,
-               bool hasMemberFunction =
+               bool has_member_function =
                    static_check::has::mem_fn::d2< F, IndexedArgX, IndexedArgY >::value,
                bool withIndex =
                    static_check::has::mem_fn::d2_with_index< F, IndexedArgX, IndexedArgY >::value >
@@ -319,7 +319,7 @@ namespace funcy
     };
 
     template < Function F, class IndexedArgX, class IndexedArgY, class IndexedArgZ,
-               bool hasMemberFunction =
+               bool has_member_function =
                    static_check::has::mem_fn::d3< F, IndexedArgX, IndexedArgY, IndexedArgZ >::value,
                bool withIndex = static_check::has::mem_fn::d3_with_index<
                    F, IndexedArgX, IndexedArgY, IndexedArgZ >::value >

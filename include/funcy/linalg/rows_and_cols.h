@@ -13,7 +13,7 @@ namespace funcy
         /// Number of rows of a dynamic size matrix.
         template < class Mat >
         auto rows( const Mat& A ) requires( !ConstantSize< Mat > &&
-                                            static_check::hasmem_fn_rows< Mat >() )
+                                            static_check::has_mem_fn_rows< Mat >() )
         {
             return A.rows();
         }
@@ -21,7 +21,7 @@ namespace funcy
         /// Number of rows of a dynamic size matrix.
         template < class Mat >
         auto rows( const Mat& A ) requires( !ConstantSize< Mat > &&
-                                            static_check::hasMem_n_rows< Mat >() )
+                                            static_check::has_mem_n_rows< Mat >() )
         {
             return A.n_rows;
         }
@@ -36,7 +36,7 @@ namespace funcy
         /// Number of columns of a dynamic size matrix.
         template < class Mat >
         auto cols( const Mat& A ) requires( !ConstantSize< Mat > &&
-                                            static_check::hasmem_fn_cols< Mat >() )
+                                            static_check::has_mem_fn_cols< Mat >() )
         {
             return A.cols();
         }
@@ -44,7 +44,7 @@ namespace funcy
         /// Number of columns of a dynamic size matrix.
         template < class Mat >
         auto cols( const Mat& A ) requires( !ConstantSize< Mat > &&
-                                            static_check::hasMem_n_cols< Mat >() )
+                                            static_check::has_mem_n_cols< Mat >() )
         {
             return A.n_cols;
         }
