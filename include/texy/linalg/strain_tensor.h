@@ -160,7 +160,7 @@ namespace texy
          * \param A matrix
          * \return LeftCauchyGreenStrainTensor<Matrix>(A)
          */
-        LeftCauchyGreenStrainTensor leftStrainTensor( const std::string& A )
+        LeftCauchyGreenStrainTensor left_strain_tensor( const std::string& A )
         {
             return LeftCauchyGreenStrainTensor{ A };
         }
@@ -172,7 +172,7 @@ namespace texy
          * \return LeftCauchyGreenStrainTensor< decay_t<decltype(f())> >(f())( f )
          */
         template < Function F >
-        LeftCauchyGreenStrainTensor leftStrainTensor( const F& f )
+        LeftCauchyGreenStrainTensor left_strain_tensor( const F& f )
         {
             return LeftCauchyGreenStrainTensor{ f() }( f );
         }

@@ -142,7 +142,7 @@ namespace funcy
          * \return LeftCauchyGreenStrainTensor<Matrix>(A)
          */
         template < class Mat >
-        auto leftStrainTensor( const Mat& A )
+        auto left_strain_tensor( const Mat& A )
         {
             return LeftCauchyGreenStrainTensor{ A };
         }
@@ -153,7 +153,7 @@ namespace funcy
          * square matrices \return LeftCauchyGreenStrainTensor< decay_t<decltype(f())> >(f())( f )
          */
         template < Function F >
-        auto leftStrainTensor( const F& f )
+        auto left_strain_tensor( const F& f )
         {
             return LeftCauchyGreenStrainTensor< decay_t< decltype( f() ) > >{ f() }( f );
         }
