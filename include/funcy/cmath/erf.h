@@ -72,7 +72,7 @@ namespace funcy
     template < Function F >
     auto erf( const F& f )
     {
-        return Erf()( f );
+        return Erf( f() )( f );
     }
     /** @} */
 } // namespace funcy

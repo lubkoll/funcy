@@ -5,6 +5,7 @@
 #include <funcy/operations.h>
 #include <funcy/variable.h>
 
+#include <concepts>
 #include <type_traits>
 #include <utility>
 
@@ -164,5 +165,23 @@ namespace funcy
     auto operator-( F&& f, G&& g ) requires( Function< F > || Function< G > )
     {
         return std::forward< F >( f ) + ( -1 * std::forward< G >( g ) );
+    }
+
+    /**
+     * @brief overload of "/"-operator for the generation of functions.
+     *
+     * Only for functions that return types that are convertible to double
+     * If the resulting type represents a polynomial of order smaller than two, than you need to
+     * wrap it into Finalize to generate missing derivatives.
+     */
+    template < class F, class G >
+    auto operator/( F&& f, G&& g ) requires( requires( G g ) {
+        {
+            g()
+        }
+        ->std::convertible_to< double >;
+    } )
+    {
+        return std::forward< F >( f ) * pow< -1 >( std::forward< G >( g ) );
     }
 } // namespace funcy

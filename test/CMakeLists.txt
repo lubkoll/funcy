@@ -50,6 +50,7 @@ add_executable(tests
     cmath/sine.cpp
     cmath/tan.cpp
     funcy/bulk_update.cpp
+    funcy/generate.cpp
     funcy/function_interface.cpp
     funcy/variable.cpp
     mathop/chain.cpp
