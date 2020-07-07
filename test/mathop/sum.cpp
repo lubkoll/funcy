@@ -1,6 +1,3 @@
-//#include <stringy/cmath/pow.hh>
-//#include <texy/cmath/pow.hh>
-//#include <texy/generate.hh>
 #include <funcy/cmath/pow.h>
 #include <funcy/finalize.h>
 #include <funcy/generate.h>
@@ -43,13 +40,6 @@ TEST( SumTest, D0 )
 //    EXPECT_THAT( fun.d0(), StrEq( "x^3 + y^(3/2)" ) );
 //}
 
-// TEST( TexifySumTest, D0 )
-//{
-//    using texy::Pow;
-//    auto fun = Pow< 3, 1 >( "x" ) + Pow< 3, 2 >( "y" );
-//    EXPECT_THAT( fun.d0(), StrEq( "x^3 + y^{3/2}" ) );
-//}
-
 TEST( SumTest, D1 )
 {
     using funcy::Pow;
@@ -62,13 +52,6 @@ TEST( SumTest, D1 )
 //    using stringy::Pow;
 //    auto fun = funcy::finalize( Pow< 3, 1 >( "x" ) + Pow< 3, 2 >( "y" ) );
 //    EXPECT_THAT( fun.d1( "" ), StrEq( "3x^2 + 3/2*y^(1/2)" ) );
-//}
-
-// TEST( TexifySumTest, D1 )
-//{
-//    using texy::Pow;
-//    auto fun = funcy::finalize( Pow< 3, 1 >( "x" ) + Pow< 3, 2 >( "y" ) );
-//    EXPECT_THAT( fun.d1( "" ), StrEq( "3x^2 + 3/2*y^{1/2}" ) );
 //}
 
 TEST( SumTest, D2 )
@@ -85,13 +68,6 @@ TEST( SumTest, D2 )
 //    EXPECT_THAT( fun.d2( "", "" ), StrEq( "6x + 3/4*y^(-1/2)" ) );
 //}
 
-// TEST( TexifySumTest, D2 )
-//{
-//    using texy::Pow;
-//    auto fun = funcy::finalize( Pow< 3, 1 >( "x" ) + Pow< 3, 2 >( "y" ) );
-//    EXPECT_THAT( fun.d2( "", "" ), StrEq( "6x + 3/4*y^{-1/2}" ) );
-//}
-
 TEST( SumTest, D3 )
 {
     using funcy::Pow;
@@ -104,11 +80,4 @@ TEST( SumTest, D3 )
 //    using stringy::Pow;
 //    auto fun = funcy::finalize( Pow< 3, 1 >( "x" ) + Pow< 3, 2 >( "y" ) );
 //    EXPECT_THAT( fun.d3( "", "", "" ), StrEq( "6 + -3/8*y^(-3/2)" ) );
-//}
-
-// TEST( TexifySumTest, D3 )
-//{
-//    using texy::Pow;
-//    auto fun = funcy::finalize( Pow< 3, 1 >( "x" ) + Pow< 3, 2 >( "y" ) );
-//    EXPECT_THAT( fun.d3( "", "", "" ), StrEq( "6 + -3/8*y^{-3/2}" ) );
 //}

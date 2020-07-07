@@ -36,6 +36,8 @@ if(Funcy_Texy)
         linalg/texify/frobenius_norm.cpp
         linalg/texify/trace.cpp
         linalg/texify/transpose.cpp
+        mathop/texify/squared.cpp
+        mathop/texify/sum.cpp
     )
 endif()
 
