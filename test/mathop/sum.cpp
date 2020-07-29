@@ -6,12 +6,7 @@
 
 #include <gmock/gmock.h>
 
-using ::testing::Eq;
-
-namespace
-{
-    auto StrEq = []( const auto& str ) { return Eq( str ); };
-}
+using ::testing::StrEq;
 
 TEST( SumTest, UpdateVariable )
 {

@@ -1,11 +1,11 @@
 #include <funcy/finalize.h>
-#include <funcy/generate.h>
 
 #include <gtest/gtest.h>
 
 #include <gmock/gmock.h>
 
 #include <texy/cmath/pow.h>
+#include <texy/generate.h>
 
 namespace
 {
@@ -18,6 +18,20 @@ TEST( TexifySumTest, D0 )
     using texy::Pow;
     auto fun = Pow< 3, 1 >( "x" ) + Pow< 3, 2 >( "y" );
     EXPECT_THAT( fun.d0(), StrEq( "x^3 + y^{3/2}" ) );
+}
+
+TEST( TexifySumTest, D0WithConstant )
+{
+    using texy::Pow;
+    auto fun = 1 + Pow< 3, 2 >( "y" );
+    EXPECT_THAT( fun.d0(), StrEq( "1 + y^{3/2}" ) );
+}
+
+TEST( TexifySumTest, D0WithTwoConstants )
+{
+    using texy::Pow;
+    auto fun = 1 + ( 1 + Pow< 3, 2 >( "y" ) );
+    EXPECT_THAT( fun.d0(), StrEq( "1 + 1 + y^{3/2}" ) );
 }
 
 TEST( TexifySumTest, D1 )
