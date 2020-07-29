@@ -7,4 +7,5 @@
 #include <funcy/mathop/product.h>
 #include <funcy/mathop/scale.h>
 #include <funcy/mathop/squared.h>
+#include <funcy/mathop/subtraction.h>
 #include <funcy/mathop/sum.h>

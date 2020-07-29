@@ -62,6 +62,7 @@ add_executable(tests
     mathop/product.cpp
     mathop/scale.cpp
     mathop/squared.cpp
+    mathop/subtraction.cpp
     mathop/sum.cpp
     ${LINALG_TEST_SRCS}
     ${TEXY_TEST_SRCS}

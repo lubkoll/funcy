@@ -25,6 +25,11 @@ namespace funcy
         {
             return lhs + rhs;
         }
+
+        static constexpr auto subtract( const T& lhs, const T& rhs )
+        {
+            return lhs - rhs;
+        }
     };
 
     template < class T >
@@ -38,6 +43,11 @@ namespace funcy
         static constexpr auto add( T lhs, T rhs ) noexcept
         {
             return lhs + rhs;
+        }
+
+        static constexpr auto subtract( T lhs, T rhs ) noexcept
+        {
+            return lhs - rhs;
         }
     };
 
@@ -89,6 +99,20 @@ namespace funcy
     auto add_via_traits( T lhs, S rhs )
     {
         return MathOpTraits< std::common_type_t< T, S > >::add( lhs, rhs );
+    }
+
+    template < class T, class S >
+    auto subtract_via_traits( T&& lhs, S&& rhs ) requires(
+        std::same_as< std::decay_t< T >, std::decay_t< S > > && !Arithmetic< std::decay_t< T > > )
+    {
+        return MathOpTraits< std::decay_t< T > >::subtract( std::forward< T >( lhs ),
+                                                            std::forward< S >( rhs ) );
+    }
+
+    template < Arithmetic T, Arithmetic S >
+    auto subtract_via_traits( T lhs, S rhs )
+    {
+        return MathOpTraits< std::common_type_t< T, S > >::subtract( lhs, rhs );
     }
     /// @endcond
 } // namespace funcy

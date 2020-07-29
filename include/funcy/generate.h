@@ -161,10 +161,34 @@ namespace funcy
      * If the resulting type represents a polynomial of order smaller than two, than you need to
      * wrap it into Finalize to generate missing derivatives.
      */
-    template < class F, class G >
-    auto operator-( F&& f, G&& g ) requires( Function< F > || Function< G > )
+    template < Function F, Function G >
+    auto operator-( F&& f, G&& g )
     {
-        return std::forward< F >( f ) + ( -1 * std::forward< G >( g ) );
+        return mathop::Subtraction( std::forward< F >( f ), std::forward< G >( g ) );
+    }
+
+    /**
+     * @brief overload of "-"-operator for the generation of functions.
+     *
+     * If the resulting type represents a polynomial of order smaller than two, than you need to
+     * wrap it into Finalize to generate missing derivatives.
+     */
+    template < class F, Function G >
+    auto operator-( F&& f, G&& g )
+    {
+        return mathop::Subtraction( constant( std::forward< F >( f ) ), std::forward< G >( g ) );
+    }
+
+    /**
+     * @brief overload of "-"-operator for the generation of functions.
+     *
+     * If the resulting type represents a polynomial of order smaller than two, than you need to
+     * wrap it into Finalize to generate missing derivatives.
+     */
+    template < Function F, class G >
+    auto operator-( F&& f, G&& g )
+    {
+        return mathop::Subtraction( std::forward< F >( f ), constant( std::forward< G >( g ) ) );
     }
 
     /**
