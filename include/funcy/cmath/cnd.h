@@ -10,19 +10,19 @@ namespace funcy
     /*!
       @ingroup CMathGroup
 
-      @brief Cosine function (based on cos(double) in \<cmath\>).
+      @brief Cumulative standard normal distribution.
 
       For scalar functions directional derivatives are less interesting. Incorporating this function
       as building block for more complex functions requires directional derivatives. These occur
       during applications of the chain rule.
      */
-    struct Cos : Chainer< Cos >
+    struct CumulativeNormalDistribution : Chainer< CumulativeNormalDistribution >
     {
         /**
          * @brief Constructor.
          * @param x point of evaluation
          */
-        explicit Cos( double x = 0. ) noexcept
+        explicit CumulativeNormalDistribution( double x = 0. ) noexcept
         {
             update( x );
         }
@@ -30,47 +30,55 @@ namespace funcy
         /// Set point of evaluation.
         void update( double x ) noexcept
         {
-            sinx = ::sin( x );
-            cosx = ::cos( x );
+            x_ = x;
+            value_ = 0.5 * ( 1 + std::erf( x_ * div_sqrt2 ) );
+            d1_ = std::exp( -0.5 * x_ * x_ );
         }
 
         /// Function value.
         double d0() const noexcept
         {
-            return cosx;
+            return value_;
         }
 
         /// First (directional) derivative.
         double d1( double dx = 1. ) const noexcept
         {
-            return -sinx * dx;
+            return div_sqrt2pi * d1_ * dx;
         }
 
         /// Second (directional) derivative.
         double d2( double dx = 1., double dy = 1. ) const noexcept
         {
-            return -cosx * dx * dy;
+            return -div_sqrt2pi * x_ * d1_ * dx * dy;
         }
 
         /// Third (directional) derivative.
         double d3( double dx = 1., double dy = 1., double dz = 1. ) const noexcept
         {
-            return sinx * dx * dy * dz;
+            return div_sqrt2pi * ( -d1_ + x_ * x_ * d1_ ) * dx * dy * dz;
         }
 
     private:
-        double sinx = 0, cosx = 1;
+        static const double div_sqrt2;
+        static const double div_sqrt2pi;
+        double value_;
+        double d1_;
+        double x_;
     };
+
+    inline const double CumulativeNormalDistribution::div_sqrt2 = 1 / std::sqrt( 2 );
+    inline const double CumulativeNormalDistribution::div_sqrt2pi = 1 / std::sqrt( 2 * M_PI );
 
     /*!
       @ingroup CMathGroup
-      @brief Generate \f$ \cos\circ f \f$.
+      @brief Generate \f$ \mathrm{cnd}\circ f \f$.
       @param f function mapping into a scalar space
-      @return object of type mathop::Chain<Cos,Function>
+      @return object of type mathop::Chain<CumulativeNormalDistribution,Function>
      */
     template < Function F >
-    auto cos( const F& f )
+    auto cnd( const F& f )
     {
-        return Cos()( f );
+        return CumulativeNormalDistribution()( f );
     }
 } // namespace funcy

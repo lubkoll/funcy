@@ -44,6 +44,7 @@ endif()
 add_executable(tests
     cmath/arccos.cpp
     cmath/arcsine.cpp
+    cmath/cnd.cpp
     cmath/cosine.cpp
     cmath/exp.cpp
     cmath/erf.cpp
