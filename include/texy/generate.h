@@ -225,4 +225,17 @@ namespace funcy
     {
         return std::forward< F >( f ) * pow< -1 >( std::forward< G >( g ) );
     }
+
+    /**
+     * @brief overload of "/"-operator for the generation of functions.
+     *
+     * Only for functions that return types that are convertible to double
+     * If the resulting type represents a polynomial of order smaller than two, than you need to
+     * wrap it into Finalize to generate missing derivatives.
+     */
+    template < class F, Arithmetic G >
+    auto operator/( F&& f, G&& g )
+    {
+        return std::forward< F >( f ) * constant( 1 / g );
+    }
 } // namespace funcy
