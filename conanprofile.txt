@@ -12,6 +12,6 @@ os=Linux
 arch=x86_64
 compiler=gcc
 # Adjust to the gcc version of your MinGW package
-compiler.version=10.1
+compiler.version=10
 compiler.libcxx=libstdc++11
 build_type=Release
