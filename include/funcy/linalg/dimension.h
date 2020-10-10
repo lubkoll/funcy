@@ -18,7 +18,7 @@ namespace funcy
 
         /// Dimension \f$n\f$ of a fixed size matrix in \f$\mathbb{R}^{n,n}\f$.
         template < class Mat >
-        constexpr int dim()
+        [[nodiscard]] constexpr int dim()
         {
             return detail::ExtractDimension< Mat >::value;
         }
