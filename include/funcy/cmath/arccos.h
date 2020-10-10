@@ -41,25 +41,25 @@ namespace funcy
         }
 
         //! @copydoc Cos::d0()
-        double d0() const noexcept
+        [[nodiscard]] double d0() const noexcept
         {
             return value;
         }
 
         //! @copydoc Cos::d1()
-        double d1( double dx = 1 ) const noexcept
+        [[nodiscard]] double d1( double dx = 1 ) const noexcept
         {
             return firstDerivative * dx;
         }
 
         //! @copydoc Cos::d2()
-        double d2( double dx = 1, double dy = 1 ) const noexcept
+        [[nodiscard]] double d2( double dx = 1, double dy = 1 ) const noexcept
         {
             return x_ * firstDerivative3 * dx * dy;
         }
 
         //! @copydoc Cos::d3()
-        double d3( double dx = 1, double dy = 1, double dz = 1 ) const noexcept
+        [[nodiscard]] double d3( double dx = 1, double dy = 1, double dz = 1 ) const noexcept
         {
             return firstDerivative3 *
                    ( 1 + ( 3 * x_ * x_ / ( firstDerivative * firstDerivative ) ) ) * dx * dy * dz;
@@ -76,7 +76,7 @@ namespace funcy
       @return object of type mathop::Chain<ACos,F>
      */
     template < Function F >
-    auto acos( const F& f )
+    [[nodiscard]] auto acos( const F& f )
     {
         return ACos()( f );
     }

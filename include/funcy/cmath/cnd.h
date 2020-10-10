@@ -36,25 +36,25 @@ namespace funcy
         }
 
         /// Function value.
-        double d0() const noexcept
+        [[nodiscard]] double d0() const noexcept
         {
             return value_;
         }
 
         /// First (directional) derivative.
-        double d1( double dx = 1. ) const noexcept
+        [[nodiscard]] double d1( double dx = 1. ) const noexcept
         {
             return div_sqrt2pi * d1_ * dx;
         }
 
         /// Second (directional) derivative.
-        double d2( double dx = 1., double dy = 1. ) const noexcept
+        [[nodiscard]] double d2( double dx = 1., double dy = 1. ) const noexcept
         {
             return -div_sqrt2pi * x_ * d1_ * dx * dy;
         }
 
         /// Third (directional) derivative.
-        double d3( double dx = 1., double dy = 1., double dz = 1. ) const noexcept
+        [[nodiscard]] double d3( double dx = 1., double dy = 1., double dz = 1. ) const noexcept
         {
             return div_sqrt2pi * ( -d1_ + x_ * x_ * d1_ ) * dx * dy * dz;
         }
@@ -77,7 +77,7 @@ namespace funcy
       @return object of type mathop::Chain<CumulativeNormalDistribution,Function>
      */
     template < Function F >
-    auto cnd( const F& f )
+    [[nodiscard]] auto cnd( const F& f )
     {
         return CumulativeNormalDistribution()( f );
     }

@@ -39,25 +39,25 @@ namespace funcy
         }
 
         //! @copydoc Cos::d0()
-        double d0() const noexcept
+        [[nodiscard]] double d0() const noexcept
         {
             return value;
         }
 
         //! @copydoc Cos::d1()
-        double d1( double dx = 1. ) const noexcept
+        [[nodiscard]] double d1( double dx = 1. ) const noexcept
         {
             return x_inv * dx;
         }
 
         //! @copydoc Cos::d2()
-        double d2( double dx = 1., double dy = 1. ) const noexcept
+        [[nodiscard]] double d2( double dx = 1., double dy = 1. ) const noexcept
         {
             return -x_inv * x_inv * dx * dy;
         }
 
         //! @copydoc Cos::d3()
-        double d3( double dx = 1., double dy = 1., double dz = 1. ) const noexcept
+        [[nodiscard]] double d3( double dx = 1., double dy = 1., double dz = 1. ) const noexcept
         {
             return 2 * x_inv * x_inv * x_inv * dx * dy * dz;
         }
@@ -93,25 +93,25 @@ namespace funcy
         }
 
         //! @copydoc Cos::d0()
-        double d0() const noexcept
+        [[nodiscard]] double d0() const noexcept
         {
             return value;
         }
 
         //! @copydoc Cos::d1()
-        double d1( double dx = 1. ) const noexcept
+        [[nodiscard]] double d1( double dx = 1. ) const noexcept
         {
             return ln10inv * x_inv * dx;
         }
 
         //! @copydoc Cos::d2()
-        double d2( double dx = 1., double dy = 1. ) const noexcept
+        [[nodiscard]] double d2( double dx = 1., double dy = 1. ) const noexcept
         {
             return -ln10inv * x_inv * x_inv * dx * dy;
         }
 
         //! @copydoc Cos::d3()
-        double d3( double dx = 1., double dy = 1., double dz = 1. ) const noexcept
+        [[nodiscard]] double d3( double dx = 1., double dy = 1., double dz = 1. ) const noexcept
         {
             return 2 * ln10inv * x_inv * x_inv * x_inv * dx * dy * dz;
         }
@@ -147,25 +147,25 @@ namespace funcy
         }
 
         //! @copydoc Cos::d0()
-        double d0() const noexcept
+        [[nodiscard]] double d0() const noexcept
         {
             return value;
         }
 
         //! @copydoc Cos::d1()
-        double d1( double dx = 1. ) const noexcept
+        [[nodiscard]] double d1( double dx = 1. ) const noexcept
         {
             return ln2inv * x_inv * dx;
         }
 
         //! @copydoc Cos::d2()
-        double d2( double dx = 1., double dy = 1. ) const noexcept
+        [[nodiscard]] double d2( double dx = 1., double dy = 1. ) const noexcept
         {
             return -ln2inv * x_inv * x_inv * dx * dy;
         }
 
         //! @copydoc Cos::d3()
-        double d3( double dx = 1., double dy = 1., double dz = 1. ) const noexcept
+        [[nodiscard]] double d3( double dx = 1., double dy = 1., double dz = 1. ) const noexcept
         {
             return 2 * ln2inv * x_inv * x_inv * x_inv * dx * dy * dz;
         }
@@ -180,7 +180,7 @@ namespace funcy
       @return object of type mathop::Chain<Log,Function>
      */
     template < Function F >
-    auto ln( const F& f )
+    [[nodiscard]] auto ln( const F& f )
     {
         return LN()( f );
     }
@@ -191,7 +191,7 @@ namespace funcy
       @return object of type mathop::Chain<Log10,Function>
      */
     template < Function F >
-    auto log10( const F& f )
+    [[nodiscard]] auto log10( const F& f )
     {
         return Log10()( f );
     }
@@ -202,7 +202,7 @@ namespace funcy
       @return object of type mathop::Chain<Log2,Function>
      */
     template < Function F >
-    auto log2( const F& f )
+    [[nodiscard]] auto log2( const F& f )
     {
         return Log2()( f );
     }

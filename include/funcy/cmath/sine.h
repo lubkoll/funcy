@@ -32,25 +32,25 @@ namespace funcy
         }
 
         //! @copydoc Cos::d0()
-        double d0() const noexcept
+        [[nodiscard]] double d0() const noexcept
         {
             return sinx;
         }
 
         //! @copydoc Cos::d1()
-        double d1( double dx = 1. ) const noexcept
+        [[nodiscard]] double d1( double dx = 1. ) const noexcept
         {
             return cosx * dx;
         }
 
         //! @copydoc Cos::d2()
-        double d2( double dx = 1., double dy = 1. ) const noexcept
+        [[nodiscard]] double d2( double dx = 1., double dy = 1. ) const noexcept
         {
             return -sinx * dx * dy;
         }
 
         //! @copydoc Cos::d3()
-        double d3( double dx = 1., double dy = 1., double dz = 1. ) const noexcept
+        [[nodiscard]] double d3( double dx = 1., double dy = 1., double dz = 1. ) const noexcept
         {
             return -cosx * dx * dy * dz;
         }
@@ -66,7 +66,7 @@ namespace funcy
       @return object of type mathop::Chain<Sin,Function>
      */
     template < Function F >
-    auto sin( const F& f )
+    [[nodiscard]] auto sin( const F& f )
     {
         return Sin()( f );
     }

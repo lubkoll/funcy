@@ -32,25 +32,25 @@ namespace funcy
         }
 
         //! @copydoc Cos::d0()
-        double d0() const noexcept
+        [[nodiscard]] double d0() const noexcept
         {
             return e_x;
         }
 
         //! @copydoc Cos::d0()
-        double d1( double dx = 1. ) const noexcept
+        [[nodiscard]] double d1( double dx = 1. ) const noexcept
         {
             return e_x * dx;
         }
 
         //! @copydoc Cos::d0()
-        double d2( double dx = 1., double dy = 1. ) const noexcept
+        [[nodiscard]] double d2( double dx = 1., double dy = 1. ) const noexcept
         {
             return e_x * dx * dy;
         }
 
         //! @copydoc Cos::d0()
-        double d3( double dx = 1., double dy = 1., double dz = 1. ) const noexcept
+        [[nodiscard]] double d3( double dx = 1., double dy = 1., double dz = 1. ) const noexcept
         {
             return e_x * dx * dy * dz;
         }
@@ -81,25 +81,25 @@ namespace funcy
         }
 
         //! @copydoc Cos::d0()
-        double d0() const noexcept
+        [[nodiscard]] double d0() const noexcept
         {
             return value;
         }
 
         //! @copydoc Cos::d1()
-        double d1( double dx = 1. ) const noexcept
+        [[nodiscard]] double d1( double dx = 1. ) const noexcept
         {
             return value * ln2 * dx;
         }
 
         //! @copydoc Cos::d2()
-        double d2( double dx = 1., double dy = 1. ) const noexcept
+        [[nodiscard]] double d2( double dx = 1., double dy = 1. ) const noexcept
         {
             return value * ln2 * ln2 * dx * dy;
         }
 
         //! @copydoc Cos::d3()
-        double d3( double dx = 1., double dy = 1., double dz = 1. ) const noexcept
+        [[nodiscard]] double d3( double dx = 1., double dy = 1., double dz = 1. ) const noexcept
         {
             return value * ln2 * ln2 * ln2 * dx * dy * dz;
         }
@@ -114,7 +114,7 @@ namespace funcy
       @return object of type mathop::Chain<Exp,Function>
      */
     template < Function F >
-    auto exp( const F& f )
+    [[nodiscard]] auto exp( const F& f )
     {
         return Exp()( f );
     }
@@ -125,7 +125,7 @@ namespace funcy
       @return object of type mathop::Chain<Exp2,Function>
      */
     template < Function F >
-    auto exp2( const F& f )
+    [[nodiscard]] auto exp2( const F& f )
     {
         return Exp2()( f );
     }

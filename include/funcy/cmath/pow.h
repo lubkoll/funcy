@@ -44,25 +44,25 @@ namespace funcy
         }
 
         //! @copydoc Cos::d0()
-        double d0() const noexcept
+        [[nodiscard]] double d0() const noexcept
         {
             return xk;
         }
 
         //! @copydoc Cos::d1()
-        double d1( double dx = 1. ) const noexcept
+        [[nodiscard]] double d1( double dx = 1. ) const noexcept
         {
             return k * xk1 * dx;
         }
 
         //! @copydoc Cos::d2()
-        double d2( double dx = 1., double dy = 1. ) const noexcept
+        [[nodiscard]] double d2( double dx = 1., double dy = 1. ) const noexcept
         {
             return k * ( k - 1 ) * xk2 * dx * dy;
         }
 
         //! @copydoc Cos::d3()
-        double d3( double dx = 1., double dy = 1., double dz = 1. ) const noexcept
+        [[nodiscard]] double d3( double dx = 1., double dy = 1., double dz = 1. ) const noexcept
         {
             return k * ( k - 1 ) * ( k - 2 ) * xk3 * dx * dy * dz;
         }
@@ -93,19 +93,19 @@ namespace funcy
         }
 
         //! @copydoc Cos::d0()
-        double d0() const noexcept
+        [[nodiscard]] double d0() const noexcept
         {
             return x2;
         }
 
         //! @copydoc Cos::d1()
-        double d1( double dx = 1. ) const noexcept
+        [[nodiscard]] double d1( double dx = 1. ) const noexcept
         {
             return x * dx;
         }
 
         //! @copydoc Cos::d2()
-        double d2( double dx = 1, double dy = 1 ) const noexcept
+        [[nodiscard]] double d2( double dx = 1, double dy = 1 ) const noexcept
         {
             return 2 * dx * dy;
         }
@@ -132,25 +132,25 @@ namespace funcy
         }
 
         //! @copydoc Cos::d0()
-        double d0() const noexcept
+        [[nodiscard]] double d0() const noexcept
         {
             return x3;
         }
 
         //! @copydoc Cos::d1()
-        double d1( double dx = 1 ) const noexcept
+        [[nodiscard]] double d1( double dx = 1 ) const noexcept
         {
             return 3 * x2 * dx;
         }
 
         //! @copydoc Cos::d2()
-        double d2( double dx = 1, double dy = 1 ) const noexcept
+        [[nodiscard]] double d2( double dx = 1, double dy = 1 ) const noexcept
         {
             return 6 * x * dx * dy;
         }
 
         //! @copydoc Cos::d3()
-        double d3( double dx = 1, double dy = 1, double dz = 1 ) const noexcept
+        [[nodiscard]] double d3( double dx = 1, double dy = 1, double dz = 1 ) const noexcept
         {
             return 6 * dx * dy * dz;
         }
@@ -191,25 +191,25 @@ namespace funcy
         }
 
         //! @copydoc Cos::d0()
-        double d0() const noexcept
+        [[nodiscard]] double d0() const noexcept
         {
             return x_inv;
         }
 
         //! @copydoc Cos::d1()
-        double d1( double dx = 1. ) const noexcept
+        [[nodiscard]] double d1( double dx = 1. ) const noexcept
         {
             return -1 * x_inv2 * dx;
         }
 
         //! @copydoc Cos::d2()
-        double d2( double dx = 1., double dy = 1. ) const noexcept
+        [[nodiscard]] double d2( double dx = 1., double dy = 1. ) const noexcept
         {
             return 2 * x_inv2 * x_inv * dx * dy;
         }
 
         //! @copydoc Cos::d3()
-        double d3( double dx = 1., double dy = 1., double dz = 1. ) const noexcept
+        [[nodiscard]] double d3( double dx = 1., double dy = 1., double dz = 1. ) const noexcept
         {
             return -6 * x_inv2 * x_inv2 * dx * dy * dz;
         }
@@ -240,25 +240,25 @@ namespace funcy
         }
 
         //! @copydoc Cos::d0()
-        double d0() const noexcept
+        [[nodiscard]] double d0() const noexcept
         {
             return sqrt_x;
         }
 
         //! @copydoc Cos::d1()
-        double d1( double dx = 1. ) const noexcept
+        [[nodiscard]] double d1( double dx = 1. ) const noexcept
         {
             return 0.5 / sqrt_x * dx;
         }
 
         //! @copydoc Cos::d2()
-        double d2( double dx = 1., double dy = 1. ) const noexcept
+        [[nodiscard]] double d2( double dx = 1., double dy = 1. ) const noexcept
         {
             return -0.25 / ( x_ * sqrt_x ) * dx * dy;
         }
 
         //! @copydoc Cos::d3()
-        double d3( double dx = 1., double dy = 1., double dz = 1. ) const noexcept
+        [[nodiscard]] double d3( double dx = 1., double dy = 1., double dz = 1. ) const noexcept
         {
             return 0.375 / ( x_ * x_ * sqrt_x ) * dx * dy * dz;
         }
@@ -296,25 +296,25 @@ namespace funcy
         }
 
         //! @copydoc Cos::d0()
-        double d0() const noexcept
+        [[nodiscard]] double d0() const noexcept
         {
             return d0val;
         }
 
         //! @copydoc Cos::d1()
-        double d1( double dt = 1 ) const noexcept
+        [[nodiscard]] double d1( double dt = 1 ) const noexcept
         {
             return d1val * dt;
         }
 
         //! @copydoc Cos::d2()
-        double d2( double dt0 = 1, double dt1 = 1 ) const noexcept
+        [[nodiscard]] double d2( double dt0 = 1, double dt1 = 1 ) const noexcept
         {
             return d2val * dt0 * dt1;
         }
 
         //! @copydoc Cos::d3()
-        double d3( double dt0 = 1, double dt1 = 1, double dt2 = 1 ) const noexcept
+        [[nodiscard]] double d3( double dt0 = 1, double dt1 = 1, double dt2 = 1 ) const noexcept
         {
             return d3val * dt0 * dt1 * dt2;
         }
@@ -355,25 +355,25 @@ namespace funcy
         }
 
         //! @copydoc Cos::d0()
-        double d0() const noexcept
+        [[nodiscard]] double d0() const noexcept
         {
             return d0val;
         }
 
         //! @copydoc Cos::d1()
-        double d1( double dt = 1 ) const noexcept
+        [[nodiscard]] double d1( double dt = 1 ) const noexcept
         {
             return d1val * dt;
         }
 
         //! @copydoc Cos::d2()
-        double d2( double dt0 = 1, double dt1 = 1 ) const noexcept
+        [[nodiscard]] double d2( double dt0 = 1, double dt1 = 1 ) const noexcept
         {
             return d2val * dt0 * dt1;
         }
 
         //! @copydoc Cos::d3()
-        double d3( double dt0 = 1, double dt1 = 1, double dt2 = 1 ) const noexcept
+        [[nodiscard]] double d3( double dt0 = 1, double dt1 = 1, double dt2 = 1 ) const noexcept
         {
             return d3val * dt0 * dt1 * dt2;
         }
@@ -401,7 +401,7 @@ namespace funcy
       @return object of type mathop::Chain<Sqrt,Function>
      */
     template < Function F >
-    auto sqrt( const F& f )
+    [[nodiscard]] auto sqrt( const F& f )
     {
         return Sqrt()( f );
     }
@@ -412,7 +412,7 @@ namespace funcy
       @return object of type mathop::Chain<Cbrt,Function>
      */
     template < Function F >
-    auto cbrt( const F& f )
+    [[nodiscard]] auto cbrt( const F& f )
     {
         return Cbrt()( f );
     }
@@ -423,7 +423,7 @@ namespace funcy
       @return object of type mathop::Chain<Cbrt2,Function>
      */
     template < Function F >
-    auto cbrt2( const F& f )
+    [[nodiscard]] auto cbrt2( const F& f )
     {
         return Cbrt2()( f );
     }
@@ -436,7 +436,7 @@ namespace funcy
       @return object of type mathop::Chain< Pow<dividend,divisor> , Function >
      */
     template < int k, int l, Function F >
-    auto pow( const F& f )
+    [[nodiscard]] auto pow( const F& f )
     {
         return Pow< k, l >()( f );
     }
@@ -448,7 +448,7 @@ namespace funcy
       @return object of type mathop::Chain< Pow<dividend,divisor> , Function >
      */
     template < int k, Function F >
-    auto pow( const F& f )
+    [[nodiscard]] auto pow( const F& f )
     {
         return Pow< k >()( f );
     }
