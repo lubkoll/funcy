@@ -101,14 +101,14 @@ namespace funcy
         {
             /// Check if object of type Matrix has a member function rows().
             template < class Mat >
-            constexpr bool has_mem_fn_rows()
+            [[nodiscard]] constexpr bool has_mem_fn_rows()
             {
                 return false;
             }
 
             /// Check if object of type Matrix has a member function rows().
             template < class Mat >
-            constexpr bool has_mem_fn_rows() requires requires( Mat m )
+            [[nodiscard]] constexpr bool has_mem_fn_rows() requires requires( Mat m )
             {
                 { m.rows() };
             }
@@ -118,14 +118,14 @@ namespace funcy
 
             /// Check if object of type Matrix has a member n_rows.
             template < class Mat >
-            constexpr bool has_mem_n_rows()
+            [[nodiscard]] constexpr bool has_mem_n_rows()
             {
                 return false;
             }
 
             /// Check if object of type Matrix has a member n_rows.
             template < class Mat >
-            constexpr bool has_mem_n_rows() requires requires( Mat m )
+            [[nodiscard]] constexpr bool has_mem_n_rows() requires requires( Mat m )
             {
                 { m.n_rows };
             }
@@ -135,14 +135,14 @@ namespace funcy
 
             /// Check if object of type Matrix has a member function cols().
             template < class Mat >
-            constexpr bool has_mem_fn_cols()
+            [[nodiscard]] constexpr bool has_mem_fn_cols()
             {
                 return false;
             }
 
             /// Check if object of type Matrix has a member function cols().
             template < class Mat >
-            constexpr bool has_mem_fn_cols() requires requires( Mat m )
+            [[nodiscard]] constexpr bool has_mem_fn_cols() requires requires( Mat m )
             {
                 { m.cols() };
             }
@@ -152,14 +152,14 @@ namespace funcy
 
             /// Check if object of type Matrix has a member n_cols.
             template < class Mat >
-            constexpr bool has_mem_n_cols()
+            [[nodiscard]] constexpr bool has_mem_n_cols()
             {
                 return false;
             }
 
             /// Check if object of type Matrix has a member n_cols.
             template < class Mat >
-            constexpr bool has_mem_n_cols() requires requires( Mat m )
+            [[nodiscard]] constexpr bool has_mem_n_cols() requires requires( Mat m )
             {
                 { m.n_cols };
             }
@@ -169,14 +169,14 @@ namespace funcy
 
             /// Check if object of type Vector has a member function size().
             template < class Vec >
-            constexpr bool has_mem_fn_size()
+            [[nodiscard]] constexpr bool has_mem_fn_size()
             {
                 return false;
             }
 
             /// Check if object of type Vector has a member function size().
             template < class Vec >
-            constexpr bool has_mem_fn_size() requires requires( Vec v )
+            [[nodiscard]] constexpr bool has_mem_fn_size() requires requires( Vec v )
             {
                 { v.size() };
             }
@@ -190,7 +190,7 @@ namespace funcy
          * @return constant size zero matrix
          */
         template < Matrix Mat >
-        constexpr Mat zero()
+        [[nodiscard]] constexpr Mat zero()
         {
             return Mat( 0 );
         }
@@ -200,9 +200,8 @@ namespace funcy
          * @return constant size zero matrix
          */
         template < Matrix Mat >
-        constexpr Mat zero() requires( std::is_default_constructible_v< Mat >&& requires( Mat m ) {
-            m.fill( 0 );
-        } )
+        [[nodiscard]] constexpr Mat zero() requires(
+            std::is_default_constructible_v< Mat >&& requires( Mat m ) { m.fill( 0 ); } )
         {
             Mat m;
             m.fill( 0 );
@@ -214,7 +213,7 @@ namespace funcy
          * @return dynamic size zero matrix
          */
         template < Matrix Mat >
-        Mat zero( int rows, int cols ) requires(
+        [[nodiscard]] Mat zero( int rows, int cols ) requires(
             std::is_constructible_v< Mat, int, int >&& requires( Mat m ) { m.fill( 0 ); } )
         {
             Mat m( rows, cols );
@@ -223,7 +222,7 @@ namespace funcy
         }
 
         template < Arithmetic Vec >
-        constexpr Vec zero()
+        [[nodiscard]] constexpr Vec zero()
         {
             return Vec( 0 );
         }

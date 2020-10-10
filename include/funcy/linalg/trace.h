@@ -22,7 +22,7 @@ namespace funcy
         namespace detail
         {
             template < int dim, SquareMatrix Matrix >
-            auto compute_trace( const Matrix& A ) requires( dim != 2 && dim != 3 )
+            [[nodiscard]] auto compute_trace( const Matrix& A ) requires( dim != 2 && dim != 3 )
             {
                 auto val = at( A, 0, 0 );
                 for ( int i = 1; i < rows< Matrix >(); ++i )
@@ -31,14 +31,14 @@ namespace funcy
             }
 
             template < int dim, SquareMatrix Matrix >
-            auto compute_trace( const Matrix& A ) requires( dim == 2 )
+            [[nodiscard]] auto compute_trace( const Matrix& A ) requires( dim == 2 )
 
             {
                 return at( A, 0, 0 ) + at( A, 1, 1 );
             }
 
             template < int dim, SquareMatrix Matrix >
-            auto compute_trace( const Matrix& A ) requires( dim == 3 )
+            [[nodiscard]] auto compute_trace( const Matrix& A ) requires( dim == 3 )
             {
                 return at( A, 0, 0 ) + at( A, 1, 1 ) + at( A, 2, 2 );
             }
@@ -66,13 +66,13 @@ namespace funcy
             }
 
             /// Function value.
-            auto d0() const noexcept
+            [[nodiscard]] auto d0() const noexcept
             {
                 return trace;
             }
 
             /// First directional derivative.
-            auto d1( const Mat& dA ) const
+            [[nodiscard]] auto d1( const Mat& dA ) const
             {
                 return detail::compute_trace< dim< Mat >() >( dA );
             }
@@ -111,13 +111,13 @@ namespace funcy
             }
 
             /// Function value.
-            auto d0() const noexcept
+            [[nodiscard]] auto d0() const noexcept
             {
                 return trace;
             }
 
             /// First directional derivative.
-            auto d1( const Mat& dA ) const
+            [[nodiscard]] auto d1( const Mat& dA ) const
             {
                 using Index = decltype( rows( dA ) );
                 auto result = decltype( at( dA, 0, 0 ) )( 0. );
@@ -133,32 +133,33 @@ namespace funcy
 
         /**
          * @brief Generate \f$\mathrm{tr}(A)\in\mathbb{R}^{n,n}\f$.
-         * \param A matrix
-         * \return DynamicSizeTrace<Mat>(A)
+         * @param A matrix
+         * @return DynamicSizeTrace<Mat>(A)
          */
         template < class Mat >
-        auto trace( const Mat& A ) requires( !Function< Mat > && !ConstantSize< Mat > )
+        [[nodiscard]] auto trace( const Mat& A ) requires( !Function< Mat > &&
+                                                           !ConstantSize< Mat > )
         {
             return DynamicSizeTrace( A );
         }
 
         /**
          * @brief Generate \f$\mathrm{tr}(A)\in\mathbb{R}^{n,n}\f$.
-         * \param A matrix
-         * \return ConstantSizeTrace<Mat>(A)
+         * @param A matrix
+         * @return ConstantSizeTrace<Mat>(A)
          */
         template < ConstantSize Mat >
-        auto trace( const Mat& A ) requires( !Function< Mat > )
+        [[nodiscard]] auto trace( const Mat& A ) requires( !Function< Mat > )
         {
             return ConstantSizeTrace( A );
         }
 
         /**
          * @brief Generate \f$\mathrm{tr}\circ f\f$, where \f$f:\cdot\mapsto\mathbb{R}^{n,n} \f$.
-         * \param f function object mapping into a space of square matrices
+         * @param f function object mapping into a space of square matrices
          */
         template < Function F >
-        auto trace( const F& f )
+        [[nodiscard]] auto trace( const F& f )
         {
             return trace( f() )( f );
         }

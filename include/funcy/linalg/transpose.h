@@ -30,7 +30,8 @@ namespace funcy
             };
 
             template < ConstantSize Mat >
-            Transposed_t< Mat > transpose( Mat A ) requires std::same_as< Mat, Transposed_t< Mat > >
+            [[nodiscard]] Transposed_t< Mat >
+            transpose( Mat A ) requires std::same_as< Mat, Transposed_t< Mat > >
             {
                 auto a = at( A, 0, 0 );
                 for ( int i = 0; i < rows< Mat >(); ++i )
@@ -46,7 +47,7 @@ namespace funcy
 
             /// Compute transpose of non-square matrix.
             template < ConstantSize Mat >
-            Transposed_t< Mat >
+            [[nodiscard]] Transposed_t< Mat >
             transpose( const Mat& A ) requires( !std::same_as< Mat, Transposed_t< Mat > > )
             {
                 auto B = zero< Transposed_t< Mat > >();
@@ -58,7 +59,7 @@ namespace funcy
 
             /// Compute transpose of square matrix.
             template < class Mat >
-            Mat transpose( Mat A ) requires( !ConstantSize< Mat > )
+            [[nodiscard]] Mat transpose( Mat A ) requires( !ConstantSize< Mat > )
             {
                 assert( rows( A ) == cols( A ) );
                 using Index = decltype( rows( std::declval< Mat >() ) );
@@ -79,7 +80,7 @@ namespace funcy
              * @return \f$A+A^T\f$
              */
             template < ConstantSize Mat >
-            Mat& add_transposed( Mat& A )
+            [[nodiscard]] Mat& add_transposed( Mat& A )
             {
                 using linalg::dim;
                 using Index = decltype( dim< Mat >() );
@@ -96,7 +97,7 @@ namespace funcy
              * @return \f$A+A^T\f$
              */
             template < class Mat >
-            Mat& add_transposed( Mat& A )
+            [[nodiscard]] Mat& add_transposed( Mat& A )
             {
                 using linalg::cols;
                 using linalg::rows;
@@ -128,12 +129,12 @@ namespace funcy
                 AT_ = detail::transpose( A );
             }
 
-            const auto& d0() const noexcept
+            [[nodiscard]] const auto& d0() const noexcept
             {
                 return AT_;
             }
 
-            auto d1( const Mat& dA ) const
+            [[nodiscard]] auto d1( const Mat& dA ) const
             {
                 return detail::transpose( dA );
             }
@@ -144,22 +145,22 @@ namespace funcy
 
         /**
          * @brief Generate \f$A^T\in\mathbb{R}^{n,n}\f$.
-         * \param A square matrix
-         * \return Transpose<Matrix>(A)
+         * @param A square matrix
+         * @return Transpose<Matrix>(A)
          */
         template < class Mat >
-        auto transpose( const Mat& A )
+        [[nodiscard]] auto transpose( const Mat& A )
         {
             return Transpose( A );
         }
 
         /**
          * @brief Generate \f$f^T\f$, where \f$f:\cdot\mapsto\mathbb{R}^{n,n} \f$.
-         * \param f function object mapping into a space of square matrices
-         * \return Transpose< decay_t<decltype(f())> >(f())( f )
+         * @param f function object mapping into a space of square matrices
+         * @return Transpose< decay_t<decltype(f())> >(f())( f )
          */
         template < Function F >
-        auto transpose( const F& f )
+        [[nodiscard]] auto transpose( const F& f )
         {
             return Transpose< decay_t< decltype( f() ) > >( f() )( f );
         }

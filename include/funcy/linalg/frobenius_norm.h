@@ -20,7 +20,7 @@ namespace funcy
         namespace detail
         {
             template < ConstantSize Mat >
-            inline auto compute_scalar_product( const Mat& A, const Mat& B )
+            [[nodiscard]] inline auto compute_scalar_product( const Mat& A, const Mat& B )
             {
                 using Index = decltype( rows< Mat >() );
                 auto result = decltype( at( A, 0, 0 ) ){ 0. };
@@ -31,7 +31,7 @@ namespace funcy
             }
 
             template < class Mat >
-            inline auto compute_scalar_product( const Mat& A, const Mat& B )
+            [[nodiscard]] inline auto compute_scalar_product( const Mat& A, const Mat& B )
             {
                 using Index = decltype( rows( A ) );
                 auto result = decltype( at( A, 0, 0 ) ){ 0. };
@@ -68,19 +68,19 @@ namespace funcy
             }
 
             /// Squared matrix norm.
-            auto d0() const noexcept
+            [[nodiscard]] auto d0() const noexcept
             {
                 return value;
             }
 
             /// First directional derivative.
-            auto d1( const Mat& dA ) const
+            [[nodiscard]] auto d1( const Mat& dA ) const
             {
                 return 2 * detail::compute_scalar_product( A_, dA );
             }
 
             /// Second directional derivative.
-            auto d2( const Mat& dA1, const Mat& dA2 ) const
+            [[nodiscard]] auto d2( const Mat& dA1, const Mat& dA2 ) const
             {
                 return 2 * detail::compute_scalar_product( dA1, dA2 );
             }
@@ -98,7 +98,7 @@ namespace funcy
         /// Generate Frobenius norm \f$ \|A\| = \sqrt{A\negthinspace : \negthinspace A }=
         /// \sqrt{\mathrm{tr}(A^TA)} = \sqrt{\sum_{i,j} A_{ij}^2}. \f$
         template < class Mat >
-        auto frobenius_norm( const Mat& A )
+        [[nodiscard]] auto frobenius_norm( const Mat& A )
         {
             return FrobeniusNorm( A );
         }
@@ -106,7 +106,7 @@ namespace funcy
         /// Generate Frobenius norm \f$ \|A\| = \sqrt{A\negthinspace : \negthinspace A }=
         /// \sqrt{\mathrm{tr}(A^TA)} = \sqrt{\sum_{i,j} A_{ij}^2}. \f$
         template < Function F >
-        auto frobenius_norm( const F& f )
+        [[nodiscard]] auto frobenius_norm( const F& f )
         {
             return FrobeniusNorm( f() )( f );
         }

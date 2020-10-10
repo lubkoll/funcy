@@ -23,7 +23,7 @@ namespace funcy
          * \param M structural tensor describing principal (fiber) direction
          */
         template < Matrix Mat >
-        auto i4( const Mat& A, const Mat& M ) requires( !Function< Mat > )
+        [[nodiscard]] auto i4( const Mat& A, const Mat& M ) requires( !Function< Mat > )
         {
             return i1( identity( A ) * M );
         }
@@ -35,7 +35,7 @@ namespace funcy
          * \param M structural tensor describing principal (fiber) direction
          */
         template < Function F, class Matrix >
-        auto i4( const F& f, const Matrix& M )
+        [[nodiscard]] auto i4( const F& f, const Matrix& M )
         {
             return i1( f * M );
         }
@@ -48,7 +48,7 @@ namespace funcy
          * \param M structural tensor describing principal (fiber) direction
          */
         template < Matrix Mat >
-        auto i5( const Mat& A, const Mat& M ) requires( !Function< Mat > )
+        [[nodiscard]] auto i5( const Mat& A, const Mat& M ) requires( !Function< Mat > )
         {
             return i1( ( squared( identity( A ) ) ) * M );
         }
@@ -60,7 +60,7 @@ namespace funcy
          * \param M structural tensor describing principal (fiber) direction
          */
         template < Function F, class Matrix >
-        auto i5( const F& f, const Matrix& M )
+        [[nodiscard]] auto i5( const F& f, const Matrix& M )
         {
             return i1( ( squared( f ) ) * M );
         }
@@ -73,7 +73,7 @@ namespace funcy
          * \param M structural tensor describing principal (fiber) direction
          */
         template < Matrix Mat >
-        auto i6( const Mat& A, const Mat& M ) requires( !Function< Mat > )
+        [[nodiscard]] auto i6( const Mat& A, const Mat& M ) requires( !Function< Mat > )
         {
             return i1( ( squared( constant( M ) ) ) * identity( A ) );
         }
@@ -85,7 +85,7 @@ namespace funcy
          * \param M structural tensor describing principal (fiber) direction
          */
         template < Function F, class Matrix >
-        auto i6( const F& f, const Matrix& M )
+        [[nodiscard]] auto i6( const F& f, const Matrix& M )
         {
             return i1( ( squared( constant( M ) ) ) * f );
         }
@@ -99,7 +99,7 @@ namespace funcy
          * \return \f$\bar\iota_4(x)\f$ if x is a matrix, else \f$\bar\iota_4 \circ x\f$
          */
         template < class Arg, class Matrix, int n = dim< Matrix >() >
-        auto mi4( const Arg& x, const Matrix& M )
+        [[nodiscard]] auto mi4( const Arg& x, const Matrix& M )
         {
             return i4( x, M ) * Pow< -1, n >()( det( x ) );
         }
@@ -114,7 +114,7 @@ namespace funcy
          * \return \f$\bar\iota_5(x)\f$ if x is a matrix, else \f$\bar\iota_5 \circ x\f$
          */
         template < class Arg, class Matrix, int n = dim< Matrix >() >
-        auto mi5( const Arg& x, const Matrix& M )
+        [[nodiscard]] auto mi5( const Arg& x, const Matrix& M )
         {
             return i5( x, M ) * Pow< -2, n >()( det( x ) );
         }
@@ -128,7 +128,7 @@ namespace funcy
          * \return \f$\bar\iota_6(x)\f$ if x is a matrix, else \f$\bar\iota_6 \circ x\f$
          */
         template < class Arg, class Matrix, int n = dim< Matrix >() >
-        auto mi6( const Arg& x, const Matrix& M )
+        [[nodiscard]] auto mi6( const Arg& x, const Matrix& M )
         {
             return i6( x, M ) * ( Pow< -1, n >()( det( x ) ) );
         }

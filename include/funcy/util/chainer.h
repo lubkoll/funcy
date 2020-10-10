@@ -9,20 +9,20 @@ namespace funcy
     template < class F >
     struct Chainer
     {
-        decltype( auto ) operator()() const noexcept
+        [[nodiscard]] decltype( auto ) operator()() const noexcept
         {
             return static_cast< const F* >( this )->d0();
         }
 
         template < class Arg >
-        decltype( auto ) operator()( const Arg& x ) requires( !Function< Arg > )
+        [[nodiscard]] decltype( auto ) operator()( const Arg& x ) requires( !Function< Arg > )
         {
             static_cast< F* >( this )->update( x );
             return static_cast< const F* >( this )->d0();
         }
 
         template < Function G >
-        auto operator()( G&& g )
+        [[nodiscard]] constexpr auto operator()( G&& g )
         {
             return mathop::Chain( *static_cast< const F* >( this ), std::forward< G >( g ) );
         }

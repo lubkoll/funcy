@@ -24,14 +24,14 @@ namespace funcy
         namespace detail
         {
             template < class Mat >
-            inline auto compose_result( const Mat& A, const Mat& B )
+            [[nodiscard]] inline auto compose_result( const Mat& A, const Mat& B )
             {
                 return at( A, 0, 0 ) * at( B, 1, 1 ) + at( A, 1, 1 ) * at( B, 0, 0 ) -
                        ( at( A, 0, 1 ) * at( B, 1, 0 ) + at( A, 1, 0 ) * at( B, 0, 1 ) );
             }
 
             template < class Mat >
-            inline auto compose_result( const Mat& dA, const Mat& dB, const Mat& dC )
+            [[nodiscard]] inline auto compose_result( const Mat& dA, const Mat& dB, const Mat& dC )
             {
                 return at( dB, 1, 1 ) *
                            ( at( dA, 0, 0 ) * at( dC, 2, 2 ) - at( dA, 2, 0 ) * at( dC, 0, 2 ) ) +
@@ -42,7 +42,8 @@ namespace funcy
             }
 
             template < class Mat >
-            inline auto compose_semi_symmetric_result( const Mat& dA, const Mat& dB, const Mat& dC )
+            [[nodiscard]] inline auto compose_semi_symmetric_result( const Mat& dA, const Mat& dB,
+                                                                     const Mat& dC )
             {
                 return at( dB, 1, 1 ) *
                            ( at( dA, 0, 0 ) * at( dC, 2, 2 ) + at( dA, 2, 2 ) * at( dC, 0, 0 ) -
@@ -75,17 +76,17 @@ namespace funcy
                     value = at( A, 0, 0 ) * at( A, 1, 1 ) - at( A, 0, 1 ) * at( A, 1, 0 );
                 }
 
-                auto d0() const
+                [[nodiscard]] auto d0() const noexcept
                 {
                     return value;
                 }
 
-                auto d1( const Mat& dA1 ) const
+                [[nodiscard]] auto d1( const Mat& dA1 ) const
                 {
                     return compose_result( A, dA1 );
                 }
 
-                auto d2( const Mat& dA1, const Mat& dA2 ) const
+                [[nodiscard]] auto d2( const Mat& dA1, const Mat& dA2 ) const
                 {
                     return compose_result( dA2, dA1 );
                 }
@@ -112,25 +113,25 @@ namespace funcy
                     value = compose_result( A, A, A );
                 }
 
-                auto d0() const
+                [[nodiscard]] auto d0() const noexcept
                 {
                     return value;
                 }
 
-                auto d1( const Mat& dA1 ) const
+                [[nodiscard]] auto d1( const Mat& dA1 ) const
                 {
                     return compose_result( dA1, A, A ) + compose_result( A, dA1, A ) +
                            compose_result( A, A, dA1 );
                 }
 
-                auto d2( const Mat& dA1, const Mat& dA2 ) const
+                [[nodiscard]] auto d2( const Mat& dA1, const Mat& dA2 ) const
                 {
                     return compose_semi_symmetric_result( A, dA2, dA1 ) +
                            compose_semi_symmetric_result( dA1, A, dA2 ) +
                            compose_semi_symmetric_result( A, dA1, dA2 );
                 }
 
-                auto d3( const Mat& dA1, const Mat& dA2, const Mat& dA3 ) const
+                [[nodiscard]] auto d3( const Mat& dA1, const Mat& dA2, const Mat& dA3 ) const
                 {
                     return compose_semi_symmetric_result( dA1, dA2, dA3 ) +
                            compose_semi_symmetric_result( dA1, dA3, dA2 ) +
@@ -176,25 +177,25 @@ namespace funcy
             }
 
             /// Function value.
-            auto d0() const
+            [[nodiscard]] auto d0() const noexcept
             {
                 return ( dim == 2 ) ? det2D() : det3D();
             }
 
             /// First (directional) derivative.
-            auto d1( const Mat& dA1 ) const
+            [[nodiscard]] auto d1( const Mat& dA1 ) const
             {
                 return ( dim == 2 ) ? det2D.d1( dA1 ) : det3D.d1( dA1 );
             }
 
             /// Second (directional) derivative.
-            auto d2( const Mat& dA1, const Mat& dA2 ) const
+            [[nodiscard]] auto d2( const Mat& dA1, const Mat& dA2 ) const
             {
                 return ( dim == 2 ) ? det2D.d2( dA1, dA2 ) : det3D.d2( dA1, dA2 );
             }
 
             /// Third (directional) derivative.
-            auto d3( const Mat& dA1, const Mat& dA2, const Mat& dA3 ) const
+            [[nodiscard]] auto d3( const Mat& dA1, const Mat& dA2, const Mat& dA3 ) const
             {
                 return ( dim == 2 ) ? 0 : det3D.d3( dA1, dA2, dA3 );
             }
@@ -212,7 +213,7 @@ namespace funcy
          * @return Determinant<Matrix>(A)
          */
         template < class Mat >
-        auto det( const Mat& A ) requires( !Function< Mat > && !SquareMatrix< Mat > )
+        [[nodiscard]] auto det( const Mat& A ) requires( !Function< Mat > && !SquareMatrix< Mat > )
         {
             return DynamicSizeDeterminant( A );
         }
@@ -223,7 +224,7 @@ namespace funcy
          * @return Determinant<Matrix>(A)
          */
         template < SquareMatrix Mat >
-        auto det( const Mat& A )
+        [[nodiscard]] auto det( const Mat& A )
         {
             return ConstantSizeDeterminant< Mat >( A );
         }
@@ -234,7 +235,7 @@ namespace funcy
          * @return Determinant< std::decay_t<decltype(f())> >(f())(f)
          */
         template < Function F >
-        auto det( const F& f )
+        [[nodiscard]] auto det( const F& f )
         {
             return det( f() )( f );
         }

@@ -21,29 +21,29 @@ namespace funcy
         {
 
             template < int row, Matrix Mat >
-            auto symmetric_cofactor_derivative( const Mat& A, const Mat& dA )
+            [[nodiscard]] auto symmetric_cofactor_derivative( const Mat& A, const Mat& dA )
             {
                 return compute_cofactor_directional_derivative< row, row >( A, dA ) +
                        compute_cofactor_directional_derivative< row, row >( dA, A );
             }
 
             template < int dim, Matrix Mat >
-            static auto sum_of_diagonal_cofactors( const Mat& A ) requires( dim == 2 )
+            [[nodiscard]] static auto sum_of_diagonal_cofactors( const Mat& A ) requires( dim == 2 )
             {
                 return linalg::compute_cofactor< 0, 0 >( A ) +
                        linalg::compute_cofactor< 1, 1 >( A );
             }
 
             template < int dim, Matrix Mat >
-            static auto sum_of_symmetric_cofactor_derivatives( const Mat& A,
-                                                               const Mat& B ) requires( dim == 2 )
+            [[nodiscard]] static auto
+            sum_of_symmetric_cofactor_derivatives( const Mat& A, const Mat& B ) requires( dim == 2 )
             {
                 return symmetric_cofactor_derivative< 0 >( A, B ) +
                        symmetric_cofactor_derivative< 1 >( A, B );
             }
 
             template < int dim, Matrix Mat >
-            static auto sum_of_diagonal_cofactors( const Mat& A ) requires( dim == 3 )
+            [[nodiscard]] static auto sum_of_diagonal_cofactors( const Mat& A ) requires( dim == 3 )
             {
                 return linalg::compute_cofactor< 0, 0 >( A ) +
                        linalg::compute_cofactor< 1, 1 >( A ) +
@@ -51,8 +51,8 @@ namespace funcy
             }
 
             template < int dim, Matrix Mat >
-            static auto sum_of_symmetric_cofactor_derivatives( const Mat& A,
-                                                               const Mat& B ) requires( dim == 3 )
+            [[nodiscard]] static auto
+            sum_of_symmetric_cofactor_derivatives( const Mat& A, const Mat& B ) requires( dim == 3 )
             {
                 return symmetric_cofactor_derivative< 0 >( A, B ) +
                        symmetric_cofactor_derivative< 1 >( A, B ) +
@@ -60,7 +60,8 @@ namespace funcy
             }
 
             template < int dim, Matrix Mat >
-            static auto sum_of_diagonal_cofactors( const Mat& A ) requires( dim == -1 )
+            [[nodiscard]] static auto sum_of_diagonal_cofactors( const Mat& A ) requires( dim ==
+                                                                                          -1 )
             {
                 if ( rows( A ) == 2 )
                     return sum_of_diagonal_cofactors< 2 >( A );
@@ -68,8 +69,9 @@ namespace funcy
             }
 
             template < int dim, Matrix Mat >
-            static auto sum_of_symmetric_cofactor_derivatives( const Mat& A,
-                                                               const Mat& B ) requires( dim == -1 )
+            [[nodiscard]] static auto
+            sum_of_symmetric_cofactor_derivatives( const Mat& A,
+                                                   const Mat& B ) requires( dim == -1 )
             {
                 if ( rows( A ) == 2 )
                     return sum_of_symmetric_cofactor_derivatives< 2 >( A, B );
@@ -111,7 +113,7 @@ namespace funcy
             }
 
             /// Value of the second principal invariant
-            auto d0() const
+            [[nodiscard]] auto d0() const noexcept
             {
                 return value;
             }
@@ -120,7 +122,7 @@ namespace funcy
              * @brief First directional derivative
              * @param dA1 direction for which the derivative is computed
              */
-            auto d1( const Mat& dA1 ) const
+            [[nodiscard]] auto d1( const Mat& dA1 ) const
             {
                 return detail::sum_of_symmetric_cofactor_derivatives< dim< Mat >() >( A_, dA1 );
             }
@@ -130,7 +132,7 @@ namespace funcy
              * @param dA1 direction for which the derivative is computed
              * @param dA2 direction for which the derivative is computed
              */
-            auto d2( const Mat& dA1, const Mat& dA2 ) const
+            [[nodiscard]] auto d2( const Mat& dA1, const Mat& dA2 ) const
             {
                 return detail::sum_of_symmetric_cofactor_derivatives< dim< Mat >() >( dA1, dA2 );
             }
@@ -152,7 +154,7 @@ namespace funcy
          * Trace< std::decay_t<decltype(x())> >( x() )( x );
          */
         template < class Arg >
-        auto i1( Arg&& x )
+        [[nodiscard]] auto i1( Arg&& x )
         {
             return trace( std::forward< Arg >( x ) );
         }
@@ -163,7 +165,7 @@ namespace funcy
          * @return SecondPrincipalInvariant<Matrix>(A)
          */
         template < Matrix M >
-        auto i2( M&& A )
+        [[nodiscard]] auto i2( M&& A )
         {
             return SecondPrincipalInvariant( std::forward< M >( A ) );
         }
@@ -174,7 +176,7 @@ namespace funcy
          * @return SecondPrincipalInvariant( f() )( f )
          */
         template < Function F >
-        auto i2( const F& f )
+        [[nodiscard]] auto i2( const F& f )
         {
             return SecondPrincipalInvariant( f() )( f );
         }
@@ -189,7 +191,7 @@ namespace funcy
          * Determinant< std::decay_t<decltype(x())> >( x() )( x );
          */
         template < class Arg >
-        auto i3( const Arg& x )
+        [[nodiscard]] auto i3( const Arg& x )
         {
             return det( x );
         }
@@ -201,7 +203,7 @@ namespace funcy
          * @param x either a square matrix or a function returning a square matrix
          */
         template < class Arg, int n = dim< Arg >() >
-        auto mi1( const Arg& x )
+        [[nodiscard]] auto mi1( const Arg& x )
         {
             return i1( x ) * pow< -1, n >( det( x ) );
         }
@@ -213,7 +215,7 @@ namespace funcy
          * @param x either a square matrix or a function returning a square matrix
          */
         template < class Arg, int n = dim< Arg >() >
-        auto mi2( const Arg& x )
+        [[nodiscard]] auto mi2( const Arg& x )
         {
             return i2( x ) * pow< -2, n >( det( x ) );
         }

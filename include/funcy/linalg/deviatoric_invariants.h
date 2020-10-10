@@ -16,7 +16,7 @@ namespace funcy
          * = \sigma - \frac{\mathrm{tr}(\sigma)}{n}I\f$ and \f$\sigma\in\mathbb{R}^{n,n}\f$.
          */
         template < Matrix M >
-        auto j2( const M& A ) requires( !Function< M > )
+        [[nodiscard]] auto j2( const M& A ) requires( !Function< M > )
         {
             return frobenius_norm( A )( deviator( A ) );
         }

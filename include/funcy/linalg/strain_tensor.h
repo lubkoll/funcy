@@ -117,8 +117,8 @@ namespace funcy
 
         /**
          * @brief Generate the right Cauchy-Green strain tensor \f$A*A^T\f$.
-         * \param A matrix
-         * \return RightCauchyGreenStrainTensor<Matrix>(A)
+         * @param A matrix
+         * @return RightCauchyGreenStrainTensor<Matrix>(A)
          */
         template < class Mat >
         auto strain_tensor( const Mat& A )
@@ -128,8 +128,9 @@ namespace funcy
 
         /**
          * @brief Generate the right Cauchy-Green strain tensor \f$f*f^T\f$, where
-         * \f$f:\cdot\mapsto\mathbb{R}^{n,n} \f$. \param f function object mapping into a space of
-         * square matrices \return RightCauchyGreenStrainTensor< decay_t<decltype(f())> >(f())( f )
+         * \f$f:\cdot\mapsto\mathbb{R}^{n,n} \f$.
+         * @param f function object mapping into a space of square matrices
+         * @return RightCauchyGreenStrainTensor< decay_t<decltype(f())> >(f())( f )
          */
         template < Function F >
         auto strain_tensor( const F& f )
@@ -139,8 +140,8 @@ namespace funcy
 
         /**
          * @brief Generate the left Cauchy-Green strain tensor \f$A^T*A\f$.
-         * \param A matrix
-         * \return LeftCauchyGreenStrainTensor<Matrix>(A)
+         * @param A matrix
+         * @return LeftCauchyGreenStrainTensor<Matrix>(A)
          */
         template < class Mat >
         auto left_strain_tensor( const Mat& A )
@@ -150,8 +151,9 @@ namespace funcy
 
         /**
          * @brief Generate the left Cauchy-Green strain tensor \f$f^T*f\f$, where
-         * \f$f:\cdot\mapsto\mathbb{R}^{n,n} \f$. \param f function object mapping into a space of
-         * square matrices \return LeftCauchyGreenStrainTensor< decay_t<decltype(f())> >(f())( f )
+         * f$f:\cdot\mapsto\mathbb{R}^{n,n} \f$.
+         * @param f function object mapping into a space of square matrices
+         * @return LeftCauchyGreenStrainTensor< decay_t<decltype(f())> >(f())( f )
          */
         template < Function F >
         auto left_strain_tensor( const F& f )
