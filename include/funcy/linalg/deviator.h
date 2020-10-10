@@ -7,6 +7,7 @@
 #include <funcy/linalg/concepts.h>
 #include <funcy/linalg/trace.h>
 #include <funcy/linalg/unit_matrix.h>
+#include <funcy/util/macros.h>
 
 #include <type_traits>
 
@@ -30,7 +31,7 @@ namespace funcy
         template < class Matrix >
         [[nodiscard]] auto deviator( const Matrix& A )
         {
-            assert( rows( A ) == cols( A ) );
+            FUNCY_ASSERT( rows( A ) == cols( A ) );
             return identity( A ) +
                    ( -1. / rows( A ) ) * ( trace( A ) * constant( unit_matrix< Matrix >() ) );
         }

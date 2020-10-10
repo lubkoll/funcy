@@ -6,6 +6,7 @@
 #include <funcy/linalg/type_traits.h>
 #include <funcy/util/at.h>
 #include <funcy/util/chainer.h>
+#include <funcy/util/macros.h>
 
 #include <concepts>
 #include <type_traits>
@@ -61,7 +62,7 @@ namespace funcy
             template < class Mat >
             [[nodiscard]] Mat transpose( Mat A ) requires( !ConstantSize< Mat > )
             {
-                assert( rows( A ) == cols( A ) );
+                FUNCY_ASSERT( rows( A ) == cols( A ) );
                 using Index = decltype( rows( std::declval< Mat >() ) );
                 auto a = std::decay_t< decltype( at( A, 0, 0 ) ) >( 0. );
                 for ( Index i = 0; i < rows( A ); ++i )
@@ -101,7 +102,7 @@ namespace funcy
             {
                 using linalg::cols;
                 using linalg::rows;
-                assert( rows( A ) == cols( A ) );
+                FUNCY_ASSERT( rows( A ) == cols( A ) );
                 using Index = decltype( rows( std::declval< Mat >() ) );
                 for ( Index i = 0; i < rows( A ); ++i )
                     for ( Index j = i + 1; j < cols( A ); ++j )

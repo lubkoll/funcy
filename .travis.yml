@@ -40,7 +40,7 @@ script:
   - cmake -DFuncy_BuildTest=ON -DCMAKE_TOOLCHAIN_FILE=conan_paths.cmake ..
   - |
     if [[ "${COMPUTE_COVERAGE}" == "true" ]]; then
-      cmake .. -DFuncy_BuildTest=ON -DCMAKE_TOOLCHAIN_FILE=conan_paths.cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_FLAGS="-coverage"
+      cmake .. -DFuncy_BuildTest=ON -DFuncy_DisableAssert=ON -DCMAKE_TOOLCHAIN_FILE=conan_paths.cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_FLAGS="-coverage"
     else
       cmake .. -DFuncy_BuildTest=ON -DCMAKE_TOOLCHAIN_FILE=conan_paths.cmake
     fi

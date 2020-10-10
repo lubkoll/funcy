@@ -4,8 +4,7 @@
 #include <funcy/linalg/concepts.h>
 #include <funcy/linalg/dimension.h>
 #include <funcy/util/at.h>
-
-#include <cassert>
+#include <funcy/util/macros.h>
 
 namespace funcy
 {
@@ -85,7 +84,8 @@ namespace funcy
         template < int row, int col, class Mat >
         auto compute_cofactor( const Mat& A )
         {
-            assert( ( rows( A ) == 2 && cols( A ) == 2 ) || ( rows( A ) == 3 && cols( A ) == 3 ) );
+            FUNCY_ASSERT( ( rows( A ) == 2 && cols( A ) == 2 ) ||
+                          ( rows( A ) == 3 && cols( A ) == 3 ) );
             if ( rows( A ) == 2 )
                 return detail::compute_cofactor< row, col, 2 >( A, A );
             /*if( rows(A) == 3 )*/

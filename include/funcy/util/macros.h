@@ -11,3 +11,10 @@
 #else
 #define FUNCY_NOEXCEPT noexcept
 #endif
+
+#ifndef FUNCY_DISABLE_ASSERT
+#define FUNCY_ASSERT( x )
+#else
+#include <cassert>
+#define FUNCY_ASSERT( x ) assert( x )
+#endif
