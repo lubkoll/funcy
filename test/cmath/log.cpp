@@ -166,3 +166,21 @@ TEST( Log10Test, D3 )
     EXPECT_DOUBLE_EQ( fun.d3(), 2 / ln10 );
     EXPECT_DOUBLE_EQ( fun.d3( dx, dy, dz ), 2 / ln10 * dx * dy * dz );
 }
+
+TEST( LNTest, OutOfDomainException )
+{
+    auto fun = funcy::LN( x0() );
+    EXPECT_THROW( fun.update( -2 ), funcy::OutOfDomainException );
+}
+
+TEST( Log2Test, OutOfDomainException )
+{
+    auto fun = funcy::Log2( x0() );
+    EXPECT_THROW( fun.update( -2 ), funcy::OutOfDomainException );
+}
+
+TEST( Log10Test, OutOfDomainException )
+{
+    auto fun = funcy::Log10( x0() );
+    EXPECT_THROW( fun.update( -2 ), funcy::OutOfDomainException );
+}

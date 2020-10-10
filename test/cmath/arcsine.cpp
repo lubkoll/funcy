@@ -66,3 +66,9 @@ TEST( ArcsineTest, D3 )
     EXPECT_DOUBLE_EQ( fun.d3( dx, dy, dz ),
                       1 / sqrt( pow( 0.75, 3 ) ) * ( 1 + 0.75 * 0.75 ) * dx * dy * dz );
 }
+
+TEST( ArcsineTest, OutOfDomainException )
+{
+    auto fun = funcy::ASin( x0() );
+    EXPECT_THROW( fun.update( -2 ), funcy::OutOfDomainException );
+}
