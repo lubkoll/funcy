@@ -13,7 +13,6 @@ option(Funcy_Funcy "enable funcy" ON)
 option(Funcy_Texy "enable texy" OFF)
 
 if(Funcy_DisableAssert)
-    message("disable asserts")
     add_definitions(-DFUNCY_DISABLE_ASSERT)
 endif()
 

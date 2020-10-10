@@ -28,22 +28,13 @@ matrix:
 install:
   - export CXX=${COMPILER}
   - pip install conan
-  - |
-    if [[ "${TRAVIS_OS_NAME}" == "linux" && "${COMPUTE_COVERAGE}" == "true" ]]; then
-      sudo gem install coveralls-lcov
-    fi
-
+  - sudo gem install coveralls-lcov
 
 script:
   - mkdir build && cd build
   - conan install .. --profile ../conanprofile.txt --build missing
   - cmake -DFuncy_BuildTest=ON -DCMAKE_TOOLCHAIN_FILE=conan_paths.cmake ..
-  - |
-    if [[ "${COMPUTE_COVERAGE}" == "true" ]]; then
-      cmake .. -DFuncy_BuildTest=ON -DFuncy_DisableAssert=ON -DCMAKE_TOOLCHAIN_FILE=conan_paths.cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_FLAGS="-coverage"
-    else
-      cmake .. -DFuncy_BuildTest=ON -DCMAKE_TOOLCHAIN_FILE=conan_paths.cmake
-    fi
+  - cmake .. -DFuncy_BuildTest=ON -DFuncy_DisableAssert=ON -DCMAKE_TOOLCHAIN_FILE=conan_paths.cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_FLAGS="-coverage"
   - cmake --build .
   - cd test && ctest
 
