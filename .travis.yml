@@ -12,6 +12,8 @@ addons:
     - libopenblas-dev
     - liblapack-dev
     - lcov
+    - cmake
+    - libeigen3-dev
   
 matrix:
   include:
@@ -23,47 +25,17 @@ matrix:
       
      
 install:
+  - export CXX=${COMPILER}
   - pip install conan
-  - DEPS_DIR="${TRAVIS_BUILD_DIR}/deps"
-  - mkdir -p ${DEPS_DIR} && cd ${DEPS_DIR}
-  
-  ############################################################################
-  # Override compiler if needed
-  ############################################################################
-  - if [[ "${COMPILER}" != "" ]]; then export CXX=${COMPILER}; export CC=${CCOMPILER}; fi
-
-    
-  ############################################################################
-  # Install lcov
-  ############################################################################
   - |
     if [[ "${TRAVIS_OS_NAME}" == "linux" && "${COMPUTE_COVERAGE}" == "true" ]]; then
       sudo gem install coveralls-lcov
     fi
 
-  ############################################################################
-  # Install cmake
-  ############################################################################
-  - |
-    sudo apt purge cmake
-    cd $DEPS
-    wget http://github.com/Kitware/CMake/releases/download/v3.13.1/cmake-3.13.1.tar.gz
-    tar xzf cmake-3.13.1.tar.gz && cd cmake-3.13.1
-    ./bootstrap && make && sudo make install
-  
-  ############################################################################
-  # Install Eigen
-  ############################################################################
-  - cd $DEPS
-  - git clone https://github.com/eigenteam/eigen-git-mirror.git
-  - cd eigen-git-mirror && mkdir build && cd build && cmake .. && sudo make install
-
 
 script:
-  - cd $TRAVIS_BUILD_DIR
   - mkdir build && cd build
-  - conan install .. --profile ../conanprofile.txt --build gtest
-  - cmake -DFuncy_BuildTest=ON -DCMAKE_TOOLCHAIN_FILE=conan_paths.cmake ..
+  - conan install .. --profile ../conanprofile.txt --build missing
   - |
     if [[ "${COMPUTE_COVERAGE}" == "true" ]]; then
       cmake .. -DFuncy_BuildTest=ON -DCMAKE_TOOLCHAIN_FILE=conan_paths.cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_FLAGS="-coverage"
