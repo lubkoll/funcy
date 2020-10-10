@@ -5,6 +5,8 @@
 #include <funcy/linalg/dimension.h>
 #include <funcy/util/at.h>
 
+#include <cassert>
+
 namespace funcy
 {
     namespace linalg
