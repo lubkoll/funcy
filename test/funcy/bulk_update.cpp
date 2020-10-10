@@ -1,6 +1,9 @@
-#include <funcy/funcy.h>
+#include <funcy/cmath/pow.h>
+#include <funcy/generate.h>
+#include <funcy/variable.h>
 
 #include <gtest/gtest.h>
+
 #include <gmock/gmock.h>
 
 using ::testing::DoubleEq;

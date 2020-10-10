@@ -1,4 +1,8 @@
-#include <funcy/funcy.h>
+#include <funcy/cmath/pow.h>
+#include <funcy/cmath/sine.h>
+#include <funcy/finalize.h>
+#include <funcy/generate.h>
+#include <funcy/variable.h>
 
 #include <gtest/gtest.h>
 
