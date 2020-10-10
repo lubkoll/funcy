@@ -14,6 +14,7 @@ addons:
     - lcov
     - cmake
     - libeigen3-dev
+    - libdune-common-dev
   
 matrix:
   include:

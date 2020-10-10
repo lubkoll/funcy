@@ -1,15 +1,14 @@
-#include <Eigen/Dense>
-#include <gtest/gtest.h>
-
-#include <dune/common/fmatrix.hh>
-#include <tuple>
-
-#define FUNCY_ENABLE_EXCEPTIONS
 #include <funcy/examples/biomechanics/adipose_tissue_sommer_holzapfel.h>
 #include <funcy/examples/biomechanics/muscle_tissue_martins.h>
 #include <funcy/examples/biomechanics/skin_tissue_hendriks.h>
 #include <funcy/examples/rubber/mooney_rivlin.h>
 #include <funcy/examples/rubber/neo_hooke.h>
+
+#include <Eigen/Dense>
+#include <gtest/gtest.h>
+
+#include <dune/common/fmatrix.hh>
+#include <tuple>
 
 namespace
 {
@@ -23,9 +22,12 @@ namespace
     auto run_test( Function& f )
     {
         const auto a = funcy::linalg::unit_matrix< M >();
-        const auto da0 = 2 * a;
-        const auto da1 = 3 * a;
-        const auto da2 = 4 * a;
+        M da0 = a;
+        da0 *= 2;
+        M da1 = a;
+        da1 *= 3;
+        M da2 = a;
+        da2 *= 4;
 
         f.update( a );
 

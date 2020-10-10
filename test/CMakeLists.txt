@@ -7,7 +7,6 @@ find_package(Eigen3)
 find_package(dune-common)
 
 if(EIGEN3_FOUND)
-    # On travis the examples do not compile due to a strange ambiguity with functionality of Eigen:
     set(LINALG_TEST_SRCS
         linalg/cofactor.cpp
         linalg/determinant.cpp
@@ -78,6 +77,7 @@ if(EIGEN3_FOUND)
     target_link_libraries(tests Eigen3::Eigen)
 endif()
 if(dune-common_FOUND)
+    add_definitions(-DFUNCY_FOUND_DUNE)
     target_include_directories(tests PRIVATE ${dune-common_INCLUDE_DIRS})
     target_link_libraries(tests ${dune-common_LIBS})
 endif()

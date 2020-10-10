@@ -8,4 +8,5 @@
 #include <funcy/linalg.h>
 #include <funcy/math.h>
 #include <funcy/operations.h>
+#include <funcy/util/dune.h>
 #include <funcy/variable.h>

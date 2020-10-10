@@ -4,6 +4,7 @@
 #include <funcy/linalg/concepts.h>
 #include <funcy/linalg/transpose.h>
 #include <funcy/util/chainer.h>
+#include <funcy/util/mathop_traits.h>
 
 namespace funcy
 {
@@ -36,7 +37,7 @@ namespace funcy
             void update( const Mat& F )
             {
                 FT = detail::transpose( F );
-                FTF = FT * F;
+                FTF = multiply_via_traits( FT, F );
             }
 
             /// Function value \f$ F^T * F \f$.
@@ -48,14 +49,14 @@ namespace funcy
             /// First directional derivative \f$ F^T dF_1 + dF_1^T F \f$.
             Mat d1( const Mat& dF1 ) const
             {
-                Mat FTdF1 = FT * dF1;
+                Mat FTdF1 = multiply_via_traits( FT, dF1 );
                 return detail::add_transposed( FTdF1 );
             }
 
             /// Second directional derivative \f$ dF_2^T dF_1 + dF_1^T dF_2 \f$.
             Mat d2( const Mat& dF1, const Mat& dF2 ) const
             {
-                Mat dF2TdF1 = detail::transpose( dF2 ) * dF1;
+                Mat dF2TdF1 = multiply_via_traits( detail::transpose( dF2 ), dF1 );
                 return detail::add_transposed( dF2TdF1 );
             }
 
@@ -87,7 +88,7 @@ namespace funcy
             void update( const Mat& F )
             {
                 FT = detail::transpose( F );
-                FFT = F * FT;
+                FFT = multiply_via_traits( F, FT );
             }
 
             /// Function value \f$ F^T * F \f$.
@@ -99,14 +100,14 @@ namespace funcy
             /// First directional derivative \f$ F^T dF_1 + dF_1^T F \f$.
             Mat d1( const Mat& dF1 ) const
             {
-                Mat FTdF1 = dF1 * FT;
+                Mat FTdF1 = multiply_via_traits( dF1, FT );
                 return detail::add_transposed( FTdF1 );
             }
 
             /// Second directional derivative \f$ dF_2^T dF_1 + dF_1^T dF_2 \f$.
             Mat d2( const Mat& dF1, const Mat& dF2 ) const
             {
-                Mat dF1dF2T = dF1 * detail::transpose( dF2 );
+                Mat dF1dF2T = multiply_via_traits( dF1, detail::transpose( dF2 ) );
                 return detail::add_transposed( dF1dF2T );
             }
 
