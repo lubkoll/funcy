@@ -54,11 +54,11 @@ IncludeCategories:
   - Regex:           '^((<|")Eigen)'
     Priority:        20
   - Regex:           '^((<|")catch2)'
-    Priority:        20
-  - Regex:           '^((<|")gtest)'
-    Priority:        20
-  - Regex:           '^((<|")gmock)'
     Priority:        30
+  - Regex:           '^((<|")gtest)'
+    Priority:        40
+  - Regex:           '^((<|")gmock)'
+    Priority:        40
   - Regex:           '.*'
     Priority:        70
   - Regex:           '^(<(algorithm|any|array|atomic|bitset|cassert|cerrno|cfloat|chrono|clocale|cmath|condition_variable|cstddef|cstdint|cinttypes|cstdlib|ctime|exception|filesystem|forward_list|functional|future|initializer_list|ios|iosfwd|iomanip|istream|iterator|locale|thread|optional|variant|ostream|queue|fstream|iostream|limits|list|map|memory|numeric|random|ratio|regex|set|shared_mutex|sstream|stack|stdexcept|system_error|string|vector|tuple|typeinfo|typeindex|type_traits|utility|unordered_map|unordered_set)>)'
