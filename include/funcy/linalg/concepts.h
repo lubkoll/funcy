@@ -59,26 +59,26 @@ namespace funcy
 
         /// clang-format off
         /**
-         * @brief Vector concept.
-         */
-        template < class T >
-        concept Vector = (
-                             requires( T t ) { { t[ 0 ][ 0 ] }; } ||
-                             requires( T t ) { { t( 0, 0 ) }; } ) &&
-                         (
-                             requires( T t ) { { t *= 0.0 }; } ||
-                             requires( T t ) { { 0.0 * t }; } ) &&
-                         std::copy_constructible< T >;
-
-        /**
          * @brief Matrix concept.
          */
         template < class T >
         concept Matrix = (
+                             requires( T t ) { { t[ 0 ][ 0 ] }; } ||
+                             requires( T t ) { { t( 0, 0 ) }; } ) &&
+                         (
+                             requires( std::decay_t< T > t ) { { t *= 2.0 }; } ||
+                             requires( std::decay_t< T > t ) { { t = 2.0 * t }; } ) &&
+                         std::copy_constructible< T >;
+
+        /**
+         * @brief Vector concept.
+         */
+        template < class T >
+        concept Vector = (
                              requires( T t ) { { t[ 0 ] }; } || requires( T t ) { { t( 0 ) }; } ) &&
                          (
-                             requires( T t ) { { t *= 0.0 }; } ||
-                             requires( T t ) { { 0.0 * t }; } ) &&
+                             requires( std::decay_t< T > t ) { { t *= 2.0 }; } ||
+                             requires( std::decay_t< T > t ) { { t = 2.0 * t }; } ) &&
                          std::copy_constructible< T >;
         /// clang-format on
         /** @} */

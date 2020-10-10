@@ -17,9 +17,9 @@ namespace funcy
         /// Access matrix entry \f$A_{ij}\f via square brackets$.
         template < Matrix M, class Index >
         FUNCY_ALWAYS_INLINE decltype( auto ) at( M&& A, Index i,
-                                                 Index j ) requires requires( std::decay_t< M > m )
+                                                 Index j ) requires requires( std::decay_t< M > A )
         {
-            { m[ 0 ][ 0 ] };
+            { A[ 0 ][ 0 ] };
         }
         {
             return A[ i ][ j ];
@@ -28,9 +28,9 @@ namespace funcy
         /// Access matrix entry \f$A_{ij}\f via square brackets$.
         template < Matrix M, class Index >
         FUNCY_ALWAYS_INLINE decltype( auto ) at( M&& A, Index i,
-                                                 Index j ) requires requires( std::decay_t< M > m )
+                                                 Index j ) requires requires( std::decay_t< M > A )
         {
-            { m( 0, 0 ) };
+            { A( 0, 0 ) };
         }
         {
             return A( i, j );
@@ -39,8 +39,8 @@ namespace funcy
         /// Access vector entry \f$\v_if$.
         template < Vector V, class Index >
         FUNCY_ALWAYS_INLINE decltype( auto )
-        at( V&& v,
-            Index i ) requires( !Matrix< V > && requires( std::decay_t< V > v ) { { v[ 0 ] }; } )
+        at( V&& v, Index i ) requires( !Matrix< std::decay_t< V > > &&
+                                       requires( std::decay_t< V > v ) { { v[ 0 ] }; } )
         {
             return v[ i ];
         }
@@ -48,8 +48,8 @@ namespace funcy
         /// Access vector entry \f$\v_if$.
         template < Vector V, class Index >
         FUNCY_ALWAYS_INLINE decltype( auto )
-        at( V&& v,
-            Index i ) requires( !Matrix< V > && requires( std::decay_t< V > v ) { { v( 0 ) }; } )
+        at( V&& v, Index i ) requires( !Matrix< std::decay_t< V > > &&
+                                       requires( std::decay_t< V > v ) { { v( 0 ) }; } )
         {
             return v( i );
         }
