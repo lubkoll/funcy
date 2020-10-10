@@ -10,6 +10,7 @@ if(EIGEN3_FOUND)
     set(LINALG_TEST_SRCS
         linalg/cofactor.cpp
         linalg/determinant.cpp
+        linalg/trace.cpp
         examples/exampleTest_Eigen.cpp
         examples/exampleTest_DynamicEigen.cpp
     )
