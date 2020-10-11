@@ -1,7 +1,7 @@
 #include <Eigen/Dense>
-#include <gtest/gtest.h>
 
 #include <gmock/gmock.h>
+#include <gtest/gtest.h>
 
 #include <tuple>
 
@@ -207,4 +207,13 @@ TEST( DynamicDeterminantTest_3d, D3 )
     auto d = det( get_first_matrix_x3d() );
     EXPECT_THAT( d.d3( get_second_matrix_x3d(), get_second_matrix_x3d(), get_second_matrix_x3d() ),
                  DoubleEq( 6 ) );
+}
+
+TEST( DynamicDeterminantTest_3d, NonSymmetricDynamicMatrixThrows )
+{
+    using M = Eigen::MatrixXd;
+    auto m = M( 3, 2 );
+    m << 1, 2, 3, 4, 5, 6;
+
+    EXPECT_THROW( auto t = det( m ), funcy::NonSymmetricMatrixException );
 }
