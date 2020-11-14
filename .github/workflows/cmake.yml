@@ -15,7 +15,6 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         include:
-        - name: "Ubuntu Latest GCC-10",
           os: ubuntu-latest,
           build_type: "Release"
           cc: "gcc-10"
