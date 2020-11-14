@@ -74,7 +74,7 @@ jobs:
     - name: Configure with Coverage
       shell: bash
       working-directory: ${{runner.workspace}}/build
-      run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$ -DFuncy_BuildTest=ON -DCMAKE_TOOLCHAIN_FILE=conan_paths.cmake -DCMAKE_CXX_FLAGS="-coverage"
+      run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DFuncy_BuildTest=ON -DCMAKE_TOOLCHAIN_FILE=conan_paths.cmake -DCMAKE_CXX_FLAGS="-coverage"
       if: ${{matrix.gcov != ''}}
 
     - name: Build
