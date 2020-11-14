@@ -90,11 +90,11 @@ jobs:
       shell: bash
       run: ctest -C $BUILD_TYPE
 
-#    - name: Publish Coverage
-#      working-directory: ${{runner.workspace}}/build/test
-#      shell: bash
-#      run: |
-#        lcov --gcov-tool $GCOV --capture --no-external --directory . --base-directory $GITHUB_WORKSPACE/include -rc lcov_branch_coverage=1 --output-file coverage.info
-#        coveralls-lcov --repo-token ${COVERALLS_TOKEN} coverage.info
-#      if: ${{matrix.gcov != ''}}
+    - name: Publish Coverage
+      working-directory: ${{runner.workspace}}/build/test
+      shell: bash
+      run: |
+        lcov --gcov-tool $GCOV --capture --no-external --directory . --base-directory $GITHUB_WORKSPACE/include -rc lcov_branch_coverage=1 --output-file coverage.info
+        coveralls-lcov --repo-token ${COVERALLS_TOKEN} coverage.info
+      if: ${{matrix.gcov != ''}}
 
