@@ -3,12 +3,10 @@ name: CMake
 on: [push]
 
 env:
-  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
   BUILD_TYPE: Release
 
 jobs:
   build:
-#    name: ${ { matrix.config.name } }
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -21,9 +19,10 @@ jobs:
             gcov: gcov-10
             compiler: gcc
           - build_type: Release
-            cc: clang-9
-            cxx: clang++-9
+            cc: clang-11
+            cxx: clang++-11
             compiler: clang
+
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-python@v2
@@ -41,6 +40,11 @@ jobs:
         echo "COMPILER: ${COMPILER}"
         echo "CXX: ${CXX}"
         echo "CC: ${CC}"
+
+    - name: Install Eigen
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libeigen3-dev
 
     - name: Setup
       run: |
