@@ -38,6 +38,18 @@ jobs:
         conan profile update settings.compiler.libcxx=libstdc++11 default
         conan profile update settings.build_type=$BUILD_TYPE default
 
+    - name: Set ENV variables
+      run: |
+        echo "::set-env name=COMPILER::${{matrix.compiler}}"
+        echo "::set-env name=CXX::${{matrix.cxx}}"
+        echo "::set-env name=CC::${{matrix.cc}}" 
+
+    - name: Print Travis ENV vars 
+      run: |
+        echo "COMPILER: ${COMPILER}"
+        echo "CXX: ${CXX}"
+        echo "CC: ${CC}"
+
     - name: Create Build Environment
       # Some projects don't allow in-source building, so create a separate build directory
       # We'll use this as our working directory for all subsequent commands
@@ -47,10 +59,6 @@ jobs:
       shell: bash
       working-directory: ${{runner.workspace}}/build
       run: conan install $GITHUB_WORKSPACE --build missing
-      env:
-        CXX: ${ { env.matrix.cc } }
-        CC: ${ { env.matrix.cxx } }
-        COMPILER: ${ { env.matrix.compiler } }
 
     - name: Configure CMake
       # Use a bash shell so we can use the same syntax for environment variable
@@ -61,18 +69,12 @@ jobs:
       # and build directories, but this is only available with CMake 3.13 and higher.  
       # The CMake binaries on the Github Actions machines are (as of this writing) 3.12
       run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DFuncy_BuildTest=ON -DCMAKE_TOOLCHAIN_FILE=conan_paths.cmake
-      env:
-        CXX: ${ { env.matrix.cc } }
-        CC: ${ { env.matrix.cxx } }
 
     - name: Build
       working-directory: ${{runner.workspace}}/build
       shell: bash
       # Execute the build.  You can specify a specific target with "--target <NAME>"
       run: cmake --build . --config $BUILD_TYPE
-      env:
-        CXX: ${ { env.matrix.cc } }
-        CC: ${ { env.matrix.cxx } }
 
     - name: Test
       working-directory: ${{runner.workspace}}/build/test
