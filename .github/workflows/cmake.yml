@@ -11,13 +11,13 @@ jobs:
         compiler: [gcc, clang]
         compiler_version: [10]
         include:
-          - build_type: Release
+          - build_type: Debug
             cc: gcc-10
             cxx: g++-10
             gcov: gcov-10
             compiler: gcc
             compiler_version: 10
-          - build_type: Debug
+          - build_type: Release
             cc: clang-10
             cxx: clang++-10
             compiler: clang
