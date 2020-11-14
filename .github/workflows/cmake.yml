@@ -17,10 +17,10 @@ jobs:
             compiler: gcc
             compiler_version: 10
           - build_type: Release
-            cc: clang-11
-            cxx: clang++-11
+            cc: clang-10
+            cxx: clang++-10
             compiler: clang
-            compiler_version: 11
+            compiler_version: 10
 
     steps:
     - uses: actions/checkout@v2
