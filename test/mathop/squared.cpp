@@ -3,14 +3,10 @@
 #include <funcy/generate.h>
 #include <funcy/variable.h>
 
+#include <gmock/gmock.h>
 #include <gtest/gtest.h>
 
-#include <gmock/gmock.h>
-
-namespace
-{
-    using ::testing::StrEq;
-}
+using ::testing::StrEq;
 
 TEST( SquaredTest, Update )
 {

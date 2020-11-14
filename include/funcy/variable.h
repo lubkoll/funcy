@@ -269,20 +269,6 @@ namespace funcy
             using type = void;
         };
 
-        template < template < Function > class G, Function F, int id >
-        struct VariableType< G< F >, id >
-        {
-            using type = typename VariableType< F, id >::type;
-        };
-
-        template < template < Function, Function > class H, Function F, Function G, int id >
-        struct VariableType< H< F, G >, id >
-        {
-            using type = std::conditional_t<
-                std::is_same< void, typename VariableType< F, id >::type >::value,
-                typename VariableType< G, id >::type, typename VariableType< F, id >::type >;
-        };
-
         template < class T, int id >
         struct VariableType< Variable< T, id >, id >
         {
@@ -321,12 +307,21 @@ namespace funcy
         {
             using type = typename ChooseTypeImpl< typename F::type, typename G::type >::type;
         };
+
+        template < class F, int id >
+        struct VariableT
+        {
+            template < class G >
+            using Extractor = VariableType< G, id >;
+
+            using type = typename meta::Traverse< std::decay_t< F >, Extractor, ChooseType >::type;
+        };
     } // namespace detail
     /// @endcond
 
     /// Get underlying type of variable with index id.
     template < class F, int id >
-    using Variable_t = typename detail::VariableType< std::decay_t< F >, id >::type;
+    using Variable_t = typename detail::VariableT< F, id >::type;
 
     namespace static_check
     {

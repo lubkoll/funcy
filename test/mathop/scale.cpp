@@ -5,16 +5,11 @@
 #include <funcy/generate.h>
 #include <funcy/variable.h>
 
+#include <gmock/gmock.h>
 #include <gtest/gtest.h>
 
-#include <gmock/gmock.h>
-
 using ::testing::Eq;
-
-namespace
-{
-    auto StrEq = []( const auto& str ) { return Eq( str ); };
-}
+using ::testing::StrEq;
 
 TEST( ScaleTest, Update )
 {

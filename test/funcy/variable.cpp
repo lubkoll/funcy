@@ -4,9 +4,8 @@
 #include <funcy/generate.h>
 #include <funcy/variable.h>
 
-#include <gtest/gtest.h>
-
 #include <gmock/gmock.h>
+#include <gtest/gtest.h>
 
 using ::testing::Eq;
 
@@ -271,6 +270,75 @@ TEST( MinVariableIdTest, IF_oneVariableInScale_THEN_RETURNS_its_id )
     using namespace funcy;
     auto f = 2 * variable< 1 >( 1 );
     EXPECT_THAT( detail::MinVariableId< decltype( f ) >::value, Eq( 1 ) );
+}
+
+TEST( VariableT, Variable )
+{
+    using namespace funcy;
+    using F = decltype( variable< 0 >( 1. ) );
+    using VT = Variable_t< F, 0 >;
+    const auto correct_type = std::is_same< VT, double >::value;
+    EXPECT_TRUE( correct_type );
+}
+
+TEST( VariableT, Squared )
+{
+    using namespace funcy;
+    using F = decltype( squared( variable< 0 >( 1. ) ) );
+    using VT = Variable_t< F, 0 >;
+    const auto correct_type = std::is_same< VT, double >::value;
+    EXPECT_TRUE( correct_type );
+}
+
+TEST( VariableT, FinalizeSquared )
+{
+    using namespace funcy;
+    using F = decltype( finalize( squared( variable< 0 >( 1. ) ) ) );
+    using VT = Variable_t< F, 0 >;
+    const auto correct_type = std::is_same< VT, double >::value;
+    EXPECT_TRUE( correct_type );
+}
+
+TEST( CheckArgumentTest, Squared )
+{
+    using namespace funcy;
+    using F = decltype( squared( variable< 0 >( 1. ) ) );
+    const auto value = static_check::check_argument< F, double, 0 >();
+    EXPECT_TRUE( value );
+}
+
+TEST( CheckArgumentTest, FinalizeSquared )
+{
+    using namespace funcy;
+    using F = decltype( finalize( squared( variable< 0 >( 1. ) ) ) );
+    const auto value = static_check::check_argument< F, double, 0 >();
+    EXPECT_TRUE( value );
+}
+
+TEST( CheckArgumentTest, FinalizeScale )
+{
+    using namespace funcy;
+    using F = decltype( finalize( 2.0 * variable< 0 >( 1. ) ) );
+    const auto value = static_check::check_argument< F, double, 0 >();
+    EXPECT_TRUE( value );
+}
+
+TEST( CheckArgumentTest, FinalizeSumSquared )
+{
+    using namespace funcy;
+    using F = decltype( finalize( squared( variable< 0 >( 1. ) ) +
+                                  2.0 * squared( variable< 1 >( 1. ) ) ) );
+    const auto value = static_check::check_argument< F, double, 1 >();
+    EXPECT_TRUE( value );
+}
+
+TEST( CheckArgumentTest, FinalizeTrackingType )
+{
+    using namespace funcy;
+    using F = decltype( finalize( squared( variable< 0 >( 1.0 ) - variable< 4 >( 1.0 ) ) +
+                                  2.0 * squared( variable< 1 >( 1.0 ) ) ) );
+    const auto value = static_check::check_argument< F, double, 1 >();
+    EXPECT_TRUE( value );
 }
 
 // TEST(VariableTest,D3)
