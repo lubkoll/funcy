@@ -13,16 +13,20 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        cc: [""]
+        cxx: [""]
+        gcov: [""]
+        compiler: [""]
         include:
-          - build_type: "Release"
-            cc: "gcc-10"
-            cxx: "g++-10"
-            gcov: "gcov-10"
-            compiler: "gcc"
-          - build_type: "Release"
-            cc: "clang-9"
-            cxx: "clang++-9"
-            compiler: "clang"
+          - build_type: Release
+            cc: gcc-10
+            cxx: g++-10
+            gcov: gcov-10
+            compiler: gcc
+          - build_type: Release
+            cc: clang-9
+            cxx: clang++-9
+            compiler: clang
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-python@v2
