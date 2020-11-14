@@ -9,6 +9,7 @@ jobs:
       fail-fast: false
       matrix:
         compiler: [gcc, clang]
+        compiler_version: [10]
         include:
           - build_type: Release
             cc: gcc-10
@@ -36,7 +37,7 @@ jobs:
         echo "CC=${{matrix.cc}}" >> $GITHUB_ENV
         echo "BUILD_TYPE=${{matrix.build_type}}" >> $GITHUB_ENV
 
-    - name: Print Travis ENV vars 
+    - name: Print ENV vars
       run: |
         echo "COMPILER: ${COMPILER}"
         echo "COMPILER_VERSION: ${COMPILER_VERSION}"
@@ -44,19 +45,17 @@ jobs:
         echo "CC: ${CC}"
         echo "BUILD_TYPE: ${BUILD_TYPE}"
 
-    - name: Install Eigen
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y libeigen3-dev clang-10 clang++-10
-
     - name: Setup
       run: |
+        sudo apt-get update
+        sudo apt-get install -y libeigen3-dev clang-10 clang++-10 ruby2.7 lcov
         pip install conan
         conan profile new default --detect
         conan profile update settings.compiler=$COMPILER default
         conan profile update settings.compiler.version=$COMPILER_VERSION default
         conan profile update settings.compiler.libcxx=libstdc++11 default
         conan profile update settings.build_type=$BUILD_TYPE default
+        sudo gem install coveralls-lcov
 
     - name: Create Build Environment
       run: cmake -E make_directory ${{runner.workspace}}/build
