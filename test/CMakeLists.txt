@@ -11,6 +11,7 @@ if(EIGEN3_FOUND)
         linalg/cofactor.cpp
         linalg/determinant.cpp
         linalg/trace.cpp
+        mathop/dot.cpp
         examples/exampleTest_Eigen.cpp
         examples/exampleTest_DynamicEigen.cpp
     )
@@ -58,7 +59,6 @@ add_executable(tests
     funcy/function_interface.cpp
     funcy/variable.cpp
     mathop/chain.cpp
-    mathop/dot.cpp
     mathop/max.cpp
     mathop/min.cpp
     mathop/product.cpp
