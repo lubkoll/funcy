@@ -11,7 +11,7 @@ jobs:
         compiler: [gcc, clang]
         compiler_version: [10]
         include:
-          - build_type: Release
+          - build_type: Debug
             cc: gcc-10
             cxx: g++-10
             gcov: gcov-10
@@ -69,11 +69,17 @@ jobs:
       shell: bash
       working-directory: ${{runner.workspace}}/build
       run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DFuncy_BuildTest=ON -DCMAKE_TOOLCHAIN_FILE=conan_paths.cmake
+      if: ${{matrix.compiler == 'clang'}}
+
+    - name: Configure with Coverage
+      shell: bash
+      working-directory: ${{runner.workspace}}/build
+      run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$ -DFuncy_BuildTest=ON -DCMAKE_TOOLCHAIN_FILE=conan_paths.cmake -DCMAKE_CXX_FLAGS="-coverage"
+      if: ${{matrix.gcov != ''}}
 
     - name: Build
       working-directory: ${{runner.workspace}}/build
       shell: bash
-
       run: cmake --build . --config $BUILD_TYPE
 
     - name: Test
