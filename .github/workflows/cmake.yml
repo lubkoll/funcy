@@ -48,7 +48,7 @@ jobs:
     - name: Setup
       run: |
         sudo apt-get update
-        sudo apt-get install -y libeigen3-dev clang-10 clang++-10 ruby2.7 lcov
+        sudo apt-get install -y libeigen3-dev clang-10 clang++-10 ruby2.5 lcov
         pip install conan
         conan profile new default --detect
         conan profile update settings.compiler=$COMPILER default
