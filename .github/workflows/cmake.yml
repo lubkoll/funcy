@@ -96,4 +96,5 @@ jobs:
       run: |
         lcov --gcov-tool gcov-10 --capture --no-external --directory . --base-directory $GITHUB_WORKSPACE/include -rc lcov_branch_coverage=1 --output-file coverage.info
         coveralls-lcov --repo-token ${COVERALLS_TOKEN} coverage.info
+      if: ${{matrix.gcov != ''}}
 
