@@ -2,25 +2,22 @@
 
 #include <funcy/linalg/rows_and_cols.h>
 
-namespace funcy
+namespace funcy::linalg
 {
-    namespace linalg
+    namespace detail
     {
-        namespace detail
-        {
-            /// Specialize this for your matrix class. Dimension (number of rows/columns for square
-            /// matrices) must be provided by a static member variable called value.
-            template < class Mat >
-            struct ExtractDimension : NumberOfRows< Mat >
-            {
-            };
-        } // namespace detail
-
-        /// Dimension \f$n\f$ of a fixed size matrix in \f$\mathbb{R}^{n,n}\f$.
+        /// Specialize this for your matrix class. Dimension (number of rows/columns for square
+        /// matrices) must be provided by a static member variable called value.
         template < class Mat >
-        [[nodiscard]] constexpr int dim()
+        struct ExtractDimension : NumberOfRows< Mat >
         {
-            return detail::ExtractDimension< Mat >::value;
-        }
-    } // namespace linalg
-} // namespace funcy
+        };
+    } // namespace detail
+
+    /// Dimension \f$n\f$ of a fixed size matrix in \f$\mathbb{R}^{n,n}\f$.
+    template < class Mat >
+    [[nodiscard]] constexpr int dim()
+    {
+        return detail::ExtractDimension< Mat >::value;
+    }
+} // namespace funcy::linalg

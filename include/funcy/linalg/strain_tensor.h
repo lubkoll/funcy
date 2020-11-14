@@ -6,160 +6,157 @@
 #include <funcy/util/chainer.h>
 #include <funcy/util/mathop_traits.h>
 
-namespace funcy
+namespace funcy::linalg
 {
     /** @addtogroup LinearAlgebraGroup
      * @{
      */
-    namespace linalg
+    /**
+     * @brief Right Cauchy-Green strain tensor \f$ F^T F \f$ for a symmetric matrix \f$ F \f$.
+     *
+     * Used in nonlinear material models based on the deformation gradient \f$\nabla\varphi\f$,
+     * which takes the role of \f$F\f$.
+     */
+    template < class Mat >
+    class RightCauchyGreenStrainTensor : public Chainer< RightCauchyGreenStrainTensor< Mat > >
     {
+    public:
+        RightCauchyGreenStrainTensor() = default;
         /**
-         * @brief Right Cauchy-Green strain tensor \f$ F^T F \f$ for a symmetric matrix \f$ F \f$.
-         *
-         * Used in nonlinear material models based on the deformation gradient \f$\nabla\varphi\f$,
-         * which takes the role of \f$F\f$.
+         * @brief Constructor.
+         * @param F point of evaluation.
          */
-        template < class Mat >
-        class RightCauchyGreenStrainTensor : public Chainer< RightCauchyGreenStrainTensor< Mat > >
+        explicit RightCauchyGreenStrainTensor( const Mat& F )
         {
-        public:
-            RightCauchyGreenStrainTensor() = default;
-            /**
-             * @brief Constructor.
-             * @param F point of evaluation.
-             */
-            explicit RightCauchyGreenStrainTensor( const Mat& F )
-            {
-                update( F );
-            }
-
-            /// Reset point of evaluation.
-            void update( const Mat& F )
-            {
-                FT = detail::transpose( F );
-                FTF = multiply_via_traits( FT, F );
-            }
-
-            /// Function value \f$ F^T * F \f$.
-            const Mat& d0() const noexcept
-            {
-                return FTF;
-            }
-
-            /// First directional derivative \f$ F^T dF_1 + dF_1^T F \f$.
-            Mat d1( const Mat& dF1 ) const
-            {
-                Mat FTdF1 = multiply_via_traits( FT, dF1 );
-                return detail::add_transposed( FTdF1 );
-            }
-
-            /// Second directional derivative \f$ dF_2^T dF_1 + dF_1^T dF_2 \f$.
-            Mat d2( const Mat& dF1, const Mat& dF2 ) const
-            {
-                Mat dF2TdF1 = multiply_via_traits( detail::transpose( dF2 ), dF1 );
-                return detail::add_transposed( dF2TdF1 );
-            }
-
-        private:
-            Mat FT, FTF;
-        };
-
-        /**
-         * @brief Left Cauchy-Green strain tensor \f$ F^T F \f$ for a symmetric matrix \f$ F \f$.
-         *
-         * Used in nonlinear material models based on the deformation gradient \f$\nabla\varphi\f$,
-         * which takes the role of \f$F\f$.
-         */
-        template < class Mat >
-        class LeftCauchyGreenStrainTensor : public Chainer< LeftCauchyGreenStrainTensor< Mat > >
-        {
-        public:
-            LeftCauchyGreenStrainTensor() = default;
-            /**
-             * @brief Constructor.
-             * @param F point of evaluation.
-             */
-            explicit LeftCauchyGreenStrainTensor( const Mat& F )
-            {
-                update( F );
-            }
-
-            /// Reset point of evaluation.
-            void update( const Mat& F )
-            {
-                FT = detail::transpose( F );
-                FFT = multiply_via_traits( F, FT );
-            }
-
-            /// Function value \f$ F^T * F \f$.
-            const Mat& d0() const noexcept
-            {
-                return FFT;
-            }
-
-            /// First directional derivative \f$ F^T dF_1 + dF_1^T F \f$.
-            Mat d1( const Mat& dF1 ) const
-            {
-                Mat FTdF1 = multiply_via_traits( dF1, FT );
-                return detail::add_transposed( FTdF1 );
-            }
-
-            /// Second directional derivative \f$ dF_2^T dF_1 + dF_1^T dF_2 \f$.
-            Mat d2( const Mat& dF1, const Mat& dF2 ) const
-            {
-                Mat dF1dF2T = multiply_via_traits( dF1, detail::transpose( dF2 ) );
-                return detail::add_transposed( dF1dF2T );
-            }
-
-        private:
-            Mat FT, FFT;
-        };
-
-        /**
-         * @brief Generate the right Cauchy-Green strain tensor \f$A*A^T\f$.
-         * @param A matrix
-         * @return RightCauchyGreenStrainTensor<Matrix>(A)
-         */
-        template < class Mat >
-        auto strain_tensor( const Mat& A )
-        {
-            return RightCauchyGreenStrainTensor{ A };
+            update( F );
         }
 
-        /**
-         * @brief Generate the right Cauchy-Green strain tensor \f$f*f^T\f$, where
-         * \f$f:\cdot\mapsto\mathbb{R}^{n,n} \f$.
-         * @param f function object mapping into a space of square matrices
-         * @return RightCauchyGreenStrainTensor< decay_t<decltype(f())> >(f())( f )
-         */
-        template < Function F >
-        auto strain_tensor( const F& f )
+        /// Reset point of evaluation.
+        void update( const Mat& F )
         {
-            return RightCauchyGreenStrainTensor< decay_t< decltype( f() ) > >{ f() }( f );
+            FT = detail::transpose( F );
+            FTF = multiply_via_traits( FT, F );
         }
 
-        /**
-         * @brief Generate the left Cauchy-Green strain tensor \f$A^T*A\f$.
-         * @param A matrix
-         * @return LeftCauchyGreenStrainTensor<Matrix>(A)
-         */
-        template < class Mat >
-        auto left_strain_tensor( const Mat& A )
+        /// Function value \f$ F^T * F \f$.
+        const Mat& d0() const noexcept
         {
-            return LeftCauchyGreenStrainTensor{ A };
+            return FTF;
         }
 
-        /**
-         * @brief Generate the left Cauchy-Green strain tensor \f$f^T*f\f$, where
-         * f$f:\cdot\mapsto\mathbb{R}^{n,n} \f$.
-         * @param f function object mapping into a space of square matrices
-         * @return LeftCauchyGreenStrainTensor< decay_t<decltype(f())> >(f())( f )
-         */
-        template < Function F >
-        auto left_strain_tensor( const F& f )
+        /// First directional derivative \f$ F^T dF_1 + dF_1^T F \f$.
+        Mat d1( const Mat& dF1 ) const
         {
-            return LeftCauchyGreenStrainTensor< decay_t< decltype( f() ) > >{ f() }( f );
+            Mat FTdF1 = multiply_via_traits( FT, dF1 );
+            return detail::add_transposed( FTdF1 );
         }
-    } // namespace linalg
+
+        /// Second directional derivative \f$ dF_2^T dF_1 + dF_1^T dF_2 \f$.
+        Mat d2( const Mat& dF1, const Mat& dF2 ) const
+        {
+            Mat dF2TdF1 = multiply_via_traits( detail::transpose( dF2 ), dF1 );
+            return detail::add_transposed( dF2TdF1 );
+        }
+
+    private:
+        Mat FT, FTF;
+    };
+
+    /**
+     * @brief Left Cauchy-Green strain tensor \f$ F^T F \f$ for a symmetric matrix \f$ F \f$.
+     *
+     * Used in nonlinear material models based on the deformation gradient \f$\nabla\varphi\f$,
+     * which takes the role of \f$F\f$.
+     */
+    template < class Mat >
+    class LeftCauchyGreenStrainTensor : public Chainer< LeftCauchyGreenStrainTensor< Mat > >
+    {
+    public:
+        LeftCauchyGreenStrainTensor() = default;
+        /**
+         * @brief Constructor.
+         * @param F point of evaluation.
+         */
+        explicit LeftCauchyGreenStrainTensor( const Mat& F )
+        {
+            update( F );
+        }
+
+        /// Reset point of evaluation.
+        void update( const Mat& F )
+        {
+            FT = detail::transpose( F );
+            FFT = multiply_via_traits( F, FT );
+        }
+
+        /// Function value \f$ F^T * F \f$.
+        const Mat& d0() const noexcept
+        {
+            return FFT;
+        }
+
+        /// First directional derivative \f$ F^T dF_1 + dF_1^T F \f$.
+        Mat d1( const Mat& dF1 ) const
+        {
+            Mat FTdF1 = multiply_via_traits( dF1, FT );
+            return detail::add_transposed( FTdF1 );
+        }
+
+        /// Second directional derivative \f$ dF_2^T dF_1 + dF_1^T dF_2 \f$.
+        Mat d2( const Mat& dF1, const Mat& dF2 ) const
+        {
+            Mat dF1dF2T = multiply_via_traits( dF1, detail::transpose( dF2 ) );
+            return detail::add_transposed( dF1dF2T );
+        }
+
+    private:
+        Mat FT, FFT;
+    };
+
+    /**
+     * @brief Generate the right Cauchy-Green strain tensor \f$A*A^T\f$.
+     * @param A matrix
+     * @return RightCauchyGreenStrainTensor<Matrix>(A)
+     */
+    template < class Mat >
+    auto strain_tensor( const Mat& A )
+    {
+        return RightCauchyGreenStrainTensor{ A };
+    }
+
+    /**
+     * @brief Generate the right Cauchy-Green strain tensor \f$f*f^T\f$, where
+     * \f$f:\cdot\mapsto\mathbb{R}^{n,n} \f$.
+     * @param f function object mapping into a space of square matrices
+     * @return RightCauchyGreenStrainTensor< decay_t<decltype(f())> >(f())( f )
+     */
+    template < Function F >
+    auto strain_tensor( const F& f )
+    {
+        return RightCauchyGreenStrainTensor< decay_t< decltype( f() ) > >{ f() }( f );
+    }
+
+    /**
+     * @brief Generate the left Cauchy-Green strain tensor \f$A^T*A\f$.
+     * @param A matrix
+     * @return LeftCauchyGreenStrainTensor<Matrix>(A)
+     */
+    template < class Mat >
+    auto left_strain_tensor( const Mat& A )
+    {
+        return LeftCauchyGreenStrainTensor{ A };
+    }
+
+    /**
+     * @brief Generate the left Cauchy-Green strain tensor \f$f^T*f\f$, where
+     * f$f:\cdot\mapsto\mathbb{R}^{n,n} \f$.
+     * @param f function object mapping into a space of square matrices
+     * @return LeftCauchyGreenStrainTensor< decay_t<decltype(f())> >(f())( f )
+     */
+    template < Function F >
+    auto left_strain_tensor( const F& f )
+    {
+        return LeftCauchyGreenStrainTensor< decay_t< decltype( f() ) > >{ f() }( f );
+    }
     /** @} */
-} // namespace funcy
+} // namespace funcy::linalg
