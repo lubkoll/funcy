@@ -34,11 +34,11 @@ jobs:
 
     - name: Set ENV variables
       run: |
-        echo "::set-env name=COMPILER::${{matrix.compiler}}"
-        echo "::set-env name=COMPILER_VERSION::${{matrix.compiler_version}}"
-        echo "::set-env name=CXX::${{matrix.cxx}}"
-        echo "::set-env name=CC::${{matrix.cc}}" 
-        echo "::set-env name=BUILD_TYPE::${{matrix.build_type}}" 
+        echo "COMPILER=${{matrix.compiler}}" >> $GITHUB_ENV
+        echo "COMPILER_VERSION=${{matrix.compiler_version}}" >> $GITHUB_ENV
+        echo "CXX=${{matrix.cxx}}" >> $GITHUB_ENV
+        echo "CC=${{matrix.cc}}" >> $GITHUB_ENV
+        echo "BUILD_TYPE=${{matrix.build_type}}" >> $GITHUB_ENV
 
     - name: Print Travis ENV vars 
       run: |
