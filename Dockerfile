@@ -8,8 +8,4 @@ RUN python3 -m pip install conan
 RUN conan profile new default --detect
 RUN gem install coveralls-lcov
 
-RUN useradd -ms /bin/bash funcy
-RUN usermod -G sudo funcy
-USER funcy
-
 WORKDIR /home/funcy
