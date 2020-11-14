@@ -11,195 +11,187 @@
 #include <type_traits>
 #include <utility>
 
-namespace funcy
+namespace funcy::mathop
 {
-    namespace mathop
+    /**
+     * @ingroup MathematicalOperationsGroup
+     * @brief %Product \f$fg\f$ of functions of type F and G.
+     */
+    template < Function F, Function G >
+    struct Product : Chainer< Product< F, G > >
     {
+    private:
+        template < class IndexedArg >
+        using D1Type = ComputeSum< ComputeProduct< D1< F, IndexedArg >, D0< G > >,
+                                   ComputeProduct< D0< F >, D1< G, IndexedArg > > >;
+
+        template < class IndexedArgX, class IndexedArgY >
+        using D2Type = ComputeSum< ComputeProduct< D2< F, IndexedArgX, IndexedArgY >, D0< G > >,
+                                   ComputeProduct< D1< F, IndexedArgX >, D1< G, IndexedArgY > >,
+                                   ComputeProduct< D1< F, IndexedArgY >, D1< G, IndexedArgX > >,
+                                   ComputeProduct< D0< F >, D2< G, IndexedArgX, IndexedArgY > > >;
+
+        template < class IndexedArgX, class IndexedArgY, class IndexedArgZ >
+        using D3Type =
+            ComputeSum< ComputeProduct< D3< F, IndexedArgX, IndexedArgY, IndexedArgZ >, D0< G > >,
+                        ComputeProduct< D2< F, IndexedArgX, IndexedArgY >, D1< G, IndexedArgZ > >,
+                        ComputeProduct< D2< F, IndexedArgX, IndexedArgZ >, D1< G, IndexedArgY > >,
+                        ComputeProduct< D1< F, IndexedArgX >, D2< G, IndexedArgY, IndexedArgZ > >,
+                        ComputeProduct< D2< F, IndexedArgY, IndexedArgZ >, D1< G, IndexedArgX > >,
+                        ComputeProduct< D1< F, IndexedArgY >, D2< G, IndexedArgX, IndexedArgZ > >,
+                        ComputeProduct< D1< F, IndexedArgZ >, D2< G, IndexedArgX, IndexedArgY > >,
+                        ComputeProduct< D0< F >, D3< G, IndexedArgX, IndexedArgY, IndexedArgZ > > >;
+
+    public:
         /**
-         * @ingroup MathematicalOperationsGroup
-         * @brief %Product \f$fg\f$ of functions of type F and G.
+         * @brief Constructor passing arguments to function constructors.
+         * @param f_ input for constructor of left side of product
+         * @param g_ input for constructor of right side of product
          */
-        template < Function F, Function G >
-        struct Product : Chainer< Product< F, G > >
+        constexpr Product( const F& f_, const G& g_ )
+            : f( f_ ), g( g_ ), value( multiply_via_traits( f(), g() ) )
         {
-        private:
-            template < class IndexedArg >
-            using D1Type = ComputeSum< ComputeProduct< D1< F, IndexedArg >, D0< G > >,
-                                       ComputeProduct< D0< F >, D1< G, IndexedArg > > >;
+        }
 
-            template < class IndexedArgX, class IndexedArgY >
-            using D2Type =
-                ComputeSum< ComputeProduct< D2< F, IndexedArgX, IndexedArgY >, D0< G > >,
-                            ComputeProduct< D1< F, IndexedArgX >, D1< G, IndexedArgY > >,
-                            ComputeProduct< D1< F, IndexedArgY >, D1< G, IndexedArgX > >,
-                            ComputeProduct< D0< F >, D2< G, IndexedArgX, IndexedArgY > > >;
+        /**
+         * @brief Constructor passing arguments to function constructors.
+         * @param f_ input for constructor of left side of product
+         * @param g_ input for constructor of right side of product
+         */
+        constexpr Product( const F& f_, G&& g_ )
+            : f( f_ ), g( std::move( g_ ) ), value( multiply_via_traits( f(), g() ) )
+        {
+        }
 
-            template < class IndexedArgX, class IndexedArgY, class IndexedArgZ >
-            using D3Type = ComputeSum<
-                ComputeProduct< D3< F, IndexedArgX, IndexedArgY, IndexedArgZ >, D0< G > >,
-                ComputeProduct< D2< F, IndexedArgX, IndexedArgY >, D1< G, IndexedArgZ > >,
-                ComputeProduct< D2< F, IndexedArgX, IndexedArgZ >, D1< G, IndexedArgY > >,
-                ComputeProduct< D1< F, IndexedArgX >, D2< G, IndexedArgY, IndexedArgZ > >,
-                ComputeProduct< D2< F, IndexedArgY, IndexedArgZ >, D1< G, IndexedArgX > >,
-                ComputeProduct< D1< F, IndexedArgY >, D2< G, IndexedArgX, IndexedArgZ > >,
-                ComputeProduct< D1< F, IndexedArgZ >, D2< G, IndexedArgX, IndexedArgY > >,
-                ComputeProduct< D0< F >, D3< G, IndexedArgX, IndexedArgY, IndexedArgZ > > >;
+        /**
+         * @brief Constructor passing arguments to function constructors.
+         * @param f_ input for constructor of left side of product
+         * @param g_ input for constructor of right side of product
+         */
+        constexpr Product( F&& f_, const G& g_ )
+            : f( std::move( f_ ) ), g( g_ ), value( multiply_via_traits( f(), g() ) )
+        {
+        }
 
-        public:
-            /**
-             * @brief Constructor passing arguments to function constructors.
-             * @param f_ input for constructor of left side of product
-             * @param g_ input for constructor of right side of product
-             */
-            constexpr Product( const F& f_, const G& g_ )
-                : f( f_ ), g( g_ ), value( multiply_via_traits( f(), g() ) )
-            {
-            }
+        /**
+         * @brief Constructor passing arguments to function constructors.
+         * @param f_ input for constructor of left side of product
+         * @param g_ input for constructor of right side of product
+         */
+        constexpr Product( F&& f_, G&& g_ )
+            : f( std::move( f_ ) ), g( std::move( g_ ) ), value( multiply_via_traits( f(), g() ) )
+        {
+        }
 
-            /**
-             * @brief Constructor passing arguments to function constructors.
-             * @param f_ input for constructor of left side of product
-             * @param g_ input for constructor of right side of product
-             */
-            constexpr Product( const F& f_, G&& g_ )
-                : f( f_ ), g( std::move( g_ ) ), value( multiply_via_traits( f(), g() ) )
-            {
-            }
+        /**
+         * @brief Constructor passing arguments to function constructors.
+         * @param f_ input for constructor of left side of product
+         * @param g_ input for constructor of right side of product
+         */
+        template < class InitF, class InitG >
+        constexpr Product( InitF&& f_, InitG&& g_ ) requires(
+            std::is_constructible_v< F, std::decay_t< InitF > >&&
+                std::is_constructible_v< G, std::decay_t< InitG > > )
+            : f( std::forward< InitF >( f_ ) ), g( std::forward< InitG >( g_ ) ),
+              value( multiply_via_traits( f(), g() ) )
+        {
+        }
 
-            /**
-             * @brief Constructor passing arguments to function constructors.
-             * @param f_ input for constructor of left side of product
-             * @param g_ input for constructor of right side of product
-             */
-            constexpr Product( F&& f_, const G& g_ )
-                : f( std::move( f_ ) ), g( g_ ), value( multiply_via_traits( f(), g() ) )
-            {
-            }
+        /// Update point of evaluation.
+        template < class Arg >
+        void update( Arg const& x )
+        {
+            update_if_present( f, x );
+            update_if_present( g, x );
+            value = multiply_via_traits( f(), g() );
+        }
 
-            /**
-             * @brief Constructor passing arguments to function constructors.
-             * @param f_ input for constructor of left side of product
-             * @param g_ input for constructor of right side of product
-             */
-            constexpr Product( F&& f_, G&& g_ )
-                : f( std::move( f_ ) ), g( std::move( g_ ) ),
-                  value( multiply_via_traits( f(), g() ) )
-            {
-            }
+        /// Update variable corresponding to index.
+        template < int index, class Arg >
+        void update( const Arg& x )
+        {
+            update_if_present< index >( f, x );
+            update_if_present< index >( g, x );
+            value = multiply_via_traits( f(), g() );
+        }
 
-            /**
-             * @brief Constructor passing arguments to function constructors.
-             * @param f_ input for constructor of left side of product
-             * @param g_ input for constructor of right side of product
-             */
-            template < class InitF, class InitG >
-            constexpr Product( InitF&& f_, InitG&& g_ ) requires(
-                std::is_constructible_v< F, std::decay_t< InitF > >&&
-                    std::is_constructible_v< G, std::decay_t< InitG > > )
-                : f( std::forward< InitF >( f_ ) ), g( std::forward< InitG >( g_ ) ),
-                  value( multiply_via_traits( f(), g() ) )
-            {
-            }
+        template < class... IndexedArgs >
+        void bulk_update( IndexedArgs&&... args )
+        {
+            bulk_update_if_present( f, args... );
+            bulk_update_if_present( g, std::forward< IndexedArgs >( args )... );
+            value = multiply_via_traits( f(), g() );
+        }
 
-            /// Update point of evaluation.
-            template < class Arg >
-            void update( Arg const& x )
-            {
-                update_if_present( f, x );
-                update_if_present( g, x );
-                value = multiply_via_traits( f(), g() );
-            }
+        /// Function value.
+        constexpr decltype( auto ) d0() const noexcept
+        {
+            return value;
+        }
 
-            /// Update variable corresponding to index.
-            template < int index, class Arg >
-            void update( const Arg& x )
-            {
-                update_if_present< index >( f, x );
-                update_if_present< index >( g, x );
-                value = multiply_via_traits( f(), g() );
-            }
+        /**
+         * @brief First directional derivative.
+         * @param dx direction for which the derivative is computed
+         */
+        template < int id, class Arg, class IndexedArg = IndexedType< Arg, id > >
+        auto d1( Arg const& dx ) const requires( D1Type< IndexedArg >::present )
+        {
+            return sum( product( D1< F, IndexedArg >( f, dx ), D0< G >( g ) ),
+                        product( D0< F >( f ), D1< G, IndexedArg >( g, dx ) ) )();
+        }
 
-            template < class... IndexedArgs >
-            void bulk_update( IndexedArgs&&... args )
-            {
-                bulk_update_if_present( f, args... );
-                bulk_update_if_present( g, std::forward< IndexedArgs >( args )... );
-                value = multiply_via_traits( f(), g() );
-            }
+        /**
+         * @brief Second directional derivative.
+         * @param dx direction for which the derivative is computed
+         * @param dy direction for which the derivative is computed
+         */
+        template < int idx, int idy, class ArgX, class ArgY,
+                   class IndexedArgX = IndexedType< ArgX, idx >,
+                   class IndexedArgY = IndexedType< ArgY, idy > >
+        auto d2( ArgX const& dx, ArgY const& dy ) const
+            requires( D2Type< IndexedArgX, IndexedArgY >::present )
+        {
+            return sum( product( D2< F, IndexedArgX, IndexedArgY >( f, dx, dy ), D0< G >( g ) ),
+                        product( D1< F, IndexedArgX >( f, dx ), D1< G, IndexedArgY >( g, dy ) ),
+                        product( D1< F, IndexedArgY >( f, dy ), D1< G, IndexedArgX >( g, dx ) ),
+                        product( D0< F >( f ), D2< G, IndexedArgX, IndexedArgY >( g, dx, dy ) ) )();
+        }
 
-            /// Function value.
-            constexpr decltype( auto ) d0() const noexcept
-            {
-                return value;
-            }
+        /**
+         * @brief Third directional derivative.
+         * @param dx direction for which the derivative is computed
+         * @param dy direction for which the derivative is computed
+         * @param dz direction for which the derivative is computed
+         */
+        template < int idx, int idy, int idz, class ArgX, class ArgY, class ArgZ,
+                   class IndexedArgX = IndexedType< ArgX, idx >,
+                   class IndexedArgY = IndexedType< ArgY, idy >,
+                   class IndexedArgZ = IndexedType< ArgZ, idz > >
+        auto d3( ArgX const& dx, ArgY const& dy, ArgZ const& dz ) const
+            requires( D3Type< IndexedArgX, IndexedArgY, IndexedArgZ >::present )
+        {
+            return sum( product( D3< F, IndexedArgX, IndexedArgY, IndexedArgZ >( f, dx, dy, dz ),
+                                 D0< G >( g ) ),
+                        product( D2< F, IndexedArgX, IndexedArgY >( f, dx, dy ),
+                                 D1< G, IndexedArgZ >( g, dz ) ),
+                        product( D2< F, IndexedArgX, IndexedArgZ >( f, dx, dz ),
+                                 D1< G, IndexedArgY >( g, dy ) ),
+                        product( D1< F, IndexedArgX >( f, dx ),
+                                 D2< G, IndexedArgY, IndexedArgZ >( g, dy, dz ) ),
+                        product( D2< F, IndexedArgY, IndexedArgZ >( f, dy, dz ),
+                                 D1< G, IndexedArgX >( g, dx ) ),
+                        product( D1< F, IndexedArgY >( f, dy ),
+                                 D2< G, IndexedArgX, IndexedArgZ >( g, dx, dz ) ),
+                        product( D1< F, IndexedArgZ >( f, dz ),
+                                 D2< G, IndexedArgX, IndexedArgY >( g, dx, dy ) ),
+                        product( D0< F >( f ), D3< G, IndexedArgX, IndexedArgY, IndexedArgZ >(
+                                                   g, dx, dy, dz ) ) )();
+        }
 
-            /**
-             * @brief First directional derivative.
-             * @param dx direction for which the derivative is computed
-             */
-            template < int id, class Arg, class IndexedArg = IndexedType< Arg, id > >
-            auto d1( Arg const& dx ) const requires( D1Type< IndexedArg >::present )
-            {
-                return sum( product( D1< F, IndexedArg >( f, dx ), D0< G >( g ) ),
-                            product( D0< F >( f ), D1< G, IndexedArg >( g, dx ) ) )();
-            }
-
-            /**
-             * @brief Second directional derivative.
-             * @param dx direction for which the derivative is computed
-             * @param dy direction for which the derivative is computed
-             */
-            template < int idx, int idy, class ArgX, class ArgY,
-                       class IndexedArgX = IndexedType< ArgX, idx >,
-                       class IndexedArgY = IndexedType< ArgY, idy > >
-            auto d2( ArgX const& dx, ArgY const& dy ) const
-                requires( D2Type< IndexedArgX, IndexedArgY >::present )
-            {
-                return sum(
-                    product( D2< F, IndexedArgX, IndexedArgY >( f, dx, dy ), D0< G >( g ) ),
-                    product( D1< F, IndexedArgX >( f, dx ), D1< G, IndexedArgY >( g, dy ) ),
-                    product( D1< F, IndexedArgY >( f, dy ), D1< G, IndexedArgX >( g, dx ) ),
-                    product( D0< F >( f ), D2< G, IndexedArgX, IndexedArgY >( g, dx, dy ) ) )();
-            }
-
-            /**
-             * @brief Third directional derivative.
-             * @param dx direction for which the derivative is computed
-             * @param dy direction for which the derivative is computed
-             * @param dz direction for which the derivative is computed
-             */
-            template < int idx, int idy, int idz, class ArgX, class ArgY, class ArgZ,
-                       class IndexedArgX = IndexedType< ArgX, idx >,
-                       class IndexedArgY = IndexedType< ArgY, idy >,
-                       class IndexedArgZ = IndexedType< ArgZ, idz > >
-            auto d3( ArgX const& dx, ArgY const& dy, ArgZ const& dz ) const
-                requires( D3Type< IndexedArgX, IndexedArgY, IndexedArgZ >::present )
-            {
-                return sum(
-                    product( D3< F, IndexedArgX, IndexedArgY, IndexedArgZ >( f, dx, dy, dz ),
-                             D0< G >( g ) ),
-                    product( D2< F, IndexedArgX, IndexedArgY >( f, dx, dy ),
-                             D1< G, IndexedArgZ >( g, dz ) ),
-                    product( D2< F, IndexedArgX, IndexedArgZ >( f, dx, dz ),
-                             D1< G, IndexedArgY >( g, dy ) ),
-                    product( D1< F, IndexedArgX >( f, dx ),
-                             D2< G, IndexedArgY, IndexedArgZ >( g, dy, dz ) ),
-                    product( D2< F, IndexedArgY, IndexedArgZ >( f, dy, dz ),
-                             D1< G, IndexedArgX >( g, dx ) ),
-                    product( D1< F, IndexedArgY >( f, dy ),
-                             D2< G, IndexedArgX, IndexedArgZ >( g, dx, dz ) ),
-                    product( D1< F, IndexedArgZ >( f, dz ),
-                             D2< G, IndexedArgX, IndexedArgY >( g, dx, dy ) ),
-                    product( D0< F >( f ),
-                             D3< G, IndexedArgX, IndexedArgY, IndexedArgZ >( g, dx, dy, dz ) ) )();
-            }
-
-        private:
-            F f;
-            G g;
-            decay_t< decltype(
-                multiply_via_traits( std::declval< F >()(), std::declval< G >()() ) ) >
-                value;
-        };
-    } // namespace mathop
-} // namespace funcy
+    private:
+        F f;
+        G g;
+        decay_t< decltype( multiply_via_traits( std::declval< F >()(), std::declval< G >()() ) ) >
+            value;
+    };
+} // namespace funcy::mathop
