@@ -13,10 +13,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        cc: [""]
-        cxx: [""]
-        gcov: [""]
-        compiler: [""]
+        compiler: [gcc, clang]
         include:
           - build_type: Release
             cc: gcc-10
