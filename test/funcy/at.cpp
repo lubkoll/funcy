@@ -1,8 +1,7 @@
-#include <funcy/util/at.h>
-
-#include <gtest/gtest.h>
+#include <funcy/linalg/at.h>
 
 #include <gmock/gmock.h>
+#include <gtest/gtest.h>
 
 using funcy::linalg::at;
 

@@ -9,12 +9,15 @@
 
 using ::testing::Eq;
 
-auto generateTestFunction()
+namespace
 {
-    using namespace funcy;
-    auto f = ( variable< 0 >( 1. ) + variable< 1 >( 2. ) ) * pow< 2 >( variable< 2 >( 3. ) );
-    return finalize( f );
-}
+    auto generateTestFunction()
+    {
+        using namespace funcy;
+        auto f = ( variable< 0 >( 1. ) + variable< 1 >( 2. ) ) * pow< 2 >( variable< 2 >( 3. ) );
+        return finalize( f );
+    }
+} // namespace
 
 TEST( HasVariableTest, Sum )
 {
@@ -341,29 +344,29 @@ TEST( CheckArgumentTest, FinalizeTrackingType )
     EXPECT_TRUE( value );
 }
 
-// TEST(VariableTest,D3)
-//{
-//  auto fun = generateTestFunction();
-//  auto val = fun.d3<0,0,0>();
-//  EXPECT_DOUBLE_EQ( val , 0. );
-//  val = fun.d3<1,1,1>();
-//  EXPECT_DOUBLE_EQ( val , 0. );
-//  val = fun.d3<2,2,2>();
-//  EXPECT_DOUBLE_EQ( val , 0. );
-//  val = fun.d3<0,2,2>();
-//  EXPECT_DOUBLE_EQ( val , 2. );
-//  auto val2 = fun.d3<2,0,2>();
-//  EXPECT_DOUBLE_EQ( val , val2 );
-//  val2 = fun.d3<2,2,0>();
-//  EXPECT_DOUBLE_EQ( val , val2 );
-//  val = fun.d3<0,1,2>();
-//  EXPECT_DOUBLE_EQ( val , 0. );
-//  val2 = fun.d3<2,1,0>();
-//  EXPECT_DOUBLE_EQ( val , val2 );
-//  val = fun.d3<0,2,1>();
-//  EXPECT_DOUBLE_EQ( val , 0. );
-//  val2 = fun.d3<1,2,0>();
-//  EXPECT_DOUBLE_EQ( val , val2 );
-//  val = fun.d3<2,1,0>();
-//  EXPECT_DOUBLE_EQ( val , val2 );
-//}
+TEST( VariableTest, D3 )
+{
+    auto fun = generateTestFunction();
+    auto val = fun.d3< 0, 0, 0 >();
+    EXPECT_DOUBLE_EQ( val, 0. );
+    val = fun.d3< 1, 1, 1 >();
+    EXPECT_DOUBLE_EQ( val, 0. );
+    val = fun.d3< 2, 2, 2 >();
+    EXPECT_DOUBLE_EQ( val, 0. );
+    val = fun.d3< 0, 2, 2 >();
+    EXPECT_DOUBLE_EQ( val, 2. );
+    auto val2 = fun.d3< 2, 0, 2 >();
+    EXPECT_DOUBLE_EQ( val, val2 );
+    val2 = fun.d3< 2, 2, 0 >();
+    EXPECT_DOUBLE_EQ( val, val2 );
+    val = fun.d3< 0, 1, 2 >();
+    EXPECT_DOUBLE_EQ( val, 0. );
+    val2 = fun.d3< 2, 1, 0 >();
+    EXPECT_DOUBLE_EQ( val, val2 );
+    val = fun.d3< 0, 2, 1 >();
+    EXPECT_DOUBLE_EQ( val, 0. );
+    val2 = fun.d3< 1, 2, 0 >();
+    EXPECT_DOUBLE_EQ( val, val2 );
+    val = fun.d3< 2, 1, 0 >();
+    EXPECT_DOUBLE_EQ( val, val2 );
+}

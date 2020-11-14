@@ -2,6 +2,8 @@
 #include <funcy/generate.h>
 
 #include <Eigen/Dense>
+
+#include <gmock/gmock.h>
 #include <gtest/gtest.h>
 
 const constexpr int dim = 2;
@@ -36,7 +38,6 @@ TEST( DotTest_DynamicEigen, FirstVariable_SecondConstant )
     auto w = constant( get_ones() );
 
     auto f = finalize( dot( v, w ) );
-
     EXPECT_DOUBLE_EQ( f(), 2.0 );
     EXPECT_EQ( f.d1< 0 >( get_ones() ), 2.0 );
     auto value = f.d2< 0, 0 >( get_ones(), get_ones() );

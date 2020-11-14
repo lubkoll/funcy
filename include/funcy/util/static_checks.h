@@ -38,8 +38,8 @@ namespace funcy
                 template < class F, class IndexedArgX, class IndexedArgY,
                            class ArgX = typename IndexedArgX::type,
                            class ArgY = typename IndexedArgY::type >
-                using d2_without_index = decltype(
-                    std::declval< F >().d2( std::declval< ArgX >(), std::declval< ArgY >() ) );
+                using d2_without_index = decltype( std::declval< F >().d2(
+                    std::declval< ArgX >(), std::declval< ArgY >() ) );
 
                 template < class F, class IndexedArgX, class IndexedArgY, class IndexedArgZ,
                            class ArgX = typename IndexedArgX::type,
@@ -66,37 +66,24 @@ namespace funcy
             {
                 /// @cond
                 template < class F, class IndexedArg, class = void >
-                struct d1 : std::false_type
+                struct d1_without_index : std::false_type
                 {
                 };
 
                 template < class F, class IndexedArg >
-                struct d1< F, IndexedArg, std::void_t< test::mem_fn::d1< F, IndexedArg > > >
-                    : std::true_type
-                {
-                };
-
-                template < class F, class IndexedArg >
-                struct d1< F, IndexedArg,
-                           std::void_t< test::mem_fn::d1_without_index< F, IndexedArg > > >
+                struct d1_without_index<
+                    F, IndexedArg, std::void_t< test::mem_fn::d1_without_index< F, IndexedArg > > >
                     : std::true_type
                 {
                 };
 
                 template < class F, class IndexedArgX, class IndexedArgY, class = void >
-                struct d2 : std::false_type
+                struct d2_without_index : std::false_type
                 {
                 };
 
                 template < class F, class IndexedArgX, class IndexedArgY >
-                struct d2< F, IndexedArgX, IndexedArgY,
-                           std::void_t< test::mem_fn::d2< F, IndexedArgX, IndexedArgY > > >
-                    : std::true_type
-                {
-                };
-
-                template < class F, class IndexedArgX, class IndexedArgY >
-                struct d2<
+                struct d2_without_index<
                     F, IndexedArgX, IndexedArgY,
                     std::void_t< test::mem_fn::d2_without_index< F, IndexedArgX, IndexedArgY > > >
                     : std::true_type
@@ -105,22 +92,14 @@ namespace funcy
 
                 template < class F, class IndexedArgX, class IndexedArgY, class IndexedArgZ,
                            class = void >
-                struct d3 : std::false_type
+                struct d3_without_index : std::false_type
                 {
                 };
 
                 template < class F, class IndexedArgX, class IndexedArgY, class IndexedArgZ >
-                struct d3<
-                    F, IndexedArgX, IndexedArgY, IndexedArgZ,
-                    std::void_t< test::mem_fn::d3< F, IndexedArgX, IndexedArgY, IndexedArgZ > > >
-                    : std::true_type
-                {
-                };
-
-                template < class F, class IndexedArgX, class IndexedArgY, class IndexedArgZ >
-                struct d3< F, IndexedArgX, IndexedArgY, IndexedArgZ,
-                           std::void_t< test::mem_fn::d3_without_index< F, IndexedArgX, IndexedArgY,
-                                                                        IndexedArgZ > > >
+                struct d3_without_index< F, IndexedArgX, IndexedArgY, IndexedArgZ,
+                                         std::void_t< test::mem_fn::d3_without_index<
+                                             F, IndexedArgX, IndexedArgY, IndexedArgZ > > >
                     : std::true_type
                 {
                 };
@@ -163,6 +142,19 @@ namespace funcy
                     : std::true_type
                 {
                 };
+
+                template < class F, class IndexedArg >
+                using d1 = std::disjunction< d1_without_index< F, IndexedArg >,
+                                             d1_with_index< F, IndexedArg > >;
+
+                template < class F, class IndexedArgX, class IndexedArgY >
+                using d2 = std::disjunction< d2_without_index< F, IndexedArgX, IndexedArgY >,
+                                             d2_with_index< F, IndexedArgX, IndexedArgY > >;
+
+                template < class F, class IndexedArgX, class IndexedArgY, class IndexedArgZ >
+                using d3 =
+                    std::disjunction< d3_without_index< F, IndexedArgX, IndexedArgY, IndexedArgZ >,
+                                      d3_with_index< F, IndexedArgX, IndexedArgY, IndexedArgZ > >;
                 /// @endcond
             } // namespace mem_fn
 
