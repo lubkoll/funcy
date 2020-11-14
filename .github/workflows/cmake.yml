@@ -26,8 +26,7 @@ jobs:
 
     - name: Setup
       run: |
-        export CC=${ { matrix.config.cc } }
-        export CXX=${ { matrix.config.cxx } }
+        sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/${ { matrix.config.cc } } 90 --slave /usr/bin/g++ g++ /usr/bin/${ { matrix.config.cxx } } --slave /usr/bin/gcov gcov /usr/bin/${ { matrix.config.gcov } }
         pip install conan
         conan profile new default --detect
         conan profile update settings.compiler=${ { matrix.config.compiler } } default
