@@ -2,9 +2,6 @@ name: CMake
 
 on: [push]
 
-env:
-  BUILD_TYPE: Release
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -18,10 +15,12 @@ jobs:
             cxx: g++-10
             gcov: gcov-10
             compiler: gcc
+            compiler_version: 10
           - build_type: Release
             cc: clang-11
             cxx: clang++-11
             compiler: clang
+            compiler_version: 11
 
     steps:
     - uses: actions/checkout@v2
@@ -32,14 +31,18 @@ jobs:
     - name: Set ENV variables
       run: |
         echo "::set-env name=COMPILER::${{matrix.compiler}}"
+        echo "::set-env name=COMPILER_VERSION::${{matrix.compiler_version}}"
         echo "::set-env name=CXX::${{matrix.cxx}}"
         echo "::set-env name=CC::${{matrix.cc}}" 
+        echo "::set-env name=BUILD_TYPE::${{matrix.build_type}}" 
 
     - name: Print Travis ENV vars 
       run: |
         echo "COMPILER: ${COMPILER}"
+        echo "COMPILER_VERSION: ${COMPILER_VERSION}"
         echo "CXX: ${CXX}"
         echo "CC: ${CC}"
+        echo "BUILD_TYPE: ${BUILD_TYPE}"
 
     - name: Install Eigen
       run: |
@@ -51,6 +54,7 @@ jobs:
         pip install conan
         conan profile new default --detect
         conan profile update settings.compiler=$COMPILER default
+        conan profile update settings.compiler.version=$COMPILER_VERSION default
         conan profile update settings.compiler.libcxx=libstdc++11 default
         conan profile update settings.build_type=$BUILD_TYPE default
 
