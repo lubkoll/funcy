@@ -116,7 +116,8 @@ namespace funcy
     template < Function F, Function G >
     auto dot( F&& f, G&& g )
     {
-        return mathop::Dot( std::forward< F >( f ), std::forward< G >( g ) );
+        return mathop::Dot< std::decay_t< F >, std::decay_t< G > >( std::forward< F >( f ),
+                                                                    std::forward< G >( g ) );
     }
 
     /**
@@ -128,7 +129,8 @@ namespace funcy
     template < class F, Function G >
     auto dot( F&& f, G&& g )
     {
-        return mathop::Dot( constant( std::forward< F >( f ) ), std::forward< G >( g ) );
+        return mathop::Dot< std::decay_t< F >, std::decay_t< G > >(
+            constant( std::forward< F >( f ) ), std::forward< G >( g ) );
     }
 
     /**
@@ -140,7 +142,8 @@ namespace funcy
     template < Function F, class G >
     auto dot( F&& f, G&& g )
     {
-        return mathop::Dot( std::forward< F >( f ), constant( std::forward< G >( g ) ) );
+        return mathop::Dot< std::decay_t< F >, std::decay_t< G > >(
+            std::forward< F >( f ), constant( std::forward< G >( g ) ) );
     }
 
     /**
