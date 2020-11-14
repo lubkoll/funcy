@@ -5,6 +5,7 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
+    container: lubkoll/funcy
     strategy:
       fail-fast: false
       matrix:
@@ -17,6 +18,7 @@ jobs:
             gcov: gcov-10
             compiler: gcc
             compiler_version: 10
+            cxx_flags: -coverage
           - build_type: Release
             cc: clang-10
             cxx: clang++-10
@@ -39,6 +41,7 @@ jobs:
         echo "GCOV=${{matrix.gcov}}" >> $GITHUB_ENV
         echo "BUILD_TYPE=${{matrix.build_type}}" >> $GITHUB_ENV
         echo "COVERALLS_TOKEN=${{secrets.COVERALLS_TOKEN}}" >> $GITHUB_ENV
+        echo "FLAGS=${{matrix.cxx_flags}}" >> $GITHUB_ENV
 
     - name: Print ENV vars
       run: |
@@ -49,53 +52,6 @@ jobs:
         echo "GCOV: ${GCOV}"
         echo "BUILD_TYPE: ${BUILD_TYPE}"
 
-    - name: Setup
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y libeigen3-dev clang-10 clang++-10 ruby2.5 lcov
-        pip install conan
-        conan profile new default --detect
-        conan profile update settings.compiler=$COMPILER default
-        conan profile update settings.compiler.version=$COMPILER_VERSION default
-        conan profile update settings.compiler.libcxx=libstdc++11 default
-        conan profile update settings.build_type=Release default
-        sudo gem install coveralls-lcov
-
-    - name: Create Build Environment
-      run: cmake -E make_directory ${{runner.workspace}}/build
-
-    - name: Install Dependencies
-      shell: bash
-      working-directory: ${{runner.workspace}}/build
-      run: conan install $GITHUB_WORKSPACE --build=missing
-
-    - name: Configure
-      shell: bash
-      working-directory: ${{runner.workspace}}/build
-      run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DFuncy_BuildTest=ON -DCMAKE_TOOLCHAIN_FILE=conan_paths.cmake
-      if: ${{matrix.compiler == 'clang'}}
-
-    - name: Configure with Coverage
-      shell: bash
-      working-directory: ${{runner.workspace}}/build
-      run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DFuncy_BuildTest=ON -DCMAKE_TOOLCHAIN_FILE=conan_paths.cmake -DCMAKE_CXX_FLAGS="-coverage"
-      if: ${{matrix.gcov != ''}}
-
-    - name: Build
-      working-directory: ${{runner.workspace}}/build
-      shell: bash
-      run: cmake --build . --config $BUILD_TYPE
-
-    - name: Test
-      working-directory: ${{runner.workspace}}/build/test
-      shell: bash
-      run: ctest -C $BUILD_TYPE
-
-    - name: Publish Coverage
-      working-directory: ${{runner.workspace}}/build/test
-      shell: bash
-      run: |
-        lcov --gcov-tool $GCOV --capture --no-external --directory . --base-directory $GITHUB_WORKSPACE/include -rc lcov_branch_coverage=1 --output-file coverage.info
-        coveralls-lcov --repo-token ${COVERALLS_TOKEN} coverage.info
-      if: ${{matrix.gcov != ''}}
+    - name: Run unit tests
+      run: scripts/run_tests.sh $COMPILER $COMPILER_VERSION $BUILD_TYPE $FLAGS $COVERALLS_TOKEN
 
