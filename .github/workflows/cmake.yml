@@ -9,14 +9,13 @@ env:
 jobs:
   build:
     name: ${ { matrix.config.name } }
-    runs-on: ${ { matrix.config.os } }
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         config:
         - {
-            name: "Ubuntu Latest GCC-10", artifact: "Linux.tar.xz",
-            os: ubuntu-latest,
+            name: "Ubuntu Latest GCC-10",
             build_type: "Release", cc: "gcc-10", cxx: "g++-10"
           }
     steps:
