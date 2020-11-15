@@ -7,6 +7,13 @@ COMPILER_VERSION=$2
 BUILD_TYPE=$3
 FLAGS=$4
 COVERALLS_TOKEN=$5
+SRC_DIR=/tmp/funcy
+
+conan profile new default --detect
+conan profile update settings.build_type=Release default
+conan profile update settings.compiler=$COMPILER default
+conan profile update settings.compiler.version=$COMPILER_VERSION default
+conan profile update settings.compiler.libcxx=libstdc++11 default
 
 if [ "$COMPILER" = "gcc" ]; then
     export CXX=g++-$COMPILER_VERSION
@@ -20,8 +27,8 @@ fi
 
 mkdir -p build
 cd build || exit 1
-conan install .. --build=missing -s build_type=Release -s compiler=$COMPILER -s compiler.version=$COMPILER_VERSION -s compiler.libcxx=libstdc++11
-cmake .. -GNinja -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DCMAKE_TOOLCHAIN_FILE=conan_paths.cmake -DCMAKE_CXX_FLAGS=$FLAGS -DFuncy_BuildTest=ON
+conan install $SRC_DIR --build=missing
+cmake $SRC_DIR -GNinja -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DCMAKE_TOOLCHAIN_FILE=conan_paths.cmake -DCMAKE_CXX_FLAGS=$FLAGS -DFuncy_BuildTest=ON
 cmake --build .
 cd test || exit 1
 ctest
