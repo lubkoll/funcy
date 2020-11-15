@@ -281,11 +281,8 @@ namespace funcy
             using type = T;
         };
 
-        template < class, class >
-        struct ChooseTypeImpl;
-
-        template < class T >
-        struct ChooseTypeImpl< T, void >
+        template < class T, class >
+        struct ChooseTypeImpl
         {
             using type = T;
         };
