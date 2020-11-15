@@ -52,5 +52,5 @@ jobs:
         echo "BUILD_TYPE: ${BUILD_TYPE}"
 
     - name: Run unit tests
-      run: docker run --rm -v ${PWD}:/tmp/funcy lubkoll/funcy /bin/bash /tmp/funcy/scripts/run_tests.sh $COMPILER $COMPILER_VERSION $BUILD_TYPE $FLAGS $COVERALLS_TOKEN
+      run: docker run --rm -v ${PWD}:/home/funcy/src lubkoll/funcy /bin/bash src/scripts/run_tests.sh $COMPILER $COMPILER_VERSION $BUILD_TYPE $FLAGS $COVERALLS_TOKEN
 
