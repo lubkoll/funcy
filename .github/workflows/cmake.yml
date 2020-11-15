@@ -52,7 +52,7 @@ jobs:
         echo "BUILD_TYPE: ${BUILD_TYPE}"
         echo "docker version: $(docker --version)"
 
-    - name: Run unit tests
+    - name: Test
       run: docker run --rm -v ${PWD}:/src lubkoll/funcy /bin/bash /src/scripts/run_tests.sh $COMPILER $COMPILER_VERSION $BUILD_TYPE $FLAGS $COVERALLS_TOKEN
       if: ${{matrix.compiler == 'gcc'}}
 
