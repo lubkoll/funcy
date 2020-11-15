@@ -50,7 +50,50 @@ jobs:
         echo "CC: ${CC}"
         echo "GCOV: ${GCOV}"
         echo "BUILD_TYPE: ${BUILD_TYPE}"
+        echo "docker version: $(docker --version)"
 
     - name: Run unit tests
       run: docker run --rm -v ${PWD}:/src lubkoll/funcy /bin/bash /src/scripts/run_tests.sh $COMPILER $COMPILER_VERSION $BUILD_TYPE $FLAGS $COVERALLS_TOKEN
+      if: ${{matrix.compiler == 'gcc'}}
+
+    - name: Setup
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libeigen3-dev clang-10 clang++-10 ruby2.5 lcov
+        pip install conan
+        conan profile new default --detect
+        conan profile update settings.compiler=$COMPILER default
+        conan profile update settings.compiler.version=$COMPILER_VERSION default
+        conan profile update settings.compiler.libcxx=libstdc++11 default
+        conan profile update settings.build_type=Release default
+        sudo gem install coveralls-lcov
+      if: ${{matrix.compiler == 'clang'}}
+
+    - name: Create Build Environment
+      run: cmake -E make_directory ${{runner.workspace}}/build
+      if: ${{matrix.compiler == 'clang'}}
+
+    - name: Install Dependencies
+      shell: bash
+      working-directory: ${{runner.workspace}}/build
+      run: conan install $GITHUB_WORKSPACE --build=missing
+      if: ${{matrix.compiler == 'clang'}}
+
+    - name: Configure
+      shell: bash
+      working-directory: ${{runner.workspace}}/build
+      run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DFuncy_BuildTest=ON -DCMAKE_TOOLCHAIN_FILE=conan_paths.cmake
+      if: ${{matrix.compiler == 'clang'}}
+
+    - name: Build
+      working-directory: ${{runner.workspace}}/build
+      shell: bash
+      run: cmake --build . --config $BUILD_TYPE
+      if: ${{matrix.compiler == 'clang'}}
+
+    - name: Test
+      working-directory: ${{runner.workspace}}/build/test
+      shell: bash
+      run: ctest -C $BUILD_TYPE
+      if: ${{matrix.compiler == 'clang'}}
 
