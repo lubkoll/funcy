@@ -5,7 +5,6 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: lubkoll/funcy
     strategy:
       fail-fast: false
       matrix:
@@ -52,6 +51,12 @@ jobs:
         echo "GCOV: ${GCOV}"
         echo "BUILD_TYPE: ${BUILD_TYPE}"
 
+    - name: Install docker
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y docker
+        newgrp docker
+
     - name: Run unit tests
-      run: scripts/run_tests.sh $COMPILER $COMPILER_VERSION $BUILD_TYPE $FLAGS $COVERALLS_TOKEN
+      run: docker run --rm -u $UID -v ${PWD}:/home/funcy lubkoll/funcy scripts/run_tests.sh $COMPILER $COMPILER_VERSION $BUILD_TYPE $FLAGS $COVERALLS_TOKEN
 
