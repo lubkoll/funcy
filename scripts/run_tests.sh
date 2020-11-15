@@ -25,8 +25,9 @@ if [ "$COMPILER" = "clang" ]; then
     export CC=clang-$COMPILER_VERSION
 fi
 
-mkdir -p build
-cd build || exit 1
+cd $SRC_DIR || exit 1
+mkdir -p buildx
+cd buildx || exit 1
 conan install $SRC_DIR --build=missing
 cmake $SRC_DIR -GNinja -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DCMAKE_TOOLCHAIN_FILE=conan_paths.cmake -DCMAKE_CXX_FLAGS=$FLAGS -DFuncy_BuildTest=ON
 cmake --build .
@@ -34,6 +35,6 @@ cd test || exit 1
 ctest
 
 if [ "$FLAGS" = "-coverage" ]; then
-    lcov --gcov-tool gcov-${COMPILER_VERSION} --capture --no-external --directory . --base-directory /home/funcy/include -rc lcov_branch_coverage=1 --output-file coverage.info
+    lcov --gcov-tool gcov-${COMPILER_VERSION} --capture --no-external --directory . --base-directory $SRC_DIR/include -rc lcov_branch_coverage=1 --output-file coverage.info
     coveralls-lcov --repo-token ${COVERALLS_TOKEN} coverage.info
 fi
