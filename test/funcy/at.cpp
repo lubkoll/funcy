@@ -60,14 +60,12 @@ namespace
             return *this;
         }
     };
-
 } // namespace
 
 TEST( at, VectorSquareBracketAccess )
 {
     const auto A = VectorSquareBrackets{};
     EXPECT_THAT( at( A, 3 ), Eq( 3 ) );
-    EXPECT_TRUE( false );
 }
 
 TEST( at, VectorRoundBracketAccess )
