@@ -12,5 +12,3 @@ RUN usermod -G sudo funcy
 USER funcy
 
 WORKDIR /home/funcy
-
-RUN conan profile new default --detect
