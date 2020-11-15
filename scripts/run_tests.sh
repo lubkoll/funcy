@@ -7,7 +7,7 @@ COMPILER_VERSION=$2
 BUILD_TYPE=$3
 FLAGS=$4
 COVERALLS_TOKEN=$5
-SRC_DIR=/home/funcy/src
+SRC_DIR=/src
 
 conan profile new default --detect
 conan profile update settings.build_type=Release default

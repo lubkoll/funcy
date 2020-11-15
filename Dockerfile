@@ -6,9 +6,3 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y g++-10 g
 
 RUN gem install coveralls-lcov
 RUN python3 -m pip install conan
-
-RUN useradd -ms /bin/bash funcy
-RUN usermod -G sudo funcy
-USER funcy
-
-WORKDIR /home/funcy
