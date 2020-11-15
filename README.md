@@ -1,4 +1,4 @@
-![CMake](https://github.com/lubkoll/funcy/workflows/CMake/badge.svg)
+![CI](https://github.com/lubkoll/funcy/workflows/CI/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/lubkoll/funcy/badge.svg?branch=master)](https://coveralls.io/github/lubkoll/funcy?branch=master)
 [![Documentation](https://codedocs.xyz/lubkoll/funcy.svg)](https://codedocs.xyz/lubkoll/funcy/)
 # funcy - automatic differentiation for biomechanical modeling
