@@ -220,7 +220,7 @@ namespace funcy
      * wrap it into Finalize to generate missing derivatives.
      */
     template < class F, Arithmetic G >
-    auto operator/( F&& f, G&& g )
+    auto operator/( F&& f, G g )
     {
         return std::forward< F >( f ) * constant( 1 / g );
     }
