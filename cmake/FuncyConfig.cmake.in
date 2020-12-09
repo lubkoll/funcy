@@ -1,12 +1,13 @@
-get_filename_component(funcy_CMAKE_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
+get_filename_component(Funcy_CMAKE_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
 include(CMakeFindDependencyMacro)
 
-list(APPEND CMAKE_MODULE_PATH ${funcy_CMAKE_DIR})
+list(APPEND CMAKE_MODULE_PATH ${Funcy_CMAKE_DIR})
 
 list(REMOVE_AT CMAKE_MODULE_PATH -1)
 
-if(NOT TARGET funcy::funcy)
-    include("${funcy_CMAKE_DIR}/funcyTargets.cmake")
+if(NOT TARGET Funcy::Funcy)
+    include("${Funcy_CMAKE_DIR}/FuncyTargets.cmake")
 endif()
 
-set(funcy_LIBRARIES funcy::funcy)
+set(funcy_LIBRARIES Funcy::Funcy)
+
