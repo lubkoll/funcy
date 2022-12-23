@@ -70,6 +70,11 @@ namespace funcy
     inline const double CumulativeNormalDistribution::div_sqrt2 = 1 / std::sqrt( 2 );
     inline const double CumulativeNormalDistribution::div_sqrt2pi = 1 / std::sqrt( 2 * M_PI );
 
+    [[nodiscard]] inline auto cnd( double x )
+    {
+        return CumulativeNormalDistribution( x )();
+    }
+
     /*!
       @ingroup CMathGroup
       @brief Generate \f$ \mathrm{cnd}\circ f \f$.

@@ -174,6 +174,11 @@ namespace funcy
         double value = 0., x_inv = 1., ln2inv = 1 / log( 2. );
     };
 
+    [[nodiscard]] inline auto ln( double x )
+    {
+        return LN( x )();
+    }
+
     /*!
       @brief Generate \f$ \mathrm{ln}\circ f \f$.
       @param f function mapping into a scalar space

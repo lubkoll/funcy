@@ -1,29 +1,28 @@
 from conans import ConanFile, CMake
-from conan.tools.files import get, copy
+from conan.tools.files import get
 from conan.tools.layout import basic_layout
-import os
 
 required_conan_version = ">=1.50.0"
 
 
-class FuncyConan(ConanFile):
+class BoostConan(ConanFile):
     name = "funcy"
-    version = "1.6.3"
+    version = "1.6.4"
     author = "Lars Lubkoll"
     description = ""
     url = "https://github.com/lubkoll/funcy"
     license = "GPL3"
     settings = "os", "arch", "compiler", "build_type"
-    exports_sources = "CMakeLists.txt", "include/*", "cmake/*"
-    
+
     def layout(self):
         basic_layout(self)
 
+    def source(self):
+        get(self, "https://github.com/lubkoll/funcy/archive/refs/tags/v1.6.4.tar.gz")
+
     def package(self):
-        print("hi")
-        print(self.source_folder)
         cmake = CMake(self)
-        cmake.configure()
+        cmake.configure(source_folder=f'{self.source_folder}/funcy-1.6.4')
         cmake.install()
 
     def package_id(self):
